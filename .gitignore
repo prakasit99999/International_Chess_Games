@@ -240,6 +240,20 @@ ClientBin/
 *.publishsettings
 orleans.codegen.cs
 
+# Unity Specific
+[Ll]ibrary/
+[Tt]emp/
+[Oo]bj/
+[Bb]uild/
+[Bb]uilds/
+[Ll]ogs/
+[Mm]emoryCaptures/
+
+
+# Ignore Unity package cache
+[Ll]ibrary/PackageCache/
+
+
 # Including strong name files can present a security risk
 # (https://github.com/github/gitignore/pull/2483#issue-259490424)
 #*.snk
