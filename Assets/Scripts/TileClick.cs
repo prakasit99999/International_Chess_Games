@@ -42,14 +42,6 @@ public class TileClick : MonoBehaviour
         spriteRenderer.color = hoverColor;
     }
 
-    private void OnMouseEnter()
-    {
-        if (spriteRenderer.color != validMoveColor) // ไม่อัปเดตสีถ้าเป็นทางเดินถูกต้องอยู่แล้ว
-        {
-            spriteRenderer.color = hoverColor;
-        }
-    }
-
     private void OnMouseExit()
     {
         if (spriteRenderer.color != validMoveColor) // ไม่อัปเดตสีถ้าเป็นทางเดินถูกต้องอยู่แล้ว
