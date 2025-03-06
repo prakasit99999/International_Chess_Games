@@ -16,13 +16,14 @@ public class ChessBoard : MonoBehaviour
     private const int boardSize = 8;
     private ChessPiece[,] board = new ChessPiece[boardSize, boardSize];
     private ChessPiece selectedPiece = null; // ตัวแปรเก็บหมากที่ถูกเลือก
-    //private ChessPiece.Team currentTurn = ChessPiece.Team.White;
     private GameManager gameManager;
     private bool canCastleKingSide = true; // สามารถ Castling ฝั่ง King-side ได้หรือไม่
     private bool canCastleQueenSide = true; // สามารถ Castling ฝั่ง Queen-side ได้หรือไม่
     private bool isPromoting = false; // ✅ ตัวแปรเช็คว่ากำลังเลื่อนขั้นหรือไม่
     private Vector2Int? enPassantTarget = null; // ตำแหน่งเบี้ยที่เดินสองช่องในตาแรก
     private Dictionary<Vector2Int, ChessPiece> piecesOnBoard = new Dictionary<Vector2Int, ChessPiece>();
+    private Dictionary<Vector2Int, TileClick> tileClickMap = new Dictionary<Vector2Int, TileClick>();
+
 
     public static ChessBoard Instance { get; private set; }
     public Transform pieceWhite;    // Empty GameObject สำหรับทีมขาว
@@ -34,9 +35,12 @@ public class ChessBoard : MonoBehaviour
     public GameObject textPrefab;  // Prefab ของตัวอักษรและตัวเลขบนกระดาน
     public ChessPiece selectedPawn; // เบี้ยที่รอเลื่อนขั้น
     public PromotionManager promotionManager; // เชื่อมกับ PromotionManager ใน Inspector
+    public ChessPiece SelectedPiece => selectedPiece; // เพิ่ม Property เพื่อเข้าถึง selectedPiece
     public Vector2Int position;  // ตัวแปรสำหรับเก็บตำแหน่งของหมาก
     public Color32 whitleColor = new Color32(255, 255, 255, 255);
     public Color32 blackColor = new Color32(0, 0, 0, 255);
+
+   
 
     private void Awake()
     {
@@ -63,12 +67,12 @@ public class ChessBoard : MonoBehaviour
     {
 
     }
-
+    // Set method
     public void SetGameManager(GameManager manager)
     {
         gameManager = manager;
     }
-
+    //get method
     public Dictionary<Vector2Int, ChessPiece> GetPiecesOnBoard()
     {
         return piecesOnBoard;
@@ -107,6 +111,7 @@ public class ChessBoard : MonoBehaviour
                 // เพิ่มคอมโพเนนต์ TileClick และกำหนดค่าตำแหน่ง
                 TileClick tileClick = tile.AddComponent<TileClick>();
                 tileClick.SetTilePosition(new Vector2Int(x, y), this);
+                tileClickMap[new Vector2Int(x, y)] = tileClick; // ✅ เก็บ TileClick
             }
         }
     }
@@ -116,8 +121,8 @@ public class ChessBoard : MonoBehaviour
         // 🏇 วางเบี้ย (Pawn) ที่แถว 1 และ 6
         for (int i = 0; i < boardSize; i++)
         {
-            //SpawnPiece(ChessPiece.PieceType.Pawn, ChessPiece.Team.White, new Vector2Int(i, 1));
-            //SpawnPiece(ChessPiece.PieceType.Pawn, ChessPiece.Team.Black, new Vector2Int(i, 6));
+            SpawnPiece(ChessPiece.PieceType.Pawn, ChessPiece.Team.White, new Vector2Int(i, 1));
+            SpawnPiece(ChessPiece.PieceType.Pawn, ChessPiece.Team.Black, new Vector2Int(i, 6));
         }
 
         // 🏰 วางเรือ (Rook)
@@ -163,7 +168,7 @@ public class ChessBoard : MonoBehaviour
 
         // เพิ่ม BoxCollider2D ให้กับตัวหมาก
         BoxCollider2D boxCollider = pieceObj.AddComponent<BoxCollider2D>();
-        boxCollider.isTrigger = true;  // ทำให้ Collider เป็น Trigger ถ้าคุณไม่ต้องการให้มีการชนกับวัตถุอื่น ๆ
+        boxCollider.isTrigger = true;  // ทำให้ Collider เป็น Trigger 
 
         // จัดกลุ่มหมากแต่ละทีม
         pieceObj.transform.SetParent(team == ChessPiece.Team.White ? pieceWhite : pieceBlack);
@@ -171,7 +176,7 @@ public class ChessBoard : MonoBehaviour
         piecesOnBoard[position] = piece;
     }
 
-    private Vector2Int FindKingPosition(ChessPiece.Team team)
+    public  Vector2Int FindKingPosition(ChessPiece.Team team)
     {
         foreach (var entry in piecesOnBoard)
         {
@@ -462,6 +467,7 @@ public class ChessBoard : MonoBehaviour
             return;
         }
 
+
         // ถ้ายังไม่มีหมากที่ถูกเลือก
         if (selectedPiece == null)
         {
@@ -478,8 +484,14 @@ public class ChessBoard : MonoBehaviour
         }
         else // ถ้ามีหมากที่ถูกเลือกอยู่แล้ว
         {
+            if (piece.team == selectedPiece.team && selectedPiece == piece)
+            {
+                // ยกเลิกการเลือก
+                selectedPiece = null;
+                Debug.Log("🔄 ยกเลิกการเลือก");
+            }
             // ถ้าเลือกหมากทีมเดียวกัน
-            if (piece.team == selectedPiece.team)
+            else if (piece.team == selectedPiece.team)
             {
                 // เลือกหมากใหม่
                 selectedPiece = piece;
@@ -498,6 +510,7 @@ public class ChessBoard : MonoBehaviour
                     Debug.Log("❌ ไม่สามารถโจมตีหมากนี้ได้");
                 }
             }
+
         }
     }
 
@@ -610,6 +623,12 @@ public class ChessBoard : MonoBehaviour
         {
             if (targetPiece.team != selectedPiece.team)
             {
+                // กระพริบสีแดงที่แผ่นเป้าหมาย
+                if (tileClickMap.TryGetValue(newPosition, out TileClick tile))
+                {
+                    Debug.Log("Red");
+                    tile.FlashAttackColor();
+                }
                 Debug.Log($"⚔️ {selectedPiece.team} {selectedPiece.pieceType} กิน {targetPiece.team} {targetPiece.pieceType}!");
                 Destroy(targetPiece.gameObject); // ลบหมากศัตรูออกจากเกม
                 piecesOnBoard.Remove(newPosition); // เอาออกจากบอร์ด

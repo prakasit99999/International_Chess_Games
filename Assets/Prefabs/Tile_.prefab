@@ -10,12 +10,13 @@ GameObject:
   m_Component:
   - component: {fileID: 4684886877979284612}
   - component: {fileID: 2957467181808258250}
+  - component: {fileID: -9183782654463447282}
   m_Layer: 0
   m_Name: Tile_
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &4684886877979284612
 Transform:
@@ -84,3 +85,24 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &-9183782654463447282
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6591448769625154411}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35edebe0030e10249bc1b7fd9e3ffd0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  validMoveColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  attackColor:
+    serializedVersion: 2
+    rgba: 2575335679
+  checkColor:
+    serializedVersion: 2
+    rgba: 2575335679

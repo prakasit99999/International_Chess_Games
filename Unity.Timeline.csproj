@@ -61,6 +61,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Library\PackageCache\com.unity.timeline@1.7.6\Runtime\Scripting\PlayableTrack.cs" />
+    <Compile Include="Library\PackageCache\com.unity.timeline@1.7.6\Runtime\Playables\TimeNotificationBehaviour.cs" />
     <Compile Include="Library\PackageCache\com.unity.timeline@1.7.6\Runtime\Events\SignalTrack.cs" />
     <Compile Include="Library\PackageCache\com.unity.timeline@1.7.6\Runtime\Evaluation\RuntimeElement.cs" />
     <Compile Include="Library\PackageCache\com.unity.timeline@1.7.6\Runtime\Utilities\AnimatorBindingCache.cs" />
@@ -132,7 +133,6 @@
     <Compile Include="Library\PackageCache\com.unity.timeline@1.7.6\Runtime\AssetUpgrade\TimelineUpgrade.cs" />
     <Compile Include="Library\PackageCache\com.unity.timeline@1.7.6\Runtime\Utilities\IPropertyPreview.cs" />
     <Compile Include="Library\PackageCache\com.unity.timeline@1.7.6\Runtime\Evaluation\RuntimeClip.cs" />
-    <Compile Include="Library\PackageCache\com.unity.timeline@1.7.6\Runtime\Playables\TimeNotificationBehaviour.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Library\PackageCache\com.unity.timeline@1.7.6\Runtime\Unity.Timeline.asmdef" />
@@ -490,6 +490,14 @@
       <HintPath>Library\PackageCache\com.unity.collections@1.2.4\Unity.Collections.LowLevel.ILSupport\Unity.Collections.LowLevel.ILSupport.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Unity.Analytics.Tracker">
+      <HintPath>Library\PackageCache\com.unity.analytics@3.8.1\Unity.Analytics.Tracker.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.Analytics.Editor">
+      <HintPath>Library\PackageCache\com.unity.analytics@3.8.1\Unity.Analytics.Editor.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="unityplastic">
       <HintPath>Library\PackageCache\com.unity.collab-proxy@2.6.0\Lib\Editor\unityplastic.dll</HintPath>
       <Private>False</Private>
@@ -514,8 +522,16 @@
       <HintPath>Library\PackageCache\com.unity.visualscripting@1.9.5\Runtime\VisualScripting.Flow\Dependencies\NCalc\Unity.VisualScripting.Antlr3.Runtime.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>Library\PackageCache\com.unity.nuget.newtonsoft-json@3.2.1\Runtime\Newtonsoft.Json.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="Unity.VisualScripting.TextureAssets">
       <HintPath>Library\PackageCache\com.unity.visualscripting@1.9.5\Editor\VisualScripting.Core\EditorAssetResources\Unity.VisualScripting.TextureAssets.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.Analytics.StandardEvents">
+      <HintPath>Library\PackageCache\com.unity.analytics@3.8.1\AnalyticsStandardEvents\Unity.Analytics.StandardEvents.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="netstandard">

@@ -79,8 +79,8 @@
     <Compile Include="Library\PackageCache\com.unity.2d.psdimporter@8.0.5\Editor\Tasks\ExtractLayerTask.cs" />
     <Compile Include="Library\PackageCache\com.unity.2d.psdimporter@8.0.5\Editor\PSDImportData.cs" />
     <Compile Include="Library\PackageCache\com.unity.2d.psdimporter@8.0.5\Editor\TextureImporterUtilities.cs" />
-    <Compile Include="Library\PackageCache\com.unity.2d.psdimporter@8.0.5\Editor\PSDGameObjectPreviewData.cs" />
     <Compile Include="Library\PackageCache\com.unity.2d.psdimporter@8.0.5\Editor\PSDImporterEditorExternalData.cs" />
+    <Compile Include="Library\PackageCache\com.unity.2d.psdimporter@8.0.5\Editor\PSDGameObjectPreviewData.cs" />
     <Compile Include="Library\PackageCache\com.unity.2d.psdimporter@8.0.5\Editor\PSDImporterAPI.cs" />
     <Compile Include="Library\PackageCache\com.unity.2d.psdimporter@8.0.5\Editor\TextContent.cs" />
     <Compile Include="Library\PackageCache\com.unity.2d.psdimporter@8.0.5\Editor\PSDSpriteEditorDataProvider.cs" />
@@ -454,6 +454,14 @@
       <HintPath>Library\PackageCache\com.unity.collections@1.2.4\Unity.Collections.LowLevel.ILSupport\Unity.Collections.LowLevel.ILSupport.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Unity.Analytics.Tracker">
+      <HintPath>Library\PackageCache\com.unity.analytics@3.8.1\Unity.Analytics.Tracker.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.Analytics.Editor">
+      <HintPath>Library\PackageCache\com.unity.analytics@3.8.1\Unity.Analytics.Editor.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="unityplastic">
       <HintPath>Library\PackageCache\com.unity.collab-proxy@2.6.0\Lib\Editor\unityplastic.dll</HintPath>
       <Private>False</Private>
@@ -478,8 +486,16 @@
       <HintPath>Library\PackageCache\com.unity.visualscripting@1.9.5\Runtime\VisualScripting.Flow\Dependencies\NCalc\Unity.VisualScripting.Antlr3.Runtime.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>Library\PackageCache\com.unity.nuget.newtonsoft-json@3.2.1\Runtime\Newtonsoft.Json.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="Unity.VisualScripting.TextureAssets">
       <HintPath>Library\PackageCache\com.unity.visualscripting@1.9.5\Editor\VisualScripting.Core\EditorAssetResources\Unity.VisualScripting.TextureAssets.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.Analytics.StandardEvents">
+      <HintPath>Library\PackageCache\com.unity.analytics@3.8.1\AnalyticsStandardEvents\Unity.Analytics.StandardEvents.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="nunit.framework">

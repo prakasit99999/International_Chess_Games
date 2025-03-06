@@ -242,7 +242,6 @@ GameObject:
   m_Component:
   - component: {fileID: 246788984}
   - component: {fileID: 246788985}
-  - component: {fileID: 246788987}
   - component: {fileID: 246788986}
   - component: {fileID: 246788988}
   m_Layer: 0
@@ -352,19 +351,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &246788987
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 246788982}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 35edebe0030e10249bc1b7fd9e3ffd0c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hoverColor: {r: 0.8, g: 0.8, b: 0.8, a: 1}
 --- !u!114 &246788988
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -377,6 +363,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5bc1770e1470b2048a2eeed7cb5a4544, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  whitePlayer: {fileID: 0}
+  blackPlayer: {fileID: 0}
+  isGameStarted: 0
+  isWhiteTurn: 0
+  isBlackTurn: 0
 --- !u!1 &279815849
 GameObject:
   m_ObjectHideFlags: 0
