@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using static ChessPiece;
 
 public class GameManager : MonoBehaviour
@@ -12,8 +13,10 @@ public class GameManager : MonoBehaviour
 
     public static GameManager Instance;
 
-    public GameObject whitePlayer;
-    public GameObject blackPlayer;
+    //public GameObject whitePlayer;
+    //public GameObject blackPlayer;
+    public GameObject gameOverPanel;
+    public Text gameOverText;
     public bool isGameStarted;
     public bool isWhiteTurn;
     public bool isBlackTurn;
@@ -106,6 +109,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
+
     public void GameOver(ChessPiece.Team winningTeam)
     {
         if (gameIsOver) return;
@@ -113,18 +117,29 @@ public class GameManager : MonoBehaviour
         gameIsOver = true;
         Debug.Log($"🎉 เกมจบแล้ว! {winningTeam} เป็นฝ่ายชนะ!");
 
-        if (chessBoard == null)
+        // แสดง UI Game Over
+        gameOverPanel.SetActive(true);
+        gameOverText.text = (winningTeam == Team.None)
+            ? "⚖️ เกมเสมอ!"
+            : $"🎉 {winningTeam} ชนะ!";
+
+        // หยุดเวลาในเกม (หยุดการเคลื่อนไหว)
+        Time.timeScale = 0;
+
+        // ปิดการทำงานของตัวหมากทั้งหมด
+        if (chessBoard != null)
+        {
+            foreach (var entry in chessBoard.GetPiecesOnBoard())
+            {
+                if (entry.Value != null)
+                {
+                    entry.Value.enabled = false;
+                }
+            }
+        }
+        else
         {
             Debug.LogError("❌ ChessBoard เป็น null! ตรวจสอบว่า ChessBoard อยู่ในฉาก");
-            return;
-        }
-
-        foreach (var entry in chessBoard.GetPiecesOnBoard())
-        {
-            if (entry.Value != null)
-            {
-                entry.Value.enabled = false;
-            }
         }
     }
 
