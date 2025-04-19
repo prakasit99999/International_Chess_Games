@@ -121,8 +121,8 @@ public class ChessBoard : MonoBehaviour
         // 🏇 วางเบี้ย (Pawn) ที่แถว 1 และ 6
         for (int i = 0; i < boardSize; i++)
         {
-            //SpawnPiece(ChessPiece.PieceType.Pawn, ChessPiece.Team.White, new Vector2Int(i, 1));
-            //SpawnPiece(ChessPiece.PieceType.Pawn, ChessPiece.Team.Black, new Vector2Int(i, 6));
+            SpawnPiece(ChessPiece.PieceType.Pawn, ChessPiece.Team.White, new Vector2Int(i, 1));
+            SpawnPiece(ChessPiece.PieceType.Pawn, ChessPiece.Team.Black, new Vector2Int(i, 6));
         }
 
         // 🏰 วางเรือ (Rook)

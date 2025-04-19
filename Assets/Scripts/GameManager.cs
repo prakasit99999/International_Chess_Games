@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 using static ChessPiece;
 
@@ -8,18 +6,23 @@ public class GameManager : MonoBehaviour
 {
     private bool gameIsOver = false;
     private ChessBoard chessBoard;
+    private HistoryMoveUI historyMoveUI; // เปลี่ยนจาก MoveHistoryUI เป็น HistoryMoveUI
     private PromotionManager promotionManager; // เชื่อมกับ PromotionManager ใน Inspector
     private ChessPiece.Team currentTurn = ChessPiece.Team.White;
 
+
     public static GameManager Instance;
 
-    //public GameObject whitePlayer;
-    //public GameObject blackPlayer;
+ 
     public GameObject gameOverPanel;
     public Text gameOverText;
     public bool isGameStarted;
     public bool isWhiteTurn;
     public bool isBlackTurn;
+
+    public string whitePlayerName = "White";
+    public string blackPlayerName = "Black";
+    public bool isAIMode = false; // โหมดเล่นกับ AI
 
 
     private void Awake()
@@ -38,6 +41,8 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         chessBoard = FindObjectOfType<ChessBoard>();
+        historyMoveUI = FindObjectOfType<HistoryMoveUI>(); // ค้นหา HistoryMoveUI ใน Scene
+
         if (chessBoard == null)
         {
             Debug.LogError("❌ ChessBoard ไม่ถูกพบ! ตรวจสอบว่า ChessBoard อยู่ในฉาก");
@@ -60,11 +65,36 @@ public class GameManager : MonoBehaviour
         isGameStarted = value;
     }
 
+    public void SetPlayerNames(string whiteName, string blackName)
+    {
+        whitePlayerName = whiteName;
+        blackPlayerName = blackName;
+        UpdatePlayerTurnUI(); // อัปเดต UI ทันที
+    }
+
     //Get method
     // ตรวจสอบว่าตอนนี้เป็นตาของทีมไหน
     public ChessPiece.Team GetCurrentTurn()
     {
         return currentTurn;
+    }
+
+    public string GetCurrentPlayerName()
+    {
+        return (currentTurn == ChessPiece.Team.White) ? whitePlayerName : blackPlayerName;
+    }
+
+    // อัปเดต UI เมื่อเปลี่ยนตาเดิน
+    public void UpdatePlayerTurnUI()
+    {
+        if (historyMoveUI != null)
+        {
+            historyMoveUI.UpdatePlayerTurn();
+        }
+        else
+        {
+            Debug.LogWarning("HistoryMoveUI not found!");
+        }
     }
 
     // ฟังก์ชันสลับเทิร์น
@@ -83,7 +113,7 @@ public class GameManager : MonoBehaviour
 
         currentTurn = (currentTurn == ChessPiece.Team.White) ? ChessPiece.Team.Black : ChessPiece.Team.White;
         Debug.Log($"🕒 ตอนนี้เป็นตาของ {currentTurn}");
-
+        UpdatePlayerTurnUI(); // ✅ เพิ่มบรรทัดนี้
         CheckGameState(); // ✅ ตรวจสอบสถานะเกมทุกครั้งที่เปลี่ยนตาเดิน
     }
 
