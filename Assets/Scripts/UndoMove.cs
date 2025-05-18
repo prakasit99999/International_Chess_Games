@@ -1,15 +1,33 @@
-﻿using static HistoryMove;
-using System.Collections.Generic;
-using System.Collections;
+﻿using System.Collections.Generic;
 using UnityEngine;
+using static HistoryMove;
 
 public class UndoMove : MonoBehaviour
 {
+    public static UndoMove Instance; // Singleton Pattern
     public GameObject piecePrefab;
-    public Stack<HistoryMove.HistoryMoveData> moveHistory; 
+    public Stack<HistoryMove.HistoryMoveData> moveHistory;
+
+    private ChessBoard chessBoard;
+    private HistoryMove historyMove;
+    public HistoryMove HistoryMove;
 
 
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+            chessBoard = ChessBoard.Instance; // ใช้ Singleton
+            historyMove = FindObjectOfType<HistoryMove>();
+            chessBoard = FindObjectOfType<ChessBoard>();
 
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -22,53 +40,71 @@ public class UndoMove : MonoBehaviour
 
     }
 
-    public void UndoLastMove(Dictionary<Vector2Int, ChessPiece> piecesOnBoard, Transform boardParent)
+    public void UndoLastMove()
     {
-        if (moveHistory.Count > 0)
+        ChessPiece movedPiece = null;
+        if (historyMove.GetMoveHistory().Count == 0) return;
+
+        HistoryMove.HistoryMoveData lastMove = historyMove.GetMoveHistory().Pop();
+
+        Vector2Int destinationPosition = lastMove.endPosition;
+        Vector2Int originalPosition = lastMove.startPosition;
+
+        if (lastMove.isEnPassant)
         {
-            HistoryMoveData lastMove = moveHistory.Pop();
-            Vector2Int start = lastMove.startPosition;
-            Vector2Int end = lastMove.endPosition;
-
-            if (piecesOnBoard.TryGetValue(end, out ChessPiece movedPiece))
+            UndoEnPassant(lastMove, chessBoard.GetPiecesOnBoard(), chessBoard.transform);
+        }
+        if (lastMove.isCastling)
+        {
+            UndoCastling(lastMove, chessBoard.GetPiecesOnBoard(), chessBoard.transform);
+        }
+        else if ((movedPiece = UndoPromotion(lastMove, chessBoard.GetPiecesOnBoard())) == null)
+        {
+            // ไม่ได้โปรโมท → ใช้หมากเดิม
+            if (chessBoard.GetPiecesOnBoard().TryGetValue(destinationPosition, out movedPiece))
             {
-                // นำตัวหมากกลับไปที่ตำแหน่งเริ่มต้น
-                movedPiece.transform.position = new Vector3(start.x, start.y, 0);
-                piecesOnBoard.Remove(end);
-                piecesOnBoard[start] = movedPiece;
-
-                Debug.Log($"🔄 ย้อนกลับ {movedPiece.pieceType} จาก {end} -> {start}");
+                chessBoard.GetPiecesOnBoard().Remove(destinationPosition);
+                movedPiece.SetPosition(originalPosition.x, originalPosition.y);
+                movedPiece.HasMoved = lastMove.pieceHasMovedBefore;
+                chessBoard.GetPiecesOnBoard()[originalPosition] = movedPiece;
             }
-
-            // นำตัวหมากที่ถูกกินคืนมา ถ้ามี
-            if (lastMove.capturedPieceType != ChessPiece.PieceType.Pawn) // Assuming Pawn is the default piece type
+            else
             {
-                GameObject capturedPieceObj = InstantiatePiece(lastMove.capturedPieceType, end, boardParent);
-                ChessPiece capturedPiece = capturedPieceObj.GetComponent<ChessPiece>();
-                piecesOnBoard[end] = capturedPiece;
-
-                Debug.Log($"♟️ คืนค่า {capturedPiece.pieceType} ที่ {end}");
-            }
-
-            // ตรวจสอบกรณีพิเศษ (Castling, Promote, En Passant)
-            if (lastMove.isCastling)
-            {
-                UndoCastling(lastMove, piecesOnBoard);
-            }
-            else if (lastMove.promotedTo != ChessPiece.PieceType.Pawn) // Assuming Pawn is the default piece type
-            {
-                UndoPromotion(lastMove, piecesOnBoard);
-            }
-            else if (lastMove.isEnPassant)
-            {
-                UndoEnPassant(lastMove, piecesOnBoard, boardParent);
+                Debug.LogWarning($"❌ ไม่พบหมากที่ {destinationPosition} ตอน Undo");
+                return;
             }
         }
         else
         {
-            Debug.Log("⚠️ ไม่มีประวัติการเดินให้ย้อนกลับ");
+            // ✅ โปรโมท → คืนหมากเดิม (pawn)
+            movedPiece.SetPosition(originalPosition.x, originalPosition.y);
+            movedPiece.HasMoved = lastMove.pieceHasMovedBefore;
+            chessBoard.GetPiecesOnBoard()[originalPosition] = movedPiece;
         }
+
+        // ✅ คืนค่าหมากที่ถูกกิน
+        if (lastMove.isCapture && lastMove.capturedPieceTeam != ChessPiece.Team.None )
+        {
+            chessBoard.SpawnPiece(
+                lastMove.capturedPieceType,
+                lastMove.capturedPieceTeam,
+                lastMove.capturedPiecePosition
+            );
+            Debug.Log($"✅ คืนค่าหมากที่ถูกกิน: {lastMove.capturedPieceType} ที่ {lastMove.capturedPiecePosition}");
+        }
+
+        // ✅ รีเซ็ต En Passant
+        if (lastMove.isPawnTwoStep)
+        {
+            chessBoard.SetEnPassantTarget(null);
+        }
+
+        // ✅ ล้างการเลือก และเปลี่ยนเทิร์นกลับ
+        chessBoard.SetselectedPiece(null);
+        GameManager.Instance.SwitchTurn(true);
+        Debug.Log($"🔙 ย้อนกลับการเดินที่ {lastMove.startPosition} → {lastMove.endPosition}");
     }
+
 
     private GameObject InstantiatePiece(ChessPiece.PieceType pieceType, Vector2Int position, Transform parent)
     {
@@ -78,48 +114,118 @@ public class UndoMove : MonoBehaviour
         return pieceObj;
     }
 
-    private void UndoPromotion(HistoryMoveData lastMove, Dictionary<Vector2Int, ChessPiece> piecesOnBoard)
+    private ChessPiece UndoPromotion(HistoryMoveData lastMove, Dictionary<Vector2Int, ChessPiece> piecesOnBoard)
     {
-        if (piecesOnBoard.TryGetValue(lastMove.endPosition, out ChessPiece promotedPiece))
+        // ตรวจสอบว่ามีการเลื่อนขั้นหรือไม่
+        if (lastMove.promotedFrom != ChessPiece.PieceType.Pawn ||
+             lastMove.promotedTo == ChessPiece.PieceType.Pawn)
         {
-            promotedPiece.pieceType = ChessPiece.PieceType.Pawn; // กลับเป็นเบี้ย
-            Debug.Log($"🔄 ย้อนกลับการเลื่อนขั้นของ {promotedPiece.pieceType} ที่ {lastMove.endPosition}");
+            return null;
+        }
+
+
+        // ตำแหน่งที่เกิดการเลื่อนขั้น (ตำแหน่งปลายทางของเบี้ย)
+        Vector2Int promoPos = lastMove.endPosition;
+
+        if (piecesOnBoard.TryGetValue(promoPos, out ChessPiece promotedPiece))
+        {
+            // ลบตัวหมากที่ถูกเลื่อนขั้น
+            Destroy(promotedPiece.gameObject);
+            piecesOnBoard.Remove(promoPos);
+
+            // สร้างเบี้ยกลับมาที่ตำแหน่งเริ่มต้นก่อนเลื่อนขั้น (startPosition)
+            ChessPiece newPawn = chessBoard.SpawnPiece(
+                ChessPiece.PieceType.Pawn,
+                lastMove.team, // ใช้ทีมเดิมจากประวัติ
+                lastMove.startPosition // วางเบี้ยที่ตำแหน่งเริ่มต้น
+            );
+
+            // คืนค่าสถานะ HasMoved
+            newPawn.HasMoved = lastMove.pieceHasMovedBefore;
+
+            Debug.Log($"✅ ย้อนเลื่อนขั้น: สร้างเบี้ยกลับที่ {lastMove.startPosition}");
+            return newPawn;
+        }
+        else
+        {
+            Debug.LogWarning($"❌ ไม่พบหมากที่ตำแหน่ง {promoPos} สำหรับย้อนเลื่อนขั้น");
+            return null;
         }
     }
 
-    private void UndoCastling(HistoryMoveData lastMove, Dictionary<Vector2Int, ChessPiece> piecesOnBoard)
+    // ในไฟล์ UndoMove.cs
+    private void UndoCastling(HistoryMove.HistoryMoveData lastMove, Dictionary<Vector2Int, ChessPiece> piecesOnBoard, Transform boardParent)
     {
-        int rookStartX = lastMove.endPosition.x > 4 ? 7 : 0; // หาตำแหน่งเดิมของเรือ
+        int row = lastMove.endPosition.y;
+
+        // ตำแหน่ง Rook
+        int rookStartX = lastMove.endPosition.x > 4 ? 7 : 0;
         int rookEndX = lastMove.endPosition.x > 4 ? 5 : 3;
+        Vector2Int rookStartPos = new Vector2Int(rookStartX, row);
+        Vector2Int rookEndPos = new Vector2Int(rookEndX, row);
 
-        Vector2Int rookStartPos = new Vector2Int(rookStartX, lastMove.endPosition.y);
-        Vector2Int rookEndPos = new Vector2Int(rookEndX, lastMove.endPosition.y);
+        // ✅ ย้าย King กลับ
+        Vector2Int kingStartPos = lastMove.startPosition;
+        Vector2Int kingEndPos = lastMove.endPosition;
 
+        if (piecesOnBoard.TryGetValue(kingEndPos, out ChessPiece king))
+        {
+            piecesOnBoard.Remove(kingEndPos);
+            king.SetPosition(kingStartPos.x, kingStartPos.y);
+            king.HasMoved = false;
+            piecesOnBoard[kingStartPos] = king;
+        }
+
+        // ✅ ย้าย Rook กลับ
         if (piecesOnBoard.TryGetValue(rookEndPos, out ChessPiece rook))
         {
             piecesOnBoard.Remove(rookEndPos);
-            rook.transform.position = new Vector3(rookStartPos.x, rookStartPos.y, 0);
+            rook.SetPosition(rookStartPos.x, rookStartPos.y);
+            rook.HasMoved = false;
             piecesOnBoard[rookStartPos] = rook;
-            Debug.Log($"🏰 ย้อนกลับ Castling: คืนค่าเรือจาก {rookEndPos} -> {rookStartPos}");
         }
+        // ✅ คืนสิทธิ์ให้ Castling ได้อีก
+        if (lastMove.team == ChessPiece.Team.White)
+        {
+            if (lastMove.endPosition.x > 4)
+                chessBoard.SetCanCastleKingSide(ChessPiece.Team.White, true);
+            else
+                chessBoard.SetCanCastleQueenSide(ChessPiece.Team.White, true);
+        }
+        else if (lastMove.team == ChessPiece.Team.Black)
+        {
+            if (lastMove.endPosition.x > 4)
+                chessBoard.SetCanCastleKingSide(ChessPiece.Team.Black, true);
+            else
+                chessBoard.SetCanCastleQueenSide(ChessPiece.Team.Black, true);
+        }
+
+
+        Debug.Log($"🔙 ย้อนกลับ Castling: King {kingEndPos} → {kingStartPos}, Rook {rookEndPos} → {rookStartPos}");
     }
 
     private void UndoEnPassant(HistoryMoveData lastMove, Dictionary<Vector2Int, ChessPiece> piecesOnBoard, Transform boardParent)
     {
+        // ตำแหน่งหมากที่โดนกินอยู่ข้างหลัง
         Vector2Int capturedPawnPosition = new Vector2Int(lastMove.endPosition.x, lastMove.startPosition.y);
-        if (piecesOnBoard.TryGetValue(capturedPawnPosition, out ChessPiece capturedPawn))
-        {
-            piecesOnBoard.Remove(capturedPawnPosition);
-            Destroy(capturedPawn.gameObject);
-        }
 
+        // ลบหมากตัวที่เดิน
         if (piecesOnBoard.TryGetValue(lastMove.endPosition, out ChessPiece movedPawn))
         {
-            movedPawn.transform.position = new Vector3(lastMove.startPosition.x, lastMove.startPosition.y, 0);
             piecesOnBoard.Remove(lastMove.endPosition);
+            movedPawn.SetPosition(lastMove.startPosition.x, lastMove.startPosition.y);
+            movedPawn.HasMoved = lastMove.pieceHasMovedBefore;
             piecesOnBoard[lastMove.startPosition] = movedPawn;
         }
 
-        Debug.Log($"🔄 ย้อนกลับ En Passant: คืนค่าหมากจาก {lastMove.endPosition} -> {lastMove.startPosition}");
+        // คืนเบี้ยที่ถูกกินกลับมา
+        chessBoard.SpawnPiece(
+            ChessPiece.PieceType.Pawn,
+            lastMove.capturedPieceTeam,
+            capturedPawnPosition
+        );
+
+        Debug.Log($"🔄 ย้อนกลับ En Passant: {capturedPawnPosition} กลับมา");
     }
+
 }

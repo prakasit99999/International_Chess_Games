@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public class ChessPiece : MonoBehaviour
@@ -9,11 +8,10 @@ public class ChessPiece : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     private ChessBoard boardManager;  // อ้างอิงถึง ChessBoard
     private List<ChessPiece> allPieces = new List<ChessPiece>();  // ลิสต์ที่เก็บชิ้นส่วนทั้งหมด
-    private Sprite[] whiteSprites; // Add this line
-    private Sprite[] blackSprites; // Add this line
+   
 
-    public enum PieceType { Pawn, Rook, Knight, Bishop, Queen, King }
-    public enum Team { White, Black,None }
+    public enum PieceType {  Pawn=0 , Rook, Knight, Bishop, Queen, King , None=-1}
+    public enum Team { White, Black, None }
 
     public PieceType pieceType;
     public Team team;
@@ -23,7 +21,7 @@ public class ChessPiece : MonoBehaviour
     public bool isSelected = false; // เช็คว่าหมากถูกเลือกหรือไม่
     public Vector2Int boardPosition;
     public ChessPiece.Team CurrentPlayerTeam { get; set; }
-    public bool HasMoved { get;  set; } = false; // ตรวจสอบว่าหมากขยับหรือยัง
+    public bool HasMoved { get; set; } = false; // ตรวจสอบว่าหมากขยับหรือยัง
 
     // Start is called before the first frame update
     void Start()
@@ -55,9 +53,10 @@ public class ChessPiece : MonoBehaviour
         boardPosition = new Vector2Int(x, y);
         transform.position = new Vector2(x, y);
     }
-
+ 
     private void OnMouseDown()
     {
+        if (ChessBoard.Instance.IsPromoting()) return;
         if (boardManager != null)
         {
             boardManager.SelectPiece(this);
@@ -129,7 +128,7 @@ public class ChessPiece : MonoBehaviour
         return dx <= 1 && dy <= 1;
     }
 
-    private void UpdateSprite()
+    public void UpdateSprite()
     {
         if (team == Team.White)
         {
@@ -191,16 +190,18 @@ public class ChessPiece : MonoBehaviour
         return true;
     }
 
+    // ในไฟล์ ChessPiece.cs
     public void MoveTo(Vector2Int newPosition)
     {
+        currentX = newPosition.x; // อัปเดตตำแหน่ง X
+        currentY = newPosition.y; // อัปเดตตำแหน่ง Y
         boardPosition = newPosition;
         transform.position = new Vector3(newPosition.x, newPosition.y, 0);
-        HasMoved = true; // หมากขยับแล้ว
+        HasMoved = true; // ตั้งค่าให้รู้ว่าหมากถูกเคลื่อนแล้ว
         if (pieceType == PieceType.Pawn)
         {
-            PromotePawn(); // ตรวจสอบการเลื่อน Pawn
+            PromotePawn(); // ตรวจสอบการเลื่อนขั้นเบี้ย
         }
-
     }
 
     public void Promote(PieceType newType)
@@ -213,10 +214,13 @@ public class ChessPiece : MonoBehaviour
 
         Debug.Log($"🔼 กำลังเลื่อนขั้น {team} เบี้ยเป็น {newType}");
 
-        pieceType = newType; // อัปเดตประเภทหมาก
-        UpdateSprite(); // ต้องมีฟังก์ชันนี้เพื่อเปลี่ยนภาพของหมากที่เลื่อนขั้น
+        // ✅ บันทึกข้อมูลก่อนเลื่อนขั้น
+        ChessBoard.Instance.SetPromotionData(this.boardPosition, PieceType.Pawn);
 
-        ChessBoard.Instance.SetPromoting(false); // ปลดล็อกให้เดินต่อ
+        pieceType = newType; // อัปเดตประเภทหมาก
+        UpdateSprite();
+
+        ChessBoard.Instance.SetPromoting(false); 
     }
 
     public void PromotePawn()
@@ -224,7 +228,9 @@ public class ChessPiece : MonoBehaviour
         if (pieceType == PieceType.Pawn && (boardPosition.y == 0 || boardPosition.y == 7))
         {
             Debug.Log("เบี้ยเดินถึงแถวสุดท้าย เริ่มกระบวนการเลื่อนขั้น");
-            ChessBoard.Instance.SetPromoting(true); // 🔒 หยุดเกมชั่วคราว
+            ChessBoard.Instance.SetPromoting(true);
+            // ✅ บันทึกประเภทเดิมก่อนเลื่อนขั้น
+            ChessBoard.Instance.SetPromotionData(this.boardPosition, PieceType.Pawn);
             PromotionManager.Instance.ShowPromotionMenu(this);
         }
     }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using static ChessPiece;
+using static HistoryMove;
 
 public class PromotionManager : MonoBehaviour
 {
@@ -9,6 +10,9 @@ public class PromotionManager : MonoBehaviour
     public static PromotionManager Instance;
 
     private ChessPiece selectedPawn; // ตัวเบี้ยที่กำลังจะถูกเลื่อนขั้น
+    private HistoryMove historyMove;
+    private ChessPiece.PieceType selectedPromotionType;
+
     public GameObject promotionWhitePanel; // Panel สำหรับทีมขาว
     public GameObject promotionBlackPanel; // Panel สำหรับทีมดำ
 
@@ -16,7 +20,11 @@ public class PromotionManager : MonoBehaviour
     {
         if (Instance == null)
         {
+            
             Instance = this;
+            historyMove = FindObjectOfType<HistoryMove>();
+            //selectedPawn = FindAnyObjectByType<ChessPiece>();
+
         }
         else
         {
@@ -32,6 +40,11 @@ public class PromotionManager : MonoBehaviour
         }
 
         HidePromotionMenu();
+    }
+
+    public ChessPiece.PieceType GetSelectedPromotionType()
+    {
+        return selectedPromotionType;
     }
     // ซ่อนเมนูเลื่อนขั้น
     public void HidePromotionMenu()
@@ -57,7 +70,7 @@ public class PromotionManager : MonoBehaviour
             return;
         }
         selectedPawn = pawn;
-        Debug.Log($"🔼 แสดงเมนูเลื่อนขั้นสำหรับ {pawn.team} Pawn");
+        //Debug.Log($"🔼 แสดงเมนูเลื่อนขั้นสำหรับ {pawn.team} Pawn");
 
         if (pawn.team == ChessPiece.Team.White)
         {
@@ -90,16 +103,39 @@ public class PromotionManager : MonoBehaviour
             case 2: newType = ChessPiece.PieceType.Bishop; break;
             case 3: newType = ChessPiece.PieceType.Knight; break;
         }
+        if (historyMove == null || historyMove.GetMoveHistory().Count == 0)
+        {
+            Debug.LogError("❌ ไม่พบประวัติการเดินหรือ HistoryMove ไม่ถูกกำหนดค่า!");
+            return;
+        }
 
-        Debug.Log($"🔼 เลื่อนขั้นเป็น {newType}");
+        // ✅ อัปเดตข้อมูลใน HistoryMove ด้วยประเภทใหม่
+        HistoryMoveData lastMove = historyMove.GetMoveHistory().Pop();
+        lastMove.promotedTo = newType;
+        historyMove.GetMoveHistory().Push(lastMove);
+
+        //Debug.Log($"🔼 เลื่อนขั้นเป็น {newType}");
         selectedPawn.Promote(newType);
         selectedPawn = null;
-
         HidePromotionMenu();
-
         ChessBoard.Instance.SetPromoting(false);
         ChessBoard.Instance.SetselectedPiece(null);
         GameManager.Instance.SwitchTurn();
+
+      
+        Debug.Log($"🔼 อัปเดตประเภทที่เลื่อนขั้นใน HistoryMove: {lastMove.promotedTo}");
+        Debug.Log($"📜 ข้อมูลทั้งหมดของ lastMove: " +
+                  $"\nStart Position: {lastMove.startPosition}" +
+                  $"\nEnd Position: {lastMove.endPosition}" +
+                  $"\nPiece Type: {lastMove.pieceType}" +
+                  $"\nCaptured Piece Type: {lastMove.capturedPieceType}" +
+                  $"\nCaptured Piece Team: {lastMove.capturedPieceTeam}" +
+                  $"\nIs Castling: {lastMove.isCastling}" +
+                  $"\nIs En Passant: {lastMove.isEnPassant}" +
+                  $"\nPromoted From: {lastMove.promotedFrom}" +
+                  $"\nPromoted To: {lastMove.promotedTo}" +
+                  $"\nPromoted Position: {lastMove.promotedPosition}");
+
     }
 
 }

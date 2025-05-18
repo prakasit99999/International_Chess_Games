@@ -10,10 +10,7 @@ public class GameManager : MonoBehaviour
     private PromotionManager promotionManager; // เชื่อมกับ PromotionManager ใน Inspector
     private ChessPiece.Team currentTurn = ChessPiece.Team.White;
 
-
     public static GameManager Instance;
-
- 
     public GameObject gameOverPanel;
     public Text gameOverText;
     public bool isGameStarted;
@@ -30,6 +27,8 @@ public class GameManager : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
+            chessBoard = FindObjectOfType<ChessBoard>();
+            historyMoveUI = FindObjectOfType<HistoryMoveUI>(); // ค้นหา HistoryMoveUI ใน Scene
         }
         else
         {
@@ -87,9 +86,10 @@ public class GameManager : MonoBehaviour
     // อัปเดต UI เมื่อเปลี่ยนตาเดิน
     public void UpdatePlayerTurnUI()
     {
-        if (historyMoveUI != null)
+        if (HistoryMoveUI.Instance != null)
         {
-            historyMoveUI.UpdatePlayerTurn();
+            HistoryMoveUI.Instance.UpdatePlayerTurn();
+            HistoryMoveUI.Instance.UpdateMoveHistoryList();
         }
         else
         {
@@ -98,30 +98,31 @@ public class GameManager : MonoBehaviour
     }
 
     // ฟังก์ชันสลับเทิร์น
-    public void SwitchTurn()
+    public void SwitchTurn(bool forceSwitch = false)
     {
         if (IsGameOver())
         {
             Debug.Log("เกมจบแล้ว ไม่สามารถสลับเทิร์นได้");
             return;
         }
-        if (ChessBoard.Instance.IsPromoting())
+
+        // Remove the promotion check to allow forced turn switch
+        if (!forceSwitch && ChessBoard.Instance.IsPromoting())
         {
             Debug.Log("กำลังเลื่อนขั้น ไม่สามารถสลับเทิร์นได้");
             return;
         }
 
-        currentTurn = (currentTurn == ChessPiece.Team.White) ? ChessPiece.Team.Black : ChessPiece.Team.White;
-        Debug.Log($"🕒 ตอนนี้เป็นตาของ {currentTurn}");
-        UpdatePlayerTurnUI(); // ✅ เพิ่มบรรทัดนี้
-        CheckGameState(); // ✅ ตรวจสอบสถานะเกมทุกครั้งที่เปลี่ยนตาเดิน
+        currentTurn = (currentTurn == Team.White) ? Team.Black : Team.White;
+        UpdatePlayerTurnUI();
+        CheckGameState();
     }
 
 
     // ฟังก์ชันตรวจสอบ Checkmate หรือ Stalemate
     public void CheckGameState()
     {
-        Debug.Log("🔍 ตรวจสอบสถานะเกม...");
+        //Debug.Log("🔍 ตรวจสอบสถานะเกม...");
 
         ChessPiece.Team opponentTeam = (currentTurn == ChessPiece.Team.White) ? ChessPiece.Team.Black : ChessPiece.Team.White;
 

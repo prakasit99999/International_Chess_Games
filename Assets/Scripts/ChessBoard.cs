@@ -1,30 +1,28 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.Tilemaps;
-using UnityEngine.UIElements;
-using UnityEngine.WSA;
 using static ChessPiece;
 
 public class ChessBoard : MonoBehaviour
 {
     private float tileSize = 1.0f;
     private const int boardSize = 8;
+    private GameManager gameManager;
+    private HistoryMove historyMove;
     private ChessPiece[,] board = new ChessPiece[boardSize, boardSize];
     private ChessPiece selectedPiece = null; // ตัวแปรเก็บหมากที่ถูกเลือก
-    private GameManager gameManager;
-    private bool canCastleKingSide = true; // สามารถ Castling ฝั่ง King-side ได้หรือไม่
-    private bool canCastleQueenSide = true; // สามารถ Castling ฝั่ง Queen-side ได้หรือไม่
+    private bool whiteCanCastleKingSide = true;
+    private bool whiteCanCastleQueenSide = true;
+    private bool blackCanCastleKingSide = true;
+    private bool blackCanCastleQueenSide = true;
     private bool isPromoting = false; // ✅ ตัวแปรเช็คว่ากำลังเลื่อนขั้นหรือไม่
     private Vector2Int? enPassantTarget = null; // ตำแหน่งเบี้ยที่เดินสองช่องในตาแรก
     private Dictionary<Vector2Int, ChessPiece> piecesOnBoard = new Dictionary<Vector2Int, ChessPiece>();
     private Dictionary<Vector2Int, TileClick> tileClickMap = new Dictionary<Vector2Int, TileClick>();
 
 
+    public IReadOnlyDictionary<Vector2Int, ChessPiece> PiecesOnBoard => piecesOnBoard;
     public static ChessBoard Instance { get; private set; }
     public Transform pieceWhite;    // Empty GameObject สำหรับทีมขาว
     public Transform pieceBlack;    // Empty GameObject สำหรับทีมดำ
@@ -36,17 +34,21 @@ public class ChessBoard : MonoBehaviour
     public ChessPiece selectedPawn; // เบี้ยที่รอเลื่อนขั้น
     public PromotionManager promotionManager; // เชื่อมกับ PromotionManager ใน Inspector
     public ChessPiece SelectedPiece => selectedPiece; // เพิ่ม Property เพื่อเข้าถึง selectedPiece
+    public ChessPiece.PieceType promotionFrom;
+    public Vector2Int promotionPosition;
     public Vector2Int position;  // ตัวแปรสำหรับเก็บตำแหน่งของหมาก
     public Color32 whitleColor = new Color32(255, 255, 255, 255);
     public Color32 blackColor = new Color32(0, 0, 0, 255);
 
-   
+
 
     private void Awake()
     {
         if (Instance == null)
         {
             Instance = this;
+            historyMove = FindObjectOfType<HistoryMove>(); // ✅ ตรงนี้เพิ่มเข้ามา
+
         }
         else
         {
@@ -67,17 +69,6 @@ public class ChessBoard : MonoBehaviour
     {
 
     }
-    // Set method
-    public void SetGameManager(GameManager manager)
-    {
-        gameManager = manager;
-    }
-    //get method
-    public Dictionary<Vector2Int, ChessPiece> GetPiecesOnBoard()
-    {
-        return piecesOnBoard;
-    }
-
     //create a chess board with tiles methon viod GenerateBoard()
     void GenerateBoard()
     {
@@ -131,29 +122,293 @@ public class ChessBoard : MonoBehaviour
         SpawnPiece(ChessPiece.PieceType.Rook, ChessPiece.Team.Black, new Vector2Int(0, 7));
         SpawnPiece(ChessPiece.PieceType.Rook, ChessPiece.Team.Black, new Vector2Int(7, 7));
 
-        // 🏇 วางม้า (Knight)
-        SpawnPiece(ChessPiece.PieceType.Knight, ChessPiece.Team.White, new Vector2Int(1, 0));
-        SpawnPiece(ChessPiece.PieceType.Knight, ChessPiece.Team.White, new Vector2Int(6, 0));
-        SpawnPiece(ChessPiece.PieceType.Knight, ChessPiece.Team.Black, new Vector2Int(1, 7));
-        SpawnPiece(ChessPiece.PieceType.Knight, ChessPiece.Team.Black, new Vector2Int(6, 7));
+        //// 🏇 วางม้า (Knight)
+        //SpawnPiece(ChessPiece.PieceType.Knight, ChessPiece.Team.White, new Vector2Int(1, 0));
+        //SpawnPiece(ChessPiece.PieceType.Knight, ChessPiece.Team.White, new Vector2Int(6, 0));
+        //SpawnPiece(ChessPiece.PieceType.Knight, ChessPiece.Team.Black, new Vector2Int(1, 7));
+        //SpawnPiece(ChessPiece.PieceType.Knight, ChessPiece.Team.Black, new Vector2Int(6, 7));
 
-        // 🏹 วางบิชอป (Bishop)
-        SpawnPiece(ChessPiece.PieceType.Bishop, ChessPiece.Team.White, new Vector2Int(2, 0));
-        SpawnPiece(ChessPiece.PieceType.Bishop, ChessPiece.Team.White, new Vector2Int(5, 0));
-        SpawnPiece(ChessPiece.PieceType.Bishop, ChessPiece.Team.Black, new Vector2Int(2, 7));
-        SpawnPiece(ChessPiece.PieceType.Bishop, ChessPiece.Team.Black, new Vector2Int(5, 7));
+        //// 🏹 วางบิชอป (Bishop)
+        //SpawnPiece(ChessPiece.PieceType.Bishop, ChessPiece.Team.White, new Vector2Int(2, 0));
+        //SpawnPiece(ChessPiece.PieceType.Bishop, ChessPiece.Team.White, new Vector2Int(5, 0));
+        //SpawnPiece(ChessPiece.PieceType.Bishop, ChessPiece.Team.Black, new Vector2Int(2, 7));
+        //SpawnPiece(ChessPiece.PieceType.Bishop, ChessPiece.Team.Black, new Vector2Int(5, 7));
 
         // 👑 วางควีน (Queen)
-        SpawnPiece(ChessPiece.PieceType.Queen, ChessPiece.Team.White, new Vector2Int(3, 0));
-        SpawnPiece(ChessPiece.PieceType.Queen, ChessPiece.Team.Black, new Vector2Int(3, 7));
+        //SpawnPiece(ChessPiece.PieceType.Queen, ChessPiece.Team.White, new Vector2Int(3, 0));
+        //SpawnPiece(ChessPiece.PieceType.Queen, ChessPiece.Team.Black, new Vector2Int(3, 7));
 
         // 🤴 วางคิง (King)
         SpawnPiece(ChessPiece.PieceType.King, ChessPiece.Team.White, new Vector2Int(4, 0));
         SpawnPiece(ChessPiece.PieceType.King, ChessPiece.Team.Black, new Vector2Int(4, 7));
     }
-    // 🎯 ฟังก์ชันสร้างหมากและวางลงบนกระดาน
-    void SpawnPiece(ChessPiece.PieceType type, ChessPiece.Team team, Vector2Int position)
+    /* class methone private*/
+    private bool ValidatePreMoveConditions(Vector2Int newPosition)
     {
+        if (selectedPiece == null)
+        {
+            Debug.Log("❌ ไม่มีหมากที่ถูกเลือก");
+            return false;
+        }
+
+        if (isPromoting)
+        {
+            Debug.Log("⏳ กำลังอยู่ในช่วงเลือกเลื่อนขั้น ไม่สามารถเดินหมากอื่นได้!");
+            return false;
+        }
+
+        if (newPosition == selectedPiece.boardPosition)
+        {
+            Debug.Log("❌ ไม่สามารถเดินซ้ำตำแหน่งเดิมได้");
+            return false;
+        }
+
+        return true;
+    }
+
+    private bool HandleCastling(Vector2Int newPosition)
+    {
+        if (selectedPiece.pieceType != ChessPiece.PieceType.King) return false;
+
+        int row = (selectedPiece.team == ChessPiece.Team.White) ? 0 : 7;
+
+        if (newPosition == new Vector2Int(6, row) && CanCastle(true, selectedPiece.team))
+        {
+            PerformCastling(true, selectedPiece.team);
+            return true;
+        }
+        else if (newPosition == new Vector2Int(2, row) && CanCastle(false, selectedPiece.team))
+        {
+            PerformCastling(false, selectedPiece.team);
+            return true;
+        }
+        return false;
+    }
+
+    private bool HandleEnPassant(Vector2Int newPosition)
+    {
+        if (selectedPiece.pieceType != ChessPiece.PieceType.Pawn) return false;
+
+        bool isSideStep = Mathf.Abs(newPosition.x - selectedPiece.boardPosition.x) == 1;
+        if (isSideStep && IsEnPassantTarget(newPosition))
+        {
+            Vector2Int enemyPawnPos = new Vector2Int(newPosition.x, selectedPiece.boardPosition.y);
+            if (piecesOnBoard.TryGetValue(enemyPawnPos, out ChessPiece enemyPawn))
+            {
+                Debug.Log($"⚔️ กิน {enemyPawn.team} {enemyPawn.pieceType} แบบ En Passant!");
+                Destroy(enemyPawn.gameObject);
+                piecesOnBoard.Remove(enemyPawnPos);
+                enPassantTarget = null;
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private ChessPiece SimulateMove(Vector2Int newPosition)
+    {
+        Vector2Int originalPosition = selectedPiece.boardPosition;
+        ChessPiece captured = null;
+
+        piecesOnBoard.Remove(originalPosition);
+        if (piecesOnBoard.TryGetValue(newPosition, out captured))
+            piecesOnBoard.Remove(newPosition);
+
+        selectedPiece.boardPosition = newPosition;
+        piecesOnBoard[newPosition] = selectedPiece;
+
+        return captured;
+    }
+
+    private void UndoSimulatedMove(Vector2Int originalPos, Vector2Int newPos, ChessPiece captured)
+    {
+        piecesOnBoard.Remove(newPos);
+        selectedPiece.boardPosition = originalPos;
+        piecesOnBoard[originalPos] = selectedPiece;
+
+        if (captured != null)
+            piecesOnBoard[newPos] = captured;
+    }
+
+    private void FinalizeMove(Vector2Int originalPos, Vector2Int newPos, ChessPiece captured)
+    {
+        if (captured != null)
+        {
+            Debug.Log($"⚔️ {selectedPiece.team} {selectedPiece.pieceType} กิน {captured.team} {captured.pieceType}!");
+            Destroy(captured.gameObject);
+        }
+
+        selectedPiece.MoveTo(newPos);
+        piecesOnBoard[newPos] = selectedPiece;
+
+        if (!selectedPiece.HasMoved)
+            selectedPiece.HasMoved = true;
+
+        SetEnPassantTarget(originalPos, newPos);
+    }
+
+    private void SetEnPassantTarget(Vector2Int from, Vector2Int to)
+    {
+        if (selectedPiece.pieceType == ChessPiece.PieceType.Pawn &&
+            Mathf.Abs(to.y - from.y) == 2)
+        {
+            Vector2Int middle = new Vector2Int(to.x, (to.y + from.y) / 2);
+            if (!piecesOnBoard.ContainsKey(middle))
+            {
+                enPassantTarget = middle;
+                Debug.Log($"🎯 ตั้งค่า En Passant Target: {enPassantTarget}");
+            }
+        }
+        else
+        {
+            enPassantTarget = null;
+        }
+    }
+
+    private void HandleCheckState()
+    {
+        var opponent = (gameManager.GetCurrentTurn() == ChessPiece.Team.White) ? ChessPiece.Team.Black : ChessPiece.Team.White;
+        if (IsKingInCheckmate(opponent))
+        {
+            Debug.Log($"♟️ Checkmate! {gameManager.GetCurrentTurn()} ชนะเกม!");
+            gameManager.GameOver(gameManager.GetCurrentTurn());
+        }
+        else if (IsKingInCheck(opponent))
+        {
+            Debug.Log($"⚠️ Check! {opponent} กำลังถูกโจมตี!");
+        }
+    }
+
+    private void SaveMoveToHistory(Vector2Int from, Vector2Int to, ChessPiece captured )
+    {
+        if (historyMove == null) return;
+
+        bool isCastling = selectedPiece.pieceType == ChessPiece.PieceType.King && Mathf.Abs(to.x - from.x) == 2;
+        bool isEnPassant = selectedPiece.pieceType == ChessPiece.PieceType.Pawn && IsEnPassantTarget(to);
+        bool isPawnTwoStep = selectedPiece.pieceType == ChessPiece.PieceType.Pawn && Mathf.Abs(to.y - from.y) == 2;
+        bool pieceHasMovedBefore = selectedPiece.HasMoved;
+        bool isCheck = IsKingInCheck(selectedPiece.team == ChessPiece.Team.White ? ChessPiece.Team.Black : ChessPiece.Team.White);
+        bool isPromotion = selectedPiece.pieceType == ChessPiece.PieceType.Pawn && (to.y == 0 || to.y == 7);
+
+        // ตรวจสอบการกินหมาก
+        bool isCapture = captured != null || isEnPassant;
+        Vector2Int capturedPos = isEnPassant ? new Vector2Int(to.x, from.y) : to;
+
+        ChessPiece.PieceType capturedType = ChessPiece.PieceType.None;
+        ChessPiece.Team capturedTeam = ChessPiece.Team.None;
+
+        if (isCapture)
+        {
+            if (isEnPassant)
+            {
+                capturedType = ChessPiece.PieceType.Pawn;
+                capturedTeam = OpponentTeam(selectedPiece.team);
+            }
+            else if (captured != null)
+            {
+                capturedType = captured.pieceType;
+                capturedTeam = captured.team;
+            }
+        }
+
+        // ตั้งค่าการเลื่อนขั้น
+        ChessPiece.PieceType promotedTo = isPromotion
+            ? PromotionManager.Instance.GetSelectedPromotionType()
+            : selectedPiece.pieceType;
+        ChessPiece.PieceType promotedFrom = isPromotion
+            ? ChessPiece.PieceType.Pawn
+            : selectedPiece.pieceType;
+        Vector2Int promotionPosition = isPromotion ? to : Vector2Int.zero;
+
+        // ✅ บันทึกข้อมูลการเดิน
+        historyMove.AddMove(
+            from,
+            to,
+            selectedPiece.pieceType,
+            capturedType,
+            capturedTeam,
+            isCastling,
+            isEnPassant,
+            isCheck,
+            isPawnTwoStep,
+            pieceHasMovedBefore,
+            isCapture,
+            promotedTo,
+            capturedPos,
+            promotedFrom,
+            promotionPosition,
+            selectedPiece.team
+        );
+
+        HistoryMoveUI.Instance?.UpdateMoveHistoryList();
+    }
+
+    private ChessPiece.Team OpponentTeam(ChessPiece.Team team)
+    {
+        return team == ChessPiece.Team.White ? ChessPiece.Team.Black : ChessPiece.Team.White;
+    }
+
+    /* class methone public*/
+    // Set method
+    public void SetGameManager(GameManager manager)
+    {
+        gameManager = manager;
+    }
+
+    public void SetEnPassantTarget(Vector2Int? target)
+    {
+        enPassantTarget = target;
+    }
+
+    public void SetPromotionData(Vector2Int position, ChessPiece.PieceType from)
+    {
+        promotionPosition = position;
+        promotionFrom = from;
+    }
+
+    public void SetPromoting(bool value)
+    {
+        isPromoting = value;
+        //Debug.Log($"🔄 สถานะเลื่อนขั้น: {isPromoting}");
+    }
+
+    public void SetselectedPiece(ChessPiece piece)
+    {
+        selectedPiece = piece;
+    }
+
+    public void SetCanCastleKingSide(ChessPiece.Team team, bool value)
+    {
+        if (team == ChessPiece.Team.White)
+            whiteCanCastleKingSide = value;
+        else if (team == ChessPiece.Team.Black)
+            blackCanCastleKingSide = value;
+    }
+
+    public void SetCanCastleQueenSide(ChessPiece.Team team, bool value)
+    {
+        if (team == ChessPiece.Team.White)
+            whiteCanCastleQueenSide = value;
+        else if (team == ChessPiece.Team.Black)
+            blackCanCastleQueenSide = value;
+    }
+
+
+    //get method
+    public Dictionary<Vector2Int, ChessPiece> GetPiecesOnBoard()
+    {
+        return piecesOnBoard;
+    }
+
+    public Vector2Int? GetEnPassantTarget()
+    {
+        return enPassantTarget;
+    }
+
+    // 🎯 ฟังก์ชันสร้างหมากและวางลงบนกระดาน
+    public ChessPiece SpawnPiece(ChessPiece.PieceType type, ChessPiece.Team team, Vector2Int position)
+    {
+
         GameObject pieceObj = Instantiate(piecePrefab, new Vector2(position.x, position.y), Quaternion.identity);
         ChessPiece piece = pieceObj.GetComponent<ChessPiece>();
         piece.pieceType = type;
@@ -173,10 +428,12 @@ public class ChessBoard : MonoBehaviour
         // จัดกลุ่มหมากแต่ละทีม
         pieceObj.transform.SetParent(team == ChessPiece.Team.White ? pieceWhite : pieceBlack);
 
-        piecesOnBoard[position] = piece;
+        boxCollider.isTrigger = true;
+        piecesOnBoard[position] = piece; // เพิ่มลงใน Dictionary
+        return piece; // ✅ คืนค่า ChessPiece
     }
 
-    public  Vector2Int FindKingPosition(ChessPiece.Team team)
+    public Vector2Int FindKingPosition(ChessPiece.Team team)
     {
         foreach (var entry in piecesOnBoard)
         {
@@ -396,8 +653,17 @@ public class ChessBoard : MonoBehaviour
             return false;
 
         // ตรวจสอบว่า Castling ยังสามารถทำได้อยู่
-        bool canCastle = isKingSide ? canCastleKingSide : canCastleQueenSide;
-        if (!canCastle) return false; // 🛑 ถ้าทำ Castling ไม่ได้ ให้ return false ทันที
+        if (team == ChessPiece.Team.White)
+        {
+            if (isKingSide && !whiteCanCastleKingSide) return false;
+            if (!isKingSide && !whiteCanCastleQueenSide) return false;
+        }
+        else if (team == ChessPiece.Team.Black)
+        {
+            if (isKingSide && !blackCanCastleKingSide) return false;
+            if (!isKingSide && !blackCanCastleQueenSide) return false;
+        }
+
 
         // ตรวจสอบเงื่อนไขอื่นๆ (เช่น ช่องว่าง, ไม่ถูกโจมตี)
         if (isKingSide)
@@ -416,17 +682,6 @@ public class ChessBoard : MonoBehaviour
                    !IsPositionUnderAttack(new Vector2Int(3, row), team) && // ช่องที่คิงเดินผ่านไม่ถูกโจมตี
                    !IsPositionUnderAttack(new Vector2Int(2, row), team);  // ช่องที่คิงไปอยู่ไม่ถูกโจมตี
         }
-    }
-
-    public void SetPromoting(bool value)
-    {
-        isPromoting = value;
-        Debug.Log($"🔄 สถานะเลื่อนขั้น: {isPromoting}");
-    }
-
-    public void SetselectedPiece(ChessPiece piece)
-    {
-        selectedPiece = piece;
     }
     // ฟังก์ชันสำหรับการคลิกที่ช่องบนกระดาน
     public void OnTileClicked(Vector2Int position)
@@ -515,53 +770,9 @@ public class ChessBoard : MonoBehaviour
 
     public void MoveSelectedPiece(Vector2Int newPosition)
     {
-        if (selectedPiece == null)
-        {
-            Debug.Log("❌ ไม่มีหมากที่ถูกเลือก");
-            return;
-        }
-        if (isPromoting)
-        {
-            Debug.Log("⏳ กำลังอยู่ในช่วงเลือกเลื่อนขั้น ไม่สามารถเดินหมากอื่นได้!");
-            return;
-        }
-        if (newPosition == selectedPiece.boardPosition)
-        {
-            Debug.Log("❌ ไม่สามารถเดินซ้ำตำแหน่งเดิมได้");
-            return;
-        }
-
-        Debug.Log($"🎯 En Passant Target: {enPassantTarget}");
-
-        // ✅ ตรวจสอบ En Passant
-        if (selectedPiece.pieceType == ChessPiece.PieceType.Pawn &&
-            Mathf.Abs(newPosition.x - selectedPiece.boardPosition.x) == 1 &&
-            IsEnPassantTarget(newPosition))
-        {
-            Vector2Int enemyPawnPosition = new Vector2Int(newPosition.x, selectedPiece.boardPosition.y);
-            if (piecesOnBoard.TryGetValue(enemyPawnPosition, out ChessPiece enemyPawn))
-            {
-                Debug.Log($"⚔️ กิน {enemyPawn.team} {enemyPawn.pieceType} แบบ En Passant!");
-                Destroy(enemyPawn.gameObject);
-                piecesOnBoard.Remove(enemyPawnPosition);
-            }
-        }
-
-        // ✅ ตรวจสอบ Castling
-        if (selectedPiece.pieceType == ChessPiece.PieceType.King)
-        {
-            int row = (selectedPiece.team == ChessPiece.Team.White) ? 0 : 7;
-            if (newPosition == new Vector2Int(6, row) && CanCastle(true, selectedPiece.team))
-            {
-                PerformCastling(true, selectedPiece.team);
-                return;
-            }
-            else if (newPosition == new Vector2Int(2, row) && CanCastle(false, selectedPiece.team))
-            {
-                PerformCastling(false, selectedPiece.team);
-                return;
-            }
-        }
+        if (!ValidatePreMoveConditions(newPosition)) return;
+        if (HandleCastling(newPosition)) return;
+        if (HandleEnPassant(newPosition)) return;
 
         // ✅ ตรวจสอบว่าตำแหน่งที่เลือกเดินได้หรือไม่
         if (!selectedPiece.IsValidMove(newPosition))
@@ -572,97 +783,27 @@ public class ChessBoard : MonoBehaviour
 
         // ✅ ตรวจสอบว่าเดินไปแล้วคิงจะถูก Check หรือไม่
         Vector2Int originalPosition = selectedPiece.boardPosition;
-        ChessPiece capturedPiece = null;
-        if (piecesOnBoard.TryGetValue(newPosition, out capturedPiece))
+        ChessPiece capturedPiece = SimulateMove(newPosition);
+
+        if (IsKingInCheck(selectedPiece.team))
         {
-            piecesOnBoard.Remove(newPosition); // ลบหมากศัตรูชั่วคราว
-        }
-
-        piecesOnBoard.Remove(originalPosition);
-        piecesOnBoard[newPosition] = selectedPiece;
-        selectedPiece.boardPosition = newPosition;
-
-        bool stillInCheck = IsKingInCheck(selectedPiece.team);
-
-        // Undo การเดิน
-        piecesOnBoard.Remove(newPosition);
-        piecesOnBoard[originalPosition] = selectedPiece;
-        selectedPiece.boardPosition = originalPosition;
-        if (capturedPiece != null)
-        {
-            piecesOnBoard[newPosition] = capturedPiece;
-        }
-
-        // ถ้าทำให้คิงติด Check -> ไม่อนุญาตให้เดิน
-        if (stillInCheck)
-        {
+            UndoSimulatedMove(originalPosition, newPosition, capturedPiece);
             Debug.Log("❌ ไม่สามารถเดินไปตำแหน่งนี้ได้ เพราะจะทำให้คิงของตัวเองถูก Check!");
             return;
         }
 
-        // ✅ อัปเดตสถานะการเคลื่อนที่ของหมาก
-        if (!selectedPiece.HasMoved)
-        {
-            selectedPiece.HasMoved = true;
-        }
+        FinalizeMove(originalPosition, newPosition, capturedPiece);
 
-        // ✅ ตั้งค่า En Passant Target (ถ้าไม่มีหมากขวาง)
-        if (selectedPiece.pieceType == ChessPiece.PieceType.Pawn &&
-            Mathf.Abs(newPosition.y - selectedPiece.boardPosition.y) == 2)
-        {
-            Vector2Int middlePosition = new Vector2Int(newPosition.x, (newPosition.y + selectedPiece.boardPosition.y) / 2);
-            if (!piecesOnBoard.ContainsKey(middlePosition))
-            {
-                enPassantTarget = middlePosition;
-                Debug.Log($"🎯 ตั้งค่า En Passant Target: {enPassantTarget}");
-            }
-        }
-        // ✅ ตรวจสอบว่ามีหมากศัตรูอยู่ที่ตำแหน่งเป้าหมายหรือไม่
-        if (piecesOnBoard.TryGetValue(newPosition, out ChessPiece targetPiece))
-        {
-            if (targetPiece.team != selectedPiece.team)
-            {
-                // กระพริบสีแดงที่แผ่นเป้าหมาย
-                if (tileClickMap.TryGetValue(newPosition, out TileClick tile))
-                {
-                    tile.FlashAttackColor();
-                }
-                Debug.Log($"⚔️ {selectedPiece.team} {selectedPiece.pieceType} กิน {targetPiece.team} {targetPiece.pieceType}!");
-                Destroy(targetPiece.gameObject); // ลบหมากศัตรูออกจากเกม
-                piecesOnBoard.Remove(newPosition); // เอาออกจากบอร์ด
-            }
-        }
 
-        // ✅ ย้ายหมาก
-        piecesOnBoard.Remove(selectedPiece.boardPosition);
-        selectedPiece.MoveTo(newPosition);
-        piecesOnBoard[newPosition] = selectedPiece;
-
-        // ✅ ตรวจสอบ Promotion
+        if (selectedPiece == null) return;
         selectedPiece.PromotePawn();
-        if (selectedPiece == null) return; // หมากอาจเปลี่ยนไปหลังจาก Promote
+        HandleCheckState();
 
-        Debug.Log($"✅ {selectedPiece.team} {selectedPiece.pieceType} ถูกย้ายไปที่ {newPosition}");
-
-        // ✅ ตรวจสอบว่าเกิด Check หรือ Checkmate หรือไม่
-        ChessPiece.Team opponentTeam = (gameManager.GetCurrentTurn() == ChessPiece.Team.White) ? ChessPiece.Team.Black : ChessPiece.Team.White;
-        if (IsKingInCheckmate(opponentTeam))
-        {
-            Debug.Log($"♟️ Checkmate! {gameManager.GetCurrentTurn()} ชนะเกม!");
-            gameManager.GameOver(gameManager.GetCurrentTurn());
-            return;
-        }
-        else if (IsKingInCheck(opponentTeam))
-        {
-            Debug.Log($"⚠️ Check! {opponentTeam} กำลังถูกโจมตี!");
-        }
-
-        // ✅ สลับเทิร์น (ถ้าไม่มีการเลื่อนขั้น)
         if (!isPromoting)
         {
             GameManager.Instance.SwitchTurn();
         }
-
+        SaveMoveToHistory(originalPosition, newPosition, capturedPiece);
         selectedPiece = null;
     }
 
@@ -687,13 +828,16 @@ public class ChessBoard : MonoBehaviour
         piecesOnBoard.Remove(rookOldPos);
         rook.MoveTo(rookNewPos);
         piecesOnBoard[rookNewPos] = rook;
-        rook.HasMoved = true; // ป้องกันการ Castling อีกครั้ง
+        rook.HasMoved = true; // ป้องกันการ Castling อีกครั้งด
 
         // อัปเดตสถานะว่า Castling ไม่สามารถทำได้อีก
-        if (isKingSide) { canCastleKingSide = false; }
-        else {canCastleQueenSide = false; }
+        if (isKingSide)
+            SetCanCastleKingSide(team, false);
+        else
+            SetCanCastleQueenSide(team, false);
 
         Debug.Log($"🏰 {team} ทำ Castling {(isKingSide ? "King-side" : "Queen-side")}");
+        SaveMoveToHistory(new Vector2Int(4, row), kingNewPos, null);  // บันทึก Castling
 
         // สลับเทิร์น
         GameManager.Instance.SwitchTurn();

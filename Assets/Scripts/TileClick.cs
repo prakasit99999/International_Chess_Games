@@ -91,32 +91,34 @@ public class TileClick : MonoBehaviour
 
     private void OnMouseDown()
     {
+        if (ChessBoard.Instance.IsPromoting()) return;
+
         if (boardManager != null)
         {
             // กระพริบสีแดงเมื่อกินหมากศัตรู
             if (boardManager.SelectedPiece != null &&
                 boardManager.IsEnemyAtPosition(tilePosition, boardManager.SelectedPiece.team))
             {
-                FlashAttackColor();
+                //FlashAttackColor();
             }
             boardManager.OnTileClicked(tilePosition);
         }
     }
 
-    private IEnumerator FlashAttackCoroutine()
-    {
-        isFlashing = true; // เริ่มกระพริบ
-        Color original = spriteRenderer.color;
-        spriteRenderer.color = attackColor;
-        yield return new WaitForSeconds(0.3f);
-        spriteRenderer.color = original;
-        isFlashing = false; // หยุดกระพริบ
-    }
+    //private IEnumerator FlashAttackCoroutine()
+    //{
+    //    isFlashing = true; // เริ่มกระพริบ
+    //    Color original = spriteRenderer.color;
+    //    spriteRenderer.color = attackColor;
+    //    yield return new WaitForSeconds(0.3f);
+    //    spriteRenderer.color = original;
+    //    isFlashing = false; // หยุดกระพริบ
+    //}
 
-    public void FlashAttackColor()
-    {
-        StartCoroutine(FlashAttackCoroutine()); // เปลี่ยนชื่อ Coroutine
-    }
+    //public void FlashAttackColor()
+    //{
+    //    StartCoroutine(FlashAttackCoroutine()); // เปลี่ยนชื่อ Coroutine
+    //}
 
     //private void OnMouseEnter()
     //{
