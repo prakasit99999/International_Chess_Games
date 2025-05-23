@@ -53,8 +53,9 @@ public class UndoMove : MonoBehaviour
         if (lastMove.isEnPassant)
         {
             UndoEnPassant(lastMove, chessBoard.GetPiecesOnBoard(), chessBoard.transform);
+            Debug.Log($"🔄 ย้อนกลับ En Passant: {lastMove.startPosition} → {lastMove.endPosition} (คืนเบี้ยที่ถูกกินที่ {lastMove.capturedPiecePosition}) -> true");
         }
-        if (lastMove.isCastling)
+        else if (lastMove.isCastling)
         {
             UndoCastling(lastMove, chessBoard.GetPiecesOnBoard(), chessBoard.transform);
         }
@@ -94,10 +95,8 @@ public class UndoMove : MonoBehaviour
         }
 
         // ✅ รีเซ็ต En Passant
-        if (lastMove.isPawnTwoStep)
-        {
-            chessBoard.SetEnPassantTarget(null);
-        }
+        chessBoard.SetEnPassantTarget(lastMove.previousEnPassantTarget);
+
 
         // ✅ ล้างการเลือก และเปลี่ยนเทิร์นกลับ
         chessBoard.SetselectedPiece(null);
@@ -206,26 +205,29 @@ public class UndoMove : MonoBehaviour
 
     private void UndoEnPassant(HistoryMoveData lastMove, Dictionary<Vector2Int, ChessPiece> piecesOnBoard, Transform boardParent)
     {
-        // ตำแหน่งหมากที่โดนกินอยู่ข้างหลัง
-        Vector2Int capturedPawnPosition = new Vector2Int(lastMove.endPosition.x, lastMove.startPosition.y);
+        Vector2Int capturedPawnPosition = lastMove.capturedPiecePosition;
+        Vector2Int movedPawnOldPos = lastMove.startPosition;
+        Vector2Int movedPawnNewPos = lastMove.endPosition;
 
-        // ลบหมากตัวที่เดิน
-        if (piecesOnBoard.TryGetValue(lastMove.endPosition, out ChessPiece movedPawn))
+        // 🔁 ย้ายหมากที่กินกลับ
+        if (piecesOnBoard.TryGetValue(movedPawnNewPos, out ChessPiece movedPawn))
         {
-            piecesOnBoard.Remove(lastMove.endPosition);
-            movedPawn.SetPosition(lastMove.startPosition.x, lastMove.startPosition.y);
+            piecesOnBoard.Remove(movedPawnNewPos);
+            movedPawn.SetPosition(movedPawnOldPos.x, movedPawnOldPos.y);
             movedPawn.HasMoved = lastMove.pieceHasMovedBefore;
-            piecesOnBoard[lastMove.startPosition] = movedPawn;
+            piecesOnBoard[movedPawnOldPos] = movedPawn;
         }
 
-        // คืนเบี้ยที่ถูกกินกลับมา
-        chessBoard.SpawnPiece(
-            ChessPiece.PieceType.Pawn,
+        // ✅ คืนหมากที่ถูกกิน
+        ChessPiece restoredPawn = ChessBoard.Instance.SpawnPiece(
+            lastMove.capturedPieceType,
             lastMove.capturedPieceTeam,
             capturedPawnPosition
         );
 
-        Debug.Log($"🔄 ย้อนกลับ En Passant: {capturedPawnPosition} กลับมา");
+        Debug.Log($"🔄 ย้อนกลับ En Passant: {movedPawnNewPos} → {movedPawnOldPos} (คืนเบี้ยที่ถูกกินที่ {capturedPawnPosition})");
     }
+
+
 
 }

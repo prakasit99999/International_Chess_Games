@@ -34,8 +34,9 @@ public class HistoryMove : MonoBehaviour
         public bool pieceHasMovedBefore;
         public Vector2Int capturedPiecePosition;
         public Vector2Int promotedPosition;
+        public Vector2Int? previousEnPassantTarget;
         public ChessPiece.PieceType promotedTo;
-        public ChessPiece.PieceType promotedFrom; // เพิ่มฟิลด์เก็บประเภทเดิมก่อนเลื่อนขั้น
+        public ChessPiece.PieceType promotedFrom;
         public ChessPiece.Team team;
 
 
@@ -45,7 +46,7 @@ public class HistoryMove : MonoBehaviour
                                bool castling, bool enPassant, ChessPiece.PieceType promoted,
                                bool check, bool isPawnTwoStep, bool pieceHasMovedBefore,
                                Vector2Int capturedPiecePosition, ChessPiece.PieceType promotedFrom,
-                               Vector2Int promotedPosition, bool isCapture,
+                               Vector2Int promotedPosition, Vector2Int? previousEnPassantTarget, bool isCapture,
                                ChessPiece.Team team
             )
         {
@@ -64,6 +65,7 @@ public class HistoryMove : MonoBehaviour
             this.capturedPiecePosition = capturedPiecePosition;
             this.promotedFrom = promotedFrom;
             this.promotedPosition = promotedPosition;
+            this.previousEnPassantTarget = previousEnPassantTarget;
             this.team = team;
         }
     }
@@ -81,6 +83,7 @@ public class HistoryMove : MonoBehaviour
         Vector2Int capturedPiecePosition,
         ChessPiece.PieceType promotedFrom, // ✅ ประเภทเดิมก่อนเลื่อนขั้น
         Vector2Int promotedPosition,
+        Vector2Int? previousEnPassantTarget,
         ChessPiece.Team team
     )
     {
@@ -88,16 +91,17 @@ public class HistoryMove : MonoBehaviour
             start, end, piece, captured, capturedTeam,
             castling, enPassant, promoted, check,
             isPawnTwoStep, pieceHasMovedBefore, capturedPiecePosition,
-            promotedFrom, promotedPosition, isCapture,
-            team
+            promotedFrom, promotedPosition, previousEnPassantTarget,
+            isCapture, team
         );
         moveHistory.Push(move);
 
         Debug.Log($"Move created: startPosition={move.startPosition}, endPosition={move.endPosition}, pieceType={move.pieceType}, " +
-             $"capturedPieceType={move.capturedPieceType}, capturedPieceTeam={move.capturedPieceTeam}, isCastling={move.isCastling}, " +
-             $"isEnPassant={move.isEnPassant}, promotedTo={move.promotedTo}, isCheck={move.isCheck}, isPawnTwoStep={move.isPawnTwoStep}, " +
-             $" pieceHasMovedBefore={move.pieceHasMovedBefore},capturedPiecePosition={move.capturedPiecePosition}, promotedFrom={move.promotedFrom}," +
-             $"promotedPosition={move.promotedPosition}, isCapture={move.isCapture},team={move.team}");
+                    $"capturedPieceType={move.capturedPieceType}, capturedPieceTeam={move.capturedPieceTeam}, isCastling={move.isCastling}, " +
+                    $"isEnPassant={move.isEnPassant}, promotedTo={move.promotedTo}, isCheck={move.isCheck}, isPawnTwoStep={move.isPawnTwoStep}, " +
+                    $" pieceHasMovedBefore={move.pieceHasMovedBefore},capturedPiecePosition={move.capturedPiecePosition}, promotedFrom={move.promotedFrom}," +
+                     $"promotedPosition={move.promotedPosition}, isCapture={move.isCapture},team={move.team}");
+
 
     }
 

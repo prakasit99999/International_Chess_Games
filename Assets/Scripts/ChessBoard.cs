@@ -123,20 +123,20 @@ public class ChessBoard : MonoBehaviour
         SpawnPiece(ChessPiece.PieceType.Rook, ChessPiece.Team.Black, new Vector2Int(7, 7));
 
         //// 🏇 วางม้า (Knight)
-        //SpawnPiece(ChessPiece.PieceType.Knight, ChessPiece.Team.White, new Vector2Int(1, 0));
-        //SpawnPiece(ChessPiece.PieceType.Knight, ChessPiece.Team.White, new Vector2Int(6, 0));
-        //SpawnPiece(ChessPiece.PieceType.Knight, ChessPiece.Team.Black, new Vector2Int(1, 7));
-        //SpawnPiece(ChessPiece.PieceType.Knight, ChessPiece.Team.Black, new Vector2Int(6, 7));
+        SpawnPiece(ChessPiece.PieceType.Knight, ChessPiece.Team.White, new Vector2Int(1, 0));
+        SpawnPiece(ChessPiece.PieceType.Knight, ChessPiece.Team.White, new Vector2Int(6, 0));
+        SpawnPiece(ChessPiece.PieceType.Knight, ChessPiece.Team.Black, new Vector2Int(1, 7));
+        SpawnPiece(ChessPiece.PieceType.Knight, ChessPiece.Team.Black, new Vector2Int(6, 7));
 
         //// 🏹 วางบิชอป (Bishop)
-        //SpawnPiece(ChessPiece.PieceType.Bishop, ChessPiece.Team.White, new Vector2Int(2, 0));
-        //SpawnPiece(ChessPiece.PieceType.Bishop, ChessPiece.Team.White, new Vector2Int(5, 0));
-        //SpawnPiece(ChessPiece.PieceType.Bishop, ChessPiece.Team.Black, new Vector2Int(2, 7));
-        //SpawnPiece(ChessPiece.PieceType.Bishop, ChessPiece.Team.Black, new Vector2Int(5, 7));
+        SpawnPiece(ChessPiece.PieceType.Bishop, ChessPiece.Team.White, new Vector2Int(2, 0));
+        SpawnPiece(ChessPiece.PieceType.Bishop, ChessPiece.Team.White, new Vector2Int(5, 0));
+        SpawnPiece(ChessPiece.PieceType.Bishop, ChessPiece.Team.Black, new Vector2Int(2, 7));
+        SpawnPiece(ChessPiece.PieceType.Bishop, ChessPiece.Team.Black, new Vector2Int(5, 7));
 
         // 👑 วางควีน (Queen)
-        //SpawnPiece(ChessPiece.PieceType.Queen, ChessPiece.Team.White, new Vector2Int(3, 0));
-        //SpawnPiece(ChessPiece.PieceType.Queen, ChessPiece.Team.Black, new Vector2Int(3, 7));
+        SpawnPiece(ChessPiece.PieceType.Queen, ChessPiece.Team.White, new Vector2Int(3, 0));
+        SpawnPiece(ChessPiece.PieceType.Queen, ChessPiece.Team.Black, new Vector2Int(3, 7));
 
         // 🤴 วางคิง (King)
         SpawnPiece(ChessPiece.PieceType.King, ChessPiece.Team.White, new Vector2Int(4, 0));
@@ -189,21 +189,38 @@ public class ChessBoard : MonoBehaviour
     {
         if (selectedPiece.pieceType != ChessPiece.PieceType.Pawn) return false;
 
-        bool isSideStep = Mathf.Abs(newPosition.x - selectedPiece.boardPosition.x) == 1;
+        Vector2Int oldPosition = selectedPiece.boardPosition;
+        bool isSideStep = Mathf.Abs(newPosition.x - oldPosition.x) == 1;
+
         if (isSideStep && IsEnPassantTarget(newPosition))
         {
-            Vector2Int enemyPawnPos = new Vector2Int(newPosition.x, selectedPiece.boardPosition.y);
+            Vector2Int enemyPawnPos = new Vector2Int(newPosition.x, oldPosition.y);
+
             if (piecesOnBoard.TryGetValue(enemyPawnPos, out ChessPiece enemyPawn))
             {
                 Debug.Log($"⚔️ กิน {enemyPawn.team} {enemyPawn.pieceType} แบบ En Passant!");
-                Destroy(enemyPawn.gameObject);
+
+                UnityEngine.Object.Destroy(enemyPawn.gameObject);
                 piecesOnBoard.Remove(enemyPawnPos);
+
+                piecesOnBoard.Remove(oldPosition);
+                selectedPiece.SetPosition(newPosition.x, newPosition.y);
+                piecesOnBoard[newPosition] = selectedPiece;
+
+                SaveMoveToHistory(oldPosition, newPosition, null);
+
                 enPassantTarget = null;
+
+                selectedPiece = null;
+                GameManager.Instance.SwitchTurn();
+
                 return true;
             }
         }
+
         return false;
     }
+
 
     private ChessPiece SimulateMove(Vector2Int newPosition)
     {
@@ -216,6 +233,7 @@ public class ChessBoard : MonoBehaviour
 
         selectedPiece.boardPosition = newPosition;
         piecesOnBoard[newPosition] = selectedPiece;
+
 
         return captured;
     }
@@ -293,7 +311,7 @@ public class ChessBoard : MonoBehaviour
         // ตรวจสอบการกินหมาก
         bool isCapture = captured != null || isEnPassant;
         Vector2Int capturedPos = isEnPassant ? new Vector2Int(to.x, from.y) : to;
-
+        Vector2Int? prevEnPassant = enPassantTarget;
         ChessPiece.PieceType capturedType = ChessPiece.PieceType.None;
         ChessPiece.Team capturedTeam = ChessPiece.Team.None;
 
@@ -337,6 +355,7 @@ public class ChessBoard : MonoBehaviour
             capturedPos,
             promotedFrom,
             promotionPosition,
+            previousEnPassantTarget: prevEnPassant,
             selectedPiece.team
         );
 
@@ -358,6 +377,8 @@ public class ChessBoard : MonoBehaviour
     public void SetEnPassantTarget(Vector2Int? target)
     {
         enPassantTarget = target;
+        Debug.Log($"♻️ คืนค่า En Passant Target: {target}");
+
     }
 
     public void SetPromotionData(Vector2Int position, ChessPiece.PieceType from)
@@ -408,6 +429,12 @@ public class ChessBoard : MonoBehaviour
     // 🎯 ฟังก์ชันสร้างหมากและวางลงบนกระดาน
     public ChessPiece SpawnPiece(ChessPiece.PieceType type, ChessPiece.Team team, Vector2Int position)
     {
+        if (piecesOnBoard.TryGetValue(position, out ChessPiece oldPiece))
+        {
+            Debug.Log($"💥 ลบหมากเดิมที่ {position} ก่อนสร้างใหม่");
+            UnityEngine.Object.Destroy(oldPiece.gameObject);
+            piecesOnBoard.Remove(position);
+        }
 
         GameObject pieceObj = Instantiate(piecePrefab, new Vector2(position.x, position.y), Quaternion.identity);
         ChessPiece piece = pieceObj.GetComponent<ChessPiece>();
