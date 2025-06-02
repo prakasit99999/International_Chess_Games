@@ -1,25 +1,34 @@
-﻿using UnityEngine;
-using UnityEngine.UI;
+﻿using TMPro;
+using UnityEngine;
 using static ChessPiece;
 
 public class GameManager : MonoBehaviour
 {
     private bool gameIsOver = false;
-    private ChessBoard chessBoard;
-    private HistoryMoveUI historyMoveUI; // เปลี่ยนจาก MoveHistoryUI เป็น HistoryMoveUI
-    private PromotionManager promotionManager; // เชื่อมกับ PromotionManager ใน Inspector
     private ChessPiece.Team currentTurn = ChessPiece.Team.White;
 
     public static GameManager Instance;
-    public GameObject gameOverPanel;
-    public Text gameOverText;
+    private ChessBoard chessBoard;
+    private HistoryMoveUI historyMoveUI;
+    private PromotionManager promotionManager;
+
+    public GameObject drawGamePanel;
+    public GameObject winGamePanel;
+    public GameObject loseGamePanel;
+    public GameObject drawInfoPanel;
+
+    public TMP_Text winTxt;
+    public TMP_Text loseTxt;
+    public TMP_Text drawTxt;
+    public TMP_Text fiftyMoveText;
+
     public bool isGameStarted;
     public bool isWhiteTurn;
     public bool isBlackTurn;
 
     public string whitePlayerName = "White";
     public string blackPlayerName = "Black";
-    public bool isAIMode = false; // โหมดเล่นกับ AI
+    public bool isAIMode = false;
 
 
     private void Awake()
@@ -83,6 +92,13 @@ public class GameManager : MonoBehaviour
         return (currentTurn == ChessPiece.Team.White) ? whitePlayerName : blackPlayerName;
     }
 
+    /*Set*/
+    public void SetCurrentTurn(Team team)
+    {
+        currentTurn = team;
+    }
+
+
     // อัปเดต UI เมื่อเปลี่ยนตาเดิน
     public void UpdatePlayerTurnUI()
     {
@@ -118,59 +134,73 @@ public class GameManager : MonoBehaviour
         CheckGameState();
     }
 
+    private ChessPiece.Team GetOpponentTeam(ChessPiece.Team team)
+    {
+        return (team == ChessPiece.Team.White) ? ChessPiece.Team.Black : ChessPiece.Team.White;
+    }
 
     // ฟังก์ชันตรวจสอบ Checkmate หรือ Stalemate
     public void CheckGameState()
     {
-        //Debug.Log("🔍 ตรวจสอบสถานะเกม...");
 
         ChessPiece.Team opponentTeam = (currentTurn == ChessPiece.Team.White) ? ChessPiece.Team.Black : ChessPiece.Team.White;
-
-        if (ChessBoard.Instance.IsKingInCheckmate(opponentTeam))
+        if (ChessBoard.Instance.IsKingInCheckmate(currentTurn))
         {
-            Debug.Log($"♟️ Checkmate! {currentTurn} ชนะเกม!");
-            GameOver(currentTurn);
+            ChessPiece.Team winningTeam = GetOpponentTeam(currentTurn);
+            Debug.Log($"♟️ Checkmate! {winningTeam} ชนะเกม!");
+            GameOver(winningTeam);
             return;
         }
-        else if (ChessBoard.Instance.IsStalemate(opponentTeam))
+        else if (ChessBoard.Instance.IsStalemate(currentTurn))
         {
             Debug.Log("⚖️ Stalemate! เกมเสมอ!");
-            GameOver(ChessPiece.Team.None); // ใช้ทีม "None" เพื่อบอกว่าเกมเสมอ
+            GameOver(ChessPiece.Team.None);
             return;
         }
     }
 
-
     public void GameOver(ChessPiece.Team winningTeam)
     {
         if (gameIsOver) return;
-
         gameIsOver = true;
-        Debug.Log($"🎉 เกมจบแล้ว! {winningTeam} เป็นฝ่ายชนะ!");
 
-        // แสดง UI Game Over
-        gameOverPanel.SetActive(true);
-        gameOverText.text = (winningTeam == Team.None)
-            ? "⚖️ เกมเสมอ!"
-            : $"🎉 {winningTeam} ชนะ!";
+        // ปิดทุก UI ก่อน
+        winGamePanel.SetActive(false);
+        loseGamePanel.SetActive(false);
+        drawGamePanel.SetActive(false);
+        drawInfoPanel.SetActive(false); // แสดง counter ก็ปิด
 
-        // หยุดเวลาในเกม (หยุดการเคลื่อนไหว)
+        Debug.Log($"🎉 เกมจบแล้ว! {(winningTeam == Team.None ? "เสมอ" : $"{winningTeam} ชนะ")}!");
+
+        if (winningTeam == Team.None)
+        {
+            drawGamePanel.SetActive(true);
+            drawTxt.text = "⚖️ เกมเสมอ!";
+        }
+        else
+        {
+            bool isLocalPlayerWinner = (winningTeam == GetCurrentTurn());
+            if (isLocalPlayerWinner)
+            {
+                winGamePanel.SetActive(true);
+                winTxt.text = $"{GetCurrentPlayerName()} ชนะ!";
+            }
+            else
+            {
+                loseGamePanel.SetActive(true);
+                loseTxt.text = $"{GetCurrentPlayerName()} แพ้!";
+            }
+        }
+
         Time.timeScale = 0;
 
-        // ปิดการทำงานของตัวหมากทั้งหมด
+        // ปิดการทำงานของหมากทั้งหมด
         if (chessBoard != null)
         {
             foreach (var entry in chessBoard.GetPiecesOnBoard())
             {
-                if (entry.Value != null)
-                {
-                    entry.Value.enabled = false;
-                }
+                entry.Value.enabled = false;
             }
-        }
-        else
-        {
-            Debug.LogError("❌ ChessBoard เป็น null! ตรวจสอบว่า ChessBoard อยู่ในฉาก");
         }
     }
 
@@ -179,5 +209,35 @@ public class GameManager : MonoBehaviour
         return gameIsOver;
     }
 
+    public void UpdateFiftyMoveCounter(int count)
+    {
+        if (drawInfoPanel == null || fiftyMoveText == null) return;
+        if (count == 30 || count == 40 || count >= 50)
+        {
+            drawInfoPanel.SetActive(true);
+            fiftyMoveText.text = $"📏 กฎ 50 เดิน: {count}/50";
+            if (count >= 48)
+            {
+                fiftyMoveText.color = Color.red;
+            }
+            else if (count >= 45)
+            {
+                fiftyMoveText.color = new Color(1f, 0.5f, 0f);
+            }
+            else { fiftyMoveText.color = Color.white; }
+        }
+        else
+        {
+            drawInfoPanel.SetActive(false);
+        }
+    }
+
+    public void ResetFiftyMoveUI()
+    {
+        if (drawInfoPanel != null)
+        {
+            drawInfoPanel.SetActive(false);
+        }
+    }
 
 }

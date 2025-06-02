@@ -23,32 +23,33 @@ public class HistoryMove : MonoBehaviour
 
         public Vector2Int startPosition; //ตำแหน่งเริ่มต้น
         public Vector2Int endPosition; //ตำแหน่งสุดท้าย
+        public Vector2Int capturedPiecePosition;
+        public Vector2Int promotedPosition;
+        public Vector2Int? previousEnPassantTarget;
+
         public ChessPiece.PieceType pieceType; //ประเภทของเบี้ยที่เดิน
         public ChessPiece.PieceType capturedPieceType; //ประเภทของเบี้ยที่ถูกกิน
         public ChessPiece.Team capturedPieceTeam; //ทีมของเบี้ยที่ถูกกิน
+        public ChessPiece.PieceType promotedTo;
+        public ChessPiece.PieceType promotedFrom;
+        public ChessPiece.Team team;
+
         public bool isCastling; //การเดินแบบ Castling
         public bool isEnPassant;
         public bool isCapture; //การเดินที่ทำให้เกิดการกินเบี้ย
         public bool isCheck;//การเดินที่ทำให้เกิด Check
         public bool isPawnTwoStep;
         public bool pieceHasMovedBefore;
-        public Vector2Int capturedPiecePosition;
-        public Vector2Int promotedPosition;
-        public Vector2Int? previousEnPassantTarget;
-        public ChessPiece.PieceType promotedTo;
-        public ChessPiece.PieceType promotedFrom;
-        public ChessPiece.Team team;
 
-
-
+        public int fiftyMoveCounter;
         public HistoryMoveData(Vector2Int start, Vector2Int end, ChessPiece.PieceType piece,
-                               ChessPiece.PieceType captured, ChessPiece.Team capturedTeam, // ✅ เพิ่มพารามิเตอร์นี้
+                               ChessPiece.PieceType captured, ChessPiece.Team capturedTeam,
                                bool castling, bool enPassant, ChessPiece.PieceType promoted,
                                bool check, bool isPawnTwoStep, bool pieceHasMovedBefore,
                                Vector2Int capturedPiecePosition, ChessPiece.PieceType promotedFrom,
                                Vector2Int promotedPosition, Vector2Int? previousEnPassantTarget, bool isCapture,
-                               ChessPiece.Team team
-            )
+                               ChessPiece.Team team, int fiftyMoveCounter // ✅ เพิ่มตรงนี้
+        )
         {
             startPosition = start;
             endPosition = end;
@@ -67,40 +68,45 @@ public class HistoryMove : MonoBehaviour
             this.promotedPosition = promotedPosition;
             this.previousEnPassantTarget = previousEnPassantTarget;
             this.team = team;
+            this.fiftyMoveCounter = fiftyMoveCounter;
         }
+
     }
 
     // เพิ่มการเดินเข้าไปในประวัติ
     public void AddMove(
-        Vector2Int start, Vector2Int end,
-        ChessPiece.PieceType piece,
-        ChessPiece.PieceType captured,
-        ChessPiece.Team capturedTeam, // ✅ ทีมของเบี้ยที่ถูกกิน
-        bool castling, bool enPassant,
-        bool check, bool isPawnTwoStep,
-        bool isCapture, bool pieceHasMovedBefore,
-        ChessPiece.PieceType promoted,
-        Vector2Int capturedPiecePosition,
-        ChessPiece.PieceType promotedFrom, // ✅ ประเภทเดิมก่อนเลื่อนขั้น
-        Vector2Int promotedPosition,
-        Vector2Int? previousEnPassantTarget,
-        ChessPiece.Team team
-    )
+      Vector2Int start, Vector2Int end,
+      ChessPiece.PieceType piece,
+      ChessPiece.PieceType captured,
+      ChessPiece.Team capturedTeam,
+      bool castling, bool enPassant,
+      bool check, bool isPawnTwoStep,
+      bool isCapture, bool pieceHasMovedBefore,
+      ChessPiece.PieceType promoted,
+      Vector2Int capturedPiecePosition,
+      ChessPiece.PieceType promotedFrom,
+      Vector2Int promotedPosition,
+      Vector2Int? previousEnPassantTarget,
+      ChessPiece.Team team,
+      int fiftyMoveCounter // ✅ เพิ่มตรงนี้
+  )
     {
         HistoryMoveData move = new HistoryMoveData(
             start, end, piece, captured, capturedTeam,
             castling, enPassant, promoted, check,
             isPawnTwoStep, pieceHasMovedBefore, capturedPiecePosition,
             promotedFrom, promotedPosition, previousEnPassantTarget,
-            isCapture, team
+            isCapture, team, fiftyMoveCounter 
         );
+
         moveHistory.Push(move);
 
         Debug.Log($"Move created: startPosition={move.startPosition}, endPosition={move.endPosition}, pieceType={move.pieceType}, " +
                     $"capturedPieceType={move.capturedPieceType}, capturedPieceTeam={move.capturedPieceTeam}, isCastling={move.isCastling}, " +
                     $"isEnPassant={move.isEnPassant}, promotedTo={move.promotedTo}, isCheck={move.isCheck}, isPawnTwoStep={move.isPawnTwoStep}, " +
                     $" pieceHasMovedBefore={move.pieceHasMovedBefore},capturedPiecePosition={move.capturedPiecePosition}, promotedFrom={move.promotedFrom}," +
-                     $"promotedPosition={move.promotedPosition}, isCapture={move.isCapture},team={move.team}");
+                     $"promotedPosition={move.promotedPosition}, isCapture={move.isCapture},team={move.team},fiftyMoveCounter={fiftyMoveCounter} "
+                     );
 
 
     }

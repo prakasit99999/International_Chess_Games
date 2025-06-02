@@ -8,6 +8,8 @@ public class ChessBoard : MonoBehaviour
 {
     private float tileSize = 1.0f;
     private const int boardSize = 8;
+    private int _movesWithoutCaptureOrPawn = 0;
+    private const int MAX_MOVES_WITHOUT_PROGRESS = 50;
     private GameManager gameManager;
     private HistoryMove historyMove;
     private ChessPiece[,] board = new ChessPiece[boardSize, boardSize];
@@ -41,7 +43,6 @@ public class ChessBoard : MonoBehaviour
     public Color32 blackColor = new Color32(0, 0, 0, 255);
 
 
-
     private void Awake()
     {
         if (Instance == null)
@@ -62,13 +63,9 @@ public class ChessBoard : MonoBehaviour
 
         GenerateBoard();
         SpawnPieces();
-
     }
     // Update is called once per frame
-    void Update()
-    {
-
-    }
+    void Update(){}
     //create a chess board with tiles methon viod GenerateBoard()
     void GenerateBoard()
     {
@@ -221,7 +218,6 @@ public class ChessBoard : MonoBehaviour
         return false;
     }
 
-
     private ChessPiece SimulateMove(Vector2Int newPosition)
     {
         Vector2Int originalPosition = selectedPiece.boardPosition;
@@ -297,7 +293,7 @@ public class ChessBoard : MonoBehaviour
         }
     }
 
-    private void SaveMoveToHistory(Vector2Int from, Vector2Int to, ChessPiece captured )
+    private void SaveMoveToHistory(Vector2Int from, Vector2Int to, ChessPiece captured)
     {
         if (historyMove == null) return;
 
@@ -356,7 +352,8 @@ public class ChessBoard : MonoBehaviour
             promotedFrom,
             promotionPosition,
             previousEnPassantTarget: prevEnPassant,
-            selectedPiece.team
+            selectedPiece.team,
+            _movesWithoutCaptureOrPawn
         );
 
         HistoryMoveUI.Instance?.UpdateMoveHistoryList();
@@ -365,6 +362,28 @@ public class ChessBoard : MonoBehaviour
     private ChessPiece.Team OpponentTeam(ChessPiece.Team team)
     {
         return team == ChessPiece.Team.White ? ChessPiece.Team.Black : ChessPiece.Team.White;
+    }
+
+    private void UpdateFiftyMoveRuleCounter(bool wasCapture)
+    {
+        if (wasCapture || selectedPiece.pieceType == PieceType.Pawn)
+        {
+            _movesWithoutCaptureOrPawn = 0;
+            GameManager.Instance.ResetFiftyMoveUI();
+
+        }
+        else
+        {
+            _movesWithoutCaptureOrPawn++;
+            GameManager.Instance.UpdateFiftyMoveCounter(_movesWithoutCaptureOrPawn);
+
+        }
+        if (_movesWithoutCaptureOrPawn >= MAX_MOVES_WITHOUT_PROGRESS)
+        {
+            Debug.Log("เสมอ! 50 การเดินโดยไม่มีการยึดหรือเดินเบี้ย");
+            GameManager.Instance.GameOver(ChessPiece.Team.None);
+        }
+
     }
 
     /* class methone public*/
@@ -414,6 +433,10 @@ public class ChessBoard : MonoBehaviour
             blackCanCastleQueenSide = value;
     }
 
+    public void SetFiftyMoveCounter(int count)
+    {
+        _movesWithoutCaptureOrPawn = count;
+    }
 
     //get method
     public Dictionary<Vector2Int, ChessPiece> GetPiecesOnBoard()
@@ -826,11 +849,15 @@ public class ChessBoard : MonoBehaviour
         selectedPiece.PromotePawn();
         HandleCheckState();
 
+        bool wasCapture = capturedPiece != null;
+        UpdateFiftyMoveRuleCounter(wasCapture);
+        SaveMoveToHistory(originalPosition, newPosition, capturedPiece);
+
         if (!isPromoting)
         {
             GameManager.Instance.SwitchTurn();
         }
-        SaveMoveToHistory(originalPosition, newPosition, capturedPiece);
+
         selectedPiece = null;
     }
 
@@ -874,5 +901,10 @@ public class ChessBoard : MonoBehaviour
     public void RecordMove(string move)
     {
         Debug.Log("Last move: " + move);
+    }
+   
+    public void ResetFiftyMoveRuleCounter()
+    {
+        _movesWithoutCaptureOrPawn = 0;
     }
 }

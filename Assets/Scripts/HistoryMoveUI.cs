@@ -9,11 +9,11 @@ public class HistoryMoveUI : MonoBehaviour
     private GameManager gameManager;
     private HistoryMove historyMove;
     private List<HistoryMove> historyMoves;
+    public GameObject moveEntryPrefab;
 
     public static HistoryMoveUI Instance;
-    public TMP_Text playerTurnText;       // Player_txt (แยกจาก Scroll View)
-    public Transform contentParent; // ✅ drag Content ของ Scroll View
-    public GameObject moveEntryPrefab;
+    public TMP_Text playerTurnText;      
+    public Transform contentParent; 
     public ScrollRect scrollRect; // กำหนดใน Inspector
 
 
@@ -32,8 +32,8 @@ public class HistoryMoveUI : MonoBehaviour
             Destroy(gameObject);
         }
 
-        //if ((gameManager = GameManager.Instance) == null)
-        //    Debug.LogError("❌ GameManager ไม่ถูกพบ! ตรวจสอบว่า GameManager อยู่ในฉาก");
+        if ((gameManager = GameManager.Instance) == null)
+            Debug.LogError("❌ GameManager ไม่ถูกพบ! ตรวจสอบว่า GameManager อยู่ในฉาก");
 
         if ((historyMove = FindObjectOfType<HistoryMove>()) == null)
             Debug.LogError("❌ HistoryMove ไม่ถูกพบ! ตรวจสอบว่า HistoryMove อยู่ในฉาก");
