@@ -23,16 +23,21 @@ public class ChessPiece : MonoBehaviour
     public ChessPiece.Team CurrentPlayerTeam { get; set; }
     public bool HasMoved { get; set; } = false; // ตรวจสอบว่าหมากขยับหรือยัง
 
+
     // Start is called before the first frame update
     void Start()
     {
-        boardManager = FindObjectOfType<ChessBoard>();  // หา ChessBoard อัตโนมัติ
         if (boardManager == null)
         {
-            Debug.LogError("ไม่พบ ChessBoard ในฉาก");
+            boardManager = ChessBoard.Instance ?? FindObjectOfType<ChessBoard>();
+            if (boardManager == null)
+            {
+                Debug.LogWarning("⚠️ ไม่พบ ChessBoard ในฉาก (ใช้ SetBoardManager() แทนใน Test)");
+            }
         }
-        spriteRenderer = GetComponent<SpriteRenderer>(); // ใช้ SpriteRenderer เพื่อเปลี่ยนรูปลักษณ์ของหมาก
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
+
 
     // Update is called once per frame
     void Update()

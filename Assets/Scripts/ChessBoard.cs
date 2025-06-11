@@ -48,8 +48,7 @@ public class ChessBoard : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
-            historyMove = FindObjectOfType<HistoryMove>(); // ✅ ตรงนี้เพิ่มเข้ามา
-
+            historyMove = FindObjectOfType<HistoryMove>(); 
         }
         else
         {
@@ -65,10 +64,16 @@ public class ChessBoard : MonoBehaviour
         SpawnPieces();
     }
     // Update is called once per frame
-    void Update(){}
+    void Update(){
+    }
     //create a chess board with tiles methon viod GenerateBoard()
     void GenerateBoard()
     {
+        if (tilePrefab == null)
+        {
+            Debug.LogError("❌ tilePrefab ยังไม่ได้เซ็ตใน ChessBoard!");
+            return;
+        }
         for (int x = 0; x < boardSize; x++)
         {
             for (int y = 0; y < boardSize; y++)
@@ -106,6 +111,11 @@ public class ChessBoard : MonoBehaviour
     // 🏁 สร้างตัวหมากรุกในตำแหน่งเริ่มต้น
     void SpawnPieces()
     {
+        if(tilePrefab != null)
+        {
+            Debug.LogError("❌ tilePrefab ยังไม่ได้เซ็ตใน ChessBoard!");
+            return;
+        }
         // 🏇 วางเบี้ย (Pawn) ที่แถว 1 และ 6
         for (int i = 0; i < boardSize; i++)
         {
@@ -452,6 +462,11 @@ public class ChessBoard : MonoBehaviour
     // 🎯 ฟังก์ชันสร้างหมากและวางลงบนกระดาน
     public ChessPiece SpawnPiece(ChessPiece.PieceType type, ChessPiece.Team team, Vector2Int position)
     {
+        if (piecePrefab == null)
+        {
+            Debug.LogError("❌ piecePrefab is null! กรุณาเซ็ตใน Inspector หรือระหว่าง Unit Test");
+            return null;
+        }
         if (piecesOnBoard.TryGetValue(position, out ChessPiece oldPiece))
         {
             Debug.Log($"💥 ลบหมากเดิมที่ {position} ก่อนสร้างใหม่");

@@ -5,12 +5,14 @@ using static ChessPiece;
 public class GameManager : MonoBehaviour
 {
     private bool gameIsOver = false;
+
     private ChessPiece.Team currentTurn = ChessPiece.Team.White;
 
-    public static GameManager Instance;
     private ChessBoard chessBoard;
     private HistoryMoveUI historyMoveUI;
     private PromotionManager promotionManager;
+
+    public static GameManager Instance;
 
     public GameObject drawGamePanel;
     public GameObject winGamePanel;
@@ -30,14 +32,13 @@ public class GameManager : MonoBehaviour
     public string blackPlayerName = "Black";
     public bool isAIMode = false;
 
-
     private void Awake()
     {
         if (Instance == null)
         {
             Instance = this;
             chessBoard = FindObjectOfType<ChessBoard>();
-            historyMoveUI = FindObjectOfType<HistoryMoveUI>(); // ค้นหา HistoryMoveUI ใน Scene
+            historyMoveUI = FindObjectOfType<HistoryMoveUI>();
         }
         else
         {
@@ -45,19 +46,19 @@ public class GameManager : MonoBehaviour
         }
     }
 
+      
     // Start is called before the first frame update
     void Start()
     {
         chessBoard = FindObjectOfType<ChessBoard>();
-        historyMoveUI = FindObjectOfType<HistoryMoveUI>(); // ค้นหา HistoryMoveUI ใน Scene
-
+        historyMoveUI = FindObjectOfType<HistoryMoveUI>(); 
         if (chessBoard == null)
         {
             Debug.LogError("❌ ChessBoard ไม่ถูกพบ! ตรวจสอบว่า ChessBoard อยู่ในฉาก");
         }
         else
         {
-            chessBoard.SetGameManager(this); // Set the gameManager instance in ChessBoard
+            chessBoard.SetGameManager(this); 
         }
     }
 
@@ -97,7 +98,6 @@ public class GameManager : MonoBehaviour
     {
         currentTurn = team;
     }
-
 
     // อัปเดต UI เมื่อเปลี่ยนตาเดิน
     public void UpdatePlayerTurnUI()
@@ -212,19 +212,17 @@ public class GameManager : MonoBehaviour
     public void UpdateFiftyMoveCounter(int count)
     {
         if (drawInfoPanel == null || fiftyMoveText == null) return;
-        if (count == 30 || count == 40 || count >= 50)
+        if (count >= 30)
         {
             drawInfoPanel.SetActive(true);
             fiftyMoveText.text = $"📏 กฎ 50 เดิน: {count}/50";
+
             if (count >= 48)
-            {
                 fiftyMoveText.color = Color.red;
-            }
             else if (count >= 45)
-            {
                 fiftyMoveText.color = new Color(1f, 0.5f, 0f);
-            }
-            else { fiftyMoveText.color = Color.white; }
+            else
+                fiftyMoveText.color = Color.white;
         }
         else
         {

@@ -608,7 +608,7 @@ MonoBehaviour:
   drawGamePanel: {fileID: 907175431}
   winGamePanel: {fileID: 245640650}
   loseGamePanel: {fileID: 199352475}
-  drawInfoPanel: {fileID: 0}
+  drawInfoPanel: {fileID: 791716520}
   winTxt: {fileID: 942205299}
   loseTxt: {fileID: 1567474422}
   drawTxt: {fileID: 498938388}

@@ -22,7 +22,7 @@ public class HistoryMoveUI : MonoBehaviour
     {
         if (Instance == null)
         {
-            Instance = this; // ✅ กำหนด Instance ให้อ้างอิงตัวเอง
+            Instance = this; 
             historyMove = FindObjectOfType<HistoryMove>();
             gameManager = FindObjectOfType<GameManager>();
 
