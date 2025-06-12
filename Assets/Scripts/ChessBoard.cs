@@ -59,7 +59,6 @@ public class ChessBoard : MonoBehaviour
     // Start is called before the first frame updateฟ
     void Start()
     {
-
         GenerateBoard();
         SpawnPieces();
     }
@@ -71,7 +70,7 @@ public class ChessBoard : MonoBehaviour
     {
         if (tilePrefab == null)
         {
-            Debug.LogError("❌ tilePrefab ยังไม่ได้เซ็ตใน ChessBoard!");
+            Debug.LogError($"❌ tilePrefab ยังไม่ได้เซ็ตใน ChessBoard!  ");
             return;
         }
         for (int x = 0; x < boardSize; x++)
@@ -104,14 +103,14 @@ public class ChessBoard : MonoBehaviour
                 // เพิ่มคอมโพเนนต์ TileClick และกำหนดค่าตำแหน่ง
                 TileClick tileClick = tile.AddComponent<TileClick>();
                 tileClick.SetTilePosition(new Vector2Int(x, y), this);
-                tileClickMap[new Vector2Int(x, y)] = tileClick; // ✅ เก็บ TileClick
+                tileClickMap[new Vector2Int(x, y)] = tileClick; 
             }
         }
     }
     // 🏁 สร้างตัวหมากรุกในตำแหน่งเริ่มต้น
     void SpawnPieces()
     {
-        if(tilePrefab != null)
+        if (tilePrefab == null)
         {
             Debug.LogError("❌ tilePrefab ยังไม่ได้เซ็ตใน ChessBoard!");
             return;
@@ -462,40 +461,42 @@ public class ChessBoard : MonoBehaviour
     // 🎯 ฟังก์ชันสร้างหมากและวางลงบนกระดาน
     public ChessPiece SpawnPiece(ChessPiece.PieceType type, ChessPiece.Team team, Vector2Int position)
     {
-        if (piecePrefab == null)
-        {
-            Debug.LogError("❌ piecePrefab is null! กรุณาเซ็ตใน Inspector หรือระหว่าง Unit Test");
-            return null;
-        }
-        if (piecesOnBoard.TryGetValue(position, out ChessPiece oldPiece))
-        {
-            Debug.Log($"💥 ลบหมากเดิมที่ {position} ก่อนสร้างใหม่");
-            UnityEngine.Object.Destroy(oldPiece.gameObject);
-            piecesOnBoard.Remove(position);
-        }
 
-        GameObject pieceObj = Instantiate(piecePrefab, new Vector2(position.x, position.y), Quaternion.identity);
-        ChessPiece piece = pieceObj.GetComponent<ChessPiece>();
-        piece.pieceType = type;
-        piece.team = team;
-        piece.boardPosition = position;
-        piece.SetBoardManager(this);
-        pieceObj.name = $"{team}_{type}";
+            if (piecePrefab == null)
+            {
+                Debug.LogError("❌ piecePrefab is null! กรุณาเซ็ตใน Inspector หรือระหว่าง Unit Test");
+                return null;
+            }
+            if (piecesOnBoard.TryGetValue(position, out ChessPiece oldPiece))
+            {
+                Debug.Log($"💥 ลบหมากเดิมที่ {position} ก่อนสร้างใหม่");
+                UnityEngine.Object.Destroy(oldPiece.gameObject);
+                piecesOnBoard.Remove(position);
+            }
 
-        // กำหนด Sprite ตามประเภทของหมาก
-        SpriteRenderer renderer = pieceObj.GetComponent<SpriteRenderer>();
-        renderer.sprite = team == ChessPiece.Team.White ? whiteSprites[(int)type] : blackSprites[(int)type];
+            GameObject pieceObj = Instantiate(piecePrefab, new Vector2(position.x, position.y), Quaternion.identity);
+            ChessPiece piece = pieceObj.GetComponent<ChessPiece>();
+            piece.pieceType = type;
+            piece.team = team;
+            piece.boardPosition = position;
+            piece.SetBoardManager(this);
+            pieceObj.name = $"{team}_{type}";
 
-        // เพิ่ม BoxCollider2D ให้กับตัวหมาก
-        BoxCollider2D boxCollider = pieceObj.AddComponent<BoxCollider2D>();
-        boxCollider.isTrigger = true;  // ทำให้ Collider เป็น Trigger 
+            // กำหนด Sprite ตามประเภทของหมาก
+            SpriteRenderer renderer = pieceObj.GetComponent<SpriteRenderer>();
+            renderer.sprite = team == ChessPiece.Team.White ? whiteSprites[(int)type] : blackSprites[(int)type];
 
-        // จัดกลุ่มหมากแต่ละทีม
-        pieceObj.transform.SetParent(team == ChessPiece.Team.White ? pieceWhite : pieceBlack);
+            // เพิ่ม BoxCollider2D ให้กับตัวหมาก
+            BoxCollider2D boxCollider = pieceObj.AddComponent<BoxCollider2D>();
+            boxCollider.isTrigger = true;  // ทำให้ Collider เป็น Trigger 
 
-        boxCollider.isTrigger = true;
-        piecesOnBoard[position] = piece; // เพิ่มลงใน Dictionary
-        return piece; // ✅ คืนค่า ChessPiece
+            // จัดกลุ่มหมากแต่ละทีม
+            pieceObj.transform.SetParent(team == ChessPiece.Team.White ? pieceWhite : pieceBlack);
+
+            boxCollider.isTrigger = true;
+            piecesOnBoard[position] = piece; // เพิ่มลงใน Dictionary
+            return piece; // ✅ คืนค่า ChessPiece
+
     }
 
     public Vector2Int FindKingPosition(ChessPiece.Team team)

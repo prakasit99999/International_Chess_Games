@@ -137,6 +137,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Unity.AI.Navigation.Updater
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnityEditor.SpatialTracking", "UnityEditor.SpatialTracking.csproj", "{F1B5440B-D36E-79C0-5413-C9D833AEFC23}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp", "Assembly-CSharp.csproj", "{D601F7F0-C233-4FFB-AAB0-6E511230142A}"
+EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Unity.Analytics.DataPrivacy", "Unity.Analytics.DataPrivacy.csproj", "{0803035E-4BAF-0357-6059-F05A921EA916}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnityEngine.Purchasing.SecurityStub", "UnityEngine.Purchasing.SecurityStub.csproj", "{8654894E-06F7-1E0A-3DBC-1CEA82D1DE20}"
@@ -469,6 +471,10 @@ Global
 		{F1B5440B-D36E-79C0-5413-C9D833AEFC23}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F1B5440B-D36E-79C0-5413-C9D833AEFC23}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F1B5440B-D36E-79C0-5413-C9D833AEFC23}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D601F7F0-C233-4FFB-AAB0-6E511230142A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D601F7F0-C233-4FFB-AAB0-6E511230142A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D601F7F0-C233-4FFB-AAB0-6E511230142A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D601F7F0-C233-4FFB-AAB0-6E511230142A}.Release|Any CPU.Build.0 = Release|Any CPU
 		{0803035E-4BAF-0357-6059-F05A921EA916}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{0803035E-4BAF-0357-6059-F05A921EA916}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0803035E-4BAF-0357-6059-F05A921EA916}.Release|Any CPU.ActiveCfg = Release|Any CPU

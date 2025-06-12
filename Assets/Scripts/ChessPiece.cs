@@ -9,7 +9,6 @@ public class ChessPiece : MonoBehaviour
     private ChessBoard boardManager;  // อ้างอิงถึง ChessBoard
     private List<ChessPiece> allPieces = new List<ChessPiece>();  // ลิสต์ที่เก็บชิ้นส่วนทั้งหมด
    
-
     public enum PieceType {  Pawn=0 , Rook, Knight, Bishop, Queen, King , None=-1}
     public enum Team { White, Black, None }
 
@@ -37,7 +36,6 @@ public class ChessPiece : MonoBehaviour
         }
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
-
 
     // Update is called once per frame
     void Update()
