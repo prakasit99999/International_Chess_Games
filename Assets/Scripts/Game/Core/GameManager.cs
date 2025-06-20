@@ -1,10 +1,17 @@
-﻿using TMPro;
+﻿using AI.Adapters;
+using Game.Interfaces;
+using System.Threading.Tasks;
+using TMPro;
 using UnityEngine;
+using static AIEngine.Core.AICore;
 using static ChessPiece;
 
 public class GameManager : MonoBehaviour
 {
     private bool gameIsOver = false;
+    private IChessAI chessAI;
+    private bool isAITurnActive = false;
+
 
     private ChessPiece.Team currentTurn = ChessPiece.Team.White;
 
@@ -28,6 +35,7 @@ public class GameManager : MonoBehaviour
     public bool isWhiteTurn;
     public bool isBlackTurn;
 
+    public AIDifficulty aiDifficulty = AIDifficulty.Medium;
     public string whitePlayerName = "White";
     public string blackPlayerName = "Black";
     public bool isAIMode = false;
@@ -45,7 +53,6 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
-
       
     // Start is called before the first frame update
     void Start()
@@ -58,15 +65,79 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            chessBoard.SetGameManager(this); 
+            chessBoard.SetGameManager(this);
+            chessAI = new UnityAIBoardAdapter();
         }
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        UpdateAITurn();
     }
+
+
+    //method prive
+
+    private async void UpdateAITurn()
+    {
+        // Handle AI turn
+        if (ShouldProcessAITurn())
+        {
+            await ProcessAITurn();
+        }
+    }
+
+    private bool ShouldProcessAITurn()
+    {
+        return isAIMode &&
+               !isAITurnActive &&
+               !gameIsOver &&
+               currentTurn == ChessPiece.Team.Black &&
+               !ChessBoard.Instance.IsPromoting();
+    }
+
+    private async Task ProcessAITurn()
+    {
+        isAITurnActive = true;
+        Debug.Log("♟️ AI is thinking...");
+
+        try
+        {
+            Vector2Int[] move = await chessAI.CalculateMoveAsync(
+                chessBoard,
+                currentTurn,
+                aiDifficulty
+            );
+
+            if (move != null && move.Length == 2)
+            {
+                ExecuteAIMove(move[0], move[1]);
+            }
+        }
+        catch (System.Exception ex)
+        {
+            Debug.LogError($"AI move failed: {ex.Message}");
+        }
+        finally
+        {
+            isAITurnActive = false;
+        }
+    }
+
+    private void ExecuteAIMove(Vector2Int from, Vector2Int to)
+    {
+        if (chessBoard.PiecesOnBoard.TryGetValue(from, out ChessPiece piece))
+        {
+            chessBoard.SelectPiece(piece);
+            chessBoard.MoveSelectedPiece(to);
+        }
+        else
+        {
+            Debug.LogWarning($"❌ No piece found at AI start position: {from}");
+        }
+    }
+
 
     //set method
     public void SetGameStarted(bool value)
@@ -128,7 +199,7 @@ public class GameManager : MonoBehaviour
             Debug.Log("กำลังเลื่อนขั้น ไม่สามารถสลับเทิร์นได้");
             return;
         }
-
+      
         currentTurn = (currentTurn == Team.White) ? Team.Black : Team.White;
         UpdatePlayerTurnUI();
         CheckGameState();
@@ -204,11 +275,6 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public bool IsGameOver()
-    {
-        return gameIsOver;
-    }
-
     public void UpdateFiftyMoveCounter(int count)
     {
         if (drawInfoPanel == null || fiftyMoveText == null) return;
@@ -237,5 +303,12 @@ public class GameManager : MonoBehaviour
             drawInfoPanel.SetActive(false);
         }
     }
+
+    public bool IsGameOver()
+    {
+        return gameIsOver;
+    }
+
+
 
 }

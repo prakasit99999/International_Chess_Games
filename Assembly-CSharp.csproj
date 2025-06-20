@@ -60,11 +60,16 @@
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\2022.3.55f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.Properties.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\AI\Algorithms\alphaBeta.cs" />
-    <Compile Include="Assets\AI\Algorithms\MinMax.cs" />
-    <Compile Include="Assets\AI\AICore.cs" />
-    <Compile Include="Assets\AI\Models\Evaluation.cs" />
-    <Compile Include="Assets\AI\Algorithms\SearchAlgorithm.cs" />
+    <Compile Include="Assets\Scripts\AI\Evaluation\Evaluation.cs" />
+    <Compile Include="Assets\Scripts\AI\Utilities\MoveGenerator.cs" />
+    <Compile Include="Assets\Scripts\AI\Models\Move.cs" />
+    <Compile Include="Assets\Scripts\AI\Utilities\BoardConverter.cs" />
+    <Compile Include="Assets\Scripts\AI\Models\BoardState.cs" />
+    <Compile Include="Assets\Scripts\AI\Algorithms\alphaBeta.cs" />
+    <Compile Include="Assets\Scripts\AI\Core\AICore.cs" />
+    <Compile Include="Assets\Scripts\AI\Models\PieceState.cs" />
+    <Compile Include="Assets\Scripts\AI\Core\SearchAlgorithm.cs" />
+    <Compile Include="Assets\Scripts\AI\Algorithms\MinMax.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
@@ -1124,6 +1129,10 @@
       <Project>{00E459F7-7522-6CFE-3C9B-FE6BC510043D}</Project>
       <Name>UnityEngine.Advertisements.Editor</Name>
     </ProjectReference>
+    <ProjectReference Include="GameAssembly.csproj">
+      <Project>{881C5910-952C-1A3A-44C2-35A4B349CED5}</Project>
+      <Name>GameAssembly</Name>
+    </ProjectReference>
     <ProjectReference Include="UnityEngine.SpatialTracking.csproj">
       <Project>{D305CBE7-515E-FBF4-F87E-91195A7B81F1}</Project>
       <Name>UnityEngine.SpatialTracking</Name>
@@ -1171,10 +1180,6 @@
     <ProjectReference Include="Unity.VisualScripting.State.Editor.csproj">
       <Project>{C1AA95BF-6239-90CC-BE12-15014D5FE8B5}</Project>
       <Name>Unity.VisualScripting.State.Editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="GameAssembly.csproj">
-      <Project>{881C5910-952C-1A3A-44C2-35A4B349CED5}</Project>
-      <Name>GameAssembly</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.Mathematics.csproj">
       <Project>{4DA5AD35-777D-8F2C-5604-A06549DBDA4B}</Project>

@@ -1,7 +1,9 @@
-﻿using System;
+﻿//using AI.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+//using static AICore;
 using static ChessPiece;
 
 public class ChessBoard : MonoBehaviour
@@ -23,8 +25,10 @@ public class ChessBoard : MonoBehaviour
     private Dictionary<Vector2Int, ChessPiece> piecesOnBoard = new Dictionary<Vector2Int, ChessPiece>();
     private Dictionary<Vector2Int, TileClick> tileClickMap = new Dictionary<Vector2Int, TileClick>();
 
-
     public IReadOnlyDictionary<Vector2Int, ChessPiece> PiecesOnBoard => piecesOnBoard;
+    public int FiftyMoveCounter => _movesWithoutCaptureOrPawn;
+    public GameManager GameManager => gameManager;
+
     public static ChessBoard Instance { get; private set; }
     public Transform pieceWhite;    // Empty GameObject สำหรับทีมขาว
     public Transform pieceBlack;    // Empty GameObject สำหรับทีมดำ
@@ -36,12 +40,14 @@ public class ChessBoard : MonoBehaviour
     public ChessPiece selectedPawn; // เบี้ยที่รอเลื่อนขั้น
     public PromotionManager promotionManager; // เชื่อมกับ PromotionManager ใน Inspector
     public ChessPiece SelectedPiece => selectedPiece; // เพิ่ม Property เพื่อเข้าถึง selectedPiece
+
+    public bool IsWhiteTurn { get; internal set; }
+
     public ChessPiece.PieceType promotionFrom;
     public Vector2Int promotionPosition;
     public Vector2Int position;  // ตัวแปรสำหรับเก็บตำแหน่งของหมาก
     public Color32 whitleColor = new Color32(255, 255, 255, 255);
     public Color32 blackColor = new Color32(0, 0, 0, 255);
-
 
     private void Awake()
     {
@@ -49,6 +55,7 @@ public class ChessBoard : MonoBehaviour
         {
             Instance = this;
             historyMove = FindObjectOfType<HistoryMove>(); 
+
         }
         else
         {
@@ -227,22 +234,6 @@ public class ChessBoard : MonoBehaviour
         return false;
     }
 
-    private ChessPiece SimulateMove(Vector2Int newPosition)
-    {
-        Vector2Int originalPosition = selectedPiece.boardPosition;
-        ChessPiece captured = null;
-
-        piecesOnBoard.Remove(originalPosition);
-        if (piecesOnBoard.TryGetValue(newPosition, out captured))
-            piecesOnBoard.Remove(newPosition);
-
-        selectedPiece.boardPosition = newPosition;
-        piecesOnBoard[newPosition] = selectedPiece;
-
-
-        return captured;
-    }
-
     private void UndoSimulatedMove(Vector2Int originalPos, Vector2Int newPos, ChessPiece captured)
     {
         piecesOnBoard.Remove(newPos);
@@ -395,7 +386,6 @@ public class ChessBoard : MonoBehaviour
 
     }
 
-    /* class methone public*/
     // Set method
     public void SetGameManager(GameManager manager)
     {
@@ -458,6 +448,12 @@ public class ChessBoard : MonoBehaviour
         return enPassantTarget;
     }
 
+    public GameManager GetGameManager()
+    {
+        return gameManager;
+    }
+
+    /* class methone public*/
     // 🎯 ฟังก์ชันสร้างหมากและวางลงบนกระดาน
     public ChessPiece SpawnPiece(ChessPiece.PieceType type, ChessPiece.Team team, Vector2Int position)
     {
@@ -497,6 +493,22 @@ public class ChessBoard : MonoBehaviour
             piecesOnBoard[position] = piece; // เพิ่มลงใน Dictionary
             return piece; // ✅ คืนค่า ChessPiece
 
+    }
+
+    public ChessPiece SimulateMove(Vector2Int newPosition)
+    {
+        Vector2Int originalPosition = selectedPiece.boardPosition;
+        ChessPiece captured = null;
+
+        piecesOnBoard.Remove(originalPosition);
+        if (piecesOnBoard.TryGetValue(newPosition, out captured))
+            piecesOnBoard.Remove(newPosition);
+
+        selectedPiece.boardPosition = newPosition;
+        piecesOnBoard[newPosition] = selectedPiece;
+
+
+        return captured;
     }
 
     public Vector2Int FindKingPosition(ChessPiece.Team team)
@@ -923,4 +935,5 @@ public class ChessBoard : MonoBehaviour
     {
         _movesWithoutCaptureOrPawn = 0;
     }
+
 }
