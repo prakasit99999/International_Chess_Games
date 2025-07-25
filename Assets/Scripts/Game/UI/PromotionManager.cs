@@ -23,7 +23,6 @@ public class PromotionManager : MonoBehaviour
             
             Instance = this;
             historyMove = FindObjectOfType<HistoryMove>();
-            //selectedPawn = FindAnyObjectByType<ChessPiece>();
 
         }
         else
@@ -93,7 +92,9 @@ public class PromotionManager : MonoBehaviour
             Debug.LogError("❌ selectedPawn เป็น null! ตรวจสอบว่ามีการเลือกเบี้ยก่อนกดปุ่มเลื่อนขั้น");
             return;
         }
-       
+
+        if (PauseManager.isPaused) return;
+
         ChessPiece.PieceType newType = ChessPiece.PieceType.Queen; // ค่าเริ่มต้น
 
         switch (choice)
@@ -122,7 +123,6 @@ public class PromotionManager : MonoBehaviour
         ChessBoard.Instance.SetselectedPiece(null);
         GameManager.Instance.SwitchTurn();
 
-      
         Debug.Log($"🔼 อัปเดตประเภทที่เลื่อนขั้นใน HistoryMove: {lastMove.promotedTo}");
         Debug.Log($"📜 ข้อมูลทั้งหมดของ lastMove: " +
                   $"\nStart Position: {lastMove.startPosition}" +

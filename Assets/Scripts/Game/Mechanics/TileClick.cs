@@ -91,19 +91,24 @@ public class TileClick : MonoBehaviour
 
     private void OnMouseDown()
     {
+        if (PauseManager.isPaused) return;
         if (ChessBoard.Instance.IsPromoting()) return;
-
         if (boardManager != null)
         {
-            // กระพริบสีแดงเมื่อกินหมากศัตรู
-            if (boardManager.SelectedPiece != null &&
-                boardManager.IsEnemyAtPosition(tilePosition, boardManager.SelectedPiece.team))
-            {
-                //FlashAttackColor();
-            }
             boardManager.OnTileClicked(tilePosition);
         }
     }
+
+    private void OnMouseExit()
+    {
+        if (spriteRenderer != null &&
+            !spriteRenderer.color.Equals(validMoveColor) &&
+            !spriteRenderer.color.Equals(checkColor))
+        {
+            spriteRenderer.color = originalColor;
+        }
+    }
+
 
     //private IEnumerator FlashAttackCoroutine()
     //{
@@ -130,15 +135,6 @@ public class TileClick : MonoBehaviour
     //    }
     //}
 
-    private void OnMouseExit()
-    {
-        if (spriteRenderer != null &&
-            !spriteRenderer.color.Equals(validMoveColor) &&
-            !spriteRenderer.color.Equals(checkColor))
-        {
-            spriteRenderer.color = originalColor;
-        }
-    }
 
 
 }

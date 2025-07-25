@@ -1,4 +1,5 @@
 using System;
+using System.Diagnostics;
 using System.Linq;
 using AIEngine.Algorithms;
 using AIEngine.Utilities;
@@ -7,14 +8,14 @@ namespace AIEngine.Core
 {
     public class AICore
     {
-        public enum Difficulty { Easy, Medium, Hard }
+        public enum Difficulty { Easy, Normal, Hard }
         public static AICore Instance { get; } = new AICore();
-
 
         public MoveModel FindBestMove(ChessBoardModel board, Difficulty difficulty)
         {
             SearchAlgorithm algorithm;
             int depth;
+          
 
             switch (difficulty)
             {
@@ -22,7 +23,7 @@ namespace AIEngine.Core
                     algorithm = new Minimax(); // ธรรมดา
                     depth = 2;
                     break;
-                case Difficulty.Medium:
+                case Difficulty.Normal:
                     algorithm = new AlphaBeta(); // มี pruning
                     depth = 4;
                     break;

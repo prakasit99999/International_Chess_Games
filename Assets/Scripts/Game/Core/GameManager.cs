@@ -5,21 +5,32 @@ using TMPro;
 using UnityEngine;
 using static AIEngine.Core.AICore;
 using static ChessPiece;
+using static GameManager;
 
 public class GameManager : MonoBehaviour
 {
-    private bool gameIsOver = false;
     private IChessAI chessAI;
+
+    private bool gameIsOver = false;
     private bool isAITurnActive = false;
 
+    private string difficultyWhite;
+    private string difficultyBlack;
+    private string aiColor;
+
+    private GameModes currentMode;
 
     private ChessPiece.Team currentTurn = ChessPiece.Team.White;
 
     private ChessBoard chessBoard;
     private HistoryMoveUI historyMoveUI;
-    private PromotionManager promotionManager;
 
     public static GameManager Instance;
+
+    public enum PlayerType { Human, AI }
+    public enum GameModes { LocalMultiplayer, SinglePlayer, AIVsAI, Online }
+    public AIDifficulty aiDifficultyWhite;
+    public AIDifficulty aiDifficultyBlack;
 
     public GameObject drawGamePanel;
     public GameObject winGamePanel;
@@ -30,15 +41,27 @@ public class GameManager : MonoBehaviour
     public TMP_Text loseTxt;
     public TMP_Text drawTxt;
     public TMP_Text fiftyMoveText;
+    public TMP_Text txtNameWhite;
+    public TMP_Text txtNameBlack;
 
     public bool isGameStarted;
     public bool isWhiteTurn;
     public bool isBlackTurn;
 
-    public AIDifficulty aiDifficulty = AIDifficulty.Medium;
+    public AIDifficulty aiDifficulty;
+    public PlayerType WhitePlayer = PlayerType.Human;
+    public PlayerType BlackPlayer = PlayerType.AI;
+
+
     public string whitePlayerName = "White";
     public string blackPlayerName = "Black";
+
     public bool isAIMode = false;
+
+    public GameManager(GameModes currentMode)
+    {
+        this.currentMode = currentMode;
+    }
 
     private void Awake()
     {
@@ -53,12 +76,10 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
-      
+
     // Start is called before the first frame update
     void Start()
     {
-        chessBoard = FindObjectOfType<ChessBoard>();
-        historyMoveUI = FindObjectOfType<HistoryMoveUI>(); 
         if (chessBoard == null)
         {
             Debug.LogError("❌ ChessBoard ไม่ถูกพบ! ตรวจสอบว่า ChessBoard อยู่ในฉาก");
@@ -67,38 +88,34 @@ public class GameManager : MonoBehaviour
         {
             chessBoard.SetGameManager(this);
             chessAI = new UnityAIBoardAdapter();
+            ModeSelect();
         }
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (PauseManager.isPaused) return;
         UpdateAITurn();
     }
 
-
     //method prive
-
     private async void UpdateAITurn()
     {
-        // Handle AI turn
         if (ShouldProcessAITurn())
         {
             await ProcessAITurn();
         }
     }
 
-    private bool ShouldProcessAITurn()
-    {
-        return isAIMode &&
-               !isAITurnActive &&
-               !gameIsOver &&
-               currentTurn == ChessPiece.Team.Black &&
-               !ChessBoard.Instance.IsPromoting();
-    }
-
     private async Task ProcessAITurn()
     {
+        if (chessBoard == null)
+        {
+            Debug.LogError("❌ ChessBoard ไม่ถูกพบ! ตรวจสอบว่า ChessBoard อยู่ในฉาก");
+            return;
+        }
+        if (PauseManager.isPaused) return;
         isAITurnActive = true;
         Debug.Log("♟️ AI is thinking...");
 
@@ -125,6 +142,32 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    private AIDifficulty ParseDifficulty(string diff)
+    {
+        switch (diff)
+        {
+            case "Easy": return AIDifficulty.Easy;
+            case "Normal": return AIDifficulty.Normal;
+            case "Hard": return AIDifficulty.Hard;
+            default: return AIDifficulty.Easy;
+        }
+    }
+
+    private bool ShouldProcessAITurn()
+    {
+        return !PauseManager.isPaused &&
+               IsCurrentPlayerAI() &&
+               !isAITurnActive &&
+               !gameIsOver &&
+               !ChessBoard.Instance.IsPromoting();
+    }
+
+    private bool IsCurrentPlayerAI()
+    {
+        return (currentTurn == Team.White && WhitePlayer == PlayerType.AI) ||
+               (currentTurn == Team.Black && BlackPlayer == PlayerType.AI);
+    }
+
     private void ExecuteAIMove(Vector2Int from, Vector2Int to)
     {
         if (chessBoard.PiecesOnBoard.TryGetValue(from, out ChessPiece piece))
@@ -138,8 +181,73 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    private void SetupAIVsAIMode()
+    {
+        currentMode = GameModes.AIVsAI;
+        difficultyWhite = PlayerPrefs.GetString("AI_White_Difficulty", "Easy");
+        difficultyBlack = PlayerPrefs.GetString("AI_Black_Difficulty", "Easy");
+        SetPlayerTypes(PlayerType.AI, PlayerType.AI);
+        SetAIDifficulty(difficultyWhite, difficultyBlack);
+        Debug.Log($"[MODE] AI vs AI - White: {difficultyWhite}, Black: {difficultyBlack}");
+    }
+
+    private void SetupLocalMultiplayerMode()
+    {
+        currentMode = GameModes.LocalMultiplayer;
+        SetPlayerTypes(PlayerType.Human, PlayerType.Human);
+        Debug.Log("[MODE] Local Multiplayer - Human vs Human");
+    }
+
+    private void SetupSinglePlayerMode()
+    {
+        currentMode = GameModes.SinglePlayer;
+        aiColor = PlayerPrefs.GetString("AI_Color", "Black");
+        string difficulty = PlayerPrefs.GetString("AI_Difficulty", "Easy");
+        //Debug.Log($"[MODE] Single Player - AI Color: {aiColor}, Difficulty: {difficulty}");
+
+        if (aiColor == "White")
+        {
+            SetPlayerTypes(PlayerType.AI, PlayerType.Human);
+            aiDifficultyWhite = ParseDifficulty(difficulty);
+        }
+        else
+        {
+            SetPlayerTypes(PlayerType.Human, PlayerType.AI);
+            aiDifficultyBlack = ParseDifficulty(difficulty);
+        }
+
+        SetAIDifficulty(aiDifficultyWhite.ToString(), aiDifficultyBlack.ToString());
+
+        SetPlayerNamesAndTypes(); 
+
+        //Debug.Log($"[MODE] Single Player - AI: {aiColor} ({difficulty})");
+    }
+
+    private ChessPiece.Team GetOpponentTeam(ChessPiece.Team team)
+    {
+        return (team == ChessPiece.Team.White) ? ChessPiece.Team.Black : ChessPiece.Team.White;
+    }
 
     //set method
+    public void SetPlayerNamesAndTypes()
+    {
+        string whiteDisplayName = WhitePlayer == PlayerType.Human
+         ? "Human (White)"
+         : $"AI ({aiDifficultyWhite})";
+
+        string blackDisplayName = BlackPlayer == PlayerType.Human
+            ? "Human (Black)"
+            : $"AI ({aiDifficultyBlack})";
+
+        //Debug.Log($"whiteDisplayName:{whiteDisplayName} blackDisplayName: {blackDisplayName}");
+
+        if (txtNameWhite != null)
+            txtNameWhite.text = whiteDisplayName;
+
+        if (txtNameBlack != null)
+            txtNameBlack.text = blackDisplayName;
+    }
+
     public void SetGameStarted(bool value)
     {
         isGameStarted = value;
@@ -150,6 +258,21 @@ public class GameManager : MonoBehaviour
         whitePlayerName = whiteName;
         blackPlayerName = blackName;
         UpdatePlayerTurnUI(); // อัปเดต UI ทันที
+    }
+
+    public void SetAIDifficulty(string whiteDiff, string blackDiff)
+    {
+        aiDifficultyWhite = ParseDifficulty(whiteDiff);
+        aiDifficultyBlack = ParseDifficulty(blackDiff);
+        //Debug.Log($"[AIDifficulty] White: {aiDifficultyWhite}, Black: {aiDifficultyBlack}");
+    }
+
+    // ตั้งค่าประเภทผู้เล่น
+    public void SetPlayerTypes(PlayerType whiteType, PlayerType blackType)
+    {
+        WhitePlayer = whiteType;
+        BlackPlayer = blackType;
+        SetPlayerNamesAndTypes();
     }
 
     //Get method
@@ -164,6 +287,10 @@ public class GameManager : MonoBehaviour
         return (currentTurn == ChessPiece.Team.White) ? whitePlayerName : blackPlayerName;
     }
 
+    public GameModes GetCurrentMode()
+    {
+        return currentMode;
+    }
     /*Set*/
     public void SetCurrentTurn(Team team)
     {
@@ -199,15 +326,10 @@ public class GameManager : MonoBehaviour
             Debug.Log("กำลังเลื่อนขั้น ไม่สามารถสลับเทิร์นได้");
             return;
         }
-      
+
         currentTurn = (currentTurn == Team.White) ? Team.Black : Team.White;
         UpdatePlayerTurnUI();
         CheckGameState();
-    }
-
-    private ChessPiece.Team GetOpponentTeam(ChessPiece.Team team)
-    {
-        return (team == ChessPiece.Team.White) ? ChessPiece.Team.Black : ChessPiece.Team.White;
     }
 
     // ฟังก์ชันตรวจสอบ Checkmate หรือ Stalemate
@@ -275,6 +397,55 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void ResetGame()
+    {
+        gameIsOver = false;
+        isGameStarted = false;
+        isAITurnActive = false;
+        currentTurn = Team.White;
+
+        Debug.Log(historyMoveUI);
+
+        winGamePanel.SetActive(false);
+        loseGamePanel.SetActive(false);
+        drawGamePanel.SetActive(false);
+        drawInfoPanel.SetActive(false);
+
+        if (chessBoard != null)
+        {
+            chessBoard.ResetBoard();
+        }
+        Debug.Log("♟️ เกมถูกรีเซ็ต!");
+        if (historyMoveUI != null)
+        {
+            historyMoveUI.ClearHistory();
+        }
+
+        UpdatePlayerTurnUI();
+        ResetFiftyMoveUI();
+        UpdatePlayerTurnUI();
+    }
+
+    public void ReturnMain()
+    {
+        if (gameIsOver)
+        {
+            ResetGame();
+        }
+        // ปิด UI ทั้งหมด
+        winGamePanel.SetActive(false);
+        loseGamePanel.SetActive(false);
+        drawGamePanel.SetActive(false);
+        drawInfoPanel.SetActive(false);
+        // รีเซ็ตสถานะเกม
+        gameIsOver = false;
+        isGameStarted = false;
+        isAITurnActive = false;
+        currentTurn = Team.White;
+        // กลับไปยังเมนูหลัก
+        UnityEngine.SceneManagement.SceneManager.LoadScene("MainMenu");
+    }
+
     public void UpdateFiftyMoveCounter(int count)
     {
         if (drawInfoPanel == null || fiftyMoveText == null) return;
@@ -304,11 +475,33 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void ModeSelect()
+    {
+        string modeStr = PlayerPrefs.GetString("Mode", "SinglePlayer");
+        switch (modeStr)
+        {
+            case "AIVsAI":
+                SetupAIVsAIMode();
+                break;
+
+            case "LocalMultiplayer":
+                SetupLocalMultiplayerMode();
+                break;
+
+            case "SinglePlayer":
+            default:
+                SetupSinglePlayerMode();
+                break;
+        }
+
+        isGameStarted = true;
+        currentTurn = Team.White;
+        UpdatePlayerTurnUI();
+    }
+
     public bool IsGameOver()
     {
         return gameIsOver;
     }
-
-
 
 }

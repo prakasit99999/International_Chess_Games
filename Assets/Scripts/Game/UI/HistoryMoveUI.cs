@@ -94,7 +94,6 @@ public class HistoryMoveUI : MonoBehaviour
     // อัปเดตรายการเดินหมาก
     public void UpdateMoveHistoryList()
     {
-
         // ตรวจสอบ null
         if (contentParent == null || moveEntryPrefab == null)
         {
@@ -143,7 +142,6 @@ public class HistoryMoveUI : MonoBehaviour
             }
             int currentIndex = i; // เก็บ index ปัจจุบัน
             button.onClick.AddListener(() => OnMoveEntryClicked(currentIndex));
-
         }
     }
 
@@ -190,5 +188,31 @@ public class HistoryMoveUI : MonoBehaviour
         char column = (char)('a' + position.x);
         int row = position.y + 1;
         return $"{column}{row}";
+    }
+
+    public void ClearHistory()
+    {
+        if (historyMove != null)
+        {
+            historyMove.ClearHistory();
+            UpdateMoveHistoryList();
+            if (scrollRect != null)
+            {
+                Canvas.ForceUpdateCanvases();
+                scrollRect.normalizedPosition = Vector2.zero;
+            }
+            // ลบลูกทั้งหมดใน contentParent
+            foreach (Transform child in contentParent)
+            {
+                Destroy(child.gameObject);
+                Debug.Log($"✅ ลบรายการเดินที่ {child.name} เรียบร้อยแล้ว");
+            }
+
+            Debug.Log("✅ ประวัติการเดินถูกล้างเรียบร้อยแล้ว");
+        }
+        else
+        {
+            Debug.LogError("❌ HistoryMove ไม่ถูกกำหนด!");
+        }
     }
 }

@@ -6,18 +6,6 @@ public class HistoryMove : MonoBehaviour
 
     private Stack<HistoryMoveData> moveHistory = new Stack<HistoryMoveData>();
 
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
     public struct HistoryMoveData
     {
 
@@ -143,5 +131,10 @@ public class HistoryMove : MonoBehaviour
         }
     }
 
+    public void ClearHistory()
+    {
+        moveHistory.Clear();
+        Debug.Log("ประวัติการเดินถูกล้างเรียบร้อยแล้ว");
+    }
 
 }

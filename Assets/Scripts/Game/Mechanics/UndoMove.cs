@@ -28,22 +28,15 @@ public class UndoMove : MonoBehaviour
             Destroy(gameObject);
         }
     }
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
 
     public void UndoLastMove()
     {
-        ChessPiece movedPiece = null;
 
+        ChessPiece movedPiece = null;
+        if (PauseManager.isPaused) return;
+        if (GameManager.Instance != null && GameManager.Instance.GetCurrentMode() == GameManager.GameModes.AIVsAI ) {
+            return;
+        }
         if (historyMove.GetMoveHistory().Count == 0) return;
 
         HistoryMove.HistoryMoveData lastMove = historyMove.GetMoveHistory().Pop();
@@ -114,16 +107,6 @@ public class UndoMove : MonoBehaviour
         Debug.Log($"🔙 Undo การเดิน: {lastMove.startPosition} → {lastMove.endPosition}");
     }
 
-
-
-    private GameObject InstantiatePiece(ChessPiece.PieceType pieceType, Vector2Int position, Transform parent)
-    {
-        GameObject pieceObj = Instantiate(piecePrefab, new Vector3(position.x, position.y, 0), Quaternion.identity, parent);
-        ChessPiece newPiece = pieceObj.GetComponent<ChessPiece>();
-        newPiece.pieceType = pieceType;
-        return pieceObj;
-    }
-
     private ChessPiece UndoPromotion(HistoryMoveData lastMove, Dictionary<Vector2Int, ChessPiece> piecesOnBoard)
     {
         // ตรวจสอบว่ามีการเลื่อนขั้นหรือไม่
@@ -163,7 +146,6 @@ public class UndoMove : MonoBehaviour
         }
     }
 
-    // ในไฟล์ UndoMove.cs
     private void UndoCastling(HistoryMove.HistoryMoveData lastMove, Dictionary<Vector2Int, ChessPiece> piecesOnBoard, Transform boardParent)
     {
         int row = lastMove.endPosition.y;
@@ -238,7 +220,5 @@ public class UndoMove : MonoBehaviour
 
         Debug.Log($"🔄 ย้อนกลับ En Passant: {movedPawnNewPos} → {movedPawnOldPos} (คืนเบี้ยที่ถูกกินที่ {capturedPawnPosition})");
     }
-
-
 
 }
