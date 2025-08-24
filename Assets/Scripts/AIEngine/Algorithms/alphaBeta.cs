@@ -116,13 +116,5 @@ namespace AIEngine.Algorithms
             return alpha;
         }
 
-
-        private int GetMoveScore(MoveModel move, ChessBoardModel board)
-        {
-            // MVV-LVA Scoring
-            var victimValue = Math.Abs(board.Board[move.ToX, move.ToY]);
-            var aggressorValue = Math.Abs(board.Board[move.FromX, move.FromY]);
-            return victimValue * 10 - aggressorValue;
-        }
     }
 }

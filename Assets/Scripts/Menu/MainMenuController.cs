@@ -105,4 +105,16 @@ public class MainMenuController : MonoBehaviour
             Debug.LogWarning("❗ LoadScene ได้เฉพาะขณะอยู่ใน Play Mode เท่านั้น");
         }
     }
+    public void onlineMultiplayer()
+    {
+        PlayerPrefs.SetString("Mode", "OnlineMultiplayer");
+        if (Application.isPlaying)
+        {
+            SceneManager.LoadScene("Onlinelogin");
+        }
+        else
+        {
+            Debug.LogWarning("❗ LoadScene ได้เฉพาะขณะอยู่ใน Play Mode เท่านั้น");
+        }
+    }
 }
