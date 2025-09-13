@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using static ChessPiece;
 
 namespace AI.Utilities
 {
@@ -10,40 +11,34 @@ namespace AI.Utilities
         /// <param name="unityBoard">ChessBoard จาก Unity</param>
         /// <param name="currentTeam">ทีมปัจจุบันที่กำลังเดิน</param>
         /// <returns>ChessBoardModel สำหรับ AI</returns>
-        public static ChessBoardModel Convert(ChessBoard unityBoard, ChessPiece.Team currentTeam)
+        public static ChessBoardModel Convert(ChessBoard unityBoard, Team team)
         {
-            ChessBoardModel aiBoard = new ChessBoardModel();
-            aiBoard.Board = new int[8, 8];
+            var model = new ChessBoardModel();
+            model.IsWhiteTurn = (team == Team.White);
+            model.Board = new int[8, 8];
 
-            // ตั้งค่าการเดินปัจจุบัน
-            aiBoard.IsWhiteTurn = currentTeam == ChessPiece.Team.White;
-
-            // กำหนดค่าหมากทั้งหมดเป็น 0 (ช่องว่าง)
-            for (int x = 0; x < 8; x++)
-            {
-                for (int y = 0; y < 8; y++)
-                {
-                    aiBoard.Board[x, y] = 0;
-                }
-            }
-
-            // กรอกข้อมูลหมาก
             foreach (var entry in unityBoard.PiecesOnBoard)
             {
-                Vector2Int unityPosition = entry.Key;
+                Vector2Int unityPos = entry.Key;
                 ChessPiece piece = entry.Value;
+                if (piece == null) continue;
+                // แปลงตำแหน่ง Unity → AI
+                Vector2Int aiPos = ConvertPositionToAI(unityPos);
 
-                // แปลงตำแหน่ง Unity เป็น AI
-                Vector2Int aiPosition = ConvertPositionToAI(unityPosition);
-
-                // แปลงประเภทหมาก
+                // แปลงชิ้นหมาก
                 int pieceValue = ConvertPieceType(piece.pieceType, piece.team);
+                Debug.Log($"[CONVERT] Unity {piece.team} {piece.pieceType} at {unityPos} → AI {aiPos} = {pieceValue}");
 
-                aiBoard.Board[aiPosition.x, aiPosition.y] = pieceValue;
+
+                model.Board[aiPos.x, aiPos.y] = pieceValue;
             }
 
-            return aiBoard;
+            // ✅ ใช้ Setter ใน Model แทนการ set โดยตรง
+            model.SetFiftyMoveCounter(unityBoard.FiftyMoveCounter);
+
+            return model;
         }
+
 
         /// <summary>
         /// แปลงตำแหน่งจากระบบ Unity เป็นระบบ AI
@@ -52,13 +47,8 @@ namespace AI.Utilities
         /// <returns>ตำแหน่งใน AI (x: 0-7, y: 0-7)</returns>
         public static Vector2Int ConvertPositionToAI(Vector2Int unityPosition)
         {
-            // Unity: (0,0) = A1, (7,7) = H8
-            // AI:    (0,0) = A8, (7,7) = H1
-
-            int aiX = 7 - unityPosition.y;  // แกน Y ของ Unity กลายเป็นแกน X ของ AI (พลิกแนวตั้ง)
-            int aiY = unityPosition.x;      // แกน X ของ Unity กลายเป็นแกน Y ของ AI
-
-            return new Vector2Int(aiX, aiY);
+            // Unity (0,0) = A1, AI (0,0) = A8
+            return new Vector2Int(unityPosition.x, 7 - unityPosition.y);
         }
 
         /// <summary>
@@ -68,11 +58,9 @@ namespace AI.Utilities
         /// <returns>ตำแหน่งใน Unity (x: 0-7, y: 0-7)</returns>
         public static Vector2Int ConvertPositionToUnity(Vector2Int aiPosition)
         {
-            int unityX = aiPosition.y;      // แกน Y ของ AI กลายเป็นแกน X ของ Unity
-            int unityY = 7 - aiPosition.x;  // แกน X ของ AI กลายเป็นแกน Y ของ Unity (พลิกแนวตั้ง)
-
-            return new Vector2Int(unityX, unityY);
+            return new Vector2Int(aiPosition.x, 7 - aiPosition.y);
         }
+
 
         /// <summary>
         /// แปลงประเภทหมากจาก Unity เป็นค่าตัวเลขสำหรับ AI

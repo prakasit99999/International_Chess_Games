@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class MatchmakingManager : MonoBehaviour
 {
-    public TMP_Text statusText;
-    public TMP_Text opponentNameText;
+    public Text statusText;
+    public Text opponentNameText;
+    public GameObject matchmakingPanle;
 
     private bool isSearching = false;
     private string username;

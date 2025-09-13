@@ -1,5 +1,6 @@
 ﻿using AI.Adapters;
 using Game.Interfaces;
+using System.Collections;
 using System.Threading.Tasks;
 using TMPro;
 using UnityEngine;
@@ -10,6 +11,7 @@ using static GameManager;
 public class GameManager : MonoBehaviour
 {
     private IChessAI chessAI;
+    private Coroutine aiLoop;
 
     private bool gameIsOver = false;
     private bool isAITurnActive = false;
@@ -18,7 +20,7 @@ public class GameManager : MonoBehaviour
     private string difficultyBlack;
     private string aiColor;
 
-    private GameModes currentMode;
+    private GameModes currentMode = GameModes.SinglePlayer;
 
     private ChessPiece.Team currentTurn = ChessPiece.Team.White;
 
@@ -89,56 +91,72 @@ public class GameManager : MonoBehaviour
             chessBoard.SetGameManager(this);
             chessAI = new UnityAIBoardAdapter();
             ModeSelect();
+
+            // ถ้ามี AI ฝั่งใดฝั่งหนึ่ง → เริ่ม Coroutine
+            if (WhitePlayer == PlayerType.AI || BlackPlayer == PlayerType.AI)
+            {
+                aiLoop = StartCoroutine(AIPlayLoop());
+            }
         }
     }
+
 
     // Update is called once per frame
     void Update()
     {
-        if (PauseManager.isPaused) return;
-        UpdateAITurn();
-    }
+        if (PauseManager.isPaused || gameIsOver) return;
 
-    //method prive
-    private async void UpdateAITurn()
-    {
         if (ShouldProcessAITurn())
         {
-            await ProcessAITurn();
+            chessAI.StartCalculateMove(chessBoard, currentTurn,
+                currentTurn == Team.White ? aiDifficultyWhite : aiDifficultyBlack);
+
+            isAITurnActive = true;
+        }
+
+        if (isAITurnActive)
+        {
+            var move = chessAI.GetCalculatedMove();
+            if (move != null)
+            {
+                ExecuteAIMove(move[0], move[1]);
+                isAITurnActive = false;
+            }
         }
     }
 
-    private async Task ProcessAITurn()
+    private IEnumerator AIPlayLoop()
     {
-        if (chessBoard == null)
+        while (!gameIsOver)
         {
-            Debug.LogError("❌ ChessBoard ไม่ถูกพบ! ตรวจสอบว่า ChessBoard อยู่ในฉาก");
-            return;
-        }
-        if (PauseManager.isPaused) return;
-        isAITurnActive = true;
-        Debug.Log("♟️ AI is thinking...");
+            // รอถ้า pause หรือ promote อยู่
+            while (PauseManager.isPaused || gameIsOver || ChessBoard.Instance.IsPromoting())
+                yield return null;
 
-        try
-        {
-            Vector2Int[] move = await chessAI.CalculateMoveAsync(
-                chessBoard,
-                currentTurn,
-                aiDifficulty
-            );
-
-            if (move != null && move.Length == 2)
+            if (IsCurrentPlayerAI())
             {
-                ExecuteAIMove(move[0], move[1]);
+                var difficulty = (currentTurn == Team.White) ? aiDifficultyWhite : aiDifficultyBlack;
+
+                // เริ่มคิด
+                chessAI.StartCalculateMove(chessBoard, currentTurn, difficulty);
+
+                // ทำ delay ให้เหมือนกำลังคิด
+                yield return new WaitForSeconds(0.3f);
+
+                var move = chessAI.GetCalculatedMove();
+                if (move != null)
+                {
+                    ExecuteAIMove(move[0], move[1]);
+                    yield return new WaitForSeconds(0.5f); // ให้ผู้เล่นเห็นหมากเดิน
+                    SwitchTurn(true);
+                }
+                else
+                {
+                    Debug.LogWarning("❌ AI ไม่สามารถหา move ได้");
+                }
             }
-        }
-        catch (System.Exception ex)
-        {
-            Debug.LogError($"AI move failed: {ex.Message}");
-        }
-        finally
-        {
-            isAITurnActive = false;
+
+            yield return null; // รอไปเรื่อย ๆ
         }
     }
 
@@ -156,10 +174,11 @@ public class GameManager : MonoBehaviour
     private bool ShouldProcessAITurn()
     {
         return !PauseManager.isPaused &&
-               IsCurrentPlayerAI() &&
-               !isAITurnActive &&
-               !gameIsOver &&
-               !ChessBoard.Instance.IsPromoting();
+          IsCurrentPlayerAI() &&
+          !isAITurnActive &&
+          !gameIsOver &&
+          !ChessBoard.Instance.IsPromoting();
+
     }
 
     private bool IsCurrentPlayerAI()
@@ -170,15 +189,23 @@ public class GameManager : MonoBehaviour
 
     private void ExecuteAIMove(Vector2Int from, Vector2Int to)
     {
-        if (chessBoard.PiecesOnBoard.TryGetValue(from, out ChessPiece piece))
+        if (!chessBoard.PiecesOnBoard.TryGetValue(from, out ChessPiece piece))
         {
-            chessBoard.SelectPiece(piece);
-            chessBoard.MoveSelectedPiece(to);
+            Debug.LogWarning($"❌ AI tried to move from {from}, but no piece found!");
+            return;
         }
-        else
+
+        if (piece.team != currentTurn)
         {
-            Debug.LogWarning($"❌ No piece found at AI start position: {from}");
+            Debug.LogWarning($"🚨 AI tried to move wrong team! Piece={piece.team}, CurrentTurn={currentTurn}");
+            return;
         }
+
+        chessBoard.SelectPiece(piece);
+        chessBoard.MoveSelectedPiece(to);
+        Debug.Log($"[EXECUTE] CurrentTurn={currentTurn}, Trying Move {from} → {to}");
+
+        //Debug.Log($"🤖 AI moved {piece.pieceType} from {from} → {to}");
     }
 
     private void SetupAIVsAIMode()
@@ -201,27 +228,26 @@ public class GameManager : MonoBehaviour
     private void SetupSinglePlayerMode()
     {
         currentMode = GameModes.SinglePlayer;
-        aiColor = PlayerPrefs.GetString("AI_Color", "Black");
+
+        // ดึงระดับความยากจาก PlayerPrefs (ถ้าไม่มี default = Easy)
         string difficulty = PlayerPrefs.GetString("AI_Difficulty", "Easy");
-        //Debug.Log($"[MODE] Single Player - AI Color: {aiColor}, Difficulty: {difficulty}");
 
-        if (aiColor == "White")
-        {
-            SetPlayerTypes(PlayerType.AI, PlayerType.Human);
-            aiDifficultyWhite = ParseDifficulty(difficulty);
-        }
-        else
-        {
-            SetPlayerTypes(PlayerType.Human, PlayerType.AI);
-            aiDifficultyBlack = ParseDifficulty(difficulty);
-        }
+        // กำหนดตายตัว: ขาว = Human, ดำ = AI
+        SetPlayerTypes(PlayerType.Human, PlayerType.AI);
 
+        // ตั้ง difficulty: ฝั่งขาว (Human) = None, ฝั่งดำ (AI) = ตามค่าที่เลือก
+        aiDifficultyWhite = AIDifficulty.None; // Human ไม่ใช้ AI
+        aiDifficultyBlack = ParseDifficulty(difficulty);
+
+        // ส่งค่าความยากไปให้ AI system
         SetAIDifficulty(aiDifficultyWhite.ToString(), aiDifficultyBlack.ToString());
 
-        SetPlayerNamesAndTypes(); 
+        // ตั้งชื่อผู้เล่น
+        SetPlayerNamesAndTypes();
 
-        //Debug.Log($"[MODE] Single Player - AI: {aiColor} ({difficulty})");
+        Debug.Log($"[MODE] Single Player - White: Human, Black: AI ({difficulty})");
     }
+
 
     private ChessPiece.Team GetOpponentTeam(ChessPiece.Team team)
     {
@@ -499,9 +525,6 @@ public class GameManager : MonoBehaviour
         UpdatePlayerTurnUI();
     }
 
-    public bool IsGameOver()
-    {
-        return gameIsOver;
-    }
+    public bool IsGameOver() => gameIsOver;
 
 }

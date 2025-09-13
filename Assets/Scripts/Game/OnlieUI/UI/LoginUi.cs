@@ -7,7 +7,6 @@ using static System.Net.Mime.MediaTypeNames;
 using Image = UnityEngine.UI.Image;
 using TMPro;
 using UnityEngine.SceneManagement;
-using UnityEditor.SearchService;
 
 public class LoginUi : MonoBehaviour
 {
@@ -72,20 +71,20 @@ public class LoginUi : MonoBehaviour
         txtLoginVaildaton.GetComponent<UnityEngine.UI.Text>().text = error;
     }
 
-    //private void HandleLogoutSuccess()
-    //{
-    //    Debug.Log("Logout success UI side!");
+    private void HandleLogoutSuccess()
+    {
+        Debug.Log("Logout success UI side!");
 
 
-    //    // หรือไป Scene Login โดยตรง
-    //    SceneManager.LoadScene("LoginScene");
-    //}
+        // หรือไป Scene Login โดยตรง
+        SceneManager.LoadScene("LoginScene");
+    }
 
-    //private void HandleLogoutFailed(string error)
-    //{
-    //    Debug.LogError("Logout failed: " + error);
-    //    // สามารถโชว์ Popup หรือ Text แจ้งผู้ใช้
-    //}
+    private void HandleLogoutFailed(string error)
+    {
+        Debug.LogError("Logout failed: " + error);
+        // สามารถโชว์ Popup หรือ Text แจ้งผู้ใช้
+    }
 
     private void HandleRegisterSuccess()
     {
@@ -145,18 +144,18 @@ public class LoginUi : MonoBehaviour
         StartCoroutine(authApi.Instance.RegisterRequest(username, email, pass));
     }
 
-    //public void LogoutUser()
-    //{
-    //    int userId = PlayerPrefs.GetInt("user_id", -1);
-    //    if (userId != -1)
-    //    {
-    //        StartCoroutine(authApi.Instance.LogoutRequest(userId));
-    //    }
-    //    else
-    //    {
-    //        Debug.LogWarning("No user logged in.");
-    //    }
-    //}
+    public void LogoutUser()
+    {
+        int userId = PlayerPrefs.GetInt("user_id", -1);
+        if (userId != -1)
+        {
+            StartCoroutine(authApi.Instance.LogoutRequest(userId));
+        }
+        else
+        {
+            Debug.LogWarning("No user logged in.");
+        }
+    }
 
     public void Home()
     {

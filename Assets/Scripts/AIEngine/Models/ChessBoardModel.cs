@@ -26,6 +26,7 @@ public class ChessBoardModel
     // Draw Conditions
     public List<string> PositionHistory { get; } = new List<string>();
     public int FiftyMoveCounter { get; private set; }
+    public int CurrentTurn { get; internal set; }
 
     // ======== Constructor ========
     public ChessBoardModel()
@@ -188,6 +189,11 @@ public class ChessBoardModel
         ChessBoardModel clone = this.Clone();
         clone.IsWhiteTurn = isWhiteTurn; // อนุญาตให้ตั้งค่าในคลาสตัวเอง
         return clone;
+    }
+
+    public void SetFiftyMoveCounter(int value)
+    {
+        FiftyMoveCounter = value;
     }
 
     // ======== Check Game Over ========

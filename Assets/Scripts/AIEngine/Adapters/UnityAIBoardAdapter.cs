@@ -1,68 +1,78 @@
-﻿using System.Threading.Tasks;
-using AI.Utilities;
+﻿using AI.Utilities;
 using AIEngine.Core;
 using Game.Interfaces;
+using System.Threading.Tasks;
 using UnityEngine;
+using static ChessPiece;
 
 namespace AI.Adapters
 {
     public class UnityAIBoardAdapter : IChessAI
     {
-        public async Task<Vector2Int[]> CalculateMoveAsync(ChessBoard unityBoard, ChessPiece.Team currentTeam, AIDifficulty difficulty)
+        private Vector2Int[] calculatedMove;
+        private bool isThinking;
+
+        public void StartCalculateMove(ChessBoard board, Team team, AIDifficulty difficulty)
         {
-            // แปลงกระดาน Unity เป็นโมเดล AI
-            ChessBoardModel aiBoard = BoardConverter.Convert(unityBoard, currentTeam);
+            calculatedMove = null;
+            isThinking = true;
 
-            // คำนวณการเดินใน thread background
-            MoveModel aiMove = await Task.Run(() =>
-                AICore.Instance.FindBestMove(aiBoard, (AICore.Difficulty)difficulty));
+            // 🔹 แปลง Unity ChessBoard → ChessBoardModel (ฝั่ง AI)
+            var boardModel = BoardConverter.Convert(board, team);
 
-            // ตรวจ null ก่อนเข้าถึง
-            if (aiMove == null)
+            // 🔹 เรียก AICore หา best move
+            var moveModel = AICore.Instance.FindBestMove(
+                boardModel,
+                ConvertDifficulty(difficulty)
+            );
+
+            if (moveModel != null)
             {
-                Debug.LogWarning("AI ไม่สามารถหาการเดินที่เหมาะสมได้ (aiMove == null)");
-                return null;
+                // แปลงพิกัด จาก array (0 = บนสุด) → Unity (0 = ล่างสุด)
+                int unityFromX = moveModel.FromX;
+                int unityFromY = moveModel.FromY;
+
+                int unityToX = moveModel.ToX;
+                int unityToY = moveModel.ToY;
+
+                //Debug.Log($"[AI MOVE MODEL] From=({moveModel.FromX},{moveModel.FromY}) To=({moveModel.ToX},{moveModel.ToY})");
+                //Debug.Log($"[UNITY MOVE] From=({unityFromX},{unityFromY}) To=({unityToX},{unityToY})");
+                if (moveModel != null)
+                {
+                    Debug.Log($"[AI MOVE MODEL] From=({moveModel.FromX},{moveModel.FromY}) To=({moveModel.ToX},{moveModel.ToY})");
+                    calculatedMove = new Vector2Int[]
+                    {
+                    BoardConverter.ConvertPositionToUnity(new Vector2Int(moveModel.FromX, moveModel.FromY)),
+                    BoardConverter.ConvertPositionToUnity(new Vector2Int(moveModel.ToX, moveModel.ToY))
+                    };
+                    Debug.Log($"[UNITY MOVE] From={calculatedMove[0]} To={calculatedMove[1]}");
+                }
             }
+            isThinking = false;
+        }
 
-            // แปลงตำแหน่งกลับเป็นพิกัด Unity
-            Vector2Int aiFrom = new Vector2Int(aiMove.FromX, aiMove.FromY);
-            Vector2Int aiTo = new Vector2Int(aiMove.ToX, aiMove.ToY);
-
-            Vector2Int unityFrom = BoardConverter.ConvertPositionToUnity(aiFrom);
-            Vector2Int unityTo = BoardConverter.ConvertPositionToUnity(aiTo);
-
-            if (IsValidMove(unityBoard, unityFrom, unityTo))
+        public Vector2Int[] GetCalculatedMove()
+        {
+            if (!isThinking && calculatedMove != null)
             {
-                Debug.Log($"AI ({difficulty}) เดิน: {unityFrom} → {unityTo}");
-                return new Vector2Int[] { unityFrom, unityTo };
+                var move = calculatedMove;
+                calculatedMove = null;
+                return move;
             }
-
-            Debug.LogWarning($"การเดินของ AI ไม่ถูกต้อง: {unityFrom} → {unityTo}");
             return null;
         }
 
-        private bool IsValidMove(ChessBoard board, Vector2Int from, Vector2Int to)
+        private AICore.Difficulty ConvertDifficulty(AIDifficulty difficulty)
         {
-            if (!board.PiecesOnBoard.ContainsKey(from))
+            switch (difficulty)
             {
-                Debug.LogWarning($"ไม่มีหมากที่ตำแหน่งเริ่มต้น: {from}");
-                return false;
+                case AIDifficulty.Easy: return AICore.Difficulty.Easy;
+                case AIDifficulty.Normal: return AICore.Difficulty.Normal;
+                case AIDifficulty.Hard: return AICore.Difficulty.Hard;
+                default: return AICore.Difficulty.Easy;
             }
-
-            if (to.x < 0 || to.x >= 8 || to.y < 0 || to.y >= 8)
-            {
-                Debug.LogWarning($"ตำแหน่งปลายทางอยู่นอกกระดาน: {to}");
-                return false;
-            }
-
-            ChessPiece piece = board.PiecesOnBoard[from];
-            if (piece.team != board.GetGameManager().GetCurrentTurn())
-            {
-                Debug.LogWarning($"หมากไม่ใช่ของทีมปัจจุบัน: {piece.team}");
-                return false;
-            }
-
-            return true;
         }
     }
 }
+
+

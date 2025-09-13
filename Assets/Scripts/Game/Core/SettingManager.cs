@@ -53,6 +53,7 @@ public class SettingManager : MonoBehaviour
     public void ReturnToMainMenu()
     {
         Time.timeScale = 1f;
+        PauseManager.Resume();
         SceneManager.LoadScene("MainMenu");
     }
  
