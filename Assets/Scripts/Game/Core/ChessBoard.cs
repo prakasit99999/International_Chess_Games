@@ -553,18 +553,6 @@ public class ChessBoard : MonoBehaviour
         return captured;
     }
 
-    public Vector2Int FindKingPosition(ChessPiece.Team team)
-    {
-        foreach (var entry in piecesOnBoard)
-        {
-            ChessPiece piece = entry.Value;
-            if (piece.pieceType == ChessPiece.PieceType.King && piece.team == team)
-            {
-                return piece.boardPosition;
-            }
-        }
-        throw new System.Exception($"ไม่พบคิงของทีม {team}");
-    }
 
     public bool IsTileEmpty(Vector2Int position)
     {
@@ -658,95 +646,150 @@ public class ChessBoard : MonoBehaviour
 
     public bool IsKingInCheck(ChessPiece.Team team)
     {
-        // หาตำแหน่งของคิง
-        Vector2Int kingPosition = FindKingPosition(team);
+        Vector2Int kingPos = FindKingPosition(team);
+        if (kingPos == -Vector2Int.one) return false; // ถ้าไม่เจอ King ถือว่าไม่ check
 
-        // ตรวจสอบว่าตำแหน่งคิงถูกโจมตีหรือไม่
-        return IsPositionUnderAttack(kingPosition, team);
+        foreach (var entry in piecesOnBoard.ToList()) // clone กัน InvalidOperationException
+        {
+            ChessPiece enemy = entry.Value;
+            if (enemy != null && enemy.team != team)
+            {
+                if (enemy.IsValidMove(kingPos))
+                    return true;
+            }
+        }
+        return false;
+    }
+
+    public Vector2Int FindKingPosition(ChessPiece.Team team)
+    {
+        foreach (var entry in piecesOnBoard.ToList()) // ใช้ ToList() ป้องกัน collection modified
+        {
+            ChessPiece piece = entry.Value;
+            if (piece != null && piece.pieceType == ChessPiece.PieceType.King && piece.team == team)
+            {
+                return piece.boardPosition;
+            }
+        }
+
+        Debug.LogWarning($"⚠️ ไม่พบคิงของทีม {team} ใน state ปัจจุบัน");
+        return -Vector2Int.one; // return invalid position แทน throw
     }
 
     public bool IsKingInCheckmate(ChessPiece.Team team)
     {
         if (!IsKingInCheck(team))
-            return false; // ถ้าไม่ได้ถูก Check ก็ไม่มีทาง Checkmate
+            return false;
 
-        Stack<Action> changes = new Stack<Action>();
-
-        // ลูปตรวจสอบหมากทุกตัวของทีม
-        foreach (var position in piecesOnBoard.Keys.ToList())
+        foreach (var entry in piecesOnBoard.ToList())
         {
-            if (!piecesOnBoard.TryGetValue(position, out ChessPiece piece) || piece.team != team)
-                continue;
+            ChessPiece piece = entry.Value;
+            if (piece == null || piece.team != team) continue;
 
             foreach (var move in piece.GetValidMoves())
             {
-                Vector2Int originalPosition = piece.boardPosition;
                 ChessPiece capturedPiece = null;
+                Vector2Int originalPos = piece.boardPosition;
 
-                // จำลองการเดิน
+                // จำลองเดิน
                 if (piecesOnBoard.TryGetValue(move, out capturedPiece))
-                {
-                    changes.Push(() => piecesOnBoard[move] = capturedPiece); // Undo การกิน
                     piecesOnBoard.Remove(move);
-                }
-                changes.Push(() => piecesOnBoard[originalPosition] = piece);
-                piecesOnBoard.Remove(originalPosition);
+
+                piecesOnBoard.Remove(originalPos);
                 piecesOnBoard[move] = piece;
                 piece.boardPosition = move;
 
                 bool stillInCheck = IsKingInCheck(team);
 
-                // Undo การเดิน
-                while (changes.Count > 0)
-                {
-                    changes.Pop().Invoke();
-                }
+                // Rollback
+                piecesOnBoard.Remove(move);
+                piece.boardPosition = originalPos;
+                piecesOnBoard[originalPos] = piece;
+                if (capturedPiece != null)
+                    piecesOnBoard[move] = capturedPiece;
 
                 if (!stillInCheck)
-                    return false;
+                    return false; // เจอ move ที่ช่วยได้
             }
         }
-
-        return true; // ถ้าไม่มีหมากตัวไหนสามารถช่วยคิงได้ -> Checkmate
+        return true;
     }
 
     public bool IsStalemate(ChessPiece.Team team)
     {
         if (IsKingInCheck(team))
-            return false; // ถ้ายังถูก Check ไม่ถือว่าเป็น Stalemate
+            return false;
 
-        foreach (var position in piecesOnBoard.Keys.ToList())
+        foreach (var entry in piecesOnBoard.ToList())
         {
-            if (!piecesOnBoard.TryGetValue(position, out ChessPiece piece) || piece.team != team)
-                continue;
+            ChessPiece piece = entry.Value;
+            if (piece == null || piece.team != team) continue;
 
             foreach (var move in piece.GetValidMoves())
             {
-                Vector2Int originalPosition = piece.boardPosition;
                 ChessPiece capturedPiece = null;
+                Vector2Int originalPos = piece.boardPosition;
 
-                // จำลองการเดิน
+                // จำลองเดิน
                 if (piecesOnBoard.TryGetValue(move, out capturedPiece))
                     piecesOnBoard.Remove(move);
-                piecesOnBoard.Remove(originalPosition);
+
+                piecesOnBoard.Remove(originalPos);
                 piecesOnBoard[move] = piece;
                 piece.boardPosition = move;
 
                 bool stillInCheck = IsKingInCheck(team);
 
-                // Undo การเดิน
+                // Rollback
                 piecesOnBoard.Remove(move);
-                piecesOnBoard[originalPosition] = piece;
-                piece.boardPosition = originalPosition;
+                piece.boardPosition = originalPos;
+                piecesOnBoard[originalPos] = piece;
                 if (capturedPiece != null)
                     piecesOnBoard[move] = capturedPiece;
 
                 if (!stillInCheck)
-                    return false;
+                    return false; // มี move ถูกกฎหมาย
             }
         }
-        return true; // ถ้าไม่มีการเดินที่ถูกต้องเลย ถือว่าเป็น Stalemate
+        return true;
     }
+
+    public bool DoesMoveExposeKing(ChessPiece piece, Vector2Int target)
+    {
+        // 📌 สำเนา state ปัจจุบัน
+        var backup = new Dictionary<Vector2Int, ChessPiece>(piecesOnBoard);
+
+        Vector2Int originalPosition = piece.boardPosition;
+        ChessPiece capturedPiece = null;
+
+        try
+        {
+            // ✅ จำลอง move
+            piecesOnBoard.Remove(originalPosition);
+            if (piecesOnBoard.TryGetValue(target, out capturedPiece))
+            {
+                piecesOnBoard.Remove(target);
+            }
+
+            piecesOnBoard[target] = piece;
+            piece.boardPosition = target;
+
+            // ✅ ตรวจ check
+            return IsKingInCheck(piece.team);
+        }
+        finally
+        {
+            // 🔄 rollback state กลับคืน (ไม่ให้ King หาย)
+            piecesOnBoard.Clear();
+            foreach (var kv in backup)
+            {
+                piecesOnBoard[kv.Key] = kv.Value;
+            }
+
+            piece.boardPosition = originalPosition;
+        }
+    }
+
 
     public bool IsEnPassantTarget(Vector2Int position)
     {

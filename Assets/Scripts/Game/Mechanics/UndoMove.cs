@@ -7,6 +7,7 @@ public class UndoMove : MonoBehaviour
     public static UndoMove Instance; // Singleton Pattern
     public GameObject piecePrefab;
     public Stack<HistoryMove.HistoryMoveData> moveHistory;
+    [SerializeField] private ChessBoardModel board;
 
     private ChessBoard chessBoard;
     private HistoryMove historyMove;
@@ -31,17 +32,17 @@ public class UndoMove : MonoBehaviour
 
     public void UndoLastMove()
     {
-
-        ChessPiece movedPiece = null;
         if (PauseManager.isPaused) return;
-        if (GameManager.Instance != null && GameManager.Instance.GetCurrentMode() == GameManager.GameModes.AIVsAI ) {
+        if (GameManager.Instance != null && GameManager.Instance.GetCurrentMode() == GameManager.GameModes.AIVsAI)
             return;
-        }
         if (historyMove.GetMoveHistory().Count == 0) return;
 
         HistoryMove.HistoryMoveData lastMove = historyMove.GetMoveHistory().Pop();
 
-        // ✅ ย้อนค่า 50-move counter
+        // ✅ ลบตำแหน่งล่าสุดจาก BoardModel
+        board.PopLastPosition();
+
+        // ✅ ย้อนค่า Fifty-move counter
         chessBoard.SetFiftyMoveCounter(lastMove.fiftyMoveCounter);
 
         if (lastMove.fiftyMoveCounter == 0)
@@ -52,38 +53,34 @@ public class UndoMove : MonoBehaviour
         Vector2Int destinationPosition = lastMove.endPosition;
         Vector2Int originalPosition = lastMove.startPosition;
 
-        // ✅ Undo กรณีพิเศษก่อน
+        // ✅ Undo กรณีพิเศษ
         if (lastMove.isEnPassant)
         {
             UndoEnPassant(lastMove, chessBoard.GetPiecesOnBoard(), chessBoard.transform);
-            Debug.Log($"🔄 ย้อน En Passant: {originalPosition} → {destinationPosition} (คืนเบี้ยที่ถูกกินที่ {lastMove.capturedPiecePosition})");
         }
         else if (lastMove.isCastling)
         {
             UndoCastling(lastMove, chessBoard.GetPiecesOnBoard(), chessBoard.transform);
         }
-        else if ((movedPiece = UndoPromotion(lastMove, chessBoard.GetPiecesOnBoard())) == null)
+        else
         {
-            // ❌ ไม่ใช่โปรโมท → เอาหมากเดิมกลับ
-            if (chessBoard.GetPiecesOnBoard().TryGetValue(destinationPosition, out movedPiece))
+            ChessPiece movedPiece = null;
+            if ((movedPiece = UndoPromotion(lastMove, chessBoard.GetPiecesOnBoard())) == null)
             {
-                chessBoard.GetPiecesOnBoard().Remove(destinationPosition);
+                if (chessBoard.GetPiecesOnBoard().TryGetValue(destinationPosition, out movedPiece))
+                {
+                    chessBoard.GetPiecesOnBoard().Remove(destinationPosition);
+                    movedPiece.SetPosition(originalPosition.x, originalPosition.y);
+                    movedPiece.HasMoved = lastMove.pieceHasMovedBefore;
+                    chessBoard.GetPiecesOnBoard()[originalPosition] = movedPiece;
+                }
+            }
+            else
+            {
                 movedPiece.SetPosition(originalPosition.x, originalPosition.y);
                 movedPiece.HasMoved = lastMove.pieceHasMovedBefore;
                 chessBoard.GetPiecesOnBoard()[originalPosition] = movedPiece;
             }
-            else
-            {
-                Debug.LogWarning($"❌ ไม่พบหมากที่ {destinationPosition} ตอน Undo");
-                return;
-            }
-        }
-        else
-        {
-            // ✅ โปรโมท → คืนเบี้ยเดิม
-            movedPiece.SetPosition(originalPosition.x, originalPosition.y);
-            movedPiece.HasMoved = lastMove.pieceHasMovedBefore;
-            chessBoard.GetPiecesOnBoard()[originalPosition] = movedPiece;
         }
 
         // ✅ คืนหมากที่ถูกกิน
@@ -94,17 +91,16 @@ public class UndoMove : MonoBehaviour
                 lastMove.capturedPieceTeam,
                 lastMove.capturedPiecePosition
             );
-            Debug.Log($"✅ คืนหมากที่ถูกกิน: {lastMove.capturedPieceType} ที่ {lastMove.capturedPiecePosition}");
         }
 
-        // ✅ รีเซ็ต En Passant target
+        // ✅ รีเซ็ต En Passant
         chessBoard.SetEnPassantTarget(lastMove.previousEnPassantTarget);
 
-        // ✅ ล้างตัวเลือก และสลับตา
+        // ✅ ล้างตัวเลือกและสลับตา
         chessBoard.SetselectedPiece(null);
         GameManager.Instance.SwitchTurn(true);
 
-        Debug.Log($"🔙 Undo การเดิน: {lastMove.startPosition} → {lastMove.endPosition}");
+        Debug.Log($"🔙 Undo: {lastMove.startPosition} → {lastMove.endPosition}");
     }
 
     private ChessPiece UndoPromotion(HistoryMoveData lastMove, Dictionary<Vector2Int, ChessPiece> piecesOnBoard)
@@ -135,6 +131,8 @@ public class UndoMove : MonoBehaviour
 
             // คืนค่าสถานะ HasMoved
             newPawn.HasMoved = lastMove.pieceHasMovedBefore;
+            piecesOnBoard[lastMove.startPosition] = newPawn;
+
 
             Debug.Log($"✅ ย้อนเลื่อนขั้น: สร้างเบี้ยกลับที่ {lastMove.startPosition}");
             return newPawn;

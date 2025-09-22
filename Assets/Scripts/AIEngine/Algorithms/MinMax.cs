@@ -10,7 +10,10 @@ namespace AIEngine.Algorithms
         public override MoveModel FindBestMove(ChessBoardModel board, int depth)
         {
             var moves = MoveGenerator.GenerateMoves(board);
-            MoveModel bestMove = moves[0];
+            if (moves == null || moves.Count == 0)
+                throw new InvalidOperationException("No valid moves found.");
+
+            MoveModel bestMove = null;
             int bestScore = int.MinValue;
 
             foreach (MoveModel move in moves)
@@ -26,14 +29,17 @@ namespace AIEngine.Algorithms
                 }
             }
 
-            return bestMove;
+            return bestMove ?? moves.First();
         }
+
 
         protected int MinimaxRecursive(ChessBoardModel board, int depth, bool isMaximizing)
         {
             if (depth == 0 || board.IsGameOver())
                 return AIEngine.Evaluation.Evaluation.Evaluate(board);
 
+            if (board.RepetitionCount >= 3)
+                return 0;
             var moves = MoveGenerator.GenerateMoves(board);
             int bestScore = isMaximizing ? int.MinValue : int.MaxValue;
 

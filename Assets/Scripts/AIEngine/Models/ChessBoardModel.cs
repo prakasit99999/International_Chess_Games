@@ -10,8 +10,10 @@ public class ChessBoardModel
     // ======== Properties ========
     public int[,] Board { get; set; }
     public bool IsWhiteTurn { get; set; }
-
-
+    //เก็บประวัติตำแหน่ง
+    private List<string> _positionHistory = new List<string>();
+    // นับจำนวนครั้งที่แต่ละ position-key ปรากฏ
+    private Dictionary<string, int> _positionCounts = new Dictionary<string, int>();
     // Castling Flags
     public bool WhiteKingMoved { get; set; }
     public bool WhiteRookKingSideMoved { get; set; }
@@ -34,6 +36,55 @@ public class ChessBoardModel
         Board = new int[8, 8];
         IsWhiteTurn = true;
         InitializeBoard();
+    }
+
+    public int RepetitionCount
+    {
+        get
+        {
+            var key = GetPositionKey();
+            return _positionCounts.TryGetValue(key, out var c) ? c : 0;
+        }
+    }
+
+    public void PopLastPosition()
+    {
+        if (_positionHistory == null || _positionHistory.Count == 0) return;
+
+        var last = _positionHistory[_positionHistory.Count - 1];
+        if (_positionCounts.TryGetValue(last, out var c))
+        {
+            if (c <= 1) _positionCounts.Remove(last);
+            else _positionCounts[last] = c - 1;
+        }
+        _positionHistory.RemoveAt(_positionHistory.Count - 1);
+    }
+
+    private string GetPositionKey()
+    {
+        // ถ้า SerializeBoard() แสดงกระดานอย่างเดียว ให้เพิ่ม side-to-move
+        // ถ้า SerializeBoard() รวมทุกอย่างแล้ว (castling, en-passant, turn) ก็ไม่จำเป็นเพิ่มอะไร
+        string baseKey = SerializeBoard(); // ใช้เมธอดที่คุณมีอยู่แล้ว
+        string turnKey = IsWhiteTurn ? "W" : "B"; // ปรับชื่อ property ตามที่มีจริง
+        return $"{baseKey}|{turnKey}";
+    }
+
+    public void InitializePositionHistory()
+    {
+        _positionHistory = new List<string>();
+        _positionCounts = new Dictionary<string, int>();
+        // บันทึกสถานะเริ่มต้นด้วย
+        RecordPosition();
+    }
+
+    public void RecordPosition()
+    {
+        var key = GetPositionKey();
+        _positionHistory.Add(key);
+        if (_positionCounts.TryGetValue(key, out var c))
+            _positionCounts[key] = c + 1;
+        else
+            _positionCounts[key] = 1;
     }
 
     // ======== Initialize Board ========
@@ -82,6 +133,7 @@ public class ChessBoardModel
             else
                 FiftyMoveCounter++;
 
+         
             // ======== บันทึกประวัติกระดาน ========
             string currentPosition = SerializeBoard();
             PositionHistory.Add(currentPosition);
@@ -132,6 +184,8 @@ public class ChessBoardModel
 
             // ======== สลับตาเล่น ========
             IsWhiteTurn = !IsWhiteTurn;
+            RecordPosition();
+
         }
         catch (Exception ex)
         {
@@ -163,6 +217,10 @@ public class ChessBoardModel
         ChessBoardModel newBoard = new ChessBoardModel();
         newBoard.Board = (int[,])this.Board.Clone(); // Deep copy of the board array
         newBoard.IsWhiteTurn = this.IsWhiteTurn;
+
+        //คัดลอกประวัติตำแหน่ง
+        newBoard._positionHistory = new List<string>(this._positionHistory);
+        newBoard._positionCounts = new Dictionary<string, int>(this._positionCounts);
 
         // Copy castling flags
         newBoard.WhiteKingMoved = this.WhiteKingMoved;

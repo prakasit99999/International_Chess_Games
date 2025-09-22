@@ -97,6 +97,7 @@ public class ChessPiece : MonoBehaviour
             return boardManager.IsEnemyAtPosition(newPosition, team);
         }
 
+
         return false;
     }
 
@@ -145,11 +146,17 @@ public class ChessPiece : MonoBehaviour
 
     public bool IsValidMove(Vector2Int newPosition)
     {
-        List<Vector2Int> availableMoves = new List<Vector2Int>();
-
         // ตรวจสอบว่าตำแหน่งใหม่อยู่บนกระดานหรือไม่
         if (!boardManager.IsPositionOnBoard(newPosition))
+        {
             return false;
+        }
+
+        // ตรวจสอบว่าตำแหน่งใหม่มีหมากทีมเดียวกันหรือไม่
+        if (boardManager.IsOccupiedByTeam(newPosition, team))
+        {
+            return false;
+        }
 
         // ตรวจสอบกฎการเดินของหมากแต่ละประเภท
         bool isValidPattern = false;
@@ -178,7 +185,7 @@ public class ChessPiece : MonoBehaviour
         // ถ้าการเดินไม่ถูกต้องตามกฎของหมาก
         if (!isValidPattern)
             return false;
-
+        
         // ตรวจสอบทางเดินสำหรับหมากที่ต้องเดินเป็นเส้นตรงหรือแนวทแยง (เช่น เรือ, บิชอป, ควีน)
         if (pieceType == PieceType.Rook || pieceType == PieceType.Bishop || pieceType == PieceType.Queen)
         {
@@ -186,9 +193,12 @@ public class ChessPiece : MonoBehaviour
                 return false;
         }
 
-        // ตรวจสอบว่าตำแหน่งใหม่มีหมากทีมเดียวกันหรือไม่
-        if (boardManager.IsOccupiedByTeam(newPosition, team))
+      
+        // เช็คว่าหลังจากเดินแล้ว King ของทีมนี้ยังปลอดภัยอยู่ไหม
+        if (boardManager.DoesMoveExposeKing(this, newPosition))
+        {
             return false;
+        }
 
         return true;
     }
@@ -247,10 +257,11 @@ public class ChessPiece : MonoBehaviour
             for (int y = 0; y < 8; y++)
             {
                 Vector2Int targetPosition = new Vector2Int(x, y);
-                if (IsValidMove(targetPosition))
+                if (IsValidMove(targetPosition) && !boardManager.DoesMoveExposeKing(this, targetPosition))
                 {
                     validMoves.Add(targetPosition);
                 }
+
             }
         }
 

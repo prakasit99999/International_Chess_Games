@@ -1,4 +1,5 @@
-﻿using AI.Adapters;
+﻿
+using AIEngine.Adapters;
 using Game.Interfaces;
 using System.Collections;
 using System.Threading.Tasks;
@@ -82,6 +83,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
         if (chessBoard == null)
         {
             Debug.LogError("❌ ChessBoard ไม่ถูกพบ! ตรวจสอบว่า ChessBoard อยู่ในฉาก");
@@ -143,17 +145,22 @@ public class GameManager : MonoBehaviour
                 // ทำ delay ให้เหมือนกำลังคิด
                 yield return new WaitForSeconds(0.3f);
 
-                var move = chessAI.GetCalculatedMove();
-                if (move != null)
-                {
-                    ExecuteAIMove(move[0], move[1]);
-                    yield return new WaitForSeconds(0.5f); // ให้ผู้เล่นเห็นหมากเดิน
-                    SwitchTurn(true);
-                }
-                else
-                {
-                    Debug.LogWarning("❌ AI ไม่สามารถหา move ได้");
-                }
+              var move = chessAI.GetCalculatedMove();
+if (move != null)
+{
+    ExecuteAIMove(move[0], move[1]);
+
+    // ✅ เคลียร์ผลลัพธ์หลังใช้ เพื่อป้องกันลูป
+    chessAI.ClearCalculatedMove();
+
+    yield return new WaitForSeconds(0.5f); // ให้ผู้เล่นเห็นหมากเดิน
+    SwitchTurn(true);
+}
+else
+{
+    Debug.LogWarning("❌ AI ไม่สามารถหา move ได้");
+}
+
             }
 
             yield return null; // รอไปเรื่อย ๆ
@@ -366,13 +373,13 @@ public class GameManager : MonoBehaviour
         if (ChessBoard.Instance.IsKingInCheckmate(currentTurn))
         {
             ChessPiece.Team winningTeam = GetOpponentTeam(currentTurn);
-            Debug.Log($"♟️ Checkmate! {winningTeam} ชนะเกม!");
+            Debug.Log($"♟️ Checkmate! {winningTeam} win!");
             GameOver(winningTeam);
             return;
         }
         else if (ChessBoard.Instance.IsStalemate(currentTurn))
         {
-            Debug.Log("⚖️ Stalemate! เกมเสมอ!");
+            Debug.Log("⚖️ Stalemate! draw!");
             GameOver(ChessPiece.Team.None);
             return;
         }
@@ -394,7 +401,7 @@ public class GameManager : MonoBehaviour
         if (winningTeam == Team.None)
         {
             drawGamePanel.SetActive(true);
-            drawTxt.text = "⚖️ เกมเสมอ!";
+            drawTxt.text = "game draw!";
         }
         else
         {

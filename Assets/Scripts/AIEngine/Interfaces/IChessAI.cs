@@ -1,24 +1,30 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using UnityEngine;
-using static AIEngine.Core.AICore;
+﻿using UnityEngine;
+
 namespace Game.Interfaces
 {
     public enum AIDifficulty
     {
-        None, 
+        None,
         Easy,
         Normal,
         Hard
     }
 
-
     public interface IChessAI
     {
-        // เริ่มให้ AI คำนวณ แต่ไม่ใช้ async
+        /// <summary>
+        /// เริ่มให้ AI คำนวณตาเดิน (ใช้ Coroutine ไม่ block main thread)
+        /// </summary>
         void StartCalculateMove(ChessBoard board, ChessPiece.Team team, AIDifficulty difficulty);
-        // เรียกมาดูว่า AI คิดเสร็จแล้วหรือยัง
+
+        /// <summary>
+        /// คืนค่าตาเดินที่ AI คำนวณเสร็จแล้ว (null ถ้ายังไม่เสร็จ)
+        /// </summary>
         Vector2Int[] GetCalculatedMove();
+
+        /// <summary>
+        /// ล้างค่าหลังจากนำ move ไปใช้งานแล้ว
+        /// </summary>
+        void ClearCalculatedMove();
     }
 }

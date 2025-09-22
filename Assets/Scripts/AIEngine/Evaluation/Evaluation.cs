@@ -1,10 +1,24 @@
+using AIEngine.Utilities;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace AIEngine.Evaluation
 {
     public class Evaluation
     {
+        private static readonly HashSet<string> SeenPositions = new HashSet<string>();
+
+        private static int EvaluateRepetition(ChessBoardModel board)
+        {
+            string key = board.SerializeBoard();
+            if (SeenPositions.Contains(key))
+            {
+                return -50; // ลงโทษซ้ำ
+            }
+            SeenPositions.Add(key);
+            return 0;
+        }
 
         // ========== ค่าของตัวหมาก ==========
         private static readonly Dictionary<int, int> PieceValues = new Dictionary<int, int>
@@ -106,22 +120,45 @@ namespace AIEngine.Evaluation
         public static int Evaluate(ChessBoardModel board)
         {
             int score = 0;
-            bool isEndgame = IsEndgame(board); // ตรวจสอบว่าเป็นเกม Endgame หรือไม่
+            bool isEndgame = IsEndgame(board);
 
-            // 1. คะแนน Material (เดิม)
+            // 1. Material
             score += CalculateMaterialScore(board);
 
-            // 2. คะแนนตำแหน่งหมาก (ปรับตามประเภท)
+            // 2. Positional (PST, endgame aware)
             score += CalculatePositionalScore(board, isEndgame);
 
-            // 3. Mobility (จำนวนการเดินที่เป็นไปได้)
+            // 3. Repetition penalty
+            score += EvaluateRepetition(board);
+
+            // 4. Mobility
             score += CalculateMobilityScore(board);
 
-            // 4. King Safety (ความปลอดภัยของ King)
+            // 5. King Safety
             score += CalculateKingSafety(board, isEndgame);
 
-            // 5. Pawn Structure (โครงสร้างเบี้ย)
+            // 6. Pawn Structure
             score += EvaluatePawnStructure(board);
+
+            // 7. Capture bonus (ตามค่าหมากที่กินได้)
+            var captureMoves = MoveGenerator.GenerateMoves(board)
+                .Where(m => board.Board[m.ToX, m.ToY] != 0);
+            foreach (var move in captureMoves)
+            {
+                score += Math.Abs(board.Board[move.ToX, move.ToY]) / 10; // เบี้ย = 10, ควีน = 90
+            }
+
+            // 8. Pawn advancement bonus
+            var advancedPawns = MoveGenerator.GenerateMoves(board)
+                .Where(m => Math.Abs(board.Board[m.FromX, m.FromY]) == 1 &&
+                           (m.ToX < m.FromX || m.ToX > m.FromX));
+            if (advancedPawns.Any())
+                score += 15;
+
+            // 9. Fifty-move rule pressure
+            if (board.FiftyMoveCounter > 40) score -= 10;
+            if (board.FiftyMoveCounter > 60) score -= 30;
+            if (board.FiftyMoveCounter > 80) score -= 80;
 
             return board.IsWhiteTurn ? score : -score;
         }
@@ -174,6 +211,12 @@ namespace AIEngine.Evaluation
                             break;
                         case 3:
                             positionalScore += sign * BishopPositionScore[evalX, y];
+                            break;
+                        case 4:
+                            positionalScore += sign * RookPositionScore[evalX, y];
+                            break;
+                        case 5:
+                            positionalScore += sign * QueenPositionScore[evalX, y];
                             break;
                         case 6 when isEndgame:
                             positionalScore += sign * (Math.Abs(3 - x) + Math.Abs(3 - y)) * (-10);
