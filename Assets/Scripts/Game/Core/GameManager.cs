@@ -2,12 +2,9 @@
 using AIEngine.Adapters;
 using Game.Interfaces;
 using System.Collections;
-using System.Threading.Tasks;
 using TMPro;
 using UnityEngine;
-using static AIEngine.Core.AICore;
 using static ChessPiece;
-using static GameManager;
 
 public class GameManager : MonoBehaviour
 {
@@ -29,6 +26,7 @@ public class GameManager : MonoBehaviour
     private HistoryMoveUI historyMoveUI;
 
     public static GameManager Instance;
+    public  Team CurrentTurn => currentTurn;
 
     public enum PlayerType { Human, AI }
     public enum GameModes { LocalMultiplayer, SinglePlayer, AIVsAI, Online }
@@ -66,6 +64,7 @@ public class GameManager : MonoBehaviour
         this.currentMode = currentMode;
     }
 
+    [System.Obsolete]
     private void Awake()
     {
         if (Instance == null)
@@ -83,7 +82,6 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
         if (chessBoard == null)
         {
             Debug.LogError("❌ ChessBoard ไม่ถูกพบ! ตรวจสอบว่า ChessBoard อยู่ในฉาก");
@@ -91,7 +89,11 @@ public class GameManager : MonoBehaviour
         else
         {
             chessBoard.SetGameManager(this);
-            chessAI = new UnityAIBoardAdapter();
+            chessAI = GetComponent<UnityAIBoardAdapter>();
+            if (chessAI == null)
+            {
+                chessAI = gameObject.AddComponent<UnityAIBoardAdapter>();
+            }
             ModeSelect();
 
             // ถ้ามี AI ฝั่งใดฝั่งหนึ่ง → เริ่ม Coroutine
@@ -102,36 +104,18 @@ public class GameManager : MonoBehaviour
         }
     }
 
-
     // Update is called once per frame
     void Update()
     {
         if (PauseManager.isPaused || gameIsOver) return;
-
-        if (ShouldProcessAITurn())
-        {
-            chessAI.StartCalculateMove(chessBoard, currentTurn,
-                currentTurn == Team.White ? aiDifficultyWhite : aiDifficultyBlack);
-
-            isAITurnActive = true;
-        }
-
-        if (isAITurnActive)
-        {
-            var move = chessAI.GetCalculatedMove();
-            if (move != null)
-            {
-                ExecuteAIMove(move[0], move[1]);
-                isAITurnActive = false;
-            }
-        }
     }
+
 
     private IEnumerator AIPlayLoop()
     {
         while (!gameIsOver)
         {
-            // รอถ้า pause หรือ promote อยู่
+            // รอ pause / promotion
             while (PauseManager.isPaused || gameIsOver || ChessBoard.Instance.IsPromoting())
                 yield return null;
 
@@ -139,31 +123,27 @@ public class GameManager : MonoBehaviour
             {
                 var difficulty = (currentTurn == Team.White) ? aiDifficultyWhite : aiDifficultyBlack;
 
-                // เริ่มคิด
-                chessAI.StartCalculateMove(chessBoard, currentTurn, difficulty);
+                // 🟢 ส่ง currentTurn ที่ถูกต้อง
+                chessAI.StartCalculateMove(chessBoard, currentTurn, CurrentTurn, difficulty);
 
-                // ทำ delay ให้เหมือนกำลังคิด
                 yield return new WaitForSeconds(0.3f);
 
-              var move = chessAI.GetCalculatedMove();
-if (move != null)
-{
-    ExecuteAIMove(move[0], move[1]);
+                var move = chessAI.GetCalculatedMove();
+                if (move != null)
+                {
+                    ExecuteAIMove(move[0], move[1]);
+                    chessAI.ClearCalculatedMove();
 
-    // ✅ เคลียร์ผลลัพธ์หลังใช้ เพื่อป้องกันลูป
-    chessAI.ClearCalculatedMove();
+                    yield return new WaitForSeconds(0.5f);
 
-    yield return new WaitForSeconds(0.5f); // ให้ผู้เล่นเห็นหมากเดิน
-    SwitchTurn(true);
-}
-else
-{
-    Debug.LogWarning("❌ AI ไม่สามารถหา move ได้");
-}
-
+                }
+                else
+                {
+                    Debug.LogWarning("❌ AI ไม่สามารถหา move ได้");
+                }
             }
 
-            yield return null; // รอไปเรื่อย ๆ
+            yield return null;
         }
     }
 
@@ -176,16 +156,6 @@ else
             case "Hard": return AIDifficulty.Hard;
             default: return AIDifficulty.Easy;
         }
-    }
-
-    private bool ShouldProcessAITurn()
-    {
-        return !PauseManager.isPaused &&
-          IsCurrentPlayerAI() &&
-          !isAITurnActive &&
-          !gameIsOver &&
-          !ChessBoard.Instance.IsPromoting();
-
     }
 
     private bool IsCurrentPlayerAI()
@@ -210,9 +180,10 @@ else
 
         chessBoard.SelectPiece(piece);
         chessBoard.MoveSelectedPiece(to);
-        Debug.Log($"[EXECUTE] CurrentTurn={currentTurn}, Trying Move {from} → {to}");
 
-        //Debug.Log($"🤖 AI moved {piece.pieceType} from {from} → {to}");
+        // ✅ log ก่อนสลับตา
+        Debug.Log($"[CHECK] Piece={piece.team}, CurrentTurn={currentTurn}, From={from}, To={to}");
+
     }
 
     private void SetupAIVsAIMode()
@@ -243,7 +214,7 @@ else
         SetPlayerTypes(PlayerType.Human, PlayerType.AI);
 
         // ตั้ง difficulty: ฝั่งขาว (Human) = None, ฝั่งดำ (AI) = ตามค่าที่เลือก
-        aiDifficultyWhite = AIDifficulty.None; // Human ไม่ใช้ AI
+        aiDifficultyWhite = AIDifficulty.None; 
         aiDifficultyBlack = ParseDifficulty(difficulty);
 
         // ส่งค่าความยากไปให้ AI system
@@ -254,7 +225,6 @@ else
 
         Debug.Log($"[MODE] Single Player - White: Human, Black: AI ({difficulty})");
     }
-
 
     private ChessPiece.Team GetOpponentTeam(ChessPiece.Team team)
     {
@@ -297,7 +267,6 @@ else
     {
         aiDifficultyWhite = ParseDifficulty(whiteDiff);
         aiDifficultyBlack = ParseDifficulty(blackDiff);
-        //Debug.Log($"[AIDifficulty] White: {aiDifficultyWhite}, Black: {aiDifficultyBlack}");
     }
 
     // ตั้งค่าประเภทผู้เล่น
@@ -314,7 +283,7 @@ else
     {
         return currentTurn;
     }
-
+ 
     public string GetCurrentPlayerName()
     {
         return (currentTurn == ChessPiece.Team.White) ? whitePlayerName : blackPlayerName;
@@ -324,6 +293,7 @@ else
     {
         return currentMode;
     }
+
     /*Set*/
     public void SetCurrentTurn(Team team)
     {
@@ -486,7 +456,6 @@ else
         {
             drawInfoPanel.SetActive(true);
             fiftyMoveText.text = $"📏 กฎ 50 เดิน: {count}/50";
-
             if (count >= 48)
                 fiftyMoveText.color = Color.red;
             else if (count >= 45)

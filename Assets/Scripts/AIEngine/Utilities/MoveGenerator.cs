@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-
 namespace AIEngine.Utilities
 {
     public static class MoveGenerator
@@ -100,6 +99,7 @@ namespace AIEngine.Utilities
                     AddPawnMove(board, x, y, targetX, cy, moves);
                 }
             }
+
             // En Passant
             if (board.EnPassantTarget.HasValue)
             {
@@ -140,7 +140,6 @@ namespace AIEngine.Utilities
         {
             try
             {
-
                 int[,] knightMoves = {
             {2, 1}, {2, -1}, {-2, 1}, {-2, -1},
             {1, 2}, {1, -2}, {-1, 2}, {-1, -2}

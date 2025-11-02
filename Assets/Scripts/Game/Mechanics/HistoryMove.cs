@@ -99,6 +99,7 @@ public class HistoryMove : MonoBehaviour
 
     }
 
+
     // คืนค่าประวัติทั้งหมด
     public Stack<HistoryMoveData> GetMoveHistory()
     {

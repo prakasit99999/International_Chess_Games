@@ -8,6 +8,7 @@ public class PauseManager : MonoBehaviour
 
     public static bool isPaused { get; private set; }
 
+    [System.Obsolete]
     public static void Pase() {
         if (isPaused) return;
         prevTimeScale = Time.timeScale;
@@ -19,6 +20,8 @@ public class PauseManager : MonoBehaviour
         }
 
     }
+
+    [System.Obsolete]
     public static void Resume() {
         if (!isPaused) return;
         Time.timeScale = prevTimeScale;

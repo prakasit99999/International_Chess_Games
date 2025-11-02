@@ -24,11 +24,13 @@ public class ChessBoard : MonoBehaviour
     private Vector2Int? enPassantTarget = null; // ตำแหน่งเบี้ยที่เดินสองช่องในตาแรก
     private Dictionary<Vector2Int, ChessPiece> piecesOnBoard = new Dictionary<Vector2Int, ChessPiece>();
     private Dictionary<Vector2Int, TileClick> tileClickMap = new Dictionary<Vector2Int, TileClick>();
+    private ChessBoardModel boardModel;
 
     public IReadOnlyDictionary<Vector2Int, ChessPiece> PiecesOnBoard => piecesOnBoard;
     public int FiftyMoveCounter => _movesWithoutCaptureOrPawn;
     public GameManager GameManager => gameManager;
 
+    public ChessBoardModel BoardModel { get; set; }
     public static ChessBoard Instance { get; private set; }
     public Transform pieceWhite;    // Empty GameObject สำหรับทีมขาว
     public Transform pieceBlack;    // Empty GameObject สำหรับทีมดำ
@@ -42,7 +44,6 @@ public class ChessBoard : MonoBehaviour
     public ChessPiece selectedPawn; // เบี้ยที่รอเลื่อนขั้น
     public PromotionManager promotionManager; // เชื่อมกับ PromotionManager ใน Inspector
     public ChessPiece SelectedPiece => selectedPiece; // เพิ่ม Property เพื่อเข้าถึง selectedPiece
-
     public bool IsWhiteTurn { get; internal set; }
 
     public ChessPiece.PieceType promotionFrom;
@@ -57,7 +58,8 @@ public class ChessBoard : MonoBehaviour
         {
             Instance = this;
             historyMove = FindObjectOfType<HistoryMove>();
-
+            boardModel = new ChessBoardModel();
+            BoardModel = boardModel;
         }
         else
         {
@@ -109,8 +111,6 @@ public class ChessBoard : MonoBehaviour
                 TileClick tileClick = tile.AddComponent<TileClick>();
                 tileClick.SetTilePosition(new Vector2Int(x, y), this);
                 tileClickMap[new Vector2Int(x, y)] = tileClick;
-
-
 
             }
         }
@@ -790,7 +790,6 @@ public class ChessBoard : MonoBehaviour
         }
     }
 
-
     public bool IsEnPassantTarget(Vector2Int position)
     {
         return enPassantTarget.HasValue && enPassantTarget.Value == position;
@@ -965,6 +964,7 @@ public class ChessBoard : MonoBehaviour
         bool wasCapture = capturedPiece != null;
         UpdateFiftyMoveRuleCounter(wasCapture);
         SaveMoveToHistory(originalPosition, newPosition, capturedPiece);
+        boardModel.PushCurrentPosition();
 
         if (!isPromoting)
         {

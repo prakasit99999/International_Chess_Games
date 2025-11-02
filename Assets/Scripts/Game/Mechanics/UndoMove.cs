@@ -7,13 +7,13 @@ public class UndoMove : MonoBehaviour
     public static UndoMove Instance; // Singleton Pattern
     public GameObject piecePrefab;
     public Stack<HistoryMove.HistoryMoveData> moveHistory;
-    [SerializeField] private ChessBoardModel board;
+    [SerializeField] private ChessBoardModel boardModel;
 
     private ChessBoard chessBoard;
     private HistoryMove historyMove;
     public HistoryMove HistoryMove;
 
-
+    [System.Obsolete]
     private void Awake()
     {
         if (Instance == null)
@@ -21,13 +21,16 @@ public class UndoMove : MonoBehaviour
             Instance = this;
             chessBoard = ChessBoard.Instance; // ใช้ Singleton
             historyMove = FindObjectOfType<HistoryMove>();
-            chessBoard = FindObjectOfType<ChessBoard>();
-
         }
         else
         {
             Destroy(gameObject);
         }
+    }
+
+    public void Start()
+    {
+       boardModel = chessBoard.BoardModel;
     }
 
     public void UndoLastMove()
@@ -38,9 +41,17 @@ public class UndoMove : MonoBehaviour
         if (historyMove.GetMoveHistory().Count == 0) return;
 
         HistoryMove.HistoryMoveData lastMove = historyMove.GetMoveHistory().Pop();
-
         // ✅ ลบตำแหน่งล่าสุดจาก BoardModel
-        board.PopLastPosition();
+        if (boardModel != null)
+        {
+            boardModel.PopLastPosition();
+        }
+        else
+        {
+            Debug.LogError("❌ board (ChessBoardModel) is NULL! Cannot pop position.");
+            return; // หยุดการทำงานเพื่อป้องกัน Error เพิ่มเติม
+        }
+
 
         // ✅ ย้อนค่า Fifty-move counter
         chessBoard.SetFiftyMoveCounter(lastMove.fiftyMoveCounter);

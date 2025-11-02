@@ -11,38 +11,32 @@ namespace AI.Utilities
         /// <param name="unityBoard">ChessBoard จาก Unity</param>
         /// <param name="team">ทีมปัจจุบันที่กำลังเดิน</param>
         /// <returns>ChessBoardModel สำหรับ AI</returns>
-        public static ChessBoardModel Convert(ChessBoard unityBoard)
+        public static ChessBoardModel Convert(ChessBoard unityBoard, Team aiTeam, Team currentTurn)
         {
             var model = new ChessBoardModel();
-            //model.IsWhiteTurn = (team == Team.White);
+            model.IsWhiteTurn = (currentTurn == Team.White);
+            Debug.Log($"[BoardConverter] Convert called with aiTeam={aiTeam}, currentTurn={currentTurn}, model.IsWhiteTurn={model.IsWhiteTurn}");
 
-            // ✅ AI ใช้ [row, col] → [y, x]
             model.Board = new int[8, 8];
-
             foreach (var entry in unityBoard.PiecesOnBoard)
             {
                 Vector2Int unityPos = entry.Key;
                 ChessPiece piece = entry.Value;
                 if (piece == null) continue;
 
-                // Unity → AI
                 Vector2Int aiPos = ConvertPositionToAI(unityPos);
-
-                // ชนิดหมาก
                 int pieceValue = ConvertPieceType(piece.pieceType, piece.team);
 
-                // ✅ ใส่ค่าแบบ [row, col] (y ก่อน x)
                 model.Board[aiPos.y, aiPos.x] = pieceValue;
 
-                Debug.Log($"[CONVERT] Unity {piece.team} {piece.pieceType} at {unityPos} → AI {aiPos} = {pieceValue}");
+                Debug.Log($"[CONVERT] Unity {piece.team} {piece.pieceType} at {unityPos} → AI {aiPos} = {pieceValue}, IsWhiteTurn={model.IsWhiteTurn}");
             }
 
-            // ✅ Sync Fifty-Move Rule Counter
             model.SetFiftyMoveCounter(unityBoard.FiftyMoveCounter);
-
             return model;
         }
 
+   
         /// <summary>
         /// แปลงตำแหน่ง Unity → AI
         /// </summary>

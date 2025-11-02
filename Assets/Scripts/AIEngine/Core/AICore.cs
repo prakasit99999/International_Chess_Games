@@ -15,8 +15,6 @@ namespace AIEngine.Core
         {
             SearchAlgorithm algorithm;
             int depth;
-          
-
             switch (difficulty)
             {
                 case Difficulty.Easy:
@@ -38,7 +36,6 @@ namespace AIEngine.Core
             MoveModel bestMove = algorithm.FindBestMove(board, depth);
             return OptimizeMoveForDraw(board, bestMove);
         }
-
 
         private MoveModel OptimizeMoveForDraw(ChessBoardModel board, MoveModel bestMove)
         {
@@ -65,8 +62,5 @@ namespace AIEngine.Core
             }
             return bestMove;
         }
-
-
-
     }
 }

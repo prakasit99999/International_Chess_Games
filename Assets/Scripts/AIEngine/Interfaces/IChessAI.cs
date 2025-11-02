@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using static ChessPiece;
 
 namespace Game.Interfaces
 {
@@ -15,7 +16,7 @@ namespace Game.Interfaces
         /// <summary>
         /// เริ่มให้ AI คำนวณตาเดิน (ใช้ Coroutine ไม่ block main thread)
         /// </summary>
-        void StartCalculateMove(ChessBoard board, ChessPiece.Team team, AIDifficulty difficulty);
+        void StartCalculateMove(ChessBoard board, ChessPiece.Team aiTeam, Team currentTurn, AIDifficulty difficulty);
 
         /// <summary>
         /// คืนค่าตาเดินที่ AI คำนวณเสร็จแล้ว (null ถ้ายังไม่เสร็จ)

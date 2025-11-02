@@ -1,15 +1,28 @@
 using AIEngine.Utilities;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 
+public struct Square
+{
+    public int X { get; }
+    public int Y { get; }
+
+    public Square(int x, int y)
+    {
+        X = x;
+        Y = y;
+    }
+}
 
 public class ChessBoardModel
 {
     // ======== Properties ========
     public int[,] Board { get; set; }
     public bool IsWhiteTurn { get; set; }
+
     //เก็บประวัติตำแหน่ง
     private List<string> _positionHistory = new List<string>();
     // นับจำนวนครั้งที่แต่ละ position-key ปรากฏ
@@ -46,6 +59,23 @@ public class ChessBoardModel
             return _positionCounts.TryGetValue(key, out var c) ? c : 0;
         }
     }
+    public void ClearPositionHistory()
+    {
+        _positionHistory.Clear();
+        _positionCounts.Clear();
+    }
+
+
+    public void PushCurrentPosition()
+    {
+        var key = GetPositionKey();
+        _positionHistory.Add(key);
+        if (_positionCounts.TryGetValue(key, out var c))
+            _positionCounts[key] = c + 1;
+        else
+            _positionCounts[key] = 1;
+        Debug.WriteLine($"Pushed position: {key}, Count: {_positionCounts[key]}");
+    }
 
     public void PopLastPosition()
     {
@@ -60,6 +90,14 @@ public class ChessBoardModel
         _positionHistory.RemoveAt(_positionHistory.Count - 1);
     }
 
+    public bool IsThreefoldRepetition()
+    {
+        if (_positionHistory.Count == 0) return false;
+
+        var last = _positionHistory[_positionHistory.Count - 1];
+        return _positionCounts.TryGetValue(last, out var c) && c >= 3;
+    }
+
     private string GetPositionKey()
     {
         // ถ้า SerializeBoard() แสดงกระดานอย่างเดียว ให้เพิ่ม side-to-move
@@ -69,23 +107,6 @@ public class ChessBoardModel
         return $"{baseKey}|{turnKey}";
     }
 
-    public void InitializePositionHistory()
-    {
-        _positionHistory = new List<string>();
-        _positionCounts = new Dictionary<string, int>();
-        // บันทึกสถานะเริ่มต้นด้วย
-        RecordPosition();
-    }
-
-    public void RecordPosition()
-    {
-        var key = GetPositionKey();
-        _positionHistory.Add(key);
-        if (_positionCounts.TryGetValue(key, out var c))
-            _positionCounts[key] = c + 1;
-        else
-            _positionCounts[key] = 1;
-    }
 
     // ======== Initialize Board ========
     private void InitializeBoard()
@@ -119,6 +140,24 @@ public class ChessBoardModel
             Board[1, i] = -1;
     }
 
+    public void InitializePositionHistory()
+    {
+        _positionHistory = new List<string>();
+        _positionCounts = new Dictionary<string, int>();
+        // บันทึกสถานะเริ่มต้นด้วย
+        //RecordPosition();
+    }
+
+    public void RecordPosition()
+    {
+        var key = GetPositionKey();
+        _positionHistory.Add(key);
+        if (_positionCounts.TryGetValue(key, out var c))
+            _positionCounts[key] = c + 1;
+        else
+            _positionCounts[key] = 1;
+    }
+
     // ======== Make Move ========
     public void MakeMoveUnsafe(MoveModel move)
     {
@@ -133,7 +172,7 @@ public class ChessBoardModel
             else
                 FiftyMoveCounter++;
 
-         
+
             // ======== บันทึกประวัติกระดาน ========
             string currentPosition = SerializeBoard();
             PositionHistory.Add(currentPosition);
@@ -184,7 +223,7 @@ public class ChessBoardModel
 
             // ======== สลับตาเล่น ========
             IsWhiteTurn = !IsWhiteTurn;
-            RecordPosition();
+            //RecordPosition();
 
         }
         catch (Exception ex)
@@ -336,7 +375,6 @@ public class ChessBoardModel
 
         return new Square(-1, -1); // ไม่พบราชา
     }
-
 
     // ======== Special Move Handlers ========
     private bool HandleCastling(MoveModel move, int piece)
@@ -571,14 +609,3 @@ public class ChessBoardModel
     }
 }
 
-public struct Square
-{
-    public int X { get; }
-    public int Y { get; }
-
-    public Square(int x, int y)
-    {
-        X = x;
-        Y = y;
-    }
-}

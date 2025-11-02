@@ -69,8 +69,12 @@
     <Compile Include="Assets\Scripts\AIEngine\Interfaces\IChessAI.cs" />
     <Compile Include="Assets\Scripts\Game\UI\HistoryMoveUI.cs" />
     <Compile Include="Assets\Scripts\Game\Core\PauseManager.cs" />
+    <Compile Include="Assets\Scripts\Networking\ChatManager.cs" />
+    <Compile Include="Assets\Scripts\Game\OnlieUI\UI\RankingUI.cs" />
     <Compile Include="Assets\Scripts\Game\Mechanics\UndoMove.cs" />
     <Compile Include="Assets\Scripts\Game\Mechanics\HistoryMove.cs" />
+    <Compile Include="Assets\Scripts\Networking\ReplayRecorder.cs" />
+    <Compile Include="Assets\Scripts\Networking\MirrorManager.cs" />
     <Compile Include="Assets\Scripts\Service\api\authApi.cs" />
     <Compile Include="Assets\Scripts\Game\OnlieUI\UI\LogutUi.cs" />
     <Compile Include="Assets\Scripts\Menu\MainMenuController.cs" />
@@ -80,7 +84,9 @@
     <Compile Include="Assets\Scripts\AIEngine\Utilities\BoardConverter.cs" />
     <Compile Include="Assets\Scripts\AIEngine\Utilities\MoveOrderer.cs" />
     <Compile Include="Assets\Scripts\Game\OnlieUI\UI\MatchmakingManager.cs" />
+    <Compile Include="Assets\Scripts\Game\OnlieUI\UI\GameResultUI.cs" />
     <Compile Include="Assets\Scripts\Game\Core\GameManager.cs" />
+    <Compile Include="Assets\Scripts\Game\OnlieUI\UI\FriendUI.cs" />
     <Compile Include="Assets\Scripts\Game\Core\ChessBoard.cs" />
     <Compile Include="Assets\Scripts\AIEngine\Algorithms\MinMax.cs" />
     <Compile Include="Assets\Scripts\AIEngine\Models\ChessBoardModel.cs" />
@@ -88,6 +94,7 @@
     <Compile Include="Assets\Scripts\AIEngine\Core\AICore.cs" />
     <Compile Include="Assets\Scripts\Game\Mechanics\TileClick.cs" />
     <Compile Include="Assets\Scripts\Game\OnlieUI\UI\LoginUi.cs" />
+    <Compile Include="Assets\Scripts\Networking\GameNetworkHandler.cs" />
     <Compile Include="Assets\Scripts\AIEngine\Algorithms\alphaBeta.cs" />
     <Compile Include="Assets\Scripts\Game\Core\SettingManager.cs" />
   </ItemGroup>
