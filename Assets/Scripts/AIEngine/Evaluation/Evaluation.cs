@@ -7,18 +7,18 @@ namespace AIEngine.Evaluation
 {
     public class Evaluation
     {
-        private static readonly HashSet<string> SeenPositions = new HashSet<string>();
+        //private static readonly HashSet<string> SeenPositions = new HashSet<string>();
 
-        private static int EvaluateRepetition(ChessBoardModel board)
-        {
-            string key = board.SerializeBoard();
-            if (SeenPositions.Contains(key))
-            {
-                return -50; // ลงโทษซ้ำ
-            }
-            SeenPositions.Add(key);
-            return 0;
-        }
+        //private static int EvaluateRepetition(ChessBoardModel board)
+        //{
+        //    string key = board.SerializeBoard();
+        //    if (SeenPositions.Contains(key))
+        //    {
+        //        return -50; // ลงโทษซ้ำ
+        //    }
+        //    SeenPositions.Add(key);
+        //    return 0;
+        //}
 
         // ========== ค่าของตัวหมาก ==========
         private static readonly Dictionary<int, int> PieceValues = new Dictionary<int, int>
@@ -129,7 +129,7 @@ namespace AIEngine.Evaluation
             score += CalculatePositionalScore(board, isEndgame);
 
             // 3. Repetition penalty
-            score += EvaluateRepetition(board);
+            //score += EvaluateRepetition(board);
 
             // 4. Mobility
             score += CalculateMobilityScore(board);

@@ -32,8 +32,6 @@ namespace AIEngine.Algorithms
             return bestMove ?? moves.First();
         }
 
-
-
         protected int MinimaxRecursive(ChessBoardModel board, int depth, bool isMaximizing)
         {
             if (depth == 0 || board.IsGameOver())

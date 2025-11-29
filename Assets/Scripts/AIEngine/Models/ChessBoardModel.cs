@@ -43,12 +43,16 @@ public class ChessBoardModel
     public int FiftyMoveCounter { get; private set; }
     public int CurrentTurn { get; internal set; }
 
+    public ulong ZobristKey { get; private set; }
+
+
     // ======== Constructor ========
     public ChessBoardModel()
     {
         Board = new int[8, 8];
         IsWhiteTurn = true;
         InitializeBoard();
+        ZobristKey = Zobrist.ComputeKeyFromBoard(this.Board, this.IsWhiteTurn);
     }
 
     public int RepetitionCount
@@ -145,7 +149,7 @@ public class ChessBoardModel
         _positionHistory = new List<string>();
         _positionCounts = new Dictionary<string, int>();
         // บันทึกสถานะเริ่มต้นด้วย
-        //RecordPosition();
+        RecordPosition();
     }
 
     public void RecordPosition()
@@ -165,6 +169,18 @@ public class ChessBoardModel
         {
             int piece = Board[move.FromX, move.FromY];
             int targetPiece = Board[move.ToX, move.ToY];
+            // ======== อัปเดต Zobrist Key ========
+            if (piece != 0)
+            {
+                int idx = Zobrist.PieceToIndex(piece);
+                ZobristKey ^= Zobrist.PieceSquare[move.FromX, move.FromY, idx]; // XOR out moving piece from source
+
+            }
+            if (targetPiece != 0)
+            {
+                int idx = Zobrist.PieceToIndex(targetPiece);
+                ZobristKey ^= Zobrist.PieceSquare[move.ToX, move.ToY, idx]; // XOR out captured piece from destination
+            }
 
             // ======== อัปเดตกฎ 50 การเดิน ========
             if (Math.Abs(piece) == 1 || targetPiece != 0)
@@ -172,27 +188,39 @@ public class ChessBoardModel
             else
                 FiftyMoveCounter++;
 
-
             // ======== บันทึกประวัติกระดาน ========
             string currentPosition = SerializeBoard();
             PositionHistory.Add(currentPosition);
 
-            // ======== ตรวจจับ En Passant target ก่อนทำ move ========
-            UpdateEnPassantTarget(move, piece);
-
-            // ======== ตรวจจับ Castling และย้าย Rook ถ้าเกี่ยวข้อง ========
-            bool isCastling = HandleCastling(move, piece);
+            // ======== [จัดการ En Passant Capture] **ทำก่อน** ย้ายหมากทับช่องเป้าหมาย ========
+            HandleEnPassantCapture(move, piece);
 
             // ======== ย้ายหมากจริงบนกระดาน ========
             Board[move.ToX, move.ToY] = piece;
             Board[move.FromX, move.FromY] = 0;
 
-            // ======== จัดการ En Passant หลังจากย้ายเสร็จ ========
-            HandleEnPassantCapture(move, piece);
+            // ======== [อัปเดตเป้าหมาย En Passant สำหรับตาถัดไป] ========
+            UpdateEnPassantTarget(move, piece);
+
+            // ======== ตรวจจับ Castling และย้าย Rook ถ้าเกี่ยวข้อง ========
+            bool isCastling = HandleCastling(move, piece);
+
 
             // ======== การ Promote เบี้ย ========
             if (move.PromotionPiece != 0)
+            {
                 Board[move.ToX, move.ToY] = move.PromotionPiece;
+                int idx = Zobrist.PieceToIndex(move.PromotionPiece);
+                ZobristKey ^= Zobrist.PieceSquare[move.ToX, move.ToY, idx];
+            }
+            else
+            {
+                if (piece != 0)
+                {
+                    int idx = Zobrist.PieceToIndex(piece);
+                    ZobristKey ^= Zobrist.PieceSquare[move.ToX, move.ToY, idx];
+                }
+            }
 
             // ======== อัปเดตสถานะ King และ Rook (เฉพาะไม่ใช่ Castling) ========
             if (!isCastling)
@@ -221,6 +249,7 @@ public class ChessBoardModel
                 }
             }
 
+            ZobristKey ^= Zobrist.SideToMove;
             // ======== สลับตาเล่น ========
             IsWhiteTurn = !IsWhiteTurn;
             //RecordPosition();
@@ -256,6 +285,9 @@ public class ChessBoardModel
         ChessBoardModel newBoard = new ChessBoardModel();
         newBoard.Board = (int[,])this.Board.Clone(); // Deep copy of the board array
         newBoard.IsWhiteTurn = this.IsWhiteTurn;
+
+        //ต้องคัดลอก Zobrist Key มาด้วย! ไม่งั้น Hash จะเพี้ยน
+        newBoard.ZobristKey = this.ZobristKey;
 
         //คัดลอกประวัติตำแหน่ง
         newBoard._positionHistory = new List<string>(this._positionHistory);
@@ -407,11 +439,25 @@ public class ChessBoardModel
                     throw new InvalidOperationException("Invalid castling attempt detected!");
 
                 // ย้าย Rook
-                int rookFromY = move.ToY == 6 ? 7 : 0;
-                int rookToY = move.ToY == 6 ? 5 : 3;
-
-                Board[row, rookToY] = Board[row, rookFromY];
+                int rookFromY = isKingside ? 7 : 0;
+                int rookToY = isKingside ? 5 : 3;
+                // หาตัวเบี้ย Rook (4 หรือ -4)
+                int rookPiece = Board[row, rookFromY];
+                //  ย้าย Rook ในกระดานจริง
+                Board[row, rookToY] = rookPiece;
                 Board[row, rookFromY] = 0;
+
+                // =========================================================
+                // อัปเดต Zobrist Hash สำหรับการย้าย Rook
+                // =========================================================
+                if (rookPiece != 0)
+                {
+                    int rookIdx = Zobrist.PieceToIndex(rookPiece);
+                    // เอา Hash ของ Rook ออกจากที่เดิม
+                    ZobristKey ^= Zobrist.PieceSquare[row, rookFromY, rookIdx];
+                    // ใส่ Hash ของ Rook เข้าไปที่ใหม่
+                    ZobristKey ^= Zobrist.PieceSquare[row, rookToY, rookIdx];
+                }
 
                 // อัปเดต flag
                 if (isWhite)
@@ -459,9 +505,16 @@ public class ChessBoardModel
             move.ToX == EnPassantTarget.Value.X &&
             move.ToY == EnPassantTarget.Value.Y)
         {
-            int capturedPawnX = move.ToX + (piece > 0 ? 1 : -1);
-            Board[capturedPawnX, move.ToY] = 0;
+            int direction = (piece > 0) ? 1 : -1;
+            int capturedPawnX = move.ToX - direction;
+            int capturedPawn = Board[capturedPawnX, move.ToY];
+            if (capturedPawn != 0)
+            {
+                int idx = Zobrist.PieceToIndex(capturedPawn);
+                ZobristKey ^= Zobrist.PieceSquare[capturedPawnX, move.ToY, idx];
 
+                Board[capturedPawnX, move.ToY] = 0;
+            }
         }
     }
 

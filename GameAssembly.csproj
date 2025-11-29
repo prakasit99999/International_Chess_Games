@@ -85,8 +85,10 @@
     <Compile Include="Assets\Scripts\AIEngine\Utilities\MoveOrderer.cs" />
     <Compile Include="Assets\Scripts\Game\OnlieUI\UI\MatchmakingManager.cs" />
     <Compile Include="Assets\Scripts\Game\OnlieUI\UI\GameResultUI.cs" />
+    <Compile Include="Assets\Scripts\AIEngine\Utilities\Zobrist.cs" />
     <Compile Include="Assets\Scripts\Game\Core\GameManager.cs" />
     <Compile Include="Assets\Scripts\Game\OnlieUI\UI\FriendUI.cs" />
+    <Compile Include="Assets\Scripts\AIEngine\Utilities\TranspositionTable.cs" />
     <Compile Include="Assets\Scripts\Game\Core\ChessBoard.cs" />
     <Compile Include="Assets\Scripts\AIEngine\Algorithms\MinMax.cs" />
     <Compile Include="Assets\Scripts\AIEngine\Models\ChessBoardModel.cs" />
@@ -97,6 +99,7 @@
     <Compile Include="Assets\Scripts\Networking\GameNetworkHandler.cs" />
     <Compile Include="Assets\Scripts\AIEngine\Algorithms\alphaBeta.cs" />
     <Compile Include="Assets\Scripts\Game\Core\SettingManager.cs" />
+    <Compile Include="Assets\Scripts\AIEngine\Utilities\TTEntry.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Scripts\GameAssembly.asmdef" />
