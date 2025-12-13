@@ -1,7 +1,8 @@
 ﻿
-using AIEngine.Adapters;
-using Game.Interfaces;
 using System.Collections;
+using AIEngine.Adapters;
+using AIEngine.Utilities;
+using Game.Interfaces;
 using TMPro;
 using UnityEngine;
 using static ChessPiece;
@@ -10,23 +11,18 @@ public class GameManager : MonoBehaviour
 {
     private IChessAI chessAI;
     private Coroutine aiLoop;
-
     private bool gameIsOver = false;
     private bool isAITurnActive = false;
-
     private string difficultyWhite;
     private string difficultyBlack;
     private string aiColor;
-
     private GameModes currentMode = GameModes.SinglePlayer;
-
     private ChessPiece.Team currentTurn = ChessPiece.Team.White;
-
     private ChessBoard chessBoard;
     private HistoryMoveUI historyMoveUI;
-
     public static GameManager Instance;
-    public  Team CurrentTurn => currentTurn;
+    public Team CurrentTurn => currentTurn;
+    public AiPerformanceAPI aiPerformanceApi;
 
     public enum PlayerType { Human, AI }
     public enum GameModes { LocalMultiplayer, SinglePlayer, AIVsAI, Online }
@@ -37,23 +33,18 @@ public class GameManager : MonoBehaviour
     public GameObject winGamePanel;
     public GameObject loseGamePanel;
     public GameObject drawInfoPanel;
-
     public TMP_Text winTxt;
     public TMP_Text loseTxt;
     public TMP_Text drawTxt;
     public TMP_Text fiftyMoveText;
     public TMP_Text txtNameWhite;
     public TMP_Text txtNameBlack;
-
     public bool isGameStarted;
     public bool isWhiteTurn;
     public bool isBlackTurn;
-
     public AIDifficulty aiDifficulty;
     public PlayerType WhitePlayer = PlayerType.Human;
     public PlayerType BlackPlayer = PlayerType.AI;
-
-
     public string whitePlayerName = "White";
     public string blackPlayerName = "Black";
 
@@ -94,7 +85,36 @@ public class GameManager : MonoBehaviour
             {
                 chessAI = gameObject.AddComponent<UnityAIBoardAdapter>();
             }
+
+            // ตั้งค่าข้อมูล performance ตั้งแต่เริ่มเกม
+            PerformanceTracker.Instance?.ResetData();
             ModeSelect();
+
+            // หา/ผูก AiPerformanceAPI
+            if (aiPerformanceApi == null)
+            {
+                aiPerformanceApi = GetComponent<AiPerformanceAPI>();
+                if (aiPerformanceApi == null)
+                {
+                    aiPerformanceApi = gameObject.AddComponent<AiPerformanceAPI>();
+                }
+            }
+
+            // ตั้งค่า PerformanceTracker (หลัง ModeSelect เพื่อรู้ว่าเป็น AI mode หรือไม่)
+            if (PerformanceTracker.Instance != null && (WhitePlayer == PlayerType.AI || BlackPlayer == PlayerType.AI))
+            {
+                // ดึง difficulty จาก AI ที่เล่น (ถ้าเป็น SinglePlayer ใช้ Black, ถ้าเป็น AIVsAI ใช้ทั้งสอง)
+                string difficulty = PlayerPrefs.GetString("AI_Difficulty", "Easy");
+                if (currentMode == GameModes.AIVsAI)
+                {
+                    // ถ้าเป็น AIVsAI อาจใช้ difficulty ของฝั่งที่กำลังเล่น
+                    difficulty = PlayerPrefs.GetString("AI_Black_Difficulty", "Easy");
+                }
+
+                PerformanceTracker.Instance.AiLevel = difficulty.ToLower();
+                PerformanceTracker.Instance.AlgorithmType = "alpha_beta";
+                PerformanceTracker.Instance.GameId = PlayerPrefs.GetInt("GameId", (int)System.DateTimeOffset.UtcNow.ToUnixTimeSeconds());
+            }
 
             // ถ้ามี AI ฝั่งใดฝั่งหนึ่ง → เริ่ม Coroutine
             if (WhitePlayer == PlayerType.AI || BlackPlayer == PlayerType.AI)
@@ -110,7 +130,6 @@ public class GameManager : MonoBehaviour
         if (PauseManager.isPaused || gameIsOver) return;
     }
 
-
     private IEnumerator AIPlayLoop()
     {
         while (!gameIsOver)
@@ -121,6 +140,10 @@ public class GameManager : MonoBehaviour
 
             if (IsCurrentPlayerAI())
             {
+                // ✅ ให้ Unity render 1 frame ก่อนเริ่มคำนวณ AI เพื่อป้องกัน FPS freeze
+                yield return null;
+
+
                 var difficulty = (currentTurn == Team.White) ? aiDifficultyWhite : aiDifficultyBlack;
 
                 // 🟢 ส่ง currentTurn ที่ถูกต้อง
@@ -128,14 +151,18 @@ public class GameManager : MonoBehaviour
 
                 yield return new WaitForSeconds(0.3f);
 
+                // ✅ GetCalculatedMove() คืนค่าเป็น (Vector2Int from, Vector2Int to)?
                 var move = chessAI.GetCalculatedMove();
-                if (move != null)
+
+                if (move.HasValue)
                 {
-                    ExecuteAIMove(move[0], move[1]);
+                    // Execute AI Move
+                    ExecuteAIMove(move.Value.from, move.Value.to);
+
+                    // Clear cache move
                     chessAI.ClearCalculatedMove();
 
                     yield return new WaitForSeconds(0.5f);
-
                 }
                 else
                 {
@@ -214,7 +241,8 @@ public class GameManager : MonoBehaviour
         SetPlayerTypes(PlayerType.Human, PlayerType.AI);
 
         // ตั้ง difficulty: ฝั่งขาว (Human) = None, ฝั่งดำ (AI) = ตามค่าที่เลือก
-        aiDifficultyWhite = AIDifficulty.None; 
+        aiDifficultyWhite = AIDifficulty.None;
+
         aiDifficultyBlack = ParseDifficulty(difficulty);
 
         // ส่งค่าความยากไปให้ AI system
@@ -283,7 +311,8 @@ public class GameManager : MonoBehaviour
     {
         return currentTurn;
     }
- 
+
+
     public string GetCurrentPlayerName()
     {
         return (currentTurn == ChessPiece.Team.White) ? whitePlayerName : blackPlayerName;
@@ -388,6 +417,11 @@ public class GameManager : MonoBehaviour
             }
         }
 
+        if (aiPerformanceApi != null && PerformanceTracker.Instance != null)
+        {
+            var data = PerformanceTracker.Instance.Export();
+            StartCoroutine(aiPerformanceApi.SendPerformance(data));
+        }
         Time.timeScale = 0;
 
         // ปิดการทำงานของหมากทั้งหมด

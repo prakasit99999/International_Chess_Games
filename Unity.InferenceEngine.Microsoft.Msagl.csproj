@@ -1,0 +1,1761 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <!-- Generated file, do not modify, your changes will be overwritten (use AssetPostprocessor.OnGeneratedCSProject) -->
+  <PropertyGroup>
+    <LangVersion>9.0</LangVersion>
+  </PropertyGroup>
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>10.0.20506</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <RootNamespace>Microsoft.Msagl</RootNamespace>
+    <ProjectGuid>{5799A8CF-A6F7-CD53-E227-1EEA466C2E68}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <AssemblyName>Unity.InferenceEngine.Microsoft.Msagl</AssemblyName>
+    <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <BaseDirectory>.</BaseDirectory>
+  </PropertyGroup>
+  <PropertyGroup>
+    <NoWarn>0169;USG0001</NoWarn>
+    <DefineConstants>UNITY_6000_3_1;UNITY_6000_3;UNITY_6000;UNITY_5_3_OR_NEWER;UNITY_5_4_OR_NEWER;UNITY_5_5_OR_NEWER;UNITY_5_6_OR_NEWER;UNITY_2017_1_OR_NEWER;UNITY_2017_2_OR_NEWER;UNITY_2017_3_OR_NEWER;UNITY_2017_4_OR_NEWER;UNITY_2018_1_OR_NEWER;UNITY_2018_2_OR_NEWER;UNITY_2018_3_OR_NEWER;UNITY_2018_4_OR_NEWER;UNITY_2019_1_OR_NEWER;UNITY_2019_2_OR_NEWER;UNITY_2019_3_OR_NEWER;UNITY_2019_4_OR_NEWER;UNITY_2020_1_OR_NEWER;UNITY_2020_2_OR_NEWER;UNITY_2020_3_OR_NEWER;UNITY_2021_1_OR_NEWER;UNITY_2021_2_OR_NEWER;UNITY_2021_3_OR_NEWER;UNITY_2022_1_OR_NEWER;UNITY_2022_2_OR_NEWER;UNITY_2022_3_OR_NEWER;UNITY_2023_1_OR_NEWER;UNITY_2023_2_OR_NEWER;UNITY_2023_3_OR_NEWER;UNITY_6000_0_OR_NEWER;UNITY_6000_1_OR_NEWER;UNITY_6000_2_OR_NEWER;UNITY_6000_3_OR_NEWER;UNITY_INCLUDE_TESTS;ENABLE_AUDIO;ENABLE_CLOTH;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_TEXTURE_STREAMING;ENABLE_UNITYEVENTS;ENABLE_VR;ENABLE_WEBCAM;ENABLE_UNITYWEBREQUEST;ENABLE_WWW;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_ADS;ENABLE_CLOUD_SERVICES_USE_WEBREQUEST;ENABLE_UNITY_CONSENT;ENABLE_UNITY_CLOUD_IDENTIFIERS;ENABLE_CLOUD_SERVICES_CRASH_REPORTING;ENABLE_CLOUD_SERVICES_PURCHASING;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_CLOUD_SERVICES_BUILD;ENABLE_EDITOR_GAME_SERVICES;ENABLE_UNITY_GAME_SERVICES_ANALYTICS_SUPPORT;ENABLE_CLOUD_LICENSE;ENABLE_EDITOR_HUB_LICENSE;ENABLE_WEBSOCKET_CLIENT;ENABLE_GENERATE_NATIVE_PLUGINS_FOR_ASSEMBLIES_API;ENABLE_DIRECTOR_AUDIO;ENABLE_DIRECTOR_TEXTURE;ENABLE_MANAGED_JOBS;ENABLE_MANAGED_TRANSFORM_JOBS;ENABLE_MANAGED_ANIMATION_JOBS;ENABLE_MANAGED_AUDIO_JOBS;ENABLE_ENGINE_CODE_STRIPPING;ENABLE_ONSCREEN_KEYBOARD;ENABLE_MANAGED_UNITYTLS;RENDER_SOFTWARE_CURSOR;ENABLE_MARSHALLING_TESTS;ENABLE_VIDEO;ENABLE_NAVIGATION_OFFMESHLINK_TO_NAVMESHLINK;ENABLE_ACCELERATOR_CLIENT_DEBUGGING;TEXTCORE_1_0_OR_NEWER;EDITOR_ONLY_NAVMESH_BUILDER_DEPRECATED;PLATFORM_WEBGL;UNITY_WEBGL;UNITY_WEBGL_API;UNITY_DISABLE_WEB_VERIFICATION;UNITY_GFX_USE_PLATFORM_VSYNC;ENABLE_CRUNCH_TEXTURE_COMPRESSION;ENABLE_SPATIALTRACKING;ENABLE_MONO;NET_4_6;NET_UNITY_4_8;ENABLE_PROFILER;DEBUG;TRACE;UNITY_ASSERTIONS;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_WIN;ENABLE_UNITY_COLLECTIONS_CHECKS;ENABLE_BURST_AOT;UNITY_TEAM_LICENSE;ENABLE_CUSTOM_RENDER_TEXTURE;ENABLE_DIRECTOR;ENABLE_LOCALIZATION;ENABLE_SPRITES;ENABLE_TERRAIN;ENABLE_TILEMAP;ENABLE_TIMELINE;ENABLE_LEGACY_INPUT_MANAGER;TEXTCORE_FONT_ENGINE_1_5_OR_NEWER;TEXTCORE_TEXT_ENGINE_1_5_OR_NEWER;TEXTCORE_FONT_ENGINE_1_6_OR_NEWER;MIRROR;MIRROR_89_OR_NEWER;MIRROR_90_OR_NEWER;MIRROR_93_OR_NEWER;MIRROR_96_OR_NEWER;EDGEGAP_PLUGIN_SERVERS;APP_UI_EDITOR_ONLY;CSHARP_7_OR_LATER;CSHARP_7_3_OR_NEWER;UNITY_EDITOR_ONLY_COMPILATION</DefineConstants>
+    <AllowUnsafeBlocks>False</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>Temp\bin\Debug\</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>Temp\bin\Release\</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <NoConfig>true</NoConfig>
+    <NoStdLib>true</NoStdLib>
+    <AddAdditionalExplicitAssemblyReferences>false</AddAdditionalExplicitAssemblyReferences>
+    <ImplicitlyExpandNETStandardFacades>false</ImplicitlyExpandNETStandardFacades>
+    <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ProjectTypeGuids>{E097FAD1-6243-4DAD-9C02-E9B9EFC3FFC1};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <UnityProjectGenerator>Package</UnityProjectGenerator>
+    <UnityProjectGeneratorVersion>2.0.25</UnityProjectGeneratorVersion>
+    <UnityProjectGeneratorStyle>Legacy</UnityProjectGeneratorStyle>
+    <UnityProjectType>Game:1</UnityProjectType>
+    <UnityBuildTarget>WebGL:20</UnityBuildTarget>
+    <UnityVersion>6000.3.1f1</UnityVersion>
+  </PropertyGroup>
+  <ItemGroup>
+    <Analyzer Include="C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
+    <Analyzer Include="C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\Tools\BuildPipeline\Unity.SourceGenerators\Unity.SourceGenerators.dll" />
+    <Analyzer Include="C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\Tools\BuildPipeline\Unity.SourceGenerators\Unity.Properties.SourceGenerator.dll" />
+    <Analyzer Include="C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\Tools\BuildPipeline\Unity.SourceGenerators\Unity.UIToolkit.SourceGenerator.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Core\Routing\EdgeRoutingMode.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Core\Geometry\OverlapRemoval\OverlapRemovalNode.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Miscellaneous\LayoutEditing\GraphRestoreData.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Routing\Spline\ConeSpanner\ConeRightSide.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Routing\Spline\Bundling\TimeMeasurer.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Routing\Rectilinear\LookaheadScan.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Layout\Layered\Ordering\AdjacentSwaps.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Routing\Spline\ConeSpanner\ConeSpanner.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Routing\Rectilinear\BasicVertexEvent.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Miscellaneous\LayoutEditing\LabelFixture.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\GraphmapsWithMesh\MeshCreator.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Routing\ConstrainedDelaunayTriangulation\CdtSite.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Core\Layout\ProximityOverlapRemoval\StressEnergy\SolvingMethod.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Routing\Rectilinear\Nudging\PointProjection.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Core\Geometry\OverlapRemoval\BorderInfo.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Miscellaneous\Phylo\PhyloTree.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Layout\Incremental\EdgeConstraintGenerator.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Layout\Layered\VertexEnumerators.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Core\Geometry\Curves\CubicBezierSegment.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Routing\Rectilinear\FullVisibilityGraphGenerator.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Layout\Incremental\FastIncrementalLayout.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Routing\ShapeCreator.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Miscellaneous\ConstrainedSkeleton\SteinerCdt.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Layout\Layered\XLayoutGraph.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Core\DataStructures\RBTree\ComparerOnDelegate.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Miscellaneous\Ranking\RankingLayoutSettings.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Core\Layout\LayoutAlgorithmSettings.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Routing\Rectilinear\StaticGraphUtility.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Routing\Spline\ConeSpanner\SweepEvent.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Core\Geometry\OverlapRemoval\ConstraintGenerator.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Routing\ConstrainedDelaunayTriangulation\ThreeArray.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Layout\LargeGraphLayout\LgEdgeInfo.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Core\Geometry\Curves\RoundedRect.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Routing\Rectilinear\ScanDirection.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Core\DataStructures\RealNumberSpan.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Core\Layout\ProximityOverlapRemoval\StressEnergy\StressMajorizationSettings.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Core\ProjectionSolver\ViolationCache.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Layout\Layered\VerticalConstraintsForSugiyama.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Layout\LargeGraphLayout\SimpleEdgeCollection.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Routing\Rectilinear\ScanSegmentTree.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Layout\LargeGraphLayout\LgCellInfo.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Routing\Spline\ConeSpanner\LeftObstacleSide.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Routing\Rectilinear\TransientGraphUtility.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Routing\InteractiveObstacleCalculator.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\DebugHelpers\Persistence\CharStreamElement.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Routing\Spline\Bundling\GeneralMetroMapOrdering.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Routing\Rectilinear\PointComparer.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Core\Geometry\RectanglePacking\ColumnPacking.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Routing\ConstrainedDelaunayTriangulation\CdtFrontElement.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Layout\Layered\HierarchyCalculator.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Core\Geometry\RectanglePacking\OptimalColumnPacking.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Routing\ConstrainedDelaunayTriangulation\CdtSweeper.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Layout\OverlapRemovalFixedSegments\OverlapRemovalFixedSegmentsMst.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Core\DataStructures\GenericBinaryHeapPriorityQueue.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Core\ProgressChangedEventArgs.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Routing\Spline\Bundling\OrientedHubSegment.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Miscellaneous\NonOverlappingBoundaries\AllPairsNonOverlappingBoundaries.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Core\Layout\ProximityOverlapRemoval\StressEnergy\MaxIterationMethod.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Routing\Spline\ConeSpanner\LeftVertexEvent.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Routing\SingleSourceMultipleTargetsShortestPathOnVisibilityGraph.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Core\Geometry\MinEnclosingDisc\MinimumEnclosingDisc.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Core\Layout\ProximityOverlapRemoval\ConjugateGradient\LinearSystemSolver.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Core\Layout\ProximityOverlapRemoval\MST\GTreeOverlapRemoval.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Core\DataStructures\RBTree\RBTree.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Miscellaneous\Ranking\Centrality.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Core\Layout\EdgeLabelPlacement.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Core\Layout\GeometryObject.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Routing\Spline\ConeSpanner\VertexEvent.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Core\Layout\ProximityOverlapRemoval\MST\MstOnDelaunayTriangulation.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Core\Geometry\RTree\HitTestBehavior.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Layout\Layered\LayeredLayout.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Layout\Incremental\FiNode.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Routing\Spline\Bundling\StationEdgeInfo.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\DebugHelpers\Persistence\GeometryToken.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Layout\Layered\LayerInserter.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Core\GraphAlgorithms\CycleRemoval\GraphForCycleRemoval.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Core\GraphAlgorithms\IntPair.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Layout\MDS\Transform.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Routing\Rectilinear\HighBendVertexEvent.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Core\Geometry\Curves\PenetrationDepth.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Core\Layout\IObstacle.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Core\Geometry\Point.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Routing\Spline\Bundling\FlipCollapser.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Core\Geometry\RectanglePacking\OptimalRectanglePacking.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Routing\Rectilinear\ScanSegment.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Routing\Visibility\ObstacleSideComparer.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Routing\Rectilinear\Nudging\AxisEdgeHighPointEvent.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Core\ProjectionSolver\QPSC.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Layout\LargeGraphLayout\LgPathRouter.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Routing\Spline\Bundling\NodePositionsAdjuster.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Layout\Initial\InitialLayout.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Layout\Layered\LayerArrays.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Core\ProjectionSolver\Block.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Core\GraphAlgorithms\CycleRemoval\ConnectedComponentCalculator.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Layout\OverlapRemovalFixedSegments\OverlapRemovalFixedSegmentsBitmap.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Routing\Visibility\Stem.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Miscellaneous\LayoutEditing\RouterBetweenTwoNodes.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Core\Geometry\RectanglePacking\RectangleToPack.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Layout\MDS\PivotDistances.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Core\Geometry\Curves\ParallelogramBinaryTreeNode.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Core\Layout\EdgeGeometry.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Layout\Layered\XCoordsWithAlignment.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Layout\Layered\RecoveryLayeredLayoutEngine.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Routing\Rectilinear\VisibilityVertexRectilinear.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Layout\LargeGraphLayout\NodeRailLevelCalculator\GreedyNodeRailLevelCalculator.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Routing\Rectilinear\Nudging\PathMerger.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Core\Geometry\Direction.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Routing\Spline\Bundling\EdgeNudger.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Layout\Layered\SugiyamaLayoutSettings.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Routing\Rectilinear\Nudging\StaircaseRemover.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Core\Geometry\Curves\IntersectionInfo.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Core\Geometry\ConvexHull\HullPointComparer.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Core\Layout\Arrowhead.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Miscellaneous\Phylo\PhyloTreeLayoutCalclulation.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Layout\Layered\Layering\LongestPathLayering.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Routing\Spline\ConeSpanner\ConeSpannerForPortLocations.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Routing\Rectilinear\FreePoint.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Core\Layout\NodeCollection.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Routing\Visibility\PointVisibilityCalculator.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Core\Geometry\Curves\ParallelogramInternalTreeNode.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Miscellaneous\LayoutEditing\EdgeRestoreData.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Core\Layout\CurvePort.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Routing\Rectilinear\Nudging\AxisEdgesContainer.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Routing\Rectilinear\CloseVertexEvent.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Routing\Spline\ConeSpanner\PortLocationEvent.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Core\Geometry\OverlapRemoval\OverlapRemovalGlobalConfiguration.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Core\Geometry\TriangleOrientation.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Routing\Spline\Bundling\Station.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Layout\Incremental\IConstraint.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Core\Geometry\OverlapRemoval\OverlapRemovalParameters.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Layout\Incremental\VerticalSeparationConstraint.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Routing\NodeKind.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Core\Geometry\ConvexHull\ConvexHull.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Core\ProjectionSolver\UniformOneDimensionalSolver.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Layout\LargeGraphLayout\Rail.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Layout\Layered\Layering\NetworkSimplex.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Core\Layout\LabelPlacement.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Routing\Spline\Bundling\BundlingStatus.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Routing\Spline\Bundling\BundleBasesCalculator.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Core\Layout\ProximityOverlapRemoval\ProximityOverlapRemoval.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Layout\LargeGraphLayout\LgLevel.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Routing\Spline\ConeSpanner\ConeSideComparer.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\GraphmapsWithMesh\DijkstraAlgo.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Layout\Layered\Anchor.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Routing\Rectilinear\PortManager.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Routing\Rectilinear\OverlapConvexHull.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Layout\Layered\NetworkEdge.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Layout\MDS\SingleSourceDistances.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Core\ParallelUtilities.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Routing\InteractiveEdgeRouter.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Routing\ShapeObstacleCalculator.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Core\Geometry\Curves\ParallelogramNode.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Layout\Layered\SugiyamaLayoutLogger.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Core\ProjectionSolver\Parameters.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Routing\Rectilinear\RectilinearEdgeRouter.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Layout\Incremental\Multipole\MultipoleCoefficients.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Routing\Rectilinear\OpenVertexEvent.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Core\Layout\ProximityOverlapRemoval\StressEnergy\NodeVoting.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Routing\Spline\Bundling\BundleRouter.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Routing\Rectilinear\NeighborSides.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Routing\Visibility\VisibilityKind.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Routing\RelativeShape.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Routing\Rectilinear\ObstaclePort.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Layout\LargeGraphLayout\ShortestPartRouterForLg.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Layout\Incremental\StickConstraint.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Core\Layout\LayoutAlgorithmHelpers.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Core\Layout\ProximityOverlapRemoval\StressEnergy\Vote.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Routing\Rectilinear\SsstRectilinearPath.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Core\DataStructures\BinaryHeapPriorityQueue.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Core\Geometry\Curves\CurveFactory.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Core\ProjectionSolver\Solution.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Routing\Visibility\UnimodalSequence.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Core\Geometry\Curves\Parallelogram.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Routing\Rectilinear\PointAndCrossings.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\DebugHelpers\Persistence\CurveStream.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Routing\Visibility\ActiveDiagonalComparerWithRay.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Miscellaneous\LayoutEditing\BumperPusher.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Layout\LargeGraphLayout\LgLayoutSettings.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Core\Layout\EdgeCollection.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Core\Geometry\Curves\CurveLengthAndParams.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Routing\Spline\Bundling\FlipSwitcher.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Core\Geometry\Curves\ClosestPointOnCurve.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Routing\Rectilinear\Nudging\LinkedPointSplitter.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Routing\Visibility\VisibilityVertex.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Routing\Rectilinear\Nudging\LinkedPoint.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Core\Geometry\Curves\LineSegment.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Miscellaneous\LayoutEditing\RestoreData.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Routing\Spline\ConeSpanner\ObstacleSide.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Core\Geometry\OverlapRemoval\RectangularClusterBoundary.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Core\Geometry\Curves\CurveTangent.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Routing\Rectilinear\Nudging\Nudger.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Core\Geometry\RectanglePacking\Packing.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Layout\Layered\SmoothedPolylineCalculator.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Core\Layout\ILabeledObject.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Core\Layout\LgNodeInfo.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Layout\OverlapRemovalFixedSegments\RectSegIntersection.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Layout\LargeGraphLayout\LgNodeCollection.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Core\Layout\Arrowheads.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Routing\Visibility\PortObstacleEvent.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Core\DataStructures\RBTree\RBTreeEnumerator.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Core\GraphAlgorithms\MinimumSpanningTreeByPrim.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Miscellaneous\LayoutEditing\LabelRestoreData.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Routing\PreGraph.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Core\GraphAlgorithms\TopologicalSort.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Routing\Rectilinear\VisibilityGraphGenerator.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Core\Routing\EdgeRoutingSettings.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Layout\Layered\Ordering\Ordering.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\DebugHelpers\Show.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\ValidateArg.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Routing\Rectilinear\Nudging\FreeSpaceFinder.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Routing\Visibility\BimodalSequence.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Routing\Rectilinear\SegmentIntersector.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Routing\Rectilinear\GroupBoundaryCrossingMap.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Core\ProjectionSolver\Solver.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Routing\Spline\Bundling\IMetroMapOrderingAlgorithm.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Routing\Spline\Bundling\HubDebugger.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Core\ProjectionSolver\Variable.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Core\Geometry\Curves\IFunction.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Layout\Layered\Ordering\SweepMode.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\DebugHelpers\Persistence\GeometryGraphReader.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\GraphmapsWithMesh\SteinerTree.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Layout\Layered\LayerCalculator.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Routing\ConstrainedDelaunayTriangulation\CdtFront.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Core\Layout\IsOpenChangeEventArgs.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Core\Geometry\RTree\RectangleNode.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Routing\Spline\Bundling\IntersectionCache.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Routing\Visibility\StemStartPointComparer.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Core\Layout\ProximityOverlapRemoval\ConjugateGradient\SparseMatrix.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Layout\Incremental\HorizontalSeparationConstraint.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Routing\SplineRouter.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Core\Geometry\Curves\Ellipse.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Layout\Layered\Ordering\ConstrainedOrdering.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Core\Layout\ProximityOverlapRemoval\StressEnergy\VoteBlock.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Routing\Spline\ConeSpanner\LowestVertexEvent.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Routing\Rectilinear\ObstaclePortEntrance.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Core\Layout\Node.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Miscellaneous\LayoutHelpers.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Routing\Visibility\Polygon.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Routing\Spline\Bundling\CdtThreader.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\DebugHelpers\Persistence\CurveStreamElement.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Routing\Spline\Bundling\PointPairOrder.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Core\ProjectionSolver\SolverAlgorithm.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Core\Geometry\CompassVector.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Layout\Incremental\Feasibility.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Core\Geometry\Curves\PointLocation.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Core\Geometry\Curves\RootFinder.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Core\GraphAlgorithms\CycleRemoval\CycleRemoval.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Core\DataStructures\RBTree\RBColor.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Core\Geometry\Curves\Polyline.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Routing\Spline\ConeSpanner\RightVertexEvent.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Core\Routing\BundlingSettings.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Core\Geometry\Curves\Curve.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Routing\Rectilinear\Nudging\SegWithIndex.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\GraphmapsWithMesh\MeshGraph.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Layout\Layered\Ordering\AdjacentSwapsWithConstraints.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Core\Geometry\RTree\IntervalNodeUtils.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Routing\Rectilinear\Nudging\PathRefiner.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Routing\Spline\ConeSpanner\IConeSweeper.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Routing\Spline\ConeSpanner\Cone.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Routing\Spline\Bundling\MetroGraphData.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Core\Geometry\Rectangle.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Routing\Rectilinear\BasicReflectionEvent.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Routing\Spline\Bundling\PathFixer.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\GraphmapsWithMesh\LocalModifications.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Routing\Spline\ConeSpanner\LineSweeper.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Routing\Visibility\Tangent.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Core\Geometry\Curves\PolylinePoint.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Layout\Incremental\FiEdge.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Core\Geometry\Curves\CurvatureDerivative.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Routing\Visibility\SegmentBase.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Routing\Spline\Bundling\Intersections.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Routing\Spline\Bundling\LinearMetroMapOrdering.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Routing\Rectilinear\RectilinearInteractiveEditor.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Routing\Spline\Bundling\MetroLine.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Core\Layout\Edge.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Core\ProjectionSolver\BlockVector.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\DebugHelpers\Persistence\GeometryGraphWriter.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Core\DataStructures\RBTree\RBNode.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Core\Geometry\RTree\IntervalNode.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Core\Geometry\OverlapRemoval\OverlapRemovalCluster.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Layout\Incremental\Relayout.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\DebugHelpers\ShowDebugCurves.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Core\DataStructures\Size.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Core\Layout\LgNodeInfoKind.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Core\Layout\Label.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Routing\Rectilinear\EventQueue.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Core\Layout\LayoutChangeEventArgs.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Core\Geometry\MinEnclosingDisc\Disc.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Layout\OverlapRemovalFixedSegments\FakeBitmap.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\DebugHelpers\Persistence\ClusterWithChildLists.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\DebugHelpers\ShowDatabase.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Core\DataStructures\GenericHeapElement.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Routing\Spline\Bundling\SdShortestPath.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Routing\ConstrainedDelaunayTriangulation\PerimeterEdge.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Routing\Rectilinear\VertexEntry.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Layout\Layered\PolyIntEdge.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Core\Geometry\Curves\ParallelogramNodeOverICurve.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Miscellaneous\Constraints\AlignmentConstraint.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Core\Geometry\CornerSite.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Core\Layout\EdgeConstraints.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Core\Geometry\RTree\RectangleNodeUtils.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Layout\Layered\RecoveryLayerCalculator.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Core\Layout\Port.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Layout\Layered\Routing.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Core\DataStructures\BinaryHeapWithComparer.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Routing\Spline\Bundling\HubRadiiCalculator.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Routing\Rectilinear\Nudging\CombinatorialNudger.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Layout\Initial\InitialLayoutHelpers.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Routing\TightLooseCouple.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Routing\MultipleSourceMultipleTargetsShortestPathOnVisibilityGraph.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Routing\Spline\Bundling\MetroNodeInfo.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Core\ProjectionSolver\ConstraintVector.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Layout\Incremental\ProcrustesCircleConstraint.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Layout\Incremental\LockPosition.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Routing\Rectilinear\LowBendVertexEvent.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Routing\Spline\ConeSpanner\RightObstacleSide.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Routing\Rectilinear\HighObstacleSide.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Routing\Rectilinear\MsmtRectilinearPath.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Core\Layout\ProximityOverlapRemoval\StressEnergy\ExampleStressMajorization.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Miscellaneous\LayoutEditing\IncrementalDragger.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Layout\LargeGraphLayout\LevelCalculator.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Core\Layout\Cluster.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Layout\Incremental\Multipole\KDTree.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\AssemblyInfo.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Routing\Rectilinear\LowObstacleSide.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\DebugHelpers\DebugCurve.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Routing\Rectilinear\Nudging\AxisEdgeLowPointEvent.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Core\Layout\PackingMethod.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Core\GraphAlgorithms\BasicGraphOnEdges.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Core\Layout\PortObstacle.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Routing\Visibility\VisibilityEdge.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Routing\ConstrainedDelaunayTriangulation\CdtTriangle.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Layout\Layered\Ordering\OrderingMeasure.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Routing\ClusterBoundaryPort.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Layout\Layered\DataBase.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Routing\Spline\Bundling\ChannelFlag.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Routing\Visibility\ActiveEdgeComparerWithRay.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Routing\Rectilinear\Nudging\AxisEdge.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Core\Geometry\RectanglePacking\PackingConstants.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Core\Layout\GraphConnectedComponents.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Routing\Rectilinear\PointAndCrossingsList.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Routing\SingleSourceSingleTargetShortestPathOnVisibilityGraph.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Layout\MDS\AllPairsDistances.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Layout\Layered\EdgePathsInserter.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Routing\Visibility\LineSweeperBase.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Layout\Layered\TwoLayerFlatEdgeRouter.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Core\Layout\LgInfoBase.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Layout\Incremental\MaxSeparationConstraint.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Routing\Rectilinear\Nudging\PointByDelegateComparer.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Core\Layout\LabelPlacementResult.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Core\Geometry\ConvexHull\HullPoint.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Layout\Layered\Ordering\EdgeComparerByTarget.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Layout\Layered\LayerEdge.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Layout\Layered\NetworkSimplexForGeneralGraph.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Core\Geometry\Curves\LinearSystem2.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Routing\Spline\ConeSpanner\RightIntersectionEvent.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Routing\Visibility\TollFreeVisibilityEdge.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Core\Geometry\PointPair.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\DebugHelpers\Timer.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Routing\ConstrainedDelaunayTriangulation\CdtEdge.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Miscellaneous\Routing\ShortestPathTree.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Miscellaneous\LayoutEditing\RestoreHelper.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Layout\Incremental\MinSeparationConstraint.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Routing\Spline\ConeSpanner\ConeClosureEvent.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\GraphmapsWithMesh\PointToSegmentDistance.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\GraphmapsWithMesh\PlanarGraphUtilities.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Core\Layout\FloatingPort.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Routing\Visibility\TangentVisibilityGraphCalculator.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Layout\MDS\PivotMDS.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Core\GraphAlgorithms\IEdge.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Routing\Rectilinear\SpliceUtility.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Core\Geometry\ConvexHull\HullStack.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Routing\Rectilinear\RectilinearScanLine.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\GraphmapsWithMesh\Network.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Layout\Layered\Ordering\MetroMapOrdering.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Core\CancelToken.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Core\Layout\RelativeFloatingPort.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Miscellaneous\Ranking\RankingLayout.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Routing\Spline\ConeSpanner\LeftIntersectionEvent.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Core\Geometry\Curves\MinDistCurveCurve.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Core\Geometry\Curves\ICurve.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Core\Geometry\RectanglePacking\OptimalPacking.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Core\AlgorithmBase.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Core\Layout\RectangleObstacle.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Layout\LargeGraphLayout\EdgePicker.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Routing\Rectilinear\SparseVisibilityGraphGenerator.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Core\Layout\ProximityOverlapRemoval\MST\MstLineSweeper.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Routing\Spline\Bundling\SdVertex.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Routing\ConstrainedDelaunayTriangulation\Cdt.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Core\Geometry\MultidimensionalScaling.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Routing\Spline\ConeSpanner\BrokenConeSide.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Routing\Rectilinear\LowReflectionEvent.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Core\Geometry\Curves\ParallelogramLeaf.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Routing\Rectilinear\Obstacle.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Routing\Rectilinear\Nudging\LongestNudgedSegment.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Core\DataStructures\SymmetricTuple.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Routing\Rectilinear\Nudging\Path.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Core\ProjectionSolver\Constraint.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\GraphmapsWithMesh\Angle.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Core\Layout\ProximityOverlapRemoval\StressEnergy\StressMajorization.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Routing\Spline\Bundling\SimulatedAnnealing.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Routing\Shape.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Layout\LargeGraphLayout\LgInteractor.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\GraphmapsWithMesh\ComponentCollection.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Core\Layout\HookUpAnywhereFromInsidePort.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Layout\Layered\RefinerBetweenTwoLayers.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Layout\MDS\MDSLayoutSettings.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Routing\Visibility\InteractiveTangentVisibilityGraphCalculator.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Routing\ShapeCreatorForRoutingToParents.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Core\Layout\GeometryGraph.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Core\ProjectionSolver\DfDvNode.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Layout\Layered\Balancing.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Core\DataStructures\Set.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Routing\Spline\Bundling\BundleInfo.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Layout\Initial\InitialLayoutByCluster.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Routing\Spline\ConeSpanner\ConeLeftSide.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Core\Layout\ProximityOverlapRemoval\OverlapRemovalSettings.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Layout\Layered\Ordering\ConstrainedOrderMeasure.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Routing\Rectilinear\GroupBoundaryCrossing.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Routing\Rectilinear\Nudging\PathEdge.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\GraphmapsWithMesh\PointSet.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Miscellaneous\Phylo\PhyloEdge.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Routing\RelaxedPolylinePoint.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Core\Layout\ProximityOverlapRemoval\ConjugateGradient\Vector.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Layout\LargeGraphLayout\SimpleNodeCollection.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Core\Geometry\Curves\PlaneTransformation.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Core\Layout\ProximityOverlapRemoval\StressEnergy\UpdateMethod.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Routing\ConstrainedDelaunayTriangulation\EdgeTracer.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Layout\LargeGraphLayout\IZoomLevelCalculator.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Core\ProjectionSolver\SolverShell.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Layout\Incremental\FastIncrementalLayoutSettings.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Routing\Rectilinear\ObstacleTree.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Routing\ConstrainedDelaunayTriangulation\EdgeInserter.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Routing\StraightLineEdges.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Routing\Rectilinear\HighReflectionEvent.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\GraphmapsWithMesh\Tiling.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Routing\Visibility\TangentPair.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Layout\Layered\Ordering\LayerInfo.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Core\Geometry\Curves\PolylineIterator.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Core\Geometry\OverlapRemoval\OverlapRemovalClusterEvent.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Core\Geometry\OverlapRemoval\OverlapRemovalClusterScanLine.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Routing\Rectilinear\ScanSegmentVector.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Core\Geometry\PointNodesList.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Layout\LargeGraphLayout\RailGraph.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\DebugHelpers\ShowDebugCurvesEnumeration.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Core\Layout\SimpleIntEdge.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Routing\Spline\Bundling\SdBoneEdge.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Layout\Layered\Ordering\EdgeComparerBySource.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Routing\Spline\Bundling\CdtIntersections.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Layout\LargeGraphLayout\LgSkeletonLevel.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Core\GraphAlgorithms\CycleRemoval\CycleRemovalWithConstraints.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Routing\Rectilinear\Clump.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Routing\Rectilinear\AxisCoordinateEvent.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Miscellaneous\LayoutEditing\ObstacleCalculator.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Core\GraphAlgorithms\CycleRemoval\NodeInfo.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Layout\Layered\ProperLayeredGraph.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Layout\LargeGraphLayout\LgData.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Layout\OverlapRemovalFixedSegments\PixelPoint.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Layout\Layered\LayeredLayoutEngine.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Layout\Layered\FlatEdgeRouter.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Routing\Spline\ConeSpanner\LineSweeperForPortLocations.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Core\Geometry\IRectangle.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\GraphmapsWithMesh\MsaglUtilities.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Miscellaneous\MultiScale\MultiScaleLayout.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Core\Geometry\RectanglePacking\RectanglePacking.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Layout\LargeGraphLayout\DeviceIndependedZoomCalculatorForNodes.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Miscellaneous\RegularGrid\GridTraversal.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Core\Layout\ProximityOverlapRemoval\IOverlapRemoval.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Core\Geometry\SmoothedPolyline.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Core\Geometry\ApproximateComparer.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Layout\LargeGraphLayout\RouteSimplifier.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Core\Geometry\RTree\RTree.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Miscellaneous\NonOverlappingBoundaries\ProximityQuery.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Miscellaneous\LayoutEditing\NodeRestoreData.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Routing\MultiEdgeRouter.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Routing\Visibility\Diagonal.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Routing\Visibility\VisibilityGraph.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Routing\Spline\ConeSpanner\ConeSide.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Layout\Incremental\AxisSolver.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Core\DataStructures\CollectionUtilities.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Layout\MDS\MDSGraphLayout.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Layout\Layered\HorizontalConstraintsForSugiyama.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Routing\Spline\Bundling\CostCalculator.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Core\ProjectionSolver\UniformSolverVar.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Routing\Spline\Bundling\BundleBase.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Layout\LargeGraphLayout\Interval.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Routing\Rectilinear\ScanSegmentVectorItem.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Core\GraphAlgorithms\BasicGraph.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Routing\Rectilinear\BasicObstacleSide.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\GlobalSuppressions.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Core\DataStructures\RBTree\DefaultComperer.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\DebugHelpers\Persistence\DoubleStreamElement.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Unity.InferenceEngine.Microsoft.Msagl.asmdef" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="UnityEngine">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\Managed\UnityEngine\UnityEngine.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.AIModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\Managed\UnityEngine\UnityEngine.AIModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.AMDModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\Managed\UnityEngine\UnityEngine.AMDModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.ARModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\Managed\UnityEngine\UnityEngine.ARModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.AccessibilityModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\Managed\UnityEngine\UnityEngine.AccessibilityModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.AdaptivePerformanceModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\Managed\UnityEngine\UnityEngine.AdaptivePerformanceModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.AndroidJNIModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\Managed\UnityEngine\UnityEngine.AndroidJNIModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.AnimationModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\Managed\UnityEngine\UnityEngine.AnimationModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.AssetBundleModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\Managed\UnityEngine\UnityEngine.AssetBundleModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.AudioModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\Managed\UnityEngine\UnityEngine.AudioModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.ClothModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\Managed\UnityEngine\UnityEngine.ClothModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.ClusterInputModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\Managed\UnityEngine\UnityEngine.ClusterInputModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.ClusterRendererModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\Managed\UnityEngine\UnityEngine.ClusterRendererModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.ContentLoadModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\Managed\UnityEngine\UnityEngine.ContentLoadModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.CoreModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\Managed\UnityEngine\UnityEngine.CoreModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.CrashReportingModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\Managed\UnityEngine\UnityEngine.CrashReportingModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.DSPGraphModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\Managed\UnityEngine\UnityEngine.DSPGraphModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.DirectorModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\Managed\UnityEngine\UnityEngine.DirectorModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.GIModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\Managed\UnityEngine\UnityEngine.GIModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.GameCenterModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\Managed\UnityEngine\UnityEngine.GameCenterModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.GraphicsStateCollectionSerializerModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\Managed\UnityEngine\UnityEngine.GraphicsStateCollectionSerializerModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.GridModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\Managed\UnityEngine\UnityEngine.GridModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.HierarchyModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\Managed\UnityEngine\UnityEngine.HierarchyModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.HierarchyCoreModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\Managed\UnityEngine\UnityEngine.HierarchyCoreModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.HotReloadModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\Managed\UnityEngine\UnityEngine.HotReloadModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.IMGUIModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\Managed\UnityEngine\UnityEngine.IMGUIModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.IdentifiersModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\Managed\UnityEngine\UnityEngine.IdentifiersModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.ImageConversionModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\Managed\UnityEngine\UnityEngine.ImageConversionModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.InputModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\Managed\UnityEngine\UnityEngine.InputModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.InputForUIModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\Managed\UnityEngine\UnityEngine.InputForUIModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.InputLegacyModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\Managed\UnityEngine\UnityEngine.InputLegacyModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.InsightsModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\Managed\UnityEngine\UnityEngine.InsightsModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.JSONSerializeModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\Managed\UnityEngine\UnityEngine.JSONSerializeModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.LocalizationModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\Managed\UnityEngine\UnityEngine.LocalizationModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.MarshallingModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\Managed\UnityEngine\UnityEngine.MarshallingModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.MultiplayerModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\Managed\UnityEngine\UnityEngine.MultiplayerModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.NVIDIAModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\Managed\UnityEngine\UnityEngine.NVIDIAModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.ParticleSystemModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\Managed\UnityEngine\UnityEngine.ParticleSystemModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.PerformanceReportingModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\Managed\UnityEngine\UnityEngine.PerformanceReportingModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.PhysicsModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\Managed\UnityEngine\UnityEngine.PhysicsModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.Physics2DModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\Managed\UnityEngine\UnityEngine.Physics2DModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.PhysicsBackendPhysXModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\Managed\UnityEngine\UnityEngine.PhysicsBackendPhysXModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.PropertiesModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\Managed\UnityEngine\UnityEngine.PropertiesModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.RenderAs2DModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\Managed\UnityEngine\UnityEngine.RenderAs2DModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.RuntimeInitializeOnLoadManagerInitializerModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\Managed\UnityEngine\UnityEngine.RuntimeInitializeOnLoadManagerInitializerModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.ScreenCaptureModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\Managed\UnityEngine\UnityEngine.ScreenCaptureModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.ShaderRuntimeModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\Managed\UnityEngine\UnityEngine.ShaderRuntimeModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.ShaderVariantAnalyticsModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\Managed\UnityEngine\UnityEngine.ShaderVariantAnalyticsModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.SharedInternalsModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\Managed\UnityEngine\UnityEngine.SharedInternalsModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.SpriteMaskModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\Managed\UnityEngine\UnityEngine.SpriteMaskModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.SpriteShapeModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\Managed\UnityEngine\UnityEngine.SpriteShapeModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.StreamingModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\Managed\UnityEngine\UnityEngine.StreamingModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.SubstanceModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\Managed\UnityEngine\UnityEngine.SubstanceModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.SubsystemsModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\Managed\UnityEngine\UnityEngine.SubsystemsModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.TLSModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\Managed\UnityEngine\UnityEngine.TLSModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.TerrainModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\Managed\UnityEngine\UnityEngine.TerrainModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.TerrainPhysicsModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\Managed\UnityEngine\UnityEngine.TerrainPhysicsModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.TextCoreFontEngineModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\Managed\UnityEngine\UnityEngine.TextCoreFontEngineModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.TextCoreTextEngineModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\Managed\UnityEngine\UnityEngine.TextCoreTextEngineModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.TextRenderingModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\Managed\UnityEngine\UnityEngine.TextRenderingModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.TilemapModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\Managed\UnityEngine\UnityEngine.TilemapModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.UIModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\Managed\UnityEngine\UnityEngine.UIModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.UIElementsModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\Managed\UnityEngine\UnityEngine.UIElementsModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.UmbraModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\Managed\UnityEngine\UnityEngine.UmbraModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.UnityAnalyticsModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\Managed\UnityEngine\UnityEngine.UnityAnalyticsModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.UnityAnalyticsCommonModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\Managed\UnityEngine\UnityEngine.UnityAnalyticsCommonModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.UnityConnectModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\Managed\UnityEngine\UnityEngine.UnityConnectModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.UnityConsentModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\Managed\UnityEngine\UnityEngine.UnityConsentModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.UnityCurlModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\Managed\UnityEngine\UnityEngine.UnityCurlModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.UnityWebRequestModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\Managed\UnityEngine\UnityEngine.UnityWebRequestModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.UnityWebRequestAssetBundleModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\Managed\UnityEngine\UnityEngine.UnityWebRequestAssetBundleModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.UnityWebRequestAudioModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\Managed\UnityEngine\UnityEngine.UnityWebRequestAudioModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.UnityWebRequestTextureModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\Managed\UnityEngine\UnityEngine.UnityWebRequestTextureModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.UnityWebRequestWWWModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\Managed\UnityEngine\UnityEngine.UnityWebRequestWWWModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.VFXModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\Managed\UnityEngine\UnityEngine.VFXModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.VRModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\Managed\UnityEngine\UnityEngine.VRModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.VectorGraphicsModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\Managed\UnityEngine\UnityEngine.VectorGraphicsModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.VehiclesModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\Managed\UnityEngine\UnityEngine.VehiclesModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.VideoModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\Managed\UnityEngine\UnityEngine.VideoModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.VirtualTexturingModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\Managed\UnityEngine\UnityEngine.VirtualTexturingModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.WebGLModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\PlaybackEngines\WebGLSupport\Managed\UnityEngine.WebGLModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.WindModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\Managed\UnityEngine\UnityEngine.WindModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.XRModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\Managed\UnityEngine\UnityEngine.XRModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEditor">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\Managed\UnityEngine\UnityEditor.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEditor.AccessibilityModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\Managed\UnityEngine\UnityEditor.AccessibilityModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEditor.AdaptivePerformanceModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\Managed\UnityEngine\UnityEditor.AdaptivePerformanceModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEditor.AssetComplianceModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\Managed\UnityEngine\UnityEditor.AssetComplianceModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEditor.BuildProfileModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\Managed\UnityEngine\UnityEditor.BuildProfileModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEditor.ClothModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\Managed\UnityEngine\UnityEditor.ClothModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEditor.CoreBusinessMetricsModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\Managed\UnityEngine\UnityEditor.CoreBusinessMetricsModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEditor.CoreModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\Managed\UnityEngine\UnityEditor.CoreModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEditor.DeviceSimulatorModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\Managed\UnityEngine\UnityEditor.DeviceSimulatorModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEditor.DiagnosticsModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\Managed\UnityEngine\UnityEditor.DiagnosticsModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEditor.EditorToolbarModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\Managed\UnityEngine\UnityEditor.EditorToolbarModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEditor.EmbreeModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\Managed\UnityEngine\UnityEditor.EmbreeModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEditor.GIModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\Managed\UnityEngine\UnityEditor.GIModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEditor.GraphViewModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\Managed\UnityEngine\UnityEditor.GraphViewModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEditor.GraphicsStateCollectionSerializerModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\Managed\UnityEngine\UnityEditor.GraphicsStateCollectionSerializerModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEditor.GridAndSnapModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\Managed\UnityEngine\UnityEditor.GridAndSnapModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEditor.GridModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\Managed\UnityEngine\UnityEditor.GridModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEditor.HierarchyModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\Managed\UnityEngine\UnityEditor.HierarchyModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEditor.InAppPurchasingModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\Managed\UnityEngine\UnityEditor.InAppPurchasingModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEditor.LevelPlayModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\Managed\UnityEngine\UnityEditor.LevelPlayModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEditor.MediaModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\Managed\UnityEngine\UnityEditor.MediaModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEditor.MultiplayerModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\Managed\UnityEngine\UnityEditor.MultiplayerModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEditor.Physics2DModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\Managed\UnityEngine\UnityEditor.Physics2DModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEditor.PhysicsModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\Managed\UnityEngine\UnityEditor.PhysicsModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEditor.PlayModeModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\Managed\UnityEngine\UnityEditor.PlayModeModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEditor.PresetsUIModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\Managed\UnityEngine\UnityEditor.PresetsUIModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEditor.PropertiesModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\Managed\UnityEngine\UnityEditor.PropertiesModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEditor.QuickSearchModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\Managed\UnityEngine\UnityEditor.QuickSearchModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEditor.SafeModeModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\Managed\UnityEngine\UnityEditor.SafeModeModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEditor.SceneTemplateModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\Managed\UnityEngine\UnityEditor.SceneTemplateModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEditor.SceneViewModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\Managed\UnityEngine\UnityEditor.SceneViewModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEditor.ShaderBuildSettingsModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\Managed\UnityEngine\UnityEditor.ShaderBuildSettingsModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEditor.ShaderCompilationModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\Managed\UnityEngine\UnityEditor.ShaderCompilationModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEditor.ShaderFoundryModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\Managed\UnityEngine\UnityEditor.ShaderFoundryModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEditor.SketchUpModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\Managed\UnityEngine\UnityEditor.SketchUpModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEditor.SpriteMaskModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\Managed\UnityEngine\UnityEditor.SpriteMaskModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEditor.SpriteShapeModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\Managed\UnityEngine\UnityEditor.SpriteShapeModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEditor.SubstanceModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\Managed\UnityEngine\UnityEditor.SubstanceModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEditor.TerrainModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\Managed\UnityEngine\UnityEditor.TerrainModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEditor.TextCoreFontEngineModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\Managed\UnityEngine\UnityEditor.TextCoreFontEngineModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEditor.TextCoreTextEngineModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\Managed\UnityEngine\UnityEditor.TextCoreTextEngineModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEditor.TextRenderingModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\Managed\UnityEngine\UnityEditor.TextRenderingModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEditor.TilemapModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\Managed\UnityEngine\UnityEditor.TilemapModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEditor.TreeModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\Managed\UnityEngine\UnityEditor.TreeModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEditor.UIAutomationModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\Managed\UnityEngine\UnityEditor.UIAutomationModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEditor.UIBuilderModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\Managed\UnityEngine\UnityEditor.UIBuilderModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEditor.UIElementsModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\Managed\UnityEngine\UnityEditor.UIElementsModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEditor.UIElementsSamplesModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\Managed\UnityEngine\UnityEditor.UIElementsSamplesModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEditor.UIToolkitAuthoringModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\Managed\UnityEngine\UnityEditor.UIToolkitAuthoringModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEditor.UmbraModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\Managed\UnityEngine\UnityEditor.UmbraModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEditor.UnityConnectModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\Managed\UnityEngine\UnityEditor.UnityConnectModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEditor.VFXModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\Managed\UnityEngine\UnityEditor.VFXModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEditor.VectorGraphicsModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\Managed\UnityEngine\UnityEditor.VectorGraphicsModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEditor.VideoModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\Managed\UnityEngine\UnityEditor.VideoModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEditor.XRModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\Managed\UnityEngine\UnityEditor.XRModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEditor.Graphs">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\Managed\UnityEditor.Graphs.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEditor.WebGL.Extensions">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\PlaybackEngines\WebGLSupport\UnityEditor.WebGL.Extensions.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEditor.WindowsStandalone.Extensions">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\PlaybackEngines\WindowsStandaloneSupport\UnityEditor.WindowsStandalone.Extensions.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="websocket-sharp">
+      <HintPath>Library\PackageCache\com.unity.services.wire@9a73acde80cc\Plugins\websocket-sharp.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Mono.CecilX">
+      <HintPath>Assets\Mirror\Plugins\Mono.Cecil\Mono.CecilX.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Mono.CecilX.Mdb">
+      <HintPath>Assets\Mirror\Plugins\Mono.Cecil\Mono.CecilX.Mdb.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.VisualScripting.YamlDotNet">
+      <HintPath>Library\PackageCache\com.unity.visualscripting@191c0d7e3b69\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.Collections.LowLevel.ILSupport">
+      <HintPath>Library\PackageCache\com.unity.collections@aea9d3bd5e19\Unity.Collections.LowLevel.ILSupport\Unity.Collections.LowLevel.ILSupport.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="nunit.framework">
+      <HintPath>Library\PackageCache\com.unity.ext.nunit@d8c07649098d\net40\unity-custom\nunit.framework.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.Analytics.Tracker">
+      <HintPath>Library\PackageCache\com.unity.analytics@c9d14a6bdec6\Unity.Analytics.Tracker.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.Analytics.Editor">
+      <HintPath>Library\PackageCache\com.unity.analytics@c9d14a6bdec6\Unity.Analytics.Editor.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Mirror.BouncyCastle.Cryptography">
+      <HintPath>Assets\Mirror\Transports\Encryption\Plugins\BouncyCastle\Mirror.BouncyCastle.Cryptography.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Mono.CecilX.Pdb">
+      <HintPath>Assets\Mirror\Plugins\Mono.Cecil\Mono.CecilX.Pdb.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.Plastic.Antlr3.Runtime">
+      <HintPath>Library\PackageCache\com.unity.collab-proxy@3351acaba9c9\Lib\Editor\Unity.Plastic.Antlr3.Runtime.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Mono.CecilX.Rocks">
+      <HintPath>Assets\Mirror\Plugins\Mono.Cecil\Mono.CecilX.Rocks.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.Plastic.Newtonsoft.Json">
+      <HintPath>Library\PackageCache\com.unity.collab-proxy@3351acaba9c9\Lib\Editor\Unity.Plastic.Newtonsoft.Json.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Google.VersionHandlerImpl">
+      <HintPath>Assets\MobileDependencyResolver\Editor\Google.VersionHandlerImpl.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="log4netPlastic">
+      <HintPath>Library\PackageCache\com.unity.collab-proxy@3351acaba9c9\Lib\Editor\log4netPlastic.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.VisualScripting.IonicZip">
+      <HintPath>Library\PackageCache\com.unity.visualscripting@191c0d7e3b69\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="unityplastic">
+      <HintPath>Library\PackageCache\com.unity.collab-proxy@3351acaba9c9\Lib\Editor\unityplastic.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Google.JarResolver">
+      <HintPath>Assets\MobileDependencyResolver\Editor\Google.JarResolver.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.IO.Hashing">
+      <HintPath>Library\PackageCache\com.unity.collections@aea9d3bd5e19\Unity.Collections.Tests\System.IO.Hashing\System.IO.Hashing.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.VisualScripting.Antlr3.Runtime">
+      <HintPath>Library\PackageCache\com.unity.visualscripting@191c0d7e3b69\Runtime\VisualScripting.Flow\Dependencies\NCalc\Unity.VisualScripting.Antlr3.Runtime.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Google.VersionHandler">
+      <HintPath>Assets\MobileDependencyResolver\Editor\Google.VersionHandler.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>Library\PackageCache\com.unity.nuget.newtonsoft-json@4dfd81071c64\Runtime\Newtonsoft.Json.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.VisualScripting.TextureAssets">
+      <HintPath>Library\PackageCache\com.unity.visualscripting@191c0d7e3b69\Editor\VisualScripting.Core\EditorAssetResources\Unity.VisualScripting.TextureAssets.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Mono.Cecil">
+      <HintPath>Library\PackageCache\com.unity.nuget.mono-cecil@ecb9724e46ff\Mono.Cecil.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe">
+      <HintPath>Library\PackageCache\com.unity.collections@aea9d3bd5e19\Unity.Collections.Tests\System.Runtime.CompilerServices.Unsafe\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.Analytics.StandardEvents">
+      <HintPath>Library\PackageCache\com.unity.analytics@c9d14a6bdec6\AnalyticsStandardEvents\Unity.Analytics.StandardEvents.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="AiEditorToolsSdk">
+      <HintPath>Library\PackageCache\com.unity.ai.toolkit@48a271771d1a\Modules\Sdk\Editor\AiEditorToolsSdk.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="mscorlib">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\mscorlib.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\System.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Core">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\System.Core.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\System.Runtime.Serialization.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Xml">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\System.Xml.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Xml.Linq">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\System.Xml.Linq.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Numerics">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\System.Numerics.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Numerics.Vectors">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\System.Numerics.Vectors.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Net.Http">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\System.Net.Http.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.IO.Compression">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\System.IO.Compression.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Microsoft.CSharp">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Microsoft.CSharp.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Data">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\System.Data.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\System.Data.DataSetExtensions.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Drawing">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\System.Drawing.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.IO.Compression.FileSystem">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\System.IO.Compression.FileSystem.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.ComponentModel.Composition">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\System.ComponentModel.Composition.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Transactions">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\System.Transactions.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Microsoft.Win32.Primitives">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\Microsoft.Win32.Primitives.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="netstandard">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\netstandard.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.AppContext">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.AppContext.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Buffers">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.Buffers.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Collections.Concurrent">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.Collections.Concurrent.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Collections">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.Collections.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Collections.NonGeneric">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.Collections.NonGeneric.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Collections.Specialized">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.Collections.Specialized.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.ComponentModel.Annotations">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.ComponentModel.Annotations.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.ComponentModel">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.ComponentModel.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.ComponentModel.EventBasedAsync">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.ComponentModel.EventBasedAsync.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.ComponentModel.Primitives">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.ComponentModel.Primitives.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.ComponentModel.TypeConverter">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.ComponentModel.TypeConverter.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Console">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.Console.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Data.Common">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.Data.Common.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Diagnostics.Contracts">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.Diagnostics.Contracts.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Diagnostics.Debug">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.Diagnostics.Debug.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Diagnostics.FileVersionInfo">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.Diagnostics.FileVersionInfo.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Diagnostics.Process">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.Diagnostics.Process.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Diagnostics.StackTrace">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.Diagnostics.StackTrace.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Diagnostics.TextWriterTraceListener">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.Diagnostics.TextWriterTraceListener.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Diagnostics.Tools">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.Diagnostics.Tools.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Diagnostics.TraceSource">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.Diagnostics.TraceSource.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Drawing.Primitives">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.Drawing.Primitives.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Dynamic.Runtime">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.Dynamic.Runtime.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Globalization.Calendars">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.Globalization.Calendars.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Globalization">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.Globalization.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Globalization.Extensions">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.Globalization.Extensions.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.IO.Compression.ZipFile">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.IO.Compression.ZipFile.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.IO">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.IO.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.IO.FileSystem">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.IO.FileSystem.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.IO.FileSystem.DriveInfo">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.IO.FileSystem.DriveInfo.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.IO.FileSystem.Primitives">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.IO.FileSystem.Primitives.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.IO.FileSystem.Watcher">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.IO.FileSystem.Watcher.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.IO.IsolatedStorage">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.IO.IsolatedStorage.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.IO.MemoryMappedFiles">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.IO.MemoryMappedFiles.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.IO.Pipes">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.IO.Pipes.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.IO.UnmanagedMemoryStream">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.IO.UnmanagedMemoryStream.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Linq">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.Linq.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Linq.Expressions">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.Linq.Expressions.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Linq.Parallel">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.Linq.Parallel.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Linq.Queryable">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.Linq.Queryable.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Memory">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.Memory.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Net.Http.Rtc">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.Net.Http.Rtc.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Net.NameResolution">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.Net.NameResolution.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Net.NetworkInformation">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.Net.NetworkInformation.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Net.Ping">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.Net.Ping.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Net.Primitives">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.Net.Primitives.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Net.Requests">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.Net.Requests.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Net.Security">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.Net.Security.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Net.Sockets">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.Net.Sockets.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Net.WebHeaderCollection">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.Net.WebHeaderCollection.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Net.WebSockets.Client">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.Net.WebSockets.Client.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Net.WebSockets">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.Net.WebSockets.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.ObjectModel">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.ObjectModel.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Reflection.DispatchProxy">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.Reflection.DispatchProxy.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Reflection">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.Reflection.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Reflection.Emit">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.Reflection.Emit.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Reflection.Emit.ILGeneration">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.Reflection.Emit.ILGeneration.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Reflection.Emit.Lightweight">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.Reflection.Emit.Lightweight.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Reflection.Extensions">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.Reflection.Extensions.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Reflection.Primitives">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.Reflection.Primitives.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Resources.Reader">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.Resources.Reader.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Resources.ResourceManager">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.Resources.ResourceManager.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Resources.Writer">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.Resources.Writer.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.VisualC">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.Runtime.CompilerServices.VisualC.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Runtime">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.Runtime.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Runtime.Extensions">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.Runtime.Extensions.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Runtime.Handles">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.Runtime.Handles.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Runtime.InteropServices">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.Runtime.InteropServices.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Runtime.InteropServices.RuntimeInformation">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.Runtime.InteropServices.RuntimeInformation.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Runtime.InteropServices.WindowsRuntime">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.Runtime.InteropServices.WindowsRuntime.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Runtime.Numerics">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.Runtime.Numerics.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization.Formatters">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.Runtime.Serialization.Formatters.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization.Json">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.Runtime.Serialization.Json.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization.Primitives">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.Runtime.Serialization.Primitives.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization.Xml">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.Runtime.Serialization.Xml.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Security.Claims">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.Security.Claims.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.Algorithms">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.Security.Cryptography.Algorithms.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.Csp">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.Security.Cryptography.Csp.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.Encoding">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.Security.Cryptography.Encoding.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.Primitives">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.Security.Cryptography.Primitives.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.X509Certificates">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.Security.Cryptography.X509Certificates.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Security.Principal">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.Security.Principal.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Security.SecureString">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.Security.SecureString.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.ServiceModel.Duplex">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.ServiceModel.Duplex.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.ServiceModel.Http">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.ServiceModel.Http.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.ServiceModel.NetTcp">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.ServiceModel.NetTcp.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.ServiceModel.Primitives">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.ServiceModel.Primitives.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.ServiceModel.Security">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.ServiceModel.Security.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Text.Encoding">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.Text.Encoding.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Text.Encoding.Extensions">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.Text.Encoding.Extensions.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Text.RegularExpressions">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.Text.RegularExpressions.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Threading">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.Threading.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Threading.Overlapped">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.Threading.Overlapped.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Threading.Tasks">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.Threading.Tasks.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Threading.Tasks.Extensions">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.Threading.Tasks.Extensions.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Threading.Tasks.Parallel">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.Threading.Tasks.Parallel.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Threading.Thread">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.Threading.Thread.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Threading.ThreadPool">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.Threading.ThreadPool.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Threading.Timer">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.Threading.Timer.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.ValueTuple">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.ValueTuple.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Xml.ReaderWriter">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.Xml.ReaderWriter.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Xml.XDocument">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.Xml.XDocument.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Xml.XmlDocument">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.Xml.XmlDocument.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Xml.XmlSerializer">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.Xml.XmlSerializer.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Xml.XPath">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.Xml.XPath.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Xml.XPath.XDocument">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.Xml.XPath.XDocument.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="UnityEditor.UI.csproj">
+      <Project>{698D6ACB-27E6-6733-2BA7-B76006C8ED47}</Project>
+      <Name>UnityEditor.UI</Name>
+    </ProjectReference>
+    <ProjectReference Include="UnityEngine.UI.csproj">
+      <Project>{3A16FD29-B329-E206-65D7-03A7329215E0}</Project>
+      <Name>UnityEngine.UI</Name>
+    </ProjectReference>
+    <ProjectReference Include="UnityEngine.TestRunner.csproj">
+      <Project>{AC49909C-F0A5-47F6-D162-809E022150A7}</Project>
+      <Name>UnityEngine.TestRunner</Name>
+    </ProjectReference>
+    <ProjectReference Include="UnityEditor.TestRunner.csproj">
+      <Project>{8C368B2E-6D06-EC04-73BD-6C7A78C6C402}</Project>
+      <Name>UnityEditor.TestRunner</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="GenerateTargetFrameworkMonikerAttribute" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

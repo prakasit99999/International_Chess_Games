@@ -1,14 +1,26 @@
 ﻿using System;
 using AIEngine.Utilities;
+using System.Diagnostics;
 using AIEngine.Evaluation;
+
 using System.Linq;
 
 namespace AIEngine.Algorithms
 {
     public class Minimax : SearchAlgorithm
     {
+        private int _nodesEvaluated = 0;
+
         public override MoveModel FindBestMove(ChessBoardModel board, int depth)
         {
+            var result = FindBestMoveWithMetrics(board, depth);
+            return result.Move;
+        }
+
+        public override SearchResult FindBestMoveWithMetrics(ChessBoardModel board, int depth)
+        {
+            _nodesEvaluated = 0;
+            var stopwatch = Stopwatch.StartNew();
             var moves = MoveGenerator.GenerateMoves(board);
             if (moves == null || moves.Count == 0)
                 throw new InvalidOperationException("No valid moves found.");
@@ -29,11 +41,23 @@ namespace AIEngine.Algorithms
                 }
             }
 
-            return bestMove ?? moves.First();
+            stopwatch.Stop();
+            var elapsedMs = (float)stopwatch.Elapsed.TotalMilliseconds;
+            var finalMove = bestMove ?? moves.First();
+
+            return new SearchResult
+            {
+                Move = finalMove,
+                Depth = depth,
+                NodesEvaluated = _nodesEvaluated,
+                TimeMs = elapsedMs
+            };
         }
 
         protected int MinimaxRecursive(ChessBoardModel board, int depth, bool isMaximizing)
         {
+            _nodesEvaluated++; // นับ node ที่ evaluate
+            
             if (depth == 0 || board.IsGameOver())
                 return AIEngine.Evaluation.Evaluation.Evaluate(board);
 

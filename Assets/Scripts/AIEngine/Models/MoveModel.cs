@@ -1,3 +1,5 @@
+using UnityEngine;
+
 public class MoveModel
 {
     // ======== Properties ========
@@ -8,6 +10,11 @@ public class MoveModel
     public int PromotionPiece { get; set; } // ชนิดหมากเมื่อ Promote (0 = ไม่ Promote)
 
     public int Score { get; set; } // คะแนนของการเดินหมากนี้ (ใช้ใน AI)
+
+    // ======== Unity Vector2Int Properties ========
+    public Vector2Int From { get; set; }
+    public Vector2Int To { get; set; }
+
     // ======== Constructor ========
     public MoveModel(int fromX, int fromY, int toX, int toY, int promotionPiece = 0)
     {

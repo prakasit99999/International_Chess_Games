@@ -13,6 +13,12 @@ namespace AIEngine.Core
 
         public MoveModel FindBestMove(ChessBoardModel board, Difficulty difficulty)
         {
+            var result = FindBestMoveWithMetrics(board, difficulty);
+            return result.Move;
+        }
+
+        public SearchResult FindBestMoveWithMetrics(ChessBoardModel board, Difficulty difficulty)
+        {
             SearchAlgorithm algorithm;
             int depth;
             switch (difficulty)
@@ -33,8 +39,16 @@ namespace AIEngine.Core
                     throw new ArgumentException("Invalid difficulty level");
             }
 
-            MoveModel bestMove = algorithm.FindBestMove(board, depth);
-            return OptimizeMoveForDraw(board, bestMove);
+            var result = algorithm.FindBestMoveWithMetrics(board, depth);
+            var optimizedMove = OptimizeMoveForDraw(board, result.Move);
+            
+            return new SearchResult
+            {
+                Move = optimizedMove,
+                Depth = result.Depth,
+                NodesEvaluated = result.NodesEvaluated,
+                TimeMs = result.TimeMs
+            };
         }
 
         private MoveModel OptimizeMoveForDraw(ChessBoardModel board, MoveModel bestMove)

@@ -124,17 +124,17 @@ public class PromotionManager : MonoBehaviour
         GameManager.Instance.SwitchTurn();
 
         Debug.Log($"🔼 อัปเดตประเภทที่เลื่อนขั้นใน HistoryMove: {lastMove.promotedTo}");
-        Debug.Log($"📜 ข้อมูลทั้งหมดของ lastMove: " +
-                  $"\nStart Position: {lastMove.startPosition}" +
-                  $"\nEnd Position: {lastMove.endPosition}" +
-                  $"\nPiece Type: {lastMove.pieceType}" +
-                  $"\nCaptured Piece Type: {lastMove.capturedPieceType}" +
-                  $"\nCaptured Piece Team: {lastMove.capturedPieceTeam}" +
-                  $"\nIs Castling: {lastMove.isCastling}" +
-                  $"\nIs En Passant: {lastMove.isEnPassant}" +
-                  $"\nPromoted From: {lastMove.promotedFrom}" +
-                  $"\nPromoted To: {lastMove.promotedTo}" +
-                  $"\nPromoted Position: {lastMove.promotedPosition}");
+        //Debug.Log($"📜 ข้อมูลทั้งหมดของ lastMove: " +
+        //          $"\nStart Position: {lastMove.startPosition}" +
+        //          $"\nEnd Position: {lastMove.endPosition}" +
+        //          $"\nPiece Type: {lastMove.pieceType}" +
+        //          $"\nCaptured Piece Type: {lastMove.capturedPieceType}" +
+        //          $"\nCaptured Piece Team: {lastMove.capturedPieceTeam}" +
+        //          $"\nIs Castling: {lastMove.isCastling}" +
+        //          $"\nIs En Passant: {lastMove.isEnPassant}" +
+        //          $"\nPromoted From: {lastMove.promotedFrom}" +
+        //          $"\nPromoted To: {lastMove.promotedTo}" +
+        //          $"\nPromoted Position: {lastMove.promotedPosition}");
 
     }
 

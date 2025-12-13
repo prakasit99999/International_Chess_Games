@@ -109,32 +109,4 @@ public class TileClick : MonoBehaviour
         }
     }
 
-
-    //private IEnumerator FlashAttackCoroutine()
-    //{
-    //    isFlashing = true; // เริ่มกระพริบ
-    //    Color original = spriteRenderer.color;
-    //    spriteRenderer.color = attackColor;
-    //    yield return new WaitForSeconds(0.3f);
-    //    spriteRenderer.color = original;
-    //    isFlashing = false; // หยุดกระพริบ
-    //}
-
-    //public void FlashAttackColor()
-    //{
-    //    StartCoroutine(FlashAttackCoroutine()); // เปลี่ยนชื่อ Coroutine
-    //}
-
-    //private void OnMouseEnter()
-    //{
-    //    if (spriteRenderer != null &&
-    //        !spriteRenderer.color.Equals(validMoveColor) &&
-    //        !spriteRenderer.color.Equals(checkColor))
-    //    {
-    //        spriteRenderer.color = new Color32(200, 200, 200, 255); // สีเทาเมื่อชี้เมาส์
-    //    }
-    //}
-
-
-
 }

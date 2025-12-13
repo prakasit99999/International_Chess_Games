@@ -21,6 +21,7 @@ namespace AIEngine.Utilities
                     existingEntry.Score = score;
                     existingEntry.Flag = flag;
                     existingEntry.BestMove = bestMove;
+                    _table[key] = existingEntry;
                 }
 
             }

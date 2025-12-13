@@ -1,0 +1,46 @@
+{
+  "$schema": "https://ugs-config-schemas.unity3d.com/v1/matchmaker/matchmaker-queue.schema.json",
+  "name": "matchmaker-session-building-blocks",
+  "enabled": true,
+  "maxPlayersPerTicket": 2,
+  "defaultPool": {
+    "variants": [],
+    "name": "default-pool",
+    "enabled": true,
+    "timeoutSeconds": 90,
+    "matchLogic": {
+      "matchDefinition": {
+        "teams": [
+          {
+            "name": "Team",
+            "teamCount": {
+              "min": 2,
+              "max": 2,
+              "relaxations": [
+                {
+                  "type": "RangeControl.ReplaceMin",
+                  "ageType": "Youngest",
+                  "atSeconds": 20.0,
+                  "value": 1.0
+                }
+              ]
+            },
+            "playerCount": {
+              "min": 1,
+              "max": 2,
+              "relaxations": []
+            },
+            "teamRules": []
+          }
+        ],
+        "matchRules": []
+      },
+      "name": "Rules",
+      "backfillEnabled": false
+    },
+    "matchHosting": {
+      "type": "MatchId"
+    }
+  },
+  "filteredPools": []
+}

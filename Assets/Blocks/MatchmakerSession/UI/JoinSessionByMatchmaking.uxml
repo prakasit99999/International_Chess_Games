@@ -1,0 +1,24 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:VisualElement __unity-builder-selected-element="selected" class="blocks-modal">
+        <ui:Label text="JOIN SESSION BY MATCHMAKING" __unity-builder-selected-element="" class="blocks-header blocks-header--sm blocks-header--space-bottom"/>
+        <ui:Label text="Matchmake to start a Session" __unity-builder-selected-element="" class="blocks-label"/>
+        <ui:VisualElement class="blocks-container--horizontal blocks-element--border-bottom"/>
+        <Blocks.Sessions.Matchmaker.SessionConnectingTimerLabel __unity-builder-selected-element="" class="blocks-element--space-bottom">
+            <Bindings>
+                <ui:DataBinding property="SessionType" binding-mode="ToTarget" data-source-path="sessionType"/>
+            </Bindings>
+        </Blocks.Sessions.Matchmaker.SessionConnectingTimerLabel>
+        <ui:VisualElement class="blocks-container--horizontal">
+            <Blocks.Sessions.Matchmaker.CreateMatchmakerSessionButton name="CreateMatchmakerSessionButton" matchmaker-settings="../Settings/MatchmakerQueue.mmq?fileID=-1662577168009357601&amp;guid=4d55ba06bead8416d95c306ffffc8212&amp;type=3#matchmaker-session-building-blocks" class="blocks-element--space-right">
+                <Bindings>
+                    <ui:DataBinding property="SessionSettings" binding-mode="ToTarget" data-source-path=""/>
+                </Bindings>
+            </Blocks.Sessions.Matchmaker.CreateMatchmakerSessionButton>
+            <Blocks.Sessions.Matchmaker.CancelMatchmakerSessionButton>
+                <Bindings>
+                    <ui:DataBinding property="SessionType" binding-mode="ToTarget" data-source-path="sessionType"/>
+                </Bindings>
+            </Blocks.Sessions.Matchmaker.CancelMatchmakerSessionButton>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

@@ -1,16 +1,17 @@
-﻿using AI.Utilities;
+﻿using System.Collections;
+using System.Linq;
+using AI.Utilities;
 using AIEngine.Core;
+using AIEngine.Utilities;
 using Game.Interfaces;
-using System.Collections;
 using UnityEngine;
 using static ChessPiece;
+using Debug = UnityEngine.Debug;
 namespace AIEngine.Adapters
 {
-
-
     public class UnityAIBoardAdapter : MonoBehaviour, IChessAI
     {
-        private Vector2Int[] _calculatedMove;
+        private SearchResult? _calculatedResult;
         private bool _isCalculating = false;
 
         public void StartCalculateMove(ChessBoard board, Team aiTeam, Team currentTurn, AIDifficulty difficulty)
@@ -31,7 +32,21 @@ namespace AIEngine.Adapters
 
             Debug.Log($"[AI INPUT] Team={aiTeam}, CurrentTurn={GameManager.Instance.CurrentTurn}");
 
-            var move = AICore.Instance.FindBestMove(model, aiDifficulty);
+            // เรียก FindBestMoveWithMetrics เพื่อได้ metrics ที่ถูกต้อง
+            var searchResult = AICore.Instance.FindBestMoveWithMetrics(model, aiDifficulty);
+            var move = searchResult.Move;
+
+            // 🟢 บันทึกค่าประสิทธิภาพของ AI ที่ถูกต้อง
+            if (PerformanceTracker.Instance != null)
+            {
+                PerformanceTracker.Instance.AddMove(
+                    searchResult.Depth,           // ความลึกที่ AI คิดจริงๆ
+                    searchResult.NodesEvaluated,  // จำนวน nodes ที่ evaluate จริงๆ
+                    searchResult.TimeMs           // เวลาในการคิด 1 ตา (ms)
+                );
+
+                Debug.Log($"[PERFORMANCE] Depth={searchResult.Depth}, Nodes={searchResult.NodesEvaluated}, Time={searchResult.TimeMs:F2}ms");
+            }
 
             if (move != null)
             {
@@ -39,8 +54,11 @@ namespace AIEngine.Adapters
                 var from = BoardConverter.ConvertPositionToUnity(new Vector2Int(move.FromY, move.FromX));
                 var to = BoardConverter.ConvertPositionToUnity(new Vector2Int(move.ToY, move.ToX));
 
+                // ✅ Set Unity Vector2Int positions in MoveModel
+                move.From = from;
+                move.To = to;
 
-                _calculatedMove = new Vector2Int[] { from, to };
+                _calculatedResult = searchResult;
 
                 Debug.Log($"[AI RAW MOVE] From=({move.FromX},{move.FromY}) To=({move.ToX},{move.ToY})");
                 Debug.Log($"[UNITY MOVE] From={from} To={to}, CurrentTurn={aiTeam}");
@@ -49,7 +67,7 @@ namespace AIEngine.Adapters
             else
             {
                 Debug.LogWarning("❌ AI ไม่พบ move ที่ถูกต้อง");
-                _calculatedMove = null;
+                _calculatedResult = null;
             }
 
             _isCalculating = false;
@@ -131,16 +149,18 @@ namespace AIEngine.Adapters
         //    _isCalculating = false;
         //}
 
-        public Vector2Int[] GetCalculatedMove()
+        public (Vector2Int from, Vector2Int to)? GetCalculatedMove()
         {
-            if (_calculatedMove == null) return null;
-
-            return _calculatedMove;
+            if (_calculatedResult.HasValue && _calculatedResult.Value.Move != null)
+            {
+                return (_calculatedResult.Value.Move.From, _calculatedResult.Value.Move.To);
+            }
+            return null;
         }
 
         public void ClearCalculatedMove()
         {
-            _calculatedMove = null;
+            _calculatedResult = null;
         }
 
         // 🔹 ตัวช่วยแปลง enum
