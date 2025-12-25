@@ -52,6 +52,7 @@ public class ChessBoard : MonoBehaviour
     public Color32 whitleColor = new Color32(255, 255, 255, 255);
     public Color32 blackColor = new Color32(0, 0, 0, 255);
 
+
     private void Awake()
     {
         if (Instance == null)
@@ -114,7 +115,7 @@ public class ChessBoard : MonoBehaviour
 
             }
         }
-        
+
     }
 
     void GenerateBoardLabels()
@@ -150,12 +151,11 @@ public class ChessBoard : MonoBehaviour
 
             GameObject labelObj = Instantiate(textPrefab, pos, Quaternion.identity, boardLabels);
             TMP_Text text = labelObj.GetComponent<TMP_Text>();
-            labelObj.name = "Label_" + label; 
+            labelObj.name = "Label_" + label;
             text.text = label;
             text.alignment = TextAlignmentOptions.CaplineRight;
         }
     }
-
     // 🏁 สร้างตัวหมากรุกในตำแหน่งเริ่มต้น
     void SpawnPieces()
     {
@@ -327,7 +327,7 @@ public class ChessBoard : MonoBehaviour
         if (IsKingInCheckmate(opponent))
         {
             Debug.Log($"♟️ Checkmate! {gameManager.GetCurrentTurn()} ชนะเกม!");
-            gameManager.GameOver(gameManager.GetCurrentTurn());
+            gameManager.GameOver(gameManager.GetCurrentTurn(), "checkmate");
         }
         else if (IsKingInCheck(opponent))
         {
@@ -335,10 +335,13 @@ public class ChessBoard : MonoBehaviour
         }
     }
 
-    private void SaveMoveToHistory(Vector2Int from, Vector2Int to, ChessPiece captured)
+    private void SaveMoveToHistory(Vector2Int from, Vector2Int to, ChessPiece captured, AiPerformanceData aiStats = null)
     {
         if (historyMove == null) return;
-
+        int score = (aiStats != null) ? (int)aiStats.Score : 0;
+        int depth = (aiStats != null) ? aiStats.Depth : 0;
+        int nodes = (aiStats != null) ? aiStats.Nodes : 0;
+        int timeMs = (aiStats != null) ? aiStats.MoveTimeMs : 0;
         bool isCastling = selectedPiece.pieceType == ChessPiece.PieceType.King && Mathf.Abs(to.x - from.x) == 2;
         bool isEnPassant = selectedPiece.pieceType == ChessPiece.PieceType.Pawn && IsEnPassantTarget(to);
         bool isPawnTwoStep = selectedPiece.pieceType == ChessPiece.PieceType.Pawn && Mathf.Abs(to.y - from.y) == 2;
@@ -362,19 +365,23 @@ public class ChessBoard : MonoBehaviour
             }
             else if (captured != null)
             {
+                // ✅ ดึงค่าก่อนที่จะถูก Destroy (ใช้ reference ที่ยังคาอยู่)
                 capturedType = captured.pieceType;
                 capturedTeam = captured.team;
             }
         }
 
-        // ตั้งค่าการเลื่อนขั้น
-        ChessPiece.PieceType promotedTo = isPromotion
-            ? PromotionManager.Instance.GetSelectedPromotionType()
-            : selectedPiece.pieceType;
-        ChessPiece.PieceType promotedFrom = isPromotion
-            ? ChessPiece.PieceType.Pawn
-            : selectedPiece.pieceType;
-        Vector2Int promotionPosition = isPromotion ? to : Vector2Int.zero;
+        // ✅ ตั้งค่าการเลื่อนขั้น - เฉพาะ Pawn เท่านั้นที่เลื่อนขั้นได้!
+        ChessPiece.PieceType promotedTo = ChessPiece.PieceType.None;
+        ChessPiece.PieceType promotedFrom = ChessPiece.PieceType.None;
+        Vector2Int promotionPosition = Vector2Int.zero;
+
+        if (isPromotion)
+        {
+            promotedTo = PromotionManager.Instance.GetSelectedPromotionType();
+            promotedFrom = ChessPiece.PieceType.Pawn;
+            promotionPosition = to;
+        }
 
         // ✅ บันทึกข้อมูลการเดิน
         historyMove.AddMove(
@@ -395,7 +402,11 @@ public class ChessBoard : MonoBehaviour
             promotionPosition,
             previousEnPassantTarget: prevEnPassant,
             selectedPiece.team,
-            _movesWithoutCaptureOrPawn
+            _movesWithoutCaptureOrPawn,
+            aiStats?.Score != null ? (int)aiStats.Score : 0,
+            aiStats?.Depth ?? 0,
+            aiStats?.Nodes ?? 0,
+            aiStats?.MoveTimeMs ?? 0
         );
 
         HistoryMoveUI.Instance?.UpdateMoveHistoryList();
@@ -423,7 +434,7 @@ public class ChessBoard : MonoBehaviour
         if (_movesWithoutCaptureOrPawn >= MAX_MOVES_WITHOUT_PROGRESS)
         {
             Debug.Log("เสมอ! 50 การเดินโดยไม่มีการยึดหรือเดินเบี้ย");
-            GameManager.Instance.GameOver(ChessPiece.Team.None);
+            GameManager.Instance.GameOver(ChessPiece.Team.None, "fifty_move_rule");
         }
 
     }
@@ -494,7 +505,6 @@ public class ChessBoard : MonoBehaviour
     {
         return gameManager;
     }
-
     /* class methone public*/
     // 🎯 ฟังก์ชันสร้างหมากและวางลงบนกระดาน
     public ChessPiece SpawnPiece(ChessPiece.PieceType type, ChessPiece.Team team, Vector2Int position)
@@ -553,7 +563,6 @@ public class ChessBoard : MonoBehaviour
         return captured;
     }
 
-
     public bool IsTileEmpty(Vector2Int position)
     {
         return !piecesOnBoard.ContainsKey(position);
@@ -608,36 +617,11 @@ public class ChessBoard : MonoBehaviour
             // ถ้าเป็นหมากของศัตรู
             if (piece.team != team)
             {
-                // ตรวจสอบประเภทของหมากและตำแหน่งที่สามารถโจมตีได้
-                switch (piece.pieceType)
+                // ใช้ CanAttack แทน IsValidMove เพื่อป้องกัน Infinite Recursion 
+                // และเพื่อให้ Pinned Piece ยังสามารถ Check King ได้ตามกฎ
+                if (piece.CanAttack(position))
                 {
-                    case ChessPiece.PieceType.Pawn:
-                        // เบี้ยโจมตีเฉพาะแนวทแยง
-                        int direction = (piece.team == ChessPiece.Team.White) ? 1 : -1;
-                        if (Mathf.Abs(position.x - piece.boardPosition.x) == 1 &&
-                            position.y == piece.boardPosition.y + direction)
-                        {
-                            return true;
-                        }
-                        break;
-
-                    case ChessPiece.PieceType.Knight:
-                        // ม้าโจมตีแบบ L-Shape
-                        int dx = Mathf.Abs(position.x - piece.boardPosition.x);
-                        int dy = Mathf.Abs(position.y - piece.boardPosition.y);
-                        if ((dx == 2 && dy == 1) || (dx == 1 && dy == 2))
-                        {
-                            return true;
-                        }
-                        break;
-
-                    default:
-                        // หมากอื่นๆ ใช้ IsValidMove
-                        if (piece.IsValidMove(position))
-                        {
-                            return true;
-                        }
-                        break;
+                    return true;
                 }
             }
         }
@@ -649,16 +633,9 @@ public class ChessBoard : MonoBehaviour
         Vector2Int kingPos = FindKingPosition(team);
         if (kingPos == -Vector2Int.one) return false; // ถ้าไม่เจอ King ถือว่าไม่ check
 
-        foreach (var entry in piecesOnBoard.ToList()) // clone กัน InvalidOperationException
-        {
-            ChessPiece enemy = entry.Value;
-            if (enemy != null && enemy.team != team)
-            {
-                if (enemy.IsValidMove(kingPos))
-                    return true;
-            }
-        }
-        return false;
+        // ใช้ IsPositionUnderAttack ก็ได้ แต่ต้องระวังทีม (IsPositionUnderAttack เช็คว่าทีม 'team' โดนโจมตีไหม)
+        // IsPositionUnderAttack(kingPos, team) จะวน loop enemy และเรียก CanAttack(kingPos)
+        return IsPositionUnderAttack(kingPos, team);
     }
 
     public Vector2Int FindKingPosition(ChessPiece.Team team)
@@ -927,11 +904,10 @@ public class ChessBoard : MonoBehaviour
                     Debug.Log("❌ ไม่สามารถโจมตีหมากนี้ได้");
                 }
             }
-
         }
     }
 
-    public void MoveSelectedPiece(Vector2Int newPosition)
+    public void MoveSelectedPiece(Vector2Int newPosition, AiPerformanceData aiStats = null)
     {
         if (!ValidatePreMoveConditions(newPosition)) return;
         if (HandleCastling(newPosition)) return;
@@ -963,8 +939,9 @@ public class ChessBoard : MonoBehaviour
 
         bool wasCapture = capturedPiece != null;
         UpdateFiftyMoveRuleCounter(wasCapture);
-        SaveMoveToHistory(originalPosition, newPosition, capturedPiece);
+        SaveMoveToHistory(originalPosition, newPosition, capturedPiece, aiStats);
         boardModel.PushCurrentPosition();
+
 
         if (!isPromoting)
         {

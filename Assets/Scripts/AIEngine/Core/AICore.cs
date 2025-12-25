@@ -41,13 +41,14 @@ namespace AIEngine.Core
 
             var result = algorithm.FindBestMoveWithMetrics(board, depth);
             var optimizedMove = OptimizeMoveForDraw(board, result.Move);
-            
+
             return new SearchResult
             {
                 Move = optimizedMove,
                 Depth = result.Depth,
                 NodesEvaluated = result.NodesEvaluated,
-                TimeMs = result.TimeMs
+                TimeMs = result.TimeMs,
+                Score = result.Score
             };
         }
 

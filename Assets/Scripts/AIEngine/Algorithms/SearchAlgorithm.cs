@@ -3,7 +3,7 @@ using AIEngine.Utilities;
 public abstract class SearchAlgorithm
 {
     public abstract MoveModel FindBestMove(ChessBoardModel board, int depth);
-    
+
     // Overload สำหรับ return metrics
     public virtual SearchResult FindBestMoveWithMetrics(ChessBoardModel board, int depth)
     {
@@ -13,7 +13,8 @@ public abstract class SearchAlgorithm
             Move = move,
             Depth = depth,
             NodesEvaluated = 0,
-            TimeMs = 0
+            TimeMs = 0,
+            Score = 0
         };
     }
 }

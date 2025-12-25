@@ -8,9 +8,9 @@ public class ChessPiece : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     private ChessBoard boardManager;  // อ้างอิงถึง ChessBoard
     private List<ChessPiece> allPieces = new List<ChessPiece>();  // ลิสต์ที่เก็บชิ้นส่วนทั้งหมด
-   
-    public enum PieceType {  Pawn=0 , Rook, Knight, Bishop, Queen, King , None=-1}
-    public enum Team { White, Black, None }
+
+    public enum PieceType { Pawn = 0, Rook = 1, Knight = 2, Bishop = 3, Queen = 4, King = 5, None = -1 }
+    public enum Team { White = 1, Black = 2, None = 0 }
 
     public PieceType pieceType;
     public Team team;
@@ -56,7 +56,7 @@ public class ChessPiece : MonoBehaviour
         boardPosition = new Vector2Int(x, y);
         transform.position = new Vector2(x, y);
     }
- 
+
     private void OnMouseDown()
     {
         if (ChessBoard.Instance.IsPromoting()) return;
@@ -144,57 +144,90 @@ public class ChessPiece : MonoBehaviour
         }
     }
 
+    public bool CanAttack(Vector2Int targetPosition)
+    {
+        // ตรวจสอบว่าตำแหน่งเป้าหมายอยู่บนกระดานหรือไม่
+        if (!boardManager.IsPositionOnBoard(targetPosition))
+        {
+            return false;
+        }
+
+        // หมายเหตุ: การโจมตี (Attack) ไม่สนใจว่าช่องเป้าหมายจะเป็นอะไร (ว่าง หรือ มีเพื่อน หรือ มีศัตรู)
+        // ยกเว้นกรณี Pawn ที่การกินกับการเดินปกติไม่เหมือนกัน
+
+        // ตรวจสอบกฎการเดินพื้นฐานของหมากแต่ละประเภท
+        bool isValidPattern = false;
+        switch (pieceType)
+        {
+            case PieceType.Pawn:
+                // Pawn special case: Attack is diagonal only
+                int direction = (team == Team.White) ? 1 : -1;
+                if (Mathf.Abs(targetPosition.x - boardPosition.x) == 1 && targetPosition.y == boardPosition.y + direction)
+                {
+                    isValidPattern = true; // Diagonal move for attack
+                }
+                // Note: En Passant logic is usually handled in Move validation, but technically it's a capture.
+                // For "IsPositionUnderAttack" (King safety), simple diagonal check is enough.
+                break;
+            case PieceType.Rook:
+                isValidPattern = ValidateRookMove(targetPosition);
+                break;
+            case PieceType.Knight:
+                isValidPattern = ValidateKnightMove(targetPosition);
+                break;
+            case PieceType.Bishop:
+                isValidPattern = ValidateBishopMove(targetPosition);
+                break;
+            case PieceType.Queen:
+                isValidPattern = ValidateQueenMove(targetPosition);
+                break;
+            case PieceType.King:
+                isValidPattern = ValidateKingMove(targetPosition);
+                break;
+        }
+
+        if (!isValidPattern)
+            return false;
+
+        // ตรวจสอบสิ่งกีดขวาง (ยกเว้น Knight)
+        if (pieceType == PieceType.Rook || pieceType == PieceType.Bishop || pieceType == PieceType.Queen)
+        {
+            if (!boardManager.IsPathClear(boardPosition, targetPosition, pieceType))
+                return false;
+        }
+
+        return true;
+    }
+
     public bool IsValidMove(Vector2Int newPosition)
     {
-        // ตรวจสอบว่าตำแหน่งใหม่อยู่บนกระดานหรือไม่
+        // 1. ตรวจสอบว่าตำแหน่งใหม่อยู่บนกระดานหรือไม่
         if (!boardManager.IsPositionOnBoard(newPosition))
         {
             return false;
         }
 
-        // ตรวจสอบว่าตำแหน่งใหม่มีหมากทีมเดียวกันหรือไม่
+        // 2. ตรวจสอบว่าตำแหน่งใหม่มีหมากทีมเดียวกันหรือไม่ (ห้ามกินพวกเดียวกัน)
         if (boardManager.IsOccupiedByTeam(newPosition, team))
         {
             return false;
         }
 
-        // ตรวจสอบกฎการเดินของหมากแต่ละประเภท
+        // 3. ตรวจสอบ Pattern การเดิน (แยก Pawn ออกมาเพราะมี logic เดินปกติ vs กิน)
         bool isValidPattern = false;
-        switch (pieceType)
+        if (pieceType == PieceType.Pawn)
         {
-            case PieceType.Pawn:
-                isValidPattern = ValidatePawnMove(newPosition);
-                break;
-            case PieceType.Rook:
-                isValidPattern = ValidateRookMove(newPosition);
-                break;
-            case PieceType.Knight:
-                isValidPattern = ValidateKnightMove(newPosition);
-                break;
-            case PieceType.Bishop:
-                isValidPattern = ValidateBishopMove(newPosition);
-                break;
-            case PieceType.Queen:
-                isValidPattern = ValidateQueenMove(newPosition);
-                break;
-            case PieceType.King:
-                isValidPattern = ValidateKingMove(newPosition);
-                break;
+            isValidPattern = ValidatePawnMove(newPosition);
+        }
+        else
+        {
+            isValidPattern = CanAttack(newPosition);
         }
 
-        // ถ้าการเดินไม่ถูกต้องตามกฎของหมาก
         if (!isValidPattern)
             return false;
-        
-        // ตรวจสอบทางเดินสำหรับหมากที่ต้องเดินเป็นเส้นตรงหรือแนวทแยง (เช่น เรือ, บิชอป, ควีน)
-        if (pieceType == PieceType.Rook || pieceType == PieceType.Bishop || pieceType == PieceType.Queen)
-        {
-            if (!boardManager.IsPathClear(boardPosition, newPosition, pieceType))
-                return false;
-        }
 
-      
-        // เช็คว่าหลังจากเดินแล้ว King ของทีมนี้ยังปลอดภัยอยู่ไหม
+        // 4. เช็คว่าหลังจากเดินแล้ว King ของทีมนี้ยังปลอดภัยอยู่ไหม (Pinned Check)
         if (boardManager.DoesMoveExposeKing(this, newPosition))
         {
             return false;
@@ -233,7 +266,7 @@ public class ChessPiece : MonoBehaviour
         pieceType = newType; // อัปเดตประเภทหมาก
         UpdateSprite();
 
-        ChessBoard.Instance.SetPromoting(false); 
+        ChessBoard.Instance.SetPromoting(false);
     }
 
     public void PromotePawn()

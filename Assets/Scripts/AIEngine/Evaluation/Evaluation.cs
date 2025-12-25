@@ -1,358 +1,101 @@
 using AIEngine.Utilities;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace AIEngine.Evaluation
 {
     public class Evaluation
     {
-        //private static readonly HashSet<string> SeenPositions = new HashSet<string>();
+        // ==========================================
+        // CONSTANTS & CONFIGURATION (PeSTO / Kaufman)
+        // ==========================================
+        
+        // คะแนนพื้นฐานของตัวหมาก (Material)
+        private const int PawnValue = 100;
+        private const int KnightValue = 320;
+        private const int BishopValue = 330;
+        private const int RookValue = 500;
+        private const int QueenValue = 900;
+        private const int KingValue = 20000;
 
-        //private static int EvaluateRepetition(ChessBoardModel board)
-        //{
-        //    string key = board.SerializeBoard();
-        //    if (SeenPositions.Contains(key))
-        //    {
-        //        return -50; // ลงโทษซ้ำ
-        //    }
-        //    SeenPositions.Add(key);
-        //    return 0;
-        //}
+        // Phase Calculation: ใช้สำหรับ Tapered Evaluation
+        // Total Phase = 16 (Pawn ไม่นับ) + 4 (Knights) + 4 (Bishops) + 4 (Rooks) + 2 (Queens) = 24? 
+        // ปกติใช้ค่า: N=1, B=1, R=2, Q=4. Total = 4+4+4+4 = 16 (ไม่นับ King/Pawn)
+        private const int PhaseTotal = 24;
+        private static readonly int[] PhaseWeights = { 0, 1, 1, 2, 4, 0 }; // Pawn, N, B, R, Q, K
 
-        // ========== ค่าของตัวหมาก ==========
-        private static readonly Dictionary<int, int> PieceValues = new Dictionary<int, int>
-    {
-        { 1, 100 },   // White Pawn
-        { -1, -100 },  // Black Pawn
-        { 2, 300 },   // White Knight
-        { -2, -300 },  // Black Knight
-        { 3, 325 },   // White Bishop (Bishop Pair ได้เปรียบ)
-        { -3, -325 },  // Black Bishop
-        { 4, 500 },   // White Rook
-        { -4, -500 },  // Black Rook
-        { 5, 900 },   // White Queen
-        { -5, -900 },  // Black Queen
-        { 6, 10000 }, // White King
-        { -6, -10000 } // Black King
-    };
-
-        // ========== คะแนนตำแหน่งหมาก ==========
-        // คะแนนตำแหน่งเบี้ย (เดิม)
-        private static readonly int[,] PawnPositionScore = new int[8, 8]
-        {
-            { 0, 0, 0, 0, 0, 0, 0, 0 },  // แถว 0 (มี 8 ตัวเลข)
-            { 5, 5, 5, 5, 5, 5, 5, 5 },  // แถว 1
-            { 1, 1, 2, 3, 3, 2, 1, 1 },  // แถว 2
-            { 0, 0, 0, 2, 2, 0, 0, 0 },  // แถว 3
-            { 0, 0, 0, 1, 1, 0, 0, 0 },  // แถว 4
-            { 1, -1, -2, 0, 0, -2, -1, 1 },  // แถว 5
-            { 1, 2, 2, -2, -2, 2, 2, 1 },  // แถว 6
-            { 0, 0, 0, 0, 0, 0, 0, 0 }   // แถว 7
-        };
-        // คะแนนตำแหน่ง Knight
-        private static readonly int[,] KnightPositionScore = new int[8, 8]
-        {
-        { -50, -40, -30, -30, -30, -30, -40, -50 },
-        { -40, -20,   0,   5,   5,   0, -20, -40 },
-        { -30,   0,  10,  15,  15,  10,   0, -30 },
-        { -30,   5,  15,  20,  20,  15,   5, -30 },
-        { -30,   0,  15,  20,  20,  15,   0, -30 },
-        { -30,   5,  10,  15,  15,  10,   5, -30 },
-        { -40, -20,   0,   5,   5,   0, -20, -40 },
-        { -50, -40, -30, -30, -30, -30, -40, -50 }
+        // ตารางคะแนนตำแหน่ง (Middle Game vs End Game)
+        // ค่าเหล่านี้อ้างอิง Simplified PeSTO tables เพื่อประสิทธิภาพ
+        private static readonly int[] MgPawnTable = {
+              0,   0,   0,   0,   0,   0,   0,   0,
+             50,  50,  50,  50,  50,  50,  50,  50,
+             10,  10,  20,  30,  30,  20,  10,  10,
+              5,   5,  10,  25,  25,  10,   5,   5,
+              0,   0,   0,  20,  20,   0,   0,   0,
+              5,  -5, -10,   0,   0, -10,  -5,   5,
+              5,  10,  10, -20, -20,  10,  10,   5,
+              0,   0,   0,   0,   0,   0,   0,   0
         };
 
-        // คะแนนตำแหน่ง Bishop
-        private static readonly int[,] BishopPositionScore = new int[8, 8]
-        {
-        { -20, -10, -10, -10, -10, -10, -10, -20 },
-        { -10,   0,   0,   0,   0,   0,   0, -10 },
-        { -10,   0,   5,  10,  10,   5,   0, -10 },
-        { -10,   5,   5,  10,  10,   5,   5, -10 },
-        { -10,   0,  10,  10,  10,  10,   0, -10 },
-        { -10,  10,  10,  10,  10,  10,  10, -10 },
-        { -10,   5,   0,   0,   0,   0,   5, -10 },
-        { -20, -10, -10, -10, -10, -10, -10, -20 }
+        private static readonly int[] EgPawnTable = {
+              0,   0,   0,   0,   0,   0,   0,   0,
+             80,  80,  80,  80,  80,  80,  80,  80,
+             50,  50,  50,  50,  50,  50,  50,  50,
+             30,  30,  30,  30,  30,  30,  30,  30,
+             20,  20,  20,  20,  20,  20,  20,  20,
+             10,  10,  10,  10,  10,  10,  10,  10,
+             10,  10,  10,  10,  10,  10,  10,  10,
+              0,   0,   0,   0,   0,   0,   0,   0
         };
 
-        // คะแนนตำแหน่ง Rook 
-        private static readonly int[,] RookPositionScore = new int[8, 8]
-        {
-        { 0, 0, 0, 0, 0, 0, 0, 0 },
-        { 5, 10, 10, 10, 10, 10, 10, 5 },
-        { -5, 0, 0, 0, 0, 0, 0, -5 },
-        { -5, 0, 0, 0, 0, 0, 0, -5 },
-        { -5, 0, 0, 0, 0, 0, 0, -5 },
-        { -5, 0, 0, 0, 0, 0, 0, -5 },
-        { -5, 0, 0, 0, 0, 0, 0, -5 },
-        { 0, 0, 0, 5, 5, 0, 0, 0 }
+        private static readonly int[] MgKnightTable = {
+            -50, -40, -30, -30, -30, -30, -40, -50,
+            -40, -20,   0,   0,   0,   0, -20, -40,
+            -30,   0,  10,  15,  15,  10,   0, -30,
+            -30,   5,  15,  20,  20,  15,   5, -30,
+            -30,   0,  15,  20,  20,  15,   0, -30,
+            -30,   5,  10,  15,  15,  10,   5, -30,
+            -40, -20,   0,   5,   5,   0, -20, -40,
+            -50, -40, -30, -30, -30, -30, -40, -50
         };
 
-        // คะแนนตำแหน่ง Queen
-        private static readonly int[,] QueenPositionScore = new int[8, 8]
-        {
-        { -20, -10, -10, -5, -5, -10, -10, -20 },
-        { -10, 0, 0, 0, 0, 0, 0, -10 },
-        { -10, 0, 5, 5, 5, 5, 0, -10 },
-        { -5, 0, 5, 5, 5, 5, 0, -5 },
-        { 0, 0, 5, 5, 5, 5, 0, -5 },
-        { -10, 5, 5, 5, 5, 5, 0, -10 },
-        { -10, 0, 5, 0, 0, 0, 0, -10 },
-        { -20, -10, -10, -5, -5, -10, -10, -20 }
+        // King Safety Table (Middle Game): อยากให้ King อยู่มุม
+        private static readonly int[] MgKingTable = {
+            -30, -40, -40, -50, -50, -40, -40, -30,
+            -30, -40, -40, -50, -50, -40, -40, -30,
+            -30, -40, -40, -50, -50, -40, -40, -30,
+            -30, -40, -40, -50, -50, -40, -40, -30,
+            -20, -30, -30, -40, -40, -30, -30, -20,
+            -10, -20, -20, -20, -20, -20, -20, -10,
+             20,  20,   0,   0,   0,   0,  20,  20,
+             20,  30,  10,   0,   0,  10,  30,  20
         };
 
-        // คะแนนตำแหน่ง King (กลางเกม)
-        private static readonly int[,] KingPositionScoreMidgame = new int[8, 8]
-        {
-        { -30, -40, -40, -50, -50, -40, -40, -30 },
-        { -30, -40, -40, -50, -50, -40, -40, -30 },
-        { -30, -40, -40, -50, -50, -40, -40, -30 },
-        { -30, -40, -40, -50, -50, -40, -40, -30 },
-        { -20, -30, -30, -40, -40, -30, -30, -20 },
-        { -10, -20, -20, -20, -20, -20, -20, -10 },
-        { 20, 20, 0, 0, 0, 0, 20, 20 },
-        { 20, 30, 10, 0, 0, 10, 30, 20 }
+        // King Activity Table (End Game): King ต้องเดินเข้ากลางกระดาน
+        private static readonly int[] EgKingTable = {
+            -50, -40, -30, -20, -20, -30, -40, -50,
+            -30, -20, -10,   0,   0, -10, -20, -30,
+            -30, -10,  20,  30,  30,  20, -10, -30,
+            -30, -10,  30,  40,  40,  30, -10, -30,
+            -30, -10,  30,  40,  40,  30, -10, -30,
+            -30, -10,  20,  30,  30,  20, -10, -30,
+            -30, -30,   0,   0,   0,   0, -30, -30,
+            -50, -30, -30, -30, -30, -30, -30, -50
         };
 
-
-        // ========== กลยุทธ์เพิ่มเติม ==========
+        // ==========================================
+        // MAIN EVALUATION FUNCTION
+        // ==========================================
         public static int Evaluate(ChessBoardModel board)
         {
-            int score = 0;
-            bool isEndgame = IsEndgame(board);
+            // 1. Check for Draw conditions first (Optimization)
+            if (board.FiftyMoveCounter >= 100) return 0; // Draw by 50 move rule
 
-            // 1. Material
-            score += CalculateMaterialScore(board);
+            int mgScore = 0; // คะแนนช่วง Middle Game
+            int egScore = 0; // คะแนนช่วง End Game
+            int phase = 0;   // ตัวนับ Phase ของเกม
 
-            // 2. Positional (PST, endgame aware)
-            score += CalculatePositionalScore(board, isEndgame);
-
-            // 3. Repetition penalty
-            //score += EvaluateRepetition(board);
-
-            // 4. Mobility
-            score += CalculateMobilityScore(board);
-
-            // 5. King Safety
-            score += CalculateKingSafety(board, isEndgame);
-
-            // 6. Pawn Structure
-            score += EvaluatePawnStructure(board);
-
-            // 7. Capture bonus (ตามค่าหมากที่กินได้)
-            var captureMoves = MoveGenerator.GenerateMoves(board)
-                .Where(m => board.Board[m.ToX, m.ToY] != 0);
-            foreach (var move in captureMoves)
-            {
-                score += Math.Abs(board.Board[move.ToX, move.ToY]) / 10; // เบี้ย = 10, ควีน = 90
-            }
-
-            // 8. Pawn advancement bonus
-            var advancedPawns = MoveGenerator.GenerateMoves(board)
-                .Where(m => Math.Abs(board.Board[m.FromX, m.FromY]) == 1 &&
-                           (m.ToX < m.FromX || m.ToX > m.FromX));
-            if (advancedPawns.Any())
-                score += 15;
-
-            // 9. Fifty-move rule pressure
-            if (board.FiftyMoveCounter > 40) score -= 10;
-            if (board.FiftyMoveCounter > 60) score -= 30;
-            if (board.FiftyMoveCounter > 80) score -= 80;
-
-            return board.IsWhiteTurn ? score : -score;
-        }
-
-        // ========== 1. คำนวณ Material Score ==========
-        private static int CalculateMaterialScore(ChessBoardModel board)
-        {
-            int material = 0;
-            int whiteBishopCount = 0, blackBishopCount = 0;
-
-            for (int x = 0; x < 8; x++)
-            {
-                for (int y = 0; y < 8; y++)
-                {
-                    int piece = board.Board[x, y];
-                    material += PieceValues.TryGetValue(piece, out int value) ? value : 0;
-
-                    if (piece == 3) whiteBishopCount++;
-                    if (piece == -3) blackBishopCount++;
-                }
-            }
-
-            // โบนัส Bishop Pair
-            if (whiteBishopCount >= 2) material += 50;
-            if (blackBishopCount >= 2) material -= 50;
-
-            return material;
-        }
-
-        // ========== 2. คะแนนตำแหน่งหมาก ==========
-        private static int CalculatePositionalScore(ChessBoardModel board, bool isEndgame)
-        {
-            int positionalScore = 0;
-            for (int x = 0; x < 8; x++)
-            {
-                for (int y = 0; y < 8; y++)
-                {
-                    int piece = board.Board[x, y];
-                    int absPiece = Math.Abs(piece);
-                    int sign = piece > 0 ? 1 : -1;
-                    int evalX = piece > 0 ? x : 7 - x;
-
-                    switch (absPiece)
-                    {
-                        case 1:
-                            positionalScore += sign * PawnPositionScore[evalX, y];
-                            break;
-                        case 2:
-                            positionalScore += sign * KnightPositionScore[evalX, y];
-                            break;
-                        case 3:
-                            positionalScore += sign * BishopPositionScore[evalX, y];
-                            break;
-                        case 4:
-                            positionalScore += sign * RookPositionScore[evalX, y];
-                            break;
-                        case 5:
-                            positionalScore += sign * QueenPositionScore[evalX, y];
-                            break;
-                        case 6 when isEndgame:
-                            positionalScore += sign * (Math.Abs(3 - x) + Math.Abs(3 - y)) * (-10);
-                            break;
-                    }
-                }
-            }
-            return positionalScore;
-        }
-
-        // ========== 3. คำนวณ Mobility (การเคลื่อนไหวของหมาก) ==========
-        private static int CalculateMobilityScore(ChessBoardModel board)
-        {
-            int whiteMobility = CountMobilityForColor(board, isWhite: true);
-            int blackMobility = CountMobilityForColor(board, isWhite: false);
-            return whiteMobility - blackMobility;
-        }
-
-        private static int CountMobilityForColor(ChessBoardModel board, bool isWhite)
-        {
-            int mobility = 0;
-            var simulatedBoard = board.Clone();
-
-            // วนลูปทุกช่องเพื่อหาเม็ดหมากของสีที่ต้องการ
-            for (int x = 0; x < 8; x++)
-            {
-                for (int y = 0; y < 8; y++)
-                {
-                    int piece = simulatedBoard.Board[x, y];
-                    // ตรวจสอบว่าหมากเป็นสีที่ต้องการ
-                    if ((isWhite && piece > 0) || (!isWhite && piece < 0))
-                    {
-                        // ดึงประเภทของหมาก
-                        int pieceType = Math.Abs(piece);
-                        // นับคะแนนตามประเภท
-                        mobility += pieceType switch
-                        {
-                            5 => 3,   // Queen
-                            4 => 2,   // Rook
-                            2 or 3 => 1, // Knight/Bishop
-                            _ => 0
-                        };
-                    }
-                }
-            }
-            return mobility;
-        }
-
-        // ========== 4. ตรวจสอบความปลอดภัยของ King ==========
-        private static int CalculateKingSafety(ChessBoardModel board, bool isEndgame)
-        {
-            int safetyScore = 0;
-            int whiteKingX = -1, whiteKingY = -1;
-            int blackKingX = -1, blackKingY = -1;
-
-            // หาตำแหน่ง King
-            for (int x = 0; x < 8; x++)
-            {
-                for (int y = 0; y < 8; y++)
-                {
-                    if (board.Board[x, y] == 6)
-                    {
-                        whiteKingX = x;
-                        whiteKingY = y;
-                    }
-                    else if (board.Board[x, y] == -6)
-                    {
-                        blackKingX = x;
-                        blackKingY = y;
-                    }
-                }
-            }
-
-            // ตรวจสอบ Castling และ Pawn Shield (เฉพาะไม่ใช่ Endgame)
-            if (!isEndgame)
-            {
-                // White King
-                if (whiteKingX == 0 && whiteKingY == 4) // ยังไม่ Castling
-                    safetyScore -= 50;
-                else if (whiteKingX == 0 && whiteKingY == 6) // Kingside Castling
-                    safetyScore += 30;
-
-                // Black King
-                if (blackKingX == 7 && blackKingY == 4)
-                    safetyScore += 50;
-                else if (blackKingX == 7 && blackKingY == 6)
-                    safetyScore -= 30;
-            }
-
-            return safetyScore;
-        }
-
-
-        // ========== 5. ตรวจสอบโครงสร้างเบี้ย ==========
-        private static int EvaluatePawnStructure(ChessBoardModel board)
-        {
-            int pawnScore = 0;
-            for (int x = 0; x < 8; x++)
-            {
-                for (int y = 0; y < 8; y++)
-                {
-                    int piece = board.Board[x, y];
-                    if (piece == 1 || piece == -1)
-                    {
-                        bool isIsolated = true;
-                        int pawnType = piece > 0 ? 1 : -1;
-                        if ((y > 0 && HasPawnInFile(board, y - 1, pawnType)) ||
-                            (y < 7 && HasPawnInFile(board, y + 1, pawnType)))
-                            isIsolated = false;
-
-                        if (isIsolated)
-                            pawnScore += piece == 1 ? -20 : 20;
-                    }
-                }
-            }
-            return pawnScore;
-        }
-
-        private static bool HasPawnInFile(ChessBoardModel board, int file, int pawnType)
-        {
-            for (int x = 0; x < 8; x++)
-            {
-                if (board.Board[x, file] == pawnType)
-                    return true;
-            }
-            return false;
-        }
-
-
-
-        // ========== ตรวจสอบว่าเป็นเกม Endgame ==========
-        private static bool IsEndgame(ChessBoardModel board)
-        {
-            int totalMaterial = 0;
-            int queenCount = 0;
-
+            // 2. Loop through board once (Single Pass Efficiency)
             for (int x = 0; x < 8; x++)
             {
                 for (int y = 0; y < 8; y++)
@@ -360,11 +103,156 @@ namespace AIEngine.Evaluation
                     int piece = board.Board[x, y];
                     if (piece == 0) continue;
 
-                    totalMaterial += PieceValues[piece];
-                    if (Math.Abs(piece) == 5) queenCount++;
+                    int absPiece = Math.Abs(piece);
+                    int pieceTypeIndex = absPiece - 1; // 0=Pawn, 1=Knight...
+                    bool isWhite = piece > 0;
+
+                    // A. Material Score
+                    int materialValue = GetMaterialValue(absPiece);
+                    if (isWhite) { mgScore += materialValue; egScore += materialValue; }
+                    else         { mgScore -= materialValue; egScore -= materialValue; }
+
+                    // B. Phase Calculation (นับถอยหลัง Material)
+                    // ถ้าไม่ใช่ Pawn หรือ King ให้บวกค่า Phase
+                    if (absPiece != 1 && absPiece != 6) 
+                    {
+                        phase += PhaseWeights[pieceTypeIndex];
+                    }
+
+                    // C. Positional Score (PST)
+                    // ต้อง Flip index สำหรับสีดำ (Mirror)
+                    // x (rank): 0-7. สีขาวเริ่มแถว 7, สีดำเริ่มแถว 0 (ใน Model ของคุณ ดูเหมือน 0 คือแถวบน)
+                    // สมมติ: board[0,0] คือ a8 (มุมดำ), board[7,0] คือ a1 (มุมขาว) 
+                    // ดังนั้น White Index = table[x * 8 + y], Black Index = table[(7-x) * 8 + y]
+                    
+                    int tableIdx = isWhite ? (x * 8 + y) : ((7 - x) * 8 + y);
+
+                    // เลือกใช้ตารางคะแนนตามประเภทหมาก
+                    // (ตัวอย่างใช้ตาราง Pawn/King เพื่อความกระชับ คุณควรเพิ่มตาราง Knight/Bishop/Rook/Queen ให้ครบ)
+                    int mgPst = 0, egPst = 0;
+
+                    switch (absPiece)
+                    {
+                        case 1: // Pawn
+                            mgPst = MgPawnTable[tableIdx];
+                            egPst = EgPawnTable[tableIdx];
+                            // เพิ่ม Pawn Structure Evaluation ตรงนี้
+                            int structScore = EvaluatePawnStructure(board, x, y, isWhite);
+                            if (isWhite) { mgScore += structScore; egScore += structScore; }
+                            else { mgScore -= structScore; egScore -= structScore; }
+                            break;
+                        
+                        case 2: // Knight
+                            mgPst = MgKnightTable[tableIdx];
+                            egPst = MgKnightTable[tableIdx]; // Knight ไม่ค่อยต่างมาก
+                            break;
+                            
+                        case 6: // King
+                            mgPst = MgKingTable[tableIdx];
+                            egPst = EgKingTable[tableIdx];
+                            break;
+
+                        // TODO: ใส่ตาราง Bishop, Rook, Queen
+                        default:
+                            break; 
+                    }
+
+                    if (isWhite) { mgScore += mgPst; egScore += egPst; }
+                    else         { mgScore -= mgPst; egScore -= egPst; }
                 }
             }
-            return queenCount == 0 && Math.Abs(totalMaterial) < 2000;
+
+            // 3. Tapered Evaluation Calculation
+            // Phase ยิ่งมาก = ยิ่งใกล้ต้นเกม, Phase น้อย = ท้ายเกม
+            // Formula: (MG * phase + EG * (24 - phase)) / 24
+            phase = Math.Min(phase, PhaseTotal); // Clamp value
+            int finalScore = ((mgScore * phase) + (egScore * (PhaseTotal - phase))) / PhaseTotal;
+
+            // 4. Side to Move Bonus (Tempo)
+            // การได้เดินก่อนมีค่าเล็กน้อย (เช่น 10-20 คะแนน)
+            finalScore += board.IsWhiteTurn ? 10 : -10;
+
+            // Return relative score (Perspective)
+            return board.IsWhiteTurn ? finalScore : -finalScore;
+        }
+
+        private static int GetMaterialValue(int pieceType)
+        {
+            return pieceType switch
+            {
+                1 => PawnValue,
+                2 => KnightValue,
+                3 => BishopValue,
+                4 => RookValue,
+                5 => QueenValue,
+                6 => KingValue,
+                _ => 0
+            };
+        }
+
+        // ==========================================
+        // PAWN STRUCTURE & PASSED PAWNS
+        // ==========================================
+        private static int EvaluatePawnStructure(ChessBoardModel board, int x, int y, bool isWhite)
+        {
+            int score = 0;
+            int forwardDir = isWhite ? -1 : 1; // สมมติขาวเดินขึ้น (Index ลดลง) หรือลง แล้วแต่ Model
+            // หมายเหตุ: ต้องเช็คทิศทางของ Board Model ให้ชัวร์ (ปกติ 0=Top/Black, 7=Bottom/White)
+
+            // 1. Isolated Pawn (เบี้ยโดดเดี่ยว ไม่มีเพื่อนในไฟล์ข้างๆ)
+            bool leftFileHasPawn = HasPawnOnFile(board, y - 1, isWhite);
+            bool rightFileHasPawn = HasPawnOnFile(board, y + 1, isWhite);
+
+            if (!leftFileHasPawn && !rightFileHasPawn)
+            {
+                score -= 15; // โดนตัดแต้ม
+            }
+
+            // 2. Passed Pawn (เบี้ยผ่าน: ไม่มีเบี้ยศัตรูขวางหน้า ในไฟล์เดียวกันและไฟล์ข้างๆ)
+            // นี่คือ Key สำคัญของ Endgame
+            if (IsPassedPawn(board, x, y, isWhite))
+            {
+                // ยิ่งใกล้ฝั่งตรงข้าม ยิ่งได้คะแนนเยอะ
+                int rankBonus = isWhite ? (7 - x) * 10 : x * 10; 
+                score += (20 + rankBonus); 
+            }
+
+            return score;
+        }
+
+        private static bool HasPawnOnFile(ChessBoardModel board, int fileY, bool isWhite)
+        {
+            if (fileY < 0 || fileY > 7) return false;
+            int pawnVal = isWhite ? 1 : -1;
+            
+            for (int r = 0; r < 8; r++)
+            {
+                if (board.Board[r, fileY] == pawnVal) return true;
+            }
+            return false;
+        }
+
+        private static bool IsPassedPawn(ChessBoardModel board, int r, int c, bool isWhite)
+        {
+            int enemyPawn = isWhite ? -1 : 1;
+            
+            // เช็คช่องข้างหน้าทั้งหมดในไฟล์ตัวเอง (c) และไฟล์ข้างๆ (c-1, c+1)
+            int startRow = isWhite ? 0 : r + 1;
+            int endRow = isWhite ? r - 1 : 7;
+            
+            // ถ้า White เดินจาก 7 -> 0, ศัตรูจะอยู่ row < r
+            // ถ้า Black เดินจาก 0 -> 7, ศัตรูจะอยู่ row > r
+            
+            // Loop เช็คแถวหน้าเบี้ย
+            for (int i = isWhite ? r - 1 : r + 1; 
+                 isWhite ? i >= 0 : i <= 7; 
+                 i += (isWhite ? -1 : 1))
+            {
+                if (board.Board[i, c] == enemyPawn) return false; // Blocked
+                if (c > 0 && board.Board[i, c - 1] == enemyPawn) return false; // Control Left
+                if (c < 7 && board.Board[i, c + 1] == enemyPawn) return false; // Control Right
+            }
+            return true;
         }
     }
 }

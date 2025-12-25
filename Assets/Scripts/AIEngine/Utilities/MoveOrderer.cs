@@ -7,10 +7,10 @@ namespace AIEngine.Utilities
     public class MoveOrderer
     {
         // Scoring Constants
-        private const int TT_MOVE_SCORE = 1_000_000;
-        private const int CAPTURE_BASE = 8000;
-        private const int KILLER_1_SCORE = 4000;
-        private const int KILLER_2_SCORE = 3900;
+        private const int TT_MOVE_SCORE = 1_000_000; // ค่า TT Move
+        private const int CAPTURE_BASE = 8000; // ค่า Capture
+        private const int KILLER_1_SCORE = 4000; // ค่า Killer Move 1
+        private const int KILLER_2_SCORE = 3900; // ค่า Killer Move 2
 
         // Piece Values: None, Pawn, Knight, Bishop, Rook, Queen, King
         private static readonly int[] PieceValues = { 0, 100, 300, 310, 500, 900, 20000 };
@@ -51,7 +51,7 @@ namespace AIEngine.Utilities
                 int attacker = board.Board[move.FromX, move.FromY];
                 int victimValue = PieceValues[Math.Abs(captured)];
                 int attackerValue = PieceValues[Math.Abs(attacker)];
-                //
+                //  สูตร  คะแนน = ค่าจับกิน + (ค่าผู้ที่ถูกจับ * 10) - ค่าผู้ที่จับ
                 score += CAPTURE_BASE + (victimValue * 10) - attackerValue;
             }
             else

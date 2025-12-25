@@ -12,8 +12,8 @@ public class HistoryMoveUI : MonoBehaviour
     public GameObject moveEntryPrefab;
 
     public static HistoryMoveUI Instance;
-    public TMP_Text playerTurnText;      
-    public Transform contentParent; 
+    public TMP_Text playerTurnText;
+    public Transform contentParent;
     public ScrollRect scrollRect; // กำหนดใน Inspector
 
 
@@ -22,7 +22,7 @@ public class HistoryMoveUI : MonoBehaviour
     {
         if (Instance == null)
         {
-            Instance = this; 
+            Instance = this;
             historyMove = FindObjectOfType<HistoryMove>();
             gameManager = FindObjectOfType<GameManager>();
 

@@ -1,9 +1,8 @@
 ﻿using System;
-using AIEngine.Utilities;
 using System.Diagnostics;
-using AIEngine.Evaluation;
-
 using System.Linq;
+using AIEngine.Evaluation;
+using AIEngine.Utilities;
 
 namespace AIEngine.Algorithms
 {
@@ -50,14 +49,15 @@ namespace AIEngine.Algorithms
                 Move = finalMove,
                 Depth = depth,
                 NodesEvaluated = _nodesEvaluated,
-                TimeMs = elapsedMs
+                TimeMs = elapsedMs,
+                Score = (float)bestScore
             };
         }
 
         protected int MinimaxRecursive(ChessBoardModel board, int depth, bool isMaximizing)
         {
             _nodesEvaluated++; // นับ node ที่ evaluate
-            
+
             if (depth == 0 || board.IsGameOver())
                 return AIEngine.Evaluation.Evaluation.Evaluate(board);
 

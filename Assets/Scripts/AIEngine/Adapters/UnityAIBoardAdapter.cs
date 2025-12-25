@@ -13,6 +13,12 @@ namespace AIEngine.Adapters
     {
         private SearchResult? _calculatedResult;
         private bool _isCalculating = false;
+        private AICore _aiService = new AICore();
+
+        public int LastDepth { get; private set; }
+        public int NodesEvaluated { get; private set; }
+        public float LastMoveTimeMs { get; private set; }
+        public int LastEvalScore { get; private set; }
 
         public void StartCalculateMove(ChessBoard board, Team aiTeam, Team currentTurn, AIDifficulty difficulty)
         {
@@ -24,143 +30,91 @@ namespace AIEngine.Adapters
 
         private IEnumerator CalculateMoveCoroutine(ChessBoard board, Team aiTeam, Team currentTurn, AIDifficulty difficulty)
         {
+            Debug.Log($"[AI] Start Calculate Move for {aiTeam}");
             _isCalculating = true;
 
-            // ใช้ค่า team ที่ส่งมาจาก GameManager (ถูกต้องเสมอ)
+            // แปลงกระดาน Unity -> AI
             ChessBoardModel model = BoardConverter.Convert(board, aiTeam, currentTurn);
-            var aiDifficulty = ConvertDifficulty(difficulty);
 
-            Debug.Log($"[AI INPUT] Team={aiTeam}, CurrentTurn={GameManager.Instance.CurrentTurn}");
+            // แปลงความยาก
+            var aiCoreDifficulty = ConvertDifficulty(difficulty);
 
-            // เรียก FindBestMoveWithMetrics เพื่อได้ metrics ที่ถูกต้อง
-            var searchResult = AICore.Instance.FindBestMoveWithMetrics(model, aiDifficulty);
-            var move = searchResult.Move;
+            Debug.Log($"[AI INPUT] Team={aiTeam}, Difficulty={aiCoreDifficulty}");
 
-            // 🟢 บันทึกค่าประสิทธิภาพของ AI ที่ถูกต้อง
-            if (PerformanceTracker.Instance != null)
+            // -----------------------------------------------------------
+            // 🚨 แก้ไขจุดที่ 1: เปลี่ยนชื่อเมธอดให้ตรงกับ AICore
+            // -----------------------------------------------------------
+            // เดิม: var searchResult = _aiService.GetBestMove(model, aiDifficulty);
+            // ใหม่:
+            SearchResult searchResult = _aiService.FindBestMoveWithMetrics(model, aiCoreDifficulty);
+
+            if (searchResult.Move != null)
             {
-                PerformanceTracker.Instance.AddMove(
-                    searchResult.Depth,           // ความลึกที่ AI คิดจริงๆ
-                    searchResult.NodesEvaluated,  // จำนวน nodes ที่ evaluate จริงๆ
-                    searchResult.TimeMs           // เวลาในการคิด 1 ตา (ms)
-                );
+                var move = searchResult.Move;
 
-                Debug.Log($"[PERFORMANCE] Depth={searchResult.Depth}, Nodes={searchResult.NodesEvaluated}, Time={searchResult.TimeMs:F2}ms");
-            }
+                // -----------------------------------------------------------
+                // 🚨 แก้ไขจุดที่ 2: แปลงพิกัด AI (Row, Col) -> Unity (X, Y)
+                // -----------------------------------------------------------
+                // AI Model: [Row, Col] -> [X, Y] ใน MoveModel
+                // Unity: X=Col, Y=Row (โดย Row 0 ของ AI คือ Y=7 ของ Unity)
 
-            if (move != null)
-            {
-                // แก้เป็น (row,col) → (y,x)
-                var from = BoardConverter.ConvertPositionToUnity(new Vector2Int(move.FromY, move.FromX));
-                var to = BoardConverter.ConvertPositionToUnity(new Vector2Int(move.ToY, move.ToX));
+                // AI.X (Row) -> Unity.Y (7 - Row)
+                // AI.Y (Col) -> Unity.X (Col)
 
-                // ✅ Set Unity Vector2Int positions in MoveModel
-                move.From = from;
-                move.To = to;
+                int unityFromX = move.FromY;      // Col ตรงกัน
+                int unityFromY = 7 - move.FromX;  // Row กลับด้าน
 
+                int unityToX = move.ToY;
+                int unityToY = 7 - move.ToX;
+
+                Vector2Int from = new Vector2Int(unityFromX, unityFromY);
+                Vector2Int to = new Vector2Int(unityToX, unityToY);
+                // -----------------------------------------------------------
+
+                // บันทึกค่าผลลัพธ์เพื่อส่งกลับ
                 _calculatedResult = searchResult;
+                LastDepth = searchResult.Depth;
+                NodesEvaluated = searchResult.NodesEvaluated;
+                LastMoveTimeMs = searchResult.TimeMs;
+                LastEvalScore = (int)searchResult.Score; // สมมติว่าใน SearchResult มี Score
+                Debug.Log($"[AI UnityAIBoardAdapter] _calculatedResult {searchResult} | Depth: {LastDepth} | Nodes: {NodesEvaluated} | Time: {LastMoveTimeMs} | Score: {LastEvalScore}");
 
-                Debug.Log($"[AI RAW MOVE] From=({move.FromX},{move.FromY}) To=({move.ToX},{move.ToY})");
-                Debug.Log($"[UNITY MOVE] From={from} To={to}, CurrentTurn={aiTeam}");
-
+                Debug.Log($"[AI OUTPUT] Move: {from} -> {to} | Depth: {LastDepth} | Nodes: {NodesEvaluated}");
             }
             else
             {
                 Debug.LogWarning("❌ AI ไม่พบ move ที่ถูกต้อง");
-                _calculatedResult = null;
+                _calculatedResult = new SearchResult(); // หรือ null
             }
 
             _isCalculating = false;
             yield break;
         }
 
-
-        //private IEnumerator CalculateMoveCoroutine(ChessBoard board, Team team, AIDifficulty difficulty)
-        //{
-        //    _isCalculating = true;
-
-        //    // Unity → AI Model
-        //    ChessBoardModel model = BoardConverter.Convert(board, team);
-        //    var aiDifficulty = ConvertDifficulty(difficulty);
-        //    Debug.Log($"[AI INPUT] Team={team}");
-
-        //    // รัน AI หาตาเดิน
-        //    var move = AICore.Instance.FindBestMove(model, aiDifficulty);
-
-        //    if (move != null)
-        //    {
-        //        // ✅ MoveModel เก็บเป็น [row,col] → ต้องแปลงเป็น (x=col, y=row)
-        //        var from = BoardConverter.ConvertPositionToUnity(new Vector2Int(move.FromY, move.FromX));
-        //        var to = BoardConverter.ConvertPositionToUnity(new Vector2Int(move.ToY, move.ToX));
-        //        //var from = BoardConverter.ConvertPositionToUnity(new Vector2Int(move.FromX, move.FromY));
-        //        //var to = BoardConverter.ConvertPositionToUnity(new Vector2Int(move.ToX, move.ToY));
-
-        //        _calculatedMove = new Vector2Int[] { from, to };
-
-        //        //Debug.Log($"[AI MOVE MODEL] From=({move.FromX},{move.FromY}) To=({move.ToX},{move.ToY})");
-        //        //Debug.Log($"[UNITY MOVE] From={from} To={to}");
-        //        Debug.Log($"[AI RAW MOVE] From=({move.FromX},{move.FromY}) To=({move.ToX},{move.ToY})");
-        //        Debug.Log($"[UNITY MOVE] From={from} To={to}, CurrentTurn={team}");
-
-        //    }
-        //    else
-        //    {
-        //        Debug.LogWarning("❌ AI ไม่พบ move ที่ถูกต้อง");
-        //        _calculatedMove = null;
-        //    }
-
-        //    _isCalculating = false;
-        //    yield break;
-        //}
-
-        //private IEnumerator CalculateMoveCoroutine(ChessBoard board, Team team, AIDifficulty difficulty)
-        //{
-        //    _calculatedMove = null;
-        //    _isCalculating = true;
-
-        //    // 1. ✅ แก้ไข: แปลงกระดานโดยดึงสถานะจาก board โดยตรง
-        //    ChessBoardModel aiBoard = BoardConverter.Convert(board, team);
-
-        //    // 2. ✅ แก้ไข: รอจบเฟรมปัจจุบัน เพื่อไม่ให้เกมค้าง
-        //    yield return null;
-
-        //    // 3. เริ่มคำนวณ (ส่วนนี้จะกินเวลา แต่ไม่ทำให้เกมค้าง)
-        //    var aiDifficulty = ConvertDifficulty(difficulty);
-        //    MoveModel bestMove = AICore.Instance.FindBestMove(aiBoard, aiDifficulty);
-
-        //    // 4. แปลงผลลัพธ์กลับมา
-        //    if (bestMove != null)
-        //    {
-        //        // ✅ แก้ไข: สร้าง Vector2Int ให้ถูกต้อง (คอลัมน์, แถว)
-        //        var fromAI = new Vector2Int(bestMove.FromY, bestMove.FromX);
-        //        var toAI = new Vector2Int(bestMove.ToY, bestMove.ToX);
-
-        //        _calculatedMove = new Vector2Int[]
-        //        {
-        //            BoardConverter.ConvertPositionToUnity(fromAI),
-        //            BoardConverter.ConvertPositionToUnity(toAI)
-        //        };
-        //    }
-        //    else
-        //    {
-        //        Debug.LogWarning("AI could not find a valid move.");
-        //    }
-
-        //    _isCalculating = false;
-        //}
-
         public (Vector2Int from, Vector2Int to)? GetCalculatedMove()
         {
-            if (_calculatedResult.HasValue && _calculatedResult.Value.Move != null)
+            if (_calculatedResult.Value.Move != null)
             {
-                return (_calculatedResult.Value.Move.From, _calculatedResult.Value.Move.To);
+                // ต้องแปลงพิกัดตอนส่งออกด้วย หรือใช้ค่าที่เราแปลงไว้แล้วถ้าเก็บไว้
+                // แต่เนื่องจาก _calculatedResult เก็บ MoveModel ของ AI เราจึงต้องแปลงตรงนี้อีกรอบ
+                // หรือวิธีที่ดีกว่า: เก็บค่า Vector2Int ที่แปลงแล้วไว้ในตัวแปรคลาส
+
+                var move = _calculatedResult.Value.Move;
+
+                // แปลงสูตรเดียวกับด้านบน
+                int ux1 = move.FromY;
+                int uy1 = 7 - move.FromX;
+                int ux2 = move.ToY;
+                int uy2 = 7 - move.ToX;
+
+                return (new Vector2Int(ux1, uy1), new Vector2Int(ux2, uy2));
             }
             return null;
         }
 
         public void ClearCalculatedMove()
         {
-            _calculatedResult = null;
+            _calculatedResult = new SearchResult();
         }
 
         // 🔹 ตัวช่วยแปลง enum
@@ -171,7 +125,7 @@ namespace AIEngine.Adapters
                 AIDifficulty.Easy => AICore.Difficulty.Easy,
                 AIDifficulty.Normal => AICore.Difficulty.Normal,
                 AIDifficulty.Hard => AICore.Difficulty.Hard,
-                _ => AICore.Difficulty.Normal
+                _ => AICore.Difficulty.Easy
             };
         }
     }

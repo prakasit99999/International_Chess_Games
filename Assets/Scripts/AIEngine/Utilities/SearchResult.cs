@@ -8,6 +8,7 @@ namespace AIEngine.Utilities
         public int Depth;
         public int NodesEvaluated;
         public float TimeMs;
+        public float Score;
     }
 }
 

@@ -47,21 +47,25 @@ public class SettingManager : MonoBehaviour
     public void CloseSettings()
     {
         settingPanel.SetActive(false);
-        if (PauseManager.isPaused)  
+        if (PauseManager.isPaused)
             PauseManager.Resume();
     }
     public void ReturnToMainMenu()
     {
         Time.timeScale = 1f;
         PauseManager.Resume();
-        SceneManager.LoadScene("MainMenu");
+
+        //  ของใหม่: เรียก GameManager ให้จัดการ Resign ก่อน
+        if (GameManager.Instance != null)
+        {
+            GameManager.Instance.OnExitGameClicked();
+        }
+        else
+        {
+            SceneManager.LoadScene("MainMenu");
+        }
     }
- 
-    public void SetSoundVolume(float volume)
-    {
-        soundVolume = volume;
-        Debug.Log("ระดับเสียง: " + soundVolume);
-    }
+
     public void OnToggleLabelChanged(bool isOn)
     {
         if (boardLabels != null)

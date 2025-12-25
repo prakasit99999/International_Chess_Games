@@ -122,8 +122,8 @@
     <Compile Include="Library\PackageCache\com.unity.ai.assistant@91c166a13c3b\Editor\Assistant\Assistant.Context.cs" />
     <Compile Include="Library\PackageCache\com.unity.ai.assistant@91c166a13c3b\Editor\Assistant\FunctionCalling\Attributes\PluginAttribute.cs" />
     <Compile Include="Library\PackageCache\com.unity.ai.assistant@91c166a13c3b\Editor\Assistant\Context\ContextSerializationHelper.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@91c166a13c3b\Editor\Assistant\Assistant.Repair.cs" />
     <Compile Include="Library\PackageCache\com.unity.ai.assistant@91c166a13c3b\Editor\Assistant\Backend\Socket\Protocol\REST\Client\UnexpectedResponseException.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@91c166a13c3b\Editor\Assistant\Assistant.Repair.cs" />
     <Compile Include="Library\PackageCache\com.unity.ai.assistant@91c166a13c3b\Editor\Assistant\Backend\Socket\Protocol\REST\Model\Guideline.cs" />
     <Compile Include="Library\PackageCache\com.unity.ai.assistant@91c166a13c3b\Editor\Assistant\Backend\Socket\Protocol\REST\Model\MessageCostV1.cs" />
     <Compile Include="Library\PackageCache\com.unity.ai.assistant@91c166a13c3b\Editor\Assistant\CodeBlock\ValidatorUtils.cs" />
@@ -290,8 +290,8 @@
     <Compile Include="Library\PackageCache\com.unity.ai.assistant@91c166a13c3b\Editor\Assistant\CodeAnalyze\DynamicAssemblyBuilder.cs" />
     <Compile Include="Library\PackageCache\com.unity.ai.assistant@91c166a13c3b\Editor\Assistant\ServerCompatibility\ServerCompatibilityText.cs" />
     <Compile Include="Library\PackageCache\com.unity.ai.assistant@91c166a13c3b\Editor\Assistant\ServerCompatibility\ServerCompatibilityNotSupportedBanner.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@91c166a13c3b\Editor\Assistant\FunctionCalling\AIAssistantFunctionCaller.cs" />
     <Compile Include="Library\PackageCache\com.unity.ai.assistant@91c166a13c3b\Editor\Assistant\Serialization\BuiltinOverrides\FontOverrides.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@91c166a13c3b\Editor\Assistant\FunctionCalling\AIAssistantFunctionCaller.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Library\PackageCache\com.unity.ai.assistant@91c166a13c3b\Editor\Assistant\Unity.AI.Assistant.Editor.asmdef" />

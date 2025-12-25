@@ -1,9 +1,9 @@
-﻿using NUnit.Framework;
-using UnityEngine;
+﻿using System.Reflection;
+using NUnit.Framework;
 using TMPro;
-using static ChessPiece;
-using System.Reflection;
+using UnityEngine;
 using UnityEngine.UI;
+using static ChessPiece;
 
 public class GameOverTests
 {
@@ -140,7 +140,7 @@ public class GameOverTests
         gameManager.SetCurrentTurn(Team.White);
 
         // กระทำ
-        gameManager.GameOver(Team.White);
+        gameManager.GameOver(Team.White, "checkmate");
 
         // ตรวจสอบ
         Assert.IsTrue(winPanel.activeSelf);
@@ -156,7 +156,7 @@ public class GameOverTests
         gameManager.SetCurrentTurn(Team.White);
 
         // กระทำ
-        gameManager.GameOver(Team.Black);
+        gameManager.GameOver(Team.Black, "checkmate");
 
         // ตรวจสอบ
         Assert.IsTrue(losePanel.activeSelf);
@@ -169,7 +169,7 @@ public class GameOverTests
     public void GameOver_Draw_ShowsDrawPanel()
     {
         // กระทำ
-        gameManager.GameOver(Team.None);
+        gameManager.GameOver(Team.None, "stalemate");
 
         // ตรวจสอบ
         Assert.IsTrue(drawPanel.activeSelf);
@@ -185,7 +185,7 @@ public class GameOverTests
         Time.timeScale = 1f;
 
         // กระทำ
-        gameManager.GameOver(Team.White);
+        gameManager.GameOver(Team.White, "checkmate");
 
         // ตรวจสอบ
         Assert.AreEqual(0f, Time.timeScale);
@@ -198,11 +198,11 @@ public class GameOverTests
         gameManager.SetCurrentTurn(Team.White);
 
         // กระทำครั้งแรก
-        gameManager.GameOver(Team.White);
+        gameManager.GameOver(Team.White, "checkmate");
         string firstWinText = winText.text;
 
         // กระทำครั้งที่สอง
-        gameManager.GameOver(Team.None);
+        gameManager.GameOver(Team.None, "stalemate");
 
         // ตรวจสอบ
         Assert.AreEqual(firstWinText, winText.text);
@@ -217,7 +217,7 @@ public class GameOverTests
         gameManager.SetCurrentTurn(Team.White);
 
         // กระทำ
-        gameManager.GameOver(Team.Black);
+        gameManager.GameOver(Team.Black, "checkmate");
 
         // ตรวจสอบ
         Assert.AreEqual("WhitePlayer แพ้!", loseText.text);
@@ -227,7 +227,7 @@ public class GameOverTests
     public void GameOver_Draw_DoesNotShowWinOrLosePanel()
     {
         // กระทำ
-        gameManager.GameOver(Team.None);
+        gameManager.GameOver(Team.None, "stalemate");
 
         // ตรวจสอบ
         Assert.IsTrue(drawPanel.activeSelf);
@@ -242,7 +242,7 @@ public class GameOverTests
         gameManager.UpdateFiftyMoveCounter(30);
 
         // กระทำ
-        gameManager.GameOver(Team.White);
+        gameManager.GameOver(Team.White, "checkmate");
 
         // ตรวจสอบ
         Assert.IsFalse(drawInfoPanel.activeSelf);

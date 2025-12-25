@@ -819,12 +819,20 @@
       <HintPath>Library\PackageCache\com.unity.visualscripting@191c0d7e3b69\Runtime\VisualScripting.Flow\Dependencies\NCalc\Unity.VisualScripting.Antlr3.Runtime.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe">
+      <HintPath>Library\PackageCache\com.unity.collections@aea9d3bd5e19\Unity.Collections.Tests\System.Runtime.CompilerServices.Unsafe\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="Google.VersionHandler">
       <HintPath>Assets\MobileDependencyResolver\Editor\Google.VersionHandler.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Newtonsoft.Json">
       <HintPath>Library\PackageCache\com.unity.nuget.newtonsoft-json@4dfd81071c64\Runtime\Newtonsoft.Json.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="AiEditorToolsSdk">
+      <HintPath>Library\PackageCache\com.unity.ai.toolkit@48a271771d1a\Modules\Sdk\Editor\AiEditorToolsSdk.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.VisualScripting.TextureAssets">
@@ -835,16 +843,8 @@
       <HintPath>Library\PackageCache\com.unity.nuget.mono-cecil@ecb9724e46ff\Mono.Cecil.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="System.Runtime.CompilerServices.Unsafe">
-      <HintPath>Library\PackageCache\com.unity.collections@aea9d3bd5e19\Unity.Collections.Tests\System.Runtime.CompilerServices.Unsafe\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
     <Reference Include="Unity.Analytics.StandardEvents">
       <HintPath>Library\PackageCache\com.unity.analytics@c9d14a6bdec6\AnalyticsStandardEvents\Unity.Analytics.StandardEvents.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="AiEditorToolsSdk">
-      <HintPath>Library\PackageCache\com.unity.ai.toolkit@48a271771d1a\Modules\Sdk\Editor\AiEditorToolsSdk.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="mscorlib">
@@ -1365,10 +1365,6 @@
       <Project>{9D95499B-8FF2-54CF-BD3F-C5B72ABDD5D4}</Project>
       <Name>Unity.Purchasing.SecurityStub</Name>
     </ProjectReference>
-    <ProjectReference Include="Unity.InferenceEngine.csproj">
-      <Project>{B3A6F2B9-8F42-90A0-864A-61B5936DDEBC}</Project>
-      <Name>Unity.InferenceEngine</Name>
-    </ProjectReference>
     <ProjectReference Include="Unity.2D.Common.Path.Editor.csproj">
       <Project>{0F0F8926-B6A4-B170-96A2-1C712257CC3C}</Project>
       <Name>Unity.2D.Common.Path.Editor</Name>
@@ -1397,10 +1393,6 @@
       <Project>{A9713B8C-E979-D453-0C6C-501EDFD08F46}</Project>
       <Name>Unity.Cloud.AppLinking.Editor.Embedded</Name>
     </ProjectReference>
-    <ProjectReference Include="Unity.Services.Multiplayer.Editor.Shared.csproj">
-      <Project>{F1724D93-F190-514A-6D54-FB2E826C89E6}</Project>
-      <Name>Unity.Services.Multiplayer.Editor.Shared</Name>
-    </ProjectReference>
     <ProjectReference Include="PsdPlugin.csproj">
       <Project>{F764FC8E-59E7-8CAD-DE69-017DC932F737}</Project>
       <Name>PsdPlugin</Name>
@@ -1412,6 +1404,10 @@
     <ProjectReference Include="UnityEngine.SpatialTracking.csproj">
       <Project>{D305CBE7-515E-FBF4-F87E-91195A7B81F1}</Project>
       <Name>UnityEngine.SpatialTracking</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.Services.Multiplayer.Editor.Shared.csproj">
+      <Project>{F1724D93-F190-514A-6D54-FB2E826C89E6}</Project>
+      <Name>Unity.Services.Multiplayer.Editor.Shared</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.Cloud.AppLinking.Embedded.csproj">
       <Project>{F3820DB7-AC5D-FEA0-9BFD-D3BCC2737DE6}</Project>
@@ -1433,21 +1429,21 @@
       <Project>{A6D6BD53-4642-AD4F-7535-C98A78A042BF}</Project>
       <Name>Unity.Networking.Editor</Name>
     </ProjectReference>
-    <ProjectReference Include="Unity.InternalAPIEditorBridge.001.csproj">
-      <Project>{8C37437D-B3F5-E490-53D6-5041016F9F55}</Project>
-      <Name>Unity.InternalAPIEditorBridge.001</Name>
-    </ProjectReference>
     <ProjectReference Include="Unity.2D.Enhancers.Editor.AIBridge.csproj">
       <Project>{9382B98F-538F-0412-4CB8-FE4AD4471342}</Project>
       <Name>Unity.2D.Enhancers.Editor.AIBridge</Name>
     </ProjectReference>
-    <ProjectReference Include="Unity.2D.Common.Editor.csproj">
-      <Project>{7F61996F-3707-162C-CEFF-B7FFE2A46DBF}</Project>
-      <Name>Unity.2D.Common.Editor</Name>
+    <ProjectReference Include="Unity.InternalAPIEditorBridge.001.csproj">
+      <Project>{8C37437D-B3F5-E490-53D6-5041016F9F55}</Project>
+      <Name>Unity.InternalAPIEditorBridge.001</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.AI.Navigation.Updater.csproj">
       <Project>{087368CD-C7F1-6323-BFBA-B7959EB593E9}</Project>
       <Name>Unity.AI.Navigation.Updater</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.2D.Common.Editor.csproj">
+      <Project>{7F61996F-3707-162C-CEFF-B7FFE2A46DBF}</Project>
+      <Name>Unity.2D.Common.Editor</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.AI.Navigation.Editor.csproj">
       <Project>{574A4AD1-0DBA-874E-2254-F1088FCC5EF1}</Project>
@@ -1497,10 +1493,6 @@
       <Project>{4F5C4A66-2249-A108-C03A-20AD7B0CA963}</Project>
       <Name>Unity.Services.Authentication</Name>
     </ProjectReference>
-    <ProjectReference Include="Unity.Rider.Editor.csproj">
-      <Project>{06AC5473-EC36-8029-77A2-C3F6E5D22D61}</Project>
-      <Name>Unity.Rider.Editor</Name>
-    </ProjectReference>
     <ProjectReference Include="Unity.AI.Navigation.Editor.ConversionSystem.csproj">
       <Project>{556EFFB5-F8AE-3AA3-EEA1-FDAF342F0769}</Project>
       <Name>Unity.AI.Navigation.Editor.ConversionSystem</Name>
@@ -1509,9 +1501,13 @@
       <Project>{73ACA693-FAB7-08E6-6DCB-CF57AA3CDCE1}</Project>
       <Name>Unity.2D.Aseprite.Editor</Name>
     </ProjectReference>
-    <ProjectReference Include="Unity.Cloud.AppLinking.Runtime.Embedded.csproj">
-      <Project>{64493C5E-C748-A975-3422-1FEE1A8C3784}</Project>
-      <Name>Unity.Cloud.AppLinking.Runtime.Embedded</Name>
+    <ProjectReference Include="Unity.Rider.Editor.csproj">
+      <Project>{06AC5473-EC36-8029-77A2-C3F6E5D22D61}</Project>
+      <Name>Unity.Rider.Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.InferenceEngine.Editor.csproj">
+      <Project>{FBEC5F36-7165-90BC-D9FE-C617F5B0AC13}</Project>
+      <Name>Unity.InferenceEngine.Editor</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.Services.Authentication.Editor.Shared.csproj">
       <Project>{C6073B75-4FF4-B972-949B-DAB22D1B4596}</Project>
@@ -1521,9 +1517,9 @@
       <Project>{74A3FAB5-92AD-E705-37C7-4119915D9B1B}</Project>
       <Name>Unity.Services.Multiplayer.Editor.Matchmaker.Authoring</Name>
     </ProjectReference>
-    <ProjectReference Include="Unity.Analytics.DataPrivacy.csproj">
-      <Project>{0803035E-4BAF-0357-6059-F05A921EA916}</Project>
-      <Name>Unity.Analytics.DataPrivacy</Name>
+    <ProjectReference Include="Unity.AI.Assistant.Bridge.Editor.csproj">
+      <Project>{EA454308-384D-C8C8-8237-C0D706DA2BA3}</Project>
+      <Name>Unity.AI.Assistant.Bridge.Editor</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.VisualScripting.Flow.csproj">
       <Project>{EC090944-1E5E-3BBD-2751-D87BAA729824}</Project>
@@ -1533,29 +1529,29 @@
       <Project>{24637910-C2F9-0BEE-D2ED-DFCB04823A48}</Project>
       <Name>SimpleWebTransport</Name>
     </ProjectReference>
-    <ProjectReference Include="Unity.AI.Assistant.Bridge.Editor.csproj">
-      <Project>{EA454308-384D-C8C8-8237-C0D706DA2BA3}</Project>
-      <Name>Unity.AI.Assistant.Bridge.Editor</Name>
+    <ProjectReference Include="Unity.Analytics.DataPrivacy.csproj">
+      <Project>{0803035E-4BAF-0357-6059-F05A921EA916}</Project>
+      <Name>Unity.Analytics.DataPrivacy</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.TextMeshPro.Editor.csproj">
       <Project>{B4130C1B-99D5-AF4C-832E-B4E262357732}</Project>
       <Name>Unity.TextMeshPro.Editor</Name>
     </ProjectReference>
-    <ProjectReference Include="Unity.2D.Tilemap.Extras.Editor.csproj">
-      <Project>{E619D02D-94E9-4415-C3B9-9FD761F386A1}</Project>
-      <Name>Unity.2D.Tilemap.Extras.Editor</Name>
-    </ProjectReference>
     <ProjectReference Include="Mirror.Transports.csproj">
       <Project>{671123C5-757E-051D-268E-699292D6DA3C}</Project>
       <Name>Mirror.Transports</Name>
     </ProjectReference>
-    <ProjectReference Include="Unity.InferenceEngine.Editor.csproj">
-      <Project>{FBEC5F36-7165-90BC-D9FE-C617F5B0AC13}</Project>
-      <Name>Unity.InferenceEngine.Editor</Name>
+    <ProjectReference Include="Unity.2D.Tilemap.Extras.Editor.csproj">
+      <Project>{E619D02D-94E9-4415-C3B9-9FD761F386A1}</Project>
+      <Name>Unity.2D.Tilemap.Extras.Editor</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.Services.Authentication.PlayerAccounts.csproj">
       <Project>{A576B8E2-894E-573A-A8EC-3B8DE53E35CD}</Project>
       <Name>Unity.Services.Authentication.PlayerAccounts</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.Cloud.AppLinking.Runtime.Embedded.csproj">
+      <Project>{64493C5E-C748-A975-3422-1FEE1A8C3784}</Project>
+      <Name>Unity.Cloud.AppLinking.Runtime.Embedded</Name>
     </ProjectReference>
     <ProjectReference Include="UnityEngine.XR.LegacyInputHelpers.csproj">
       <Project>{4A4A93ED-FE56-2870-B5C6-2BD7E2FCB810}</Project>
@@ -1896,6 +1892,10 @@
     <ProjectReference Include="Unity.Services.Analytics.csproj">
       <Project>{770A1D3E-F71C-448E-9E6D-9F2C99503E89}</Project>
       <Name>Unity.Services.Analytics</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.InferenceEngine.csproj">
+      <Project>{B3A6F2B9-8F42-90A0-864A-61B5936DDEBC}</Project>
+      <Name>Unity.InferenceEngine</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

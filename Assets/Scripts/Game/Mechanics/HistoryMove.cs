@@ -28,15 +28,21 @@ public class HistoryMove : MonoBehaviour
         public bool isCheck;//การเดินที่ทำให้เกิด Check
         public bool isPawnTwoStep;
         public bool pieceHasMovedBefore;
-
         public int fiftyMoveCounter;
+
+        // AI
+        public int score;
+        public int depth;
+        public int nodes;
+        public int moveTimeMs;
+
         public HistoryMoveData(Vector2Int start, Vector2Int end, ChessPiece.PieceType piece,
                                ChessPiece.PieceType captured, ChessPiece.Team capturedTeam,
                                bool castling, bool enPassant, ChessPiece.PieceType promoted,
                                bool check, bool isPawnTwoStep, bool pieceHasMovedBefore,
                                Vector2Int capturedPiecePosition, ChessPiece.PieceType promotedFrom,
                                Vector2Int promotedPosition, Vector2Int? previousEnPassantTarget, bool isCapture,
-                               ChessPiece.Team team, int fiftyMoveCounter // ✅ เพิ่มตรงนี้
+                               ChessPiece.Team team, int fiftyMoveCounter, int aiScore = 0, int aiDepth = 0, int aiNodes = 0, int aiTime = 0
         )
         {
             startPosition = start;
@@ -57,6 +63,11 @@ public class HistoryMove : MonoBehaviour
             this.previousEnPassantTarget = previousEnPassantTarget;
             this.team = team;
             this.fiftyMoveCounter = fiftyMoveCounter;
+
+            this.score = aiScore;
+            this.depth = aiDepth;
+            this.nodes = aiNodes;
+            this.moveTimeMs = aiTime;
         }
 
     }
@@ -75,8 +86,8 @@ public class HistoryMove : MonoBehaviour
       ChessPiece.PieceType promotedFrom,
       Vector2Int promotedPosition,
       Vector2Int? previousEnPassantTarget,
-      ChessPiece.Team team,
-      int fiftyMoveCounter // ✅ เพิ่มตรงนี้
+      ChessPiece.Team team, int fiftyMoveCounter,
+      int aiScore, int aiDepth, int aiNodes, int aiTime
   )
     {
         HistoryMoveData move = new HistoryMoveData(
@@ -84,19 +95,18 @@ public class HistoryMove : MonoBehaviour
             castling, enPassant, promoted, check,
             isPawnTwoStep, pieceHasMovedBefore, capturedPiecePosition,
             promotedFrom, promotedPosition, previousEnPassantTarget,
-            isCapture, team, fiftyMoveCounter 
+            isCapture, team, fiftyMoveCounter,
+            aiScore, aiDepth, aiNodes, aiTime
         );
 
         moveHistory.Push(move);
 
         Debug.Log($"Move created: startPosition={move.startPosition}, endPosition={move.endPosition}, pieceType={move.pieceType}, " +
-                    $"capturedPieceType={move.capturedPieceType}, capturedPieceTeam={move.capturedPieceTeam}, isCastling={move.isCastling}, " +
-                    $"isEnPassant={move.isEnPassant}, promotedTo={move.promotedTo}, isCheck={move.isCheck}, isPawnTwoStep={move.isPawnTwoStep}, " +
-                    $" pieceHasMovedBefore={move.pieceHasMovedBefore},capturedPiecePosition={move.capturedPiecePosition}, promotedFrom={move.promotedFrom}," +
-                     $"promotedPosition={move.promotedPosition}, isCapture={move.isCapture},team={move.team},fiftyMoveCounter={fiftyMoveCounter} "
-                     );
-
-
+                   $"capturedPieceType={move.capturedPieceType}, capturedPieceTeam={move.capturedPieceTeam}, isCastling={move.isCastling}, " +
+                   $"isEnPassant={move.isEnPassant}, promotedTo={move.promotedTo}, isCheck={move.isCheck}, isPawnTwoStep={move.isPawnTwoStep}, " +
+                   $" pieceHasMovedBefore={move.pieceHasMovedBefore},capturedPiecePosition={move.capturedPiecePosition}, promotedFrom={move.promotedFrom}," +
+                    $"promotedPosition={move.promotedPosition}, isCapture={move.isCapture},team={move.team},fiftyMoveCounter={fiftyMoveCounter} "
+                    + $"score={move.score}, depth={move.depth}, nodes={move.nodes}, moveTimeMs={move.moveTimeMs}");
     }
 
 
@@ -122,6 +132,7 @@ public class HistoryMove : MonoBehaviour
                 $"กิน {lastMove.capturedPieceType}, Castling: " +
                 $"{lastMove.isCastling}, En Passant: {lastMove.isEnPassant}, " +
                 $"Promote: {lastMove.promotedTo}, Check: {lastMove.isCheck}" +
+                $"score={lastMove.score}, depth={lastMove.depth}, nodes={lastMove.nodes}, moveTimeMs={lastMove.moveTimeMs}" +
                 $"\n"
                 );
 

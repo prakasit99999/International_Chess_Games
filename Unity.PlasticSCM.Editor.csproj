@@ -421,8 +421,8 @@
     <Compile Include="Library\PackageCache\com.unity.collab-proxy@3351acaba9c9\Editor\UI\UIElements\ProgressControlsForDialogs.cs" />
     <Compile Include="Library\PackageCache\com.unity.collab-proxy@3351acaba9c9\Editor\Views\PendingChanges\Changelists\MoveToChangelistMenuBuilder.cs" />
     <Compile Include="Library\PackageCache\com.unity.collab-proxy@3351acaba9c9\Editor\Views\Diff\ChangeCategoryTreeViewItem.cs" />
-    <Compile Include="Library\PackageCache\com.unity.collab-proxy@3351acaba9c9\Editor\AssetOverlays\Cache\AssetStatusCache.cs" />
     <Compile Include="Library\PackageCache\com.unity.collab-proxy@3351acaba9c9\Editor\_Deprecated\CollabMigration\MigrateCollabProject.cs" />
+    <Compile Include="Library\PackageCache\com.unity.collab-proxy@3351acaba9c9\Editor\AssetOverlays\Cache\AssetStatusCache.cs" />
     <Compile Include="Library\PackageCache\com.unity.collab-proxy@3351acaba9c9\Editor\CloudDrive\CreateWorkspace\CreateWorkspaceView.cs" />
     <Compile Include="Library\PackageCache\com.unity.collab-proxy@3351acaba9c9\Editor\Views\History\HistoryListView.cs" />
     <Compile Include="Library\PackageCache\com.unity.collab-proxy@3351acaba9c9\Editor\UI\DialogWithCheckBox.cs" />

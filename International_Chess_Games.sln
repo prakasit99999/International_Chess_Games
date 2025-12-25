@@ -117,9 +117,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Unity.AI.Image", "Unity.AI.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Unity.AssetManager.UI.Editor", "Unity.AssetManager.UI.Editor.csproj", "{12B952DE-86CF-ECCB-E640-73549A1DD512}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Unity.TextMeshPro", "Unity.TextMeshPro.csproj", "{C1F7C240-5E79-6109-D35C-B20862BC139D}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Unity.InferenceEngine.Editor", "Unity.InferenceEngine.Editor.csproj", "{FBEC5F36-7165-90BC-D9FE-C617F5B0AC13}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Unity.TextMeshPro", "Unity.TextMeshPro.csproj", "{C1F7C240-5E79-6109-D35C-B20862BC139D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnityEditor.Purchasing", "UnityEditor.Purchasing.csproj", "{D8DE540C-97F9-A64A-3A97-4CF2E06C17A1}"
 EndProject
@@ -643,14 +643,14 @@ Global
 		{12B952DE-86CF-ECCB-E640-73549A1DD512}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{12B952DE-86CF-ECCB-E640-73549A1DD512}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{12B952DE-86CF-ECCB-E640-73549A1DD512}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C1F7C240-5E79-6109-D35C-B20862BC139D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C1F7C240-5E79-6109-D35C-B20862BC139D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C1F7C240-5E79-6109-D35C-B20862BC139D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C1F7C240-5E79-6109-D35C-B20862BC139D}.Release|Any CPU.Build.0 = Release|Any CPU
 		{FBEC5F36-7165-90BC-D9FE-C617F5B0AC13}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{FBEC5F36-7165-90BC-D9FE-C617F5B0AC13}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FBEC5F36-7165-90BC-D9FE-C617F5B0AC13}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FBEC5F36-7165-90BC-D9FE-C617F5B0AC13}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C1F7C240-5E79-6109-D35C-B20862BC139D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C1F7C240-5E79-6109-D35C-B20862BC139D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C1F7C240-5E79-6109-D35C-B20862BC139D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C1F7C240-5E79-6109-D35C-B20862BC139D}.Release|Any CPU.Build.0 = Release|Any CPU
 		{D8DE540C-97F9-A64A-3A97-4CF2E06C17A1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{D8DE540C-97F9-A64A-3A97-4CF2E06C17A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D8DE540C-97F9-A64A-3A97-4CF2E06C17A1}.Release|Any CPU.ActiveCfg = Release|Any CPU

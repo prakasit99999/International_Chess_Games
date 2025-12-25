@@ -30,14 +30,19 @@ public class UndoMove : MonoBehaviour
 
     public void Start()
     {
-       boardModel = chessBoard.BoardModel;
+        boardModel = chessBoard.BoardModel;
     }
 
     public void UndoLastMove()
     {
         if (PauseManager.isPaused) return;
-        if (GameManager.Instance != null && GameManager.Instance.GetCurrentMode() == GameManager.GameModes.AIVsAI)
+        if (GameManager.Instance != null && GameManager.Instance.GetCurrentMode() == GameManager.GameModes.AIVsAI ||
+        GameManager.Instance.GetCurrentMode() == GameManager.GameModes.LocalMultiplayer ||
+        GameManager.Instance.GetCurrentMode() == GameManager.GameModes.Online)
+        {
+            Debug.Log("UndoMove: Not allowed in this mode");
             return;
+        }
         if (historyMove.GetMoveHistory().Count == 0) return;
 
         HistoryMove.HistoryMoveData lastMove = historyMove.GetMoveHistory().Pop();

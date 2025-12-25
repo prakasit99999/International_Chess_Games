@@ -63,8 +63,8 @@
   <ItemGroup>
     <Compile Include="Library\PackageCache\com.unity.ai.assistant@91c166a13c3b\Editor\UI\Scripts\Components\AssistantTextField.cs" />
     <Compile Include="Library\PackageCache\com.unity.ai.assistant@91c166a13c3b\Editor\UI\Scripts\Markup\ChatMarkdownRenderer.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@91c166a13c3b\Editor\UI\Scripts\Markup\Renderers\CodeInlineBlockRenderer.cs" />
     <Compile Include="Library\PackageCache\com.unity.ai.assistant@91c166a13c3b\Editor\UI\Scripts\Components\History\HistoryPanel.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@91c166a13c3b\Editor\UI\Scripts\Markup\Renderers\CodeInlineBlockRenderer.cs" />
     <Compile Include="Library\PackageCache\com.unity.ai.assistant@91c166a13c3b\Editor\UI\Scripts\Components\RoutesPopupEntry.cs" />
     <Compile Include="Library\PackageCache\com.unity.ai.assistant@91c166a13c3b\Editor\UI\Scripts\Components\Tabs\EditorSelectionTabs\AllEditorSelectionTab.cs" />
     <Compile Include="Library\PackageCache\com.unity.ai.assistant@91c166a13c3b\Editor\UI\Scripts\Data\PluginButtonData.cs" />

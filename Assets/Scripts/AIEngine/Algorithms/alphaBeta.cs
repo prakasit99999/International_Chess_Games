@@ -1,7 +1,7 @@
-using AIEngine.Utilities;
 using System;
-using System.Linq;
 using System.Diagnostics;
+using System.Linq;
+using AIEngine.Utilities;
 namespace AIEngine.Algorithms
 {
     public class AlphaBeta : SearchAlgorithm
@@ -39,14 +39,16 @@ namespace AIEngine.Algorithms
             _actualDepth = 0;
             var stopwatch = Stopwatch.StartNew();
             MoveModel bestMove = null;
+            int bestScore = 0;
             int currentDepth = 1;
 
             while (currentDepth <= maxDepth && stopwatch.Elapsed.TotalMilliseconds < TimeLimitMs)
             {
-                var iterativeBest = AlphaBetaSearch(board, currentDepth, stopwatch, bestMove);
+                var (iterativeBest, iterativeBestScore) = AlphaBetaSearch(board, currentDepth, stopwatch, bestMove);
                 if (iterativeBest != null)
                 {
                     bestMove = iterativeBest;
+                    bestScore = iterativeBestScore;
                     _actualDepth = currentDepth;
                 }
                 currentDepth++;
@@ -56,17 +58,18 @@ namespace AIEngine.Algorithms
             var elapsedMs = (float)stopwatch.Elapsed.TotalMilliseconds;
             var move = bestMove ?? MoveGenerator.GenerateMoves(board).FirstOrDefault()
                     ?? throw new InvalidOperationException("No valid moves found.");
-
             return new SearchResult
             {
                 Move = move,
                 Depth = _actualDepth,
                 NodesEvaluated = _nodesEvaluated,
-                TimeMs = elapsedMs
+                TimeMs = elapsedMs,
+                Score = bestScore,
+
             };
         }
 
-        private MoveModel AlphaBetaSearch(ChessBoardModel board, int depth, Stopwatch stopwatch, MoveModel previousBest)
+        private (MoveModel, int) AlphaBetaSearch(ChessBoardModel board, int depth, Stopwatch stopwatch, MoveModel previousBest)
         {
             // [แก้ไข 1] ส่ง _killerMoves และ _historyMoves เข้าไปให้ MoveOrderer
             // สังเกตว่าผมส่ง null แทน ttMove ในพารามิเตอร์ที่ 3 เพราะเราใช้ previousBest เป็นตัวนำทางใน Root แล้ว
@@ -103,7 +106,7 @@ namespace AIEngine.Algorithms
                 if (alpha >= beta)
                     break;
             }
-            return bestMove;
+            return (bestMove, bestScore); ;
         }
 
         // Helper: ดึงท่า Killer เฉพาะของ Ply ปัจจุบันออกมาเป็น Array 1 มิติ

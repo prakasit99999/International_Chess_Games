@@ -99,10 +99,10 @@ public class PromotionManager : MonoBehaviour
 
         switch (choice)
         {
-            case 0: newType = ChessPiece.PieceType.Queen; break;
             case 1: newType = ChessPiece.PieceType.Rook; break;
-            case 2: newType = ChessPiece.PieceType.Bishop; break;
-            case 3: newType = ChessPiece.PieceType.Knight; break;
+            case 2: newType = ChessPiece.PieceType.Knight; break;
+            case 3: newType = ChessPiece.PieceType.Bishop; break;
+            case 4: newType = ChessPiece.PieceType.Queen; break;
         }
         if (historyMove == null || historyMove.GetMoveHistory().Count == 0)
         {
@@ -124,17 +124,6 @@ public class PromotionManager : MonoBehaviour
         GameManager.Instance.SwitchTurn();
 
         Debug.Log($"🔼 อัปเดตประเภทที่เลื่อนขั้นใน HistoryMove: {lastMove.promotedTo}");
-        //Debug.Log($"📜 ข้อมูลทั้งหมดของ lastMove: " +
-        //          $"\nStart Position: {lastMove.startPosition}" +
-        //          $"\nEnd Position: {lastMove.endPosition}" +
-        //          $"\nPiece Type: {lastMove.pieceType}" +
-        //          $"\nCaptured Piece Type: {lastMove.capturedPieceType}" +
-        //          $"\nCaptured Piece Team: {lastMove.capturedPieceTeam}" +
-        //          $"\nIs Castling: {lastMove.isCastling}" +
-        //          $"\nIs En Passant: {lastMove.isEnPassant}" +
-        //          $"\nPromoted From: {lastMove.promotedFrom}" +
-        //          $"\nPromoted To: {lastMove.promotedTo}" +
-        //          $"\nPromoted Position: {lastMove.promotedPosition}");
 
     }
 

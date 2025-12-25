@@ -73,8 +73,8 @@
     <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Miscellaneous\LayoutEditing\LabelFixture.cs" />
     <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\GraphmapsWithMesh\MeshCreator.cs" />
     <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Routing\ConstrainedDelaunayTriangulation\CdtSite.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Core\Layout\ProximityOverlapRemoval\StressEnergy\SolvingMethod.cs" />
     <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Routing\Rectilinear\Nudging\PointProjection.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Core\Layout\ProximityOverlapRemoval\StressEnergy\SolvingMethod.cs" />
     <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Core\Geometry\OverlapRemoval\BorderInfo.cs" />
     <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Miscellaneous\Phylo\PhyloTree.cs" />
     <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Layout\Incremental\EdgeConstraintGenerator.cs" />
@@ -286,8 +286,8 @@
     <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Routing\ConstrainedDelaunayTriangulation\CdtFront.cs" />
     <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Core\Layout\IsOpenChangeEventArgs.cs" />
     <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Core\Geometry\RTree\RectangleNode.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Routing\Spline\Bundling\IntersectionCache.cs" />
     <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Routing\Visibility\StemStartPointComparer.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Routing\Spline\Bundling\IntersectionCache.cs" />
     <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Core\Layout\ProximityOverlapRemoval\ConjugateGradient\SparseMatrix.cs" />
     <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Layout\Incremental\HorizontalSeparationConstraint.cs" />
     <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Routing\SplineRouter.cs" />
@@ -460,8 +460,8 @@
     <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Routing\Rectilinear\Nudging\Path.cs" />
     <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Core\ProjectionSolver\Constraint.cs" />
     <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\GraphmapsWithMesh\Angle.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Core\Layout\ProximityOverlapRemoval\StressEnergy\StressMajorization.cs" />
     <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Routing\Spline\Bundling\SimulatedAnnealing.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Core\Layout\ProximityOverlapRemoval\StressEnergy\StressMajorization.cs" />
     <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Routing\Shape.cs" />
     <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Layout\LargeGraphLayout\LgInteractor.cs" />
     <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\GraphmapsWithMesh\ComponentCollection.cs" />
@@ -1202,12 +1202,20 @@
       <HintPath>Library\PackageCache\com.unity.visualscripting@191c0d7e3b69\Runtime\VisualScripting.Flow\Dependencies\NCalc\Unity.VisualScripting.Antlr3.Runtime.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe">
+      <HintPath>Library\PackageCache\com.unity.collections@aea9d3bd5e19\Unity.Collections.Tests\System.Runtime.CompilerServices.Unsafe\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="Google.VersionHandler">
       <HintPath>Assets\MobileDependencyResolver\Editor\Google.VersionHandler.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Newtonsoft.Json">
       <HintPath>Library\PackageCache\com.unity.nuget.newtonsoft-json@4dfd81071c64\Runtime\Newtonsoft.Json.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="AiEditorToolsSdk">
+      <HintPath>Library\PackageCache\com.unity.ai.toolkit@48a271771d1a\Modules\Sdk\Editor\AiEditorToolsSdk.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.VisualScripting.TextureAssets">
@@ -1218,16 +1226,8 @@
       <HintPath>Library\PackageCache\com.unity.nuget.mono-cecil@ecb9724e46ff\Mono.Cecil.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="System.Runtime.CompilerServices.Unsafe">
-      <HintPath>Library\PackageCache\com.unity.collections@aea9d3bd5e19\Unity.Collections.Tests\System.Runtime.CompilerServices.Unsafe\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
     <Reference Include="Unity.Analytics.StandardEvents">
       <HintPath>Library\PackageCache\com.unity.analytics@c9d14a6bdec6\AnalyticsStandardEvents\Unity.Analytics.StandardEvents.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="AiEditorToolsSdk">
-      <HintPath>Library\PackageCache\com.unity.ai.toolkit@48a271771d1a\Modules\Sdk\Editor\AiEditorToolsSdk.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="mscorlib">
