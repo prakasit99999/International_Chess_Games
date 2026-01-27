@@ -48,7 +48,7 @@
   <PropertyGroup>
     <ProjectTypeGuids>{E097FAD1-6243-4DAD-9C02-E9B9EFC3FFC1};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <UnityProjectGenerator>Package</UnityProjectGenerator>
-    <UnityProjectGeneratorVersion>2.0.25</UnityProjectGeneratorVersion>
+    <UnityProjectGeneratorVersion>2.0.26</UnityProjectGeneratorVersion>
     <UnityProjectGeneratorStyle>Legacy</UnityProjectGeneratorStyle>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>WebGL:20</UnityBuildTarget>
@@ -61,98 +61,94 @@
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\Tools\BuildPipeline\Unity.SourceGenerators\Unity.UIToolkit.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Generators.Redux\Services\Immutability.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Generators.Redux\UIElements\Core\UseSelectorOptionsExtensions.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Generators.Redux\Toolkit\Models\EndpointResult.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Generators.Redux\Toolkit\Extensions\EndpointOperationExtensions.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Generators.Redux\Thunks\AsyncThunkActions.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Generators.Redux\Toolkit\ReduxAdapter.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Generators.Redux\IState.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Generators.Redux\Thunks\Delegates.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Generators.Redux\SwitchBuilder\SwitchBuilderExtensions.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Generators.Redux\DispatchQueue.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Generators.Redux\Store.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Generators.Redux\Toolkit\Models\QueryOptions.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Generators.Redux\UIElements\Core\ExceptionUtilities.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Generators.Redux\UIElements\Core\SequenceComparer.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Generators.Redux\SwitchBuilder\SliceSwitchBuilder.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Generators.Redux\Toolkit\Extensions\ApiUIElementExtensions.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Generators.Redux\Toolkit\Models\MutationPayload.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Generators.Redux\Toolkit\Models\EndpointCacheItem.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Generators.Redux\Toolkit\Models\ApiActions.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Generators.Redux\Services\SerializableDictionary.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Generators.Redux\Thunks\BaseAsyncThunkCreator.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Generators.Redux\UIElements\Extensions\PanelExtensions.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Generators.Redux\Toolkit\Api.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Generators.Redux\Actions\Creator.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Generators.Redux\Toolkit\ApiActions.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Generators.Redux\Actions\Interfaces\IMatch.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Generators.Redux\ReduxState.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Generators.Redux\Delegates.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Generators.Redux\Actions\Interfaces\IStandardCreator.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Generators.Redux\Toolkit\Extensions\EndpointUIElementsExtensions.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Generators.Redux\Toolkit\Extensions\EndpointCacheItemExtensions.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Generators.Redux\Toolkit\Delegates.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Generators.Redux\Thunks\ICreateThunk.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Generators.Redux\Toolkit\Extensions\EndpointBuilderExtensions.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Generators.Redux\SwitchBuilder\SwitchBuilder.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Generators.Redux\Actions\Interfaces\ICreateAction.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Generators.Redux\Toolkit\Models\EndpointThunkArgs.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Generators.Redux\UIElements\Use.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Generators.Redux\Thunks\Constants.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Generators.Redux\Actions\Actions.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Generators.Redux\Toolkit\IReduxAdapter.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Generators.Redux\Actions\BasicCreator.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Generators.Redux\Toolkit\Models\ApiState.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Generators.Redux\SwitchBuilder\WithSwitch.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Generators.Redux\UIElements\Core\Lifecycle.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Generators.Redux\Actions\Interfaces\IAction.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Generators.Redux\Toolkit\Models\QueryType.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Generators.Redux\UIElements\Extensions\UseSelectorExtensions.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Generators.Redux\Actions\StandardCreator.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Generators.Redux\Actions\Interfaces\IPrepareAction.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Generators.Redux\StoreInternalApi.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Generators.Redux\Thunks\RejectedAsyncThunkException.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Generators.Redux\Toolkit\OperationContext.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Generators.Redux\Toolkit\EndpointOperation.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Generators.Redux\Thunks\AsyncThunkApi.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Generators.Redux\Thunks\ICreateAsyncThunk.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Generators.Redux\Services\TaskExtensions.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Generators.Redux\AssemblyInfo.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Generators.Redux\Thunks\AsyncThunkOptions.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Generators.Redux\Toolkit\Models\ExtraQueryOptions.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Generators.Redux\Toolkit\Models\ApiDefaultKey.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Generators.Redux\Toolkit\Models\EndpointDefinition.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Generators.Redux\Thunks\ThunkMiddleware.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Generators.Redux\Toolkit\Models\ApiOptions.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Generators.Redux\Toolkit\EndpointBuilder.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Generators.Redux\Toolkit\Selectors.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Generators.Redux\Actions\Interfaces\ICreator.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Generators.Redux\Services\Try.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Generators.Redux\SwitchBuilder\WithCustomActionSwitchBuilder.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Generators.Redux\Toolkit\Models\QueryDefinitionOptions.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Generators.Redux\Toolkit\Models\ApiCacheKey.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Generators.Redux\StoreApi.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Generators.Redux\StoreApiExtensions.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Generators.Redux\Services\ReduxException.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Generators.Redux\Slice.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Generators.Redux\IStoreApi.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Generators.Redux\SwitchBuilder\WithSwitchBuilder.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Generators.Redux\UIElements\Core\UseSelectorOptions.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Generators.Redux\Thunks\ThunkActionCreators.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Generators.Redux\SwitchBuilder\WithPayloadSwitchBuilder.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Generators.Redux\Store{T}.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Generators.Redux\SwitchBuilder\Utilities.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Generators.Redux\Thunks\ThunkCreator.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Generators.Redux\UIElements\Extensions\StoreExtensions.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Generators.Redux\Thunks\AsyncThunkExtensions.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Generators.Redux\SwitchBuilder\SwitchReducers.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Generators.Redux\Thunks\AsyncThunkCreator.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Generators.Redux\Actions\Interfaces\IContext.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Generators.Redux\Toolkit\Extensions\ApiExtensions.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@2330e449f479\Modules\Unity.AI.Generators.Redux\UIElements\Core\UseSelectorOptionsExtensions.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@2330e449f479\Modules\Unity.AI.Generators.Redux\Toolkit\Models\EndpointResult.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@2330e449f479\Modules\Unity.AI.Generators.Redux\Toolkit\Extensions\EndpointOperationExtensions.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@2330e449f479\Modules\Unity.AI.Generators.Redux\Thunks\AsyncThunkActions.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@2330e449f479\Modules\Unity.AI.Generators.Redux\Toolkit\ReduxAdapter.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@2330e449f479\Modules\Unity.AI.Generators.Redux\IState.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@2330e449f479\Modules\Unity.AI.Generators.Redux\Thunks\Delegates.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@2330e449f479\Modules\Unity.AI.Generators.Redux\SwitchBuilder\SwitchBuilderExtensions.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@2330e449f479\Modules\Unity.AI.Generators.Redux\DispatchQueue.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@2330e449f479\Modules\Unity.AI.Generators.Redux\Store.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@2330e449f479\Modules\Unity.AI.Generators.Redux\Toolkit\Models\QueryOptions.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@2330e449f479\Modules\Unity.AI.Generators.Redux\UIElements\Core\ExceptionUtilities.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@2330e449f479\Modules\Unity.AI.Generators.Redux\UIElements\Core\SequenceComparer.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@2330e449f479\Modules\Unity.AI.Generators.Redux\SwitchBuilder\SliceSwitchBuilder.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@2330e449f479\Modules\Unity.AI.Generators.Redux\Toolkit\Extensions\ApiUIElementExtensions.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@2330e449f479\Modules\Unity.AI.Generators.Redux\Toolkit\Models\MutationPayload.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@2330e449f479\Modules\Unity.AI.Generators.Redux\Toolkit\Models\EndpointCacheItem.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@2330e449f479\Modules\Unity.AI.Generators.Redux\Toolkit\Models\ApiActions.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@2330e449f479\Modules\Unity.AI.Generators.Redux\Thunks\BaseAsyncThunkCreator.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@2330e449f479\Modules\Unity.AI.Generators.Redux\UIElements\Extensions\PanelExtensions.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@2330e449f479\Modules\Unity.AI.Generators.Redux\Toolkit\Api.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@2330e449f479\Modules\Unity.AI.Generators.Redux\Actions\Creator.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@2330e449f479\Modules\Unity.AI.Generators.Redux\Toolkit\ApiActions.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@2330e449f479\Modules\Unity.AI.Generators.Redux\Actions\Interfaces\IMatch.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@2330e449f479\Modules\Unity.AI.Generators.Redux\ReduxState.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@2330e449f479\Modules\Unity.AI.Generators.Redux\Delegates.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@2330e449f479\Modules\Unity.AI.Generators.Redux\Actions\Interfaces\IStandardCreator.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@2330e449f479\Modules\Unity.AI.Generators.Redux\Toolkit\Extensions\EndpointUIElementsExtensions.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@2330e449f479\Modules\Unity.AI.Generators.Redux\Toolkit\Extensions\EndpointCacheItemExtensions.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@2330e449f479\Modules\Unity.AI.Generators.Redux\Toolkit\Delegates.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@2330e449f479\Modules\Unity.AI.Generators.Redux\Thunks\ICreateThunk.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@2330e449f479\Modules\Unity.AI.Generators.Redux\Toolkit\Extensions\EndpointBuilderExtensions.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@2330e449f479\Modules\Unity.AI.Generators.Redux\SwitchBuilder\SwitchBuilder.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@2330e449f479\Modules\Unity.AI.Generators.Redux\Actions\Interfaces\ICreateAction.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@2330e449f479\Modules\Unity.AI.Generators.Redux\Toolkit\Models\EndpointThunkArgs.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@2330e449f479\Modules\Unity.AI.Generators.Redux\UIElements\Use.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@2330e449f479\Modules\Unity.AI.Generators.Redux\Thunks\Constants.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@2330e449f479\Modules\Unity.AI.Generators.Redux\Actions\Actions.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@2330e449f479\Modules\Unity.AI.Generators.Redux\Toolkit\IReduxAdapter.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@2330e449f479\Modules\Unity.AI.Generators.Redux\Actions\BasicCreator.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@2330e449f479\Modules\Unity.AI.Generators.Redux\Toolkit\Models\ApiState.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@2330e449f479\Modules\Unity.AI.Generators.Redux\SwitchBuilder\WithSwitch.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@2330e449f479\Modules\Unity.AI.Generators.Redux\UIElements\Core\Lifecycle.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@2330e449f479\Modules\Unity.AI.Generators.Redux\Actions\Interfaces\IAction.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@2330e449f479\Modules\Unity.AI.Generators.Redux\Toolkit\Models\QueryType.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@2330e449f479\Modules\Unity.AI.Generators.Redux\UIElements\Extensions\UseSelectorExtensions.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@2330e449f479\Modules\Unity.AI.Generators.Redux\Actions\StandardCreator.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@2330e449f479\Modules\Unity.AI.Generators.Redux\Actions\Interfaces\IPrepareAction.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@2330e449f479\Modules\Unity.AI.Generators.Redux\StoreInternalApi.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@2330e449f479\Modules\Unity.AI.Generators.Redux\Thunks\RejectedAsyncThunkException.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@2330e449f479\Modules\Unity.AI.Generators.Redux\Toolkit\OperationContext.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@2330e449f479\Modules\Unity.AI.Generators.Redux\Toolkit\EndpointOperation.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@2330e449f479\Modules\Unity.AI.Generators.Redux\Thunks\AsyncThunkApi.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@2330e449f479\Modules\Unity.AI.Generators.Redux\Thunks\ICreateAsyncThunk.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@2330e449f479\Modules\Unity.AI.Generators.Redux\AssemblyInfo.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@2330e449f479\Modules\Unity.AI.Generators.Redux\Thunks\AsyncThunkOptions.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@2330e449f479\Modules\Unity.AI.Generators.Redux\Toolkit\Models\ExtraQueryOptions.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@2330e449f479\Modules\Unity.AI.Generators.Redux\Toolkit\Models\ApiDefaultKey.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@2330e449f479\Modules\Unity.AI.Generators.Redux\Toolkit\Models\EndpointDefinition.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@2330e449f479\Modules\Unity.AI.Generators.Redux\Thunks\ThunkMiddleware.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@2330e449f479\Modules\Unity.AI.Generators.Redux\Toolkit\Models\ApiOptions.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@2330e449f479\Modules\Unity.AI.Generators.Redux\Toolkit\EndpointBuilder.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@2330e449f479\Modules\Unity.AI.Generators.Redux\Toolkit\Selectors.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@2330e449f479\Modules\Unity.AI.Generators.Redux\Actions\Interfaces\ICreator.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@2330e449f479\Modules\Unity.AI.Generators.Redux\SwitchBuilder\WithCustomActionSwitchBuilder.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@2330e449f479\Modules\Unity.AI.Generators.Redux\Toolkit\Models\QueryDefinitionOptions.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@2330e449f479\Modules\Unity.AI.Generators.Redux\Toolkit\Models\ApiCacheKey.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@2330e449f479\Modules\Unity.AI.Generators.Redux\StoreApi.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@2330e449f479\Modules\Unity.AI.Generators.Redux\StoreApiExtensions.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@2330e449f479\Modules\Unity.AI.Generators.Redux\Services\ReduxException.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@2330e449f479\Modules\Unity.AI.Generators.Redux\Slice.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@2330e449f479\Modules\Unity.AI.Generators.Redux\IStoreApi.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@2330e449f479\Modules\Unity.AI.Generators.Redux\SwitchBuilder\WithSwitchBuilder.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@2330e449f479\Modules\Unity.AI.Generators.Redux\UIElements\Core\UseSelectorOptions.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@2330e449f479\Modules\Unity.AI.Generators.Redux\Thunks\ThunkActionCreators.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@2330e449f479\Modules\Unity.AI.Generators.Redux\SwitchBuilder\WithPayloadSwitchBuilder.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@2330e449f479\Modules\Unity.AI.Generators.Redux\Store{T}.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@2330e449f479\Modules\Unity.AI.Generators.Redux\SwitchBuilder\Utilities.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@2330e449f479\Modules\Unity.AI.Generators.Redux\Thunks\ThunkCreator.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@2330e449f479\Modules\Unity.AI.Generators.Redux\UIElements\Extensions\StoreExtensions.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@2330e449f479\Modules\Unity.AI.Generators.Redux\Thunks\AsyncThunkExtensions.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@2330e449f479\Modules\Unity.AI.Generators.Redux\SwitchBuilder\SwitchReducers.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@2330e449f479\Modules\Unity.AI.Generators.Redux\Thunks\AsyncThunkCreator.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@2330e449f479\Modules\Unity.AI.Generators.Redux\Actions\Interfaces\IContext.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@2330e449f479\Modules\Unity.AI.Generators.Redux\Toolkit\Extensions\ApiExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Generators.Redux\Unity.AI.Generators.Redux.asmdef" />
+    <None Include="Library\PackageCache\com.unity.ai.generators@2330e449f479\Modules\Unity.AI.Generators.Redux\Unity.AI.Generators.Redux.asmdef" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
@@ -799,10 +795,6 @@
       <HintPath>Library\PackageCache\com.unity.visualscripting@191c0d7e3b69\Runtime\VisualScripting.Flow\Dependencies\NCalc\Unity.VisualScripting.Antlr3.Runtime.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="System.Runtime.CompilerServices.Unsafe">
-      <HintPath>Library\PackageCache\com.unity.collections@aea9d3bd5e19\Unity.Collections.Tests\System.Runtime.CompilerServices.Unsafe\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
     <Reference Include="Google.VersionHandler">
       <HintPath>Assets\MobileDependencyResolver\Editor\Google.VersionHandler.dll</HintPath>
       <Private>False</Private>
@@ -812,7 +804,7 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="AiEditorToolsSdk">
-      <HintPath>Library\PackageCache\com.unity.ai.toolkit@48a271771d1a\Modules\Sdk\Editor\AiEditorToolsSdk.dll</HintPath>
+      <HintPath>Library\PackageCache\com.unity.ai.toolkit@b9677ce01ef8\Modules\Sdk\Editor\AiEditorToolsSdk.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.VisualScripting.TextureAssets">
@@ -1336,6 +1328,10 @@
     <ProjectReference Include="Unity.AI.Toolkit.Async.csproj">
       <Project>{BACAA345-90AC-0DF9-26D4-6D94A9B5B72B}</Project>
       <Name>Unity.AI.Toolkit.Async</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.AI.Toolkit.Utility.csproj">
+      <Project>{DABD4814-2C60-940D-9652-2D5CBD622DBA}</Project>
+      <Name>Unity.AI.Toolkit.Utility</Name>
     </ProjectReference>
     <ProjectReference Include="UnityEditor.UI.csproj">
       <Project>{698D6ACB-27E6-6733-2BA7-B76006C8ED47}</Project>

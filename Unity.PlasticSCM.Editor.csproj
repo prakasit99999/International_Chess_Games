@@ -48,7 +48,7 @@
   <PropertyGroup>
     <ProjectTypeGuids>{E097FAD1-6243-4DAD-9C02-E9B9EFC3FFC1};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <UnityProjectGenerator>Package</UnityProjectGenerator>
-    <UnityProjectGeneratorVersion>2.0.25</UnityProjectGeneratorVersion>
+    <UnityProjectGeneratorVersion>2.0.26</UnityProjectGeneratorVersion>
     <UnityProjectGeneratorStyle>Legacy</UnityProjectGeneratorStyle>
     <UnityProjectType>Editor:5</UnityProjectType>
     <UnityBuildTarget>WebGL:20</UnityBuildTarget>
@@ -288,8 +288,8 @@
     <Compile Include="Library\PackageCache\com.unity.collab-proxy@3351acaba9c9\Editor\Views\CreateWorkspace\PerformInitialCheckin.cs" />
     <Compile Include="Library\PackageCache\com.unity.collab-proxy@3351acaba9c9\Editor\UVCSToolbar\Headless\HeadlessWorkspaceWindow.cs" />
     <Compile Include="Library\PackageCache\com.unity.collab-proxy@3351acaba9c9\Editor\UI\DelayedActionByFramesRunner.cs" />
-    <Compile Include="Library\PackageCache\com.unity.collab-proxy@3351acaba9c9\Editor\Configuration\ClientConfiguration.cs" />
     <Compile Include="Library\PackageCache\com.unity.collab-proxy@3351acaba9c9\Editor\Views\Labels\LabelsViewMenu.cs" />
+    <Compile Include="Library\PackageCache\com.unity.collab-proxy@3351acaba9c9\Editor\Configuration\ClientConfiguration.cs" />
     <Compile Include="Library\PackageCache\com.unity.collab-proxy@3351acaba9c9\Editor\CloudDrive\Workspaces\DirectoryContent\DirectoryContentPanel.cs" />
     <Compile Include="Library\PackageCache\com.unity.collab-proxy@3351acaba9c9\Editor\Developer\ProgressOperationHandler.cs" />
     <Compile Include="Library\PackageCache\com.unity.collab-proxy@3351acaba9c9\Editor\Developer\GenericProgress.cs" />
@@ -421,8 +421,8 @@
     <Compile Include="Library\PackageCache\com.unity.collab-proxy@3351acaba9c9\Editor\UI\UIElements\ProgressControlsForDialogs.cs" />
     <Compile Include="Library\PackageCache\com.unity.collab-proxy@3351acaba9c9\Editor\Views\PendingChanges\Changelists\MoveToChangelistMenuBuilder.cs" />
     <Compile Include="Library\PackageCache\com.unity.collab-proxy@3351acaba9c9\Editor\Views\Diff\ChangeCategoryTreeViewItem.cs" />
-    <Compile Include="Library\PackageCache\com.unity.collab-proxy@3351acaba9c9\Editor\_Deprecated\CollabMigration\MigrateCollabProject.cs" />
     <Compile Include="Library\PackageCache\com.unity.collab-proxy@3351acaba9c9\Editor\AssetOverlays\Cache\AssetStatusCache.cs" />
+    <Compile Include="Library\PackageCache\com.unity.collab-proxy@3351acaba9c9\Editor\_Deprecated\CollabMigration\MigrateCollabProject.cs" />
     <Compile Include="Library\PackageCache\com.unity.collab-proxy@3351acaba9c9\Editor\CloudDrive\CreateWorkspace\CreateWorkspaceView.cs" />
     <Compile Include="Library\PackageCache\com.unity.collab-proxy@3351acaba9c9\Editor\Views\History\HistoryListView.cs" />
     <Compile Include="Library\PackageCache\com.unity.collab-proxy@3351acaba9c9\Editor\UI\DialogWithCheckBox.cs" />

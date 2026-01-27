@@ -48,7 +48,7 @@
   <PropertyGroup>
     <ProjectTypeGuids>{E097FAD1-6243-4DAD-9C02-E9B9EFC3FFC1};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <UnityProjectGenerator>Package</UnityProjectGenerator>
-    <UnityProjectGeneratorVersion>2.0.25</UnityProjectGeneratorVersion>
+    <UnityProjectGeneratorVersion>2.0.26</UnityProjectGeneratorVersion>
     <UnityProjectGeneratorStyle>Legacy</UnityProjectGeneratorStyle>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>WebGL:20</UnityBuildTarget>
@@ -61,18 +61,16 @@
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\Tools\BuildPipeline\Unity.SourceGenerators\Unity.UIToolkit.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Generators.Sdk\HttpClientManager.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Generators.Sdk\Constants.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Generators.Sdk\AuthenticationTokenProvider.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Generators.Sdk\AssemblyInfo.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Generators.Sdk\Logger.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Generators.Sdk\HttpClientLease.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Generators.Sdk\TraceIdProvider.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Generators.Sdk\Extensions.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Generators.Sdk\NonDisposingStreamWrapper.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@2330e449f479\Modules\Unity.AI.Generators.Sdk\PackageInfoProvider.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@2330e449f479\Modules\Unity.AI.Generators.Sdk\Constants.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@2330e449f479\Modules\Unity.AI.Generators.Sdk\AuthenticationTokenProvider.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@2330e449f479\Modules\Unity.AI.Generators.Sdk\AssemblyInfo.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@2330e449f479\Modules\Unity.AI.Generators.Sdk\TraceIdProvider.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@2330e449f479\Modules\Unity.AI.Generators.Sdk\Extensions.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@2330e449f479\Modules\Unity.AI.Generators.Sdk\NonDisposingStreamWrapper.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Generators.Sdk\Unity.AI.Generators.Sdk.asmdef" />
+    <None Include="Library\PackageCache\com.unity.ai.generators@2330e449f479\Modules\Unity.AI.Generators.Sdk\Unity.AI.Generators.Sdk.asmdef" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
@@ -719,10 +717,6 @@
       <HintPath>Library\PackageCache\com.unity.visualscripting@191c0d7e3b69\Runtime\VisualScripting.Flow\Dependencies\NCalc\Unity.VisualScripting.Antlr3.Runtime.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="System.Runtime.CompilerServices.Unsafe">
-      <HintPath>Library\PackageCache\com.unity.collections@aea9d3bd5e19\Unity.Collections.Tests\System.Runtime.CompilerServices.Unsafe\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
     <Reference Include="Google.VersionHandler">
       <HintPath>Assets\MobileDependencyResolver\Editor\Google.VersionHandler.dll</HintPath>
       <Private>False</Private>
@@ -732,7 +726,7 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="AiEditorToolsSdk">
-      <HintPath>Library\PackageCache\com.unity.ai.toolkit@48a271771d1a\Modules\Sdk\Editor\AiEditorToolsSdk.dll</HintPath>
+      <HintPath>Library\PackageCache\com.unity.ai.toolkit@b9677ce01ef8\Modules\Sdk\Editor\AiEditorToolsSdk.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.VisualScripting.TextureAssets">
@@ -1249,6 +1243,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="Unity.AI.Toolkit.Asset.csproj">
+      <Project>{41ACA0B5-11ED-121A-ED04-F30F5245A235}</Project>
+      <Name>Unity.AI.Toolkit.Asset</Name>
+    </ProjectReference>
     <ProjectReference Include="Unity.AI.Generators.Asset.csproj">
       <Project>{156FA626-5B9F-AF81-3A0B-D7BFA89011C2}</Project>
       <Name>Unity.AI.Generators.Asset</Name>
@@ -1260,6 +1258,10 @@
     <ProjectReference Include="Unity.AI.Toolkit.Accounts.csproj">
       <Project>{4BDC25F4-E335-4255-654E-429EE6E2AA54}</Project>
       <Name>Unity.AI.Toolkit.Accounts</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.AI.Generators.IO.csproj">
+      <Project>{51A37437-B452-4ADD-7EC7-19706B20DDDF}</Project>
+      <Name>Unity.AI.Generators.IO</Name>
     </ProjectReference>
     <ProjectReference Include="UnityEditor.UI.csproj">
       <Project>{698D6ACB-27E6-6733-2BA7-B76006C8ED47}</Project>

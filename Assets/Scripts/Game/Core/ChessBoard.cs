@@ -25,6 +25,7 @@ public class ChessBoard : MonoBehaviour
     private Dictionary<Vector2Int, ChessPiece> piecesOnBoard = new Dictionary<Vector2Int, ChessPiece>();
     private Dictionary<Vector2Int, TileClick> tileClickMap = new Dictionary<Vector2Int, TileClick>();
     private ChessBoardModel boardModel;
+    private bool isBoardGenerated = false;
 
     public IReadOnlyDictionary<Vector2Int, ChessPiece> PiecesOnBoard => piecesOnBoard;
     public int FiftyMoveCounter => _movesWithoutCaptureOrPawn;
@@ -46,12 +47,14 @@ public class ChessBoard : MonoBehaviour
     public ChessPiece SelectedPiece => selectedPiece; // เพิ่ม Property เพื่อเข้าถึง selectedPiece
     public bool IsWhiteTurn { get; internal set; }
 
+    // ✅ Flag สำหรับบอกว่ากำลังขยับหมากจาก Server (ไม่ต้องส่งข้อมูลกลับไปอีก)
+    public bool isNetworkMove = false;
+
     public ChessPiece.PieceType promotionFrom;
     public Vector2Int promotionPosition;
     public Vector2Int position;  // ตัวแปรสำหรับเก็บตำแหน่งของหมาก
     public Color32 whitleColor = new Color32(255, 255, 255, 255);
     public Color32 blackColor = new Color32(0, 0, 0, 255);
-
 
     private void Awake()
     {
@@ -71,10 +74,25 @@ public class ChessBoard : MonoBehaviour
     // Start is called before the first frame updateฟ
     void Start()
     {
+        InitializeBoard();
+    }
+
+    public void InitializeBoard()
+    {
+        if (isBoardGenerated)
+        {
+            Debug.LogWarning("⚠️ Board already generated. Skipping.");
+            return;
+        }
+
         GenerateBoard();
         GenerateBoardLabels();
         SpawnPieces();
+
+        isBoardGenerated = true;
+        Debug.Log("✅ Board initialized");
     }
+
     // Update is called once per frame
     void Update()
     {
@@ -86,11 +104,9 @@ public class ChessBoard : MonoBehaviour
         {
             for (int y = 0; y < boardSize; y++)
             {
-                float posX = x * tileSize;  // กำหนดตำแหน่งแนวนอน
-                float posY = y * tileSize;  // กำหนดตำแหน่งแนวตั้ง
-
                 // สร้างช่องกระดานใหม่ที่ตำแหน่ง (posX, posY)
-                GameObject tile = Instantiate(tilePrefab, new Vector2(posX, posY), Quaternion.identity);
+                // 🔹 แก้ไข: ใช้ GetTileCenter เพื่อรองรับ Rotation
+                GameObject tile = Instantiate(tilePrefab, new Vector3(x * tileSize, y * tileSize, 0), Quaternion.identity);
                 tile.transform.parent = transform;  // ตั้งค่าให้เป็นลูกของ BoardManager
 
                 SpriteRenderer renderer = tile.GetComponent<SpriteRenderer>();
@@ -126,11 +142,9 @@ public class ChessBoard : MonoBehaviour
         for (int x = 0; x < boardSize; x++)
         {
             string label = ((char)('A' + x)).ToString();
-            Vector3 pos = new Vector3(
-                x * tileSize + centerOffset,
-                -centerOffset,
-                0f
-            );
+            // 🔹 คำนวณ Local Pos แล้วแปลงเป็น World
+            Vector3 localPos = new Vector3(x * tileSize + centerOffset, -centerOffset, 0f);
+            Vector3 pos = transform.TransformPoint(localPos);
 
             GameObject labelObj = Instantiate(textPrefab, pos, Quaternion.identity, boardLabels);
             labelObj.name = "Label_" + label; // ตั้งชื่อให้ชัดเจน
@@ -143,11 +157,9 @@ public class ChessBoard : MonoBehaviour
         for (int y = 0; y < boardSize; y++)
         {
             string label = (y + 1).ToString();
-            Vector3 pos = new Vector3(
-                -centerOffset,
-                y * tileSize + centerOffset,
-                0f
-            );
+            // 🔹 คำนวณ Local Pos แล้วแปลงเป็น World
+            Vector3 localPos = new Vector3(-centerOffset, y * tileSize + centerOffset, 0f);
+            Vector3 pos = transform.TransformPoint(localPos);
 
             GameObject labelObj = Instantiate(textPrefab, pos, Quaternion.identity, boardLabels);
             TMP_Text text = labelObj.GetComponent<TMP_Text>();
@@ -303,6 +315,33 @@ public class ChessBoard : MonoBehaviour
         SetEnPassantTarget(originalPos, newPos);
     }
 
+    private void FinalizeMoveDirect(ChessPiece piece, Vector2Int from, Vector2Int to, ChessPiece captured)
+    {
+        piecesOnBoard.Remove(from);
+
+        if (captured != null)
+        {
+            Destroy(captured.gameObject);
+            piecesOnBoard.Remove(to);
+        }
+
+        piece.MoveTo(to);
+        piecesOnBoard[to] = piece;
+
+        if (!piece.HasMoved)
+            piece.HasMoved = true;
+
+        // En Passant target (ต้อง set จาก piece)
+        if (piece.pieceType == PieceType.Pawn && Mathf.Abs(to.y - from.y) == 2)
+        {
+            enPassantTarget = new Vector2Int(to.x, (to.y + from.y) / 2);
+        }
+        else
+        {
+            enPassantTarget = null;
+        }
+    }
+
     private void SetEnPassantTarget(Vector2Int from, Vector2Int to)
     {
         if (selectedPiece.pieceType == ChessPiece.PieceType.Pawn &&
@@ -412,6 +451,7 @@ public class ChessBoard : MonoBehaviour
         HistoryMoveUI.Instance?.UpdateMoveHistoryList();
     }
 
+
     private ChessPiece.Team OpponentTeam(ChessPiece.Team team)
     {
         return team == ChessPiece.Team.White ? ChessPiece.Team.Black : ChessPiece.Team.White;
@@ -437,6 +477,13 @@ public class ChessBoard : MonoBehaviour
             GameManager.Instance.GameOver(ChessPiece.Team.None, "fifty_move_rule");
         }
 
+    }
+
+    private Vector2Int AlgebraicToVector(string pos)
+    {
+        int x = pos[0] - 'a';
+        int y = int.Parse(pos[1].ToString()) - 1;
+        return new Vector2Int(x, y);
     }
 
     // Set method
@@ -522,7 +569,7 @@ public class ChessBoard : MonoBehaviour
             piecesOnBoard.Remove(position);
         }
 
-        GameObject pieceObj = Instantiate(piecePrefab, new Vector2(position.x, position.y), Quaternion.identity);
+        GameObject pieceObj = Instantiate(piecePrefab, new Vector3(position.x * tileSize, position.y * tileSize, 0), Quaternion.identity);
         ChessPiece piece = pieceObj.GetComponent<ChessPiece>();
         piece.pieceType = type;
         piece.team = team;
@@ -872,6 +919,13 @@ public class ChessBoard : MonoBehaviour
                 return;
             }
 
+            // ✅ CRITICAL FIX: ป้องกันการจับหมากผิดสีในโหมด Online
+            if (GameManager.Instance.isOnlineMode && piece.team != GameManager.Instance.myLocalTeam)
+            {
+                Debug.Log("❌ คุณไม่สามารถจับหมากฝ่ายตรงข้ามได้!");
+                return;
+            }
+
             // เลือกหมาก
             selectedPiece = piece;
             Debug.Log($"✅ เลือก {piece.team} {piece.pieceType}");
@@ -942,10 +996,23 @@ public class ChessBoard : MonoBehaviour
         SaveMoveToHistory(originalPosition, newPosition, capturedPiece, aiStats);
         boardModel.PushCurrentPosition();
 
-
         if (!isPromoting)
         {
-            GameManager.Instance.SwitchTurn();
+            if (GameManager.Instance.isOnlineMode)
+            {
+                if (!isNetworkMove)
+                {
+                    GameManager.Instance.OnLocalPlayerMoved(
+                        originalPosition,
+                        newPosition,
+                        selectedPiece.pieceType
+                    );
+                }
+            }
+            else
+            {
+                GameManager.Instance.SwitchTurn();
+            }
         }
 
         selectedPiece = null;
@@ -983,8 +1050,20 @@ public class ChessBoard : MonoBehaviour
         Debug.Log($"🏰 {team} ทำ Castling {(isKingSide ? "King-side" : "Queen-side")}");
         SaveMoveToHistory(new Vector2Int(4, row), kingNewPos, null);  // บันทึก Castling
 
+
         // สลับเทิร์น
-        GameManager.Instance.SwitchTurn();
+        if (GameManager.Instance.isOnlineMode)
+        {
+            if (!isNetworkMove)
+            {
+                // Castling ก็ถือเป็น Move -> ส่ง Server
+                GameManager.Instance.OnLocalPlayerMoved(new Vector2Int(4, row), kingNewPos, king.pieceType);
+            }
+        }
+        else
+        {
+            GameManager.Instance.SwitchTurn();
+        }
         selectedPiece = null;
     }
 
@@ -1016,7 +1095,50 @@ public class ChessBoard : MonoBehaviour
         blackCanCastleKingSide = true;
         blackCanCastleQueenSide = true;
         // สร้างกระดานใหม่และวางหมากใหม่
-        GenerateBoard();
-        SpawnPieces();
+        isBoardGenerated = false;
+        InitializeBoard();
+    }
+    // ✅ ฟังก์ชันสำหรับรับค่าจาก Server แล้วสั่งเดินตาม
+    public void ApplyNetworkMove(MoveDto moveData)
+    {
+        Vector2Int from = moveData.from_position;
+        Vector2Int to = moveData.to_position;
+
+        if (piecesOnBoard.TryGetValue(from, out ChessPiece piece))
+        {
+            isNetworkMove = true;
+            Debug.Log($"🌍 Apply Network Move: {from} -> {to} ({piece.pieceType})");
+
+            // จำลองการคลิกเลือกหมาก
+            SelectPiece(piece);
+
+            // สั่งเดิน (ส่งข้อมูล Promotion / Castling) 
+            // แปลง moveData.promotedTo int -> ChessPiece.PieceType enum
+            ChessPiece.PieceType promotedType = ChessPiece.PieceType.None;
+            if (moveData.promotedTo > 0)
+            {
+                promotedType = (ChessPiece.PieceType)moveData.promotedTo;
+            }
+
+            // MoveSelectedPiece(to, null, promotedType, moveData.isCastling);
+
+            isNetworkMove = false;
+        }
+        else
+        {
+            Debug.LogError($"❌ Network Move Error: Not found piece at {from}");
+        }
+    }
+
+    public void ApplyNetworkMove(string from, string to)
+    {
+        Vector2Int fromPos = AlgebraicToVector(from);
+        Vector2Int toPos = AlgebraicToVector(to);
+        if (piecesOnBoard.TryGetValue(fromPos, out ChessPiece piece))
+        {
+            // For string-based debug/test, minimal implementation
+            SelectPiece(piece);
+            MoveSelectedPiece(toPos);
+        }
     }
 }

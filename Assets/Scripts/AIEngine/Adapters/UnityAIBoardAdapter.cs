@@ -41,20 +41,14 @@ namespace AIEngine.Adapters
 
             Debug.Log($"[AI INPUT] Team={aiTeam}, Difficulty={aiCoreDifficulty}");
 
-            // -----------------------------------------------------------
-            // 🚨 แก้ไขจุดที่ 1: เปลี่ยนชื่อเมธอดให้ตรงกับ AICore
-            // -----------------------------------------------------------
-            // เดิม: var searchResult = _aiService.GetBestMove(model, aiDifficulty);
-            // ใหม่:
+            //  แก้ไขจุดที่ 1: เปลี่ยนชื่อเมธอดให้ตรงกับ AICore
             SearchResult searchResult = _aiService.FindBestMoveWithMetrics(model, aiCoreDifficulty);
 
             if (searchResult.Move != null)
             {
                 var move = searchResult.Move;
 
-                // -----------------------------------------------------------
-                // 🚨 แก้ไขจุดที่ 2: แปลงพิกัด AI (Row, Col) -> Unity (X, Y)
-                // -----------------------------------------------------------
+                //  แก้ไขจุดที่ 2: แปลงพิกัด AI (Row, Col) -> Unity (X, Y)
                 // AI Model: [Row, Col] -> [X, Y] ใน MoveModel
                 // Unity: X=Col, Y=Row (โดย Row 0 ของ AI คือ Y=7 ของ Unity)
 
@@ -77,7 +71,7 @@ namespace AIEngine.Adapters
                 NodesEvaluated = searchResult.NodesEvaluated;
                 LastMoveTimeMs = searchResult.TimeMs;
                 LastEvalScore = (int)searchResult.Score; // สมมติว่าใน SearchResult มี Score
-                Debug.Log($"[AI UnityAIBoardAdapter] _calculatedResult {searchResult} | Depth: {LastDepth} | Nodes: {NodesEvaluated} | Time: {LastMoveTimeMs} | Score: {LastEvalScore}");
+                // Debug.Log($"[AI UnityAIBoardAdapter] _calculatedResult {searchResult} | Depth: {LastDepth} | Nodes: {NodesEvaluated} | Time: {LastMoveTimeMs} | Score: {LastEvalScore}");
 
                 Debug.Log($"[AI OUTPUT] Move: {from} -> {to} | Depth: {LastDepth} | Nodes: {NodesEvaluated}");
             }
@@ -95,10 +89,6 @@ namespace AIEngine.Adapters
         {
             if (_calculatedResult.Value.Move != null)
             {
-                // ต้องแปลงพิกัดตอนส่งออกด้วย หรือใช้ค่าที่เราแปลงไว้แล้วถ้าเก็บไว้
-                // แต่เนื่องจาก _calculatedResult เก็บ MoveModel ของ AI เราจึงต้องแปลงตรงนี้อีกรอบ
-                // หรือวิธีที่ดีกว่า: เก็บค่า Vector2Int ที่แปลงแล้วไว้ในตัวแปรคลาส
-
                 var move = _calculatedResult.Value.Move;
 
                 // แปลงสูตรเดียวกับด้านบน

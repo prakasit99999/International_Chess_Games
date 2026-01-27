@@ -1,143 +1,140 @@
 using System.Collections;
-using Mirror; // ต้องใช้สำหรับเริ่มเกม Online
-using TMPro;
 using UnityEngine;
-using UnityEngine.SceneManagement; // ต้องใช้สำหรับเปลี่ยน Scene
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class MatchmakingManager : MonoBehaviour
 {
-    [Header("UI Elements")]
-    public GameObject matchmakingPanel;
-    public Button startMatchmakingButton;
-    public Button cancelMatchmakingButton;
-    public Text statusText;
+    [Header("UI References")]
+    public MatchmakingUi matchmakingUi;
 
     [Header("Game Settings")]
     public string gameSceneName = "GameCoreOnline";
 
-    [Header("Matchmaking Api")]
-    public string matchmakingApiUrl = "http://localhost:5000/api/Matchmaking";
-
-    private MatchmakingApi matchmakingApi; // สคริปต์ API ที่เราจะเรียกใช้
+    private MatchmakingApi matchmakingApi;
     private string username;
     private bool isSearching = false;
-    private Coroutine matchmakingCoroutine;
+    private Coroutine pollingCoroutine;
 
-
-
-    void Start()
+    public void Start()
     {
         matchmakingApi = GetComponent<MatchmakingApi>();
-        if (matchmakingApi == null)
-        {
-            Debug.LogError("ไม่พบ Script MatchmakingApi! กรุณาลากใส่ GameObject เดียวกัน");
-            statusText.text = "Error: Missing API Script";
-            return;
-        }
+        if (matchmakingUi == null) matchmakingUi = FindObjectOfType<MatchmakingUi>();
+
+        // เช็ค Login
         username = PlayerPrefs.GetString("username", "");
         if (string.IsNullOrEmpty(username))
         {
-            statusText.text = "Error: Please Login First";
-            startMatchmakingButton.interactable = false;
+            matchmakingUi.SetStatusText("Error: Please Login First");
+            if (matchmakingUi.btnMatchmakingStart != null)
+                matchmakingUi.btnMatchmakingStart.interactable = false;
             return;
         }
 
-        startMatchmakingButton.onClick.AddListener(StartMatchmaking);
-        cancelMatchmakingButton.onClick.AddListener(CancelMatchmaking);
+        // --- เชื่อมปุ่ม (Wiring Buttons) ---
+        // ปุ่ม Start -> เรียกฟังก์ชัน StartMatchmaking
+        if (matchmakingUi.btnMatchmakingStart != null)
+        {
+            matchmakingUi.btnMatchmakingStart.onClick.RemoveAllListeners();
+            matchmakingUi.btnMatchmakingStart.onClick.AddListener(StartMatchmaking);
+        }
+
+        // ปุ่ม Cancel -> เรียกฟังก์ชัน CancelMatchmaking
+        if (matchmakingUi.btnMatchmakingCancel != null)
+        {
+            matchmakingUi.btnMatchmakingCancel.onClick.RemoveAllListeners();
+            matchmakingUi.btnMatchmakingCancel.onClick.AddListener(CancelMatchmaking);
+        }
     }
 
-    void Update()
+    // --- ฟังก์ชันเริ่มหาห้อง ---
+    public void StartMatchmaking()
     {
+        if (isSearching) return;
 
-    }
-
-    void StartMatchmaking()
-    {
         isSearching = true;
-        startMatchmakingButton.gameObject.SetActive(false); // ซ่อนปุ่มหา
-        cancelMatchmakingButton.gameObject.SetActive(true); // โชว์ปุ่มยกเลิก
-        statusText.text = "Joining Queue...";
+        matchmakingUi.SetSearchingState(true); // เปลี่ยนปุ่มเป็น Cancel
+        matchmakingUi.SetStatusText("Joining Queue...");
+
+        StartCoroutine(matchmakingApi.JoinQueue(username, 0, 3000, (success, response) =>
+        {
+            if (success && response != null)
+            {
+                if (response.matchDetails != null && response.matchDetails.gameId != 0)
+                {
+                    StartGame(response); // เจอทันที
+                }
+                else
+                {
+                    matchmakingUi.SetStatusText("Searching...");
+                    Debug.Log($"Searching for match...{response.matchDetails.gameId}");
+                    if (pollingCoroutine != null) StopCoroutine(pollingCoroutine);
+                    pollingCoroutine = StartCoroutine(PollForMatch()); // รอคิว
+                }
+            }
+            else
+            {
+                isSearching = false;
+                matchmakingUi.ResetUI();
+                matchmakingUi.SetStatusText("Connection Error");
+            }
+        }));
     }
 
+    // --- ฟังก์ชันยกเลิก ---
     public void CancelMatchmaking()
     {
-        matchmakingApi.CancelQueue(username, (success, message) =>
-        {
-            if (success)
-            {
-                ResetUI();
-            }
-            else
-            {
-                Debug.LogError($"Error canceling queue: {message}");
-                statusText.text = "Error canceling queue";
-            }
+        if (!isSearching) return; // ถ้าไม่ได้หาอยู่ ก็ไม่ต้องทำอะไร
 
-        });
-
-    }
-
-    void OnMatchFound()
-    {
-        matchmakingApi.CheckForMatch(username, (success, matchResponse) =>
-        {
-            if (success)
-            {
-                if (matchResponse.matchDetails != null)
-                {
-                    ResetUI();
-                    onCickHideMatchmakingPanel();
-                    SceneManager.LoadScene(gameSceneName);
-                }
-            }
-            else
-            {
-                Debug.LogError($"Error checking for match: {matchResponse.message}");
-                statusText.text = "Error checking for match";
-            }
-        });
-
-    }
-
-    void OnMatchNotFound()
-    {
-        matchmakingApi.CheckQueue(username, (success, matchResponse) =>
-        {
-            if (success)
-            {
-                if (matchResponse.matchDetails != null)
-                {
-                    ResetUI();
-                    onCickHideMatchmakingPanel();
-                    SceneManager.LoadScene(gameSceneName);
-                }
-            }
-            else
-            {
-                Debug.LogError($"Error checking for match: {matchResponse.message}");
-                statusText.text = "Error checking for match";
-            }
-        });
-    }
-
-    public void onCickShowMatchmakingPanel()
-    {
-        matchmakingPanel.SetActive(true);
-    }
-
-    public void onCickHideMatchmakingPanel()
-    {
-        matchmakingPanel.SetActive(false);
-    }
-
-    void ResetUI()
-    {
-        startMatchmakingButton.gameObject.SetActive(true);
-        cancelMatchmakingButton.gameObject.SetActive(false);
-        statusText.text = "Ready to play";
+        if (pollingCoroutine != null) StopCoroutine(pollingCoroutine);
         isSearching = false;
+
+        // Reset UI ทันทีเพื่อให้ผู้เล่นรู้สึกว่าระบบตอบสนองเร็ว
+        matchmakingUi.ResetUI();
+
+        // ส่งเรื่องไปบอก Server (ทำเบื้องหลัง)
+        matchmakingApi.StartCoroutine(matchmakingApi.CancelQueue(username, (s, m) => { }));
     }
 
-}
+    // ... (ส่วน PollForMatch และ StartGame เหมือนเดิม) ...
+    IEnumerator PollForMatch()
+    {
+        while (isSearching)
+        {
+            yield return new WaitForSeconds(2f);
+            matchmakingApi.StartCoroutine(matchmakingApi.CheckQueue(username, (success, response) =>
+            {
+                if (success && response != null && response.matchDetails != null && response.matchDetails.gameId != 0)
+                {
+                    isSearching = false;
+                    StartGame(response);
+                }
+            }));
+        }
+    }
 
+    void StartGame(MatchResponse response)
+    {
+        var details = response.matchDetails;
+        PlayerPrefs.SetInt("CurrentGameId", details.gameId);
+        PlayerPrefs.SetString("CurrentRoomCode", details.roomCode.ToString());
+        PlayerPrefs.SetString("MyColor", details.color);
+        PlayerPrefs.SetString("OpponentName", details.opponentUsername);
+
+        // 🔹 ระบุโหมดให้ GameManager รู้ว่าเป็น Online
+        PlayerPrefs.SetString("Mode", "OnlineMultiplayer");
+
+        PlayerPrefs.Save();
+
+        matchmakingUi.SetStatusText($"VS {details.opponentUsername}");
+        Debug.Log("Starting game with opponent: " + details.opponentUsername);
+        StartCoroutine(LoadGameSceneDelay());
+    }
+
+    IEnumerator LoadGameSceneDelay()
+    {
+        yield return new WaitForSeconds(1.0f);
+        matchmakingUi.HideMatchmaking();
+        SceneManager.LoadScene(gameSceneName);
+    }
+}

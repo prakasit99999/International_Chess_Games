@@ -36,9 +36,9 @@ public class UndoMove : MonoBehaviour
     public void UndoLastMove()
     {
         if (PauseManager.isPaused) return;
-        if (GameManager.Instance != null && GameManager.Instance.GetCurrentMode() == GameManager.GameModes.AIVsAI ||
-        GameManager.Instance.GetCurrentMode() == GameManager.GameModes.LocalMultiplayer ||
-        GameManager.Instance.GetCurrentMode() == GameManager.GameModes.Online)
+        if (GameManager.Instance != null && (
+            GameManager.Instance.GetCurrentMode() == GameManager.GameModes.AIVsAI ||
+            GameManager.Instance.GetCurrentMode() == GameManager.GameModes.Online))
         {
             Debug.Log("UndoMove: Not allowed in this mode");
             return;
@@ -114,7 +114,7 @@ public class UndoMove : MonoBehaviour
 
         // ✅ ล้างตัวเลือกและสลับตา
         chessBoard.SetselectedPiece(null);
-        GameManager.Instance.SwitchTurn(true);
+        GameManager.Instance.SwitchTurn();
 
         Debug.Log($"🔙 Undo: {lastMove.startPosition} → {lastMove.endPosition}");
     }

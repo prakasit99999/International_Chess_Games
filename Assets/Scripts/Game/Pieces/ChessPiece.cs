@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class ChessPiece : MonoBehaviour
 {
-    //???????????????? public
+    // public
     private Vector2 originalPosition; // ตำแหน่งเริ่มต้นของตัวหมาก
     private SpriteRenderer spriteRenderer;
     private ChessBoard boardManager;  // อ้างอิงถึง ChessBoard
@@ -269,8 +269,19 @@ public class ChessPiece : MonoBehaviour
         ChessBoard.Instance.SetPromoting(false);
     }
 
-    public void PromotePawn()
+    public void PromotePawn(PieceType promotedTo = PieceType.None)
     {
+        // ✅ ถ้ามีการกำหนดค่าเลื่อนขั้นมาแล้ว (จาก Network) ให้ทำเลย
+        if (promotedTo != PieceType.None)
+        {
+            if (pieceType == PieceType.Pawn && (boardPosition.y == 0 || boardPosition.y == 7))
+            {
+                Debug.Log($"🌍 Network Promotion: {promotedTo}");
+                Promote(promotedTo);
+            }
+            return;
+        }
+
         if (pieceType == PieceType.Pawn && (boardPosition.y == 0 || boardPosition.y == 7))
         {
             Debug.Log("เบี้ยเดินถึงแถวสุดท้าย เริ่มกระบวนการเลื่อนขั้น");

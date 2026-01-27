@@ -59,7 +59,7 @@ public class MainMenuController : MonoBehaviour
         PlayerPrefs.SetString("AI_Difficulty", difficulty);
         PlayerPrefs.SetString("AI_Color", "Black");
 
-        //Debug.Log($"Selected AI Difficulty: {difficulty}");
+        Debug.Log($"Selected AI Difficulty: {difficulty}");
 
 
         if (Application.isPlaying)
@@ -81,7 +81,7 @@ public class MainMenuController : MonoBehaviour
         PlayerPrefs.SetString("AI_White_Difficulty", whiteDiff);
         PlayerPrefs.SetString("AI_Black_Difficulty", blackDiff);
 
-        //Debug.Log($"Starting AI vs AI Match: White - {whiteDiff}, Black - {blackDiff}");
+        Debug.Log($"Starting AI vs AI Match: White - {whiteDiff}, Black - {blackDiff}");
 
         if (Application.isPlaying)
         {

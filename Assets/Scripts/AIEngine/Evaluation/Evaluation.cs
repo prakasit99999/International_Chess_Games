@@ -1,6 +1,6 @@
-using AIEngine.Utilities;
 using System;
 using System.Collections.Generic;
+using AIEngine.Utilities;
 
 namespace AIEngine.Evaluation
 {
@@ -9,7 +9,7 @@ namespace AIEngine.Evaluation
         // ==========================================
         // CONSTANTS & CONFIGURATION (PeSTO / Kaufman)
         // ==========================================
-        
+
         // คะแนนพื้นฐานของตัวหมาก (Material)
         private const int PawnValue = 100;
         private const int KnightValue = 320;
@@ -86,13 +86,13 @@ namespace AIEngine.Evaluation
         // ==========================================
         // MAIN EVALUATION FUNCTION
         // ==========================================
-        public static int Evaluate(ChessBoardModel board)
+        public static float Evaluate(ChessBoardModel board, EvaluationSettings settings = null)
         {
             // 1. Check for Draw conditions first (Optimization)
-            if (board.FiftyMoveCounter >= 100) return 0; // Draw by 50 move rule
+            if (board.FiftyMoveCounter >= 100) return 0f; // Draw by 50 move rule
 
-            int mgScore = 0; // คะแนนช่วง Middle Game
-            int egScore = 0; // คะแนนช่วง End Game
+            float mgScore = 0f; // คะแนนช่วง Middle Game
+            float egScore = 0f; // คะแนนช่วง End Game
             int phase = 0;   // ตัวนับ Phase ของเกม
 
             // 2. Loop through board once (Single Pass Efficiency)
@@ -108,13 +108,13 @@ namespace AIEngine.Evaluation
                     bool isWhite = piece > 0;
 
                     // A. Material Score
-                    int materialValue = GetMaterialValue(absPiece);
+                    float materialValue = GetMaterialValue(absPiece);
                     if (isWhite) { mgScore += materialValue; egScore += materialValue; }
-                    else         { mgScore -= materialValue; egScore -= materialValue; }
+                    else { mgScore -= materialValue; egScore -= materialValue; }
 
                     // B. Phase Calculation (นับถอยหลัง Material)
                     // ถ้าไม่ใช่ Pawn หรือ King ให้บวกค่า Phase
-                    if (absPiece != 1 && absPiece != 6) 
+                    if (absPiece != 1 && absPiece != 6)
                     {
                         phase += PhaseWeights[pieceTypeIndex];
                     }
@@ -124,12 +124,12 @@ namespace AIEngine.Evaluation
                     // x (rank): 0-7. สีขาวเริ่มแถว 7, สีดำเริ่มแถว 0 (ใน Model ของคุณ ดูเหมือน 0 คือแถวบน)
                     // สมมติ: board[0,0] คือ a8 (มุมดำ), board[7,0] คือ a1 (มุมขาว) 
                     // ดังนั้น White Index = table[x * 8 + y], Black Index = table[(7-x) * 8 + y]
-                    
+
                     int tableIdx = isWhite ? (x * 8 + y) : ((7 - x) * 8 + y);
 
                     // เลือกใช้ตารางคะแนนตามประเภทหมาก
                     // (ตัวอย่างใช้ตาราง Pawn/King เพื่อความกระชับ คุณควรเพิ่มตาราง Knight/Bishop/Rook/Queen ให้ครบ)
-                    int mgPst = 0, egPst = 0;
+                    float mgPst = 0f, egPst = 0f;
 
                     switch (absPiece)
                     {
@@ -137,16 +137,16 @@ namespace AIEngine.Evaluation
                             mgPst = MgPawnTable[tableIdx];
                             egPst = EgPawnTable[tableIdx];
                             // เพิ่ม Pawn Structure Evaluation ตรงนี้
-                            int structScore = EvaluatePawnStructure(board, x, y, isWhite);
+                            float structScore = EvaluatePawnStructure(board, x, y, isWhite);
                             if (isWhite) { mgScore += structScore; egScore += structScore; }
                             else { mgScore -= structScore; egScore -= structScore; }
                             break;
-                        
+
                         case 2: // Knight
                             mgPst = MgKnightTable[tableIdx];
                             egPst = MgKnightTable[tableIdx]; // Knight ไม่ค่อยต่างมาก
                             break;
-                            
+
                         case 6: // King
                             mgPst = MgKingTable[tableIdx];
                             egPst = EgKingTable[tableIdx];
@@ -154,11 +154,11 @@ namespace AIEngine.Evaluation
 
                         // TODO: ใส่ตาราง Bishop, Rook, Queen
                         default:
-                            break; 
+                            break;
                     }
 
                     if (isWhite) { mgScore += mgPst; egScore += egPst; }
-                    else         { mgScore -= mgPst; egScore -= egPst; }
+                    else { mgScore -= mgPst; egScore -= egPst; }
                 }
             }
 
@@ -166,17 +166,17 @@ namespace AIEngine.Evaluation
             // Phase ยิ่งมาก = ยิ่งใกล้ต้นเกม, Phase น้อย = ท้ายเกม
             // Formula: (MG * phase + EG * (24 - phase)) / 24
             phase = Math.Min(phase, PhaseTotal); // Clamp value
-            int finalScore = ((mgScore * phase) + (egScore * (PhaseTotal - phase))) / PhaseTotal;
+            float finalScore = ((mgScore * phase) + (egScore * (PhaseTotal - phase))) / (float)PhaseTotal;
 
             // 4. Side to Move Bonus (Tempo)
             // การได้เดินก่อนมีค่าเล็กน้อย (เช่น 10-20 คะแนน)
-            finalScore += board.IsWhiteTurn ? 10 : -10;
+            finalScore += board.IsWhiteTurn ? 10f : -10f;
 
             // Return relative score (Perspective)
             return board.IsWhiteTurn ? finalScore : -finalScore;
         }
 
-        private static int GetMaterialValue(int pieceType)
+        private static float GetMaterialValue(int pieceType)
         {
             return pieceType switch
             {
@@ -186,16 +186,16 @@ namespace AIEngine.Evaluation
                 4 => RookValue,
                 5 => QueenValue,
                 6 => KingValue,
-                _ => 0
+                _ => 0f
             };
         }
 
         // ==========================================
         // PAWN STRUCTURE & PASSED PAWNS
         // ==========================================
-        private static int EvaluatePawnStructure(ChessBoardModel board, int x, int y, bool isWhite)
+        private static float EvaluatePawnStructure(ChessBoardModel board, int x, int y, bool isWhite)
         {
-            int score = 0;
+            float score = 0f;
             int forwardDir = isWhite ? -1 : 1; // สมมติขาวเดินขึ้น (Index ลดลง) หรือลง แล้วแต่ Model
             // หมายเหตุ: ต้องเช็คทิศทางของ Board Model ให้ชัวร์ (ปกติ 0=Top/Black, 7=Bottom/White)
 
@@ -205,7 +205,7 @@ namespace AIEngine.Evaluation
 
             if (!leftFileHasPawn && !rightFileHasPawn)
             {
-                score -= 15; // โดนตัดแต้ม
+                score -= 15f; // โดนตัดแต้ม
             }
 
             // 2. Passed Pawn (เบี้ยผ่าน: ไม่มีเบี้ยศัตรูขวางหน้า ในไฟล์เดียวกันและไฟล์ข้างๆ)
@@ -213,8 +213,8 @@ namespace AIEngine.Evaluation
             if (IsPassedPawn(board, x, y, isWhite))
             {
                 // ยิ่งใกล้ฝั่งตรงข้าม ยิ่งได้คะแนนเยอะ
-                int rankBonus = isWhite ? (7 - x) * 10 : x * 10; 
-                score += (20 + rankBonus); 
+                float rankBonus = isWhite ? (7 - x) * 10f : x * 10f;
+                score += (20f + rankBonus);
             }
 
             return score;
@@ -224,7 +224,7 @@ namespace AIEngine.Evaluation
         {
             if (fileY < 0 || fileY > 7) return false;
             int pawnVal = isWhite ? 1 : -1;
-            
+
             for (int r = 0; r < 8; r++)
             {
                 if (board.Board[r, fileY] == pawnVal) return true;
@@ -235,17 +235,17 @@ namespace AIEngine.Evaluation
         private static bool IsPassedPawn(ChessBoardModel board, int r, int c, bool isWhite)
         {
             int enemyPawn = isWhite ? -1 : 1;
-            
+
             // เช็คช่องข้างหน้าทั้งหมดในไฟล์ตัวเอง (c) และไฟล์ข้างๆ (c-1, c+1)
             int startRow = isWhite ? 0 : r + 1;
             int endRow = isWhite ? r - 1 : 7;
-            
+
             // ถ้า White เดินจาก 7 -> 0, ศัตรูจะอยู่ row < r
             // ถ้า Black เดินจาก 0 -> 7, ศัตรูจะอยู่ row > r
-            
+
             // Loop เช็คแถวหน้าเบี้ย
-            for (int i = isWhite ? r - 1 : r + 1; 
-                 isWhite ? i >= 0 : i <= 7; 
+            for (int i = isWhite ? r - 1 : r + 1;
+                 isWhite ? i >= 0 : i <= 7;
                  i += (isWhite ? -1 : 1))
             {
                 if (board.Board[i, c] == enemyPawn) return false; // Blocked

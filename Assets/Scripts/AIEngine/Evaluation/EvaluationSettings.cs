@@ -2,7 +2,6 @@ using System;
 
 namespace AIEngine.Evaluation
 {
-    [Serializable]
     public class EvaluationSettings
     {
         public string Name { get; set; } = "Standard";
@@ -17,7 +16,7 @@ namespace AIEngine.Evaluation
         // --- Style Multipliers (ปรับสไตล์) ---
         public float PositionalFactor { get; set; } = 1.0f; // 1.0 = ปกติ, 1.2 = เน้นยืนตำแหน่งสวย
         public int AttackBonus { get; set; } = 0;           // คะแนนพิเศษถ้าเป็นฝ่ายบุก
-        
+
         // --- Pawn Weights ---
         public int PassedPawnBonus { get; set; } = 20;      // โบนัสเบี้ยผ่าน
         public int IsolatedPawnPenalty { get; set; } = -15; // โทษเบี้ยโดดเดี่ยว

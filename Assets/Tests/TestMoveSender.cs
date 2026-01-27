@@ -24,26 +24,26 @@ public class TestMoveSender : MonoBehaviour
         MoveCreateDto m1 = new MoveCreateDto();
         m1.GameId = testGameId;
         m1.MoveNumber = 1;
-        m1.startX = 0; m1.startY = 1;
-        m1.endX = 0; m1.endY = 2;
+        m1.StartX = 0; m1.StartY = 1;
+        m1.EndX = 0; m1.EndY = 2;
         m1.PieceType = 0;
         m1.PlayerTurn = 0;
         m1.AlgorithmType = 0; // คนเล่น (None)
-        m1.moveTimeMilliseconds = 1500;
+        m1.MoveTimeMilliseconds = 1500;
         fakeMoves.Add(m1);
 
         // ตาที่ 2: ม้าดำเดิน
         MoveCreateDto m2 = new MoveCreateDto();
         m2.GameId = testGameId;
         m2.MoveNumber = 2;
-        m2.startX = 1; m2.startY = 7;
-        m2.endX = 2; m2.endY = 5;
+        m2.StartX = 1; m2.StartY = 7;
+        m2.EndX = 2; m2.EndY = 5;
         m2.PieceType = 1;
         m2.PlayerTurn = 1;
         m2.AlgorithmType = 1; // AI เล่น (Minimax)
-        m2.aiEvaluationScore = (double)0.5;
-        m2.aiDepthSearched = 3;
-        m2.moveTimeMilliseconds = 500;
+        m2.AiEvaluationScore = (int)10;
+        m2.AiDepthSearched = 3;
+        m2.MoveTimeMilliseconds = 500;
         fakeMoves.Add(m2);
 
         // 2. ส่งข้อมูลผ่าน MovesAPI (ฟังก์ชันที่คุณเพิ่งแก้)

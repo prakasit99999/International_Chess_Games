@@ -1,4 +1,5 @@
-﻿using System;
+using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using AIEngine.Evaluation;
@@ -10,13 +11,14 @@ namespace AIEngine.Algorithms
     {
         private int _nodesEvaluated = 0;
 
-        public override MoveModel FindBestMove(ChessBoardModel board, int depth)
+
+        public override MoveModel FindBestMove(ChessBoardModel board, int depth, EvaluationSettings settings = null)
         {
-            var result = FindBestMoveWithMetrics(board, depth);
+            var result = FindBestMoveWithMetrics(board, depth, settings);
             return result.Move;
         }
 
-        public override SearchResult FindBestMoveWithMetrics(ChessBoardModel board, int depth)
+        public override SearchResult FindBestMoveWithMetrics(ChessBoardModel board, int depth, EvaluationSettings settings = null)
         {
             _nodesEvaluated = 0;
             var stopwatch = Stopwatch.StartNew();
@@ -24,25 +26,30 @@ namespace AIEngine.Algorithms
             if (moves == null || moves.Count == 0)
                 throw new InvalidOperationException("No valid moves found.");
 
-            MoveModel bestMove = null;
-            int bestScore = int.MinValue;
+            List<MoveModel> bestMoves = new List<MoveModel>();
+            float bestScore = float.MinValue;
 
             foreach (MoveModel move in moves)
             {
                 var newBoard = board.Clone();
                 newBoard.MakeMove(move);
 
-                int score = MinimaxRecursive(newBoard, depth - 1, false);
+                float score = MinimaxRecursive(newBoard, depth - 1, false, settings);
                 if (score > bestScore)
                 {
                     bestScore = score;
-                    bestMove = move;
+                    bestMoves.Clear();
+                    bestMoves.Add(move);
+                }
+                else if (Math.Abs(score - bestScore) < 0.001f) // ใช้ epsilon สำหรับ float comparison
+                {
+                    bestMoves.Add(move);
                 }
             }
 
             stopwatch.Stop();
             var elapsedMs = (float)stopwatch.Elapsed.TotalMilliseconds;
-            var finalMove = bestMove ?? moves.First();
+            var finalMove = bestMoves.Count > 0 ? bestMoves[new Random().Next(bestMoves.Count)] : moves.First();
 
             return new SearchResult
             {
@@ -50,28 +57,28 @@ namespace AIEngine.Algorithms
                 Depth = depth,
                 NodesEvaluated = _nodesEvaluated,
                 TimeMs = elapsedMs,
-                Score = (float)bestScore
+                Score = bestScore
             };
         }
 
-        protected int MinimaxRecursive(ChessBoardModel board, int depth, bool isMaximizing)
+        protected float MinimaxRecursive(ChessBoardModel board, int depth, bool isMaximizing, EvaluationSettings settings)
         {
             _nodesEvaluated++; // นับ node ที่ evaluate
 
             if (depth == 0 || board.IsGameOver())
-                return AIEngine.Evaluation.Evaluation.Evaluate(board);
+                return AIEngine.Evaluation.Evaluation.Evaluate(board, settings);
 
             if (board.RepetitionCount >= 3)
-                return 0;
+                return 0f;
             var moves = MoveGenerator.GenerateMoves(board);
-            int bestScore = isMaximizing ? int.MinValue : int.MaxValue;
+            float bestScore = isMaximizing ? float.MinValue : float.MaxValue;
 
             foreach (var move in moves)
             {
                 var newBoard = board.Clone();
                 newBoard.MakeMove(move);
 
-                int score = MinimaxRecursive(newBoard, depth - 1, !isMaximizing);
+                float score = MinimaxRecursive(newBoard, depth - 1, !isMaximizing, settings);
                 bestScore = isMaximizing
                     ? Math.Max(bestScore, score)
                     : Math.Min(bestScore, score);

@@ -5,7 +5,7 @@ using UnityEngine;
 public class GameCreateDto
 {
     // ข้อมูลสำหรับ "เริ่มเกม" (ส่งไป /api/game/start)
-    public string GameType;            // "single_player", "ai_vs_ai"
+    public string GameType;            // "single_player", "ai_vs_ai", "online_multiplayer"
     public string WhitePlayerType;     // "human", "ai_easy"
     public string BlackPlayerType;
     public int? WhitePlayerId;         // ใส่ null ได้
@@ -48,3 +48,12 @@ public class GeneralResponse
     public string Error;
 }
 
+[Serializable]
+public class GameStatusDto
+{
+    public int gameId;
+    public string status;      // "playing", "finished", "abandoned"
+    public string winner;      // "white", "black", "draw", null
+    public string reason;      // "checkmate", "resignation", "timeout", "abandonment"
+    public int moveCount;
+}

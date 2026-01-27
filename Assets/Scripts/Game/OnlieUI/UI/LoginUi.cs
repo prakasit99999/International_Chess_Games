@@ -1,20 +1,26 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.Networking;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 using static System.Net.Mime.MediaTypeNames;
 using Image = UnityEngine.UI.Image;
-using TMPro;
-using UnityEngine.SceneManagement;
 
 public class LoginUi : MonoBehaviour
 {
+
     [Header("Login UI")]
     public GameObject emailLogin;
     public GameObject passwordLogin;
     public GameObject ShowLoginVaildatons;
     public GameObject txtLoginVaildaton;
+
+    [Header("Password Toggle")]
+    public Image passwordToggleImage; // ภาพของปุ่ม Toggle (Button Image)
+    public Sprite passwordUnmaskIcon; // Free Flat Toggle Right Icon (Show)
+    public Sprite passwordMaskIcon;   // Free Flat Toggle Left Icon (Hide)
 
     [Header("Register UI")]
     public GameObject usernameSigUp;
@@ -38,18 +44,31 @@ public class LoginUi : MonoBehaviour
         authApi.Instance.OnLoginFailed = HandleLoginFailed;
         authApi.Instance.OnRegisterSuccess = HandleRegisterSuccess;
         authApi.Instance.OnRegisterFailed = HandleRegisterFailed;
-        //authApi.Instance.OnLogoutSuccess = HandleLogoutSuccess;
-        //authApi.Instance.OnLogoutFailed = HandleLogoutFailed;
+        authApi.Instance.OnLogoutSuccess = HandleLogoutSuccess;
+        authApi.Instance.OnLogoutFailed = HandleLogoutFailed;
 
         // 🔹 ค่าเริ่มต้น
         LoginFromPanel.SetActive(true);
         SignUpFromPanel.SetActive(false);
         switchBtnLogin.GetComponent<Image>().color = cickColor;
         switchBtnSignUp.GetComponent<Image>().color = nomalColor;
+
+        // 🔹 ตั้งค่าเริ่มต้นให้รหัสผ่านซ่อนอยู่
+        if (passwordLogin != null)
+        {
+            TMP_InputField passInput = passwordLogin.GetComponent<TMP_InputField>();
+            passInput.contentType = TMP_InputField.ContentType.Password;
+            passInput.ForceLabelUpdate();
+        }
+
+        if (passwordToggleImage != null && passwordMaskIcon != null)
+        {
+            passwordToggleImage.sprite = passwordMaskIcon;
+        }
     }
 
 
-    private void HandleLoginSuccess(authApi.AuthSuccessResponse resp)
+    private void HandleLoginSuccess(AuthSuccessResponse resp)
     {
         Debug.Log("Login success UI side!");
         PlayerPrefs.SetString("auth_token", resp.token);
@@ -144,6 +163,7 @@ public class LoginUi : MonoBehaviour
         StartCoroutine(authApi.Instance.RegisterRequest(username, email, pass));
     }
 
+
     public void LogoutUser()
     {
         int userId = PlayerPrefs.GetInt("user_id", -1);
@@ -161,6 +181,34 @@ public class LoginUi : MonoBehaviour
     {
         //ออกจาก login ไผ 
         SceneManager.LoadScene("MainMenu");
+    }
+
+    /// สลับการแสดง/ซ่อนรหัสผ่าน และเปลี่ยนไอคอน
+    public void TogglePasswordVisibility()
+    {
+        TMP_InputField input = passwordLogin.GetComponent<TMP_InputField>();
+
+        if (input.contentType == TMP_InputField.ContentType.Password)
+        {
+            // แสดงรหัสผ่าน
+            input.contentType = TMP_InputField.ContentType.Standard;
+            if (passwordToggleImage != null && passwordUnmaskIcon != null)
+            {
+                passwordToggleImage.sprite = passwordUnmaskIcon;
+            }
+        }
+        else
+        {
+            // ซ่อนรหัสผ่าน
+            input.contentType = TMP_InputField.ContentType.Password;
+            if (passwordToggleImage != null && passwordMaskIcon != null)
+            {
+                passwordToggleImage.sprite = passwordMaskIcon;
+            }
+        }
+
+        // บังคับ update text ที่แสดงอยู่
+        input.ForceLabelUpdate();
     }
 
 

@@ -72,7 +72,7 @@ public class IntegrationTest_RealServer
         Assert.IsTrue(apiRequestSuccess, "❌ Create Game Failed: API did not return success.");
         Assert.Greater(realGameId, 0, $"❌ Invalid GameID returned: {realGameId}");
         Debug.Log($"✅ [Step 1 Passed] Game Created! ID: {realGameId}");
-// ========================================================
+        // ========================================================
         // ♟️ STEP 2: ส่งข้อมูลการเดินหมาก (Batch Moves)
         // ========================================================
         Debug.Log("🚀 [Step 2] Sending Moves Batch...");
@@ -88,8 +88,8 @@ public class IntegrationTest_RealServer
                     MoveNumber = 1,
 
                     // เดินเบี้ย e2 -> e4
-                    startX = 4, startY = 1,
-                    endX = 4, endY = 3,
+                    StartX = 4, StartY = 1,
+                    EndX = 4, EndY = 3,
 
                     PieceType = 0,           // 0 = Pawn
                     PlayerTurn = 0,          // 0 = White
@@ -106,14 +106,14 @@ public class IntegrationTest_RealServer
                     IsCapture = false,
                     IsCheck = false,
                     IsEnPassant = false,
-                    IsCasting = false,
+                    IsCastling = false,
                     IsPawnTwoStep = true,
                     PieceHasMovedBefore = false,
 
-                    aiEvaluationScore = 0,
-                    aiDepthSearched = 0,
-                    aiNodesEvaluated = 0,
-                    moveTimeMilliseconds = 100
+                    AiEvaluationScore = 0,
+                    AiDepthSearched = 0,
+                    AiNodesEvaluated = 0,
+                    MoveTimeMilliseconds = 100
                 },
 
                 // --- Move 2: Black (AI) ---
@@ -123,8 +123,8 @@ public class IntegrationTest_RealServer
                     MoveNumber = 2,
 
                     // AI เดินเบี้ย e7 -> e5
-                    startX = 4, startY = 6,
-                    endX = 4, endY = 4,
+                    StartX = 4, StartY = 6,
+                    EndX = 4, EndY = 4,
 
                     PieceType = 0,           // 0 = Pawn
                     PlayerTurn = 1,          // 1 = Black
@@ -136,19 +136,19 @@ public class IntegrationTest_RealServer
                     CapturedPieceTeam = 0,   // 0 = None
                     PromotedTo = 0,
                     PromotedFrom = 0,
-                    
+
                     IsCapture = false,
                     IsCheck = false,
                     IsEnPassant = false,
-                    IsCasting = false,
+                    IsCastling = false,
                     IsPawnTwoStep = true,
                     PieceHasMovedBefore = false,
 
                     // ข้อมูล AI
-                    aiEvaluationScore = (double)0.5f,
-                    aiDepthSearched = 3,
-                    aiNodesEvaluated = 1500,
-                    moveTimeMilliseconds = 250
+                    AiEvaluationScore = (int)10,
+                    AiDepthSearched = 3,
+                    AiNodesEvaluated = 1500,
+                    MoveTimeMilliseconds = 250
                 }
             };
 

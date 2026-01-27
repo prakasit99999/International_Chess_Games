@@ -1,97 +1,37 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Networking;
-using System;
-using Newtonsoft.Json; // ต้องมี Library Newtonsoft.Json หรือใช้ JsonUtility ของ Unity ก็ได้
 
 public class MatchmakingApi : MonoBehaviour
 {
-    // เปลี่ยนเป็น IP ของเครื่อง Server หรือ localhost
-    private string baseUrl = "http://localhost:5000/api/Matchmaking";
-    // struct สำหรับรับผลลัพธ์ JSON จาก Server
-    [Serializable]
-    public class MatchResponse
-    {
-        public string message;
-        public MatchDetails matchDetails;
-    }
+    private string baseUrl = "http://localhost:8080/api/Matchmaking";
 
-    [Serializable]
-    public class MatchDetails
+    // --- ฟังก์ชัน 1: Join Queue (แก้ให้ส่ง MatchResponse) ---
+    public virtual IEnumerator JoinQueue(string username, int minRate, int maxRate, Action<bool, MatchResponse> callback)
     {
-        public int gameId;          // รับค่า gameId (int)
-        public string roomCode;     // รับค่า roomCode (string)
-        public string opponentUsername;
-        public string color;        // "white" หรือ "black"
-        public string gameType;     // เพิ่มตัวนี้ให้ตรงกับ Backend
-        public int timeControlMinutes;
-    }
-    // ฟังก์ชัน 1: ขอเข้าคิว (Join Queue)
-    public IEnumerator JoinQueue(string username, int timeControl, int minRate, int maxRate, Action<bool, string> callback)
-    {
-        string url = $"{baseUrl}/join?username={username}&minRating={minRate}&maxRating={maxRate}&preferredTimeControl={timeControl}";
-
+        string url = $"{baseUrl}/join?username={username}&minRating={minRate}&maxRating={maxRate}";
         using (UnityWebRequest request = UnityWebRequest.Get(url))
         {
             yield return request.SendWebRequest();
 
             if (request.result == UnityWebRequest.Result.Success)
             {
-                callback(true, request.downloadHandler.text);
-            }
-            else
-            {
-                callback(false, request.error);
-            }
-        }
-    }
-    // ฟังก์ชัน 2: เช็คว่าเจอคู่หรือยัง (Check Match)
-    public IEnumerator CheckForMatch(string username, Action<bool, MatchResponse> callback)
-    {
-        string url = $"{baseUrl}/check?username={username}";
-
-        using (UnityWebRequest request = UnityWebRequest.Get(url))
-        {
-            yield return request.SendWebRequest();
-
-            if (request.result == UnityWebRequest.Result.Success)
-            {
-                // แปลง JSON ที่ Server ส่งกลับมาเป็น Object
-                // ถ้าใช้ Newtonsoft: var response = JsonConvert.DeserializeObject<MatchResponse>(request.downloadHandler.text);
-                // ถ้าใช้ Unity JsonUtility:
-                var response = JsonUtility.FromJson<MatchResponse>(request.downloadHandler.text);
+                // แปลง JSON เป็น Object ทันที
+                string json = request.downloadHandler.text;
+                var response = JsonUtility.FromJson<MatchResponse>(json);
                 callback(true, response);
             }
             else
             {
-                // กรณี 404 Not Found (ยังไม่เจอคู่) หรือ Error อื่นๆ
+                Debug.LogError($"Join Error: {request.error}");
                 callback(false, null);
             }
         }
     }
 
-    // ฟังก์ชัน 3: ยกเลิกการหาห้อง (Cancel Queue)
-    public IEnumerator CancelQueue(string username, Action<bool, string> callback)
-    {
-        string url = $"{baseUrl}/cancel?username={username}";
-
-        using (UnityWebRequest request = UnityWebRequest.Get(url))
-        {
-            yield return request.SendWebRequest();
-
-            if (request.result == UnityWebRequest.Result.Success)
-            {
-                callback(true, "Cancelled");
-            }
-            else
-            {
-                callback(false, request.error);
-            }
-        }
-    }
-
-    public IEnumerator CheckQueue(string username, Action<bool, MatchResponse> callback)
+    // --- ฟังก์ชัน 2: Check Match ---
+    public virtual IEnumerator CheckQueue(string username, Action<bool, MatchResponse> callback)
     {
         string url = $"{baseUrl}/check?username={username}";
 
@@ -101,23 +41,67 @@ public class MatchmakingApi : MonoBehaviour
 
             if (request.result == UnityWebRequest.Result.Success)
             {
-                // แปลง JSON เป็น Object
                 var response = JsonUtility.FromJson<MatchResponse>(request.downloadHandler.text);
-                
-                // ตรวจสอบว่าได้ข้อมูลห้องมาจริงไหม
+
+                // เช็คว่ามี GameId จริงไหม
                 if (response != null && response.matchDetails != null && response.matchDetails.gameId != 0)
                 {
                     callback(true, response);
                 }
                 else
                 {
-                    callback(false, null); // ยังไม่เจอ หรือ Server ตอบมาแต่ไม่มี detail
+                    callback(false, null);
                 }
             }
             else
             {
-                // ยังไม่เจอคู่ หรือ Error
                 callback(false, null);
+            }
+        }
+    }
+
+    // --- ฟังก์ชัน 3: Cancel ---
+    public virtual IEnumerator CancelQueue(string username, Action<bool, string> callback)
+    {
+        string url = $"{baseUrl}/cancel?username={username}";
+        using (UnityWebRequest request = UnityWebRequest.Get(url))
+        {
+            yield return request.SendWebRequest();
+            if (request.result == UnityWebRequest.Result.Success) callback(true, "Cancelled");
+            else callback(false, request.error);
+        }
+    }
+
+    // --- ฟังก์ชัน 4: Update Player Status ---
+    public virtual IEnumerator UpdatePlayerStatus(int userId, string status, Action<bool> callback)
+    {
+        string url = "http://localhost:8080/api/Player/status";
+        string json = $"{{\"userId\":{userId}, \"status\":\"{status}\"}}";
+
+        var request = new UnityWebRequest(url, "POST");
+        byte[] bodyRaw = System.Text.Encoding.UTF8.GetBytes(json);
+        request.uploadHandler = new UploadHandlerRaw(bodyRaw);
+        request.downloadHandler = new DownloadHandlerBuffer();
+        request.SetRequestHeader("Content-Type", "application/json");
+
+        yield return request.SendWebRequest();
+        callback(request.result == UnityWebRequest.Result.Success);
+    }
+
+    // --- ฟังก์ชัน 5: Get Leaderboard ---
+    public virtual IEnumerator GetLeaderboard(Action<string> callback)
+    {
+        string url = "http://localhost:8080/api/Leaderboard";
+        using (UnityWebRequest request = UnityWebRequest.Get(url))
+        {
+            yield return request.SendWebRequest();
+            if (request.result == UnityWebRequest.Result.Success)
+            {
+                callback(request.downloadHandler.text); // ส่ง raw json ไปให้ UI จัดการ
+            }
+            else
+            {
+                callback(null);
             }
         }
     }

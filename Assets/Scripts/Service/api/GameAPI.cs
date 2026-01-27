@@ -91,6 +91,36 @@ public class GameAPI : MonoBehaviour
         }
     }
 
+    // 4. Get Game Status (เช็คสถานะเกม - จบหรือยัง, ใครชนะ)
+    public IEnumerator GetGameStatus(int gameId, Action<GameStatusDto> onSuccess = null, Action<string> onError = null)
+    {
+        string url = $"{baseUrl}/status/{gameId}";
+
+        using (UnityWebRequest req = UnityWebRequest.Get(url))
+        {
+            yield return req.SendWebRequest();
+
+            if (req.result == UnityWebRequest.Result.Success)
+            {
+                var statusDto = JsonUtility.FromJson<GameStatusDto>(req.downloadHandler.text);
+
+                if (statusDto != null)
+                {
+                    onSuccess?.Invoke(statusDto);
+                }
+                else
+                {
+                    Debug.LogWarning("⚠️ Failed to parse GameStatusDto");
+                    onError?.Invoke("Parse Error");
+                }
+            }
+            else
+            {
+                HandleError(req, onError);
+            }
+        }
+    }
+
     // สร้าง Request แบบมาตรฐาน (ลดโค้ดซ้ำ)
     private UnityWebRequest CreateRequest(string url, string jsonBody)
     {

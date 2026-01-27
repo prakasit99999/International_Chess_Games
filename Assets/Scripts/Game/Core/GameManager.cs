@@ -10,12 +10,12 @@ using static ChessPiece;
 
 public class GameManager : MonoBehaviour
 {
-
     [Header("private AI")]
     private IChessAI chessAI;
     private Coroutine aiLoop;
     private Coroutine fiftyMoveCoroutine;
     private Coroutine syncCoroutine;
+    private Coroutine onlinePollingCoroutine;
     private bool isAITurnActive = false;
     private string difficultyWhite;
     private string difficultyBlack;
@@ -27,11 +27,14 @@ public class GameManager : MonoBehaviour
     private ChessBoard chessBoard;
     private HistoryMoveUI historyMoveUI;
     private List<MoveCreateDto> recordedMoves = new List<MoveCreateDto>();
+    private int lastAppliedMoveNumber = 0; // ✅ ติดตาม move number ที่ apply ไปแล้ว (ป้องกันการ apply ซ้ำ)
 
     [Header("API Services")]
     public GameAPI gameAPI;
     public AiPerformanceAPI aiPerformanceApi;
     public MovesAPI movesApi;
+    public MatchmakingApi matchmakingApi; // ✅ เพิ่ม MatchmakingApi reference
+    public UserAPI userApi; // ✅ เพิ่ม UserAPI reference
 
     [Header("Game Data")]
     public int currentGameId = -1;
@@ -56,16 +59,24 @@ public class GameManager : MonoBehaviour
     public enum GameModes { LocalMultiplayer, SinglePlayer, AIVsAI, Online }
     public AIDifficulty aiDifficultyWhite;
     public AIDifficulty aiDifficultyBlack;
+    public AIDifficulty aiDifficulty;
     public bool isGameStarted;
     public bool isWhiteTurn;
     public bool isBlackTurn;
-    public AIDifficulty aiDifficulty;
     public PlayerType WhitePlayer = PlayerType.Human;
     public PlayerType BlackPlayer = PlayerType.AI;
     public string whitePlayerName = "White";
     public string blackPlayerName = "Black";
     public bool isAIMode = false;
     public bool gameIsOver = false;
+
+    // ✅ เพิ่มตัวแปรสำหรับจำว่า "ฉันคือใคร" ใน Online Mode
+    public ChessPiece.Team myLocalTeam = ChessPiece.Team.None;
+
+    [Header("Online Multiplayer Settings")]
+    public bool isOnlineMode = false;
+    private bool isWaitingForOpponent = false;
+    private string myOnlineColor = "white";
 
     public GameManager(GameModes currentMode)
     {
@@ -75,7 +86,6 @@ public class GameManager : MonoBehaviour
     [System.Obsolete]
     private void Awake()
     {
-
         if (Instance == null)
         {
             Instance = this;
@@ -88,6 +98,8 @@ public class GameManager : MonoBehaviour
         }
         if (gameAPI == null) gameAPI = FindFirstObjectByType<GameAPI>();
         if (movesApi == null) movesApi = FindFirstObjectByType<MovesAPI>();
+        if (matchmakingApi == null) matchmakingApi = FindFirstObjectByType<MatchmakingApi>(); // ✅ Init MatchmakingApi
+        if (userApi == null) userApi = FindFirstObjectByType<UserAPI>(); // ✅ Init UserAPI
         if (aiPerformanceApi == null) aiPerformanceApi = FindFirstObjectByType<AiPerformanceAPI>();
         if (gameAPI == null || movesApi == null || aiPerformanceApi == null)
         {
@@ -99,17 +111,12 @@ public class GameManager : MonoBehaviour
     {
         // --- 1. ส่วนเตรียมความพร้อม (ทำครั้งเดียวในชีวิต Object) ---
         if (chessBoard == null) chessBoard = FindObjectOfType<ChessBoard>();
-
-
         if (chessBoard != null)
         {
             chessBoard.SetGameManager(this);
-
             // หา Component ต่างๆ ให้ครบ
-
             if (chessAI == null) chessAI = GetComponent<UnityAIBoardAdapter>() ?? gameObject.AddComponent<UnityAIBoardAdapter>();
             if (aiPerformanceApi == null) aiPerformanceApi = GetComponent<AiPerformanceAPI>() ?? gameObject.AddComponent<AiPerformanceAPI>();
-
             // --- 2. เริ่มเกมรอบแรก ---
             StartGameSession();
 
@@ -119,7 +126,6 @@ public class GameManager : MonoBehaviour
             Debug.LogError("❌ ChessBoard ไม่ถูกพบ!");
         }
     }
-
 
     void StartGameSession()
     {
@@ -209,6 +215,82 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    private void StartPolling()
+    {
+        if (onlinePollingCoroutine != null) StopCoroutine(onlinePollingCoroutine);
+        isWaitingForOpponent = true;
+        onlinePollingCoroutine = StartCoroutine(PollOpponentMove());
+    }
+
+    private IEnumerator PollOpponentMove()
+    {
+        while (isWaitingForOpponent)
+        {
+            // ✅ 1. ถ้าเป็นตาเรา ไม่ต้อง Poll (รอ SwitchTurn สั่งหยุด)
+            if (IsMyTurn())
+            {
+                yield return new WaitForSeconds(1f);
+                continue;
+            }
+
+            yield return new WaitForSeconds(2f);
+
+            if (movesApi == null || gameAPI == null)
+            {
+                Debug.LogError("⚠️ API is missing!");
+                yield break;
+            }
+            // -----------------------------------------------------------
+            // 2. เช็คสถานะเกม (Resign / Abandoned)
+            // -----------------------------------------------------------
+            bool isGameEnded = false;
+            yield return gameAPI.GetGameStatus(currentGameId, (statusDto) =>
+            {
+                if (statusDto == null) return;
+
+                if (statusDto.status == "finished" || statusDto.status == "abandoned" || statusDto.status == "resignation")
+                {
+                    Debug.Log($"🏁 Game Over detected: {statusDto.status}");
+
+                    ChessPiece.Team winner = ChessPiece.Team.None;
+                    if (statusDto.winner == "white") winner = ChessPiece.Team.White;
+                    if (statusDto.winner == "black") winner = ChessPiece.Team.Black;
+
+                    isWaitingForOpponent = false;
+                    onlinePollingCoroutine = null;
+                    isGameEnded = true; // ตัดจบ Loop
+
+                    GameOver(winner, statusDto.status);
+                }
+            }, (error) => { Debug.LogWarning($"⚠️ Check Status Error: {error}"); });
+
+            if (isGameEnded) yield break;
+            // -----------------------------------------------------------
+            // 3. เช็ค Move ล่าสุด
+            // -----------------------------------------------------------
+            yield return movesApi.GetLatestMove(currentGameId, (moveData) =>
+            {
+                if (moveData == null) return;
+                // ✅ เช็ค: MoveNumber (PascalCase) ต้องมากกว่าที่เราเคย Apply ไปแล้ว
+                if (moveData.move_number <= lastAppliedMoveNumber)
+                {
+                    return;
+                }
+                Debug.Log($"📥 Received Move #{moveData.move_number} : {moveData.startX},{moveData.startY} -> {moveData.endX},{moveData.endY}");
+                Debug.Log($"⚡ New Move Found #{moveData.move_number}: {moveData.from_position} -> {moveData.to_position}");
+                // ✅ สั่งกระดานขยับ
+                chessBoard.isNetworkMove = true;
+                chessBoard.ApplyNetworkMove(moveData);
+                chessBoard.isNetworkMove = false;
+                // ✅ อัปเดตตัวนับ
+                lastAppliedMoveNumber = moveData.move_number;
+                moveCount = moveData.move_number;
+                // ✅ สลับตามาเป็นของเรา (สำคัญ! บรรทัดนี้จะไปเซ็ต isWaitingForOpponent = false ให้เอง)
+                SwitchTurn();
+            });
+        }
+    }
+
     private AIDifficulty ParseDifficulty(string diff)
     {
         switch (diff)
@@ -260,7 +342,6 @@ public class GameManager : MonoBehaviour
                 AlgorithmType = algorithmType,
             };
 
-            // ✅ บันทึกข้อมูล AI Performance สำหรับหาค่าเฉลี่ย
             if (PerformanceTracker.Instance != null)
             {
                 PerformanceTracker.Instance.AddMove(aiStats.Depth, aiStats.Nodes, aiStats.MoveTimeMs, aiStats.Score);
@@ -279,8 +360,8 @@ public class GameManager : MonoBehaviour
         currentMode = GameModes.AIVsAI;
         difficultyWhite = PlayerPrefs.GetString("AI_White_Difficulty", "Easy");
         difficultyBlack = PlayerPrefs.GetString("AI_Black_Difficulty", "Easy");
-        SetPlayerTypes(PlayerType.AI, PlayerType.AI);
         SetAIDifficulty(difficultyWhite, difficultyBlack);
+        SetPlayerTypes(PlayerType.AI, PlayerType.AI);
         Debug.Log($"[MODE] AI vs AI - White: {difficultyWhite}, Black: {difficultyBlack}");
     }
 
@@ -294,24 +375,17 @@ public class GameManager : MonoBehaviour
     private void SetupSinglePlayerMode()
     {
         currentMode = GameModes.SinglePlayer;
-
         // ดึงระดับความยากจาก PlayerPrefs (ถ้าไม่มี default = Easy)
         string difficulty = PlayerPrefs.GetString("AI_Difficulty", "Easy");
-
         // กำหนดตายตัว: ขาว = Human, ดำ = AI
         SetPlayerTypes(PlayerType.Human, PlayerType.AI);
-
         // ตั้ง difficulty: ฝั่งขาว (Human) = None, ฝั่งดำ (AI) = ตามค่าที่เลือก
         aiDifficultyWhite = AIDifficulty.None;
-
         aiDifficultyBlack = ParseDifficulty(difficulty);
-
         // ส่งค่าความยากไปให้ AI system
         SetAIDifficulty(aiDifficultyWhite.ToString(), aiDifficultyBlack.ToString());
-
         // ตั้งชื่อผู้เล่น
         SetPlayerNamesAndTypes();
-
         Debug.Log($"[MODE] Single Player - White: Human, Black: AI ({difficulty})");
     }
 
@@ -321,15 +395,68 @@ public class GameManager : MonoBehaviour
         if (gameAPI == null) Debug.LogError("⚠️ gameAPI is NULL!");
         if (movesApi == null) Debug.LogError("⚠️ movesApi is NULL!");
         if (aiPerformanceApi == null) Debug.LogError("⚠️ aiPerformanceApi is NULL!");
-
         currentGameId = -1;
         moveCount = 0;
-
         // เพิ่มการเช็ค Null ตรงนี้ เพื่อแก้ Error บรรทัด 290
         if (recordedMoves == null) recordedMoves = new List<MoveCreateDto>();
         recordedMoves.Clear();
 
         gameIsOver = false;
+    }
+
+    private void SetupOnlineMultiplayerMode()
+    {
+        currentMode = GameModes.Online;
+        Debug.Log("[MODE] Online Multiplayer");
+        // 1. เช็คว่ามี GameID ส่งมาจากหน้า Matchmaking ไหม
+        if (PlayerPrefs.HasKey("CurrentGameId"))
+        {
+            isOnlineMode = true;
+            currentGameId = PlayerPrefs.GetInt("CurrentGameId");
+            myOnlineColor = PlayerPrefs.GetString("MyColor"); // "white" หรือ "black"
+            // ✅ ตั้งค่าทีมของเรา
+            if (myOnlineColor == "white") myLocalTeam = ChessPiece.Team.White;
+            else if (myOnlineColor == "black") myLocalTeam = ChessPiece.Team.Black;
+            else myLocalTeam = ChessPiece.Team.None; // Error Case
+            string opponentName = PlayerPrefs.GetString("OpponentName");
+            string myName = PlayerPrefs.GetString("username", "Me"); // ✅ ดึงชื่อเรามาแสดง
+            // ตั้งค่าชื่อบน UI
+            if (myOnlineColor == "white")
+            {
+                txtNameWhite.text = myName;
+                txtNameBlack.text = opponentName;
+            }
+            else
+            {
+                txtNameWhite.text = opponentName;
+                txtNameBlack.text = myName;
+            }
+            Debug.Log($"[Online] Game Started! ID: {currentGameId}, Color: {myOnlineColor}");
+            Debug.Log($"🎮 Online Setup: My Team = {myLocalTeam}, Game ID = {currentGameId}");
+            // 2. ถ้าเป็นสีดำ (ต้องรอขาวเดินก่อน) -> เริ่ม Polling รอรับค่า
+            if (!IsMyTurn())
+            {
+                Debug.Log("zzz รอคู่แข่งเดิน (Start Polling)...");
+                isWaitingForOpponent = true;
+                if (onlinePollingCoroutine != null) StopCoroutine(onlinePollingCoroutine);
+                onlinePollingCoroutine = StartCoroutine(PollOpponentMove());
+            }
+            // ✅ อัปเดตสถานะเป็น "playing"
+            int userId = PlayerPrefs.GetInt("UserId", 0);
+            if (userApi != null)
+            {
+                StartCoroutine(userApi.UpdateStatus(userId, "playing", (success, message) =>
+                {
+                    if (!success) Debug.LogWarning($"⚠️ Failed to update status to playing: {message}");
+                }));
+            }
+            // ล้างค่าทิ้ง เพื่อไม่ให้บั๊กเวลากลับมาหน้าเมนู
+            PlayerPrefs.DeleteKey("CurrentGameId");
+        }
+        else
+        {
+            Debug.LogError("❌ Online Mode selected but No Game ID found in PlayerPrefs!");
+        }
     }
 
     private string GetPlayerTypeString(PlayerType type, AIDifficulty difficulty)
@@ -361,9 +488,7 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log($"🔄 SyncAndEndGame Started... Winner: {winner}, Reason: {endReason}");
 
-        // ---------------------------------------------------------
         //  1. ดึงข้อมูลการเดินจาก HistoryMove และแปลงเป็น DTO
-        // ---------------------------------------------------------
         List<MoveCreateDto> finalMovesToSend = new List<MoveCreateDto>();
         var historyComponent = FindObjectOfType<HistoryMove>();
 
@@ -429,9 +554,7 @@ public class GameManager : MonoBehaviour
         {
             Debug.LogError("❌ ไม่เจอ HistoryMove Component! ข้อมูลการเดินจะว่างเปล่า");
         }
-        // ---------------------------------------------------------
         //  2. ส่งข้อมูล Moves Batch
-        // ---------------------------------------------------------
         if (movesApi != null && finalMovesToSend.Count > 0)
         {
             bool uploadDone = false;
@@ -447,9 +570,7 @@ public class GameManager : MonoBehaviour
             Debug.LogWarning("⚠️ ไม่มีข้อมูลการเดินที่จะส่ง (Moves list is empty)");
         }
 
-        // ---------------------------------------------------------
         //  3. ส่งข้อมูล AI Performance (ถ้าไม่ใช่ Online Multiplayer)
-        // ---------------------------------------------------------
         string modeStr = PlayerPrefs.GetString("Mode", "SinglePlayer");
         bool hasAI = (WhitePlayer == PlayerType.AI || BlackPlayer == PlayerType.AI);
         if (hasAI && aiPerformanceApi != null && PerformanceTracker.Instance != null)
@@ -475,10 +596,7 @@ public class GameManager : MonoBehaviour
             // ถ้ามันเข้าตรงนี้ แสดงว่าคุณลืมเตรียม Object ไว้ใน Unity
             Debug.LogError("❌ Cannot upload performance: aiPerformanceApi or PerformanceTracker is MISSING!");
         }
-        // ---------------------------------------------------------
         //  4. ส่งข้อมูลจบเกม (Game Result)
-        // ---------------------------------------------------------
-        // ส่ง recordedMoves.Count ไปด้วยเพื่อให้ Backend ตรวจสอบจำนวนตาเดินได้
         yield return StartCoroutine(ProcessGameFinished(winner, endReason, finalMovesToSend.Count));
         syncCoroutine = null;
     }
@@ -584,16 +702,36 @@ public class GameManager : MonoBehaviour
     //set method
     public void SetPlayerNamesAndTypes()
     {
-        string whiteDisplayName = WhitePlayer == PlayerType.Human
-        ? "Human (White)"
+        string whiteDisplayName = "White";
+        string blackDisplayName = "Black";
+        string localPlayerName = PlayerPrefs.GetString("PlayerName");
+        if (string.IsNullOrEmpty(localPlayerName)) localPlayerName = "Human";
+        Debug.Log($"aiDifficultyWhite: {aiDifficultyWhite}, aiDifficultyBlack: {aiDifficultyBlack}");
+        switch (currentMode)
+        {
+            case GameModes.AIVsAI:
+                whiteDisplayName = $"AI ({aiDifficultyWhite}) (White)";
+                blackDisplayName = $"AI ({aiDifficultyBlack}) (Black)";
+                break;
+            case GameModes.SinglePlayer:
+                whiteDisplayName = $"White {localPlayerName}";
+                blackDisplayName = $"AI ({aiDifficultyBlack}) (Black)";
+                break;
+            case GameModes.LocalMultiplayer:
+                whiteDisplayName = "Human (White)";
+                blackDisplayName = "Human (Black)";
+                break;
+            case GameModes.Online:
+                whiteDisplayName = !string.IsNullOrEmpty(whitePlayerName) ? whitePlayerName : "Online Player";
+                blackDisplayName = !string.IsNullOrEmpty(blackPlayerName) ? blackPlayerName : "Online Player";
+                break;
+            default:
+                whiteDisplayName = "White";
+                blackDisplayName = "Black";
+                break;
+        }
 
-        : $"AI ({aiDifficultyWhite})";
-
-        string blackDisplayName = BlackPlayer == PlayerType.Human
-            ? "Human (Black)"
-            : $"AI ({aiDifficultyBlack})";
-
-        //Debug.Log($"whiteDisplayName:{whiteDisplayName} blackDisplayName: {blackDisplayName}");
+        Debug.Log($"[GameManager] SetNames ({currentMode}): White='{whiteDisplayName}', Black='{blackDisplayName}'");
 
         if (txtNameWhite != null)
             txtNameWhite.text = whiteDisplayName;
@@ -632,6 +770,124 @@ public class GameManager : MonoBehaviour
     {
         return currentTurn;
     }
+    // ✅ เช็คว่าเป็นตาของเราหรือไม่ (ใช้สำหรับล็อคการกด)
+    public bool IsMyTurn()
+    {
+        if (!isOnlineMode) return true; // Offline เล่นได้ตลอด (หรือตาม Logic เดิม)
+        return currentTurn == myLocalTeam;
+    }
+    // ✅ ฟังก์ชันส่ง API แยก (เรียกเฉพาะตอนผู้เล่นกดเดินเอง)
+    public void OnLocalPlayerMoved(Vector2Int from, Vector2Int to, ChessPiece.PieceType pieceType)
+    {
+        // 1. เช็คว่าเป็นโหมด Online หรือไม่?
+        if (currentMode != GameModes.Online) return;
+
+        // 2. เช็คว่าเป็นตาเราจริงหรือไม่
+        if (!IsMyTurn())
+
+        {
+            Debug.LogWarning("⚠️ Attempted to send move but it's not my turn.");
+            return;
+        }
+
+        Debug.Log("📡 Sending Move to Server...");
+
+        // 3. ดึงข้อมูลจาก HistoryMove แทนการสร้างใหม่เอง เพื่อให้ได้ Flag ครบถ้วน (Castling, Check, etc.)
+        MoveCreateDto moveDto = null;
+        var history = FindFirstObjectByType<HistoryMove>();
+
+
+        if (history != null && history.GetMoveHistory().Count > 0)
+        {
+            var lastMoveData = history.GetMoveHistory().Peek();
+            // เช็คว่า Move ที่ดึงมา ตรงกับที่เรากำลังจะส่งหรือไม่ (ป้องกัน Race Condition)
+            if (lastMoveData.endPosition == to && lastMoveData.startPosition == from)
+            {
+                AiPerformanceData dummyAi = new AiPerformanceData();
+                moveDto = MoveMapper.ToDto(lastMoveData, currentGameId, moveCount + 1, dummyAi);
+                // Override PlayerId ให้มั่นใจ
+                int myUserId = (PerformanceTracker.Instance != null) ? PerformanceTracker.Instance.UserId : 0;
+            }
+            else
+            {
+                Debug.LogError($"❌ History Mismatch! History: {lastMoveData.endPosition}, Sending: {to}");
+            }
+        }
+
+        if (moveDto == null)
+        {
+            Debug.LogError("❌ Failed to get move from HistoryMove! Fallback to manual creation (Flags will be missing).");
+            // Fallback (ถ้าจำเป็น แต่จริงๆ ควร Error เพื่อให้รู้ตัว)
+            moveDto = new MoveCreateDto
+            {
+                GameId = currentGameId,
+                MoveNumber = moveCount + 1,
+                StartX = from.x,
+                StartY = from.y,
+                EndX = to.x,
+                EndY = to.y,
+                PieceType = (int)pieceType,
+                PlayerTurn = (currentTurn == Team.White) ? 0 : 1
+            };
+        }
+        // 4. ยิง API
+        StartCoroutine(movesApi.SendMove(moveDto, (success) =>
+        {
+            if (success)
+            {
+                Debug.Log("✅ Send Move Success!");
+
+                // ✅ อัปเดต State ฝั่งตัวเองทันทีเมื่อ Server รับรู้แล้ว
+                lastAppliedMoveNumber = moveDto.MoveNumber;
+                moveCount = moveDto.MoveNumber;
+
+                // ✅ สลับเทิร์นไปเป็นของคู่แข่ง
+                SwitchTurn();
+
+                // ✅ เริ่ม Polling รอหมากจากคู่แข่ง
+                StartPolling();
+            }
+            else
+            {
+                Debug.LogError("⚠️ Send Move Failed!");
+                // TODO: อาจจะต้องมี Rollback หรือแจ้งเตือนผู้เล่น
+            }
+        }));
+    }
+    // ✅ ฟังก์ชันสลับเทิร์น (อันเดียวจบ)
+    public void SwitchTurn()
+    {
+        if (IsGameOver() || gameIsOver)
+        {
+            Debug.Log("🏁 เกมจบแล้ว ไม่สามารถสลับเทิร์นได้");
+            return;
+        }
+        // สลับสี
+        currentTurn = (currentTurn == Team.White) ? Team.Black : Team.White;
+        UpdatePlayerTurnUI();
+
+        // 🟢 ถ้าเป็น Online Mode
+        // 2. จัดการโหมด Online
+        if (currentMode == GameModes.Online)
+        {
+            if (IsMyTurn())
+            {
+                // 👉 ถึงตาเรา: หยุดรอ Server แล้วยอมให้เราจับหมาก
+                Debug.Log("🟢 ถึงตาคุณแล้ว! (Stop Polling)");
+                isWaitingForOpponent = false;
+                if (onlinePollingCoroutine != null) StopCoroutine(onlinePollingCoroutine);
+
+            }
+            else
+            {
+                // 👉 ตาคนอื่น: เริ่มรอ Server (Polling)
+                Debug.Log("⏳ จบตาคุณ -> รอคู่แข่งเดิน (Start Polling)");
+                isWaitingForOpponent = true;
+                if (onlinePollingCoroutine != null) StopCoroutine(onlinePollingCoroutine);
+                onlinePollingCoroutine = StartCoroutine(PollOpponentMove());
+            }
+        }
+    }
 
     public string GetCurrentPlayerName()
     {
@@ -660,25 +916,7 @@ public class GameManager : MonoBehaviour
             Debug.LogWarning("HistoryMoveUI not found!");
         }
     }
-    // ฟังก์ชันสลับเทิร์น
-    public void SwitchTurn(bool forceSwitch = false)
-    {
-        if (IsGameOver() || gameIsOver)
-        {
-            Debug.Log("เกมจบแล้ว ไม่สามารถสลับเทิร์นได้");
-            return;
-        }
 
-        if (!forceSwitch && ChessBoard.Instance.IsPromoting())
-        {
-            Debug.Log("กำลังเลื่อนขั้น ไม่สามารถสลับเทิร์นได้");
-            return;
-        }
-
-        currentTurn = (currentTurn == Team.White) ? Team.Black : Team.White;
-        UpdatePlayerTurnUI();
-        CheckGameState();
-    }
     // ฟังก์ชันตรวจสอบ Checkmate หรือ Stalemate
     public void CheckGameState()
     {
@@ -836,8 +1074,10 @@ public class GameManager : MonoBehaviour
         {
             MoveCreateDto dto = MoveMapper.ToDto(moveData, currentGameId, moveCount, aiStats);
             recordedMoves.Add(dto);
-        }
 
+            recordedMoves.Add(dto);
+            Debug.Log($"📝 Recorded Move Locally: {dto.MoveNumber}");
+        }
         // 2. (🚨 ส่วนที่ขาดหายไป) ส่งข้อมูลเข้า PerformanceTracker เพื่อหาค่าเฉลี่ย
         if (aiStats != null && PerformanceTracker.Instance != null)
         {
@@ -880,6 +1120,12 @@ public class GameManager : MonoBehaviour
                 break;
 
             case "SinglePlayer":
+                SetupSinglePlayerMode();
+                break;
+
+            case "OnlineMultiplayer":
+                SetupOnlineMultiplayerMode();
+                break;
             default:
                 SetupSinglePlayerMode();
                 break;
@@ -895,12 +1141,24 @@ public class GameManager : MonoBehaviour
             return; //  ออกจากฟังก์ชันทันที ไม่ไปเรียก API ด้านล่าง
         }
 
+
+        if (modeStr == "OnlineMultiplayer")
+        {
+            // SetupOnlineMultiplayerMode() ถูกเรียกไปแล้วใน Switch Case ข้างบน
+            // ตรงนี้แค่รับประกัน state และ return ไม่ให้สร้างเกมซ้ำ
+            isGameStarted = true;
+            currentTurn = Team.White;
+
+            UpdatePlayerTurnUI();
+            return;
+
+        }
+
         int myUserId = -1;
         if (PerformanceTracker.Instance != null)
         {
             myUserId = PerformanceTracker.Instance.UserId;
         }
-
 
         createDto.GameType = modeStr switch
         {
@@ -940,7 +1198,6 @@ public class GameManager : MonoBehaviour
         if (gameIsOver) ResetGame(); // Reset กระดาน
 
         // ปิด UI
-
         if (winGamePanel) winGamePanel.SetActive(false);
         if (loseGamePanel) loseGamePanel.SetActive(false);
         if (drawGamePanel) drawGamePanel.SetActive(false);
@@ -954,6 +1211,16 @@ public class GameManager : MonoBehaviour
         currentGameId = -1;
 
         // กลับหน้าหลัก
+        // ✅ อัปเดตสถานะกลับเป็น "online"
+        int userId = PlayerPrefs.GetInt("UserId", 0);
+        if (userApi != null)
+        {
+            StartCoroutine(userApi.UpdateStatus(userId, "online", (success, message) =>
+            {
+                Debug.Log(success ? "✅ Status updated to online" : $"⚠️ Failed to update status to online: {message}");
+            }));
+        }
+
         UnityEngine.SceneManagement.SceneManager.LoadScene("MainMenu");
     }
     // ✅ เพิ่มฟังก์ชันนี้ใน GameManager.cs
@@ -980,6 +1247,33 @@ public class GameManager : MonoBehaviour
         else
         {
             DoResetAndLeave();
+        }
+    }
+
+    public void OnGiveUpClicked()
+    {
+        if (gameIsOver)
+        {
+            DoResetAndLeave();
+            return;
+        }
+
+        Debug.Log("🏳️ Player clicked Give Up (Resign)...");
+        int playerId = (PerformanceTracker.Instance != null) ? PerformanceTracker.Instance.UserId : -1;
+
+        if (gameAPI != null && currentGameId > 0)
+        {
+            // ส่งเหตุผลเป็น "resignation" อย่างเป็นทางการ
+            StartCoroutine(gameAPI.ResignGame(currentGameId, playerId, "resignation", (success) =>
+            {
+                Debug.Log(success ? "✅ Resign Success" : "❌ Resign Failed");
+                DoResetAndLeave();
+            }));
+        }
+        else
+        {
+            // Offline Mode -> แค่จบเกม
+            GameOver(GetOpponentTeam(currentTurn), "resignation");
         }
     }
 

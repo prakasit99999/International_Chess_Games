@@ -9,16 +9,17 @@ public class LogutUi : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        authApi.Instance.OnLogoutSuccess = HandleLogoutSuccess;
-        authApi.Instance.OnLogoutFailed = HandleLogoutFailed;
+        if (authApi.Instance != null)
+        {
+            authApi.Instance.OnLogoutSuccess = HandleLogoutSuccess;
+            authApi.Instance.OnLogoutFailed = HandleLogoutFailed;
+        }
+        else
+        {
+            Debug.LogError("AuthApi Instance not found! Make sure 'authApi' script is attached to a GameObject in the scene.");
+        }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-   
     private void HandleLogoutSuccess()
     {
         Debug.Log("Logout success UI side!");

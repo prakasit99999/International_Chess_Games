@@ -48,7 +48,7 @@
   <PropertyGroup>
     <ProjectTypeGuids>{E097FAD1-6243-4DAD-9C02-E9B9EFC3FFC1};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <UnityProjectGenerator>Package</UnityProjectGenerator>
-    <UnityProjectGeneratorVersion>2.0.25</UnityProjectGeneratorVersion>
+    <UnityProjectGeneratorVersion>2.0.26</UnityProjectGeneratorVersion>
     <UnityProjectGeneratorStyle>Legacy</UnityProjectGeneratorStyle>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>WebGL:20</UnityBuildTarget>
@@ -61,39 +61,39 @@
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\Tools\BuildPipeline\Unity.SourceGenerators\Unity.UIToolkit.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Library\PackageCache\com.unity.services.deployment@3b0f19f59670\Core\AssemblyInfo.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.deployment@3b0f19f59670\Core\IDeploymentDefinitionService.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.deployment@3b0f19f59670\Core\Glob\AST\StringWildcard.Gen.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.deployment@3b0f19f59670\Core\DeploymentDefinitionServiceBase.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.deployment@3b0f19f59670\Core\Logging\ILogger.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.deployment@3b0f19f59670\Core\Glob\AST\Tree.Gen.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.deployment@3b0f19f59670\Core\Glob\AST\LiteralSet.Gen.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.deployment@3b0f19f59670\Core\Glob\Matcher.Gen.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.deployment@3b0f19f59670\Core\Glob\PathTraverserEnumerable.Gen.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.deployment@3b0f19f59670\Core\Glob\PathTraverser.Gen.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.deployment@3b0f19f59670\Core\Glob\GlobOptions.Gen.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.deployment@3b0f19f59670\Core\Glob\AST\Root.Gen.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.deployment@3b0f19f59670\Core\Glob\AST\GlobNode.Gen.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.deployment@3b0f19f59670\Core\Glob\TraverseOptions.Gen.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.deployment@3b0f19f59670\Core\Glob\AST\DirectorySegment.Gen.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.deployment@3b0f19f59670\Core\Glob\AST\Segment.Gen.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.deployment@3b0f19f59670\Core\Glob\Glob.Gen.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.deployment@3b0f19f59670\Core\DeploymentDefinitionServiceExtensions.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.deployment@3b0f19f59670\Core\Glob\AST\Identifier.Gen.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.deployment@3b0f19f59670\Core\Glob\Parser.Gen.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.deployment@3b0f19f59670\Core\Glob\Glob.Statics.Gen.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.deployment@3b0f19f59670\Core\Glob\GlobEvaluator.Gen.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.deployment@3b0f19f59670\Core\Model\IDeploymentDefinition.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.deployment@3b0f19f59670\Core\Glob\AST\SubSegment.Gen.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.deployment@3b0f19f59670\Core\Glob\AST\GlobNodeType.Gen.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.deployment@3b0f19f59670\Core\Glob\AST\DirectoryWildcard.Gen.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.deployment@3b0f19f59670\Core\Glob\AST\CharacterSet.Gen.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.deployment@3b0f19f59670\Core\Glob\AST\CharacterWildcard.Gen.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.deployment@3b0f19f59670\Core\Glob\GlobPatternException.Gen.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.deployment@3b0f19f59670\Core\Glob\GlobExtensions.Gen.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.deployment@d026c9b5c5ae\Core\AssemblyInfo.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.deployment@d026c9b5c5ae\Core\IDeploymentDefinitionService.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.deployment@d026c9b5c5ae\Core\Glob\AST\StringWildcard.Gen.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.deployment@d026c9b5c5ae\Core\DeploymentDefinitionServiceBase.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.deployment@d026c9b5c5ae\Core\Logging\ILogger.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.deployment@d026c9b5c5ae\Core\Glob\AST\Tree.Gen.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.deployment@d026c9b5c5ae\Core\Glob\AST\LiteralSet.Gen.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.deployment@d026c9b5c5ae\Core\Glob\Matcher.Gen.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.deployment@d026c9b5c5ae\Core\Glob\PathTraverserEnumerable.Gen.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.deployment@d026c9b5c5ae\Core\Glob\PathTraverser.Gen.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.deployment@d026c9b5c5ae\Core\Glob\GlobOptions.Gen.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.deployment@d026c9b5c5ae\Core\Glob\AST\Root.Gen.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.deployment@d026c9b5c5ae\Core\Glob\AST\GlobNode.Gen.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.deployment@d026c9b5c5ae\Core\Glob\TraverseOptions.Gen.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.deployment@d026c9b5c5ae\Core\Glob\AST\DirectorySegment.Gen.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.deployment@d026c9b5c5ae\Core\Glob\AST\Segment.Gen.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.deployment@d026c9b5c5ae\Core\Glob\Glob.Gen.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.deployment@d026c9b5c5ae\Core\DeploymentDefinitionServiceExtensions.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.deployment@d026c9b5c5ae\Core\Glob\AST\Identifier.Gen.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.deployment@d026c9b5c5ae\Core\Glob\Parser.Gen.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.deployment@d026c9b5c5ae\Core\Glob\Glob.Statics.Gen.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.deployment@d026c9b5c5ae\Core\Glob\GlobEvaluator.Gen.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.deployment@d026c9b5c5ae\Core\Model\IDeploymentDefinition.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.deployment@d026c9b5c5ae\Core\Glob\AST\SubSegment.Gen.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.deployment@d026c9b5c5ae\Core\Glob\AST\GlobNodeType.Gen.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.deployment@d026c9b5c5ae\Core\Glob\AST\DirectoryWildcard.Gen.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.deployment@d026c9b5c5ae\Core\Glob\AST\CharacterSet.Gen.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.deployment@d026c9b5c5ae\Core\Glob\AST\CharacterWildcard.Gen.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.deployment@d026c9b5c5ae\Core\Glob\GlobPatternException.Gen.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.deployment@d026c9b5c5ae\Core\Glob\GlobExtensions.Gen.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Library\PackageCache\com.unity.services.deployment@3b0f19f59670\Core\Unity.Services.Deployment.Core.asmdef" />
+    <None Include="Library\PackageCache\com.unity.services.deployment@d026c9b5c5ae\Core\Unity.Services.Deployment.Core.asmdef" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="websocket-sharp">
@@ -176,10 +176,6 @@
       <HintPath>Library\PackageCache\com.unity.visualscripting@191c0d7e3b69\Runtime\VisualScripting.Flow\Dependencies\NCalc\Unity.VisualScripting.Antlr3.Runtime.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="System.Runtime.CompilerServices.Unsafe">
-      <HintPath>Library\PackageCache\com.unity.collections@aea9d3bd5e19\Unity.Collections.Tests\System.Runtime.CompilerServices.Unsafe\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
     <Reference Include="Google.VersionHandler">
       <HintPath>Assets\MobileDependencyResolver\Editor\Google.VersionHandler.dll</HintPath>
       <Private>False</Private>
@@ -189,7 +185,7 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="AiEditorToolsSdk">
-      <HintPath>Library\PackageCache\com.unity.ai.toolkit@48a271771d1a\Modules\Sdk\Editor\AiEditorToolsSdk.dll</HintPath>
+      <HintPath>Library\PackageCache\com.unity.ai.toolkit@b9677ce01ef8\Modules\Sdk\Editor\AiEditorToolsSdk.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.VisualScripting.TextureAssets">

@@ -22,14 +22,14 @@ public static class MoveMapper
             // --- Common Fields ---
             GameId = gameId,
             MoveNumber = moveNumber,
-            startX = move.startPosition.x,
-            startY = move.startPosition.y,
-            endX = move.endPosition.x,
-            endY = move.endPosition.y,
+            StartX = move.startPosition.x,
+            StartY = move.startPosition.y,
+            EndX = move.endPosition.x,
+            EndY = move.endPosition.y,
 
             // ใช้ตำแหน่งที่ถูกกินจริงๆ (รองรับ En Passant)
-            capturedX = move.isCapture ? move.capturedPiecePosition.x : 0,
-            capturedY = move.isCapture ? move.capturedPiecePosition.y : 0,
+            CapturedX = move.isCapture ? move.capturedPiecePosition.x : 0,
+            CapturedY = move.isCapture ? move.capturedPiecePosition.y : 0,
 
             PieceType = (int)move.pieceType,
 
@@ -48,7 +48,7 @@ public static class MoveMapper
             // ----------------------------------------------------------------
 
             // --- Flags ---
-            IsCasting = move.isCastling,
+            IsCastling = move.isCastling,
             IsEnPassant = move.isEnPassant,
             IsCapture = move.isCapture,
             IsCheck = move.isCheck,
@@ -59,10 +59,10 @@ public static class MoveMapper
             AlgorithmType = MapAlgorithmTypeToInt((ai != null) ? ai.AlgorithmType : null),
 
             // ✅ ใช้ double ถูกต้องแล้ว
-            aiEvaluationScore = (ai != null) ? (double)ai.Score : 0d,
-            aiDepthSearched = (ai != null) ? ai.Depth : 0,
-            aiNodesEvaluated = (ai != null) ? ai.Nodes : 0,
-            moveTimeMilliseconds = (ai != null) ? ai.MoveTimeMs : 0
+            AiEvaluationScore = (ai != null) ? (int)ai.Score : 0,
+            AiDepthSearched = (ai != null) ? ai.Depth : 0,
+            AiNodesEvaluated = (ai != null) ? ai.Nodes : 0,
+            MoveTimeMilliseconds = (ai != null) ? ai.MoveTimeMs : 0
         };
     }
 

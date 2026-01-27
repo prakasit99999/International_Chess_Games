@@ -1030,6 +1030,7 @@ MonoBehaviour:
   gameAPI: {fileID: 952541192}
   aiPerformanceApi: {fileID: 952541193}
   movesApi: {fileID: 952541191}
+  matchmakingApi: {fileID: 0}
   currentGameId: 0
   moveCount: 0
   drawGamePanel: {fileID: 907175431}
@@ -1044,16 +1045,17 @@ MonoBehaviour:
   txtNameBlack: {fileID: 435745818}
   aiDifficultyWhite: 1
   aiDifficultyBlack: 1
+  aiDifficulty: 1
   isGameStarted: 0
   isWhiteTurn: 0
   isBlackTurn: 0
-  aiDifficulty: 1
   WhitePlayer: 1
   BlackPlayer: 1
   whitePlayerName: White
   blackPlayerName: Black
   isAIMode: 1
   gameIsOver: 0
+  isOnlineMode: 0
 --- !u!114 &246788989
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -93,6 +93,14 @@ public class TileClick : MonoBehaviour
     {
         if (PauseManager.isPaused) return;
         if (ChessBoard.Instance.IsPromoting()) return;
+
+        // ✅ Online Mode Check
+        if (GameManager.Instance.isOnlineMode && !GameManager.Instance.IsMyTurn())
+        {
+            // Debug.Log("ไม่ใช่ตาของคุณ!");
+            return;
+        }
+
         if (boardManager != null)
         {
             boardManager.OnTileClicked(tilePosition);

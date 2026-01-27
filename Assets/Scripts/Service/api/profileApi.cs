@@ -14,18 +14,7 @@ public class profileApi : MonoBehaviour
     public GameObject Lose;
     public GameObject Drawn;
 
-    [System.Serializable]
-    public class ProfileResponse
-    {
-        public string username;
-        public string email;
-        public int rating;
-        public int win;
-        public int lose;
-        public int drawn;
-        public bool Success;
-        public string Message;
-    }
+
     private string apiUrl = "http://localhost:8080/api/User";
 
     private void Awake()
@@ -63,9 +52,9 @@ public class profileApi : MonoBehaviour
             {
                 string responseText = www.downloadHandler.text;
                 ProfileResponse profile = JsonUtility.FromJson<ProfileResponse>(responseText);
-                if (profile != null )
+                if (profile != null)
                 {
-                    SetProfile(profile.username,  profile.rating, profile.win, profile.lose, profile.drawn);
+                    SetProfile(profile.username, profile.rating, profile.win, profile.lose, profile.drawn);
                 }
 
                 else
@@ -82,17 +71,15 @@ public class profileApi : MonoBehaviour
 
     public void SetProfile(string username, int rating, int win, int lose, int drawn)
     {
-        if(UersName == null || Raitng == null || Win == null || Lose == null || Drawn == null)
+        if (UersName == null || Raitng == null || Win == null || Lose == null || Drawn == null)
         {
             Debug.LogError("Profile UI elements are not assigned.");
             return;
         }
-        UersName.GetComponent<Text>().text = username;
-        Raitng.GetComponent<Text>().text = rating.ToString();
-        Win.GetComponent<Text>().text = win.ToString();
-        Lose.GetComponent<Text>().text = lose.ToString();
-        Drawn.GetComponent<Text>().text = drawn.ToString();
+        UersName.GetComponent<TMPro.TextMeshProUGUI>().text = username;
+        Raitng.GetComponent<TMPro.TextMeshProUGUI>().text = rating.ToString();
+        Win.GetComponent<TMPro.TextMeshProUGUI>().text = win.ToString();
+        Lose.GetComponent<TMPro.TextMeshProUGUI>().text = lose.ToString();
+        Drawn.GetComponent<TMPro.TextMeshProUGUI>().text = drawn.ToString();
     }
-
-
 }

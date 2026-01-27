@@ -48,7 +48,7 @@
   <PropertyGroup>
     <ProjectTypeGuids>{E097FAD1-6243-4DAD-9C02-E9B9EFC3FFC1};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <UnityProjectGenerator>Package</UnityProjectGenerator>
-    <UnityProjectGeneratorVersion>2.0.25</UnityProjectGeneratorVersion>
+    <UnityProjectGeneratorVersion>2.0.26</UnityProjectGeneratorVersion>
     <UnityProjectGeneratorStyle>Legacy</UnityProjectGeneratorStyle>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>WebGL:20</UnityBuildTarget>
@@ -61,22 +61,22 @@
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\Tools\BuildPipeline\Unity.SourceGenerators\Unity.UIToolkit.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@3385c108f5c1\Embedded\Editor\com.unity.cloud.common\AppLinking\Core\UrlRedirection\UrlRedirectResult.cs" />
-    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@3385c108f5c1\Embedded\Editor\com.unity.cloud.common\AppLinking\Core\UrlRedirection\UrlRedirectStatus.cs" />
-    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@3385c108f5c1\Embedded\Editor\com.unity.cloud.common\AppLinking\Core\AssemblyInfo.cs" />
-    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@3385c108f5c1\Embedded\Editor\com.unity.cloud.common\AppLinking\Core\UrlRedirection\AsyncUrlRedirectAwaiter.cs" />
-    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@3385c108f5c1\Embedded\Editor\com.unity.cloud.common\AppLinking\Core\UrlRedirection\IUrlRedirectionInterceptor.cs" />
-    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@3385c108f5c1\Embedded\Editor\com.unity.cloud.common\AppLinking\Core\UrlRedirection\IWebAppUrlComposer.cs" />
-    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@3385c108f5c1\Embedded\Editor\com.unity.cloud.common\AppLinking\Core\UrlRedirection\WebAppUrlComposer.cs" />
-    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@3385c108f5c1\Embedded\Editor\com.unity.cloud.common\AppLinking\Core\UrlRedirection\UrlRedirectUtils.cs" />
-    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@3385c108f5c1\Embedded\Editor\com.unity.cloud.common\AppLinking\Core\UrlRedirection\ChannelUrlRedirectionInterceptor.cs" />
-    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@3385c108f5c1\Embedded\Editor\com.unity.cloud.common\AppLinking\Core\AppActivation\IActivatePlatformSupport.cs" />
-    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@3385c108f5c1\Embedded\Editor\com.unity.cloud.common\AppLinking\Core\Models\ProcessId.cs" />
-    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@3385c108f5c1\Embedded\Editor\com.unity.cloud.common\AppLinking\Core\UrlRedirection\IUrlRedirectAwaiter.cs" />
-    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@3385c108f5c1\Embedded\Editor\com.unity.cloud.common\AppLinking\Core\UrlRedirection\IUrlProcessor.cs" />
+    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@77b886928d77\Embedded\Editor\com.unity.cloud.common\AppLinking\Core\UrlRedirection\UrlRedirectResult.cs" />
+    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@77b886928d77\Embedded\Editor\com.unity.cloud.common\AppLinking\Core\UrlRedirection\UrlRedirectStatus.cs" />
+    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@77b886928d77\Embedded\Editor\com.unity.cloud.common\AppLinking\Core\AssemblyInfo.cs" />
+    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@77b886928d77\Embedded\Editor\com.unity.cloud.common\AppLinking\Core\UrlRedirection\AsyncUrlRedirectAwaiter.cs" />
+    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@77b886928d77\Embedded\Editor\com.unity.cloud.common\AppLinking\Core\UrlRedirection\IUrlRedirectionInterceptor.cs" />
+    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@77b886928d77\Embedded\Editor\com.unity.cloud.common\AppLinking\Core\UrlRedirection\IWebAppUrlComposer.cs" />
+    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@77b886928d77\Embedded\Editor\com.unity.cloud.common\AppLinking\Core\UrlRedirection\WebAppUrlComposer.cs" />
+    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@77b886928d77\Embedded\Editor\com.unity.cloud.common\AppLinking\Core\UrlRedirection\UrlRedirectUtils.cs" />
+    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@77b886928d77\Embedded\Editor\com.unity.cloud.common\AppLinking\Core\UrlRedirection\ChannelUrlRedirectionInterceptor.cs" />
+    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@77b886928d77\Embedded\Editor\com.unity.cloud.common\AppLinking\Core\AppActivation\IActivatePlatformSupport.cs" />
+    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@77b886928d77\Embedded\Editor\com.unity.cloud.common\AppLinking\Core\Models\ProcessId.cs" />
+    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@77b886928d77\Embedded\Editor\com.unity.cloud.common\AppLinking\Core\UrlRedirection\IUrlRedirectAwaiter.cs" />
+    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@77b886928d77\Embedded\Editor\com.unity.cloud.common\AppLinking\Core\UrlRedirection\IUrlProcessor.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Library\PackageCache\com.unity.asset-manager-for-unity@3385c108f5c1\Embedded\Editor\com.unity.cloud.common\AppLinking\Core\Unity.Cloud.AppLinking.Embedded.asmdef" />
+    <None Include="Library\PackageCache\com.unity.asset-manager-for-unity@77b886928d77\Embedded\Editor\com.unity.cloud.common\AppLinking\Core\Unity.Cloud.AppLinking.Embedded.asmdef" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="nunit.framework">

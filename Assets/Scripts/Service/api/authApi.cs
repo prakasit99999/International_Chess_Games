@@ -17,45 +17,8 @@ public class authApi : MonoBehaviour
         else { Destroy(gameObject); }
     }
 
-
     //api url
     private string apiUrl = "http://localhost:8080/api/Auth"; // เปลี่ยนเป็น URL ของ API ที่คุณใช้
-
-
-    [System.Serializable]
-    public class LoginData
-    {
-        public string email;
-        public string PasswordHash;
-    }
-   
-
-    [System.Serializable]
-    public class RegisterData
-    {
-        public string username;
-        public string email;
-        public string password;
-    }
-
-    [System.Serializable]
-    public class ApiError
-    {
-        public string message;
-        public bool success;
-    }
-
-    [System.Serializable]
-    public class AuthSuccessResponse
-    {
-        public int userId;
-        public string username;
-        public string email;
-        public string token;
-        public string status;
-        public string message;
-        public bool success;
-    }
 
     public Action<AuthSuccessResponse> OnLoginSuccess;
     public Action<string> OnLoginFailed;
@@ -63,8 +26,6 @@ public class authApi : MonoBehaviour
     public Action<string> OnRegisterFailed;
     public Action OnLogoutSuccess;
     public Action<string> OnLogoutFailed;
-
-
 
     //Interface for LoginRequest
     public IEnumerator LoginRequest(string email, string password)

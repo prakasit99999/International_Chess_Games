@@ -8,7 +8,8 @@
     ],
     "includePlatforms": [],
     "excludePlatforms": [
-        "WebGL"
+        "WebGL",
+        "WindowsStandalone64"
     ],
     "allowUnsafeCode": false,
     "overrideReferences": true,

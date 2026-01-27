@@ -1,9 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using AIEngine.Evaluation;
 using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.TestTools;
-using AIEngine.Evaluation;
 
 [TestFixture]
 public class EvaluationTests
@@ -16,7 +16,7 @@ public class EvaluationTests
         //board.LoadPositionFromFen("rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1");
 
         // Act
-        int score = Evaluation.Evaluate(board);
+        int score = (int)Evaluation.Evaluate(board);
 
         // Assert
         // คะแนนเริ่มต้นควรจะใกล้เคียง 0 (อาจมีค่าบวกเล็กน้อยที่ขาวได้เดินก่อน)
@@ -31,7 +31,7 @@ public class EvaluationTests
         //board.LoadPositionFromFen("rnb1kbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1");
 
         // Act
-        int score = Evaluation.Evaluate(board);
+        int score = (int)Evaluation.Evaluate(board);
 
         // Assert
         // คะแนนควรเป็นบวก และมากกว่า 900 (ค่าของควีน)

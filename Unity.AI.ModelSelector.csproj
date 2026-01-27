@@ -48,7 +48,7 @@
   <PropertyGroup>
     <ProjectTypeGuids>{E097FAD1-6243-4DAD-9C02-E9B9EFC3FFC1};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <UnityProjectGenerator>Package</UnityProjectGenerator>
-    <UnityProjectGeneratorVersion>2.0.25</UnityProjectGeneratorVersion>
+    <UnityProjectGeneratorVersion>2.0.26</UnityProjectGeneratorVersion>
     <UnityProjectGeneratorStyle>Legacy</UnityProjectGeneratorStyle>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>WebGL:20</UnityBuildTarget>
@@ -61,48 +61,50 @@
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\Tools\BuildPipeline\Unity.SourceGenerators\Unity.UIToolkit.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.ModelSelector\Components\ModelTitleCard\DetailsModelTitleCard.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.ModelSelector\Services\Stores\States\MiscModelType.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.ModelSelector\Services\Stores\States\ModelSelector.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.ModelSelector\AssemblyInfo.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.ModelSelector\Utilities\ModalityUtilities.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.ModelSelector\Components\ModelTitleCard\ModelTitleCard.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.ModelSelector\Services\Stores\Actions\Payloads\Payload.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.ModelSelector\Components\SearchBar\SearchBar.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.ModelSelector\Components\ModelSelector\ModelTile.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.ModelSelector\Services\Stores\Slices\ModelSelectorSlice.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.ModelSelector\Services\Stores\States\ModelSelectorFilters.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.ModelSelector\Components\ModelSelector\ModelTileCarousel.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.ModelSelector\Utilities\ProgressUtils.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.ModelSelector\Services\Stores\Selectors\AppSelectors.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.ModelSelector\Utilities\WebUtils.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.ModelSelector\Services\Stores\Actions\ModelSelectorSuperProxyActions.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.ModelSelector\Services\Stores\Selectors\ModelSelectorSelectors.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.ModelSelector\Services\SessionPersistence\AppData.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.ModelSelector\Services\Stores\States\SortMode.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.ModelSelector\Services\Stores\States\ModelSettings.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.ModelSelector\Services\Stores\States\ModelConstants.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.ModelSelector\Windows\ModelSelectorWindow.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.ModelSelector\Components\ModelSelector\ModelView.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.ModelSelector\Utilities\ModelSettingsExtensions.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.ModelSelector\Utilities\GridViewExtensions.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.ModelSelector\Utilities\ModelTitleCardExtensions.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.ModelSelector\Services\Stores\States\Settings.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.ModelSelector\Services\Stores\Actions\ModelSelectorActions.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@2330e449f479\Modules\Unity.AI.ModelSelector\Components\ModelTitleCard\DetailsModelTitleCard.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@2330e449f479\Modules\Unity.AI.ModelSelector\Services\Stores\States\MiscModelType.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@2330e449f479\Modules\Unity.AI.ModelSelector\Services\Stores\States\ModelSelector.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@2330e449f479\Modules\Unity.AI.ModelSelector\AssemblyInfo.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@2330e449f479\Modules\Unity.AI.ModelSelector\Utilities\ModalityUtilities.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@2330e449f479\Modules\Unity.AI.ModelSelector\Components\ModelTitleCard\ModelTitleCard.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@2330e449f479\Modules\Unity.AI.ModelSelector\Services\Stores\Actions\Payloads\Payload.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@2330e449f479\Modules\Unity.AI.ModelSelector\Components\SearchBar\SearchBar.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@2330e449f479\Modules\Unity.AI.ModelSelector\Components\ModelSelector\ModelTile.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@2330e449f479\Modules\Unity.AI.ModelSelector\Services\Stores\Slices\ModelSelectorSlice.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@2330e449f479\Modules\Unity.AI.ModelSelector\Services\Stores\States\ModelSelectorFilters.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@2330e449f479\Modules\Unity.AI.ModelSelector\Components\ModelSelector\ModelTileCarousel.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@2330e449f479\Modules\Unity.AI.ModelSelector\Utilities\ProgressUtils.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@2330e449f479\Modules\Unity.AI.ModelSelector\Services\Stores\Selectors\AppSelectors.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@2330e449f479\Modules\Unity.AI.ModelSelector\Utilities\WebUtils.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@2330e449f479\Modules\Unity.AI.ModelSelector\Services\Stores\Actions\ModelSelectorSuperProxyActions.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@2330e449f479\Modules\Unity.AI.ModelSelector\Services\Stores\Selectors\ModelSelectorSelectors.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@2330e449f479\Modules\Unity.AI.ModelSelector\Services\SessionPersistence\AppData.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@2330e449f479\Modules\Unity.AI.ModelSelector\Services\Stores\States\SortMode.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@2330e449f479\Modules\Unity.AI.ModelSelector\Services\Stores\States\ModelSettings.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@2330e449f479\Modules\Unity.AI.ModelSelector\Services\Stores\States\ModelConstants.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@2330e449f479\Modules\Unity.AI.ModelSelector\Services\Stores\Middleware\FilterCacheClearingMiddleware.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@2330e449f479\Modules\Unity.AI.ModelSelector\Windows\ModelSelectorWindow.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@2330e449f479\Modules\Unity.AI.ModelSelector\Components\ModelSelector\ModelView.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@2330e449f479\Modules\Unity.AI.ModelSelector\Utilities\ModelSettingsExtensions.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@2330e449f479\Modules\Unity.AI.ModelSelector\Utilities\FilterCollectionsCache.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@2330e449f479\Modules\Unity.AI.ModelSelector\Utilities\GridViewExtensions.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@2330e449f479\Modules\Unity.AI.ModelSelector\Utilities\ModelTitleCardExtensions.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@2330e449f479\Modules\Unity.AI.ModelSelector\Services\Stores\States\Settings.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@2330e449f479\Modules\Unity.AI.ModelSelector\Services\Stores\Actions\ModelSelectorActions.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.ModelSelector\Components\ModelSelector\ModelTile.uxml" />
-    <None Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.ModelSelector\Components\ModelTitleCard\DetailsModelTitleCard.uxml" />
-    <None Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.ModelSelector\Components\ModelSelector\ModelView.uss" />
-    <None Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.ModelSelector\Components\ModelTitleCard\ModelTitleCard.uss" />
-    <None Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.ModelSelector\Components\SearchBar\SearchBar.uxml" />
-    <None Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.ModelSelector\Components\ModelSelector\ModelTileCarousel.uxml" />
-    <None Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.ModelSelector\Components\ModelSelector\ModelView.uxml" />
-    <None Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.ModelSelector\Components\ModelTitleCard\ModelTitleCard.uxml" />
-    <None Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.ModelSelector\Unity.AI.ModelSelector.asmdef" />
-    <None Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.ModelSelector\Components\SearchBar\SearchBar.uss" />
-    <None Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.ModelSelector\Components\ModelSelector\ModelTile.uss" />
-    <None Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.ModelSelector\Components\ModelSelector\ModelTileCarousel.uss" />
+    <None Include="Library\PackageCache\com.unity.ai.generators@2330e449f479\Modules\Unity.AI.ModelSelector\Components\ModelSelector\ModelTile.uxml" />
+    <None Include="Library\PackageCache\com.unity.ai.generators@2330e449f479\Modules\Unity.AI.ModelSelector\Components\ModelTitleCard\DetailsModelTitleCard.uxml" />
+    <None Include="Library\PackageCache\com.unity.ai.generators@2330e449f479\Modules\Unity.AI.ModelSelector\Components\ModelSelector\ModelView.uss" />
+    <None Include="Library\PackageCache\com.unity.ai.generators@2330e449f479\Modules\Unity.AI.ModelSelector\Components\ModelTitleCard\ModelTitleCard.uss" />
+    <None Include="Library\PackageCache\com.unity.ai.generators@2330e449f479\Modules\Unity.AI.ModelSelector\Components\SearchBar\SearchBar.uxml" />
+    <None Include="Library\PackageCache\com.unity.ai.generators@2330e449f479\Modules\Unity.AI.ModelSelector\Components\ModelSelector\ModelTileCarousel.uxml" />
+    <None Include="Library\PackageCache\com.unity.ai.generators@2330e449f479\Modules\Unity.AI.ModelSelector\Components\ModelSelector\ModelView.uxml" />
+    <None Include="Library\PackageCache\com.unity.ai.generators@2330e449f479\Modules\Unity.AI.ModelSelector\Components\ModelTitleCard\ModelTitleCard.uxml" />
+    <None Include="Library\PackageCache\com.unity.ai.generators@2330e449f479\Modules\Unity.AI.ModelSelector\Unity.AI.ModelSelector.asmdef" />
+    <None Include="Library\PackageCache\com.unity.ai.generators@2330e449f479\Modules\Unity.AI.ModelSelector\Components\SearchBar\SearchBar.uss" />
+    <None Include="Library\PackageCache\com.unity.ai.generators@2330e449f479\Modules\Unity.AI.ModelSelector\Components\ModelSelector\ModelTile.uss" />
+    <None Include="Library\PackageCache\com.unity.ai.generators@2330e449f479\Modules\Unity.AI.ModelSelector\Components\ModelSelector\ModelTileCarousel.uss" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
@@ -749,10 +751,6 @@
       <HintPath>Library\PackageCache\com.unity.visualscripting@191c0d7e3b69\Runtime\VisualScripting.Flow\Dependencies\NCalc\Unity.VisualScripting.Antlr3.Runtime.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="System.Runtime.CompilerServices.Unsafe">
-      <HintPath>Library\PackageCache\com.unity.collections@aea9d3bd5e19\Unity.Collections.Tests\System.Runtime.CompilerServices.Unsafe\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
     <Reference Include="Google.VersionHandler">
       <HintPath>Assets\MobileDependencyResolver\Editor\Google.VersionHandler.dll</HintPath>
       <Private>False</Private>
@@ -762,7 +760,7 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="AiEditorToolsSdk">
-      <HintPath>Library\PackageCache\com.unity.ai.toolkit@48a271771d1a\Modules\Sdk\Editor\AiEditorToolsSdk.dll</HintPath>
+      <HintPath>Library\PackageCache\com.unity.ai.toolkit@b9677ce01ef8\Modules\Sdk\Editor\AiEditorToolsSdk.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.VisualScripting.TextureAssets">
@@ -1279,6 +1277,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="Unity.AI.Toolkit.Asset.csproj">
+      <Project>{41ACA0B5-11ED-121A-ED04-F30F5245A235}</Project>
+      <Name>Unity.AI.Toolkit.Asset</Name>
+    </ProjectReference>
     <ProjectReference Include="Unity.AI.Generators.Contexts.csproj">
       <Project>{2ABC9B46-D496-715A-88DC-ECCEDAF90C8D}</Project>
       <Name>Unity.AI.Generators.Contexts</Name>
@@ -1295,6 +1297,10 @@
       <Project>{F7C36FC2-4D9E-549F-E681-C25161CC7A29}</Project>
       <Name>Unity.AI.Generators.UI</Name>
     </ProjectReference>
+    <ProjectReference Include="Unity.AI.Generators.IO.csproj">
+      <Project>{51A37437-B452-4ADD-7EC7-19706B20DDDF}</Project>
+      <Name>Unity.AI.Generators.IO</Name>
+    </ProjectReference>
     <ProjectReference Include="Unity.AI.Generators.Sdk.csproj">
       <Project>{96A80B80-8619-1B4C-2B74-16123411CE28}</Project>
       <Name>Unity.AI.Generators.Sdk</Name>
@@ -1306,6 +1312,10 @@
     <ProjectReference Include="Unity.AI.Toolkit.Accounts.csproj">
       <Project>{4BDC25F4-E335-4255-654E-429EE6E2AA54}</Project>
       <Name>Unity.AI.Toolkit.Accounts</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.AI.Toolkit.Utility.csproj">
+      <Project>{DABD4814-2C60-940D-9652-2D5CBD622DBA}</Project>
+      <Name>Unity.AI.Toolkit.Utility</Name>
     </ProjectReference>
     <ProjectReference Include="UnityEditor.UI.csproj">
       <Project>{698D6ACB-27E6-6733-2BA7-B76006C8ED47}</Project>

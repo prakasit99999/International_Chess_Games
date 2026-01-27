@@ -1,6 +1,8 @@
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using AIEngine.Evaluation;
 using AIEngine.Utilities;
 namespace AIEngine.Algorithms
 {
@@ -13,6 +15,7 @@ namespace AIEngine.Algorithms
         // 3. History Heuristic: เก็บข้อมูล จาก (x,y) ไป (x,y)
         private int[,,,] _historyMoves;
         // ค่าคงที่สำหรับความลึกสูงสุด (เพื่อกำหนดขนาด Array)
+
         private const int MaxSearchDepth = 20;
 
         private const int TimeLimitMs = 10000;
@@ -27,27 +30,29 @@ namespace AIEngine.Algorithms
         private int _nodesEvaluated = 0;
         private int _actualDepth = 0;
 
-        public override MoveModel FindBestMove(ChessBoardModel board, int maxDepth)
+        public override MoveModel FindBestMove(ChessBoardModel board, int maxDepth, EvaluationSettings settings = null)
         {
-            var result = FindBestMoveWithMetrics(board, maxDepth);
+            var result = FindBestMoveWithMetrics(board, maxDepth, settings);
             return result.Move;
         }
 
-        public override SearchResult FindBestMoveWithMetrics(ChessBoardModel board, int maxDepth)
+        public override SearchResult FindBestMoveWithMetrics(ChessBoardModel board, int maxDepth, EvaluationSettings settings = null)
         {
             _nodesEvaluated = 0;
             _actualDepth = 0;
             var stopwatch = Stopwatch.StartNew();
             MoveModel bestMove = null;
+            List<MoveModel> bestMoves = new List<MoveModel>();
             int bestScore = 0;
             int currentDepth = 1;
 
             while (currentDepth <= maxDepth && stopwatch.Elapsed.TotalMilliseconds < TimeLimitMs)
             {
-                var (iterativeBest, iterativeBestScore) = AlphaBetaSearch(board, currentDepth, stopwatch, bestMove);
-                if (iterativeBest != null)
+                var (iterativeBests, iterativeBestScore) = AlphaBetaSearch(board, currentDepth, stopwatch, bestMove, settings);
+                if (iterativeBests != null && iterativeBests.Count > 0)
                 {
-                    bestMove = iterativeBest;
+                    bestMoves = iterativeBests;
+                    bestMove = bestMoves.First();
                     bestScore = iterativeBestScore;
                     _actualDepth = currentDepth;
                 }
@@ -56,11 +61,13 @@ namespace AIEngine.Algorithms
 
             stopwatch.Stop();
             var elapsedMs = (float)stopwatch.Elapsed.TotalMilliseconds;
-            var move = bestMove ?? MoveGenerator.GenerateMoves(board).FirstOrDefault()
-                    ?? throw new InvalidOperationException("No valid moves found.");
+            var moves = MoveGenerator.GenerateMoves(board);
+            var finalMove = bestMoves.Count > 0
+                ? bestMoves[new Random().Next(bestMoves.Count)]
+                : (moves.FirstOrDefault() ?? throw new InvalidOperationException("No valid moves found."));
             return new SearchResult
             {
-                Move = move,
+                Move = finalMove,
                 Depth = _actualDepth,
                 NodesEvaluated = _nodesEvaluated,
                 TimeMs = elapsedMs,
@@ -69,14 +76,14 @@ namespace AIEngine.Algorithms
             };
         }
 
-        private (MoveModel, int) AlphaBetaSearch(ChessBoardModel board, int depth, Stopwatch stopwatch, MoveModel previousBest)
+        private (List<MoveModel>, int) AlphaBetaSearch(ChessBoardModel board, int depth, Stopwatch stopwatch, MoveModel previousBest, EvaluationSettings settings)
         {
             // [แก้ไข 1] ส่ง _killerMoves และ _historyMoves เข้าไปให้ MoveOrderer
             // สังเกตว่าผมส่ง null แทน ttMove ในพารามิเตอร์ที่ 3 เพราะเราใช้ previousBest เป็นตัวนำทางใน Root แล้ว
             var moves = MoveGenerator.GenerateMoves(board);
             MoveOrderer.OrderMoves(moves, board, previousBest, GetKillers(0), _historyMoves);
             int bestScore = int.MinValue;
-            MoveModel bestMove = null;
+            List<MoveModel> bestMoves = new List<MoveModel>();
 
             int alpha = int.MinValue;
             int beta = int.MaxValue;
@@ -92,13 +99,18 @@ namespace AIEngine.Algorithms
                 if (newBoard.RepetitionCount >= 3)
                     score = 0; // draw
                 else
-                    // [แก้ไข 2] เพิ่มพารามิเตอร์ ply = 0 (เลข 0 หลัง false)
-                    score = AlphaBetaRecursive(newBoard, depth - 1, alpha, beta, !board.IsWhiteTurn, 1, stopwatch);
+                    // [แก้ไข 2] เพิ่มพารามิเตอร์ ply = 1 และ settings
+                    score = AlphaBetaRecursive(newBoard, depth - 1, alpha, beta, !board.IsWhiteTurn, 1, stopwatch, settings);
 
                 if (score > bestScore)
                 {
                     bestScore = score;
-                    bestMove = move;
+                    bestMoves.Clear();
+                    bestMoves.Add(move);
+                }
+                else if (score == bestScore)
+                {
+                    bestMoves.Add(move);
                 }
 
                 alpha = Math.Max(alpha, bestScore);
@@ -106,7 +118,7 @@ namespace AIEngine.Algorithms
                 if (alpha >= beta)
                     break;
             }
-            return (bestMove, bestScore); ;
+            return (bestMoves, bestScore);
         }
 
         // Helper: ดึงท่า Killer เฉพาะของ Ply ปัจจุบันออกมาเป็น Array 1 มิติ
@@ -119,7 +131,7 @@ namespace AIEngine.Algorithms
             return new MoveModel[] { _killerMoves[ply, 0], _killerMoves[ply, 1] };
         }
 
-        private int AlphaBetaRecursive(ChessBoardModel board, int depth, int alpha, int beta, bool maximizingPlayer, int ply, Stopwatch stopwatch)
+        private int AlphaBetaRecursive(ChessBoardModel board, int depth, int alpha, int beta, bool maximizingPlayer, int ply, Stopwatch stopwatch, EvaluationSettings settings)
         {
             _nodesEvaluated++; // นับ node ที่ evaluate
 
@@ -129,7 +141,7 @@ namespace AIEngine.Algorithms
             if (board.IsGameOver())
             {
                 // ✅ Evaluation() ของคุณ normalize อยู่แล้ว ไม่ต้องคูณ maximizingPlayer
-                return AIEngine.Evaluation.Evaluation.Evaluate(board);
+                return (int)AIEngine.Evaluation.Evaluation.Evaluate(board, settings);
             }
 
             // ✅ threefold repetition -> draw
@@ -145,19 +157,19 @@ namespace AIEngine.Algorithms
                 {
                     // TT hit - ยังคงนับเป็น node (เพราะเคย evaluate มาแล้ว)
                     if (entry.Flag == TTEntry.TTFlag.Exact)
-                        return entry.Score;
+                        return (int)entry.Score;
 
                     // ถ้าเป็น LowerBound (ค่าจริงอาจสูงกว่านี้) และค่าที่เก็บไว้มันสูงกว่า Beta -> ตัดจบได้
                     if (entry.Flag == TTEntry.TTFlag.LowerBound)
-                        alpha = Math.Max(alpha, entry.Score);
+                        alpha = (int)Math.Max(alpha, entry.Score);
 
                     // ถ้าเป็น UpperBound (ค่าจริงอาจต่ำกว่านี้) และค่าที่เก็บไว้มันต่ำกว่า Alpha -> ตัดจบได้
                     else if (entry.Flag == TTEntry.TTFlag.UpperBound)
-                        beta = Math.Min(beta, entry.Score);
+                        beta = (int)Math.Min(beta, entry.Score);
 
                     // ถ้า Alpha >= Beta แสดงว่าเราตัดจบได้
                     if (alpha >= beta)
-                        return entry.Score;
+                        return (int)entry.Score;
                 }
             }
 
@@ -165,7 +177,7 @@ namespace AIEngine.Algorithms
             if (depth <= 0)
             {
                 // ส่ง null ไปในตัวสุดท้าย เพราะ Quiescence ไม่ได้คืนค่า BestMove
-                var score = QuiescenceSearch(board, alpha, beta, maximizingPlayer, stopwatch);
+                var score = QuiescenceSearch(board, alpha, beta, maximizingPlayer, stopwatch, settings);
                 _tt.Store(board.ZobristKey, depth, score, TTEntry.TTFlag.Exact, null);
                 return score;
             }
@@ -184,7 +196,7 @@ namespace AIEngine.Algorithms
                 var newBoard = board.Clone();
                 newBoard.MakeMove(move);
 
-                int value = AlphaBetaRecursive(newBoard, depth - 1, alpha, beta, !maximizingPlayer, ply + 1, stopwatch);
+                int value = AlphaBetaRecursive(newBoard, depth - 1, alpha, beta, !maximizingPlayer, ply + 1, stopwatch, settings);
 
                 if (maximizingPlayer)
                 {
@@ -237,7 +249,7 @@ namespace AIEngine.Algorithms
             return bestValue;
         }
 
-        private int QuiescenceSearch(ChessBoardModel board, int alpha, int beta, bool maximizingPlayer, Stopwatch stopwatch)
+        private int QuiescenceSearch(ChessBoardModel board, int alpha, int beta, bool maximizingPlayer, Stopwatch stopwatch, EvaluationSettings settings)
         {
             _nodesEvaluated++; // นับ node ใน quiescence search ด้วย
 
@@ -245,18 +257,18 @@ namespace AIEngine.Algorithms
             {
                 return 0;
             }
-            var standPat = AIEngine.Evaluation.Evaluation.Evaluate(board);
+            var standPat = AIEngine.Evaluation.Evaluation.Evaluate(board, settings);
 
             if (maximizingPlayer)
             {
                 if (standPat >= beta) return beta;
-                if (standPat > alpha) alpha = standPat;
+                if (standPat > alpha) alpha = (int)standPat;
             }
             else
             {
                 // ฝั่ง Min ต้องพยายามลดค่า Beta และเช็ค Alpha Cutoff
                 if (standPat <= alpha) return alpha;
-                if (standPat < beta) beta = standPat;
+                if (standPat < beta) beta = (int)standPat;
             }
 
             var captures = MoveGenerator.GenerateMoves(board)
@@ -270,7 +282,7 @@ namespace AIEngine.Algorithms
 
                 var newBoard = board.Clone();
                 newBoard.MakeMove(move);
-                int score = QuiescenceSearch(newBoard, alpha, beta, !maximizingPlayer, stopwatch);
+                int score = QuiescenceSearch(newBoard, alpha, beta, !maximizingPlayer, stopwatch, settings);
 
                 if (maximizingPlayer)
                 {

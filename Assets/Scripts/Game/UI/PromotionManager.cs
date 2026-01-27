@@ -20,7 +20,7 @@ public class PromotionManager : MonoBehaviour
     {
         if (Instance == null)
         {
-            
+
             Instance = this;
             historyMove = FindObjectOfType<HistoryMove>();
 
@@ -69,6 +69,22 @@ public class PromotionManager : MonoBehaviour
             return;
         }
         selectedPawn = pawn;
+
+        // 🔹 ตรวจสอบว่าเป็น AI หรือไม่
+        bool isAI = false;
+        if (pawn.team == ChessPiece.Team.White && GameManager.Instance.WhitePlayer == GameManager.PlayerType.AI)
+            isAI = true;
+        else if (pawn.team == ChessPiece.Team.Black && GameManager.Instance.BlackPlayer == GameManager.PlayerType.AI)
+            isAI = true;
+
+        // 🔹 ถ้าเป็น AI ให้เลือก Queen อัตโนมัติเลย ไม่ต้องโชว์เมนู
+        if (isAI)
+        {
+            Debug.Log($"🤖 AI ({pawn.team}) Auto-Promote -> Queen");
+            OnPromotionButtonClicked(4); // 4 = Queen
+            return;
+        }
+
         //Debug.Log($"🔼 แสดงเมนูเลื่อนขั้นสำหรับ {pawn.team} Pawn");
 
         if (pawn.team == ChessPiece.Team.White)
