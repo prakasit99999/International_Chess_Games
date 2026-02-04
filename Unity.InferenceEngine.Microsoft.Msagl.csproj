@@ -274,8 +274,8 @@
     <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Routing\Visibility\BimodalSequence.cs" />
     <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Routing\Rectilinear\SegmentIntersector.cs" />
     <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Routing\Rectilinear\GroupBoundaryCrossingMap.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Routing\Spline\Bundling\IMetroMapOrderingAlgorithm.cs" />
     <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Core\ProjectionSolver\Solver.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Routing\Spline\Bundling\IMetroMapOrderingAlgorithm.cs" />
     <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Routing\Spline\Bundling\HubDebugger.cs" />
     <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Core\ProjectionSolver\Variable.cs" />
     <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\ThirdParty\Microsoft.Msagl\Core\Geometry\Curves\IFunction.cs" />

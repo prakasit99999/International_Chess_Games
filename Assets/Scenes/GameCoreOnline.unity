@@ -858,8 +858,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 1c7e563a269859945ae67bdf14b9c47c, type: 3}
   - {fileID: 21300000, guid: 2df6e591541e179469d6f7ec4a57c28c, type: 3}
   selectedPawn: {fileID: 0}
-  promotionManager: {fileID: 0}
-  isNetworkMove: 0
+  promotionManager: {fileID: 1485057628}
   promotionFrom: 0
   promotionPosition: {x: 0, y: 0}
   position: {x: 0, y: 0}
@@ -1703,10 +1702,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8661f5444ac3d0843955a3518bc72faa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveEntryPrefab: {fileID: 2905145958509295256, guid: b14de2676c91fdd4a8b5392312c1861f, type: 3}
+  moveEntryPrefab: {fileID: 2905145958509295256, guid: 9248c523a3089264991b2f39605d9abd, type: 3}
   playerTurnText: {fileID: 822433103}
   contentParent: {fileID: 933402962}
-  scrollRect: {fileID: 0}
+  scrollRect: {fileID: 1459895133}
 --- !u!1 &443562214
 GameObject:
   m_ObjectHideFlags: 0
@@ -4377,6 +4376,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1177357488}
   - component: {fileID: 1177357487}
+  - component: {fileID: 1177357489}
   m_Layer: 0
   m_Name: HistoryManager
   m_TagString: Untagged
@@ -4411,6 +4411,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1177357489
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1177357486}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0c3cf5f03b595a459d521b727f91cf1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: GameAssembly::UndoMove
+  piecePrefab: {fileID: 0}
+  HistoryMove: {fileID: 1177357487}
 --- !u!1 &1217341849
 GameObject:
   m_ObjectHideFlags: 0

@@ -21,13 +21,12 @@ public class UserAPI : MonoBehaviour
         }
     }
 
-    public IEnumerator UpdateStatus(int userId, string status, Action<bool, string> callback)
+    public IEnumerator UpdateStatus(string status, Action<bool, string> callback)
     {
         string url = $"{baseUrl}/status"; // Corresponds to [HttpPut("status")]
 
         UpdateStatusRequest requestData = new UpdateStatusRequest
         {
-            userId = userId,
             status = status
         };
 
@@ -47,6 +46,17 @@ public class UserAPI : MonoBehaviour
             }
 
             yield return request.SendWebRequest();
+
+            if (request.responseCode == 401)
+            {
+                Debug.LogWarning("Unauthorized (401). Redirecting to login...");
+                if (authApi.Instance != null)
+                {
+                    authApi.Instance.ForceLogout();
+                }
+                yield break;
+            }
+
 
             if (request.result == UnityWebRequest.Result.Success)
             {
@@ -69,6 +79,108 @@ public class UserAPI : MonoBehaviour
             {
                 Debug.LogError($"UpdateStatus Error: {request.error}");
                 callback(false, request.error);
+            }
+        }
+    }
+
+    /// ดึงรายชื่อผู้เล่นทั้งหมด
+    public IEnumerator GetAllUsers(Action<PlayerSearchDto[]> onSuccess, Action<string> onError = null)
+    {
+        string url = $"{baseUrl}/all";
+        string token = PlayerPrefs.GetString("auth_token", "");
+
+        using (UnityWebRequest request = UnityWebRequest.Get(url))
+        {
+            if (!string.IsNullOrEmpty(token))
+            {
+                request.SetRequestHeader("Authorization", "Bearer " + token);
+            }
+
+            yield return request.SendWebRequest();
+
+            if (request.responseCode == 401)
+            {
+                Debug.LogWarning("Unauthorized (401). Redirecting to login...");
+                if (authApi.Instance != null)
+                {
+                    authApi.Instance.ForceLogout();
+                }
+                yield break;
+            }
+
+
+            if (request.result == UnityWebRequest.Result.Success)
+            {
+                string responseText = request.downloadHandler.text;
+                Debug.Log($"📥 GetAllUsers Response: {responseText}");
+
+                string wrappedJson = "{\"items\":" + responseText + "}";
+                PlayerSearchWrapper wrapper = JsonUtility.FromJson<PlayerSearchWrapper>(wrappedJson);
+
+                if (wrapper != null && wrapper.items != null)
+                {
+                    onSuccess?.Invoke(wrapper.items);
+                }
+                else
+                {
+                    onError?.Invoke("Failed to parse users data.");
+                }
+            }
+            else
+            {
+                Debug.LogError($"GetAllUsers Error: {request.error}");
+                onError?.Invoke(request.error);
+            }
+        }
+    }
+
+    /// ค้นหาผู้เล่นจาก Username
+    public IEnumerator SearchUsers(string username, Action<PlayerSearchDto[]> onSuccess, Action<string> onError = null)
+    {
+        string url = $"{baseUrl}/search?query={UnityWebRequest.EscapeURL(username)}";
+        string token = PlayerPrefs.GetString("auth_token", "");
+
+        using (UnityWebRequest request = UnityWebRequest.Get(url))
+        {
+            if (!string.IsNullOrEmpty(token))
+            {
+                request.SetRequestHeader("Authorization", "Bearer " + token);
+            }
+
+            yield return request.SendWebRequest();
+
+            if (request.responseCode == 401)
+            {
+                Debug.LogWarning("Unauthorized (401). Redirecting to login...");
+                if (authApi.Instance != null)
+                {
+                    authApi.Instance.ForceLogout();
+                }
+                yield break;
+            }
+
+
+            if (request.result == UnityWebRequest.Result.Success)
+            {
+                string responseText = request.downloadHandler.text;
+                Debug.Log($"📥 SearchUsers Response: {responseText}");
+
+                string wrappedJson = "{\"items\":" + responseText + "}";
+                PlayerSearchWrapper wrapper = JsonUtility.FromJson<PlayerSearchWrapper>(wrappedJson);
+
+                if (wrapper != null && wrapper.items != null)
+                {
+                    onSuccess?.Invoke(wrapper.items);
+                }
+                else
+                {
+                    onError?.Invoke("Failed to parse search results.");
+                }
+            }
+            else
+            {
+                Debug.LogError($"SearchUsers Error: {request.error}");
+                onError?.Invoke(request.error);
             }
         }
     }

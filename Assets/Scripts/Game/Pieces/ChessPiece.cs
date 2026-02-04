@@ -37,12 +37,6 @@ public class ChessPiece : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
     //Set
     public void SetBoardManager(ChessBoard manager)
     {
@@ -60,9 +54,11 @@ public class ChessPiece : MonoBehaviour
     private void OnMouseDown()
     {
         if (ChessBoard.Instance.IsPromoting()) return;
-        if (boardManager != null)
+
+        // ✅ ให้ GameManager ตรวจสอบสิทธิ์ก่อน (Online/Local/Turn)
+        if (GameManager.Instance != null)
         {
-            boardManager.SelectPiece(this);
+            GameManager.Instance.TrySelectPiece(this);
         }
     }
 

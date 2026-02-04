@@ -30,7 +30,7 @@ public class authApi : MonoBehaviour
     //Interface for LoginRequest
     public IEnumerator LoginRequest(string email, string password)
     {
-        var jsonData = JsonUtility.ToJson(new LoginData { email = email, PasswordHash = password });
+        var jsonData = JsonUtility.ToJson(new LoginData { email = email, password = password });
 
         using (UnityWebRequest www = new UnityWebRequest(apiUrl + "/login", UnityWebRequest.kHttpVerbPOST))
         {
@@ -141,4 +141,20 @@ public class authApi : MonoBehaviour
 
 
 
+    public void ForceLogout()
+    {
+        Debug.LogWarning("Token expired or unauthorized. Forcing logout.");
+
+        // ล้างข้อมูลที่บันทึกไว้
+        PlayerPrefs.DeleteKey("auth_token");
+        PlayerPrefs.DeleteKey("user_id");
+        PlayerPrefs.DeleteKey("username");
+        PlayerPrefs.DeleteKey("email");
+        PlayerPrefs.DeleteKey("status");
+        PlayerPrefs.Save();
+
+        // เปลี่ยนหน้าไปที่หน้า Login
+        SceneManager.LoadScene("Onlinelogin");
+    }
 }
+

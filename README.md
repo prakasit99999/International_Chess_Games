@@ -1,9 +1,10 @@
 # International_Chess_Games
 
-## โครงสร้างโฟลเดอร์และไฟล์
+> อ้างอิงจากโฟลเดอร์จริง `Assets/Scripts` ในโปรเจกต์
 
 ```
 scripts/
+├── GameAssembly.asmdef                          # Assembly definition ของเกมหลัก
 ├── AIEngine/                                    # ระบบ AI สำหรับหมากรุก
 │   ├── Adapters/                                # ตัวกลางเชื่อมต่อ (Adapters)
 │   │   └── UnityAIBoardAdapter.cs
@@ -17,14 +18,14 @@ scripts/
 │   ├── Evaluation/                              # ระบบประเมินค่าตำแหน่ง
 │   │   ├── Evaluation.cs
 │   │   └── EvaluationSettings.cs
-│   ├── Interfaces/                              # อินเทอร์เฟซ
+│   ├── Interfaces/                              # อินเทอร์เฟซของ AI
 │   │   └── IChessAI.cs
-│   ├── Models/                                  # โมเดลข้อมูล
+│   ├── Models/                                  # โมเดลข้อมูลภายใน AI
 │   │   ├── ChessBoardModel.cs
 │   │   ├── MoveModel.cs
 │   │   ├── MoveRecord.cs
 │   │   └── MoveState.cs
-│   └── Utilities/                               # เครื่องมือช่วยเหลือ
+│   └── Utilities/                               # เครื่องมือและยูทิลิตี้ของ AI
 │       ├── AiPerformanceData.cs
 │       ├── BoardConverter.cs
 │       ├── MoveGenerator.cs
@@ -33,47 +34,59 @@ scripts/
 │       ├── TranspositionTable.cs
 │       ├── TTEntry.cs
 │       └── Zobrist.cs
-├── DTO/                                         # Data Transfer Objects
+├── DTO/                                         # Data Transfer Objects (ใช้สื่อสารกับ API/ระบบอื่น)
 │   ├── AuthDTOs.cs
 │   ├── GameDTOs.cs
+│   ├── InviteDTOs.cs
+│   ├── LeaderboardDTOs.cs
 │   ├── MatchDTOs.cs
-│   └── MoveDtos.cs
+│   ├── MoveDtos.cs
+│   └── UserDTOs.cs
 ├── Game/                                        # ระบบเกมหลัก
 │   ├── Core/                                    # ระบบหลักของเกม
 │   │   ├── ChessBoard.cs
 │   │   ├── GameManager.cs
+│   │   ├── MoveResult.cs
 │   │   ├── PauseManager.cs
 │   │   └── SettingManager.cs
-│   ├── Mechanics/                               # กลไกการเล่น
+│   ├── Mechanics/                               # กลไกการเล่นและการเดินหมาก
 │   │   ├── HistoryMove.cs
 │   │   ├── TileClick.cs
 │   │   └── UndoMove.cs
-│   ├── OnlieUI/                                 # UI สำหรับเกมออนไลน์
-│   │   └── UI/
+│   ├── Onlie/                                   # ระบบออนไลน์ของเกม
+│   │   ├── Managers/                            
+│   │   │   ├── LeaderboardManager.cs
+│   │   │   ├── MatchmakingManager.cs
+│   │   │   └── PlayerSearchManager.cs
+│   │   └── UI/                                  # UI สำหรับโหมดออนไลน์
 │   │       ├── GameResultUI.cs
+│   │       ├── LeaderboardRowUI.cs
 │   │       ├── LoginUi.cs
 │   │       ├── LogutUi.cs
-│   │       ├── MatchmakingManager.cs
 │   │       ├── MatchmakingUi.cs
+│   │       ├── PlayerRowUI.cs
 │   │       └── RankingUI.cs
 │   ├── Pieces/                                  # ตัวหมากรุก
 │   │   └── ChessPiece.cs
-│   └── UI/                                      # UI หลัก
+│   └── UI/                                      # UI หลักของเกมออฟไลน์/ทั่วไป
 │       ├── HistoryMoveUI.cs
 │       └── PromotionManager.cs
-├── Menu/                                        # เมนูหลัก
+├── Menu/                                        # เมนูหลักของเกม
 │   └── MainMenuController.cs
-├── Networking/                                  # ระบบเครือข่าย
+├── Networking/                                  # ระบบเครือข่ายของเกม
 │   └── GameNetworkHandler.cs
-├── Service/                                     # บริการ API
+├── Service/                                     # เลเยอร์บริการเรียก API ฝั่งไคลเอนต์
 │   └── api/
 │       ├── AiPerformanceAPI.cs
 │       ├── authApi.cs
 │       ├── GameAPI.cs
+│       ├── LeaderboardApi.cs
 │       ├── MatchmakingApi.cs
 │       ├── MovesAPI.cs
-│       └── profileApi.cs
-└── Utils/                                       # เครื่องมือช่วยเหลือทั่วไป
+│       ├── profileApi.cs
+│       ├── rankingAPI.cs
+│       └── UserAPI.cs
+└── Utils/                                       # ยูทิลิตี้ทั่วไปของเกม
     ├── CameraDebug.cs
     └── MoveMapper.cs
 ```

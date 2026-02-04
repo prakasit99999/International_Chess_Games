@@ -27,9 +27,9 @@ public class ChessBoardModel
     public bool IsWhiteTurn { get; set; }
     public bool WhiteKingMoved { get; set; }     // Castling Flags
     public bool WhiteRookKingSideMoved { get; set; }
-    public bool WhiteRookQueenSideMoved { get; private set; }
+    public bool WhiteRookQueenSideMoved { get; set; }
     public bool BlackKingMoved { get; set; }
-    public bool BlackRookKingSideMoved { get; private set; }
+    public bool BlackRookKingSideMoved { get; set; }
     public bool BlackRookQueenSideMoved { get; set; }
     public enum CastleIndex { WK = 0, WQ = 1, BK = 2, BQ = 3 }
     public Square? EnPassantTarget { get; set; }   // En Passant
@@ -402,7 +402,6 @@ public class ChessBoardModel
 
         return newBoard;
     }
-
     // เพิ่มเมธอด Clone พิเศษสำหรับการตรวจสอบการโจมตี
     public ChessBoardModel CloneWithTurn(bool isWhiteTurn)
     {
@@ -421,6 +420,7 @@ public class ChessBoardModel
             _positionCounts[key] = 1;
         Debug.WriteLine($"Pushed position: {key}, Count: {_positionCounts[key]}");
     }
+
     public void PopLastPosition()
     {
         if (_positionHistory == null || _positionHistory.Count == 0) return;
@@ -432,12 +432,14 @@ public class ChessBoardModel
         }
         _positionHistory.RemoveAt(_positionHistory.Count - 1);
     }
+
     public void InitializePositionHistory()
     {
         _positionHistory = new List<ulong>();
         _positionCounts = new Dictionary<ulong, int>();
         RecordPosition();     // บันทึกสถานะเริ่มต้นด้วย
     }
+
     public void RecordPosition()
     {
         ulong key = ZobristKey;
@@ -530,7 +532,7 @@ public class ChessBoardModel
             //RecordPosition();
             // ======== บันทึกตำแหน่งใหม่หลังจากเดินหมาก ========
             PushCurrentPosition();
-        DebugCheckZobrist("MakeMoveUnsafe end");
+            DebugCheckZobrist("MakeMoveUnsafe end");
         }
         catch (Exception ex)
         {
@@ -549,17 +551,13 @@ public class ChessBoardModel
         int piece = rec.MovedPiece;
         int captured = rec.CapturedPiece;
 
-        // ============================
         // 1) Flip turn back
-        // ============================
         IsWhiteTurn = !IsWhiteTurn;
 
         // side-to-move was XOR'ed BEFORE MakeMove()
         ZobristKey ^= Zobrist.SideToMove;
 
-        // ============================
         // 2) Undo EnPassantTarget hash (current)
-        // ============================
         if (EnPassantTarget.HasValue)
             ZobristKey ^= Zobrist.EnPassantFile[EnPassantTarget.Value.Y];
 
@@ -569,9 +567,7 @@ public class ChessBoardModel
         if (EnPassantTarget.HasValue)
             ZobristKey ^= Zobrist.EnPassantFile[EnPassantTarget.Value.Y];
 
-        // ============================
         // 3) Undo Promotion
-        // ============================
         if (rec.WasPromotion)
         {
             // remove promoted piece
@@ -582,10 +578,7 @@ public class ChessBoardModel
             ZobristKey ^= Zobrist.PieceSquare[tx, ty, Zobrist.PieceToIndex(rec.MovedPiece)];
         }
 
-        // ============================
         // 4) Undo King / Rook movement (Castling)
-        // ============================
-
         bool isWhite = rec.MovedPiece > 0;
 
         // ← King moved? might be castling
@@ -636,26 +629,17 @@ public class ChessBoardModel
             }
         }
 
-        // ============================
         // 5) Remove piece from new square
-        // ============================
         if (!rec.WasPromotion)
         {
             ZobristKey ^= Zobrist.PieceSquare[tx, ty, Zobrist.PieceToIndex(piece)];
         }
-
-        // ============================
         // 6) Restore piece to old square
-        // ============================
         Board[tx, ty] = 0;
         Board[px, py] = piece;
 
         ZobristKey ^= Zobrist.PieceSquare[px, py, Zobrist.PieceToIndex(piece)];
-
-        // ============================
         // 7) Restore captured piece (normal or en-passant)
-        // ============================
-
         if (rec.EnPassantCapture)
         {
             int cx = rec.EnPassantCapturedX;
@@ -671,11 +655,7 @@ public class ChessBoardModel
 
             ZobristKey ^= Zobrist.PieceSquare[tx, ty, Zobrist.PieceToIndex(captured)];
         }
-
-        // ============================
         // 8) Restore Castling Rights
-        // ============================
-
         // WHITE
         WhiteKingMoved = rec.PrevWhiteKingMoved;
         WhiteRookKingSideMoved = rec.PrevWhiteRookKingMoved;
@@ -685,10 +665,7 @@ public class ChessBoardModel
         BlackKingMoved = rec.PrevBlackKingMoved;
         BlackRookKingSideMoved = rec.PrevBlackRookKingMoved;
         BlackRookQueenSideMoved = rec.PrevBlackRookQueenMoved;
-
-        // ============================
         // 9) Update Zobrist key for castling rights
-        // ============================
         // mask ก่อน (ค่าที่อยู่ใน rec — สร้างจากค่า prev flags ที่เก็บไว้ตอน MakeMove)
         int prevMask = 0;
         if (!rec.PrevWhiteKingMoved && !rec.PrevWhiteRookKingMoved) prevMask |= 1;
@@ -702,7 +679,7 @@ public class ChessBoardModel
         // XOR เฉพาะบิตที่ต่าง (prevMask XOR currentMask)
         int diff = prevMask ^ currentMask;
         XORCastling(diff);
-        
+
     }
 
     public void UndoMoveUnsafe()
@@ -785,8 +762,9 @@ public class ChessBoardModel
 
         // 8. สลับตาเล่นกลับคืน
         IsWhiteTurn = !IsWhiteTurn;
-    DebugCheckZobrist("UndoMoveUnsafe end");
+        DebugCheckZobrist("UndoMoveUnsafe end");
     }
+
     public MoveRecord MakeMove(MoveModel move)
     {
         var record = new MoveRecord
@@ -815,52 +793,30 @@ public class ChessBoardModel
         int targetPiece = Board[tx, ty]; // Read before any modifications
         int captured = targetPiece;
 
-        // ============================
         // 1) XOR castling rights (old mask) - same as MakeMoveUnsafe
-        // ============================
         int oldMask = GetCastlingMask();
         XORCastling(oldMask);
-
-        // ============================
         // 2) Remove EnPassant hash (old) - same as MakeMoveUnsafe
-        // ============================
         if (EnPassantTarget.HasValue)
             ZobristKey ^= Zobrist.EnPassantFile[EnPassantTarget.Value.Y];
 
-        // ============================
-        // 3) XOR side-to-move BEFORE move
-        // ============================
-        ZobristKey ^= Zobrist.SideToMove;
-
-        // ============================
-        // 4) Remove the piece from old square
-        // ============================
+        // 3) Remove the piece from old square
         if (piece != 0)
         {
             ZobristKey ^= Zobrist.PieceSquare[px, py, Zobrist.PieceToIndex(piece)];
         }
-
-        // ============================
-        // 5) XOR out captured piece from destination (if any) - same as MakeMoveUnsafe
-        // ============================
+        // 4) XOR out captured piece from destination (if any) - same as MakeMoveUnsafe
         if (targetPiece != 0)
         {
             ZobristKey ^= Zobrist.PieceSquare[tx, ty, Zobrist.PieceToIndex(targetPiece)];
         }
-
-        // ============================
-        // 6) Update Fifty Move Counter - same as MakeMoveUnsafe
-        // ============================
+        // 5) Update Fifty Move Counter - same as MakeMoveUnsafe
         if (Math.Abs(piece) == 1 || targetPiece != 0)
             FiftyMoveCounter = 0;
         else
             FiftyMoveCounter++;
-
-        // ============================
-        // 7) Handle En Passant Capture - same as MakeMoveUnsafe (before moving piece)
-        // ============================
+        // 6) Handle En Passant Capture - same as MakeMoveUnsafe (before moving piece)
         HandleEnPassantCapture(move, piece);
-        
         // Update captured info for record if En Passant
         if (Math.Abs(piece) == 1 && record.PreviousEnPassant.HasValue &&
             tx == record.PreviousEnPassant.Value.X && ty == record.PreviousEnPassant.Value.Y)
@@ -879,32 +835,19 @@ public class ChessBoardModel
             captured = targetPiece;
             record.CapturedPiece = captured;
         }
-
-        // ============================
-        // 8) Move piece on board - same as MakeMoveUnsafe
-        // ============================
+        // 7) Move piece on board - same as MakeMoveUnsafe
         Board[px, py] = 0;
         Board[tx, ty] = piece;
-
-        // ============================
-        // 9) Update En Passant Target - same as MakeMoveUnsafe
-        // ============================
+        // 8) Update En Passant Target - same as MakeMoveUnsafe
         UpdateEnPassantTarget(move, piece);
-        
         // XOR in new EnPassantTarget if exists
         if (EnPassantTarget.HasValue)
         {
             ZobristKey ^= Zobrist.EnPassantFile[EnPassantTarget.Value.Y];
         }
-
-        // ============================
         // 10) Handle Castling - same as MakeMoveUnsafe
-        // ============================
         bool isCastling = HandleCastling(move, piece);
-
-        // ============================
         // 11) Promotion - same as MakeMoveUnsafe
-        // ============================
         if (move.PromotionPiece != 0)
         {
             Board[tx, ty] = move.PromotionPiece;
@@ -923,18 +866,14 @@ public class ChessBoardModel
                 ZobristKey ^= Zobrist.PieceSquare[tx, ty, idx];
             }
         }
-
-        // ============================
-        // 12) Update Castling Flags - same as MakeMoveUnsafe
-        // ============================
+        // 9) Update Castling Flags - same as MakeMoveUnsafe
         UpdateCastlingFlags(move, piece, targetPiece);
         int newMask = GetCastlingMask();
         XORCastling(newMask);
-
-        // ============================
-        // 13) Switch turn (side-to-move already XORed before)
-        // ============================
+        // 10) Switch turn (side-to-move already XORed before)
         IsWhiteTurn = !IsWhiteTurn;
+        // 11) XOR side-to-move BEFORE move
+        ZobristKey ^= Zobrist.SideToMove;
 
         DebugCheckZobrist("MakeMove (robust) end");
         return record;

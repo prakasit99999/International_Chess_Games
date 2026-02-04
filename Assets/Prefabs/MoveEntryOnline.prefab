@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7955314883384697720}
   - component: {fileID: 7092642618912095325}
   m_Layer: 5
-  m_Name: MoveEntry
+  m_Name: MoveEntryOnline
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -93,8 +93,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 32
-  m_fontSizeBase: 32
+  m_fontSize: 16
+  m_fontSizeBase: 16
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18

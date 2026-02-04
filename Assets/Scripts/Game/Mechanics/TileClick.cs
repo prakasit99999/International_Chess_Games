@@ -9,12 +9,10 @@ public class TileClick : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     private Color32 originalColor;
     private bool isFlashing = false;
-
     //public Color hoverColor = new Color(0.8f, 0.8f, 0.8f, 1f); // สีเมื่อนำเมาส์ชี้
     public Color32 validMoveColor = new Color32(228, 243, 216, 204);   // สีเขียวความทึบ 80%
     public Color32 attackColor = new Color32(255, 128, 128, 204);    // สีแดงความทึบ 80%
     public Color32 checkColor = new Color32(255, 0, 0, 204);         // สีแดงสดความทึบ 80%
-
     // Start is called before the first frame update
     void Start()
     {
@@ -27,7 +25,6 @@ public class TileClick : MonoBehaviour
         }
         originalColor = spriteRenderer.color; // เก็บสีเริ่มต้น
     }
-
     // Update is called once per frame
     void Update()
     {
@@ -49,7 +46,6 @@ public class TileClick : MonoBehaviour
                 if (blackKingPos == tilePosition) targetColor = checkColor;
             }
         }
-
         // ตรวจสอบทางเดินที่ถูกต้อง (ความสำคัญรอง)
         if (boardManager != null && boardManager.SelectedPiece != null)
         {
@@ -58,7 +54,6 @@ public class TileClick : MonoBehaviour
                 targetColor = validMoveColor;
             }
         }
-
         // ตรวจสอบทางเดินและศัตรูที่โจมตีได้
         if (boardManager != null && boardManager.SelectedPiece != null)
         {
@@ -75,7 +70,6 @@ public class TileClick : MonoBehaviour
                 }
             }
         }
-
         // อัปเดตสี
         if (!spriteRenderer.color.Equals(targetColor))
         {
@@ -97,7 +91,6 @@ public class TileClick : MonoBehaviour
         // ✅ Online Mode Check
         if (GameManager.Instance.isOnlineMode && !GameManager.Instance.IsMyTurn())
         {
-            // Debug.Log("ไม่ใช่ตาของคุณ!");
             return;
         }
 

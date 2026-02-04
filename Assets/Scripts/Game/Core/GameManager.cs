@@ -20,6 +20,7 @@ public class GameManager : MonoBehaviour
     private string difficultyWhite;
     private string difficultyBlack;
     private string aiColor;
+    private bool isApplyingNetworkMove = false; // ✅ Flag to track if we are applying a network move
 
     [Header("private Game")]
     private GameModes currentMode = GameModes.SinglePlayer;
@@ -114,6 +115,7 @@ public class GameManager : MonoBehaviour
         if (chessBoard != null)
         {
             chessBoard.SetGameManager(this);
+            chessBoard.OnMoveCompleted += OnChessBoardMoveCompleted;
             // หา Component ต่างๆ ให้ครบ
             if (chessAI == null) chessAI = GetComponent<UnityAIBoardAdapter>() ?? gameObject.AddComponent<UnityAIBoardAdapter>();
             if (aiPerformanceApi == null) aiPerformanceApi = GetComponent<AiPerformanceAPI>() ?? gameObject.AddComponent<AiPerformanceAPI>();
@@ -276,12 +278,12 @@ public class GameManager : MonoBehaviour
                 {
                     return;
                 }
-                Debug.Log($"📥 Received Move #{moveData.move_number} : {moveData.startX},{moveData.startY} -> {moveData.endX},{moveData.endY}");
+                Debug.Log($"Inbox Received Move #{moveData.move_number} : {moveData.startX},{moveData.startY} -> {moveData.endX},{moveData.endY}");
                 Debug.Log($"⚡ New Move Found #{moveData.move_number}: {moveData.from_position} -> {moveData.to_position}");
                 // ✅ สั่งกระดานขยับ
-                chessBoard.isNetworkMove = true;
+                isApplyingNetworkMove = true;
                 chessBoard.ApplyNetworkMove(moveData);
-                chessBoard.isNetworkMove = false;
+                isApplyingNetworkMove = false;
                 // ✅ อัปเดตตัวนับ
                 lastAppliedMoveNumber = moveData.move_number;
                 moveCount = moveData.move_number;
@@ -442,10 +444,9 @@ public class GameManager : MonoBehaviour
                 onlinePollingCoroutine = StartCoroutine(PollOpponentMove());
             }
             // ✅ อัปเดตสถานะเป็น "playing"
-            int userId = PlayerPrefs.GetInt("UserId", 0);
             if (userApi != null)
             {
-                StartCoroutine(userApi.UpdateStatus(userId, "playing", (success, message) =>
+                StartCoroutine(userApi.UpdateStatus("playing", (success, message) =>
                 {
                     if (!success) Debug.LogWarning($"⚠️ Failed to update status to playing: {message}");
                 }));
@@ -1103,12 +1104,10 @@ public class GameManager : MonoBehaviour
     public void ModeSelect()
     {
         ResetGameData();
-
         string modeStr = PlayerPrefs.GetString("Mode", "SinglePlayer");
-
         GameCreateDto createDto = new GameCreateDto();
-        createDto.GameType = modeStr.ToLower();
-
+        if (createDto.GameType == null) createDto.GameType = modeStr.ToLower();
+        createDto.MatchMode = null;
         switch (modeStr)
         {
             case "AIVsAI":
@@ -1144,11 +1143,8 @@ public class GameManager : MonoBehaviour
 
         if (modeStr == "OnlineMultiplayer")
         {
-            // SetupOnlineMultiplayerMode() ถูกเรียกไปแล้วใน Switch Case ข้างบน
-            // ตรงนี้แค่รับประกัน state และ return ไม่ให้สร้างเกมซ้ำ
             isGameStarted = true;
             currentTurn = Team.White;
-
             UpdatePlayerTurnUI();
             return;
 
@@ -1212,10 +1208,9 @@ public class GameManager : MonoBehaviour
 
         // กลับหน้าหลัก
         // ✅ อัปเดตสถานะกลับเป็น "online"
-        int userId = PlayerPrefs.GetInt("UserId", 0);
         if (userApi != null)
         {
-            StartCoroutine(userApi.UpdateStatus(userId, "online", (success, message) =>
+            StartCoroutine(userApi.UpdateStatus("online", (success, message) =>
             {
                 Debug.Log(success ? "✅ Status updated to online" : $"⚠️ Failed to update status to online: {message}");
             }));
@@ -1232,21 +1227,47 @@ public class GameManager : MonoBehaviour
             return;
         }
 
-        Debug.Log("⏳ Sending Abandon request...");
-        int playerId = (PerformanceTracker.Instance != null) ? PerformanceTracker.Instance.UserId : -1;
-
-        if (gameAPI != null && currentGameId > 0)
+        Debug.Log("⏳ Exit Game Clicked");
+        // 🔴 Online Multiplayer เท่านั้นที่ใช้ Resign
+        if (currentMode == GameModes.Online)
         {
-            // ✅ เปลี่ยนเป็น "abandoned" เพื่อให้ Backend รู้ว่ากดออกเกม
-            StartCoroutine(gameAPI.ResignGame(currentGameId, playerId, "abandoned", (success) =>
-            {
-                Debug.Log(success ? "✅ Abandon Success" : "❌ Request Failed");
-                DoResetAndLeave();
-            }));
+            int playerId = (PerformanceTracker.Instance != null)
+                ? PerformanceTracker.Instance.UserId
+                : -1;
+            StartCoroutine(gameAPI.ResignGame(
+                currentGameId,
+                playerId,
+                "abandoned",
+                (success) =>
+                {
+                    Debug.Log(success
+                        ? "✅ Online Abandon Success"
+                        : "❌ Online Abandon Failed");
+
+                    DoResetAndLeave();
+                }));
         }
         else
         {
-            DoResetAndLeave();
+            // 🟢 Local / AI / AIvsAI → ใช้ EndGame
+            Debug.Log("🟢 Offline mode → EndGame(abandoned)");
+
+            GameResultDto dto = new GameResultDto
+            {
+                GameId = currentGameId,
+                Result = "black_wins",
+                ResultReason = "Abandoned",
+                MoveCount = moveCount
+            };
+
+            StartCoroutine(gameAPI.FinalizeGame(dto, (success) =>
+            {
+                Debug.Log(success
+                    ? "✅ Offline Game Ended"
+                    : "⚠️ Offline EndGame Failed");
+
+                DoResetAndLeave();
+            }));
         }
     }
 
@@ -1284,4 +1305,61 @@ public class GameManager : MonoBehaviour
     }
 
     public bool IsGameOver() => gameIsOver;
+
+    private void OnChessBoardMoveCompleted(MoveResult result)
+    {
+        // ถ้าเป็น Online Mode
+        if (isOnlineMode)
+        {
+            // ถ้าเป็นการเดินของเรา (ไม่ใช่ Network Move) -> ส่ง Server
+            if (!isApplyingNetworkMove)
+            {
+                OnLocalPlayerMoved(result.From, result.To, result.PieceType);
+            }
+        }
+        else
+        {
+            // ถ้าเป็น Local Mode -> สลับเทิร์นตามปกติ
+            SwitchTurn();
+        }
+    }
+    /// GameManager เป็นคนตัดสินใจว่าผู้เล่นมีสิทธิ์เลือกหมากนี้หรือไม่
+    public void TrySelectPiece(ChessPiece piece)
+    {
+        if (piece == null) return;
+        if (gameIsOver)
+        {
+            Debug.Log("❌ เกมจบแล้ว ไม่สามารถเลือกหมากได้");
+            return;
+        }
+
+        // ถ้ามีหมากถูกเลือกอยู่แล้ว และคลิกหมากศัตรู -> ส่งต่อให้ ChessBoard จัดการ (กินหมาก)
+        ChessPiece selectedPiece = chessBoard.SelectedPiece;
+        if (selectedPiece != null && piece.team != selectedPiece.team)
+        {
+            // ส่งต่อให้ ChessBoard จัดการ (อาจจะกินหมาก หรือ ไม่สามารถกินได้)
+            chessBoard.SelectPiece(piece);
+            return;
+        }
+
+        // Online Mode: ต้องเป็นหมากของทีมตัวเอง
+        if (isOnlineMode)
+        {
+            if (piece.team != myLocalTeam)
+            {
+                Debug.Log($"❌ คุณไม่สามารถควบคุมหมาก {piece.team} ได้ (คุณคือ {myLocalTeam})");
+                return;
+            }
+        }
+
+        // ตรวจสอบว่าเป็นเทิร์นของหมากนี้หรือไม่
+        if (piece.team != currentTurn)
+        {
+            Debug.Log($"❌ ไม่ใช่เทิร์นของ {piece.team} (ตอนนี้เป็นเทิร์น {currentTurn})");
+            return;
+        }
+
+        // ผ่านทุกเงื่อนไข -> ส่งต่อให้ ChessBoard จัดการ
+        chessBoard.SelectPiece(piece);
+    }
 }

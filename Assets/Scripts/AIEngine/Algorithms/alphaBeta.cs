@@ -78,7 +78,7 @@ namespace AIEngine.Algorithms
 
         private (List<MoveModel>, int) AlphaBetaSearch(ChessBoardModel board, int depth, Stopwatch stopwatch, MoveModel previousBest, EvaluationSettings settings)
         {
-            // [แก้ไข 1] ส่ง _killerMoves และ _historyMoves เข้าไปให้ MoveOrderer
+            // ส่ง _killerMoves และ _historyMoves เข้าไปให้ MoveOrderer
             // สังเกตว่าผมส่ง null แทน ttMove ในพารามิเตอร์ที่ 3 เพราะเราใช้ previousBest เป็นตัวนำทางใน Root แล้ว
             var moves = MoveGenerator.GenerateMoves(board);
             MoveOrderer.OrderMoves(moves, board, previousBest, GetKillers(0), _historyMoves);
@@ -99,7 +99,7 @@ namespace AIEngine.Algorithms
                 if (newBoard.RepetitionCount >= 3)
                     score = 0; // draw
                 else
-                    // [แก้ไข 2] เพิ่มพารามิเตอร์ ply = 1 และ settings
+                    // เพิ่มพารามิเตอร์ ply = 1 และ settings
                     score = AlphaBetaRecursive(newBoard, depth - 1, alpha, beta, !board.IsWhiteTurn, 1, stopwatch, settings);
 
                 if (score > bestScore)
@@ -120,7 +120,6 @@ namespace AIEngine.Algorithms
             }
             return (bestMoves, bestScore);
         }
-
         // Helper: ดึงท่า Killer เฉพาะของ Ply ปัจจุบันออกมาเป็น Array 1 มิติ
         private MoveModel[] GetKillers(int ply)
         {

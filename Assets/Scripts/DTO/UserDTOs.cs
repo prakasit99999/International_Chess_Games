@@ -14,13 +14,26 @@ public class ProfileResponse
 [System.Serializable]
 public class UpdateStatusRequest
 {
-    public int userId;
     public string status;
 }
 
+[System.Serializable]
 public class UpdateStatusResponse
 {
     public bool Success;
     public string Message;
 }
 
+[System.Serializable]
+public class PlayerSearchDto
+{
+    public int userId;
+    public string username;
+    public string status;
+}
+
+[System.Serializable]
+public class PlayerSearchWrapper
+{
+    public PlayerSearchDto[] items;
+}

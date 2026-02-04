@@ -1548,6 +1548,7 @@ GameObject:
   m_Component:
   - component: {fileID: 550832407}
   - component: {fileID: 550832408}
+  - component: {fileID: 550832409}
   m_Layer: 0
   m_Name: SystemAuth
   m_TagString: Untagged
@@ -1582,6 +1583,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f66bf7edd76e0df4696ea5fe8d9f08fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: GameAssembly::authApi
+--- !u!114 &550832409
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 550832406}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dac043b4e97bd1c47a7a50d707937070, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: GameAssembly::UserAPI
 --- !u!1 &569600804
 GameObject:
   m_ObjectHideFlags: 0
@@ -1806,6 +1819,7 @@ GameObject:
   - component: {fileID: 980466950}
   - component: {fileID: 980466949}
   - component: {fileID: 980466948}
+  - component: {fileID: 980466952}
   m_Layer: 5
   m_Name: UIlogin
   m_TagString: Untagged
@@ -1896,6 +1910,36 @@ RectTransform:
   m_AnchoredPosition: {x: -0.000023841836, y: 0.99999857}
   m_SizeDelta: {x: 750, y: 421.99997}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &980466952
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 980466947}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a6467b51eb24f54a8675178f32a2b2f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: GameAssembly::LoginUi
+  emailLogin: {fileID: 1195279630}
+  passwordLogin: {fileID: 2055918271}
+  ShowLoginVaildatons: {fileID: 2063607469}
+  txtLoginVaildaton: {fileID: 33591085}
+  passwordToggleImage: {fileID: 2069788366}
+  passwordUnmaskIcon: {fileID: 21300000, guid: 1023dc51a47ee2646b092add613fd71f, type: 3}
+  passwordMaskIcon: {fileID: 21300000, guid: fdff4e51aa5b6a64287fb2f9a0b10bc0, type: 3}
+  usernameSigUp: {fileID: 1204763111}
+  passwordSigUp: {fileID: 1063663941}
+  emailSigUp: {fileID: 2086567607}
+  LoginFromPanel: {fileID: 2032732537}
+  SignUpFromPanel: {fileID: 989955963}
+  ShowSigUpVaildatons: {fileID: 2135147322}
+  txtSigUpVaildaton: {fileID: 33591085}
+  switchBtnLogin: {fileID: 43930843}
+  switchBtnSignUp: {fileID: 1240752001}
+  cickColor: {r: 0, g: 1, b: 0, a: 1}
+  nomalColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &989955963
 GameObject:
   m_ObjectHideFlags: 0

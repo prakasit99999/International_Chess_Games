@@ -105,4 +105,53 @@ public class MatchmakingApi : MonoBehaviour
             }
         }
     }
+    // --- ฟังก์ชัน 6: Invite Player ---
+    public virtual IEnumerator InvitePlayer(int senderId, int receiverId, string matchMode, Action<bool, string> callback)
+    {
+        string url = $"{baseUrl}/invite";
+
+        InviteRequest requestData = new InviteRequest
+        {
+            senderId = senderId,
+            receiverId = receiverId,
+            matchMode = matchMode
+        };
+
+        string json = JsonUtility.ToJson(requestData);
+        byte[] bodyRaw = System.Text.Encoding.UTF8.GetBytes(json);
+
+        using (UnityWebRequest request = new UnityWebRequest(url, "POST"))
+        {
+            request.uploadHandler = new UploadHandlerRaw(bodyRaw);
+            request.downloadHandler = new DownloadHandlerBuffer();
+            request.SetRequestHeader("Content-Type", "application/json");
+
+            // Add Authorization header
+            string token = PlayerPrefs.GetString("auth_token", "");
+            if (!string.IsNullOrEmpty(token))
+            {
+                request.SetRequestHeader("Authorization", "Bearer " + token);
+            }
+
+            yield return request.SendWebRequest();
+
+            if (request.result == UnityWebRequest.Result.Success)
+            {
+                var response = JsonUtility.FromJson<InviteResponse>(request.downloadHandler.text);
+                if (response != null && response.success)
+                {
+                    callback(true, response.message);
+                }
+                else
+                {
+                    callback(false, response != null ? response.message : "Invite failed");
+                }
+            }
+            else
+            {
+                Debug.LogError($"Invite Error: {request.error}");
+                callback(false, request.error);
+            }
+        }
+    }
 }

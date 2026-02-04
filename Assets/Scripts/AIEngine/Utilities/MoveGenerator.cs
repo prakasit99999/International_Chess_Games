@@ -47,7 +47,6 @@ namespace AIEngine.Utilities
                   .Where(m => Math.Abs(board.Board[m.ToX, m.ToY]) != 6)
                   .ToList();
         }
-
         // ตรวจสอบการเดินที่ถูกต้องตามกฎ
         private static List<MoveModel> FilterLegalMoves(ChessBoardModel board, List<MoveModel> pseudoMoves)
         {
@@ -65,7 +64,6 @@ namespace AIEngine.Utilities
             }
             return legalMoves;
         }
-
         // ========== ฟังก์ชันสร้างการเดินของหมากแต่ละประเภท ==========
         private static void GeneratePawnMoves(ChessBoardModel board, int x, int y, List<MoveModel> moves)
         {
@@ -262,7 +260,6 @@ namespace AIEngine.Utilities
                    !IsSquareUnderAttack(board, new Square(row, 3)) &&
                    !IsSquareUnderAttack(board, new Square(row, 2));
         }
-
         // ========== ตรวจสอบความปลอดภัย ==========
         private static bool IsSquareUnderAttack(ChessBoardModel board, Square square)
         {

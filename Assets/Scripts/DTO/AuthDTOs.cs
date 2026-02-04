@@ -4,9 +4,8 @@ using System;
 public class LoginData
 {
     public string email;
-    public string PasswordHash;
+    public string password;
 }
-
 
 [System.Serializable]
 public class RegisterData

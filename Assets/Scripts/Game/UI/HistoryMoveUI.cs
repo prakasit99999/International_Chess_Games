@@ -17,7 +17,6 @@ public class HistoryMoveUI : MonoBehaviour
     public ScrollRect scrollRect; // กำหนดใน Inspector
 
 
-
     private void Awake()
     {
         if (Instance == null)

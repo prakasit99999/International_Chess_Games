@@ -6,6 +6,7 @@ public class GameCreateDto
 {
     // ข้อมูลสำหรับ "เริ่มเกม" (ส่งไป /api/game/start)
     public string GameType;            // "single_player", "ai_vs_ai", "online_multiplayer"
+    public string MatchMode;           // "normal", "ranked"
     public string WhitePlayerType;     // "human", "ai_easy"
     public string BlackPlayerType;
     public int? WhitePlayerId;         // ใส่ null ได้

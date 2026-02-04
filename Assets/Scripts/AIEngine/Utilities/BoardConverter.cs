@@ -31,6 +31,14 @@ namespace AI.Utilities
             }
 
             model.SetFiftyMoveCounter(unityBoard.FiftyMoveCounter);
+
+            // ✅ Sync Castling Rights
+            // หมายเหตุ: ใน AI Model, "RookMoved = true" หมายถึง "หมดสิทธิ์เข้าป้อมทางนั้น"
+            model.WhiteRookKingSideMoved = !unityBoard.WhiteCanCastleKingSide;
+            model.WhiteRookQueenSideMoved = !unityBoard.WhiteCanCastleQueenSide;
+            model.BlackRookKingSideMoved = !unityBoard.BlackCanCastleKingSide;
+            model.BlackRookQueenSideMoved = !unityBoard.BlackCanCastleQueenSide;
+
             return model;
         }
 
