@@ -311,10 +311,23 @@ public class ChessBoard : MonoBehaviour
 
     private void FinalizeMove(Vector2Int originalPos, Vector2Int newPos, ChessPiece captured)
     {
+        if (selectedPiece == null)
+        {
+            Debug.LogError("❌ FinalizeMove Called but selectedPiece is NULL!");
+            return;
+        }
+
         if (captured != null)
         {
-            Debug.Log($"⚔️ {selectedPiece.team} {selectedPiece.pieceType} กิน {captured.team} {captured.pieceType}!");
-            Destroy(captured.gameObject);
+            if (captured == selectedPiece)
+            {
+                Debug.LogError("❌ Attempting to capture self! Aborting destroy.");
+            }
+            else
+            {
+                Debug.Log($"⚔️ {selectedPiece.team} {selectedPiece.pieceType} กิน {captured.team} {captured.pieceType}!");
+                Destroy(captured.gameObject);
+            }
         }
 
         selectedPiece.MoveTo(newPos);
@@ -728,25 +741,30 @@ public class ChessBoard : MonoBehaviour
                 ChessPiece capturedPiece = null;
                 Vector2Int originalPos = piece.boardPosition;
 
-                // จำลองเดิน
-                if (piecesOnBoard.TryGetValue(move, out capturedPiece))
+                try
+                {
+                    // จำลองเดิน
+                    if (piecesOnBoard.TryGetValue(move, out capturedPiece))
+                        piecesOnBoard.Remove(move);
+
+                    piecesOnBoard.Remove(originalPos);
+                    piecesOnBoard[move] = piece;
+                    piece.boardPosition = move;
+
+                    bool stillInCheck = IsKingInCheck(team);
+
+                    if (!stillInCheck)
+                        return false; // เจอ move ที่ช่วยได้
+                }
+                finally
+                {
+                    // Rollback
                     piecesOnBoard.Remove(move);
-
-                piecesOnBoard.Remove(originalPos);
-                piecesOnBoard[move] = piece;
-                piece.boardPosition = move;
-
-                bool stillInCheck = IsKingInCheck(team);
-
-                // Rollback
-                piecesOnBoard.Remove(move);
-                piece.boardPosition = originalPos;
-                piecesOnBoard[originalPos] = piece;
-                if (capturedPiece != null)
-                    piecesOnBoard[move] = capturedPiece;
-
-                if (!stillInCheck)
-                    return false; // เจอ move ที่ช่วยได้
+                    piece.boardPosition = originalPos;
+                    piecesOnBoard[originalPos] = piece;
+                    if (capturedPiece != null)
+                        piecesOnBoard[move] = capturedPiece;
+                }
             }
         }
         return true;
@@ -846,39 +864,46 @@ public class ChessBoard : MonoBehaviour
 
         // ตรวจสอบว่าคิงและเรือยังไม่เคยเคลื่อนที่
         if (!piecesOnBoard.TryGetValue(kingPosition, out ChessPiece king) || king.HasMoved)
+        {
+            Debug.Log($"❌ CanCastle Fail: King missing or moved. Pos:{kingPosition}, HasMoved:{king?.HasMoved}");
             return false;
+        }
         if (!piecesOnBoard.TryGetValue(rookPosition, out ChessPiece rook) || rook.HasMoved)
+        {
+            Debug.Log($"❌ CanCastle Fail: Rook missing or moved. Pos:{rookPosition}, HasMoved:{rook?.HasMoved}");
             return false;
+        }
 
         // ตรวจสอบว่า Castling ยังสามารถทำได้อยู่
         if (team == ChessPiece.Team.White)
         {
-            if (isKingSide && !whiteCanCastleKingSide) return false;
-            if (!isKingSide && !whiteCanCastleQueenSide) return false;
+            if (isKingSide && !whiteCanCastleKingSide) { Debug.Log("❌ CanCastle Fail: White KingSide flag false"); return false; }
+            if (!isKingSide && !whiteCanCastleQueenSide) { Debug.Log("❌ CanCastle Fail: White QueenSide flag false"); return false; }
         }
         else if (team == ChessPiece.Team.Black)
         {
-            if (isKingSide && !blackCanCastleKingSide) return false;
-            if (!isKingSide && !blackCanCastleQueenSide) return false;
+            if (isKingSide && !blackCanCastleKingSide) { Debug.Log("❌ CanCastle Fail: Black KingSide flag false"); return false; }
+            if (!isKingSide && !blackCanCastleQueenSide) { Debug.Log("❌ CanCastle Fail: Black QueenSide flag false"); return false; }
         }
-
 
         // ตรวจสอบเงื่อนไขอื่นๆ (เช่น ช่องว่าง, ไม่ถูกโจมตี)
         if (isKingSide)
         {
-            return IsTileEmpty(new Vector2Int(5, row)) &&
-                   IsTileEmpty(new Vector2Int(6, row)) &&
-                   !IsPositionUnderAttack(new Vector2Int(4, row), team) && // คิงไม่ถูกเช็ค
-                   !IsPositionUnderAttack(new Vector2Int(5, row), team) && // ช่องที่คิงเดินผ่านไม่ถูกโจมตี
-                   !IsPositionUnderAttack(new Vector2Int(6, row), team);  // ช่องที่คิงไปอยู่ไม่ถูกโจมตี
+            if (!IsTileEmpty(new Vector2Int(5, row))) { Debug.Log("❌ CanCastle Fail: Tile (5,row) not empty"); return false; }
+            if (!IsTileEmpty(new Vector2Int(6, row))) { Debug.Log("❌ CanCastle Fail: Tile (6,row) not empty"); return false; }
+            if (IsPositionUnderAttack(new Vector2Int(4, row), team)) { Debug.Log("❌ CanCastle Fail: King is in check"); return false; }
+            if (IsPositionUnderAttack(new Vector2Int(5, row), team)) { Debug.Log("❌ CanCastle Fail: Path (5,row) attacked"); return false; }
+            if (IsPositionUnderAttack(new Vector2Int(6, row), team)) { Debug.Log("❌ CanCastle Fail: Path (6,row) attacked"); return false; }
+            return true;
         }
         else
         {
-            return IsTileEmpty(new Vector2Int(2, row)) &&
-                   IsTileEmpty(new Vector2Int(3, row)) &&
-                   !IsPositionUnderAttack(new Vector2Int(4, row), team) && // คิงไม่ถูกเช็ค
-                   !IsPositionUnderAttack(new Vector2Int(3, row), team) && // ช่องที่คิงเดินผ่านไม่ถูกโจมตี
-                   !IsPositionUnderAttack(new Vector2Int(2, row), team);  // ช่องที่คิงไปอยู่ไม่ถูกโจมตี
+            if (!IsTileEmpty(new Vector2Int(2, row))) { Debug.Log("❌ CanCastle Fail: Tile (2,row) not empty"); return false; }
+            if (!IsTileEmpty(new Vector2Int(3, row))) { Debug.Log("❌ CanCastle Fail: Tile (3,row) not empty"); return false; }
+            if (IsPositionUnderAttack(new Vector2Int(4, row), team)) { Debug.Log("❌ CanCastle Fail: King is in check"); return false; }
+            if (IsPositionUnderAttack(new Vector2Int(3, row), team)) { Debug.Log("❌ CanCastle Fail: Path (3,row) attacked"); return false; }
+            if (IsPositionUnderAttack(new Vector2Int(2, row), team)) { Debug.Log("❌ CanCastle Fail: Path (2,row) attacked"); return false; }
+            return true;
         }
     }
     // ฟังก์ชันสำหรับการคลิกที่ช่องบนกระดาน
@@ -980,7 +1005,15 @@ public class ChessBoard : MonoBehaviour
         bool wasCapture = capturedPiece != null;
         UpdateFiftyMoveRuleCounter(wasCapture);
         SaveMoveToHistory(selectedPiece, originalPosition, newPosition, capturedPiece, null, aiStats);
-        boardModel.PushCurrentPosition();
+
+        // ❌ Remove old push
+        // boardModel.PushCurrentPosition(); 
+
+        // ✅ Only update board model if NOT promoting (Promotion will trigger update later)
+        if (!isPromoting)
+        {
+            UpdateBoardModel();
+        }
 
         MoveResult result = new MoveResult(originalPosition, newPosition, selectedPiece.pieceType);
         if (capturedPiece != null)
@@ -992,6 +1025,27 @@ public class ChessBoard : MonoBehaviour
         OnMoveCompleted?.Invoke(result);
 
         selectedPiece = null;
+    }
+
+    // ✅ New Method to Sync Model from Unity Board
+    public void UpdateBoardModel()
+    {
+        // 1. Convert current Unity board to new AI Model
+        ChessBoardModel newModel = AI.Utilities.BoardConverter.Convert(this, gameManager.GetCurrentTurn(), gameManager.GetCurrentTurn());
+
+        // 2. Preserve History from old model
+        if (boardModel != null)
+        {
+            newModel.SetPositionHistory(boardModel.GetPositionHistory(), boardModel.GetPositionCounts());
+        }
+
+        // 3. Record new position (Push Zobrist)
+        newModel.RecordPosition();
+
+        // 4. Replace old model
+        this.boardModel = newModel;
+
+        // Debug.Log($"🔄 BoardModel updated. Turn: {newModel.IsWhiteTurn}, Key: {newModel.ZobristKey}");
     }
 
     public void PerformCastling(bool isKingSide, ChessPiece.Team team)

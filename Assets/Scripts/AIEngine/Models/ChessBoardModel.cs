@@ -121,6 +121,22 @@ public class ChessBoardModel
         _positionCounts.Clear();
     }
 
+    public List<ulong> GetPositionHistory()
+    {
+        return new List<ulong>(_positionHistory);
+    }
+
+    public Dictionary<ulong, int> GetPositionCounts()
+    {
+        return new Dictionary<ulong, int>(_positionCounts);
+    }
+
+    public void SetPositionHistory(List<ulong> history, Dictionary<ulong, int> counts)
+    {
+        _positionHistory = new List<ulong>(history);
+        _positionCounts = new Dictionary<ulong, int>(counts);
+    }
+
     public bool IsThreefoldRepetition()
     {
         if (_positionHistory.Count == 0) return false;
@@ -942,12 +958,15 @@ public class ChessBoardModel
                     if (attackerPiece == 2 * attackerColor) return true;
                 }
             }
-            // 2. ตรวจสอบ Pawn (-1 หรือ 1)
-            int pawnDir = byWhite ? -1 : 1; // ทิศทางถูกต้อง: ขาวเดินขึ้น, ดำเดินลง
+            // 2. ตรวจสอบ Pawn
+            // NOTE: เรากำลังเช็คว่า "มี Pawn ของศัตรู" อยู่ในตำแหน่งที่จะกิน square นี้ได้หรือไม่
+            // ถ้าศัตรูคือขาว (byWhite=true): Pawn ขาวเดินขึ้น (-1) แปลว่าตัวมันต้องอยู่ด้านล่าง (+1) ของ square
+            // ถ้าศัตรูคือดำ (byWhite=false): Pawn ดำเดินลง (+1) แปลว่าตัวมันต้องอยู่ด้านบน (-1) ของ square
+            int pawnAttackOriginDir = byWhite ? 1 : -1;
             int[] pawnCaptureY = { square.Y - 1, square.Y + 1 };
             foreach (int y in pawnCaptureY)
             {
-                int x = square.X + pawnDir;
+                int x = square.X + pawnAttackOriginDir;
                 if (x >= 0 && x < 8 && y >= 0 && y < 8)
                 {
                     int attackerPiece = Board[x, y];

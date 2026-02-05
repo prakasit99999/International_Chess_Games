@@ -12,6 +12,7 @@ public class GameAPI : MonoBehaviour
     public IEnumerator CreateGame(GameCreateDto dto, Action<int> onSuccess = null, Action<string> onError = null)
     {
         string json = JsonUtility.ToJson(dto);
+        Debug.Log("JSON: " + json);
 
         // ถ้ามีปัญหาเรื่อง null ให้พิจารณาใช้ Newtonsoft.Json แทน
         using (UnityWebRequest req = CreateRequest(baseUrl + "/start", json))
@@ -23,8 +24,6 @@ public class GameAPI : MonoBehaviour
                 // แปลง JSON Response: { "message": "...", "gameId": 123 }
                 var response = JsonUtility.FromJson<GameStartResponse>(req.downloadHandler.text);
 
-                // Hack: บางที ASP.NET ส่งมาเป็น camelCase (gameId) แต่ DTO เราเป็น PascalCase (GameId)
-                // ถ้าค่าไม่เข้า ให้เช็คการตั้งค่า JSON ที่ Server หรือแก้ชื่อตัวแปรใน Unity ให้ตรง (gameId)
 
                 if (response != null && response.gameId > 0)
                 {

@@ -138,6 +138,7 @@ public class PromotionManager : MonoBehaviour
         ChessBoard.Instance.SetPromoting(false);
         ChessBoard.Instance.SetselectedPiece(null);
         GameManager.Instance.SwitchTurn();
+        ChessBoard.Instance.UpdateBoardModel(); // ✅ Sync AI Model หลัง Promotion เสร็จสิ้น
 
         Debug.Log($"🔼 อัปเดตประเภทที่เลื่อนขั้นใน HistoryMove: {lastMove.promotedTo}");
 

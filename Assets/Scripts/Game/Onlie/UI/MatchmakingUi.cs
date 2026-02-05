@@ -5,16 +5,13 @@ public class MatchmakingUi : MonoBehaviour
 {
     [Header("Manager Reference")]
     public MatchmakingManager matchmakingManager;
-
     [Header("Object UI")]
     public GameObject panelMatchmaking;
-
     [Header("Button UI")]
     public Button btnMatchmakingShow;
     public Button btnMatchmakingStart;
     public Button btnMatchmakingCancel;
     public Button btnMatchmakingClose;
-
     [Header("Text UI")]
     public Text statusText;
 

@@ -97,7 +97,12 @@ namespace AIEngine.Adapters
                 int ux2 = move.ToY;
                 int uy2 = 7 - move.ToX;
 
-                return (new Vector2Int(ux1, uy1), new Vector2Int(ux2, uy2));
+                Vector2Int from = new Vector2Int(ux1, uy1);
+                Vector2Int to = new Vector2Int(ux2, uy2);
+
+                Debug.Log($"[GetCalculatedMove] Returning: {from} -> {to} (Raw AI: [{move.FromX},{move.FromY}] -> [{move.ToX},{move.ToY}])");
+
+                return (from, to);
             }
             return null;
         }

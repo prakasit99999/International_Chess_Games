@@ -1107,7 +1107,7 @@ public class GameManager : MonoBehaviour
         string modeStr = PlayerPrefs.GetString("Mode", "SinglePlayer");
         GameCreateDto createDto = new GameCreateDto();
         if (createDto.GameType == null) createDto.GameType = modeStr.ToLower();
-        createDto.MatchMode = null;
+        // createDto.MatchMode defaults to 0 (null) which is correct for SinglePlayer/Offline
         switch (modeStr)
         {
             case "AIVsAI":

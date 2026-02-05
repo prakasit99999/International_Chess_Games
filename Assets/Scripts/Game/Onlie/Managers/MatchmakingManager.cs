@@ -16,6 +16,10 @@ public class MatchmakingManager : MonoBehaviour
     private bool isSearching = false;
     private Coroutine pollingCoroutine;
 
+    public enum MatchMode { Ranked, Normal }
+    [Header("Mode Settings")]
+    public MatchMode matchMode = MatchMode.Ranked;
+
     public void Start()
     {
         matchmakingApi = GetComponent<MatchmakingApi>();
@@ -51,6 +55,13 @@ public class MatchmakingManager : MonoBehaviour
     public void StartMatchmaking()
     {
         if (isSearching) return;
+
+        // ถ้าเป็น Normal Mode (เชิญผู้เล่น) จะไม่เข้าสู่ระบบ Matchmaking แบบ Ranked
+        if (matchMode == MatchMode.Normal)
+        {
+            Debug.Log("Mode is Normal: Waiting for Invite interaction.");
+            return;
+        }
 
         isSearching = true;
         matchmakingUi.SetSearchingState(true); // เปลี่ยนปุ่มเป็น Cancel

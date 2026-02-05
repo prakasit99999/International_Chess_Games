@@ -81,6 +81,7 @@
     <Compile Include="Assets\Scripts\AIEngine\Utilities\AiPerformanceData.cs" />
     <Compile Include="Assets\Scripts\AIEngine\Models\MoveRecord.cs" />
     <Compile Include="Assets\Scripts\Game\Core\ChessBoard.cs" />
+    <Compile Include="Assets\Scripts\Game\Onlie\UI\InvitePopupUi.cs" />
     <Compile Include="Assets\Scripts\Game\Core\MoveResult.cs" />
     <Compile Include="Assets\Scripts\AIEngine\Models\ChessBoardModel.cs" />
     <Compile Include="Assets\Scripts\AIEngine\Core\AICore.cs" />
