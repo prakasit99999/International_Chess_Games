@@ -1030,7 +1030,8 @@ MonoBehaviour:
   gameAPI: {fileID: 952541192}
   aiPerformanceApi: {fileID: 952541193}
   movesApi: {fileID: 952541191}
-  matchmakingApi: {fileID: 0}
+  matchmakingApi: {fileID: 952541197}
+  userApi: {fileID: 952541196}
   currentGameId: 0
   moveCount: 0
   drawGamePanel: {fileID: 907175431}
@@ -1055,6 +1056,7 @@ MonoBehaviour:
   blackPlayerName: Black
   isAIMode: 1
   gameIsOver: 0
+  myLocalTeam: 0
   isOnlineMode: 0
 --- !u!114 &246788989
 MonoBehaviour:
@@ -4957,6 +4959,8 @@ GameObject:
   - component: {fileID: 952541193}
   - component: {fileID: 952541192}
   - component: {fileID: 952541191}
+  - component: {fileID: 952541197}
+  - component: {fileID: 952541196}
   m_Layer: 0
   m_Name: ApiSystem
   m_TagString: Untagged
@@ -5053,6 +5057,30 @@ MonoBehaviour:
   m_FirstSelected: {fileID: 246788982}
   m_sendNavigationEvents: 1
   m_DragThreshold: 10
+--- !u!114 &952541196
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 952541189}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dac043b4e97bd1c47a7a50d707937070, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: GameAssembly::UserAPI
+--- !u!114 &952541197
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 952541189}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 941a57a5d9a0a9b4b82bf365079bff5b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: GameAssembly::MatchmakingApi
 --- !u!1 &963177814
 GameObject:
   m_ObjectHideFlags: 0

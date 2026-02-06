@@ -333,7 +333,7 @@ public class ChessBoard : MonoBehaviour
         selectedPiece.MoveTo(newPos);
         piecesOnBoard[newPos] = selectedPiece;
 
-        if (!selectedPiece.HasMoved)
+        if (selectedPiece != null && !selectedPiece.HasMoved) // ✅ Null check added
             selectedPiece.HasMoved = true;
 
         SetEnPassantTarget(originalPos, newPos);

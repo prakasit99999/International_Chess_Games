@@ -1,5 +1,5 @@
-using AIEngine.Utilities;
 using AIEngine.Evaluation;
+using AIEngine.Utilities;
 
 public abstract class SearchAlgorithm
 {

@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Linq;
 using AIEngine.Evaluation;
 using AIEngine.Utilities;
+using UnityEngine;
 namespace AIEngine.Algorithms
 {
     public class AlphaBeta : SearchAlgorithm
@@ -18,11 +19,12 @@ namespace AIEngine.Algorithms
 
         private const int MaxSearchDepth = 20;
 
-        private const int TimeLimitMs = 10000;
-
+        private const int DefaultTimeLimitMs = 10000;
+        private readonly int _timeLimitMs;
         // 2. จองพื้นที่ใน Constructor (ทำครั้งเดียว)
-        public AlphaBeta()
+        public AlphaBeta(int timeLimitMs = DefaultTimeLimitMs)
         {
+            _timeLimitMs = timeLimitMs;
             _killerMoves = new MoveModel[MaxSearchDepth, 2];
             _historyMoves = new int[8, 8, 8, 8];
         }
@@ -46,24 +48,31 @@ namespace AIEngine.Algorithms
             int bestScore = 0;
             int currentDepth = 1;
 
-            while (currentDepth <= maxDepth && stopwatch.Elapsed.TotalMilliseconds < TimeLimitMs)
+            while (currentDepth <= maxDepth && stopwatch.Elapsed.TotalMilliseconds < _timeLimitMs)
             {
+                var iterationStart = stopwatch.Elapsed.TotalMilliseconds;
                 var (iterativeBests, iterativeBestScore) = AlphaBetaSearch(board, currentDepth, stopwatch, bestMove, settings);
+
                 if (iterativeBests != null && iterativeBests.Count > 0)
                 {
                     bestMoves = iterativeBests;
                     bestMove = bestMoves.First();
                     bestScore = iterativeBestScore;
                     _actualDepth = currentDepth;
+
+                    var iterationTime = stopwatch.Elapsed.TotalMilliseconds - iterationStart;
+                    UnityEngine.Debug.Log($"[AlphaBeta] Depth {currentDepth} completed in {iterationTime:F0}ms (Total: {stopwatch.Elapsed.TotalMilliseconds:F0}ms, Nodes: {_nodesEvaluated})");
                 }
                 currentDepth++;
             }
+
+            UnityEngine.Debug.Log($"[AlphaBeta] Search finished at Depth {_actualDepth} (Target: {maxDepth}, TimeLimit: {_timeLimitMs}ms, Elapsed: {stopwatch.Elapsed.TotalMilliseconds:F0}ms)");
 
             stopwatch.Stop();
             var elapsedMs = (float)stopwatch.Elapsed.TotalMilliseconds;
             var moves = MoveGenerator.GenerateMoves(board);
             var finalMove = bestMoves.Count > 0
-                ? bestMoves[new Random().Next(bestMoves.Count)]
+                ? bestMoves[new System.Random().Next(bestMoves.Count)]
                 : (moves.FirstOrDefault() ?? throw new InvalidOperationException("No valid moves found."));
             return new SearchResult
             {
@@ -90,7 +99,7 @@ namespace AIEngine.Algorithms
 
             foreach (var move in moves)
             {
-                if (stopwatch.Elapsed.TotalMilliseconds > TimeLimitMs) break;
+                if (stopwatch.Elapsed.TotalMilliseconds > _timeLimitMs) break;
 
                 var newBoard = board.Clone();
                 newBoard.MakeMove(move);
@@ -135,7 +144,7 @@ namespace AIEngine.Algorithms
             _nodesEvaluated++; // นับ node ที่ evaluate
 
             // ✅ timeout -> return alpha (ไม่ใช่ 0)
-            if (stopwatch.Elapsed.TotalMilliseconds > TimeLimitMs) return alpha;
+            if (stopwatch.Elapsed.TotalMilliseconds > _timeLimitMs) return alpha;
 
             if (board.IsGameOver())
             {
@@ -277,7 +286,7 @@ namespace AIEngine.Algorithms
 
             foreach (var move in captures)
             {
-                if (stopwatch.Elapsed.TotalMilliseconds > TimeLimitMs) return alpha;
+                if (stopwatch.Elapsed.TotalMilliseconds > _timeLimitMs) return alpha;
 
                 var newBoard = board.Clone();
                 newBoard.MakeMove(move);

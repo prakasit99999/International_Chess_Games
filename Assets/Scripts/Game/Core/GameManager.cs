@@ -681,6 +681,8 @@ public class GameManager : MonoBehaviour
             if (winningTeam == Team.White) resultStr = "white_wins";
             else if (winningTeam == Team.Black) resultStr = "black_wins";
 
+            Debug.Log($"[ProcessGameFinished] winningTeam={winningTeam}, resultStr={resultStr}, endReason={endReason}, totalMoves={totalMoves}");
+
             GameResultDto resultDto = new GameResultDto
             {
                 GameId = currentGameId,
@@ -987,7 +989,7 @@ public class GameManager : MonoBehaviour
             return;
         }
 
-
+        Debug.Log($"[GameOver] Calling SyncAndEndGame with winningTeam={winningTeam}, endReason={endReason}");
         syncCoroutine = StartCoroutine(SyncAndEndGame(winningTeam, endReason));
     }
 
