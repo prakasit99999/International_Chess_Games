@@ -10,12 +10,10 @@ namespace AIEngine.Evaluation
         // CONSTANTS & CONFIGURATION (PeSTO / Kaufman)
         // ==========================================
 
-        // คะแนนพื้นฐานของตัวหมาก (Material)
-        private const int PawnValue = 100;
-        private const int KnightValue = 320;
-        private const int BishopValue = 330;
-        private const int RookValue = 500;
-        private const int QueenValue = 900;
+        // คะแนนพื้นฐานของตัวหมาก (Material) - ใช้จาก Settings แทน
+        // private const int PawnValue = 100;
+        // private const int KnightValue = 320;
+        // 
         private const int KingValue = 20000;
 
         // Phase Calculation: ใช้สำหรับ Tapered Evaluation
@@ -91,6 +89,19 @@ namespace AIEngine.Evaluation
             // 1. Check for Draw conditions first (Optimization)
             if (board.FiftyMoveCounter >= 100) return 0f; // Draw by 50 move rule
 
+            // 1. Setup Settings (Use default if null)
+            if (settings == null) settings = new EvaluationSettings();
+
+            // Cache values for performance
+            int pawnVal = settings.PawnValue;
+            int knightVal = settings.KnightValue;
+            int bishopVal = settings.BishopValue;
+            int rookVal = settings.RookValue;
+            int queenVal = settings.QueenValue;
+            int passedPawnBonus = settings.PassedPawnBonus;
+            int isolatedPawnPenalty = settings.IsolatedPawnPenalty;
+            float positionalFactor = settings.PositionalFactor;
+
             float mgScore = 0f; // คะแนนช่วง Middle Game
             float egScore = 0f; // คะแนนช่วง End Game
             int phase = 0;   // ตัวนับ Phase ของเกม
@@ -108,7 +119,16 @@ namespace AIEngine.Evaluation
                     bool isWhite = piece > 0;
 
                     // A. Material Score
-                    float materialValue = GetMaterialValue(absPiece);
+                    float materialValue = 0;
+                    switch (absPiece)
+                    {
+                        case 1: materialValue = pawnVal; break;
+                        case 2: materialValue = knightVal; break;
+                        case 3: materialValue = bishopVal; break;
+                        case 4: materialValue = rookVal; break;
+                        case 5: materialValue = queenVal; break;
+                        case 6: materialValue = KingValue; break;
+                    }
                     if (isWhite) { mgScore += materialValue; egScore += materialValue; }
                     else { mgScore -= materialValue; egScore -= materialValue; }
 
@@ -137,7 +157,8 @@ namespace AIEngine.Evaluation
                             mgPst = MgPawnTable[tableIdx];
                             egPst = EgPawnTable[tableIdx];
                             // เพิ่ม Pawn Structure Evaluation ตรงนี้
-                            float structScore = EvaluatePawnStructure(board, x, y, isWhite);
+                            // เพิ่ม Pawn Structure Evaluation ตรงนี้
+                            float structScore = EvaluatePawnStructure(board, x, y, isWhite, passedPawnBonus, isolatedPawnPenalty);
                             if (isWhite) { mgScore += structScore; egScore += structScore; }
                             else { mgScore -= structScore; egScore -= structScore; }
                             break;
@@ -157,8 +178,8 @@ namespace AIEngine.Evaluation
                             break;
                     }
 
-                    if (isWhite) { mgScore += mgPst; egScore += egPst; }
-                    else { mgScore -= mgPst; egScore -= egPst; }
+                    if (isWhite) { mgScore += mgPst * positionalFactor; egScore += egPst * positionalFactor; }
+                    else { mgScore -= mgPst * positionalFactor; egScore -= egPst * positionalFactor; }
                 }
             }
 
@@ -166,34 +187,40 @@ namespace AIEngine.Evaluation
             // Phase ยิ่งมาก = ยิ่งใกล้ต้นเกม, Phase น้อย = ท้ายเกม
             // Formula: (MG * phase + EG * (24 - phase)) / 24
             phase = Math.Min(phase, PhaseTotal); // Clamp value
+
+            // Apply Positional Factor (Style) only to Positional part if separated, OR applies to total evaluation difference?
+            // Usually applies to the strategic components, but here simple multiplication for now as requested.
+            // But wait, user said "PositionalFactor" implies scaling the PST/Structure scores. 
+            // Current code mixes Material + PST into mgScore/egScore. 
+            // For now, let's keep it simple as the original code didn't separate them clearly.
+            // Or better, apply to the PST lookup result? 
+            // Re-reading user request: "EvaluationSettings defined parameters like PositionalFactor... but implementation uses internal constants".
+            // Implementation: I will apply PositionalFactor to the PST values looked up.
+
+            // NOTE: I accidentally didn't apply PositionalFactor in the loop above.
+            // Let's modify the PST lookup above in a separate step or just assume the user wants the infrastructure first.
+            // Actually, I can't easily modify the PST lookup block in this chunk without making it huge.
+            // I will leave PositionalFactor unused for this specific chunk and focus on Material/PawnStructure first to minimize risk?
+            // NO, I should do it right. I will edit the PST lookup block.
+
             float finalScore = ((mgScore * phase) + (egScore * (PhaseTotal - phase))) / (float)PhaseTotal;
 
             // 4. Side to Move Bonus (Tempo)
             // การได้เดินก่อนมีค่าเล็กน้อย (เช่น 10-20 คะแนน)
-            finalScore += board.IsWhiteTurn ? 10f : -10f;
+            // 4. Side to Move Bonus (Tempo) + Attack Bonus
+            // การได้เดินก่อนมีค่าเล็กน้อย (เช่น 10-20 คะแนน) + Settings AttackBonus
+            finalScore += board.IsWhiteTurn ? (10f + settings.AttackBonus) : (-10f - settings.AttackBonus);
 
             // Return relative score (Perspective)
             return board.IsWhiteTurn ? finalScore : -finalScore;
         }
 
-        private static float GetMaterialValue(int pieceType)
-        {
-            return pieceType switch
-            {
-                1 => PawnValue,
-                2 => KnightValue,
-                3 => BishopValue,
-                4 => RookValue,
-                5 => QueenValue,
-                6 => KingValue,
-                _ => 0f
-            };
-        }
+
 
         // ==========================================
         // PAWN STRUCTURE & PASSED PAWNS
         // ==========================================
-        private static float EvaluatePawnStructure(ChessBoardModel board, int x, int y, bool isWhite)
+        private static float EvaluatePawnStructure(ChessBoardModel board, int x, int y, bool isWhite, int passedBonus, int isolatedPenalty)
         {
             float score = 0f;
             int forwardDir = isWhite ? -1 : 1; // สมมติขาวเดินขึ้น (Index ลดลง) หรือลง แล้วแต่ Model
@@ -205,7 +232,7 @@ namespace AIEngine.Evaluation
 
             if (!leftFileHasPawn && !rightFileHasPawn)
             {
-                score -= 15f; // โดนตัดแต้ม
+                score += isolatedPenalty; // Penalty is usually negative in settings, so add it
             }
 
             // 2. Passed Pawn (เบี้ยผ่าน: ไม่มีเบี้ยศัตรูขวางหน้า ในไฟล์เดียวกันและไฟล์ข้างๆ)
@@ -214,7 +241,7 @@ namespace AIEngine.Evaluation
             {
                 // ยิ่งใกล้ฝั่งตรงข้าม ยิ่งได้คะแนนเยอะ
                 float rankBonus = isWhite ? (7 - x) * 10f : x * 10f;
-                score += (20f + rankBonus);
+                score += (passedBonus + rankBonus);
             }
 
             return score;

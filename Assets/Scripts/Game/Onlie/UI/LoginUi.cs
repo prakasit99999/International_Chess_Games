@@ -71,11 +71,23 @@ public class LoginUi : MonoBehaviour
     private void HandleLoginSuccess(AuthSuccessResponse resp)
     {
         Debug.Log("Login success UI side!");
-        PlayerPrefs.SetString("auth_token", resp.token);
-        PlayerPrefs.SetInt("user_id", resp.userId);
-        PlayerPrefs.SetString("username", resp.username);
-        PlayerPrefs.SetString("email", resp.email);
-        PlayerPrefs.SetString("status", resp.status);
+        if (SessionManager.Instance != null)
+        {
+            SessionManager.Instance.SetLoginData(
+                resp.token,
+                resp.userId,
+                resp.username,
+                resp.email,
+                resp.status
+            );
+        }
+
+        // Set PerformanceTracker UserId for invite system and other features
+        if (PerformanceTracker.Instance != null)
+        {
+            PerformanceTracker.Instance.UserId = resp.userId;
+            Debug.Log($"✅ PerformanceTracker.UserId set to: {resp.userId}");
+        }
 
         emailLogin.GetComponent<TMP_InputField>().text = "";
         passwordLogin.GetComponent<TMP_InputField>().text = "";

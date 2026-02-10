@@ -18,6 +18,7 @@ public class LeaderboardManager : MonoBehaviour
     private void Start()
     {
         LoadLeaderboard();
+        StartCoroutine(AutoRefreshLeaderboard());
     }
 
     /// โหลดข้อมูล Leaderboard จาก API
@@ -106,5 +107,14 @@ public class LeaderboardManager : MonoBehaviour
     public void RefreshLeaderboard()
     {
         LoadLeaderboard();
+    }
+
+    private System.Collections.IEnumerator AutoRefreshLeaderboard()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(20f); // Refresh every 20 seconds
+            LoadLeaderboard();
+        }
     }
 }

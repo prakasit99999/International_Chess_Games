@@ -39,7 +39,7 @@ public class UserAPI : MonoBehaviour
             request.downloadHandler = new DownloadHandlerBuffer();
             request.SetRequestHeader("Content-Type", "application/json");
             // Add Authorization header if needed, similar to profileApi
-            string token = PlayerPrefs.GetString("auth_token", "");
+            string token = SessionManager.Instance.Token;
             if (!string.IsNullOrEmpty(token))
             {
                 request.SetRequestHeader("Authorization", "Bearer " + token);
@@ -87,7 +87,7 @@ public class UserAPI : MonoBehaviour
     public IEnumerator GetAllUsers(Action<PlayerSearchDto[]> onSuccess, Action<string> onError = null)
     {
         string url = $"{baseUrl}/all";
-        string token = PlayerPrefs.GetString("auth_token", "");
+        string token = SessionManager.Instance.Token;
 
         using (UnityWebRequest request = UnityWebRequest.Get(url))
         {
@@ -138,7 +138,7 @@ public class UserAPI : MonoBehaviour
     public IEnumerator SearchUsers(string username, Action<PlayerSearchDto[]> onSuccess, Action<string> onError = null)
     {
         string url = $"{baseUrl}/search?query={UnityWebRequest.EscapeURL(username)}";
-        string token = PlayerPrefs.GetString("auth_token", "");
+        string token = SessionManager.Instance.Token;
 
         using (UnityWebRequest request = UnityWebRequest.Get(url))
         {

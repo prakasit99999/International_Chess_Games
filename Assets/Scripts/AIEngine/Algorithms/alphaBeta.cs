@@ -73,7 +73,7 @@ namespace AIEngine.Algorithms
             var moves = MoveGenerator.GenerateMoves(board);
             var finalMove = bestMoves.Count > 0
                 ? bestMoves[new System.Random().Next(bestMoves.Count)]
-                : (moves.FirstOrDefault() ?? throw new InvalidOperationException("No valid moves found."));
+                : moves.FirstOrDefault(); // Return null if no moves found
             return new SearchResult
             {
                 Move = finalMove,

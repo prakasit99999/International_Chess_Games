@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Project.Services;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -26,15 +27,14 @@ public class PlayerSearchManager : MonoBehaviour
             searchButton.onClick.AddListener(OnSearchClicked);
         }
 
-        // ดึงชื่อผู้เล่นปัจจุบันเพื่อเอาไว้กรองออกจากผลการค้นหา
         StartCoroutine(GetUserProfile());
+        StartCoroutine(AutoRefreshRoutine()); // Start polling for updates
     }
 
-    /// ดึงข้อมูลโปรไฟล์ตัวเองเพื่อเก็บ Username
     private System.Collections.IEnumerator GetUserProfile()
     {
         string url = "http://localhost:8080/api/User/profile";
-        string token = PlayerPrefs.GetString("auth_token", "");
+        string token = SessionManager.Instance.Token;
 
         if (string.IsNullOrEmpty(token)) yield break;
 
@@ -88,8 +88,6 @@ public class PlayerSearchManager : MonoBehaviour
     private int currentUserId = 0; // เก็บ ID ตัวเอง
     public MatchmakingApi matchmakingApi; // Reference
 
-
-
     private void OnSearchSuccess(PlayerSearchDto[] results)
     {
         ClearRows();
@@ -97,11 +95,15 @@ public class PlayerSearchManager : MonoBehaviour
         int count = 0;
         foreach (var player in results)
         {
-            // 🛡️ กรองตัวเองออกจากรายการ และเก็บ ID ตัวเองไว้ใช้
             if (!string.IsNullOrEmpty(currentUsername) && player.username == currentUsername)
             {
-                currentUserId = player.userId;
+                currentUserId = player.UserId;
                 Debug.Log($"🆔 Captured Current User ID: {currentUserId}");
+                continue;
+            }
+
+            if (player.status != "online")
+            {
                 continue;
             }
 
@@ -149,37 +151,18 @@ public class PlayerSearchManager : MonoBehaviour
         spawnedRows.Clear();
     }
 
-    /// เชิญผู้เล่นเข้าเล่นเกม (เรียกจาก PlayerRowUI)
-    public void InvitePlayer(PlayerSearchDto player)
+    private System.Collections.IEnumerator AutoRefreshRoutine()
     {
-        if (currentUserId == 0)
+        while (true)
         {
-            Debug.LogError("❌ ไม่พบ ID ของตัวเอง (กรุณารอโหลดรายชื่อให้เสร็จก่อน)");
-            return;
+            yield return new WaitForSeconds(5f); // Refresh every 5 seconds
+
+            string query = searchInput != null ? searchInput.text.Trim() : "";
+            if (string.IsNullOrEmpty(query))
+            {
+                OnGetAllUsersClicked();
+            }
         }
-
-        if (matchmakingApi == null) matchmakingApi = FindFirstObjectByType<MatchmakingApi>();
-        if (matchmakingApi == null)
-        {
-            Debug.LogError("❌ MatchmakingApi not found!");
-            return;
-        }
-
-        Debug.Log($"📨 กำลังเชิญ {player.username} (ID: {player.userId}) Mode: normal");
-
-        // ส่งคำเชิญพร้อม MatchMode (default = "normal")
-        StartCoroutine(matchmakingApi.InvitePlayer(currentUserId, player.userId, "normal", OnInviteResult));
     }
 
-    private void OnInviteResult(bool success, string message)
-    {
-        if (success)
-        {
-            Debug.Log($"✅ Invite Success: {message}");
-        }
-        else
-        {
-            Debug.LogError($"❌ Invite Failed: {message}");
-        }
-    }
 }

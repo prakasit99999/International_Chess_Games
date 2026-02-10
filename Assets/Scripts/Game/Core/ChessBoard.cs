@@ -317,26 +317,28 @@ public class ChessBoard : MonoBehaviour
             return;
         }
 
+        ChessPiece movingPiece = selectedPiece; // ✅ Capture reference locally
+
         if (captured != null)
         {
-            if (captured == selectedPiece)
+            if (captured == movingPiece)
             {
                 Debug.LogError("❌ Attempting to capture self! Aborting destroy.");
             }
             else
             {
-                Debug.Log($"⚔️ {selectedPiece.team} {selectedPiece.pieceType} กิน {captured.team} {captured.pieceType}!");
+                Debug.Log($"⚔️ {movingPiece.team} {movingPiece.pieceType} กิน {captured.team} {captured.pieceType}!");
                 Destroy(captured.gameObject);
             }
         }
 
-        selectedPiece.MoveTo(newPos);
-        piecesOnBoard[newPos] = selectedPiece;
+        movingPiece.MoveTo(newPos);
+        piecesOnBoard[newPos] = movingPiece;
 
-        if (selectedPiece != null && !selectedPiece.HasMoved) // ✅ Null check added
-            selectedPiece.HasMoved = true;
+        if (movingPiece != null && !movingPiece.HasMoved) // ✅ Null check added
+            movingPiece.HasMoved = true;
 
-        SetEnPassantTarget(originalPos, newPos);
+        SetEnPassantTarget(originalPos, newPos, movingPiece);
     }
 
     private void FinalizeMoveDirect(ChessPiece piece, Vector2Int from, Vector2Int to, ChessPiece captured)
@@ -366,10 +368,9 @@ public class ChessBoard : MonoBehaviour
         }
     }
 
-    private void SetEnPassantTarget(Vector2Int from, Vector2Int to)
+    private void SetEnPassantTarget(Vector2Int from, Vector2Int to, ChessPiece movingPiece)
     {
-        if (selectedPiece.pieceType == ChessPiece.PieceType.Pawn &&
-            Mathf.Abs(to.y - from.y) == 2)
+        if (movingPiece != null && movingPiece.pieceType == ChessPiece.PieceType.Pawn && Mathf.Abs(to.y - from.y) == 2)
         {
             Vector2Int middle = new Vector2Int(to.x, (to.y + from.y) / 2);
             if (!piecesOnBoard.ContainsKey(middle))

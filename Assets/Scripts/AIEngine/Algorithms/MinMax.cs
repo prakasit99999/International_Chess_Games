@@ -10,6 +10,12 @@ namespace AIEngine.Algorithms
     public class Minimax : SearchAlgorithm
     {
         private int _nodesEvaluated = 0;
+        private readonly int _timeLimitMs;
+
+        public Minimax(int timeLimitMs = 1000)
+        {
+            _timeLimitMs = timeLimitMs;
+        }
 
 
         public override MoveModel FindBestMove(ChessBoardModel board, int depth, EvaluationSettings settings = null)
@@ -24,17 +30,29 @@ namespace AIEngine.Algorithms
             var stopwatch = Stopwatch.StartNew();
             var moves = MoveGenerator.GenerateMoves(board);
             if (moves == null || moves.Count == 0)
-                throw new InvalidOperationException("No valid moves found.");
+            {
+                stopwatch.Stop();
+                return new SearchResult
+                {
+                    Move = null,
+                    Depth = depth,
+                    NodesEvaluated = _nodesEvaluated,
+                    TimeMs = (float)stopwatch.Elapsed.TotalMilliseconds,
+                    Score = 0 // Or evaluate for Checkmate/Stalemate if needed
+                };
+            }
 
             List<MoveModel> bestMoves = new List<MoveModel>();
             float bestScore = float.MinValue;
 
             foreach (MoveModel move in moves)
             {
+                if (stopwatch.Elapsed.TotalMilliseconds > _timeLimitMs) break;
+
                 var newBoard = board.Clone();
                 newBoard.MakeMove(move);
 
-                float score = MinimaxRecursive(newBoard, depth - 1, false, settings);
+                float score = MinimaxRecursive(newBoard, depth - 1, false, settings, stopwatch);
                 if (score > bestScore)
                 {
                     bestScore = score;
@@ -61,9 +79,11 @@ namespace AIEngine.Algorithms
             };
         }
 
-        protected float MinimaxRecursive(ChessBoardModel board, int depth, bool isMaximizing, EvaluationSettings settings)
+        protected float MinimaxRecursive(ChessBoardModel board, int depth, bool isMaximizing, EvaluationSettings settings, Stopwatch stopwatch)
         {
             _nodesEvaluated++; // นับ node ที่ evaluate
+
+            if (stopwatch.Elapsed.TotalMilliseconds > _timeLimitMs) return isMaximizing ? float.MinValue : float.MaxValue;
 
             if (depth == 0 || board.IsGameOver())
                 return AIEngine.Evaluation.Evaluation.Evaluate(board, settings);
@@ -78,7 +98,7 @@ namespace AIEngine.Algorithms
                 var newBoard = board.Clone();
                 newBoard.MakeMove(move);
 
-                float score = MinimaxRecursive(newBoard, depth - 1, !isMaximizing, settings);
+                float score = MinimaxRecursive(newBoard, depth - 1, !isMaximizing, settings, stopwatch);
                 bestScore = isMaximizing
                     ? Math.Max(bestScore, score)
                     : Math.Min(bestScore, score);

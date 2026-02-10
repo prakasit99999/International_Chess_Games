@@ -27,7 +27,7 @@ public class UpdateStatusResponse
 [System.Serializable]
 public class PlayerSearchDto
 {
-    public int userId;
+    public int UserId;
     public string username;
     public string status;
 }

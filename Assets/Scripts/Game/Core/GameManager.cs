@@ -427,11 +427,15 @@ public class GameManager : MonoBehaviour
             {
                 txtNameWhite.text = myName;
                 txtNameBlack.text = opponentName;
+                whitePlayerName = myName; // ✅ Set
+                blackPlayerName = opponentName; // ✅ Set
             }
             else
             {
                 txtNameWhite.text = opponentName;
                 txtNameBlack.text = myName;
+                whitePlayerName = opponentName; // ✅ Set
+                blackPlayerName = myName; // ✅ Set
             }
             Debug.Log($"[Online] Game Started! ID: {currentGameId}, Color: {myOnlineColor}");
             Debug.Log($"🎮 Online Setup: My Team = {myLocalTeam}, Game ID = {currentGameId}");
@@ -471,6 +475,11 @@ public class GameManager : MonoBehaviour
             AIDifficulty.Hard => "ai_hard",
             _ => "ai_easy"
         };
+    }
+
+    private string GetPlayerName(ChessPiece.Team team)
+    {
+        return (team == ChessPiece.Team.White) ? whitePlayerName : blackPlayerName;
     }
 
     private ChessPiece.Team GetOpponentTeam(ChessPiece.Team team)
@@ -945,12 +954,12 @@ public class GameManager : MonoBehaviour
     {
         if (gameIsOver) return;
         gameIsOver = true;
-
         // ปิดทุก UI ก่อน
         winGamePanel.SetActive(false);
         loseGamePanel.SetActive(false);
         drawGamePanel.SetActive(false);
-        drawInfoPanel.SetActive(false); // แสดง counter ก็ปิด
+        drawInfoPanel.SetActive(false);
+
 
         Debug.Log($"🎉 เกมจบแล้ว! {(winningTeam == Team.None ? "เสมอ" : $"{winningTeam} ชนะ")}!");
 
@@ -965,6 +974,24 @@ public class GameManager : MonoBehaviour
             drawGamePanel.SetActive(true);
             drawTxt.text = "game draw!";
         }
+        else if (currentMode == GameModes.Online)
+        {
+            string player = GetPlayerName(winningTeam);
+            bool isLocalPlayerWinner =
+                (winningTeam == Team.White && WhitePlayer == PlayerType.Human) ||
+                (winningTeam == Team.Black && BlackPlayer == PlayerType.Human);
+            if (isLocalPlayerWinner)
+            {
+                winGamePanel.SetActive(true);
+                winTxt.text = $"{player} win!";
+
+            }
+            else
+            {
+                loseGamePanel.SetActive(true);
+                loseTxt.text = $"{player} Win!"; // ✅ แก้เป็น Win เพราะ player คือชื่อคนชนะ
+            }
+        }
         else
         {
             bool isLocalPlayerWinner =
@@ -973,13 +1000,14 @@ public class GameManager : MonoBehaviour
             if (isLocalPlayerWinner)
             {
                 winGamePanel.SetActive(true);
-                winTxt.text = $"{GetCurrentPlayerName()} ชนะ!";
+                winTxt.text = $"{GetCurrentPlayerName()} win!";
+
 
             }
             else
             {
                 loseGamePanel.SetActive(true);
-                loseTxt.text = $"{GetCurrentPlayerName()} แพ้!";
+                loseTxt.text = $"{GetCurrentPlayerName()} lose!";
             }
         }
 
@@ -988,6 +1016,7 @@ public class GameManager : MonoBehaviour
             Debug.Log("Game Over (Local/No ID): No data sync required.");
             return;
         }
+
 
         Debug.Log($"[GameOver] Calling SyncAndEndGame with winningTeam={winningTeam}, endReason={endReason}");
         syncCoroutine = StartCoroutine(SyncAndEndGame(winningTeam, endReason));

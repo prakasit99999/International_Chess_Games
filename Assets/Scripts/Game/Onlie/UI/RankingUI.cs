@@ -12,18 +12,5 @@ public class RankingUI : MonoBehaviour
     public TMP_Text DrawText;
     public TMP_Text LossText;
 
-    void Start()
-    {
-
-    }
-    void Update()
-    {
-
-    }
-    void SetRanking()
-    {
-
-    }
-
 }
 

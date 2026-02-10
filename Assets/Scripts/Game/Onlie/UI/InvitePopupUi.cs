@@ -24,14 +24,25 @@ public class InvitePopupUi : MonoBehaviour
         }
     }
 
+    private System.Action onAcceptCallback;
+    private System.Action onDeclineCallback;
+
+    public void Setup(System.Action onAccept, System.Action onDecline)
+    {
+        this.onAcceptCallback = onAccept;
+        this.onDeclineCallback = onDecline;
+    }
+
     public void OnAccept()
     {
         Debug.Log("Accept Invite");
+        onAcceptCallback?.Invoke();
     }
 
     public void OnDecline()
     {
         Debug.Log("Decline Invite");
+        onDeclineCallback?.Invoke();
     }
 
     public void ShowInvitePopup()

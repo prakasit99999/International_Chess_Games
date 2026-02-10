@@ -51,9 +51,13 @@ public class PlayerRowUI : MonoBehaviour
 
     private void OnInviteClicked()
     {
-        if (searchManager != null && playerData != null)
+        if (InviteManager.Instance != null && playerData != null)
         {
-            searchManager.InvitePlayer(playerData);
+            InviteManager.Instance.SendInvite(playerData.UserId, playerData.username);
+        }
+        else
+        {
+            Debug.LogError("InviteManager Instance not found or playerData is null");
         }
     }
 }

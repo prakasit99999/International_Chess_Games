@@ -34,7 +34,7 @@ public class LogutUi : MonoBehaviour
 
     public void LogoutUser()
     {
-        int userId = PlayerPrefs.GetInt("user_id", -1);
+        int userId = SessionManager.Instance.UserId;
         if (userId != -1)
         {
             Debug.Log(userId);

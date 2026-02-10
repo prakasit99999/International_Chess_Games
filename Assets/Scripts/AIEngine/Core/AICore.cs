@@ -24,15 +24,15 @@ namespace AIEngine.Core
             switch (difficulty)
             {
                 case Difficulty.Easy:
-                    algorithm = new Minimax(); // ธรรมดา
+                    algorithm = new Minimax(1000); // 1 sec limit
                     depth = 2;
                     break;
                 case Difficulty.Normal:
-                    algorithm = new AlphaBeta(); // มี pruning
+                    algorithm = new AlphaBeta(3000); // 3 sec limit
                     depth = 4;
                     break;
                 case Difficulty.Hard:
-                    algorithm = new AlphaBeta(); // ลึกและวิเคราะห์เยอะ
+                    algorithm = new AlphaBeta(10000); // 10 sec limit
                     depth = 6;
                     break;
                 default:

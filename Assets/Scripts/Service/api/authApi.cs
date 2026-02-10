@@ -47,6 +47,18 @@ public class authApi : MonoBehaviour
                 var authResp = JsonUtility.FromJson<AuthSuccessResponse>(responseText);
                 if (authResp != null && authResp.success)
                 {
+                    // Use SessionManager to store login data
+                    if (SessionManager.Instance != null)
+                    {
+                        SessionManager.Instance.SetLoginData(
+                            authResp.token,
+                            authResp.userId,
+                            authResp.username,
+                            authResp.email,
+                            authResp.status
+                        );
+                    }
+
                     OnLoginSuccess?.Invoke(authResp);
                 }
                 else
@@ -76,7 +88,7 @@ public class authApi : MonoBehaviour
         UnityWebRequest unityWebRequest = UnityWebRequest.Post("http://localhost:8080/api/Auth/logout", "");
         using (UnityWebRequest www = unityWebRequest)
         {
-            string token = PlayerPrefs.GetString("auth_token", "");
+            string token = SessionManager.Instance.Token;
             if (string.IsNullOrEmpty(token))
             {
                 Debug.LogError("No authentication token found.");
@@ -87,15 +99,16 @@ public class authApi : MonoBehaviour
             if (www.result == UnityWebRequest.Result.Success)
             {
                 Debug.Log("Logout successful");
-                // ล้างข้อมูลที่บันทึกไว้
-                PlayerPrefs.DeleteKey("auth_token");
-                PlayerPrefs.DeleteKey("user_id");
-                PlayerPrefs.DeleteKey("username");
-                PlayerPrefs.DeleteKey("email");
-                PlayerPrefs.DeleteKey("status");
+
+                // Use SessionManager to handle cleanup
+                if (SessionManager.Instance != null)
+                {
+                    SessionManager.Instance.Logout(redirect: false); // Redirect handled by OnLogoutSuccess if needed, or force it here
+                }
+
                 // เปลี่ยนหน้าไปที่หน้า Login
                 OnLogoutSuccess?.Invoke();
-
+                SceneManager.LoadScene("Onlinelogin");
             }
             else
             {
@@ -145,16 +158,17 @@ public class authApi : MonoBehaviour
     {
         Debug.LogWarning("Token expired or unauthorized. Forcing logout.");
 
-        // ล้างข้อมูลที่บันทึกไว้
-        PlayerPrefs.DeleteKey("auth_token");
-        PlayerPrefs.DeleteKey("user_id");
-        PlayerPrefs.DeleteKey("username");
-        PlayerPrefs.DeleteKey("email");
-        PlayerPrefs.DeleteKey("status");
-        PlayerPrefs.Save();
-
-        // เปลี่ยนหน้าไปที่หน้า Login
-        SceneManager.LoadScene("Onlinelogin");
+        if (SessionManager.Instance != null)
+        {
+            SessionManager.Instance.Logout(redirect: true);
+        }
+        else
+        {
+            // Fallback if SessionManager missing (should not happen if set up correctly)
+            PlayerPrefs.DeleteKey("auth_token");
+            PlayerPrefs.Save();
+            SceneManager.LoadScene("Onlinelogin");
+        }
     }
 }
 

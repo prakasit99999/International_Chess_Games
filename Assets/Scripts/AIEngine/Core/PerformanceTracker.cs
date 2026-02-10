@@ -17,7 +17,19 @@ public class PerformanceTracker : MonoBehaviour
     void Awake()
     {
         if (Instance == null)
+        {
             Instance = this;
+
+            // Initialize UserId from PlayerPrefs if available (fallback for when created after login)
+            if (UserId == -1)
+            {
+                UserId = SessionManager.Instance.UserId;
+                if (UserId != -1)
+                {
+                    Debug.Log($"[PerformanceTracker] UserId initialized from SessionManager: {UserId}");
+                }
+            }
+        }
         else
             Destroy(gameObject);
     }

@@ -37,7 +37,7 @@ public class profileApi : MonoBehaviour
 
     IEnumerator GetProfileRequest()
     {
-        string token = PlayerPrefs.GetString("auth_token", "");
+        string token = SessionManager.Instance.Token;
         if (string.IsNullOrEmpty(token))
         {
             Debug.LogError("No authentication token found.");
@@ -46,8 +46,15 @@ public class profileApi : MonoBehaviour
 
         using (UnityWebRequest www = UnityWebRequest.Get(apiUrl + "/profile"))
         {
-            www.SetRequestHeader("Authorization", "Bearer " + PlayerPrefs.GetString("auth_token"));
+            www.SetRequestHeader("Authorization", "Bearer " + token);
             yield return www.SendWebRequest();
+
+            if (www.responseCode == 401)
+            {
+                Debug.LogWarning("Unauthorized (401). Redirecting to login...");
+                if (authApi.Instance != null) authApi.Instance.ForceLogout();
+                yield break;
+            }
             if (www.result == UnityWebRequest.Result.Success)
             {
                 string responseText = www.downloadHandler.text;

@@ -134,6 +134,16 @@ public class GameAPI : MonoBehaviour
     // จัดการ Error และ Log
     private void HandleError(UnityWebRequest req, Action<string> onError)
     {
+        if (req.responseCode == 401)
+        {
+            Debug.LogWarning("Unauthorized (401). Redirecting to login...");
+            if (authApi.Instance != null)
+            {
+                authApi.Instance.ForceLogout();
+            }
+            return;
+        }
+
         string errorMsg = $"❌ Request Failed: {req.error} | Response: {req.downloadHandler.text}";
         Debug.LogError(errorMsg);
         onError?.Invoke(errorMsg);
