@@ -63,9 +63,9 @@ public class IntegrationTest_RealServer
         };
 
         apiRequestSuccess = false;
-        yield return gameApi.CreateGame(createDto, (id) =>
+        yield return gameApi.CreateOfflineGame(createDto, (id) =>
         {
-            realGameId = id;
+
             apiRequestSuccess = true;
         });
 
@@ -172,7 +172,7 @@ public class IntegrationTest_RealServer
         };
 
         apiRequestSuccess = false;
-        yield return gameApi.FinalizeGame(resultDto, (id) => apiRequestSuccess = true);
+        yield return gameApi.FinalizeOfflineGame(resultDto, (id) => apiRequestSuccess = true);
 
         Assert.IsTrue(apiRequestSuccess, "❌ End Game Failed");
         Debug.Log("✅ [Step 3 Passed] Game Ended Successfully.");

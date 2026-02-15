@@ -8,9 +8,9 @@ public class MatchmakingApi : MonoBehaviour
     private string baseUrl = "http://localhost:8080/api/Matchmaking";
 
     // --- ฟังก์ชัน 1: Join Queue (แก้ให้ส่ง MatchResponse) ---
-    public virtual IEnumerator JoinQueue(string username, int minRate, int maxRate, Action<bool, MatchResponse> callback)
+    public virtual IEnumerator JoinQueue(int userId, int minRate, int maxRate, Action<bool, MatchResponse> callback)
     {
-        string url = $"{baseUrl}/join?username={username}&minRating={minRate}&maxRating={maxRate}";
+        string url = $"{baseUrl}/join?userId={userId}&minRating={minRate}&maxRating={maxRate}";
         using (UnityWebRequest request = UnityWebRequest.Get(url))
         {
             yield return request.SendWebRequest();
@@ -38,9 +38,9 @@ public class MatchmakingApi : MonoBehaviour
     }
 
     // --- ฟังก์ชัน 2: Check Match ---
-    public virtual IEnumerator CheckQueue(string username, Action<bool, MatchResponse> callback)
+    public virtual IEnumerator CheckQueue(int userId, Action<bool, MatchResponse> callback)
     {
-        string url = $"{baseUrl}/check?username={username}";
+        string url = $"{baseUrl}/check?userId={userId}";
 
         using (UnityWebRequest request = UnityWebRequest.Get(url))
         {
@@ -75,9 +75,9 @@ public class MatchmakingApi : MonoBehaviour
     }
 
     // --- ฟังก์ชัน 3: Cancel ---
-    public virtual IEnumerator CancelQueue(string username, Action<bool, string> callback)
+    public virtual IEnumerator CancelQueue(int userId, Action<bool, string> callback)
     {
-        string url = $"{baseUrl}/cancel?username={username}";
+        string url = $"{baseUrl}/cancel?userId={userId}";
         using (UnityWebRequest request = UnityWebRequest.Get(url))
         {
             yield return request.SendWebRequest();

@@ -8,6 +8,8 @@ using static ChessPiece;
 public class GameOverTests
 {
     private GameManager gameManager;
+    private GameModeManager gameModeManager;
+    private GameUIManager gameUIManager;
     private ChessBoard chessBoard;
     private HistoryMove historyMove;
     private HistoryMoveUI historyMoveUI;
@@ -85,23 +87,23 @@ public class GameOverTests
         // ✅ Panels
         winPanel = new GameObject("WinGamePanel");
         winText = winPanel.AddComponent<TextMeshProUGUI>();
-        gameManager.winGamePanel = winPanel;
-        gameManager.winTxt = winText;
+        gameUIManager.winGamePanel = winPanel;
+        gameUIManager.winTxt = winText;
 
         losePanel = new GameObject("LoseGamePanel");
         loseText = losePanel.AddComponent<TextMeshProUGUI>();
-        gameManager.loseGamePanel = losePanel;
-        gameManager.loseTxt = loseText;
+        gameUIManager.loseGamePanel = losePanel;
+        gameUIManager.loseTxt = loseText;
 
         drawPanel = new GameObject("DrawGamePanel");
         drawText = drawPanel.AddComponent<TextMeshProUGUI>();
-        gameManager.drawGamePanel = drawPanel;
-        gameManager.drawTxt = drawText;
+        gameUIManager.drawGamePanel = drawPanel;
+        gameUIManager.drawTxt = drawText;
 
         drawInfoPanel = new GameObject("DrawInfoPanel");
         fiftyMoveText = drawInfoPanel.AddComponent<TextMeshProUGUI>();
-        gameManager.drawInfoPanel = drawInfoPanel;
-        gameManager.fiftyMoveText = fiftyMoveText;
+        gameUIManager.drawInfoPanel = drawInfoPanel;
+        gameUIManager.fiftyMoveText = fiftyMoveText;
 
         // ✅ Player Names
         gameManager.SetPlayerNames("PlayerWhite", "PlayerBlack");

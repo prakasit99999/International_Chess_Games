@@ -88,7 +88,7 @@ public class PlayerSearchManager : MonoBehaviour
     private int currentUserId = 0; // เก็บ ID ตัวเอง
     public MatchmakingApi matchmakingApi; // Reference
 
-    private void OnSearchSuccess(PlayerSearchDto[] results)
+    private void OnSearchSuccess(UserListDto[] results)
     {
         ClearRows();
 
@@ -111,7 +111,7 @@ public class PlayerSearchManager : MonoBehaviour
             count++;
         }
 
-        Debug.Log($"✅ พบผู้เล่น {results.Length} คน (แสดง {count} คน - ซ่อนตัวเอง)");
+        // Debug.Log($"✅ พบผู้เล่น {results.Length} คน (แสดง {count} คน - ซ่อนตัวเอง)");
     }
 
     private void OnSearchError(string error)
@@ -119,7 +119,7 @@ public class PlayerSearchManager : MonoBehaviour
         Debug.LogError($"❌ Search Error: {error}");
     }
 
-    private void SpawnRow(PlayerSearchDto data)
+    private void SpawnRow(UserListDto data)
     {
         if (playerRowPrefab == null || contentParent == null)
         {

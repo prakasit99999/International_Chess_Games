@@ -1,5 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using UnityEngine.UI;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -10,11 +15,9 @@ public class SettingManager : MonoBehaviour
     public static SettingManager Instance;
     public bool isSoundEnabled = true; // เปิด/ปิดเสียง
     public Toggle toggleLabelShow;
-    public GameObject boardLabels;
+    public GameObject boardLabels; // แสดง Label
     public GameObject settingPanel;
-
     public Text toggleLabelText;
-    public float soundVolume = 1.0f; // ระดับเสียง
 
     private void Awake()
     {
@@ -46,24 +49,50 @@ public class SettingManager : MonoBehaviour
 
     public void CloseSettings()
     {
+        if (IsOnlineMode())
+        {
+            return;
+        }
+
         settingPanel.SetActive(false);
         if (PauseManager.isPaused)
             PauseManager.Resume();
     }
     public void ReturnToMainMenu()
     {
+        if (IsOnlineMode())
+        {
+            return;
+        }
+
         Time.timeScale = 1f;
         PauseManager.Resume();
 
-        //  ของใหม่: เรียก GameManager ให้จัดการ Resign ก่อน
-        if (GameManager.Instance != null)
+        // ถ้ามี GameSyncService ให้ส่งผ่าน flow ปกติ (finalize + load)
+        var sync = FindFirstObjectByType<GameSyncService>();
+        if (GameManager.Instance != null && sync != null)
         {
             GameManager.Instance.OnExitGameClicked();
+            return;
         }
-        else
+
+        // fallback: ไม่มี sync handler ให้กลับเมนูทันที
+        SceneManager.LoadScene("MainMenu");
+    }
+
+    public void Replay()
+    {
+        if (IsOnlineMode())
         {
-            SceneManager.LoadScene("MainMenu");
+            return;
         }
+        PauseManager.Resume();
+        if (GameManager.Instance != null)
+        {
+            GameManager.Instance.OnRestartClick();
+        }
+
+        settingPanel.SetActive(false);
     }
 
     public void OnToggleLabelChanged(bool isOn)
@@ -73,6 +102,17 @@ public class SettingManager : MonoBehaviour
             boardLabels.SetActive(isOn);
             toggleLabelText.text = isOn ? "ON" : "OFF";
         }
+    }
+
+    private bool IsOnlineMode()
+    {
+        if (GameModeManager.Instance != null)
+            return GameModeManager.Instance.CurrentMode == GameModeManager.GameModes.Online;
+
+        if (GameManager.Instance != null && GameManager.Instance.gameModeManager != null)
+            return GameManager.Instance.gameModeManager.CurrentMode == GameModeManager.GameModes.Online;
+
+        return false;
     }
 
 }

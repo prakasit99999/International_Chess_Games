@@ -38,8 +38,29 @@ public class GameResignDto
 [Serializable]
 public class GameStartResponse
 {
-    public string Message;
+    public string message;
     public int gameId;
+    public string mode;        // game type (e.g., "online_multiplayer", "ai_game")
+    public string matchMode;   // "ranked", "normal", or null
+}
+
+[Serializable]
+public class GameEndResponse
+{
+    public string message;
+    public int? whiteRating;
+    public int? blackRating;
+}
+
+[Serializable]
+public class GameResultResponseDto
+{
+    public int GameId;
+    public string GameType;
+    public int? MatchMode;
+    public string Result;
+    public int MoveCount;
+    public string CreatedAt;
 }
 
 [Serializable]
@@ -52,9 +73,10 @@ public class GeneralResponse
 [Serializable]
 public class GameStatusDto
 {
-    public int gameId;
-    public string status;      // "playing", "finished", "abandoned"
-    public string winner;      // "white", "black", "draw", null
-    public string reason;      // "checkmate", "resignation", "timeout", "abandonment"
-    public int moveCount;
+    public int GameId;
+    public string GameType;
+    public int? MatchMode;
+    public string Status;
+    public int MoveCount;
+    public string CreatedAt;
 }

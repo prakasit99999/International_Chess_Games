@@ -61,60 +61,41 @@ public class InvitePollingService : MonoBehaviour
 
     private IEnumerator CheckPendingInvites()
     {
-        string token = SessionManager.Instance.Token;
-        if (string.IsNullOrEmpty(token))
-        {
-            yield break; // No token, skip
-        }
-
         int myUserId = SessionManager.Instance.UserId;
-        if (myUserId <= 0)
-        {
-            // Try fallback
-            myUserId = (PerformanceTracker.Instance != null) ? PerformanceTracker.Instance.UserId : 0;
-            if (myUserId <= 0) yield break;
-        }
+        if (myUserId <= 0) yield break;
 
-        string url = $"{baseUrl}/inbox/{myUserId}";
+        bool done = false;
 
-        using (UnityWebRequest request = UnityWebRequest.Get(url))
-        {
-            request.SetRequestHeader("Authorization", "Bearer " + token);
-
-            yield return request.SendWebRequest();
-
-            if (request.result == UnityWebRequest.Result.Success)
+        yield return InviteManager.Instance.inviteApi.GetInboxInvites(myUserId,
+            (success, invites) =>
             {
-                string rawResponse = request.downloadHandler.text;
+                done = true;
+                if (!success || invites == null) return;
 
-                // Parse array of invites
-                // Assuming API returns [{},{}]
-                InviteListResponse listResponse = null;
-                try
+                foreach (var invite in invites)
                 {
-                    listResponse = JsonUtility.FromJson<InviteListResponse>("{\"invites\":" + rawResponse + "}");
-                }
-                catch
-                {
-                    // Ignore parse errors
-                    Debug.LogError("❌ Error parsing invites: " + rawResponse);
-                }
-
-                if (listResponse != null && listResponse.invites != null)
-                {
-                    foreach (var invite in listResponse.invites)
+                    if (invite.status == "pending" &&
+                        !processedInviteIds.Contains(invite.inviteId))
                     {
-                        // Only process invites where I am the receiver and haven't processed yet
-                        if (invite.toUserId == myUserId && !processedInviteIds.Contains(invite.inviteId) && invite.status == "pending")
-                        {
-                            processedInviteIds.Add(invite.inviteId);
-                            NotifyInviteReceived(invite);
-                        }
+                        processedInviteIds.Add(invite.inviteId);
+
+                        InviteManager.Instance.HandleInviteReceivedFromPolling(
+                            new InviteReceivedEvent
+                            {
+                                inviteId = invite.inviteId,
+                                fromUserId = invite.fromUserId,
+                                toUserId = invite.toUserId,
+                                createdAt = invite.createdAt,
+                                expiresAt = invite.expiresAt,
+                                status = invite.status
+                            });
                     }
                 }
-            }
-        }
+            });
+
+        yield return new WaitUntil(() => done);
     }
+
 
     private void NotifyInviteReceived(InviteResponse invite)
     {

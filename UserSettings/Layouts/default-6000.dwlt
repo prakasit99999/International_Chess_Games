@@ -19,9 +19,9 @@ MonoBehaviour:
     width: 1902
     height: 980
   m_ShowMode: 4
-  m_Title: Game
+  m_Title: Scene
   m_RootView: {fileID: 2}
-  m_MinSize: {x: 875, y: 498}
+  m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
   m_Maximized: 0
 --- !u!114 &2
@@ -46,7 +46,7 @@ MonoBehaviour:
     y: 0
     width: 1902
     height: 980
-  m_MinSize: {x: 875, y: 498}
+  m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
   m_UseTopView: 1
   m_TopViewHeight: 36
@@ -628,7 +628,7 @@ MonoBehaviour:
     m_LockTracker:
       m_IsLocked: 0
     m_CurrentSortingName: TransformSorting
-  m_WindowGUID: bd6903ce7cb6fce4d9ee193eba9898f3
+  m_WindowGUID: 883452419285c4b43ac6bf228c68c021
 --- !u!114 &14
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -752,30 +752,30 @@ MonoBehaviour:
       m_Data: 0
     m_ExpandedIDs:
     - m_Data: 0
-    - m_Data: 73998
-    - m_Data: 74000
-    - m_Data: 74002
-    - m_Data: 74004
-    - m_Data: 74006
-    - m_Data: 74008
-    - m_Data: 74010
-    - m_Data: 74012
-    - m_Data: 74014
-    - m_Data: 74016
-    - m_Data: 74018
-    - m_Data: 74020
-    - m_Data: 74022
-    - m_Data: 74024
-    - m_Data: 74026
-    - m_Data: 74028
-    - m_Data: 74030
-    - m_Data: 74032
-    - m_Data: 74034
-    - m_Data: 74036
-    - m_Data: 74038
-    - m_Data: 74040
-    - m_Data: 74042
-    - m_Data: 74044
+    - m_Data: 74118
+    - m_Data: 74120
+    - m_Data: 74122
+    - m_Data: 74124
+    - m_Data: 74126
+    - m_Data: 74128
+    - m_Data: 74130
+    - m_Data: 74132
+    - m_Data: 74134
+    - m_Data: 74136
+    - m_Data: 74138
+    - m_Data: 74140
+    - m_Data: 74142
+    - m_Data: 74144
+    - m_Data: 74146
+    - m_Data: 74148
+    - m_Data: 74150
+    - m_Data: 74152
+    - m_Data: 74154
+    - m_Data: 74156
+    - m_Data: 74158
+    - m_Data: 74160
+    - m_Data: 74162
+    - m_Data: 74164
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -808,30 +808,30 @@ MonoBehaviour:
       m_Data: 0
     m_ExpandedIDs:
     - m_Data: 0
-    - m_Data: 73998
-    - m_Data: 74000
-    - m_Data: 74002
-    - m_Data: 74004
-    - m_Data: 74006
-    - m_Data: 74008
-    - m_Data: 74010
-    - m_Data: 74012
-    - m_Data: 74014
-    - m_Data: 74016
-    - m_Data: 74018
-    - m_Data: 74020
-    - m_Data: 74022
-    - m_Data: 74024
-    - m_Data: 74026
-    - m_Data: 74028
-    - m_Data: 74030
-    - m_Data: 74032
-    - m_Data: 74034
-    - m_Data: 74036
-    - m_Data: 74038
-    - m_Data: 74040
-    - m_Data: 74042
-    - m_Data: 74044
+    - m_Data: 74118
+    - m_Data: 74120
+    - m_Data: 74122
+    - m_Data: 74124
+    - m_Data: 74126
+    - m_Data: 74128
+    - m_Data: 74130
+    - m_Data: 74132
+    - m_Data: 74134
+    - m_Data: 74136
+    - m_Data: 74138
+    - m_Data: 74140
+    - m_Data: 74142
+    - m_Data: 74144
+    - m_Data: 74146
+    - m_Data: 74148
+    - m_Data: 74150
+    - m_Data: 74152
+    - m_Data: 74154
+    - m_Data: 74156
+    - m_Data: 74158
+    - m_Data: 74160
+    - m_Data: 74162
+    - m_Data: 74164
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1592,20 +1592,20 @@ MonoBehaviour:
         overlayData: []
     m_OverlaysVisible: 1
     m_DynamicPanelBehavior: 0
-  m_WindowGUID: 892bd7653b053a94a92490a9c50d7f67
+  m_WindowGUID: 9c404b45113220347825bf1aaf442c34
   m_Gizmos: 1
   m_OverrideSceneCullingMask: 6917529027641081856
   m_SceneIsLit: 1
   m_SceneLighting: 1
-  m_2DMode: 0
+  m_2DMode: 1
   m_isRotationLocked: 0
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_DebugDrawModesUseInteractiveLightBakingData: 0
   m_Position:
-    m_Target: {x: 0, y: 0, z: 0}
+    m_Target: {x: 5.512016, y: 1.2530756, z: -0.031205203}
     speed: 2
-    m_Value: {x: 0, y: 0, z: 0}
+    m_Value: {x: -9.890208, y: 3.5840123, z: -0.11244304}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -1651,17 +1651,17 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: -0.08717229, y: 0.89959055, z: -0.21045254, w: -0.3726226}
+    m_Target: {x: 0, y: 0, z: 0, w: 1}
     speed: 2
-    m_Value: {x: -0.08717229, y: 0.89959055, z: -0.21045254, w: -0.3726226}
+    m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 10
+    m_Target: 3.9865324
     speed: 2
-    m_Value: 10
+    m_Value: 12.110315
   m_Ortho:
-    m_Target: 0
+    m_Target: 1
     speed: 2
-    m_Value: 0
+    m_Value: 1
   m_CameraSettings:
     m_Speed: 1
     m_SpeedNormalized: 0.5
@@ -1675,7 +1675,7 @@ MonoBehaviour:
     m_FarClip: 10000
     m_DynamicClip: 1
     m_OcclusionCulling: 0
-  m_LastSceneViewRotation: {x: 0, y: 0, z: 0, w: 0}
+  m_LastSceneViewRotation: {x: -0.08717229, y: 0.89959055, z: -0.21045254, w: -0.3726226}
   m_LastSceneViewOrtho: 0
   m_Viewpoint:
     m_SceneView: {fileID: 17}

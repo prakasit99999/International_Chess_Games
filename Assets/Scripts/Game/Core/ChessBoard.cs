@@ -72,8 +72,14 @@ public class ChessBoard : MonoBehaviour
         }
         else
         {
-            Destroy(gameObject); // ป้องกัน ChessBoard ซ้ำกัน
+            Destroy(gameObject); 
         }
+    }
+
+    private void OnDestroy()
+    {
+        if (Instance == this)
+            Instance = null;
     }
 
     // Start is called before the first frame updateฟ
@@ -98,10 +104,7 @@ public class ChessBoard : MonoBehaviour
         Debug.Log("✅ Board initialized");
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-    }
+  
     //create a chess board with tiles methon viod GenerateBoard()
     void GenerateBoard()
     {

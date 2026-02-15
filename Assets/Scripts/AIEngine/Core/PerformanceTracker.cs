@@ -20,10 +20,8 @@ public class PerformanceTracker : MonoBehaviour
         {
             Instance = this;
 
-            // Initialize UserId from PlayerPrefs if available (fallback for when created after login)
             if (UserId == -1)
             {
-                UserId = SessionManager.Instance.UserId;
                 if (UserId != -1)
                 {
                     Debug.Log($"[PerformanceTracker] UserId initialized from SessionManager: {UserId}");
@@ -33,7 +31,6 @@ public class PerformanceTracker : MonoBehaviour
         else
             Destroy(gameObject);
     }
-
 
     public void ResetData()
     {

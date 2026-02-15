@@ -1,3 +1,4 @@
 {
-    "dotrush.roslyn.projectOrSolutionFiles": []
+    "dotrush.roslyn.projectOrSolutionFiles": [],
+    "dotnet.preferCSharpExtension": true
 }

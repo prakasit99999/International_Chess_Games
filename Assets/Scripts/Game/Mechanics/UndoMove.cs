@@ -37,8 +37,8 @@ public class UndoMove : MonoBehaviour
     {
         if (PauseManager.isPaused) return;
         if (GameManager.Instance != null && (
-            GameManager.Instance.GetCurrentMode() == GameManager.GameModes.AIVsAI ||
-            GameManager.Instance.GetCurrentMode() == GameManager.GameModes.Online))
+            GameManager.Instance.gameModeManager.CurrentMode == GameModeManager.GameModes.AIVsAI ||
+            GameManager.Instance.gameModeManager.CurrentMode == GameModeManager.GameModes.Online))
         {
             Debug.Log("UndoMove: Not allowed in this mode");
             return;

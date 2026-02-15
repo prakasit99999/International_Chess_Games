@@ -14,6 +14,7 @@ public class FiftyMoveRuleTests
     private ChessPiece dummyPiece;
     private GameObject dummyTilePrefab;
     private GameObject dummyPiecePrefab;
+    private GameUIManager gameUIManager;
 
     [SetUp]
     public void Setup()
@@ -44,30 +45,30 @@ public class FiftyMoveRuleTests
         // ✅  drawGamePanel
         var drawGamePanel = new GameObject("DrawGamePanel");
         var drawTxt = drawGamePanel.AddComponent<TextMeshProUGUI>();
-        gameManager.drawGamePanel = drawGamePanel;
-        gameManager.drawTxt = drawTxt;
+        gameUIManager.drawGamePanel = drawGamePanel;
+        gameUIManager.drawTxt = drawTxt;
 
         // ✅ winGamePanel
-        var winGamePanel =new GameObject("WinGamePanel");
+        var winGamePanel = new GameObject("WinGamePanel");
         var winTxt = winGamePanel.AddComponent<TextMeshProUGUI>();
-        gameManager.winGamePanel = winGamePanel;
-        gameManager.winTxt = winTxt;
+        gameUIManager.winGamePanel = winGamePanel;
+        gameUIManager.winTxt = winTxt;
 
         // ✅ loseGamePanel
         var loseGamePanel = new GameObject("LoseGamePanel");
-        var loseTxt =loseGamePanel.AddComponent<TextMeshProUGUI>();
-        gameManager.loseGamePanel = loseGamePanel;
-        gameManager.loseTxt = loseTxt;
+        var loseTxt = loseGamePanel.AddComponent<TextMeshProUGUI>();
+        gameUIManager.loseGamePanel = loseGamePanel;
+        gameUIManager.loseTxt = loseTxt;
 
 
 
         // ✅ Draw Info UI
         infoPanel = new GameObject("DrawInfoPanel");
         infoText = infoPanel.AddComponent<TextMeshProUGUI>();
-        gameManager.drawInfoPanel = infoPanel;
-        gameManager.fiftyMoveText = infoText;
-        Debug.Log($"drawInfoPanel: {gameManager.drawInfoPanel}");
-        Debug.Log($"fiftyMoveText: {gameManager.fiftyMoveText}");
+        gameUIManager.drawInfoPanel = infoPanel;
+        gameUIManager.fiftyMoveText = infoText;
+        Debug.Log($"drawInfoPanel: {gameUIManager.drawInfoPanel}");
+        Debug.Log($"fiftyMoveText: {gameUIManager.fiftyMoveText}");
         Assert.AreSame(gameManager, GameManager.Instance, "GameManager.Instance ควรตรงกับ gameManager ที่สร้างในเทสต์");
 
         infoPanel.SetActive(false);
@@ -88,14 +89,14 @@ public class FiftyMoveRuleTests
         Object.DestroyImmediate(dummyTilePrefab);
         Object.DestroyImmediate(dummyPiecePrefab);
 
-        if (gameManager.drawGamePanel != null)
-            Object.DestroyImmediate(gameManager.drawGamePanel);
+        if (gameUIManager.drawGamePanel != null)
+            Object.DestroyImmediate(gameUIManager.drawGamePanel);
 
-        if (gameManager.winGamePanel != null)
-            Object.DestroyImmediate(gameManager.winGamePanel);
+        if (gameUIManager.winGamePanel != null)
+            Object.DestroyImmediate(gameUIManager.winGamePanel);
 
-        if (gameManager.loseGamePanel != null)
-            Object.DestroyImmediate(gameManager.loseGamePanel);
+        if (gameUIManager.loseGamePanel != null)
+            Object.DestroyImmediate(gameUIManager.loseGamePanel);
     }
 
 
@@ -136,7 +137,7 @@ public class FiftyMoveRuleTests
         typeof(ChessBoard).GetField("_movesWithoutCaptureOrPawn", BindingFlags.NonPublic | BindingFlags.Instance)
             .SetValue(chessBoard, 47);
         CallUpdateFiftyMoveRuleCounter(false);
-       
+
         Assert.AreEqual("📏 กฎ 50 เดิน: 48/50", infoText.text);
         Assert.AreEqual(Color.red, infoText.color);
     }

@@ -61,6 +61,8 @@ public class MainMenuController : MonoBehaviour
 
         Debug.Log($"Selected AI Difficulty: {difficulty}");
 
+        if (GameModeManager.Instance != null)
+            GameModeManager.Instance.LoadFromPlayerPrefs();
 
         if (Application.isPlaying)
         {
@@ -83,6 +85,8 @@ public class MainMenuController : MonoBehaviour
 
         Debug.Log($"Starting AI vs AI Match: White - {whiteDiff}, Black - {blackDiff}");
 
+        if (GameModeManager.Instance != null)
+            GameModeManager.Instance.LoadFromPlayerPrefs();
         if (Application.isPlaying)
         {
             SceneManager.LoadScene("GameCore");
@@ -96,6 +100,9 @@ public class MainMenuController : MonoBehaviour
     {
         PlayerPrefs.SetString("Mode", "LocalMultiplayer");
 
+        if (GameModeManager.Instance != null)
+            GameModeManager.Instance.LoadFromPlayerPrefs();
+
         if (Application.isPlaying)
         {
             SceneManager.LoadScene("GameCore");
@@ -108,6 +115,9 @@ public class MainMenuController : MonoBehaviour
     public void onlineMultiplayer()
     {
         PlayerPrefs.SetString("Mode", "OnlineMultiplayer");
+        if (GameModeManager.Instance != null)
+            GameModeManager.Instance.LoadFromPlayerPrefs();
+
         if (Application.isPlaying)
         {
             SceneManager.LoadScene("Onlinelogin");

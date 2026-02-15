@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class TileClick : MonoBehaviour
 {
+    [Header("Game Objects")]
     private ChessBoard boardManager;
     private Vector2Int tilePosition;
     private SpriteRenderer spriteRenderer;
@@ -89,7 +90,7 @@ public class TileClick : MonoBehaviour
         if (ChessBoard.Instance.IsPromoting()) return;
 
         // ✅ Online Mode Check
-        if (GameManager.Instance.isOnlineMode && !GameManager.Instance.IsMyTurn())
+        if (GameManager.Instance.gameModeManager.CurrentMode == GameModeManager.GameModes.Online && !GameManager.Instance.IsMyTurn())
         {
             return;
         }

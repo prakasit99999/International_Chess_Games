@@ -11,11 +11,11 @@ public class PlayerRowUI : MonoBehaviour
     public TMP_Text statusText;
     public Button inviteButton;
 
-    private PlayerSearchDto playerData;
+    private UserListDto playerData;
     private PlayerSearchManager searchManager;
 
     /// ตั้งค่าข้อมูลสำหรับแถวนี้
-    public void SetData(PlayerSearchDto data, PlayerSearchManager manager)
+    public void SetData(UserListDto data, PlayerSearchManager manager)
     {
         playerData = data;
         searchManager = manager;
@@ -53,7 +53,7 @@ public class PlayerRowUI : MonoBehaviour
     {
         if (InviteManager.Instance != null && playerData != null)
         {
-            InviteManager.Instance.SendInvite(playerData.UserId, playerData.username);
+            InviteManager.Instance.SendInvite(playerData.UserId, 2, playerData.username); // matchMode 2 = Normal
         }
         else
         {

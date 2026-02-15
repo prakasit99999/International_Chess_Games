@@ -14,8 +14,8 @@ public class MatchmakingPollingTests
         // ตัวแปรควบคุม simulation: ถ้าเป็น true แปลว่า Player 2 เข้ามาแล้ว
         public bool isPlayer2Ready = false;
 
-        // JoinQueue: เข้ามาแล้วให้ "รอ" เสมอ (GameId = 0)
-        public override IEnumerator JoinQueue(string username, int min, int max, System.Action<bool, MatchResponse> callback)
+        // JoinQueue: เข้ามาแล้วให้ "รอ" เสgameUIManagerมอ (GameId = 0)
+        public override IEnumerator JoinQueue(int userId, int min, int max, System.Action<bool, MatchResponse> callback)
         {
             yield return null; // Delay 1 frame
 
@@ -30,7 +30,7 @@ public class MatchmakingPollingTests
         }
 
         // CheckQueue: จะถูกเรียกทุกๆ 2 วินาที
-        public override IEnumerator CheckQueue(string username, System.Action<bool, MatchResponse> callback)
+        public override IEnumerator CheckQueue(int userId, System.Action<bool, MatchResponse> callback)
         {
             yield return null;
 
@@ -58,7 +58,7 @@ public class MatchmakingPollingTests
         }
 
         // Mock Cancel (กัน Error)
-        public override IEnumerator CancelQueue(string username, System.Action<bool, string> callback)
+        public override IEnumerator CancelQueue(int userId, System.Action<bool, string> callback)
         {
             yield return null;
             callback(true, "Cancelled");

@@ -13,6 +13,7 @@ public class MatchRequest
     public string username;
     public int minRating = 0;    // รับทุกคนที่ Rank มากกว่า 0
     public int maxRating = 3000; // รับทุกคนที่ Rank น้อยกว่า 3000
+    public int matchMode = 1;
 }
 
 [System.Serializable]

@@ -76,10 +76,44 @@ namespace Project.Services
         }
 
         // --- 2. Accept Invite ---
-        public IEnumerator AcceptInvite(string inviteId, Action<bool, string> callback)
+        public IEnumerator AcceptInvite(string inviteId, Action<bool, InviteResponse> callback)
         {
-            yield return SendAction(inviteId, "accept", callback);
+            string url = $"{baseUrl}/{inviteId}/accept";
+
+            using (UnityWebRequest request = new UnityWebRequest(url, "POST"))
+            {
+                byte[] bodyRaw = System.Text.Encoding.UTF8.GetBytes("{}");
+                request.uploadHandler = new UploadHandlerRaw(bodyRaw);
+                request.downloadHandler = new DownloadHandlerBuffer();
+                request.SetRequestHeader("Content-Type", "application/json");
+
+                string token = SessionManager.Instance.Token;
+                if (!string.IsNullOrEmpty(token))
+                    request.SetRequestHeader("Authorization", "Bearer " + token);
+
+                yield return request.SendWebRequest();
+
+                if (request.responseCode == 401)
+                {
+                    if (authApi.Instance != null)
+                        authApi.Instance.ForceLogout();
+                    callback(false, null);
+                    yield break;
+                }
+
+                if (request.result == UnityWebRequest.Result.Success)
+                {
+                    var response = JsonUtility.FromJson<InviteResponse>(request.downloadHandler.text);
+                    callback(true, response);
+                }
+                else
+                {
+                    Debug.LogError("Accept Invite Error: " + request.error);
+                    callback(false, null);
+                }
+            }
         }
+
 
         // --- 3. Decline Invite ---
         public IEnumerator DeclineInvite(string inviteId, Action<bool, string> callback)
@@ -156,7 +190,11 @@ namespace Project.Services
             string url = $"{baseUrl}/{inviteId}/{action}";
             using (UnityWebRequest request = new UnityWebRequest(url, "POST"))
             {
+                byte[] bodyRaw = System.Text.Encoding.UTF8.GetBytes("{}"); // Empty JSON object
+                request.uploadHandler = new UploadHandlerRaw(bodyRaw);
                 request.downloadHandler = new DownloadHandlerBuffer();
+                request.SetRequestHeader("Content-Type", "application/json");
+
                 // Auth
                 string token = SessionManager.Instance.Token;
                 if (!string.IsNullOrEmpty(token))

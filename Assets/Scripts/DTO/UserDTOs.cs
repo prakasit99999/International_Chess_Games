@@ -25,7 +25,7 @@ public class UpdateStatusResponse
 }
 
 [System.Serializable]
-public class PlayerSearchDto
+public class UserListDto
 {
     public int UserId;
     public string username;
@@ -35,5 +35,5 @@ public class PlayerSearchDto
 [System.Serializable]
 public class PlayerSearchWrapper
 {
-    public PlayerSearchDto[] items;
+    public UserListDto[] items;
 }

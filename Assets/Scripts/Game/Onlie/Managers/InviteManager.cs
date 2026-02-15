@@ -2,6 +2,7 @@ using System.Collections;
 using Project.Services;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class InviteManager : MonoBehaviour
@@ -10,15 +11,20 @@ public class InviteManager : MonoBehaviour
 
     [Header("Services")]
     public InviteApi inviteApi;
-    public SignalRService signalRService;
 
-    [Header("UI References")]
+    [Header("UI")]
     public InvitePopupUi invitePopupUi;
     public GameObject waitingPanel;
-    public Button waitingCancelButton; // ปุ่ม Cancel ใน Waiting Panel
+    public Button waitingCancelButton;
 
-    private string currentInviteId; // Invite ID ที่ได้รับ (สำหรับ Accept/Decline)
-    private string sentInviteId;    // Invite ID ที่ส่งไป (สำหรับ Cancel)
+    private string currentInviteId;
+    private string sentInviteId;
+
+    private Coroutine pollingCoroutine;
+    private bool isLoadingGame = false;
+
+    private const float POLL_INTERVAL = 2f;
+    private const float POLL_TIMEOUT = 30f;
 
     private void Awake()
     {
@@ -28,27 +34,14 @@ public class InviteManager : MonoBehaviour
 
     private void Start()
     {
-        if (inviteApi == null) inviteApi = FindFirstObjectByType<InviteApi>();
-        if (signalRService == null) signalRService = SignalRService.Instance;
+        if (inviteApi == null)
+            inviteApi = FindFirstObjectByType<InviteApi>();
 
-        if (signalRService != null)
-        {
-            signalRService.OnInviteReceived += HandleInviteReceived;
-            signalRService.OnInviteAccepted += HandleInviteAccepted;
-            signalRService.OnInviteDeclined += HandleInviteDeclined;
-            signalRService.OnInviteCanceled += HandleInviteCanceled;
-        }
+        invitePopupUi?.Setup(OnAcceptClicked, OnDeclineClicked);
+        invitePopupUi?.HideInvitePopup();
 
-        // Setup UI
-        if (invitePopupUi != null)
-        {
-            invitePopupUi.Setup(OnAcceptClicked, OnDeclineClicked);
-            invitePopupUi.HideInvitePopup();
-        }
+        waitingPanel?.SetActive(false);
 
-        if (waitingPanel != null) waitingPanel.SetActive(false);
-
-        // Setup Cancel button in waiting panel
         if (waitingCancelButton != null)
         {
             waitingCancelButton.onClick.RemoveAllListeners();
@@ -56,287 +49,221 @@ public class InviteManager : MonoBehaviour
         }
     }
 
-    private void HideInvitePopup()
+    // SEND INVITE (รองรับ matchMode)
+
+    public void SendInvite(int toUserId, int matchMode, string username = "Unknown")
     {
-        if (invitePopupUi != null) invitePopupUi.HideInvitePopup();
-    }
-
-    // --- Public Methods ---
-
-    public void SendInvite(int toUserId, string username = "Unknown")
-    {
-        Debug.Log($"📨 Sending Invite to {username} (ID: {toUserId})");
-
-        if (waitingPanel != null)
+        if (SessionManager.Instance.UserId <= 0)
         {
-            waitingPanel.SetActive(true);
-            // Try to find a Text component to show who we are inviting
-            TMP_Text waitText = waitingPanel.GetComponentInChildren<TMP_Text>();
-            if (waitText != null)
-            {
-                Debug.Log($"📝 Setting waiting text to: Inviting {username}...");
-                waitText.text = $"Inviting {username}...";
-            }
-            else
-            {
-                Text legacyText = waitingPanel.GetComponentInChildren<Text>();
-                if (legacyText != null)
-                {
-                    Debug.Log($"📝 Setting waiting (legacy) text to: Inviting {username}...");
-                    legacyText.text = $"Inviting {username}...";
-                }
-            }
-        }
-
-        int myUserId = SessionManager.Instance.UserId;
-        Debug.Log($"👤 My User ID: {myUserId}");
-
-        if (myUserId <= 0)
-        {
-            Debug.LogError($"❌ Cannot send invite: You must be logged in first! {myUserId}");
-            if (waitingPanel != null) waitingPanel.SetActive(false);
+            Debug.LogError("Must login first.");
             return;
         }
+
+        waitingPanel?.SetActive(true);
+
+        var txt = waitingPanel?.GetComponentInChildren<TMP_Text>();
+        if (txt != null)
+            txt.text = $"Inviting {username}...";
 
         InviteRequest req = new InviteRequest
         {
-            fromUserId = myUserId,
+            fromUserId = SessionManager.Instance.UserId,
             toUserId = toUserId,
             gameType = "online_multiplayer",
-            matchMode = 2, // 0=null, 1=Ranked, 2=Normal
+            matchMode = matchMode,
             expiresInSeconds = 300
         };
 
-        if (inviteApi != null)
+        StartCoroutine(inviteApi.SendInvite(req, (success, msg, inviteId) =>
         {
-            Debug.Log($"📤 Calling InviteApi.SendInvite... From: {myUserId} To: {toUserId}");
-            StartCoroutine(inviteApi.SendInvite(req, (success, msg, inviteId) =>
+            if (!success)
             {
-                Debug.Log($"📩 InviteCallback: Success={success}, Msg={msg}, ID={inviteId}");
-                if (success)
-                {
-                    Debug.Log($"✅ Invite Sent Successfully! ID: {inviteId}");
-                    sentInviteId = inviteId; // เก็บ ID ไว้สำหรับ Cancel
-                    if (waitingPanel != null)
-                    {
-                        waitingPanel.SetActive(true);
-                        Debug.Log("👁️ WaitingPanel set to ACTIVE (Callback)");
-                    }
-                    // Start Polling
-                    StartPollingSentInvite(inviteId);
-                }
-                else
-                {
-                    Debug.LogError($"❌ Send Invite Failed: {msg}");
-                    if (waitingPanel != null)
-                    {
-                        waitingPanel.SetActive(false);
-                        Debug.Log("🔒 WaitingPanel set to INACTIVE (Failed)");
-                    }
-                }
-            }));
-        }
-        else
-        {
-            Debug.LogError("❌ InviteApi is null");
-        }
+                Debug.LogError("Send invite failed: " + msg);
+                waitingPanel?.SetActive(false);
+                return;
+            }
+
+            sentInviteId = inviteId;
+            StartPollingSentInvite(inviteId);
+        }));
     }
 
-    private void OnCancelInviteClicked()
-    {
-        if (string.IsNullOrEmpty(sentInviteId))
-        {
-            Debug.LogWarning("⚠️ No invite to cancel (or invite ID not yet received)");
-            if (waitingPanel != null) waitingPanel.SetActive(false); // Close panel anyway
-            return;
-        }
-
-        Debug.Log($" Canceling Invite: {sentInviteId}");
-
-        if (inviteApi != null)
-        {
-            StartCoroutine(inviteApi.CancelInvite(sentInviteId, (success, msg) =>
-            {
-                if (success)
-                {
-                    Debug.Log("✅ Invite Canceled");
-                    if (waitingPanel != null) waitingPanel.SetActive(false);
-                    sentInviteId = null;
-                }
-                else
-                {
-                    Debug.LogError($"❌ Cancel Failed: {msg}");
-                }
-            }));
-        }
-    }
-
-    // --- Sender Polling ---
-    private Coroutine pollingCoroutine;
+    // POLLING SENT INVITE
 
     private void StartPollingSentInvite(string inviteId)
     {
-        if (pollingCoroutine != null) StopCoroutine(pollingCoroutine);
-        pollingCoroutine = StartCoroutine(PollSentInviteStatus(inviteId));
-    }
-
-    private void StopPollingSentInvite()
-    {
         if (pollingCoroutine != null)
-        {
             StopCoroutine(pollingCoroutine);
-            pollingCoroutine = null;
-        }
+
+        pollingCoroutine = StartCoroutine(PollSentInviteStatus(inviteId));
     }
 
     private IEnumerator PollSentInviteStatus(string inviteId)
     {
-        Debug.Log($"🔄 Start Polling Status for Invite ID: {inviteId}");
-        while (!string.IsNullOrEmpty(sentInviteId) && sentInviteId == inviteId)
-        {
-            yield return new WaitForSeconds(2f); // Check every 2 seconds
+        float elapsed = 0f;
 
-            if (inviteApi != null && SessionManager.Instance.UserId > 0)
+        while (!string.IsNullOrEmpty(sentInviteId))
+        {
+            yield return new WaitForSeconds(POLL_INTERVAL);
+            elapsed += POLL_INTERVAL;
+
+            if (elapsed >= POLL_TIMEOUT)
             {
-                // Call GetSentInvites
-                bool isDone = false;
-                inviteApi.StartCoroutine(inviteApi.GetSentInvites(SessionManager.Instance.UserId, (success, invites) =>
+                Debug.LogWarning("Invite polling timeout.");
+                waitingPanel?.SetActive(false);
+                sentInviteId = null;
+                yield break;
+            }
+
+            bool done = false;
+
+            inviteApi.StartCoroutine(
+                inviteApi.GetSentInvites(SessionManager.Instance.UserId,
+                (success, invites) =>
                 {
-                    isDone = true;
-                    if (success && invites != null)
+                    done = true;
+
+                    if (!success || invites == null)
+                        return;
+
+                    foreach (var inv in invites)
                     {
-                        foreach (var inv in invites)
+                        if (inv.inviteId != inviteId)
+                            continue;
+
+                        if (inv.status == "accepted" && inv.gameId.HasValue)
                         {
-                            if (inv.inviteId == inviteId)
-                            {
-                                // Debug.Log($"🔎 Polling Invite {inviteId}: Status = {inv.status}");
-                                if (inv.status == "accepted")
-                                {
-                                    // Handle Accepted: Trigger valid event
-                                    // Assuming gameId is 0 if missing, but flow requires it.
-                                    // We'll use 0 and hope backend puts us in correct game or we query later.
-                                    InviteAcceptedEvent evt = new InviteAcceptedEvent
-                                    {
-                                        gameId = 0, // Placeholder
-                                        fromUserId = SessionManager.Instance.UserId, // It's us
-                                        toUserId = inv.toUserId,
-                                        inviteId = inviteId
-                                    };
-                                    HandleInviteAccepted(evt);
-                                    StopPollingSentInvite();
-                                }
-                                else if (inv.status == "declined" || inv.status == "canceled" || inv.status == "expired")
-                                {
-                                    HandleInviteDeclined(new InviteDeclinedEvent { inviteId = inviteId });
-                                    StopPollingSentInvite();
-                                }
-                            }
+                            sentInviteId = null;
+                            LoadOnlineGame(inv.gameId.Value, inv.fromUserId, inv.toUserId);
+                        }
+                        else if (inv.status == "declined" ||
+                                 inv.status == "canceled" ||
+                                 inv.status == "expired")
+                        {
+                            sentInviteId = null;
+                            waitingPanel?.SetActive(false);
                         }
                     }
                 }));
-                yield return new WaitUntil(() => isDone);
-            }
+
+            yield return new WaitUntil(() => done);
         }
     }
 
-    private void OnDestroy()
-    {
-        StopPollingSentInvite();
-        if (signalRService != null)
-        {
-            signalRService.OnInviteReceived -= HandleInviteReceived;
-            signalRService.OnInviteAccepted -= HandleInviteAccepted;
-            signalRService.OnInviteDeclined -= HandleInviteDeclined;
-            signalRService.OnInviteCanceled -= HandleInviteCanceled;
-        }
-    }
+    // RECEIVE INVITE
 
-    // --- SignalR Handlers ---
-    private void HandleInviteReceived(InviteReceivedEvent evt)
-    {
-        Debug.Log($"📩 Invite Received from {evt.fromUserId}");
-        currentInviteId = evt.inviteId;
-        ShowInvitePopup($"Player {evt.fromUserId} invited you to play!");
-    }
-
-    // Public method for polling service to call
     public void HandleInviteReceivedFromPolling(InviteReceivedEvent evt)
     {
-        HandleInviteReceived(evt);
+        currentInviteId = evt.inviteId;
+
+        invitePopupUi?.SetStatusText(
+            $"Player {evt.fromUserId} invited you to play!"
+        );
+
+        invitePopupUi?.ShowInvitePopup();
     }
 
-    private void HandleInviteAccepted(InviteAcceptedEvent evt)
-    {
-        Debug.Log($"✅ Invite Accepted! Game ID: {evt.gameId}");
-
-        if (waitingPanel != null) waitingPanel.SetActive(false);
-        if (invitePopupUi != null) invitePopupUi.HideInvitePopup();
-
-        sentInviteId = null;
-        currentInviteId = null;
-
-        // Save Game ID and Load Scene
-        PlayerPrefs.SetInt("CurrentGameId", evt.gameId);
-        PlayerPrefs.SetString("Mode", "OnlineMultiplayer");
-
-        // Check my ID
-        int myId = SessionManager.Instance.UserId;
-        if (evt.fromUserId == myId) PlayerPrefs.SetString("MyColor", "white");
-        else PlayerPrefs.SetString("MyColor", "black");
-
-        // Load Game Scene
-        UnityEngine.SceneManagement.SceneManager.LoadScene("MainGame");
-    }
-
-    private void HandleInviteDeclined(InviteDeclinedEvent evt)
-    {
-        Debug.Log("❌ Invite Declined.");
-        if (waitingPanel != null) waitingPanel.SetActive(false);
-        sentInviteId = null; // Clear the sent invite ID
-    }
-
-    private void HandleInviteCanceled(InviteCanceledEvent evt)
-    {
-        Debug.Log("⚠️ Invite Canceled.");
-        if (invitePopupUi != null) invitePopupUi.HideInvitePopup();
-        currentInviteId = null; // Clear the received invite ID
-    }
-
-    // --- UI Actions ---
+    // ACCEPT
 
     private void OnAcceptClicked()
     {
-        if (!string.IsNullOrEmpty(currentInviteId))
+        if (string.IsNullOrEmpty(currentInviteId))
+            return;
+
+        StartCoroutine(inviteApi.AcceptInvite(currentInviteId, (success, msg) =>
         {
-            StartCoroutine(inviteApi.AcceptInvite(currentInviteId, (success, msg) =>
+            if (!success)
             {
-                if (!success) Debug.LogError($"Accept Failed: {msg}");
-                if (invitePopupUi != null) invitePopupUi.HideInvitePopup();
-                currentInviteId = null; // Clear after accepting
-            }));
-        }
+                Debug.LogError("Accept failed: " + msg);
+                return;
+            }
+
+            invitePopupUi?.HideInvitePopup();
+            StartCoroutine(PollAcceptedInviteGame());
+        }));
     }
+
+    private IEnumerator PollAcceptedInviteGame()
+    {
+        float elapsed = 0f;
+
+        while (elapsed < POLL_TIMEOUT)
+        {
+            yield return new WaitForSeconds(POLL_INTERVAL);
+            elapsed += POLL_INTERVAL;
+
+            bool done = false;
+
+            inviteApi.StartCoroutine(
+                inviteApi.GetInboxInvites(SessionManager.Instance.UserId,
+                (success, invites) =>
+                {
+                    done = true;
+
+                    if (!success || invites == null)
+                        return;
+
+                    foreach (var inv in invites)
+                    {
+                        if (inv.status == "accepted" && inv.gameId.HasValue)
+                        {
+                            LoadOnlineGame(inv.gameId.Value, inv.fromUserId, inv.toUserId);
+                            return;
+                        }
+                    }
+                }));
+
+            yield return new WaitUntil(() => done);
+        }
+
+        Debug.LogWarning("Accept invite polling timeout.");
+    }
+
+    // DECLINE
 
     private void OnDeclineClicked()
     {
-        if (invitePopupUi != null) invitePopupUi.HideInvitePopup(); // Close immediately for better UX
+        if (string.IsNullOrEmpty(currentInviteId))
+            return;
 
-        if (!string.IsNullOrEmpty(currentInviteId))
+        StartCoroutine(inviteApi.DeclineInvite(currentInviteId, (success, msg) =>
         {
-            StartCoroutine(inviteApi.DeclineInvite(currentInviteId, (success, msg) =>
-            {
-                if (!success) Debug.LogError($"Decline Failed: {msg}");
-                currentInviteId = null; // Clear after declining
-            }));
-        }
+            invitePopupUi?.HideInvitePopup();
+            currentInviteId = null;
+        }));
     }
 
-    private void ShowInvitePopup(string msg)
+    // CANCEL
+
+    private void OnCancelInviteClicked()
     {
-        if (invitePopupUi != null)
+        if (string.IsNullOrEmpty(sentInviteId))
+            return;
+
+        StartCoroutine(inviteApi.CancelInvite(sentInviteId, (success, msg) =>
         {
-            invitePopupUi.SetStatusText(msg);
-            invitePopupUi.ShowInvitePopup();
-        }
+            waitingPanel?.SetActive(false);
+            sentInviteId = null;
+        }));
+    }
+
+    // LOAD GAME
+
+    private void LoadOnlineGame(int gameId, int fromUserId, int toUserId)
+    {
+        if (isLoadingGame) return;
+        isLoadingGame = true;
+
+        waitingPanel?.SetActive(false);
+
+        PlayerPrefs.SetInt("CurrentGameId", gameId);
+        PlayerPrefs.SetString("Mode", "OnlineMultiplayer");
+
+        int myId = SessionManager.Instance.UserId;
+
+        PlayerPrefs.SetString("MyColor",
+            myId == fromUserId ? "white" : "black");
+
+        SceneManager.LoadScene("GameCoreOnline");
     }
 }

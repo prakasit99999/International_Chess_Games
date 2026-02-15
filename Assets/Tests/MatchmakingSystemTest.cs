@@ -15,7 +15,7 @@ public class MatchmakingSystemTest
         public int lastReceivedTimeControl = -1;
 
         // Param 'preferredTimeControl' ถูกเพิ่มให้ตรง Signature (virtual)
-        public override IEnumerator JoinQueue(string username, int min, int max, System.Action<bool, MatchResponse> callback)
+        public override IEnumerator JoinQueue(int userId, int min, int max, System.Action<bool, MatchResponse> callback)
         {
             // lastReceivedTimeControl = preferredTimeControl; // Removed
             yield return null; // จำลอง Delay นิดหน่อย
@@ -37,7 +37,7 @@ public class MatchmakingSystemTest
         }
 
         // Mock ฟังก์ชัน Cancel (เผื่อ Manager เรียกใช้ตอนปิด)
-        public override IEnumerator CancelQueue(string username, System.Action<bool, string> callback)
+        public override IEnumerator CancelQueue(int userId, System.Action<bool, string> callback)
         {
             yield return null;
             callback(true, "Cancelled");

@@ -84,7 +84,7 @@ public class UserAPI : MonoBehaviour
     }
 
     /// ดึงรายชื่อผู้เล่นทั้งหมด
-    public IEnumerator GetAllUsers(Action<PlayerSearchDto[]> onSuccess, Action<string> onError = null)
+    public IEnumerator GetAllUsers(Action<UserListDto[]> onSuccess, Action<string> onError = null)
     {
         string url = $"{baseUrl}/all";
         string token = SessionManager.Instance.Token;
@@ -135,7 +135,7 @@ public class UserAPI : MonoBehaviour
     }
 
     /// ค้นหาผู้เล่นจาก Username
-    public IEnumerator SearchUsers(string username, Action<PlayerSearchDto[]> onSuccess, Action<string> onError = null)
+    public IEnumerator SearchUsers(string username, Action<UserListDto[]> onSuccess, Action<string> onError = null)
     {
         string url = $"{baseUrl}/search?query={UnityWebRequest.EscapeURL(username)}";
         string token = SessionManager.Instance.Token;

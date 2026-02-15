@@ -38,6 +38,27 @@ public class HistoryMoveUI : MonoBehaviour
             Debug.LogError("❌ HistoryMove ไม่ถูกพบ! ตรวจสอบว่า HistoryMove อยู่ในฉาก");
     }
 
+    private void OnEnable()
+    {
+        if (gameManager == null)
+            gameManager = GameManager.Instance;
+
+        if (gameManager == null)
+            return;
+
+        gameManager.OnTurnChanged += HandleTurnChanged;
+        gameManager.OnMoveHistoryUpdated += UpdateMoveHistoryList;
+    }
+
+    private void OnDisable()
+    {
+        if (gameManager == null)
+            return;
+
+        gameManager.OnTurnChanged -= HandleTurnChanged;
+        gameManager.OnMoveHistoryUpdated -= UpdateMoveHistoryList;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -178,7 +199,7 @@ public class HistoryMoveUI : MonoBehaviour
 
         // อัปเดต UI
         UpdateMoveHistoryList();
-        GameManager.Instance.UpdatePlayerTurnUI();
+        UpdatePlayerTurn();
     }
 
     // แปลง Vector2Int เป็น Chess Notation
@@ -213,5 +234,10 @@ public class HistoryMoveUI : MonoBehaviour
         {
             Debug.LogError("❌ HistoryMove ไม่ถูกกำหนด!");
         }
+    }
+
+    private void HandleTurnChanged(ChessPiece.Team team)
+    {
+        UpdatePlayerTurn();
     }
 }
