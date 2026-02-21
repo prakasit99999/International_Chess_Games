@@ -1,21 +1,25 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+﻿<Project>
   <!-- Generated file, do not modify, your changes will be overwritten (use AssetPostprocessor.OnGeneratedCSProject) -->
   <PropertyGroup>
-    <LangVersion>9.0</LangVersion>
+    <BaseIntermediateOutputPath>Temp\obj\$(MSBuildProjectName)</BaseIntermediateOutputPath>
+    <IntermediateOutputPath>$(BaseIntermediateOutputPath)</IntermediateOutputPath>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <UseCommonOutputDirectory>true</UseCommonOutputDirectory>
+    <OutputPath>Temp\bin\Debug\</OutputPath>
   </PropertyGroup>
+  <Import Project="Sdk.props" Sdk="Microsoft.NET.Sdk" />
+  <ItemGroup>
+    <ProjectCapability Include="Unity" />
+    <ProjectCapability Include="EnableOnDemandExcludedFolderLoading" />
+  </ItemGroup>
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>10.0.20506</ProductVersion>
-    <SchemaVersion>2.0</SchemaVersion>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <EnableDefaultItems>false</EnableDefaultItems>
+    <LangVersion>9.0</LangVersion>
     <RootNamespace>Unity.AI.Assistant</RootNamespace>
-    <ProjectGuid>{CB154B53-6657-2525-0FAD-A0E833FF0A1C}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Unity.AI.Assistant.Runtime</AssemblyName>
-    <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
+    <TargetFramework>netstandard2.1</TargetFramework>
     <BaseDirectory>.</BaseDirectory>
   </PropertyGroup>
   <PropertyGroup>
@@ -23,221 +27,214 @@
     <DefineConstants>UNITY_6000_3_1;UNITY_6000_3;UNITY_6000;UNITY_5_3_OR_NEWER;UNITY_5_4_OR_NEWER;UNITY_5_5_OR_NEWER;UNITY_5_6_OR_NEWER;UNITY_2017_1_OR_NEWER;UNITY_2017_2_OR_NEWER;UNITY_2017_3_OR_NEWER;UNITY_2017_4_OR_NEWER;UNITY_2018_1_OR_NEWER;UNITY_2018_2_OR_NEWER;UNITY_2018_3_OR_NEWER;UNITY_2018_4_OR_NEWER;UNITY_2019_1_OR_NEWER;UNITY_2019_2_OR_NEWER;UNITY_2019_3_OR_NEWER;UNITY_2019_4_OR_NEWER;UNITY_2020_1_OR_NEWER;UNITY_2020_2_OR_NEWER;UNITY_2020_3_OR_NEWER;UNITY_2021_1_OR_NEWER;UNITY_2021_2_OR_NEWER;UNITY_2021_3_OR_NEWER;UNITY_2022_1_OR_NEWER;UNITY_2022_2_OR_NEWER;UNITY_2022_3_OR_NEWER;UNITY_2023_1_OR_NEWER;UNITY_2023_2_OR_NEWER;UNITY_2023_3_OR_NEWER;UNITY_6000_0_OR_NEWER;UNITY_6000_1_OR_NEWER;UNITY_6000_2_OR_NEWER;UNITY_6000_3_OR_NEWER;UNITY_INCLUDE_TESTS;ENABLE_AUDIO;ENABLE_CLOTH;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_TEXTURE_STREAMING;ENABLE_UNITYEVENTS;ENABLE_VR;ENABLE_WEBCAM;ENABLE_UNITYWEBREQUEST;ENABLE_WWW;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_ADS;ENABLE_CLOUD_SERVICES_USE_WEBREQUEST;ENABLE_UNITY_CONSENT;ENABLE_UNITY_CLOUD_IDENTIFIERS;ENABLE_CLOUD_SERVICES_CRASH_REPORTING;ENABLE_CLOUD_SERVICES_PURCHASING;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_CLOUD_SERVICES_BUILD;ENABLE_EDITOR_GAME_SERVICES;ENABLE_UNITY_GAME_SERVICES_ANALYTICS_SUPPORT;ENABLE_CLOUD_LICENSE;ENABLE_EDITOR_HUB_LICENSE;ENABLE_WEBSOCKET_CLIENT;ENABLE_GENERATE_NATIVE_PLUGINS_FOR_ASSEMBLIES_API;ENABLE_DIRECTOR_AUDIO;ENABLE_DIRECTOR_TEXTURE;ENABLE_MANAGED_JOBS;ENABLE_MANAGED_TRANSFORM_JOBS;ENABLE_MANAGED_ANIMATION_JOBS;ENABLE_MANAGED_AUDIO_JOBS;ENABLE_ENGINE_CODE_STRIPPING;ENABLE_ONSCREEN_KEYBOARD;ENABLE_MANAGED_UNITYTLS;RENDER_SOFTWARE_CURSOR;ENABLE_MARSHALLING_TESTS;ENABLE_VIDEO;ENABLE_NAVIGATION_OFFMESHLINK_TO_NAVMESHLINK;ENABLE_ACCELERATOR_CLIENT_DEBUGGING;TEXTCORE_1_0_OR_NEWER;EDITOR_ONLY_NAVMESH_BUILDER_DEPRECATED;PLATFORM_WEBGL;UNITY_WEBGL;UNITY_WEBGL_API;UNITY_DISABLE_WEB_VERIFICATION;UNITY_GFX_USE_PLATFORM_VSYNC;ENABLE_CRUNCH_TEXTURE_COMPRESSION;ENABLE_SPATIALTRACKING;ENABLE_MONO;NET_STANDARD_2_0;NET_STANDARD;NET_STANDARD_2_1;NETSTANDARD;NETSTANDARD2_1;ENABLE_PROFILER;DEBUG;TRACE;UNITY_ASSERTIONS;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_WIN;ENABLE_UNITY_COLLECTIONS_CHECKS;ENABLE_BURST_AOT;UNITY_TEAM_LICENSE;ENABLE_CUSTOM_RENDER_TEXTURE;ENABLE_DIRECTOR;ENABLE_LOCALIZATION;ENABLE_SPRITES;ENABLE_TERRAIN;ENABLE_TILEMAP;ENABLE_TIMELINE;ENABLE_LEGACY_INPUT_MANAGER;TEXTCORE_FONT_ENGINE_1_5_OR_NEWER;TEXTCORE_TEXT_ENGINE_1_5_OR_NEWER;TEXTCORE_FONT_ENGINE_1_6_OR_NEWER;MIRROR;MIRROR_89_OR_NEWER;MIRROR_90_OR_NEWER;MIRROR_93_OR_NEWER;MIRROR_96_OR_NEWER;EDGEGAP_PLUGIN_SERVERS;APP_UI_EDITOR_ONLY;CSHARP_7_OR_LATER;CSHARP_7_3_OR_NEWER</DefineConstants>
     <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>Temp\bin\Debug\</OutputPath>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>Temp\bin\Release\</OutputPath>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
   <PropertyGroup>
-    <NoConfig>true</NoConfig>
+    <NoStandardLibraries>true</NoStandardLibraries>
     <NoStdLib>true</NoStdLib>
-    <AddAdditionalExplicitAssemblyReferences>false</AddAdditionalExplicitAssemblyReferences>
-    <ImplicitlyExpandNETStandardFacades>false</ImplicitlyExpandNETStandardFacades>
-    <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
+    <NoConfig>true</NoConfig>
+    <DisableImplicitFrameworkReferences>true</DisableImplicitFrameworkReferences>
+    <MSBuildWarningsAsMessages>MSB3277</MSBuildWarningsAsMessages>
   </PropertyGroup>
   <PropertyGroup>
-    <ProjectTypeGuids>{E097FAD1-6243-4DAD-9C02-E9B9EFC3FFC1};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <UnityProjectGenerator>Package</UnityProjectGenerator>
     <UnityProjectGeneratorVersion>2.0.26</UnityProjectGeneratorVersion>
-    <UnityProjectGeneratorStyle>Legacy</UnityProjectGeneratorStyle>
+    <UnityProjectGeneratorStyle>SDK</UnityProjectGeneratorStyle>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>WebGL:20</UnityBuildTarget>
     <UnityVersion>6000.3.1f1</UnityVersion>
   </PropertyGroup>
   <ItemGroup>
-    <Analyzer Include="C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
+    <Analyzer Include="C:\Users\praka\.vscode\extensions\visualstudiotoolsforunity.vstuc-1.2.1\Analyzers\Microsoft.Unity.Analyzers.dll" />
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\Tools\BuildPipeline\Unity.SourceGenerators\Unity.SourceGenerators.dll" />
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\Tools\BuildPipeline\Unity.SourceGenerators\Unity.Properties.SourceGenerator.dll" />
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\Tools\BuildPipeline\Unity.SourceGenerators\Unity.UIToolkit.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Runtime\Socket\Protocol\Models\FromClient\EditRunCommandRequestV1.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Runtime\Socket\Protocol\REST\Model\MessageCostV1.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Runtime\Data\AssistantMessage.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Runtime\Socket\Protocol\Models\FromServer\ChatAcknowledgmentV1.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Runtime\FunctionCalling\Permissions\ToolPermissions.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Runtime\Socket\Protocol\Models\FromServer\ChatResponseV1.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Runtime\Socket\Communication\IStreamStatusHook.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Runtime\Socket\Protocol\REST\Client\ApiException.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Runtime\FunctionCalling\Context\ToolExecutionContext.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Runtime\Socket\Communication\OrchestrationWebSocket.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Runtime\FunctionCalling\Permissions\ToolCallPermissions.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Runtime\Socket\Protocol\REST\Model\CategoryV1.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Runtime\Backend\IOrganizationIdProvider.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Runtime\ApplicationModels\EditorContextReport.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Runtime\Socket\Protocol\REST\Client\ApiClient.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Runtime\Backend\CapabilityRegistry.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Runtime\Socket\Protocol\REST\Model\Guideline.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Runtime\Socket\Protocol\Models\FromClient\ClientDisconnectV1.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Runtime\Socket\Protocol\Models\FromServer\CapabilitiesRequestV1.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Runtime\Utils\AssistantJsonHelper.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Runtime\Socket\Protocol\REST\Api\AiAssistantApi.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Runtime\Data\AssistantConversationInfo.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Runtime\Utils\AccessTokenRefreshUtility.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Runtime\Socket\Protocol\Models\FromClient\BaseAgentDefinitionV1.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Runtime\ApplicationModels\ParameterDefinition.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Runtime\Data\AssistantContextEntry.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Runtime\Socket\Protocol\REST\Client\GlobalConfiguration.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Runtime\Data\AssistantMessageBlock.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Runtime\FunctionCalling\AttributeBasedFunctionSource.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Runtime\Socket\ErrorHandling\BackendResult.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Runtime\Socket\Workflows\Chat\ChatResponseFragment.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Runtime\Socket\Communication\ConnectResult.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Runtime\FunctionCalling\IFunctionSource.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Runtime\Socket\Protocol\REST\Client\ClientUtils.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Runtime\Agents\Utils\AgentProtocolUtils.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Runtime\Utils\AssistantMessageSizeConstraints.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Runtime\ApplicationModels\ConversationData.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Runtime\Socket\Protocol\REST\Client\ISynchronousClient.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Runtime\Data\AcknowledgePromptInfo.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Runtime\Backend\IAssistantBackend.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Runtime\Backend\UnityVersionProvider.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Runtime\ApplicationModels\Sentiment.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Runtime\Socket\Workflows\Chat\State.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Runtime\FunctionCalling\Permissions\IPermissionsPolicyProvider.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Runtime\ApplicationModels\VersionSupportInfo.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Runtime\FunctionCalling\Interactions\IToolInteractions.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Runtime\FunctionCalling\Context\ConversationContext.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Runtime\FunctionCalling\Context\ToolUiContainerUtils.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Runtime\Utils\EnvironmentUtils.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Runtime\Socket\Protocol\REST\Model\ContributionRequestInternal.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Runtime\Socket\Protocol\REST\Client\OpenAPIDateConverter.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Runtime\Socket\Protocol\REST\Model\ConversationInfoV1.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Runtime\Socket\Protocol\REST\Model\FeedbackV1.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Runtime\FunctionCalling\Container\IToolUiContainer.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Runtime\FunctionCalling\Interactions\ToolCallInteractions.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Runtime\Socket\Protocol\REST\Model\MessageV1.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Runtime\Utils\ProjectVersionUtils.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Runtime\Socket\Protocol\REST\Model\RoleV1.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Runtime\FunctionCalling\CachedFunction.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Runtime\FunctionCalling\Context\IUserInteraction.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Runtime\Socket\Protocol\ProtocolUtility.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Runtime\Socket\Protocol\Models\ServerMessageJsonConverter.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Runtime\Agents\SequentialAgent.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Runtime\Data\AssistantContextType.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Runtime\FunctionCalling\IFunctionCallRenderer.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Runtime\Socket\Protocol\REST\Model\FewShotExample.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Runtime\ApplicationModels\ScriptType.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Runtime\Socket\Protocol\REST\Client\WebRequestPathBuilder.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Runtime\FunctionCalling\Permissions\ToolPermissions.State.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Runtime\Socket\Protocol\REST\Model\ConversationV1.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Runtime\Socket\Protocol\REST\Client\Multimap.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Runtime\Utils\InternalLog.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Runtime\Agents\AgentRegistry.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Runtime\ApplicationModels\ClientConversation.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Runtime\Socket\Communication\ReceiveResult.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Runtime\Socket\Protocol\REST\Model\SentimentV1.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Runtime\AssemblyInfo.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Runtime\ApplicationModels\FunctionDefinition.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Runtime\Backend\MessageFeedback.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Runtime\FunctionCalling\Permissions\ToolPermissions.FileSystem.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Runtime\FunctionCalling\DefaultFunctionCallRenderer.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Runtime\Socket\Protocol\REST\Client\Configuration.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Runtime\Socket\Protocol\REST\Client\ConnectionException.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Runtime\ApplicationModels\SelectedContextMetadataItems.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Runtime\FunctionCalling\Container\ToolInteractionAndPermissionBridge.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Runtime\Socket\Protocol\REST\Model\AttachedContextMetadataV1.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Runtime\Socket\Protocol\Models\FromServer\FunctionCallRequestV1.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Runtime\Socket\Workflows\Chat\IChatWorkflow.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Runtime\Data\HistoryModificationType.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Runtime\Agents\LlmAgent.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Runtime\Socket\Protocol\REST\Client\ApiResponse.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Runtime\Agents\BaseAgent.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Runtime\Socket\Communication\IClientWebSocket.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Runtime\Socket\ErrorHandling\ErrorInfo.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Runtime\Socket\Protocol\REST\Client\UnexpectedResponseException.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Runtime\Socket\Protocol\REST\Model\FeedbackCreationV1.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Runtime\Socket\Protocol\Models\FromClient\ChatRequestV1.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Runtime\Socket\Utilities\GameObjectData.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Runtime\Socket\Communication\StreamState.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Runtime\Socket\Protocol\REST\Model\InspirationV1.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Runtime\Utils\FunctionDefinitionUtils.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Runtime\ApplicationModels\Category.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Runtime\Socket\Protocol\REST\Client\RequestOptions.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Runtime\Backend\IFunctionCaller.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Runtime\Socket\Protocol\REST\Model\ValidationErrorLocInner.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Runtime\Socket\Workflows\Chat\ChatWorkflow.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Runtime\FunctionCalling\FunctionCallUtils.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Runtime\FunctionCalling\Permissions\Utils\PathUtils.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Runtime\Data\AssistantMessageIdType.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Runtime\FunctionCalling\Attributes\ParameterAttribute.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Runtime\Backend\SourceBlock.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Runtime\FunctionCalling\Permissions\ToolPermissions.AssetGeneration.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Runtime\Socket\Protocol\REST\Client\IReadableConfiguration.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Runtime\Utils\DelayUtility.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Runtime\FunctionCalling\Permissions\ToolPermissions.CodeExecution.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Runtime\Socket\Protocol\Models\FromClient\LlmAgentDefinitionV1.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Runtime\Socket\Protocol\REST\Model\Payload.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Runtime\Socket\Protocol\REST\Model\AbstractOpenAPISchema.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Runtime\FunctionCalling\Permissions\ToolPermissions.ToolExecution.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Runtime\Socket\Communication\WrappedClientWebSocket.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Runtime\Socket\Workflows\Chat\BaseChatWorkflow.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Runtime\Utils\TaskUtils.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Runtime\ApplicationModels\ConversationFragment.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Runtime\Data\AssistantConversationId.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Runtime\Socket\Protocol\REST\Model\ValidationError.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Runtime\Socket\Protocol\REST\Model\ConversationTitleResponseV1.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Runtime\Socket\Workflows\Chat\CloseReason.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Runtime\FunctionCalling\FunctionToolbox.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Runtime\FunctionCalling\Permissions\ToolPermissions.PlayMode.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Runtime\Socket\Protocol\Models\FromServer\ServerDisconnectV1.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Runtime\Socket\Protocol\Models\FromServer\DiscussionInitializationV1.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Runtime\Socket\Protocol\REST\Model\VersionSupportInfo.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Runtime\FunctionCalling\FunctionCallRendererAttribute.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Runtime\Socket\Protocol\ProtocolOverheadMeasures.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Runtime\Data\AssistantMessageId.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Runtime\Socket\Protocol\Models\FromClient\CancelChatRequestV1.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Runtime\FunctionCalling\Permissions\AllowAllToolPermissions.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Runtime\Socket\Protocol\REST\Model\HTTPValidationError.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Runtime\FunctionCalling\Permissions\IToolPermissions.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Runtime\Data\FeedbackData.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Runtime\FunctionCalling\AIAssistantFunctionCaller.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Runtime\FunctionCalling\ToolRegistry.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Runtime\Utils\AssistantModeUtils.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Runtime\Socket\Protocol\Models\FromClient\CapabilitiesResponseV1.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Runtime\FunctionCalling\FunctionCache.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Runtime\Backend\IUnityVersionProvider.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Runtime\Agents\IAgent.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Runtime\Socket\Protocol\Models\FromClient\FunctionCallResponseV1.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Runtime\Socket\Communication\OrchestrationStreamStatusHook.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Runtime\Data\AssistantContextList.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Runtime\FunctionCalling\Interactions\AllowAllToolInteractions.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Runtime\Utils\DispatchUtility.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Runtime\Socket\Communication\SendResult.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Runtime\Socket\Protocol\REST\Client\IApiAccessor.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Runtime\ApplicationModels\Conversation.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Runtime\Data\AssistantMode.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Runtime\FunctionCalling\Permissions\ToolPermissions.ScreenCapture.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Runtime\Socket\Protocol\REST\Model\ErrorResponseV1.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Runtime\Socket\Workflows\WebSocketFactory.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Runtime\Data\ICredentialsContext.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Runtime\Socket\Protocol\Models\FromClient\SequentialAgentDefinitionV1.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Runtime\Socket\Protocol\Models\IModel.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Runtime\FunctionCalling\Attributes\AgentToolAttribute.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Runtime\Data\AssistantFunctionCall.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Runtime\Socket\Protocol\Models\FromClient\FunctionsObject.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Runtime\Utils\MainThread.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Runtime\Socket\Protocol\REST\Model\ConversationInfoUpdateV1.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Runtime\FunctionCalling\FunctionCallingUtilities.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Runtime\FunctionCalling\Interactions\ToolInteractions.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Runtime\Data\AssistantConversation.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Runtime\ApplicationModels\ContextItem.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Runtime\Socket\Communication\IOrchestrationWebSocket.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Runtime\Socket\Utilities\OrchestrationDataUtilities.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Runtime\FunctionCalling\Permissions\ToolPermissions.UnityObject.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Runtime\Socket\Protocol\REST\Model\MessageCostV1.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Runtime\Data\AssistantMessage.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Runtime\Socket\Protocol\Models\FromServer\ChatAcknowledgmentV1.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Runtime\FunctionCalling\Permissions\ToolPermissions.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Runtime\Socket\Protocol\Models\FromServer\ChatResponseV1.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Runtime\Socket\Communication\IStreamStatusHook.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Runtime\Socket\Protocol\REST\Client\ApiException.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Runtime\FunctionCalling\Interactions\NoOpToolInteractions.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Runtime\FunctionCalling\Context\ToolExecutionContext.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Runtime\Socket\Communication\OrchestrationWebSocket.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Runtime\FunctionCalling\Permissions\ToolCallPermissions.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Runtime\Socket\Protocol\REST\Model\CategoryV1.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Runtime\Backend\IOrganizationIdProvider.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Runtime\FunctionCalling\ICachedFunction.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Runtime\ApplicationModels\EditorContextReport.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Runtime\Socket\Protocol\REST\Client\ApiClient.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Runtime\Backend\CapabilityRegistry.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Runtime\Socket\Protocol\REST\Model\Guideline.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Runtime\Socket\Protocol\Models\FromClient\ClientDisconnectV1.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Runtime\Socket\Protocol\Models\FromServer\CapabilitiesRequestV1.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Runtime\Utils\AssistantJsonHelper.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Runtime\Socket\Protocol\REST\Api\AiAssistantApi.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Runtime\Data\AssistantConversationInfo.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Runtime\Utils\AccessTokenRefreshUtility.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Runtime\Socket\Protocol\Models\FromClient\BaseAgentDefinitionV1.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Runtime\ApplicationModels\ParameterDefinition.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Runtime\Data\AssistantContextEntry.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Runtime\Socket\Protocol\REST\Client\GlobalConfiguration.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Runtime\Data\AssistantMessageBlock.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Runtime\FunctionCalling\AttributeBasedFunctionSource.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Runtime\Socket\ErrorHandling\BackendResult.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Runtime\Socket\Workflows\Chat\ChatResponseFragment.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Runtime\Socket\Communication\ConnectResult.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Runtime\FunctionCalling\IFunctionSource.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Runtime\Socket\Protocol\REST\Client\ClientUtils.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Runtime\Agents\Utils\AgentProtocolUtils.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Runtime\Utils\AssistantMessageSizeConstraints.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Runtime\Utils\SerializableDictionary.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Runtime\ApplicationModels\ConversationData.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Runtime\Socket\Protocol\REST\Client\ISynchronousClient.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Runtime\Data\AcknowledgePromptInfo.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Runtime\Backend\IAssistantBackend.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Runtime\Backend\UnityVersionProvider.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Runtime\ApplicationModels\Sentiment.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Runtime\Socket\Workflows\Chat\State.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Runtime\FunctionCalling\Permissions\IPermissionsPolicyProvider.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Runtime\ApplicationModels\VersionSupportInfo.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Runtime\FunctionCalling\Interactions\IToolInteractions.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Runtime\FunctionCalling\Context\ConversationContext.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Runtime\FunctionCalling\Context\ToolUiContainerUtils.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Runtime\Utils\EnvironmentUtils.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Runtime\Socket\Protocol\REST\Model\ContributionRequestInternal.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Runtime\Socket\Protocol\REST\Client\OpenAPIDateConverter.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Runtime\Socket\Protocol\REST\Model\ConversationInfoV1.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Runtime\Socket\Protocol\REST\Model\FeedbackV1.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Runtime\FunctionCalling\Container\IToolUiContainer.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Runtime\FunctionCalling\Interactions\ToolCallInteractions.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Runtime\Socket\Protocol\REST\Model\MessageV1.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Runtime\Utils\ProjectVersionUtils.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Runtime\Socket\Protocol\REST\Model\RoleV1.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Runtime\FunctionCalling\Functions\Local\LocalAssistantFunctionJsonUtils.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Runtime\FunctionCalling\Context\IUserInteraction.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Runtime\Socket\Protocol\ProtocolUtility.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Runtime\Socket\Protocol\Models\ServerMessageJsonConverter.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Runtime\Agents\SequentialAgent.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Runtime\Data\AssistantContextType.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Runtime\FunctionCalling\IFunctionCallRenderer.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Runtime\Socket\Protocol\REST\Model\FewShotExample.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Runtime\ApplicationModels\ScriptType.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Runtime\FunctionCalling\Context\ToolExecutionContextFactory.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Runtime\Socket\Protocol\REST\Client\WebRequestPathBuilder.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Runtime\FunctionCalling\Permissions\ToolPermissions.State.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Runtime\Socket\Protocol\REST\Model\ConversationV1.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Runtime\Socket\Protocol\REST\Client\Multimap.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Runtime\Utils\InternalLog.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Runtime\Agents\AgentRegistry.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Runtime\ApplicationModels\ClientConversation.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Runtime\Socket\Communication\ReceiveResult.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Runtime\Socket\Protocol\REST\Model\SentimentV1.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Runtime\AssemblyInfo.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Runtime\ApplicationModels\FunctionDefinition.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Runtime\Backend\MessageFeedback.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Runtime\FunctionCalling\Permissions\ToolPermissions.FileSystem.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Runtime\FunctionCalling\DefaultFunctionCallRenderer.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Runtime\Socket\Protocol\REST\Client\Configuration.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Runtime\Socket\Protocol\REST\Client\ConnectionException.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Runtime\ApplicationModels\SelectedContextMetadataItems.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Runtime\FunctionCalling\Container\ToolInteractionAndPermissionBridge.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Runtime\Socket\Protocol\REST\Model\AttachedContextMetadataV1.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Runtime\Socket\Protocol\Models\FromServer\FunctionCallRequestV1.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Runtime\Socket\Protocol\Models\FromClient\RevertMessageNotificationV1.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Runtime\Socket\Workflows\Chat\IChatWorkflow.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Runtime\Data\HistoryModificationType.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Runtime\Agents\LlmAgent.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Runtime\FunctionCalling\Context\PersistentState.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Runtime\Socket\Protocol\REST\Client\ApiResponse.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Runtime\Agents\BaseAgent.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Runtime\Socket\Communication\IClientWebSocket.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Runtime\Socket\ErrorHandling\ErrorInfo.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Runtime\Socket\Protocol\REST\Client\UnexpectedResponseException.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Runtime\FunctionCalling\IFunctionToolbox.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Runtime\Socket\Protocol\REST\Model\FeedbackCreationV1.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Runtime\Socket\Protocol\Models\FromClient\ChatRequestV1.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Runtime\Socket\Utilities\GameObjectData.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Runtime\Socket\Communication\StreamState.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Runtime\Socket\Protocol\REST\Model\InspirationV1.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Runtime\Utils\FunctionDefinitionUtils.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Runtime\ApplicationModels\Category.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Runtime\Socket\Protocol\REST\Client\RequestOptions.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Runtime\Backend\IFunctionCaller.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Runtime\Socket\Protocol\REST\Model\ValidationErrorLocInner.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Runtime\Socket\Workflows\Chat\ChatWorkflow.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Runtime\FunctionCalling\FunctionCallUtils.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Runtime\FunctionCalling\Permissions\Utils\PathUtils.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Runtime\Data\AssistantMessageIdType.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Runtime\FunctionCalling\Functions\Local\LocalAssistantFunction.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Runtime\FunctionCalling\Attributes\ParameterAttribute.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Runtime\Backend\SourceBlock.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Runtime\FunctionCalling\Permissions\ToolPermissions.AssetGeneration.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Runtime\Socket\Protocol\REST\Client\IReadableConfiguration.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Runtime\Utils\DelayUtility.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Runtime\FunctionCalling\Permissions\ToolPermissions.CodeExecution.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Runtime\Socket\Protocol\Models\FromClient\LlmAgentDefinitionV1.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Runtime\Socket\Protocol\REST\Model\Payload.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Runtime\Socket\Protocol\REST\Model\AbstractOpenAPISchema.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Runtime\FunctionCalling\Permissions\ToolPermissions.ToolExecution.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Runtime\Socket\Communication\WrappedClientWebSocket.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Runtime\Socket\Workflows\Chat\BaseChatWorkflow.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Runtime\Utils\TaskUtils.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Runtime\ApplicationModels\ConversationFragment.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Runtime\Data\AssistantConversationId.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Runtime\Socket\Protocol\REST\Model\ValidationError.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Runtime\Socket\Protocol\REST\Model\ConversationTitleResponseV1.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Runtime\Socket\Workflows\Chat\CloseReason.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Runtime\FunctionCalling\FunctionToolbox.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Runtime\Utils\AssemblyUtils.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Runtime\FunctionCalling\Permissions\ToolPermissions.PlayMode.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Runtime\Socket\Protocol\Models\FromServer\ServerDisconnectV1.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Runtime\Socket\Protocol\Models\FromServer\DiscussionInitializationV1.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Runtime\Socket\Protocol\REST\Model\VersionSupportInfo.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Runtime\FunctionCalling\FunctionCallRendererAttribute.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Runtime\Socket\Protocol\ProtocolOverheadMeasures.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Runtime\Data\AssistantMessageId.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Runtime\Socket\Protocol\Models\FromClient\CancelChatRequestV1.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Runtime\FunctionCalling\Permissions\AllowAllToolPermissions.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Runtime\Socket\Protocol\REST\Model\HTTPValidationError.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Runtime\FunctionCalling\Permissions\IToolPermissions.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Runtime\Data\FeedbackData.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Runtime\FunctionCalling\AIAssistantFunctionCaller.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Runtime\FunctionCalling\ToolRegistry.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Runtime\Utils\AssistantModeUtils.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Runtime\Socket\Protocol\Models\FromClient\CapabilitiesResponseV1.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Runtime\FunctionCalling\FunctionCache.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Runtime\Backend\IUnityVersionProvider.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Runtime\Agents\IAgent.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Runtime\Socket\Protocol\Models\FromClient\FunctionCallResponseV1.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Runtime\Socket\Communication\OrchestrationStreamStatusHook.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Runtime\Data\AssistantContextList.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Runtime\FunctionCalling\Interactions\AllowAllToolInteractions.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Runtime\Utils\DispatchUtility.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Runtime\Socket\Communication\SendResult.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Runtime\Socket\Protocol\REST\Client\IApiAccessor.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Runtime\ApplicationModels\Conversation.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Runtime\Data\AssistantMode.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Runtime\FunctionCalling\Permissions\ToolPermissions.ScreenCapture.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Runtime\Socket\Protocol\REST\Model\ErrorResponseV1.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Runtime\Socket\Workflows\WebSocketFactory.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Runtime\Data\ICredentialsContext.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Runtime\Socket\Protocol\Models\FromClient\SequentialAgentDefinitionV1.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Runtime\Socket\Protocol\Models\IModel.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Runtime\FunctionCalling\Attributes\AgentToolAttribute.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Runtime\Data\AssistantFunctionCall.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Runtime\Socket\Protocol\Models\FromClient\FunctionsObject.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Runtime\Utils\MainThread.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Runtime\Socket\Protocol\REST\Model\ConversationInfoUpdateV1.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Runtime\FunctionCalling\FunctionCallingUtilities.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Runtime\FunctionCalling\Interactions\ToolInteractions.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Runtime\Data\AssistantConversation.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Runtime\ApplicationModels\ContextItem.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Runtime\Socket\Communication\IOrchestrationWebSocket.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Runtime\FunctionCalling\IAssemblyFunction.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Runtime\Socket\Utilities\OrchestrationDataUtilities.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Runtime\FunctionCalling\Permissions\ToolPermissions.UnityObject.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Runtime\Unity.AI.Assistant.Runtime.asmdef" />
+    <None Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Runtime\Unity.AI.Assistant.Runtime.asmdef" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
@@ -773,7 +770,7 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="System.Runtime.CompilerServices.Unsafe">
-      <HintPath>Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Plugins\Shared\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+      <HintPath>Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Plugins\Shared\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Newtonsoft.Json">
@@ -1270,26 +1267,19 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="Unity.Serialization.csproj">
-      <Project>{B52CD64E-86CA-5572-D5C6-DC47C42AC51E}</Project>
-      <Name>Unity.Serialization</Name>
-    </ProjectReference>
-    <ProjectReference Include="UnityEditor.UI.csproj">
-      <Project>{698D6ACB-27E6-6733-2BA7-B76006C8ED47}</Project>
-      <Name>UnityEditor.UI</Name>
-    </ProjectReference>
-    <ProjectReference Include="UnityEngine.UI.csproj">
-      <Project>{3A16FD29-B329-E206-65D7-03A7329215E0}</Project>
-      <Name>UnityEngine.UI</Name>
-    </ProjectReference>
+    <ProjectReference Include="Unity.Serialization.csproj" />
+    <ProjectReference Include="UnityEditor.UI.csproj" />
+    <ProjectReference Include="UnityEngine.UI.csproj" />
   </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <Target Name="GenerateTargetFrameworkMonikerAttribute" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
+  <Import Project="Sdk.targets" Sdk="Microsoft.NET.Sdk" />
+  <ItemGroup>
+    <ProjectCapability Remove="LaunchProfiles" />
+    <ProjectCapability Remove="SharedProjectReferences" />
+    <ProjectCapability Remove="ReferenceManagerSharedProjects" />
+    <ProjectCapability Remove="ReferenceManagerProjects" />
+    <ProjectCapability Remove="COMReferences" />
+    <ProjectCapability Remove="ReferenceManagerCOM" />
+    <ProjectCapability Remove="AssemblyReferences" />
+    <ProjectCapability Remove="ReferenceManagerAssemblies" />
+  </ItemGroup>
 </Project>

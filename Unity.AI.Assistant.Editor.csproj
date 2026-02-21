@@ -1,21 +1,25 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+﻿<Project>
   <!-- Generated file, do not modify, your changes will be overwritten (use AssetPostprocessor.OnGeneratedCSProject) -->
   <PropertyGroup>
-    <LangVersion>9.0</LangVersion>
+    <BaseIntermediateOutputPath>Temp\obj\$(MSBuildProjectName)</BaseIntermediateOutputPath>
+    <IntermediateOutputPath>$(BaseIntermediateOutputPath)</IntermediateOutputPath>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <UseCommonOutputDirectory>true</UseCommonOutputDirectory>
+    <OutputPath>Temp\bin\Debug\</OutputPath>
   </PropertyGroup>
+  <Import Project="Sdk.props" Sdk="Microsoft.NET.Sdk" />
+  <ItemGroup>
+    <ProjectCapability Include="Unity" />
+    <ProjectCapability Include="EnableOnDemandExcludedFolderLoading" />
+  </ItemGroup>
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>10.0.20506</ProductVersion>
-    <SchemaVersion>2.0</SchemaVersion>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <EnableDefaultItems>false</EnableDefaultItems>
+    <LangVersion>9.0</LangVersion>
     <RootNamespace>Unity.AI.Assistant.Editor</RootNamespace>
-    <ProjectGuid>{53004D81-A994-086B-0605-52C5B084076B}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Unity.AI.Assistant.Editor</AssemblyName>
-    <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
+    <TargetFramework>netstandard2.1</TargetFramework>
     <BaseDirectory>.</BaseDirectory>
   </PropertyGroup>
   <PropertyGroup>
@@ -23,217 +27,284 @@
     <DefineConstants>UNITY_6000_3_1;UNITY_6000_3;UNITY_6000;UNITY_5_3_OR_NEWER;UNITY_5_4_OR_NEWER;UNITY_5_5_OR_NEWER;UNITY_5_6_OR_NEWER;UNITY_2017_1_OR_NEWER;UNITY_2017_2_OR_NEWER;UNITY_2017_3_OR_NEWER;UNITY_2017_4_OR_NEWER;UNITY_2018_1_OR_NEWER;UNITY_2018_2_OR_NEWER;UNITY_2018_3_OR_NEWER;UNITY_2018_4_OR_NEWER;UNITY_2019_1_OR_NEWER;UNITY_2019_2_OR_NEWER;UNITY_2019_3_OR_NEWER;UNITY_2019_4_OR_NEWER;UNITY_2020_1_OR_NEWER;UNITY_2020_2_OR_NEWER;UNITY_2020_3_OR_NEWER;UNITY_2021_1_OR_NEWER;UNITY_2021_2_OR_NEWER;UNITY_2021_3_OR_NEWER;UNITY_2022_1_OR_NEWER;UNITY_2022_2_OR_NEWER;UNITY_2022_3_OR_NEWER;UNITY_2023_1_OR_NEWER;UNITY_2023_2_OR_NEWER;UNITY_2023_3_OR_NEWER;UNITY_6000_0_OR_NEWER;UNITY_6000_1_OR_NEWER;UNITY_6000_2_OR_NEWER;UNITY_6000_3_OR_NEWER;UNITY_INCLUDE_TESTS;ENABLE_AUDIO;ENABLE_CLOTH;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_TEXTURE_STREAMING;ENABLE_UNITYEVENTS;ENABLE_VR;ENABLE_WEBCAM;ENABLE_UNITYWEBREQUEST;ENABLE_WWW;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_ADS;ENABLE_CLOUD_SERVICES_USE_WEBREQUEST;ENABLE_UNITY_CONSENT;ENABLE_UNITY_CLOUD_IDENTIFIERS;ENABLE_CLOUD_SERVICES_CRASH_REPORTING;ENABLE_CLOUD_SERVICES_PURCHASING;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_CLOUD_SERVICES_BUILD;ENABLE_EDITOR_GAME_SERVICES;ENABLE_UNITY_GAME_SERVICES_ANALYTICS_SUPPORT;ENABLE_CLOUD_LICENSE;ENABLE_EDITOR_HUB_LICENSE;ENABLE_WEBSOCKET_CLIENT;ENABLE_GENERATE_NATIVE_PLUGINS_FOR_ASSEMBLIES_API;ENABLE_DIRECTOR_AUDIO;ENABLE_DIRECTOR_TEXTURE;ENABLE_MANAGED_JOBS;ENABLE_MANAGED_TRANSFORM_JOBS;ENABLE_MANAGED_ANIMATION_JOBS;ENABLE_MANAGED_AUDIO_JOBS;ENABLE_ENGINE_CODE_STRIPPING;ENABLE_ONSCREEN_KEYBOARD;ENABLE_MANAGED_UNITYTLS;RENDER_SOFTWARE_CURSOR;ENABLE_MARSHALLING_TESTS;ENABLE_VIDEO;ENABLE_NAVIGATION_OFFMESHLINK_TO_NAVMESHLINK;ENABLE_ACCELERATOR_CLIENT_DEBUGGING;TEXTCORE_1_0_OR_NEWER;EDITOR_ONLY_NAVMESH_BUILDER_DEPRECATED;PLATFORM_WEBGL;UNITY_WEBGL;UNITY_WEBGL_API;UNITY_DISABLE_WEB_VERIFICATION;UNITY_GFX_USE_PLATFORM_VSYNC;ENABLE_CRUNCH_TEXTURE_COMPRESSION;ENABLE_SPATIALTRACKING;ENABLE_MONO;NET_4_6;NET_UNITY_4_8;ENABLE_PROFILER;DEBUG;TRACE;UNITY_ASSERTIONS;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_WIN;ENABLE_UNITY_COLLECTIONS_CHECKS;ENABLE_BURST_AOT;UNITY_TEAM_LICENSE;ENABLE_CUSTOM_RENDER_TEXTURE;ENABLE_DIRECTOR;ENABLE_LOCALIZATION;ENABLE_SPRITES;ENABLE_TERRAIN;ENABLE_TILEMAP;ENABLE_TIMELINE;ENABLE_LEGACY_INPUT_MANAGER;TEXTCORE_FONT_ENGINE_1_5_OR_NEWER;TEXTCORE_TEXT_ENGINE_1_5_OR_NEWER;TEXTCORE_FONT_ENGINE_1_6_OR_NEWER;MIRROR;MIRROR_89_OR_NEWER;MIRROR_90_OR_NEWER;MIRROR_93_OR_NEWER;MIRROR_96_OR_NEWER;EDGEGAP_PLUGIN_SERVERS;APP_UI_EDITOR_ONLY;AI_TEMPORARY_ASSET_IMPORTERS_PRESENT;CSHARP_7_OR_LATER;CSHARP_7_3_OR_NEWER;UNITY_EDITOR_ONLY_COMPILATION</DefineConstants>
     <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>Temp\bin\Debug\</OutputPath>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>Temp\bin\Release\</OutputPath>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
   <PropertyGroup>
-    <NoConfig>true</NoConfig>
+    <NoStandardLibraries>true</NoStandardLibraries>
     <NoStdLib>true</NoStdLib>
-    <AddAdditionalExplicitAssemblyReferences>false</AddAdditionalExplicitAssemblyReferences>
-    <ImplicitlyExpandNETStandardFacades>false</ImplicitlyExpandNETStandardFacades>
-    <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
+    <NoConfig>true</NoConfig>
+    <DisableImplicitFrameworkReferences>true</DisableImplicitFrameworkReferences>
+    <MSBuildWarningsAsMessages>MSB3277</MSBuildWarningsAsMessages>
   </PropertyGroup>
   <PropertyGroup>
-    <ProjectTypeGuids>{E097FAD1-6243-4DAD-9C02-E9B9EFC3FFC1};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <UnityProjectGenerator>Package</UnityProjectGenerator>
     <UnityProjectGeneratorVersion>2.0.26</UnityProjectGeneratorVersion>
-    <UnityProjectGeneratorStyle>Legacy</UnityProjectGeneratorStyle>
+    <UnityProjectGeneratorStyle>SDK</UnityProjectGeneratorStyle>
     <UnityProjectType>Editor:5</UnityProjectType>
     <UnityBuildTarget>WebGL:20</UnityBuildTarget>
     <UnityVersion>6000.3.1f1</UnityVersion>
   </PropertyGroup>
   <ItemGroup>
-    <Analyzer Include="C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
+    <Analyzer Include="C:\Users\praka\.vscode\extensions\visualstudiotoolsforunity.vstuc-1.2.1\Analyzers\Microsoft.Unity.Analyzers.dll" />
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\Tools\BuildPipeline\Unity.SourceGenerators\Unity.SourceGenerators.dll" />
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\Tools\BuildPipeline\Unity.SourceGenerators\Unity.Properties.SourceGenerator.dll" />
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\Tools\BuildPipeline\Unity.SourceGenerators\Unity.UIToolkit.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Editor\Assistant\Commands\RunCommand.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Editor\Assistant\Relay\RelayConnection.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Editor\Assistant\TrackSelectedAssetsProcessor.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Editor\Assistant\Context\UnityObjectContextSelection.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Editor\Assistant\CodeAnalyze\FixAmbiguousReference.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Editor\Assistant\Backend\Tools\GetUnityDependenciesTool.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Editor\Assistant\Backend\Tools\GameObject\AddComponentTool.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Editor\Assistant\Commands\CodeCommand.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Editor\Assistant\Utils\UIElementsUtils.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Editor\Assistant\UnityDataUtils.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Editor\Assistant\Utils\RequestExtensions.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Editor\Assistant\Context\StaticDataBasedContextRetrievalBuilder.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Editor\Assistant\FunctionCalling\ToolValidator.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Editor\Assistant\Relay\WebSocketRelayClient.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Editor\Assistant\AssistantEnvironment.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Editor\Assistant\ErrorHandling\ErrorHandlingUtility.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Editor\Assistant\ErrorHandling\ErrorInfo.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Editor\Assistant\Backend\Tools\InputSystem\GetPossibleBindingsUtils.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Editor\Assistant\CodeAnalyze\ClassCodeTextDefinition.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Editor\Assistant\Utils\ChatResponseUtils.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Editor\Assistant\CodeAnalyze\CSharpFixProvider.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Editor\Assistant\FunctionCalling\Permissions\ToolPermissionRules.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Editor\Assistant\Markup\Links\LinkHandlerRegistry.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Editor\Assistant\Context\ContextBuilder.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Editor\Assistant\Serialization\BuiltinOverrides\GraphicsSettingsOverrides.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Editor\Assistant\Relay\Utils\RelayIdentifier.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Editor\Assistant\Serialization\ISerializationOverride.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Editor\Assistant\Assistant.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Editor\Assistant\Backend\Tools\DeleteFileTool.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Editor\Assistant\Analytics\AIAssistantAnalytics.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Editor\Assistant\Commands\UiCommand.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Editor\Assistant\Utils\GameObjectExtensions.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Editor\Assistant\Backend\Tools\InputSystem\GetPossibleProcessorsUtils.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Editor\Assistant\CodeAnalyze\ExpressionEvaluator.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Editor\Assistant\Serialization\BuiltinOverrides\PlayerSettingsOverrides.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Editor\Assistant\Commands\ChatCommandHandler.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Editor\Assistant\CodeAnalyze\CompilationErrors.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Editor\Assistant\Commands\ChatCommandParser.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Editor\Assistant\Assistant.Conversation.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Editor\Assistant\CodeFormat.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Editor\Assistant\ServerCompatibility\NotificationsState.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Editor\Assistant\Data\ScreenContextData.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Editor\Assistant\Backend\Tools\CompilerTool.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Editor\Assistant\Utils\AttachementUtils.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Editor\Assistant\Context\ContextSerializationHelper.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Editor\Assistant\Assistant.Repair.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Editor\Assistant\Utils\TextureUtils.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Editor\Assistant\Data\AssistantPrompt.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Editor\Assistant\Settings\AssistantProjectPreferences.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Editor\Assistant\Relay\Server\RelayAutoStart.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Editor\Assistant\Backend\Tools\GetStaticProjectSettingsTool.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Editor\Assistant\Utils\TaskUtils.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Editor\Assistant\Data\XmlParsable.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Editor\Assistant\ServerCompatibility\ServerCompatibilityChanges.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Editor\Assistant\AssistantAssetModificationDelegates.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Editor\Assistant\ServerCompatibility\ServerCompatibilityDeprecatedNotificationView.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Editor\Assistant\CodeAnalyze\FixMissingMetadataInCommands.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Editor\Assistant\Relay\Server\RelayProcessManager.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Editor\Assistant\Settings\AssistantEditorPreferences.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Editor\Assistant\CodeBlock\CodeBlockValidator.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Editor\Assistant\Commands\AskCommand.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Editor\Assistant\Context\ScreenContextUtility.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Editor\Assistant\Backend\Tools\GameObject\RemoveGameObjectTool.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Editor\Assistant\Context\ImageContextMetaData.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Editor\Assistant\ProjectOverview.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Editor\Assistant\Commands\ChatCommandElementRegistry.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Editor\Assistant\Commands\ChatCommandTypes.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Editor\Assistant\Backend\Tools\InputSystem\InputSystemUtils.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Editor\Assistant\Utils\PromptUtils.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Editor\Assistant\Commands\ChatCommands.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Editor\Assistant\Utils\DateTimeExtensions.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Editor\Assistant\CodeAnalyze\PublicMethodCallWalker.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Editor\Assistant\Relay\RelayWebSocketAdapter.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Editor\Assistant\Config\Credentials\ICredentialsProvider.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Editor\Assistant\FunctionCalling\Utils\MethodInfoUtils.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Editor\Assistant\Backend\Tools\GameObject\ModifyLayersTool.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Editor\Assistant\CodeAnalyze\FixMissingSemicolon.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Editor\Assistant\Config\Credentials\EditorCredentialsProvider.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Editor\Assistant\Utils\EnumUtils.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Editor\Assistant\Context\StaticDataBasedContextRetrievalBuilder.Selector.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Editor\Assistant\Settings\AssistantEditorPreferences.Permissions.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Editor\Assistant\AssetKnowledge.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Editor\Assistant\Analytics\AIAssistantAnalytics.UI.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Editor\Assistant\Serialization\BuiltinOverrides\ShaderOverrides.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Editor\Assistant\Relay\RelayConstants.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Editor\Assistant\Backend\Tools\GameObject\GetComponentPropertiesTool.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Editor\Assistant\FunctionCalling\Permissions\ToolPermissionValidator.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Editor\Assistant\Backend\Tools\GameObject\PrefabTool.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Editor\Assistant\Config\AssistantConfiguration.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Editor\Assistant\Backend\Tools\GetConsoleLogsTool.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Editor\Assistant\Backend\Tools\GameObject\ModifyTagTool.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Editor\Assistant\Relay\RelayChatWorkflow.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Editor\Assistant\Context\ImageContextCategory.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Editor\Assistant\Utils\CodeUtils.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Editor\Assistant\Backend\AssistantWebSocketBackend.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Editor\Assistant\Utils\OrchestrationDataUtilities.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Editor\Assistant\ServerCompatibility\AssistantStatusTracker.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Editor\Assistant\ServerCompatibility\AccountRefreshManipulator.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Editor\Assistant\RunCommand\IRunCommandInterpreter.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Editor\Assistant\RunCommand\RunCommandInterpreter.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Editor\Assistant\Backend\Tools\GameObject\ModifyGameObjectTool.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Editor\Assistant\Data\ScreenWindowContextData.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Editor\Assistant\SessionBanner\SessionBanner.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Editor\Assistant\Utils\CredentialsUtils.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Editor\Assistant\CodeAnalyze\FixMissingImports.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Editor\Assistant\Serialization\SerializationOverrideAttribute.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Editor\Assistant\RunCommand\RunCommandUtils.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Editor\Assistant\Backend\Tools\GameObject\GetBuiltinAssetsTool.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Editor\Assistant\AssistantConstants.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Editor\Assistant\CodeAnalyze\SyntaxTreeUtility.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Editor\Assistant\Markup\Links\LinkHandlerAttribute.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Editor\Assistant\RunCommand\RunCommandCodeAnalyzer.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Editor\Assistant\Serialization\SerializationOverrideProvider.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Editor\Assistant\RunCommand\RunCommandMetadata.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Editor\Assistant\CodeAnalyze\FixMissingSquareBracket.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Editor\Assistant\CodeBlockUtils.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Editor\Assistant\CodeAnalyze\FixMissingParenthesis.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Editor\Assistant\Serialization\ISerializationOverrideProvider.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Editor\Assistant\Backend\Tools\InputSystem\InputSystemWarningTool.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Editor\Assistant\Context\ContextRetrievalBuilderAttribute.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Editor\Assistant\Utils\AssistantMessageUtils.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Editor\Assistant\Serialization\SerializationOverride.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Editor\Assistant\Backend\Tools\RunCommandTool.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Editor\Assistant\Backend\Tools\GameObject\CreateGameObjectTool.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Editor\Assistant\IAssistantProvider.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Editor\Assistant\Utils\ChatContextEntryExtensions.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Editor\Assistant\CodeAnalyze\FixMissingBrace.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Editor\Assistant\Backend\Tools\GameObject\RemoveComponentTool.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Editor\Assistant\Serialization\BuiltinOverrides\MeshOverrides.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Editor\Assistant\Serialization\BuiltinOverrides\AnimationClipOverrides.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Editor\Assistant\Backend\Tools\GetUnityVersionTool.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Editor\Assistant\Markup\Links\ILinkHandler.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Editor\Assistant\Backend\Tools\GameObject\GetSelectionTool.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Editor\Assistant\Relay\AssistantRelayBackend.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Editor\Assistant\RunCommand\AgentRunCommand.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Editor\Assistant\ServerCompatibility\ServerCompatibility.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Editor\Assistant\Context\IContextSelection.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Editor\Assistant\AssistantProtocolInitializer.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Editor\Assistant\Backend\Tools\CodeEditTool.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Editor\Assistant\Backend\Tools\GameObject\SetComponentPropertyTool.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Editor\Assistant\Backend\Tools\GameObject\GameObjectToolsHelper.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Editor\Assistant\Backend\Tools\InputSystem\GetPossibleInteractionsUtils.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Editor\Assistant\FunctionCalling\Permissions\ToolPermissionIgnoreAttribute.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Editor\Assistant\Context\IContextRetrievalBuilder.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Editor\Assistant\SerializationObjectJsonAdapter.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Editor\Assistant\UserSessionState.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Editor\Assistant\Backend\Tools\InputSystem\InputSystemTools.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Editor\Assistant\Assistant.Points.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Editor\Assistant\Assistant.Agent.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Editor\Assistant\AssemblyInfo.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Editor\Assistant\Context\VirtualContextSelection.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Editor\Assistant\Serialization\BuiltinOverrides\AudioManagerOverrides.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Editor\Assistant\Serialization\SerializationOverrideUtility.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Editor\Assistant\Assistant.Prompt.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Editor\Assistant\Context\ConsoleContextSelection.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Editor\Assistant\Relay\Utils\ProjectScriptCompilation.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Editor\Assistant\FunctionCalling\Utils\CompilationErrorUtils.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Editor\Assistant\FunctionCalling\Permissions\SettingsPermissionsPolicyProvider.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Editor\Assistant\VirtualAttachment.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Editor\Assistant\Utils\LocalConversationStorageHelper.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Editor\Assistant\Backend\Tools\RunCommandValidatorTool.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Editor\Assistant\Utils\AccessTokenRefreshUtility.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Editor\Assistant\Backend\BaseWebSocketBackend.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Editor\Assistant\CredentialsContext.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Editor\Assistant\CodeAnalyze\DynamicAssemblyBuilder.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Editor\Assistant\SessionBanner\PointsBalanceChanges.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Editor\Assistant\ServerCompatibility\ServerCompatibilityText.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Editor\Assistant\ServerCompatibility\ServerCompatibilityNotSupportedBanner.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Editor\Assistant\Backend\Tools\GameObject\GetGameObjectBoundsTool.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Editor\Assistant\Serialization\BuiltinOverrides\FontOverrides.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\SessionBanner\UpdateAvailableBanner.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\TrackSelectedAssetsProcessor.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\Context\UnityObjectContextSelection.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\CodeAnalyze\FixAmbiguousReference.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\Backend\Tools\GetUnityDependenciesTool.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\Backend\Tools\GameObject\AddComponentTool.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\Acp\AcpSessionCleanupManager.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\Utils\UIElementsUtils.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\UnityDataUtils.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\Utils\RequestExtensions.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\MCP\Configuration\McpServerConfigUtils.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\Context\StaticDataBasedContextRetrievalBuilder.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\Checkpoint\Events\EventCheckpointDeleteCompleted.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\Acp\AcpToolCallStorageKeys.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\FunctionCalling\ToolValidator.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\Relay\WebSocketRelayClient.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\AssistantEnvironment.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\ErrorHandling\ErrorHandlingUtility.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\Utils\Event\BaseEventSubscriptionTicket.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\ErrorHandling\ErrorInfo.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\Backend\Tools\InputSystem\GetPossibleBindingsUtils.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\CodeAnalyze\ClassCodeTextDefinition.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\Utils\Event\IAssistantEvent.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\Utils\ChatResponseUtils.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\CodeAnalyze\CSharpFixProvider.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\MCP\Transport\Models\McpToolCallRequest.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\Checkpoint\Git\GitInstanceResolver.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\FunctionCalling\Permissions\ToolPermissionRules.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\Markup\Links\LinkHandlerRegistry.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\Context\ContextBuilder.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\Serialization\BuiltinOverrides\GraphicsSettingsOverrides.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\Checkpoint\Git\GitInstanceConfig.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\Serialization\ISerializationOverride.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\Acp\AcpContextBuilder.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\MCP\Manager\McpManagedServer.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\Checkpoint\VcsRepositoryHealth.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\Assistant.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\Acp\AcpPermissionOption.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\Checkpoint\Events\EventCheckpointTagsChanged.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\Utils\TypeDef.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\Acp\AcpToolCall.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\Backend\Tools\DeleteFileTool.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\Analytics\AIAssistantAnalytics.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\Utils\GameObjectExtensions.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\SessionBanner\ExecutableAvailabilityState.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\Backend\Tools\InputSystem\GetPossibleProcessorsUtils.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\SessionBanner\AssistantPackageAutoUpdater.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\Acp\AssistantProviderFactory.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\CodeAnalyze\ExpressionEvaluator.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\Checkpoint\Events\EventCheckpointDeleteRequested.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\Serialization\BuiltinOverrides\PlayerSettingsOverrides.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\CodeAnalyze\CompilationErrors.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\Relay\Acp\AcpSessionConfig.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\Assistant.Conversation.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\CodeFormat.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\ServerCompatibility\NotificationsState.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\Data\ScreenContextData.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\Backend\Tools\CompilerTool.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\Utils\AttachementUtils.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\Context\ContextSerializationHelper.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\MCP\Transport\Models\McpToolInputSchema.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\Settings\GatewayPreferences.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\Utils\Event\AssistantEvents.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\Acp\AcpPermissionOutcome.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\ProviderState\ProviderStateObserver.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\Utils\TextureUtils.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\Data\AssistantPrompt.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\Settings\AssistantProjectPreferences.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\Checkpoint\AssistantCheckpoints.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\Backend\Tools\GetStaticProjectSettingsTool.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\Utils\TaskUtils.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\Data\XmlParsable.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\ServerCompatibility\ServerCompatibilityChanges.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\MCP\Transport\Models\McpServerInfo.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\Relay\McpSessionBuffer.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\AssistantAssetModificationDelegates.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\Settings\GatewayProjectPreferences.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\Acp\McpToolApprovalHandler.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\MCP\Manager\McpManagedServerStateData.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\ServerCompatibility\ServerCompatibilityDeprecatedNotificationView.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\Acp\AcpToolCallBlock.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\Checkpoint\CheckpointInfo.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\Settings\AssistantEditorPreferences.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\CodeBlock\CodeBlockValidator.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\Checkpoint\Events\EventCheckpointRestoreCompleted.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\Checkpoint\IVcsAdapter.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\Context\ScreenContextUtility.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\Backend\Tools\GameObject\RemoveGameObjectTool.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\Context\ImageContextMetaData.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\ProjectOverview.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\Acp\AcpPermissionMapping.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\MCP\Transport\Models\McpProjectConfig.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\Backend\Tools\InputSystem\InputSystemUtils.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\Backend\Tools\Interactions\UnsafeCommandApprovalInteraction.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\Utils\PromptUtils.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\Checkpoint\CheckpointResult.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\SessionBanner\PackageUpdateStateChanges.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\MCP\Configuration\McpConfigFileHelper.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\Utils\DateTimeExtensions.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\CodeAnalyze\PublicMethodCallWalker.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\Relay\RelayService.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\Acp\AcpSessionRegistry.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\Relay\RelayWebSocketAdapter.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\Config\Credentials\ICredentialsProvider.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\FunctionCalling\Utils\MethodInfoUtils.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\MCP\Transport\Models\McpServerStopResponse.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\Checkpoint\Events\EventCheckpointEnableStateChanged.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\Backend\Tools\GameObject\ModifyLayersTool.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\CodeAnalyze\FixMissingSemicolon.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\Config\Credentials\EditorCredentialsProvider.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\Utils\EnumUtils.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\Context\StaticDataBasedContextRetrievalBuilder.Selector.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\Settings\AssistantEditorPreferences.Permissions.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\AssetKnowledge.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\Checkpoint\Git\GitInstanceType.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\Analytics\AIAssistantAnalytics.UI.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\Acp\AcpSessionTracker.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\Serialization\BuiltinOverrides\ShaderOverrides.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\Relay\RelayConstants.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\Utils\Event\BaseEventTargetCollection.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\Backend\Tools\GameObject\GetComponentPropertiesTool.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\FunctionCalling\Permissions\ToolPermissionValidator.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\MCP\Transport\Models\McpServerCapabilities.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\Backend\Tools\GameObject\PrefabTool.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\Data\ConversationContext.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\Config\AssistantConfiguration.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\Backend\Tools\GetConsoleLogsTool.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\Backend\Tools\GameObject\ModifyTagTool.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\Relay\RelayChatWorkflow.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\Context\ImageContextCategory.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\Acp\AcpConversationStorage.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\Utils\CodeUtils.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\Acp\IAcpWidgetRenderer.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\Backend\AssistantWebSocketBackend.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\Utils\OrchestrationDataUtilities.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\ServerCompatibility\AssistantStatusTracker.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\ServerCompatibility\AccountRefreshManipulator.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\Relay\RelayProtocol.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\Backend\Tools\GameObject\ModifyGameObjectTool.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\Data\ScreenWindowContextData.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\SessionBanner\SessionBanner.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\MCP\Transport\UnityMcpHttpClient.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\MCP\Transport\Models\McpTool.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\Utils\CredentialsUtils.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\Utils\Event\BaseEventAggregate.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\CodeAnalyze\FixMissingImports.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\ProviderState\ProviderChanges.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\Serialization\SerializationOverrideAttribute.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\Acp\AcpPermissionRequest.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\MCP\McpAssistantFunction.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\RunCommand\RunCommandUtils.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\Backend\Tools\GameObject\GetBuiltinAssetsTool.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\Relay\Acp\AcpConstants.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\MCP\Transport\Models\McpServerStartResponse.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\AssistantConstants.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\CodeAnalyze\SyntaxTreeUtility.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\Checkpoint\CheckpointErrorType.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\Acp\AcpToolCallLocation.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\Markup\Links\LinkHandlerAttribute.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\RunCommand\RunCommandCodeAnalyzer.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\Relay\RelayConnectionException.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\MCP\Configuration\ConfigLoadResult.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\Serialization\SerializationOverrideProvider.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\Service\IService.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\Relay\Acp\AcpClient.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\MCP\McpInitializer.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\RunCommand\RunCommandMetadata.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\CodeAnalyze\FixMissingSquareBracket.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\Service\AssistantGlobal.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\CodeBlockUtils.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\CodeAnalyze\FixMissingParenthesis.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\Serialization\ISerializationOverrideProvider.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\Backend\Tools\InputSystem\InputSystemWarningTool.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\Context\ContextRetrievalBuilderAttribute.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\Utils\AssistantMessageUtils.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\Serialization\SerializationOverride.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\Backend\Tools\RunCommandTool.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\MCP\Transport\Models\McpServerEntry.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\Backend\Tools\GameObject\CreateGameObjectTool.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\Checkpoint\CheckpointSystem.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\Checkpoint\VcsRepositoryHealthStatus.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\Acp\AcpToolCallModels.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\Checkpoint\Events\EventCheckpointsChanged.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\IAssistantProvider.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\Utils\ChatContextEntryExtensions.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\Checkpoint\VcsCommitInfo.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\SessionBanner\PackageUpdateState.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\CodeAnalyze\FixMissingBrace.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\Backend\Tools\GameObject\RemoveComponentTool.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\Serialization\BuiltinOverrides\MeshOverrides.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\Serialization\BuiltinOverrides\AnimationClipOverrides.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\Backend\Tools\GetUnityVersionTool.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\Markup\Links\ILinkHandler.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\MCP\Transport\Models\McpToolCallResponse.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\Backend\Tools\GameObject\GetSelectionTool.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\Relay\AssistantRelayBackend.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\Acp\AcpToolCostCalculator.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\Service\ServiceContainer.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\Relay\Acp\AcpSessionError.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\RunCommand\AgentRunCommand.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\MCP\Manager\McpManagedTool.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\Service\ServiceHandle.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\Backend\Tools\Interactions\BaseInteraction.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\Relay\Acp\AcpProvidersRegistry.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\ServerCompatibility\ServerCompatibility.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\Context\IContextSelection.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\AssistantProtocolInitializer.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\Backend\Tools\CodeEditTool.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\Backend\Tools\GameObject\SetComponentPropertyTool.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\Backend\Tools\GameObject\GameObjectToolsHelper.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\Backend\Tools\InputSystem\GetPossibleInteractionsUtils.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\FunctionCalling\Permissions\ToolPermissionIgnoreAttribute.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\Context\IContextRetrievalBuilder.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\SerializationObjectJsonAdapter.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\Checkpoint\Git\GitAdapter.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\UserSessionState.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\Backend\Tools\InputSystem\InputSystemTools.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\Assistant.Points.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\Relay\Acp\AcpProviderDescriptor.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\AssemblyInfo.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\Context\VirtualContextSelection.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\Checkpoint\Git\GitValidationResult.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\Serialization\BuiltinOverrides\AudioManagerOverrides.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\Serialization\SerializationOverrideUtility.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\Assistant.Prompt.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\Checkpoint\Events\EventCheckpointRestoreRequested.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\Context\ConsoleContextSelection.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\Relay\Utils\ProjectScriptCompilation.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\Acp\AcpProvider.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\FunctionCalling\Utils\CompilationErrorUtils.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\Acp\AcpSession.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\FunctionCalling\Permissions\SettingsPermissionsPolicyProvider.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\VirtualAttachment.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\Utils\LocalConversationStorageHelper.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\Checkpoint\VcsResult.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\Backend\Tools\RunCommandValidatorTool.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\Relay\CredentialClient.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\Utils\AccessTokenRefreshUtility.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\Backend\BaseWebSocketBackend.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\CredentialsContext.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\MCP\Manager\McpServerManagerService.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\Acp\AcpContentBlock.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\Acp\AcpPlanBlock.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\MCP\Transport\IUnityMcpHttpClient.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\CodeAnalyze\DynamicAssemblyBuilder.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\SessionBanner\PointsBalanceChanges.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\ServerCompatibility\ServerCompatibilityText.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\Utils\AssemblyUtils.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\SessionBanner\AcpSessionStatusBannerProvider.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\ServerCompatibility\ServerCompatibilityNotSupportedBanner.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\MCP\Transport\Models\McpServerStatusResponse.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\Backend\Tools\GameObject\GetGameObjectBoundsTool.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\Serialization\BuiltinOverrides\FontOverrides.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Editor\Assistant\Unity.AI.Assistant.Editor.asmdef" />
+    <None Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\Unity.AI.Assistant.Editor.asmdef" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
@@ -805,7 +876,7 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="System.Runtime.CompilerServices.Unsafe">
-      <HintPath>Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Plugins\Shared\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+      <HintPath>Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Plugins\Shared\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Newtonsoft.Json">
@@ -813,15 +884,15 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="Microsoft.CodeAnalysis">
-      <HintPath>Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Plugins\CodeAnalysis\Microsoft.CodeAnalysis.dll</HintPath>
+      <HintPath>Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Plugins\CodeAnalysis\Microsoft.CodeAnalysis.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Microsoft.CodeAnalysis.CSharp">
-      <HintPath>Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Plugins\CodeAnalysis\Microsoft.CodeAnalysis.CSharp.dll</HintPath>
+      <HintPath>Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Plugins\CodeAnalysis\Microsoft.CodeAnalysis.CSharp.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="System.Collections.Immutable">
-      <HintPath>Library\PackageCache\com.unity.ai.assistant@e6a38fa97d39\Plugins\Shared\System.Collections.Immutable.dll</HintPath>
+      <HintPath>Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Plugins\Shared\System.Collections.Immutable.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Mono.Cecil">
@@ -1330,54 +1401,26 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="Unity.Serialization.csproj">
-      <Project>{B52CD64E-86CA-5572-D5C6-DC47C42AC51E}</Project>
-      <Name>Unity.Serialization</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.AI.Assistant.Bridge.Editor.csproj">
-      <Project>{EA454308-384D-C8C8-8237-C0D706DA2BA3}</Project>
-      <Name>Unity.AI.Assistant.Bridge.Editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.AI.Assistant.Agent.Dynamic.Extension.Editor.csproj">
-      <Project>{AEC56B38-E791-05ED-9CD6-E7934CE5D409}</Project>
-      <Name>Unity.AI.Assistant.Agent.Dynamic.Extension.Editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.AI.Toolkit.Accounts.csproj">
-      <Project>{4BDC25F4-E335-4255-654E-429EE6E2AA54}</Project>
-      <Name>Unity.AI.Toolkit.Accounts</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.AI.Toolkit.Asset.csproj">
-      <Project>{41ACA0B5-11ED-121A-ED04-F30F5245A235}</Project>
-      <Name>Unity.AI.Toolkit.Asset</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.AI.Assistant.Runtime.csproj">
-      <Project>{CB154B53-6657-2525-0FAD-A0E833FF0A1C}</Project>
-      <Name>Unity.AI.Assistant.Runtime</Name>
-    </ProjectReference>
-    <ProjectReference Include="UnityEditor.UI.csproj">
-      <Project>{698D6ACB-27E6-6733-2BA7-B76006C8ED47}</Project>
-      <Name>UnityEditor.UI</Name>
-    </ProjectReference>
-    <ProjectReference Include="UnityEngine.UI.csproj">
-      <Project>{3A16FD29-B329-E206-65D7-03A7329215E0}</Project>
-      <Name>UnityEngine.UI</Name>
-    </ProjectReference>
-    <ProjectReference Include="UnityEngine.TestRunner.csproj">
-      <Project>{AC49909C-F0A5-47F6-D162-809E022150A7}</Project>
-      <Name>UnityEngine.TestRunner</Name>
-    </ProjectReference>
-    <ProjectReference Include="UnityEditor.TestRunner.csproj">
-      <Project>{8C368B2E-6D06-EC04-73BD-6C7A78C6C402}</Project>
-      <Name>UnityEditor.TestRunner</Name>
-    </ProjectReference>
+    <ProjectReference Include="Unity.Serialization.csproj" />
+    <ProjectReference Include="Unity.AI.Assistant.Bridge.Editor.csproj" />
+    <ProjectReference Include="Unity.AI.Assistant.Agent.Dynamic.Extension.Editor.csproj" />
+    <ProjectReference Include="Unity.AI.Toolkit.Accounts.csproj" />
+    <ProjectReference Include="Unity.AI.Toolkit.Asset.csproj" />
+    <ProjectReference Include="Unity.AI.Assistant.Runtime.csproj" />
+    <ProjectReference Include="UnityEditor.UI.csproj" />
+    <ProjectReference Include="UnityEngine.UI.csproj" />
+    <ProjectReference Include="UnityEngine.TestRunner.csproj" />
+    <ProjectReference Include="UnityEditor.TestRunner.csproj" />
   </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <Target Name="GenerateTargetFrameworkMonikerAttribute" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
+  <Import Project="Sdk.targets" Sdk="Microsoft.NET.Sdk" />
+  <ItemGroup>
+    <ProjectCapability Remove="LaunchProfiles" />
+    <ProjectCapability Remove="SharedProjectReferences" />
+    <ProjectCapability Remove="ReferenceManagerSharedProjects" />
+    <ProjectCapability Remove="ReferenceManagerProjects" />
+    <ProjectCapability Remove="COMReferences" />
+    <ProjectCapability Remove="ReferenceManagerCOM" />
+    <ProjectCapability Remove="AssemblyReferences" />
+    <ProjectCapability Remove="ReferenceManagerAssemblies" />
+  </ItemGroup>
 </Project>

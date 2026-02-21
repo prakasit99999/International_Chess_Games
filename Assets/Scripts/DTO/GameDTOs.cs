@@ -80,3 +80,14 @@ public class GameStatusDto
     public int MoveCount;
     public string CreatedAt;
 }
+
+[Serializable]
+public class GameStatusDtoCamel
+{
+    public int gameId;
+    public string gameType;
+    public int? matchMode;
+    public string status;
+    public int moveCount;
+    public string createdAt;
+}

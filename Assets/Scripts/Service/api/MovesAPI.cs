@@ -21,6 +21,7 @@ public class MovesAPI : MonoBehaviour
         request.uploadHandler = new UploadHandlerRaw(bodyRaw);
         request.downloadHandler = new DownloadHandlerBuffer();
         request.SetRequestHeader("Content-Type", "application/json");
+        string token = SessionManager.Instance != null ? SessionManager.Instance.Token : string.Empty;
 
         yield return request.SendWebRequest();
 
@@ -57,6 +58,24 @@ public class MovesAPI : MonoBehaviour
         }
     }
 
+    [Serializable]
+    private class MoveDtoPascal
+    {
+        public int MoveNumber;
+        public int StartX;
+        public int StartY;
+        public int EndX;
+        public int EndY;
+        public string FromPosition;
+        public string ToPosition;
+        public string PlayerTurn;
+        public string Status;
+        public string Winner;
+        public int PromotedTo;
+        public bool IsCastling;
+        public bool IsEnPassant;
+    }
+
     // ✅ ส่งตาเดินทีละตา (Real-time)
     public virtual IEnumerator SendMove(MoveCreateDto moveData, Action<bool> onComplete)
     {
@@ -72,6 +91,9 @@ public class MovesAPI : MonoBehaviour
         request.uploadHandler = new UploadHandlerRaw(bodyRaw);
         request.downloadHandler = new DownloadHandlerBuffer();
         request.SetRequestHeader("Content-Type", "application/json");
+        string token = SessionManager.Instance != null ? SessionManager.Instance.Token : string.Empty;
+        if (!string.IsNullOrEmpty(token))
+            request.SetRequestHeader("Authorization", "Bearer " + token);
 
         yield return request.SendWebRequest();
 
@@ -94,20 +116,50 @@ public class MovesAPI : MonoBehaviour
         using (UnityWebRequest request = UnityWebRequest.Get(url))
         {
             request.timeout = 5;
+            string token = SessionManager.Instance != null ? SessionManager.Instance.Token : string.Empty;
+            if (!string.IsNullOrEmpty(token))
+                request.SetRequestHeader("Authorization", "Bearer " + token);
             yield return request.SendWebRequest();
 
             if (request.result == UnityWebRequest.Result.Success)
             {
+                MoveDto moveData = null;
                 if (string.IsNullOrEmpty(request.downloadHandler.text))
                 {
                     onMoveReceived?.Invoke(null);
                 }
                 else
                 {
-                    MoveDto moveData = null;
+                    Debug.Log($"[MovesAPI] LatestMove raw: {request.downloadHandler.text}");
                     try
                     {
                         moveData = JsonUtility.FromJson<MoveDto>(request.downloadHandler.text);
+                        if (moveData == null || moveData.moveNumber == 0)
+                        {
+                            if (request.downloadHandler.text.Contains("\"MoveNumber\""))
+                            {
+                                var pascal = JsonUtility.FromJson<MoveDtoPascal>(request.downloadHandler.text);
+                                if (pascal != null && pascal.MoveNumber > 0)
+                                {
+                                    moveData = new MoveDto
+                                    {
+                                        moveNumber = pascal.MoveNumber,
+                                        startX = pascal.StartX,
+                                        startY = pascal.StartY,
+                                        endX = pascal.EndX,
+                                        endY = pascal.EndY,
+                                        fromPosition = pascal.FromPosition,
+                                        toPosition = pascal.ToPosition,
+                                        playerTurn = pascal.PlayerTurn,
+                                        status = pascal.Status,
+                                        winner = pascal.Winner,
+                                        promotedTo = pascal.PromotedTo,
+                                        isCastling = pascal.IsCastling,
+                                        isEnPassant = pascal.IsEnPassant
+                                    };
+                                }
+                            }
+                        }
                     }
                     catch (Exception e)
                     {
@@ -115,16 +167,19 @@ public class MovesAPI : MonoBehaviour
                         onMoveReceived?.Invoke(null);
                         yield break; // ออกจากฟังก์ชันทันที
                     }
-                    if (moveData != null)
-                    {
-                        onMoveReceived?.Invoke(moveData);
-                    }
                 }
-            }
-            else
-            {
-                onMoveReceived?.Invoke(null);
+                Debug.Log($"[MovesAPI] LatestMove parsed moveNumber={(moveData != null ? moveData.moveNumber : 0)}");
+                if (moveData != null)
+                {
+                    onMoveReceived?.Invoke(moveData);
+                }
+                else
+                {
+                    onMoveReceived?.Invoke(null);
+                }
+                
             }
         }
     }
 }
+

@@ -1,71 +1,91 @@
 ﻿using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine;
 using UnityEngine.Networking;
+using UnityEngine.UI;
 
 public class MatchmakingApi : MonoBehaviour
 {
     private string baseUrl = "http://localhost:8080/api/Matchmaking";
 
-    // --- ฟังก์ชัน 1: Join Queue (แก้ให้ส่ง MatchResponse) ---
-    public virtual IEnumerator JoinQueue(int userId, int minRate, int maxRate, Action<bool, MatchResponse> callback)
+
+    // --- ฟังก์ชัน 1: Join Queue ---
+    public virtual IEnumerator JoinQueue(string username, int minRate, int maxRate, int matchMode, Action<bool, MatchFoundResponse> callback)
     {
-        string url = $"{baseUrl}/join?userId={userId}&minRating={minRate}&maxRating={maxRate}";
-        using (UnityWebRequest request = UnityWebRequest.Get(url))
+        // Server expects POST with JSON body
+        string url = $"{baseUrl}/join";
+
+        var reqBody = new JoinQueueRequest
         {
-            yield return request.SendWebRequest();
+            username = username,
+            minRating = minRate,
+            maxRating = maxRate,
+            matchMode = matchMode
+        };
 
-            if (request.responseCode == 401)
-            {
-                Debug.LogWarning("Unauthorized (401). Redirecting to login...");
-                if (authApi.Instance != null) authApi.Instance.ForceLogout();
-                yield break;
-            }
+        string json = JsonUtility.ToJson(reqBody);
+        var request = new UnityWebRequest(url, "POST");
+        byte[] bodyRaw = System.Text.Encoding.UTF8.GetBytes(json);
+        request.uploadHandler = new UploadHandlerRaw(bodyRaw);
+        request.downloadHandler = new DownloadHandlerBuffer();
+        request.SetRequestHeader("Content-Type", "application/json");
+        request.SetRequestHeader("Accept", "application/json");
 
-            if (request.result == UnityWebRequest.Result.Success)
-            {
-                // แปลง JSON เป็น Object ทันที
-                string json = request.downloadHandler.text;
-                var response = JsonUtility.FromJson<MatchResponse>(json);
-                callback(true, response);
-            }
-            else
-            {
-                Debug.LogError($"Join Error: {request.error}");
-                callback(false, null);
-            }
+        string token = SessionManager.Instance.Token;
+        if (!string.IsNullOrEmpty(token))
+            request.SetRequestHeader("Authorization", "Bearer " + token);
+
+        yield return request.SendWebRequest();
+
+        if (request.responseCode == 401)
+        {
+            Debug.LogWarning("Unauthorized (401). Redirecting to login...");
+            if (authApi.Instance != null) authApi.Instance.ForceLogout();
+            yield break;
+        }
+
+        if (request.result == UnityWebRequest.Result.Success)
+        {
+            string raw = request.downloadHandler.text;
+            var response = ParseMatchFound(raw);
+            Debug.LogWarning($"Join Response: {raw}");
+            callback(true, response);
+        }
+        else
+        {
+            Debug.LogError($"Join Error: {request.error}");
+            callback(false, null);
         }
     }
 
     // --- ฟังก์ชัน 2: Check Match ---
-    public virtual IEnumerator CheckQueue(int userId, Action<bool, MatchResponse> callback)
+    public virtual IEnumerator CheckQueue(string username, Action<bool, MatchFoundResponse> callback)
     {
-        string url = $"{baseUrl}/check?userId={userId}";
+        string url = $"{baseUrl}/check?username={UnityWebRequest.EscapeURL(username)}";
 
         using (UnityWebRequest request = UnityWebRequest.Get(url))
         {
+            string token = SessionManager.Instance.Token;
+            if (!string.IsNullOrEmpty(token))
+                request.SetRequestHeader("Authorization", "Bearer " + token);
+
             yield return request.SendWebRequest();
 
             if (request.responseCode == 401)
             {
-                Debug.LogWarning("Unauthorized (401). Redirecting to login...");
+                UnityEngine.Debug.LogWarning("Unauthorized (401). Redirecting to login...");
                 if (authApi.Instance != null) authApi.Instance.ForceLogout();
                 yield break;
             }
 
             if (request.result == UnityWebRequest.Result.Success)
             {
-                var response = JsonUtility.FromJson<MatchResponse>(request.downloadHandler.text);
-
-                // เช็คว่ามี GameId จริงไหม
-                if (response != null && response.matchDetails != null && response.matchDetails.gameId != 0)
-                {
+                var response = ParseMatchFound(request.downloadHandler.text);
+                if (response != null && response.gameId != 0)
                     callback(true, response);
-                }
                 else
-                {
                     callback(false, null);
-                }
             }
             else
             {
@@ -75,22 +95,38 @@ public class MatchmakingApi : MonoBehaviour
     }
 
     // --- ฟังก์ชัน 3: Cancel ---
-    public virtual IEnumerator CancelQueue(int userId, Action<bool, string> callback)
+    public virtual IEnumerator CancelQueue(string username, Action<bool, string> callback)
     {
-        string url = $"{baseUrl}/cancel?userId={userId}";
-        using (UnityWebRequest request = UnityWebRequest.Get(url))
-        {
-            yield return request.SendWebRequest();
+        // Server expects PUT with JSON body
+        string url = $"{baseUrl}/cancel";
 
-            if (request.responseCode == 401)
-            {
-                Debug.LogWarning("Unauthorized (401). Redirecting to login...");
-                if (authApi.Instance != null) authApi.Instance.ForceLogout();
-                yield break;
-            }
-            if (request.result == UnityWebRequest.Result.Success) callback(true, "Cancelled");
-            else callback(false, request.error);
+        var reqBody = new CancelQueueRequest
+        {
+            username = username
+        };
+
+        string json = JsonUtility.ToJson(reqBody);
+        var request = new UnityWebRequest(url, "PUT");
+        byte[] bodyRaw = System.Text.Encoding.UTF8.GetBytes(json);
+        request.uploadHandler = new UploadHandlerRaw(bodyRaw);
+        request.downloadHandler = new DownloadHandlerBuffer();
+        request.SetRequestHeader("Content-Type", "application/json");
+        request.SetRequestHeader("Accept", "application/json");
+
+        string token = SessionManager.Instance.Token;
+        if (!string.IsNullOrEmpty(token))
+            request.SetRequestHeader("Authorization", "Bearer " + token);
+
+        yield return request.SendWebRequest();
+
+        if (request.responseCode == 401)
+        {
+            Debug.LogWarning("Unauthorized (401). Redirecting to login...");
+            if (authApi.Instance != null) authApi.Instance.ForceLogout();
+            yield break;
         }
+        if (request.result == UnityWebRequest.Result.Success) callback(true, "Cancelled");
+        else callback(false, request.error);
     }
 
     // --- ฟังก์ชัน 4: Update Player Status ---
@@ -139,6 +175,45 @@ public class MatchmakingApi : MonoBehaviour
                 callback(null);
             }
         }
+    }
+
+    private MatchFoundResponse ParseMatchFound(string json)
+    {
+        if (string.IsNullOrEmpty(json))
+            return null;
+
+        // Wrapper response: { status, message, matchDetails }
+        if (json.Contains("\"matchDetails\""))
+        {
+            var wrapped = JsonUtility.FromJson<MatchmakingResponse>(json);
+            if (wrapped != null && wrapped.matchDetails != null && wrapped.matchDetails.gameId != 0)
+                return wrapped.matchDetails;
+        }
+
+        var response = JsonUtility.FromJson<MatchFoundResponse>(json);
+        if (response != null && response.gameId != 0)
+            return response;
+
+        // Fallback for PascalCase JSON
+        if (json.Contains("\"GameId\""))
+        {
+            var pascal = JsonUtility.FromJson<MatchFoundResponsePascal>(json);
+            if (pascal != null)
+            {
+                return new MatchFoundResponse
+                {
+                    gameId = pascal.GameId,
+                    opponentUsername = pascal.OpponentUsername,
+                    roomCode = pascal.RoomCode,
+                    gameType = pascal.GameType,
+                    minRating = pascal.MinRating,
+                    isRated = pascal.IsRated,
+                    color = pascal.Color
+                };
+            }
+        }
+
+        return response;
     }
 
 }

@@ -1,21 +1,25 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+﻿<Project>
   <!-- Generated file, do not modify, your changes will be overwritten (use AssetPostprocessor.OnGeneratedCSProject) -->
   <PropertyGroup>
-    <LangVersion>9.0</LangVersion>
+    <BaseIntermediateOutputPath>Temp\obj\$(MSBuildProjectName)</BaseIntermediateOutputPath>
+    <IntermediateOutputPath>$(BaseIntermediateOutputPath)</IntermediateOutputPath>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <UseCommonOutputDirectory>true</UseCommonOutputDirectory>
+    <OutputPath>Temp\bin\Debug\</OutputPath>
   </PropertyGroup>
+  <Import Project="Sdk.props" Sdk="Microsoft.NET.Sdk" />
+  <ItemGroup>
+    <ProjectCapability Include="Unity" />
+    <ProjectCapability Include="EnableOnDemandExcludedFolderLoading" />
+  </ItemGroup>
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>10.0.20506</ProductVersion>
-    <SchemaVersion>2.0</SchemaVersion>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <EnableDefaultItems>false</EnableDefaultItems>
+    <LangVersion>9.0</LangVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{D601F7F0-C233-4FFB-AAB0-6E511230142A}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
-    <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
+    <TargetFramework>netstandard2.1</TargetFramework>
     <BaseDirectory>.</BaseDirectory>
   </PropertyGroup>
   <PropertyGroup>
@@ -23,39 +27,23 @@
     <DefineConstants>UNITY_6000_3_1;UNITY_6000_3;UNITY_6000;UNITY_5_3_OR_NEWER;UNITY_5_4_OR_NEWER;UNITY_5_5_OR_NEWER;UNITY_5_6_OR_NEWER;UNITY_2017_1_OR_NEWER;UNITY_2017_2_OR_NEWER;UNITY_2017_3_OR_NEWER;UNITY_2017_4_OR_NEWER;UNITY_2018_1_OR_NEWER;UNITY_2018_2_OR_NEWER;UNITY_2018_3_OR_NEWER;UNITY_2018_4_OR_NEWER;UNITY_2019_1_OR_NEWER;UNITY_2019_2_OR_NEWER;UNITY_2019_3_OR_NEWER;UNITY_2019_4_OR_NEWER;UNITY_2020_1_OR_NEWER;UNITY_2020_2_OR_NEWER;UNITY_2020_3_OR_NEWER;UNITY_2021_1_OR_NEWER;UNITY_2021_2_OR_NEWER;UNITY_2021_3_OR_NEWER;UNITY_2022_1_OR_NEWER;UNITY_2022_2_OR_NEWER;UNITY_2022_3_OR_NEWER;UNITY_2023_1_OR_NEWER;UNITY_2023_2_OR_NEWER;UNITY_2023_3_OR_NEWER;UNITY_6000_0_OR_NEWER;UNITY_6000_1_OR_NEWER;UNITY_6000_2_OR_NEWER;UNITY_6000_3_OR_NEWER;UNITY_INCLUDE_TESTS;ENABLE_AUDIO;ENABLE_CLOTH;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_TEXTURE_STREAMING;ENABLE_UNITYEVENTS;ENABLE_VR;ENABLE_WEBCAM;ENABLE_UNITYWEBREQUEST;ENABLE_WWW;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_ADS;ENABLE_CLOUD_SERVICES_USE_WEBREQUEST;ENABLE_UNITY_CONSENT;ENABLE_UNITY_CLOUD_IDENTIFIERS;ENABLE_CLOUD_SERVICES_CRASH_REPORTING;ENABLE_CLOUD_SERVICES_PURCHASING;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_CLOUD_SERVICES_BUILD;ENABLE_EDITOR_GAME_SERVICES;ENABLE_UNITY_GAME_SERVICES_ANALYTICS_SUPPORT;ENABLE_CLOUD_LICENSE;ENABLE_EDITOR_HUB_LICENSE;ENABLE_WEBSOCKET_CLIENT;ENABLE_GENERATE_NATIVE_PLUGINS_FOR_ASSEMBLIES_API;ENABLE_DIRECTOR_AUDIO;ENABLE_DIRECTOR_TEXTURE;ENABLE_MANAGED_JOBS;ENABLE_MANAGED_TRANSFORM_JOBS;ENABLE_MANAGED_ANIMATION_JOBS;ENABLE_MANAGED_AUDIO_JOBS;ENABLE_ENGINE_CODE_STRIPPING;ENABLE_ONSCREEN_KEYBOARD;ENABLE_MANAGED_UNITYTLS;RENDER_SOFTWARE_CURSOR;ENABLE_MARSHALLING_TESTS;ENABLE_VIDEO;ENABLE_NAVIGATION_OFFMESHLINK_TO_NAVMESHLINK;ENABLE_ACCELERATOR_CLIENT_DEBUGGING;TEXTCORE_1_0_OR_NEWER;EDITOR_ONLY_NAVMESH_BUILDER_DEPRECATED;PLATFORM_WEBGL;UNITY_WEBGL;UNITY_WEBGL_API;UNITY_DISABLE_WEB_VERIFICATION;UNITY_GFX_USE_PLATFORM_VSYNC;ENABLE_CRUNCH_TEXTURE_COMPRESSION;ENABLE_SPATIALTRACKING;ENABLE_MONO;NET_STANDARD_2_0;NET_STANDARD;NET_STANDARD_2_1;NETSTANDARD;NETSTANDARD2_1;ENABLE_PROFILER;DEBUG;TRACE;UNITY_ASSERTIONS;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_WIN;ENABLE_UNITY_COLLECTIONS_CHECKS;ENABLE_BURST_AOT;UNITY_TEAM_LICENSE;ENABLE_CUSTOM_RENDER_TEXTURE;ENABLE_DIRECTOR;ENABLE_LOCALIZATION;ENABLE_SPRITES;ENABLE_TERRAIN;ENABLE_TILEMAP;ENABLE_TIMELINE;ENABLE_LEGACY_INPUT_MANAGER;TEXTCORE_FONT_ENGINE_1_5_OR_NEWER;TEXTCORE_TEXT_ENGINE_1_5_OR_NEWER;TEXTCORE_FONT_ENGINE_1_6_OR_NEWER;MIRROR;MIRROR_89_OR_NEWER;MIRROR_90_OR_NEWER;MIRROR_93_OR_NEWER;MIRROR_96_OR_NEWER;EDGEGAP_PLUGIN_SERVERS;APP_UI_EDITOR_ONLY;CSHARP_7_OR_LATER;CSHARP_7_3_OR_NEWER</DefineConstants>
     <AllowUnsafeBlocks>False</AllowUnsafeBlocks>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>Temp\bin\Debug\</OutputPath>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>Temp\bin\Release\</OutputPath>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
   <PropertyGroup>
-    <NoConfig>true</NoConfig>
+    <NoStandardLibraries>true</NoStandardLibraries>
     <NoStdLib>true</NoStdLib>
-    <AddAdditionalExplicitAssemblyReferences>false</AddAdditionalExplicitAssemblyReferences>
-    <ImplicitlyExpandNETStandardFacades>false</ImplicitlyExpandNETStandardFacades>
-    <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
+    <NoConfig>true</NoConfig>
+    <DisableImplicitFrameworkReferences>true</DisableImplicitFrameworkReferences>
+    <MSBuildWarningsAsMessages>MSB3277</MSBuildWarningsAsMessages>
   </PropertyGroup>
   <PropertyGroup>
-    <ProjectTypeGuids>{E097FAD1-6243-4DAD-9C02-E9B9EFC3FFC1};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <UnityProjectGenerator>Package</UnityProjectGenerator>
     <UnityProjectGeneratorVersion>2.0.26</UnityProjectGeneratorVersion>
-    <UnityProjectGeneratorStyle>Legacy</UnityProjectGeneratorStyle>
+    <UnityProjectGeneratorStyle>SDK</UnityProjectGeneratorStyle>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>WebGL:20</UnityBuildTarget>
     <UnityVersion>6000.3.1f1</UnityVersion>
   </PropertyGroup>
   <ItemGroup>
-    <Analyzer Include="C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
+    <Analyzer Include="C:\Users\praka\.vscode\extensions\visualstudiotoolsforunity.vstuc-1.2.1\Analyzers\Microsoft.Unity.Analyzers.dll" />
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\Tools\BuildPipeline\Unity.SourceGenerators\Unity.SourceGenerators.dll" />
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\Tools\BuildPipeline\Unity.SourceGenerators\Unity.Properties.SourceGenerator.dll" />
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\Tools\BuildPipeline\Unity.SourceGenerators\Unity.UIToolkit.SourceGenerator.dll" />
@@ -103,10 +91,8 @@
   <ItemGroup>
     <None Include="Assets\Mirror\Plugins\Mono.Cecil\Mono.CecilX.dll" />
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
-    <None Include="Assets\Blocks\Common\Content\composites\chat-message.uxml" />
     <None Include="Assets\Mirror\Plugins\Mono.Cecil\Mono.CecilX.Mdb.dll" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
-    <None Include="Assets\Blocks\Common\Content\stylesheets\inputs.uss" />
     <None Include="Assets\TextMesh Pro\Examples &amp; Extras\Fonts\Roboto-Bold - License.txt" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile-2-Pass.shader" />
     <None Include="Assets\TextMesh Pro\Examples &amp; Extras\Fonts\Unity - OFL.txt" />
@@ -114,26 +100,18 @@
     <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />
     <None Include="Assets\TextMesh Pro\Examples &amp; Extras\Fonts\Oswald-Bold - OFL.txt" />
     <None Include="Assets\TextMesh Pro\Examples &amp; Extras\Fonts\Roboto-Bold - AFL.txt" />
-    <None Include="Assets\Blocks\CommonSession\UI\SessionInfo.uxml" />
     <None Include="Assets\Mirror\Plugins\Mono.Cecil\Mono.CecilX.Pdb.dll" />
     <None Include="Assets\Mirror\version.txt" />
     <None Include="Assets\TextMesh Pro\Examples &amp; Extras\Fonts\Anton OFL.txt" />
-    <None Include="Assets\Blocks\Common\Content\stylesheets\scroll-view.uss" />
     <None Include="Assets\TextMesh Pro\Shaders\TMPro_Mobile.cginc" />
     <None Include="Assets\ScriptTemplates\56-Mirror__Network Discovery-NewNetworkDiscovery.cs.txt" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF SSD.shader" />
-    <None Include="Assets\Blocks\Common\Content\stylesheets\buttons.uss" />
     <None Include="Assets\ScriptTemplates\51-Mirror__Network Manager With Actions-NewNetworkManagerWithActions.cs.txt" />
     <None Include="Assets\ScriptTemplates\53-Mirror__Network Behaviour With Actions-NewNetworkBehaviourWithActions.cs.txt" />
-    <None Include="Assets\Blocks\Common\Content\stylesheets\utilities.uss" />
     <None Include="Assets\Mirror\Plugins\Mono.Cecil\Mono.CecilX.Rocks.dll" />
-    <None Include="Assets\Blocks\MatchmakerSession\Scenes\Matchmake\Matchmake.uxml" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Surface-Mobile.shader" />
-    <None Include="Assets\Blocks\Common\Content\stylesheets\progressbar.uss" />
     <None Include="Assets\TextMesh Pro\Shaders\SDFFunctions.hlsl" />
     <None Include="Assets\Mirror\Readme.txt" />
-    <None Include="Assets\Blocks\Common\Content\stylesheets\core.uss" />
-    <None Include="Assets\Blocks\Common\Content\composites\chat-message.uss" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Surface.shader" />
     <None Include="Assets\ScriptTemplates\57-Mirror__Network Transform-NewNetworkTransform.cs.txt" />
     <None Include="Assets\TextMesh Pro\Sprites\EmojiOne Attribution.txt" />
@@ -141,30 +119,21 @@
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile SSD.shader" />
     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />
-    <None Include="Assets\Blocks\MatchmakerSession\UI\JoinSessionByMatchmaking.uxml" />
     <None Include="Assets\ScriptTemplates\52-Mirror__Network Behaviour-NewNetworkBehaviour.cs.txt" />
-    <None Include="Assets\Blocks\Common\Content\stylesheets\labels.uss" />
     <None Include="Assets\TextMesh Pro\Shaders\TMPro_Properties.cginc" />
     <None Include="Assets\TextMesh Pro\Shaders\TMPro_Surface.cginc" />
-    <None Include="Assets\Blocks\CommonSession\UI\CurrentSession.uxml" />
-    <None Include="Assets\Blocks\Common\Content\stylesheets\icons.uss" />
     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Following Characters.txt" />
     <None Include="Assets\Mirror\Plugins\Mono.Cecil\License.txt" />
     <None Include="Assets\_Heathen Engineering\Documentation\UX\Flat Icons [Free]\Read Me.txt" />
-    <None Include="Assets\Blocks\Common\Content\stylesheets\list-view.uss" />
     <None Include="Assets\ScriptTemplates\55-Mirror__Network Room Player-NewNetworkRoomPlayer.cs.txt" />
-    <None Include="Assets\Blocks\Common\Content\composites\card-component.uss" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Masking.shader" />
     <None Include="Assets\ScriptTemplates\54-Mirror__Custom Interest Management-CustomInterestManagement.cs.txt" />
-    <None Include="Assets\Blocks\Common\Content\stylesheets\copy-session--header.uss" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF Overlay.shader" />
     <None Include="Assets\ScriptTemplates\50-Mirror__Network Manager-NewNetworkManager.cs.txt" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap-Mobile.shader" />
     <None Include="Assets\ScriptTemplates\54-Mirror__Network Room Manager-NewNetworkRoomManager.cs.txt" />
     <None Include="Assets\TextMesh Pro\Fonts\LiberationSans - OFL.txt" />
-    <None Include="Assets\Blocks\Common\Content\stylesheets\modals.uss" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile.shader" />
-    <None Include="Assets\Blocks\Common\Content\composites\numeric-list-element.uss" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_Sprite.shader" />
     <None Include="Assets\TextMesh Pro\Examples &amp; Extras\Fonts\Bangers - OFL.txt" />
     <None Include="Assets\Mirror\Hosting\Readme.txt" />
@@ -1240,578 +1209,156 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="Unity.Purchasing.SecurityStub.csproj">
-      <Project>{9D95499B-8FF2-54CF-BD3F-C5B72ABDD5D4}</Project>
-      <Name>Unity.Purchasing.SecurityStub</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.2D.Common.Path.Editor.csproj">
-      <Project>{0F0F8926-B6A4-B170-96A2-1C712257CC3C}</Project>
-      <Name>Unity.2D.Common.Path.Editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.Cloud.Assets.Embedded.csproj">
-      <Project>{5D073DF1-5099-BCB7-2E7B-E15C32E09702}</Project>
-      <Name>Unity.Cloud.Assets.Embedded</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.2D.Sprite.Editor.csproj">
-      <Project>{4E988CD3-4D31-BD0F-B3C5-A3EC02FCBA64}</Project>
-      <Name>Unity.2D.Sprite.Editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.InternalAPIEngineBridge.001.csproj">
-      <Project>{B7ECCDEA-EC4D-2494-F565-48EC138DAF9E}</Project>
-      <Name>Unity.InternalAPIEngineBridge.001</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.TextMeshPro.csproj">
-      <Project>{C1F7C240-5E79-6109-D35C-B20862BC139D}</Project>
-      <Name>Unity.TextMeshPro</Name>
-    </ProjectReference>
-    <ProjectReference Include="Mirror.Components.csproj">
-      <Project>{B00C80AD-0D1D-42A0-9204-18BE0410C8C7}</Project>
-      <Name>Mirror.Components</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.Cloud.AppLinking.Editor.Embedded.csproj">
-      <Project>{A9713B8C-E979-D453-0C6C-501EDFD08F46}</Project>
-      <Name>Unity.Cloud.AppLinking.Editor.Embedded</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.Services.Multiplayer.Editor.Shared.csproj">
-      <Project>{F1724D93-F190-514A-6D54-FB2E826C89E6}</Project>
-      <Name>Unity.Services.Multiplayer.Editor.Shared</Name>
-    </ProjectReference>
-    <ProjectReference Include="PsdPlugin.csproj">
-      <Project>{F764FC8E-59E7-8CAD-DE69-017DC932F737}</Project>
-      <Name>PsdPlugin</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.Services.QoS.csproj">
-      <Project>{8F86829D-4AFC-917B-F846-682A096DD53E}</Project>
-      <Name>Unity.Services.QoS</Name>
-    </ProjectReference>
-    <ProjectReference Include="UnityEngine.SpatialTracking.csproj">
-      <Project>{D305CBE7-515E-FBF4-F87E-91195A7B81F1}</Project>
-      <Name>UnityEngine.SpatialTracking</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.Cloud.AppLinking.Embedded.csproj">
-      <Project>{F3820DB7-AC5D-FEA0-9BFD-D3BCC2737DE6}</Project>
-      <Name>Unity.Cloud.AppLinking.Embedded</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.Services.Core.csproj">
-      <Project>{C46D2FDE-F8EE-5FBE-B730-68FC20581B5F}</Project>
-      <Name>Unity.Services.Core</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.VisualScripting.SettingsProvider.Editor.csproj">
-      <Project>{B30138D5-271D-52D8-1C36-0B6CABC8DEA8}</Project>
-      <Name>Unity.VisualScripting.SettingsProvider.Editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="kcp2k.csproj">
-      <Project>{B5C19F30-B802-4230-B6A0-4C4A436F7BAF}</Project>
-      <Name>kcp2k</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.AI.Assistant.API.Editor.csproj">
-      <Project>{8C9DC745-4E65-2CF0-6F69-D3D06925CD0F}</Project>
-      <Name>Unity.AI.Assistant.API.Editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.Networking.Editor.csproj">
-      <Project>{A6D6BD53-4642-AD4F-7535-C98A78A042BF}</Project>
-      <Name>Unity.Networking.Editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.2D.Enhancers.Editor.AIBridge.csproj">
-      <Project>{9382B98F-538F-0412-4CB8-FE4AD4471342}</Project>
-      <Name>Unity.2D.Enhancers.Editor.AIBridge</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.InternalAPIEditorBridge.001.csproj">
-      <Project>{8C37437D-B3F5-E490-53D6-5041016F9F55}</Project>
-      <Name>Unity.InternalAPIEditorBridge.001</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.AI.Navigation.Updater.csproj">
-      <Project>{087368CD-C7F1-6323-BFBA-B7959EB593E9}</Project>
-      <Name>Unity.AI.Navigation.Updater</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.2D.Common.Editor.csproj">
-      <Project>{7F61996F-3707-162C-CEFF-B7FFE2A46DBF}</Project>
-      <Name>Unity.2D.Common.Editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.AI.Navigation.Editor.csproj">
-      <Project>{574A4AD1-0DBA-874E-2254-F1088FCC5EF1}</Project>
-      <Name>Unity.AI.Navigation.Editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.AI.Assistant.Integrations.Profiler.Editor.csproj">
-      <Project>{0F5E5B81-1ED6-75E1-4A14-6E2028275BFB}</Project>
-      <Name>Unity.AI.Assistant.Integrations.Profiler.Editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.2D.Animation.Runtime.csproj">
-      <Project>{18DAEFE3-16BC-C274-58D3-AB040BFD39EB}</Project>
-      <Name>Unity.2D.Animation.Runtime</Name>
-    </ProjectReference>
-    <ProjectReference Include="Edgegap.csproj">
-      <Project>{E82BE80C-4833-424F-E998-D337389CA9C3}</Project>
-      <Name>Edgegap</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.Purchasing.Stores.csproj">
-      <Project>{BC820BCA-E73A-049D-7195-9FF68AED88E5}</Project>
-      <Name>Unity.Purchasing.Stores</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.AppUI.Undo.csproj">
-      <Project>{409558C6-91EE-CAE5-578C-EB450B9D0FFB}</Project>
-      <Name>Unity.AppUI.Undo</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.Services.Core.Components.csproj">
-      <Project>{3F716DB6-49F2-47DF-917E-E2A6332B9956}</Project>
-      <Name>Unity.Services.Core.Components</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.2D.Aseprite.Common.csproj">
-      <Project>{3007911D-E021-6EBF-016D-CD3FCA2B6A6F}</Project>
-      <Name>Unity.2D.Aseprite.Common</Name>
-    </ProjectReference>
-    <ProjectReference Include="UnityEditor.SpatialTracking.csproj">
-      <Project>{F1B5440B-D36E-79C0-5413-C9D833AEFC23}</Project>
-      <Name>UnityEditor.SpatialTracking</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.2D.PixelPerfect.csproj">
-      <Project>{559FD165-36C7-1408-2BB8-09B7FC770DD0}</Project>
-      <Name>Unity.2D.PixelPerfect</Name>
-    </ProjectReference>
-    <ProjectReference Include="UnityEngine.Advertisements.csproj">
-      <Project>{3A4AA659-E2CA-18E0-4A4A-7D3764D1667A}</Project>
-      <Name>UnityEngine.Advertisements</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.InferenceEngine.MacBLAS.csproj">
-      <Project>{A8AE4ECF-B7BA-A69D-B8F6-92749B72BC9A}</Project>
-      <Name>Unity.InferenceEngine.MacBLAS</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.Services.Authentication.csproj">
-      <Project>{4F5C4A66-2249-A108-C03A-20AD7B0CA963}</Project>
-      <Name>Unity.Services.Authentication</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.AI.Navigation.Editor.ConversionSystem.csproj">
-      <Project>{556EFFB5-F8AE-3AA3-EEA1-FDAF342F0769}</Project>
-      <Name>Unity.AI.Navigation.Editor.ConversionSystem</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.2D.Aseprite.Editor.csproj">
-      <Project>{73ACA693-FAB7-08E6-6DCB-CF57AA3CDCE1}</Project>
-      <Name>Unity.2D.Aseprite.Editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.Rider.Editor.csproj">
-      <Project>{06AC5473-EC36-8029-77A2-C3F6E5D22D61}</Project>
-      <Name>Unity.Rider.Editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.InferenceEngine.Editor.csproj">
-      <Project>{FBEC5F36-7165-90BC-D9FE-C617F5B0AC13}</Project>
-      <Name>Unity.InferenceEngine.Editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.Services.Authentication.Editor.Shared.csproj">
-      <Project>{C6073B75-4FF4-B972-949B-DAB22D1B4596}</Project>
-      <Name>Unity.Services.Authentication.Editor.Shared</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.Services.Multiplayer.Editor.Matchmaker.Authoring.csproj">
-      <Project>{74A3FAB5-92AD-E705-37C7-4119915D9B1B}</Project>
-      <Name>Unity.Services.Multiplayer.Editor.Matchmaker.Authoring</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.AI.Assistant.Bridge.Editor.csproj">
-      <Project>{EA454308-384D-C8C8-8237-C0D706DA2BA3}</Project>
-      <Name>Unity.AI.Assistant.Bridge.Editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.VisualScripting.Flow.csproj">
-      <Project>{EC090944-1E5E-3BBD-2751-D87BAA729824}</Project>
-      <Name>Unity.VisualScripting.Flow</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.AI.Assistant.Tools.Editor.csproj">
-      <Project>{E37861D5-D68C-BFBE-CD4D-83C85ED329CA}</Project>
-      <Name>Unity.AI.Assistant.Tools.Editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="SimpleWebTransport.csproj">
-      <Project>{24637910-C2F9-0BEE-D2ED-DFCB04823A48}</Project>
-      <Name>SimpleWebTransport</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.Analytics.DataPrivacy.csproj">
-      <Project>{0803035E-4BAF-0357-6059-F05A921EA916}</Project>
-      <Name>Unity.Analytics.DataPrivacy</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.TextMeshPro.Editor.csproj">
-      <Project>{B4130C1B-99D5-AF4C-832E-B4E262357732}</Project>
-      <Name>Unity.TextMeshPro.Editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.2D.Tilemap.Extras.Editor.csproj">
-      <Project>{E619D02D-94E9-4415-C3B9-9FD761F386A1}</Project>
-      <Name>Unity.2D.Tilemap.Extras.Editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="Mirror.Transports.csproj">
-      <Project>{671123C5-757E-051D-268E-699292D6DA3C}</Project>
-      <Name>Mirror.Transports</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.Cloud.AppLinking.Runtime.Embedded.csproj">
-      <Project>{64493C5E-C748-A975-3422-1FEE1A8C3784}</Project>
-      <Name>Unity.Cloud.AppLinking.Runtime.Embedded</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.Services.Authentication.PlayerAccounts.csproj">
-      <Project>{A576B8E2-894E-573A-A8EC-3B8DE53E35CD}</Project>
-      <Name>Unity.Services.Authentication.PlayerAccounts</Name>
-    </ProjectReference>
-    <ProjectReference Include="UnityEngine.XR.LegacyInputHelpers.csproj">
-      <Project>{4A4A93ED-FE56-2870-B5C6-2BD7E2FCB810}</Project>
-      <Name>UnityEngine.XR.LegacyInputHelpers</Name>
-    </ProjectReference>
-    <ProjectReference Include="glTFast.dots.csproj">
-      <Project>{9CA7F042-E9D5-0483-61C8-ADA7B6FE54E9}</Project>
-      <Name>glTFast.dots</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.AssetManager.Upload.Editor.csproj">
-      <Project>{8EC90709-2A88-73D4-79C3-A8CBE6E1921F}</Project>
-      <Name>Unity.AssetManager.Upload.Editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.VisualStudio.Editor.csproj">
-      <Project>{3E81C7F1-7B5C-8004-E3B4-26E753C68EF7}</Project>
-      <Name>Unity.VisualStudio.Editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="UnityEditor.XR.LegacyInputHelpers.csproj">
-      <Project>{DC4A4CE5-D048-79CB-89CA-AC9FF4CD7E39}</Project>
-      <Name>UnityEditor.XR.LegacyInputHelpers</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.2D.Tilemap.Editor.csproj">
-      <Project>{5F80B679-0A07-8F2D-B90C-B8A161E83C00}</Project>
-      <Name>Unity.2D.Tilemap.Editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.VisualScripting.State.Editor.csproj">
-      <Project>{C1AA95BF-6239-90CC-BE12-15014D5FE8B5}</Project>
-      <Name>Unity.VisualScripting.State.Editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="UnityEngine.UI.csproj">
-      <Project>{3A16FD29-B329-E206-65D7-03A7329215E0}</Project>
-      <Name>UnityEngine.UI</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.Services.Core.Environments.csproj">
-      <Project>{4E441B2F-7191-6942-2581-7FB6681A4053}</Project>
-      <Name>Unity.Services.Core.Environments</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.Services.Multiplayer.csproj">
-      <Project>{E07148BD-1238-9B44-59FA-AD8EC22B30DD}</Project>
-      <Name>Unity.Services.Multiplayer</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.Cloud.Assets.Runtime.Embedded.csproj">
-      <Project>{83E7A0D0-208A-5D91-4E0E-DD11FD349977}</Project>
-      <Name>Unity.Cloud.Assets.Runtime.Embedded</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.AdaptivePerformance.csproj">
-      <Project>{90214873-78F3-56E4-A494-B1BCF6D7BAA5}</Project>
-      <Name>Unity.AdaptivePerformance</Name>
-    </ProjectReference>
-    <ProjectReference Include="GameAssembly.csproj">
-      <Project>{881C5910-952C-1A3A-44C2-35A4B349CED5}</Project>
-      <Name>GameAssembly</Name>
-    </ProjectReference>
-    <ProjectReference Include="HFDownloader.csproj">
-      <Project>{FBFFC698-91BB-C191-291E-B8B1AF4798E9}</Project>
-      <Name>HFDownloader</Name>
-    </ProjectReference>
-    <ProjectReference Include="UnityEngine.Advertisements.Editor.csproj">
-      <Project>{00E459F7-7522-6CFE-3C9B-FE6BC510043D}</Project>
-      <Name>UnityEngine.Advertisements.Editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.AppUI.csproj">
-      <Project>{2B985AE1-D064-5431-D70D-76419D9DC5DF}</Project>
-      <Name>Unity.AppUI</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.2D.Sprite.AIIntegration.Editor.csproj">
-      <Project>{040904AA-6711-342F-DB15-FD9E946951C0}</Project>
-      <Name>Unity.2D.Sprite.AIIntegration.Editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.2D.SpriteShape.Editor.csproj">
-      <Project>{2155D71F-2F5A-CFE7-AB1A-3DE6C19DE328}</Project>
-      <Name>Unity.2D.SpriteShape.Editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.2D.Enhancers.Editor.csproj">
-      <Project>{9978C01E-DB5F-31BC-0AC0-0B72A827004E}</Project>
-      <Name>Unity.2D.Enhancers.Editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.Cloud.Common.Embedded.csproj">
-      <Project>{10BA37A1-2F74-AA3D-FAA1-24AB67DC5E7B}</Project>
-      <Name>Unity.Cloud.Common.Embedded</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.Purchasing.Codeless.csproj">
-      <Project>{CB926638-2E37-743E-2B90-6E92AAB91AC9}</Project>
-      <Name>Unity.Purchasing.Codeless</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.AppUI.Redux.csproj">
-      <Project>{D52DB080-5AEF-7617-C5AD-34AF3B3FD236}</Project>
-      <Name>Unity.AppUI.Redux</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.InferenceEngine.ONNX.Editor.csproj">
-      <Project>{42AD9EDD-92CA-5DFF-C158-A60083599BAD}</Project>
-      <Name>Unity.InferenceEngine.ONNX.Editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.AppUI.Navigation.csproj">
-      <Project>{FBB3771B-5D07-6A26-326E-8B91BCDB506B}</Project>
-      <Name>Unity.AppUI.Navigation</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.Cloud.Identity.Runtime.Embedded.csproj">
-      <Project>{69D20128-060F-3BEC-2ACE-6DCCD8FBC3AC}</Project>
-      <Name>Unity.Cloud.Identity.Runtime.Embedded</Name>
-    </ProjectReference>
-    <ProjectReference Include="glTFast.Editor.csproj">
-      <Project>{D933C6D4-8D87-1B70-AC3B-4D597105D78D}</Project>
-      <Name>glTFast.Editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.AI.Navigation.csproj">
-      <Project>{560BAEF8-0273-C463-433A-786EE491378B}</Project>
-      <Name>Unity.AI.Navigation</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.2D.IK.Runtime.csproj">
-      <Project>{1250E97D-B1BF-BEC5-D407-9B9F25468CE1}</Project>
-      <Name>Unity.2D.IK.Runtime</Name>
-    </ProjectReference>
-    <ProjectReference Include="UnityEditor.Purchasing.csproj">
-      <Project>{D8DE540C-97F9-A64A-3A97-4CF2E06C17A1}</Project>
-      <Name>UnityEditor.Purchasing</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.AssetManager.Core.Editor.csproj">
-      <Project>{E79F7A2F-E710-6C10-D5F2-7B53E2DFBBD0}</Project>
-      <Name>Unity.AssetManager.Core.Editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.AI.Assistant.Agent.Dynamic.Extension.Editor.csproj">
-      <Project>{AEC56B38-E791-05ED-9CD6-E7934CE5D409}</Project>
-      <Name>Unity.AI.Assistant.Agent.Dynamic.Extension.Editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.2D.Animation.Editor.csproj">
-      <Project>{85A94BA1-5D06-2F9A-317F-4AABFEE53539}</Project>
-      <Name>Unity.2D.Animation.Editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.Purchasing.csproj">
-      <Project>{150245D9-835C-72D6-514E-C358BC501687}</Project>
-      <Name>Unity.Purchasing</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.Timeline.csproj">
-      <Project>{477BBE87-47DF-7BB8-4DAA-62FDE791263C}</Project>
-      <Name>Unity.Timeline</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.2D.Tooling.Editor.csproj">
-      <Project>{67BA831E-7227-2867-A40D-F38A8C9B6191}</Project>
-      <Name>Unity.2D.Tooling.Editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.VisualScripting.Shared.Editor.csproj">
-      <Project>{CF9902B2-3B34-2C2C-02F7-605548EDA259}</Project>
-      <Name>Unity.VisualScripting.Shared.Editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.2D.PixelPerfect.Editor.csproj">
-      <Project>{0AF20EB6-B9B9-D50C-4AAD-CFDEC72CCD8C}</Project>
-      <Name>Unity.2D.PixelPerfect.Editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.PlasticSCM.Editor.csproj">
-      <Project>{499CF836-503C-CD9D-C936-A33BCB6F41A3}</Project>
-      <Name>Unity.PlasticSCM.Editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.Purchasing.Utilities.csproj">
-      <Project>{1F09DA9C-20D3-B2AF-F550-307E87D948AE}</Project>
-      <Name>Unity.Purchasing.Utilities</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.Burst.Editor.csproj">
-      <Project>{21098171-6979-293E-1B2C-DA25C4BEDFA0}</Project>
-      <Name>Unity.Burst.Editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="EncryptionTransportEditor.csproj">
-      <Project>{48DC9F16-F72B-E136-26C6-2D203C422FCC}</Project>
-      <Name>EncryptionTransportEditor</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.VisualScripting.Core.csproj">
-      <Project>{9857173B-7F5A-AF83-4828-243743D08FE1}</Project>
-      <Name>Unity.VisualScripting.Core</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.Mathematics.Editor.csproj">
-      <Project>{8A897656-E689-5C79-CCBE-A1A12C05C267}</Project>
-      <Name>Unity.Mathematics.Editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.Cloud.Common.Editor.Embedded.csproj">
-      <Project>{1EBA77FA-D274-E829-3457-A105F7D86D8E}</Project>
-      <Name>Unity.Cloud.Common.Editor.Embedded</Name>
-    </ProjectReference>
-    <ProjectReference Include="Blocks.Common.csproj">
-      <Project>{1DFBF8C1-9F80-F680-529F-391CAC83C610}</Project>
-      <Name>Blocks.Common</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.Services.Core.Analytics.csproj">
-      <Project>{9A880D1A-79EC-BF92-A9EC-05CA3DB64AFD}</Project>
-      <Name>Unity.Services.Core.Analytics</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.2D.Psdimporter.Editor.csproj">
-      <Project>{A4A2520F-ABC6-6002-29CC-D0F9E6446D70}</Project>
-      <Name>Unity.2D.Psdimporter.Editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="Analytics.csproj">
-      <Project>{A3C59AA8-B62F-4D31-0A2F-7B30DB75A7AB}</Project>
-      <Name>Analytics</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.Cloud.Common.Runtime.Embedded.csproj">
-      <Project>{3C058F2F-D4F8-3238-5458-CF61EFA92278}</Project>
-      <Name>Unity.Cloud.Common.Runtime.Embedded</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.AppUI.MVVM.csproj">
-      <Project>{DB7AC462-61CC-349F-D612-7BA1E49F0522}</Project>
-      <Name>Unity.AppUI.MVVM</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.AI.Assistant.Runtime.csproj">
-      <Project>{CB154B53-6657-2525-0FAD-A0E833FF0A1C}</Project>
-      <Name>Unity.AI.Assistant.Runtime</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.2D.Tilemap.Extras.csproj">
-      <Project>{C15F3E72-35A4-B972-35C1-4E08E8E65AF7}</Project>
-      <Name>Unity.2D.Tilemap.Extras</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.VisualScripting.Flow.Editor.csproj">
-      <Project>{37C187D7-FF56-5018-7D85-ACDB2E4C9EFC}</Project>
-      <Name>Unity.VisualScripting.Flow.Editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.2D.IK.Editor.csproj">
-      <Project>{56E58C60-859A-A4B7-FF50-4E839B416D1C}</Project>
-      <Name>Unity.2D.IK.Editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.2D.SpriteShape.Runtime.csproj">
-      <Project>{9B10252F-26CA-A71D-D1CF-FCEB960DB93C}</Project>
-      <Name>Unity.2D.SpriteShape.Runtime</Name>
-    </ProjectReference>
-    <ProjectReference Include="Blocks.Sessions.Matchmaker.csproj">
-      <Project>{7A33F0E8-FE7C-3EBB-6317-7C06DBA9CF23}</Project>
-      <Name>Blocks.Sessions.Matchmaker</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.AppUI.Redux.Editor.csproj">
-      <Project>{7A814F02-4E52-B38D-EA33-4C2533557DF2}</Project>
-      <Name>Unity.AppUI.Redux.Editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.2D.Common.Runtime.csproj">
-      <Project>{821B24DF-BF0D-07F9-20B2-47A6BB5D557E}</Project>
-      <Name>Unity.2D.Common.Runtime</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.Collections.csproj">
-      <Project>{3EC30D7F-B32A-A834-E760-EA1C24BED608}</Project>
-      <Name>Unity.Collections</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.Networking.Transport.csproj">
-      <Project>{4A7C6BFA-3736-F791-0664-8B0D290300F3}</Project>
-      <Name>Unity.Networking.Transport</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.Timeline.Editor.csproj">
-      <Project>{5E7ED256-9F4A-1D60-C561-AFD40BC281C3}</Project>
-      <Name>Unity.Timeline.Editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.AppUI.Editor.csproj">
-      <Project>{94D2BDD6-F0FC-ADEE-F9F9-6317FB852675}</Project>
-      <Name>Unity.AppUI.Editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.Purchasing.SecurityCore.csproj">
-      <Project>{E61D022A-882F-F387-6E62-48151D3D1651}</Project>
-      <Name>Unity.Purchasing.SecurityCore</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.Mathematics.csproj">
-      <Project>{4DA5AD35-777D-8F2C-5604-A06549DBDA4B}</Project>
-      <Name>Unity.Mathematics</Name>
-    </ProjectReference>
-    <ProjectReference Include="Mirror.Editor.csproj">
-      <Project>{952D754F-C04C-B563-CFB0-724E5196E6D7}</Project>
-      <Name>Mirror.Editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.Serialization.csproj">
-      <Project>{B52CD64E-86CA-5572-D5C6-DC47C42AC51E}</Project>
-      <Name>Unity.Serialization</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.Multiplayer.Center.Common.csproj">
-      <Project>{7DE6680E-14E7-A3D1-8C66-FE0C5BFB3366}</Project>
-      <Name>Unity.Multiplayer.Center.Common</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.Burst.csproj">
-      <Project>{0442CD5A-DA3C-EEB8-CE23-6CE78AAF2E19}</Project>
-      <Name>Unity.Burst</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.VisualScripting.Core.Editor.csproj">
-      <Project>{49229C19-4A00-65C9-71E7-5EE20B7FCAB4}</Project>
-      <Name>Unity.VisualScripting.Core.Editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.InternalAPIEngineBridge.004.csproj">
-      <Project>{052283BF-3872-CB9E-873A-269BF2D3AE1A}</Project>
-      <Name>Unity.InternalAPIEngineBridge.004</Name>
-    </ProjectReference>
-    <ProjectReference Include="Mirror.Authenticators.csproj">
-      <Project>{14C1637F-381C-360B-1F44-E70867502AC9}</Project>
-      <Name>Mirror.Authenticators</Name>
-    </ProjectReference>
-    <ProjectReference Include="Mirror.CompilerSymbols.csproj">
-      <Project>{4AD024A5-2624-8989-FB8E-799BBF8E42B4}</Project>
-      <Name>Mirror.CompilerSymbols</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.Multiplayer.Center.Editor.csproj">
-      <Project>{0D6C32CF-A70A-0332-FBBC-415EBC7B1C8F}</Project>
-      <Name>Unity.Multiplayer.Center.Editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.InferenceEngine.Tokenization.csproj">
-      <Project>{56AD6E46-7A1F-DE6A-4162-BE2168CDEBE6}</Project>
-      <Name>Unity.InferenceEngine.Tokenization</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.VisualScripting.State.csproj">
-      <Project>{98288406-0F21-4DEA-78ED-B20BFD629171}</Project>
-      <Name>Unity.VisualScripting.State</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.AppUI.Navigation.Editor.csproj">
-      <Project>{79D94848-0100-D170-DAF8-2FBE08113B6C}</Project>
-      <Name>Unity.AppUI.Navigation.Editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="Mirror.Examples.csproj">
-      <Project>{DA03DB1A-4252-CA65-E39D-66984318CCEC}</Project>
-      <Name>Mirror.Examples</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.Collections.Editor.csproj">
-      <Project>{A9A90948-33DB-5ACC-C717-A358D9786B8F}</Project>
-      <Name>Unity.Collections.Editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.Cloud.Identity.Editor.Embedded.csproj">
-      <Project>{1CF35B22-7EAD-3085-336C-0600E0D1D02C}</Project>
-      <Name>Unity.Cloud.Identity.Editor.Embedded</Name>
-    </ProjectReference>
-    <ProjectReference Include="Mirror.csproj">
-      <Project>{1183BF5A-31B1-62D6-BE9C-8541095D71F1}</Project>
-      <Name>Mirror</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.Serialization.Editor.csproj">
-      <Project>{A0D5C2EF-BE56-ACB5-935F-C5ED448124D7}</Project>
-      <Name>Unity.Serialization.Editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.InferenceEngine.iOSBLAS.csproj">
-      <Project>{C4D279BA-345A-BF67-76C4-A20FFA4EDB9F}</Project>
-      <Name>Unity.InferenceEngine.iOSBLAS</Name>
-    </ProjectReference>
-    <ProjectReference Include="glTFast.csproj">
-      <Project>{9EE32F9E-0562-F539-8980-0F55E340F5C0}</Project>
-      <Name>glTFast</Name>
-    </ProjectReference>
-    <ProjectReference Include="Blocks.Sessions.Common.csproj">
-      <Project>{867A3EB7-750D-696A-F4E2-CC76F24EF801}</Project>
-      <Name>Blocks.Sessions.Common</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.Settings.Editor.csproj">
-      <Project>{1938AADF-6F11-B7F8-7180-89FA0F1DD8F3}</Project>
-      <Name>Unity.Settings.Editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="Telepathy.csproj">
-      <Project>{FB39C5E0-E921-75E0-C807-02BB441C91FB}</Project>
-      <Name>Telepathy</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.Cloud.Identity.Embedded.csproj">
-      <Project>{D7B2BF64-1BE5-2177-E3B8-4BA46F127581}</Project>
-      <Name>Unity.Cloud.Identity.Embedded</Name>
-    </ProjectReference>
-    <ProjectReference Include="UnityEditor.UI.csproj">
-      <Project>{698D6ACB-27E6-6733-2BA7-B76006C8ED47}</Project>
-      <Name>UnityEditor.UI</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.Services.Analytics.csproj">
-      <Project>{770A1D3E-F71C-448E-9E6D-9F2C99503E89}</Project>
-      <Name>Unity.Services.Analytics</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.InferenceEngine.csproj">
-      <Project>{B3A6F2B9-8F42-90A0-864A-61B5936DDEBC}</Project>
-      <Name>Unity.InferenceEngine</Name>
-    </ProjectReference>
+    <ProjectReference Include="Unity.Purchasing.SecurityStub.csproj" />
+    <ProjectReference Include="Unity.2D.Common.Path.Editor.csproj" />
+    <ProjectReference Include="Unity.Cloud.Assets.Embedded.csproj" />
+    <ProjectReference Include="Unity.2D.Sprite.Editor.csproj" />
+    <ProjectReference Include="Unity.InternalAPIEngineBridge.001.csproj" />
+    <ProjectReference Include="Unity.TextMeshPro.csproj" />
+    <ProjectReference Include="Mirror.Components.csproj" />
+    <ProjectReference Include="Unity.Cloud.AppLinking.Editor.Embedded.csproj" />
+    <ProjectReference Include="Unity.Services.Multiplayer.Editor.Shared.csproj" />
+    <ProjectReference Include="PsdPlugin.csproj" />
+    <ProjectReference Include="Unity.Services.QoS.csproj" />
+    <ProjectReference Include="UnityEngine.SpatialTracking.csproj" />
+    <ProjectReference Include="Unity.Cloud.AppLinking.Embedded.csproj" />
+    <ProjectReference Include="Unity.Services.Core.csproj" />
+    <ProjectReference Include="Unity.VisualScripting.SettingsProvider.Editor.csproj" />
+    <ProjectReference Include="kcp2k.csproj" />
+    <ProjectReference Include="Unity.AI.Assistant.API.Editor.csproj" />
+    <ProjectReference Include="Unity.Networking.Editor.csproj" />
+    <ProjectReference Include="Unity.2D.Enhancers.Editor.AIBridge.csproj" />
+    <ProjectReference Include="Unity.InternalAPIEditorBridge.001.csproj" />
+    <ProjectReference Include="Unity.AI.Navigation.Updater.csproj" />
+    <ProjectReference Include="Unity.2D.Common.Editor.csproj" />
+    <ProjectReference Include="Unity.AI.Navigation.Editor.csproj" />
+    <ProjectReference Include="Unity.AI.Assistant.Integrations.Profiler.Editor.csproj" />
+    <ProjectReference Include="Unity.2D.Animation.Runtime.csproj" />
+    <ProjectReference Include="Edgegap.csproj" />
+    <ProjectReference Include="Unity.AI.MCP.Runtime.csproj" />
+    <ProjectReference Include="Unity.Purchasing.Stores.csproj" />
+    <ProjectReference Include="Unity.AppUI.Undo.csproj" />
+    <ProjectReference Include="Unity.Services.Core.Components.csproj" />
+    <ProjectReference Include="Unity.2D.Aseprite.Common.csproj" />
+    <ProjectReference Include="UnityEditor.SpatialTracking.csproj" />
+    <ProjectReference Include="Unity.2D.PixelPerfect.csproj" />
+    <ProjectReference Include="UnityEngine.Advertisements.csproj" />
+    <ProjectReference Include="Unity.InferenceEngine.MacBLAS.csproj" />
+    <ProjectReference Include="Unity.Services.Authentication.csproj" />
+    <ProjectReference Include="Unity.AI.Navigation.Editor.ConversionSystem.csproj" />
+    <ProjectReference Include="Unity.2D.Aseprite.Editor.csproj" />
+    <ProjectReference Include="Unity.Rider.Editor.csproj" />
+    <ProjectReference Include="Unity.InferenceEngine.Editor.csproj" />
+    <ProjectReference Include="Unity.Services.Authentication.Editor.Shared.csproj" />
+    <ProjectReference Include="Unity.Services.Multiplayer.Editor.Matchmaker.Authoring.csproj" />
+    <ProjectReference Include="Unity.AI.Assistant.Bridge.Editor.csproj" />
+    <ProjectReference Include="Unity.VisualScripting.Flow.csproj" />
+    <ProjectReference Include="Unity.AI.Assistant.Tools.Editor.csproj" />
+    <ProjectReference Include="SimpleWebTransport.csproj" />
+    <ProjectReference Include="Unity.Analytics.DataPrivacy.csproj" />
+    <ProjectReference Include="Unity.TextMeshPro.Editor.csproj" />
+    <ProjectReference Include="Unity.2D.Tilemap.Extras.Editor.csproj" />
+    <ProjectReference Include="Mirror.Transports.csproj" />
+    <ProjectReference Include="Unity.Cloud.AppLinking.Runtime.Embedded.csproj" />
+    <ProjectReference Include="Unity.Services.Authentication.PlayerAccounts.csproj" />
+    <ProjectReference Include="UnityEngine.XR.LegacyInputHelpers.csproj" />
+    <ProjectReference Include="glTFast.dots.csproj" />
+    <ProjectReference Include="Unity.AssetManager.Upload.Editor.csproj" />
+    <ProjectReference Include="Unity.VisualStudio.Editor.csproj" />
+    <ProjectReference Include="UnityEditor.XR.LegacyInputHelpers.csproj" />
+    <ProjectReference Include="Unity.2D.Tilemap.Editor.csproj" />
+    <ProjectReference Include="Unity.VisualScripting.State.Editor.csproj" />
+    <ProjectReference Include="UnityEngine.UI.csproj" />
+    <ProjectReference Include="Unity.Services.Core.Environments.csproj" />
+    <ProjectReference Include="Unity.Services.Multiplayer.csproj" />
+    <ProjectReference Include="Unity.Cloud.Assets.Runtime.Embedded.csproj" />
+    <ProjectReference Include="Unity.AdaptivePerformance.csproj" />
+    <ProjectReference Include="GameAssembly.csproj" />
+    <ProjectReference Include="HFDownloader.csproj" />
+    <ProjectReference Include="UnityEngine.Advertisements.Editor.csproj" />
+    <ProjectReference Include="Unity.AppUI.csproj" />
+    <ProjectReference Include="Unity.2D.Sprite.AIIntegration.Editor.csproj" />
+    <ProjectReference Include="Unity.2D.SpriteShape.Editor.csproj" />
+    <ProjectReference Include="Unity.2D.Enhancers.Editor.csproj" />
+    <ProjectReference Include="Unity.Cloud.Common.Embedded.csproj" />
+    <ProjectReference Include="Unity.Purchasing.Codeless.csproj" />
+    <ProjectReference Include="Unity.AppUI.Redux.csproj" />
+    <ProjectReference Include="Unity.AI.MCP.Editor.csproj" />
+    <ProjectReference Include="Unity.InferenceEngine.ONNX.Editor.csproj" />
+    <ProjectReference Include="Unity.AppUI.Navigation.csproj" />
+    <ProjectReference Include="Unity.Cloud.Identity.Runtime.Embedded.csproj" />
+    <ProjectReference Include="glTFast.Editor.csproj" />
+    <ProjectReference Include="Unity.AI.Navigation.csproj" />
+    <ProjectReference Include="Unity.2D.IK.Runtime.csproj" />
+    <ProjectReference Include="UnityEditor.Purchasing.csproj" />
+    <ProjectReference Include="Unity.AI.Assistant.Agent.Dynamic.Extension.Editor.csproj" />
+    <ProjectReference Include="Unity.AssetManager.Core.Editor.csproj" />
+    <ProjectReference Include="Unity.2D.Animation.Editor.csproj" />
+    <ProjectReference Include="Unity.Purchasing.csproj" />
+    <ProjectReference Include="Unity.Timeline.csproj" />
+    <ProjectReference Include="Unity.2D.Tooling.Editor.csproj" />
+    <ProjectReference Include="Unity.VisualScripting.Shared.Editor.csproj" />
+    <ProjectReference Include="Unity.2D.PixelPerfect.Editor.csproj" />
+    <ProjectReference Include="Unity.PlasticSCM.Editor.csproj" />
+    <ProjectReference Include="Unity.Purchasing.Utilities.csproj" />
+    <ProjectReference Include="Unity.Burst.Editor.csproj" />
+    <ProjectReference Include="EncryptionTransportEditor.csproj" />
+    <ProjectReference Include="Unity.VisualScripting.Core.csproj" />
+    <ProjectReference Include="Unity.Mathematics.Editor.csproj" />
+    <ProjectReference Include="Unity.Cloud.Common.Editor.Embedded.csproj" />
+    <ProjectReference Include="Unity.Services.Core.Analytics.csproj" />
+    <ProjectReference Include="Unity.2D.Psdimporter.Editor.csproj" />
+    <ProjectReference Include="Analytics.csproj" />
+    <ProjectReference Include="Unity.Cloud.Common.Runtime.Embedded.csproj" />
+    <ProjectReference Include="Unity.AppUI.MVVM.csproj" />
+    <ProjectReference Include="Unity.AI.Assistant.Runtime.csproj" />
+    <ProjectReference Include="Unity.2D.Tilemap.Extras.csproj" />
+    <ProjectReference Include="Unity.VisualScripting.Flow.Editor.csproj" />
+    <ProjectReference Include="Unity.2D.IK.Editor.csproj" />
+    <ProjectReference Include="Unity.2D.SpriteShape.Runtime.csproj" />
+    <ProjectReference Include="Unity.AppUI.Redux.Editor.csproj" />
+    <ProjectReference Include="Unity.2D.Common.Runtime.csproj" />
+    <ProjectReference Include="Unity.Collections.csproj" />
+    <ProjectReference Include="Unity.Networking.Transport.csproj" />
+    <ProjectReference Include="Unity.Timeline.Editor.csproj" />
+    <ProjectReference Include="Unity.AppUI.Editor.csproj" />
+    <ProjectReference Include="Unity.Purchasing.SecurityCore.csproj" />
+    <ProjectReference Include="Unity.Mathematics.csproj" />
+    <ProjectReference Include="Mirror.Editor.csproj" />
+    <ProjectReference Include="Unity.Serialization.csproj" />
+    <ProjectReference Include="Unity.Multiplayer.Center.Common.csproj" />
+    <ProjectReference Include="Unity.Burst.csproj" />
+    <ProjectReference Include="Unity.VisualScripting.Core.Editor.csproj" />
+    <ProjectReference Include="Unity.InternalAPIEngineBridge.004.csproj" />
+    <ProjectReference Include="Mirror.Authenticators.csproj" />
+    <ProjectReference Include="Mirror.CompilerSymbols.csproj" />
+    <ProjectReference Include="Unity.Multiplayer.Center.Editor.csproj" />
+    <ProjectReference Include="Unity.InferenceEngine.Tokenization.csproj" />
+    <ProjectReference Include="Unity.VisualScripting.State.csproj" />
+    <ProjectReference Include="Unity.AppUI.Navigation.Editor.csproj" />
+    <ProjectReference Include="Mirror.Examples.csproj" />
+    <ProjectReference Include="Unity.Collections.Editor.csproj" />
+    <ProjectReference Include="Unity.Cloud.Identity.Editor.Embedded.csproj" />
+    <ProjectReference Include="Mirror.csproj" />
+    <ProjectReference Include="Unity.Serialization.Editor.csproj" />
+    <ProjectReference Include="Unity.InferenceEngine.iOSBLAS.csproj" />
+    <ProjectReference Include="glTFast.csproj" />
+    <ProjectReference Include="Unity.Settings.Editor.csproj" />
+    <ProjectReference Include="Telepathy.csproj" />
+    <ProjectReference Include="Unity.Cloud.Identity.Embedded.csproj" />
+    <ProjectReference Include="UnityEditor.UI.csproj" />
+    <ProjectReference Include="Unity.Services.Analytics.csproj" />
+    <ProjectReference Include="Unity.InferenceEngine.csproj" />
   </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <Target Name="GenerateTargetFrameworkMonikerAttribute" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
+  <Import Project="Sdk.targets" Sdk="Microsoft.NET.Sdk" />
+  <ItemGroup>
+    <ProjectCapability Remove="LaunchProfiles" />
+    <ProjectCapability Remove="SharedProjectReferences" />
+    <ProjectCapability Remove="ReferenceManagerSharedProjects" />
+    <ProjectCapability Remove="ReferenceManagerProjects" />
+    <ProjectCapability Remove="COMReferences" />
+    <ProjectCapability Remove="ReferenceManagerCOM" />
+    <ProjectCapability Remove="AssemblyReferences" />
+    <ProjectCapability Remove="ReferenceManagerAssemblies" />
+  </ItemGroup>
 </Project>

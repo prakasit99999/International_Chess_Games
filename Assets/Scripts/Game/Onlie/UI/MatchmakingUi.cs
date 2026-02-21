@@ -30,6 +30,7 @@ public class MatchmakingUi : MonoBehaviour
             btnMatchmakingClose.onClick.RemoveAllListeners();
             btnMatchmakingClose.onClick.AddListener(HideMatchmaking);
         }
+        
 
         ResetUI();
         panelMatchmaking.SetActive(false);
@@ -54,6 +55,7 @@ public class MatchmakingUi : MonoBehaviour
     public void ShowMatchmaking()
     {
         panelMatchmaking.SetActive(true);
+        Debug.Log(panelMatchmaking);
         ResetUI();
 
     }

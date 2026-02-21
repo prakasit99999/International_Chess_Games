@@ -223,7 +223,43 @@ public class GameAPI : MonoBehaviour
 
             if (req.result == UnityWebRequest.Result.Success)
             {
-                var statusDto = JsonUtility.FromJson<GameStatusDto>(req.downloadHandler.text);
+                var raw = req.downloadHandler.text;
+                GameStatusDto statusDto = null;
+                try
+                {
+                    statusDto = JsonUtility.FromJson<GameStatusDto>(raw);
+                }
+                catch
+                {
+                    statusDto = null;
+                }
+
+                if (statusDto == null || string.IsNullOrEmpty(statusDto.Status))
+                {
+                    if (!string.IsNullOrEmpty(raw) && raw.Contains("\"status\""))
+                    {
+                        try
+                        {
+                            var camel = JsonUtility.FromJson<GameStatusDtoCamel>(raw);
+                            if (camel != null)
+                            {
+                                statusDto = new GameStatusDto
+                                {
+                                    GameId = camel.gameId,
+                                    GameType = camel.gameType,
+                                    MatchMode = camel.matchMode,
+                                    Status = camel.status,
+                                    MoveCount = camel.moveCount,
+                                    CreatedAt = camel.createdAt
+                                };
+                            }
+                        }
+                        catch
+                        {
+                            statusDto = null;
+                        }
+                    }
+                }
 
                 if (statusDto != null)
                 {
@@ -231,7 +267,7 @@ public class GameAPI : MonoBehaviour
                 }
                 else
                 {
-                    Debug.LogWarning("⚠️ Failed to parse GameStatusDto");
+                    Debug.LogWarning("Failed to parse GameStatusDto");
                     onError?.Invoke("Parse Error");
                 }
             }

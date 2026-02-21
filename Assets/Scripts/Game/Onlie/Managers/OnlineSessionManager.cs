@@ -1,4 +1,5 @@
 using System.Collections;
+using System;
 using UnityEngine;
 using static ChessPiece;
 
@@ -19,12 +20,18 @@ public class OnlineSessionManager : MonoBehaviour
     private bool isPolling;
     public bool isApplyingNetworkMove;
     private int lastAppliedMoveNumber = 0;
+    private bool isInitializedFromPrefs = false;
 
     private void Awake()
     {
         gameManager = GameManager.Instance;
         gameAPI = gameManager.gameAPI;
         movesAPI = gameManager.movesApi;
+    }
+
+    private void Start()
+    {
+        StartCoroutine(InitializeFromScene());
     }
 
     private void OnEnable()
@@ -40,6 +47,87 @@ public class OnlineSessionManager : MonoBehaviour
     {
         if (gameManager != null)
             gameManager.OnTurnChanged -= HandleTurnChanged;
+    }
+
+    private IEnumerator InitializeFromScene()
+    {
+        int safety = 120;
+        while (safety-- > 0 && (gameManager == null || chessBoard == null))
+        {
+            EnsureReferences();
+            if (gameManager != null && chessBoard != null)
+                break;
+
+            yield return null;
+        }
+
+        TryInitializeFromPlayerPrefs();
+    }
+
+    private void EnsureReferences()
+    {
+        if (gameManager == null)
+            gameManager = GameManager.Instance ?? FindFirstObjectByType<GameManager>();
+
+        if (chessBoard == null)
+            chessBoard = ChessBoard.Instance ?? FindFirstObjectByType<ChessBoard>();
+
+        if (gameManager != null)
+        {
+            if (gameAPI == null)
+                gameAPI = gameManager.gameAPI;
+            if (movesAPI == null)
+                movesAPI = gameManager.movesApi;
+        }
+    }
+
+    private void TryInitializeFromPlayerPrefs()
+    {
+        if (isInitializedFromPrefs)
+            return;
+
+        int gameId = PlayerPrefs.GetInt("CurrentGameId", -1);
+        string myColor = PlayerPrefs.GetString("MyColor", string.Empty);
+
+        if (gameId <= 0 || string.IsNullOrEmpty(myColor))
+            return;
+
+        string normalizedColor = NormalizeColor(myColor);
+
+        StartOnlineGame(gameId, normalizedColor);
+        ApplyPlayerNames(normalizedColor);
+
+        isInitializedFromPrefs = true;
+    }
+
+    private string NormalizeColor(string color)
+    {
+        if (string.IsNullOrEmpty(color))
+            return "white";
+
+        string c = color.Trim().ToLowerInvariant();
+        return (c == "white" || c == "black") ? c : "white";
+    }
+
+    private void ApplyPlayerNames(string myColor)
+    {
+        if (gameManager == null)
+            return;
+
+        string myName = SessionManager.Instance != null
+            ? SessionManager.Instance.Username
+            : PlayerPrefs.GetString("username", "Player");
+
+        string opponentName = PlayerPrefs.GetString("OpponentName", "Opponent");
+
+        if (string.Equals(myColor, "white", StringComparison.OrdinalIgnoreCase))
+        {
+            gameManager.SetPlayerNames(myName, opponentName);
+        }
+        else
+        {
+            gameManager.SetPlayerNames(opponentName, myName);
+        }
     }
 
     private void HandleTurnChanged(Team currentTurn)
@@ -66,9 +154,12 @@ public class OnlineSessionManager : MonoBehaviour
 
     public void StartOnlineGame(int gameId, string myColor)
     {
+        EnsureReferences();
+
         gameManager.gameModeManager.SetMode(GameModeManager.GameModes.Online);
         gameManager.SetGameId(gameId);
         gameManager.SetTurn(Team.White);
+        gameManager.SetPlayerTypes(GameManager.PlayerType.Human, GameManager.PlayerType.Human);
         gameManager.SetLocalTeam(
             myColor == "white" ? Team.White : Team.Black
         );
@@ -170,12 +261,15 @@ public class OnlineSessionManager : MonoBehaviour
             {
                 if (moveData == null)
                 {
+                    Debug.Log("[OnlineSession] LatestMove is null");
                     done = true;
                     return;
                 }
 
+                Debug.Log($"[OnlineSession] LatestMove moveNumber={moveData.move_number} lastApplied={lastAppliedMoveNumber}");
                 if (moveData.move_number <= lastAppliedMoveNumber)
                 {
+                    Debug.Log("[OnlineSession] LatestMove ignored (not newer)");
                     done = true;
                     return;
                 }

@@ -26,6 +26,9 @@ public class MatchmakingManager : MonoBehaviour
 
     [Header("Mode")]
     public MatchMode matchMode = MatchMode.Ranked;
+    private string GetUsername() => SessionManager.Instance != null
+        ? SessionManager.Instance.Username
+        : PlayerPrefs.GetString("username", "Guest");
 
     private void Start()
     {
@@ -62,12 +65,13 @@ public class MatchmakingManager : MonoBehaviour
         matchmakingUi.SetSearchingState(true);
         matchmakingUi.SetStatusText("Joining Queue...");
 
-        int userId = SessionManager.Instance.UserId;
+        string username = GetUsername();
 
         StartCoroutine(matchmakingApi.JoinQueue(
-            userId,
+            username,
             0,
             3000,
+            (int)matchMode,
             (success, response) =>
             {
                 if (!success || response == null)
@@ -76,8 +80,7 @@ public class MatchmakingManager : MonoBehaviour
                     return;
                 }
 
-                if (response.matchDetails != null &&
-                    response.matchDetails.gameId != 0)
+                if (response.gameId != 0)
                 {
                     StartGame(response);
                 }
@@ -113,17 +116,15 @@ public class MatchmakingManager : MonoBehaviour
                 yield break;
             }
 
-            int userId = SessionManager.Instance.UserId;
-
+            string username = GetUsername();
             matchmakingApi.StartCoroutine(
-                matchmakingApi.CheckQueue(userId,
+                matchmakingApi.CheckQueue(username,
                 (success, response) =>
                 {
                     if (!success || response == null)
                         return;
 
-                    if (response.matchDetails != null &&
-                        response.matchDetails.gameId != 0)
+                    if (response.gameId != 0)
                     {
                         isSearching = false;
                         StartGame(response);
@@ -144,10 +145,9 @@ public class MatchmakingManager : MonoBehaviour
 
         matchmakingUi.ResetUI();
 
-        int userId = SessionManager.Instance.UserId;
-
+        string username = GetUsername();
         matchmakingApi.StartCoroutine(
-            matchmakingApi.CancelQueue(userId,
+            matchmakingApi.CancelQueue(username,
             (s, m) => { }));
     }
 
@@ -159,22 +159,20 @@ public class MatchmakingManager : MonoBehaviour
     }
 
     // START GAME
-    void StartGame(MatchResponse response)
+    void StartGame(MatchFoundResponse response)
     {
         if (isLoadingGame) return;
         isLoadingGame = true;
 
-        var details = response.matchDetails;
-
-        PlayerPrefs.SetInt("CurrentGameId", details.gameId);
-        PlayerPrefs.SetString("CurrentRoomCode", details.roomCode.ToString());
-        PlayerPrefs.SetString("MyColor", details.color);
-        PlayerPrefs.SetString("OpponentName", details.opponentUsername);
+        PlayerPrefs.SetInt("CurrentGameId", response.gameId);
+        PlayerPrefs.SetString("CurrentRoomCode", response.roomCode ?? string.Empty);
+        PlayerPrefs.SetString("MyColor", response.color ?? "random");
+        PlayerPrefs.SetString("OpponentName", response.opponentUsername ?? string.Empty);
 
         PlayerPrefs.SetString("Mode", "OnlineMultiplayer");
         PlayerPrefs.Save();
 
-        matchmakingUi.SetStatusText($"VS {details.opponentUsername}");
+        matchmakingUi.SetStatusText($"VS {response.opponentUsername}");
 
         StartCoroutine(LoadGameSceneDelay());
     }
