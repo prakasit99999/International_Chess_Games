@@ -1116,8 +1116,8 @@
   <ItemGroup>
     <ProjectReference Include="Unity.Services.Core.csproj" />
     <ProjectReference Include="Unity.Services.Core.Internal.csproj" />
-    <ProjectReference Include="UnityEditor.UI.csproj" />
     <ProjectReference Include="UnityEngine.UI.csproj" />
+    <ProjectReference Include="UnityEditor.UI.csproj" />
   </ItemGroup>
   <Import Project="Sdk.targets" Sdk="Microsoft.NET.Sdk" />
   <ItemGroup>
