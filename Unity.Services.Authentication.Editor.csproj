@@ -1274,8 +1274,8 @@
     <ProjectReference Include="Unity.Services.Authentication.csproj" />
     <ProjectReference Include="Unity.Services.Authentication.PlayerAccounts.csproj" />
     <ProjectReference Include="Unity.Services.Authentication.PlayerAccounts.Editor.csproj" />
-    <ProjectReference Include="UnityEngine.UI.csproj" />
     <ProjectReference Include="UnityEditor.UI.csproj" />
+    <ProjectReference Include="UnityEngine.UI.csproj" />
     <ProjectReference Include="UnityEngine.TestRunner.csproj" />
     <ProjectReference Include="UnityEditor.TestRunner.csproj" />
   </ItemGroup>

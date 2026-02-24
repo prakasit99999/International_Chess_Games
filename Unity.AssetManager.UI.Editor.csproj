@@ -1312,8 +1312,8 @@
     <ProjectReference Include="Unity.Settings.Editor.csproj" />
     <ProjectReference Include="Unity.AssetManager.Core.Editor.csproj" />
     <ProjectReference Include="Unity.AssetManager.Upload.Editor.csproj" />
-    <ProjectReference Include="UnityEngine.UI.csproj" />
     <ProjectReference Include="UnityEditor.UI.csproj" />
+    <ProjectReference Include="UnityEngine.UI.csproj" />
     <ProjectReference Include="UnityEngine.TestRunner.csproj" />
     <ProjectReference Include="UnityEditor.TestRunner.csproj" />
   </ItemGroup>

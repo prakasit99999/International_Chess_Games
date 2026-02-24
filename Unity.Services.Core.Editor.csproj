@@ -1388,8 +1388,8 @@
     <ProjectReference Include="Unity.Services.Core.Registration.csproj" />
     <ProjectReference Include="Unity.Services.Core.Scheduler.csproj" />
     <ProjectReference Include="Unity.Services.Core.Telemetry.csproj" />
-    <ProjectReference Include="UnityEngine.UI.csproj" />
     <ProjectReference Include="UnityEditor.UI.csproj" />
+    <ProjectReference Include="UnityEngine.UI.csproj" />
     <ProjectReference Include="UnityEngine.TestRunner.csproj" />
     <ProjectReference Include="UnityEditor.TestRunner.csproj" />
   </ItemGroup>

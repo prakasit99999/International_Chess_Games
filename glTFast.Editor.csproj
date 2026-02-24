@@ -1246,8 +1246,8 @@
     <ProjectReference Include="Unity.Mathematics.csproj" />
     <ProjectReference Include="glTFast.csproj" />
     <ProjectReference Include="glTFast.Export.csproj" />
-    <ProjectReference Include="UnityEngine.UI.csproj" />
     <ProjectReference Include="UnityEditor.UI.csproj" />
+    <ProjectReference Include="UnityEngine.UI.csproj" />
     <ProjectReference Include="UnityEngine.TestRunner.csproj" />
     <ProjectReference Include="UnityEditor.TestRunner.csproj" />
   </ItemGroup>

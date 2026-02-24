@@ -76,6 +76,7 @@
     <Compile Include="Assets\Scripts\AIEngine\Models\ChessBoardModel.cs" />
     <Compile Include="Assets\Scripts\AIEngine\Core\AICore.cs" />
     <Compile Include="Assets\Scripts\Game\Mechanics\TileClick.cs" />
+    <Compile Include="Assets\Scripts\Game\Core\ChessBoardGenerate.cs" />
     <Compile Include="Assets\Scripts\Networking\GameNetworkHandler.cs" />
     <Compile Include="Assets\Scripts\AIEngine\Algorithms\alphaBeta.cs" />
     <Compile Include="Assets\Scripts\AIEngine\Utilities\TTEntry.cs" />
@@ -1256,8 +1257,8 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Unity.TextMeshPro.csproj" />
-    <ProjectReference Include="UnityEngine.UI.csproj" />
     <ProjectReference Include="UnityEditor.UI.csproj" />
+    <ProjectReference Include="UnityEngine.UI.csproj" />
   </ItemGroup>
   <Import Project="Sdk.targets" Sdk="Microsoft.NET.Sdk" />
   <ItemGroup>

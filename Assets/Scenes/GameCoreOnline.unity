@@ -801,6 +801,7 @@ GameObject:
   m_Component:
   - component: {fileID: 246788984}
   - component: {fileID: 246788986}
+  - component: {fileID: 246788992}
   - component: {fileID: 246788985}
   - component: {fileID: 246788991}
   - component: {fileID: 246788990}
@@ -839,12 +840,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8834f2ce172a6849aeb69dbdba6df45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tileSize: 1
   pieceWhite: {fileID: 2136413473}
   pieceBlack: {fileID: 205042568}
-  boardLabels: {fileID: 119968145}
   piecePrefab: {fileID: 7505381324290671007, guid: c5bab710ec274bc41b79a60f3a3a0c15, type: 3}
-  tilePrefab: {fileID: 6591448769625154411, guid: 9444a225cdec9204db535d790ecaf6d9, type: 3}
-  textPrefab: {fileID: 3810052717944529637, guid: 675e7e393a6aff249a6fb8296fa8193d, type: 3}
   whiteSprites:
   - {fileID: 21300000, guid: 268b72eb26a4d2649b2acf37a76ecb54, type: 3}
   - {fileID: 21300000, guid: a8c3ac416bd6b14489d67932e3f42abb, type: 3}
@@ -864,12 +863,6 @@ MonoBehaviour:
   promotionFrom: 0
   promotionPosition: {x: 0, y: 0}
   position: {x: 0, y: 0}
-  whitleColor:
-    serializedVersion: 2
-    rgba: 4283602291
-  blackColor:
-    serializedVersion: 2
-    rgba: 4291882219
 --- !u!61 &246788986
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -981,6 +974,28 @@ MonoBehaviour:
   fiftyMoveText: {fileID: 632931469}
   txtNameWhite: {fileID: 1541886670}
   txtNameBlack: {fileID: 435745818}
+--- !u!114 &246788992
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 246788982}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4293ecf2c7d625d49aec56d5c6fab525, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: GameAssembly::ChessBoardGenerate
+  board: {fileID: 246788985}
+  boardLabels: {fileID: 119968145}
+  tilePrefab: {fileID: 6591448769625154411, guid: 9444a225cdec9204db535d790ecaf6d9, type: 3}
+  textPrefab: {fileID: 100000, guid: fdad9d952ae84cafb74c63f2e694d042, type: 3}
+  whitleColor:
+    serializedVersion: 2
+    rgba: 4283602291
+  blackColor:
+    serializedVersion: 2
+    rgba: 4294967295
 --- !u!1 &279841997
 GameObject:
   m_ObjectHideFlags: 0

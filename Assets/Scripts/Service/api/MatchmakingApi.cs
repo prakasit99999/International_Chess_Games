@@ -112,7 +112,7 @@ public class MatchmakingApi : MonoBehaviour
         request.downloadHandler = new DownloadHandlerBuffer();
         request.SetRequestHeader("Content-Type", "application/json");
         request.SetRequestHeader("Accept", "application/json");
-
+      
         string token = SessionManager.Instance.Token;
         if (!string.IsNullOrEmpty(token))
             request.SetRequestHeader("Authorization", "Bearer " + token);

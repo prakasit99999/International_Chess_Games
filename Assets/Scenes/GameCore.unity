@@ -1002,6 +1002,7 @@ GameObject:
   m_Component:
   - component: {fileID: 246788984}
   - component: {fileID: 246788986}
+  - component: {fileID: 246788994}
   - component: {fileID: 246788985}
   - component: {fileID: 246788989}
   - component: {fileID: 246788993}
@@ -1041,12 +1042,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8834f2ce172a6849aeb69dbdba6df45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tileSize: 1
   pieceWhite: {fileID: 1970760245}
   pieceBlack: {fileID: 205042568}
-  boardLabels: {fileID: 119968145}
   piecePrefab: {fileID: 7505381324290671007, guid: c5bab710ec274bc41b79a60f3a3a0c15, type: 3}
-  tilePrefab: {fileID: 6591448769625154411, guid: 9444a225cdec9204db535d790ecaf6d9, type: 3}
-  textPrefab: {fileID: 3810052717944529637, guid: 675e7e393a6aff249a6fb8296fa8193d, type: 3}
   whiteSprites:
   - {fileID: 21300000, guid: 268b72eb26a4d2649b2acf37a76ecb54, type: 3}
   - {fileID: 21300000, guid: a8c3ac416bd6b14489d67932e3f42abb, type: 3}
@@ -1066,12 +1065,6 @@ MonoBehaviour:
   promotionFrom: 0
   promotionPosition: {x: 0, y: 0}
   position: {x: 0, y: 0}
-  whitleColor:
-    serializedVersion: 2
-    rgba: 4283602291
-  blackColor:
-    serializedVersion: 2
-    rgba: 4291882219
 --- !u!61 &246788986
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1199,6 +1192,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: GameAssembly::GameSyncService
   onlineSync: {fileID: 189478215}
   resultSync: {fileID: 189478216}
+--- !u!114 &246788994
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 246788982}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4293ecf2c7d625d49aec56d5c6fab525, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: GameAssembly::ChessBoardGenerate
+  board: {fileID: 246788985}
+  boardLabels: {fileID: 119968145}
+  tilePrefab: {fileID: 6591448769625154411, guid: 9444a225cdec9204db535d790ecaf6d9, type: 3}
+  textPrefab: {fileID: 100000, guid: a6e39ced0ea046bcb636c3f0b2e2a745, type: 3}
+  whitleColor:
+    serializedVersion: 2
+    rgba: 4283602291
+  blackColor:
+    serializedVersion: 2
+    rgba: 4294967295
 --- !u!1 &279815849
 GameObject:
   m_ObjectHideFlags: 0
@@ -1513,8 +1528,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -815, y: 460}
-  m_SizeDelta: {x: 169.61, y: 21.68}
+  m_AnchoredPosition: {x: -717.37, y: 452.12}
+  m_SizeDelta: {x: 364.88, y: 37.43}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &435745818
 MonoBehaviour:
@@ -1602,7 +1617,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: -94.10456, w: -12.013316}
+  m_margin: {x: 0, y: 0, z: -1.0141144, w: -0.26405436}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -7104,7 +7119,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   promotionWhitePanel: {fileID: 279815849}
-  promotionBlackPanel: {fileID: 279815849}
+  promotionBlackPanel: {fileID: 1544739105}
 --- !u!114 &1485057629
 MonoBehaviour:
   m_ObjectHideFlags: 0

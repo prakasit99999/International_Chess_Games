@@ -1283,8 +1283,8 @@
     <ProjectReference Include="Unity.Services.DeploymentApi.csproj" />
     <ProjectReference Include="Unity.Services.Core.Editor.csproj" />
     <ProjectReference Include="Unity.Services.Core.Environments.Editor.csproj" />
-    <ProjectReference Include="UnityEngine.UI.csproj" />
     <ProjectReference Include="UnityEditor.UI.csproj" />
+    <ProjectReference Include="UnityEngine.UI.csproj" />
     <ProjectReference Include="UnityEngine.TestRunner.csproj" />
     <ProjectReference Include="UnityEditor.TestRunner.csproj" />
   </ItemGroup>

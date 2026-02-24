@@ -1464,8 +1464,8 @@
     <ProjectReference Include="Unity.AI.Toolkit.Async.csproj" />
     <ProjectReference Include="Unity.AI.Toolkit.Utility.csproj" />
     <ProjectReference Include="Unity.2D.Sprite.Editor.csproj" />
-    <ProjectReference Include="UnityEngine.UI.csproj" />
     <ProjectReference Include="UnityEditor.UI.csproj" />
+    <ProjectReference Include="UnityEngine.UI.csproj" />
     <ProjectReference Include="UnityEngine.TestRunner.csproj" />
     <ProjectReference Include="UnityEditor.TestRunner.csproj" />
   </ItemGroup>

@@ -1159,8 +1159,8 @@
   <ItemGroup>
     <ProjectReference Include="Unity.AppUI.csproj" />
     <ProjectReference Include="Unity.AppUI.InternalAPIBridge.csproj" />
-    <ProjectReference Include="UnityEngine.UI.csproj" />
     <ProjectReference Include="UnityEditor.UI.csproj" />
+    <ProjectReference Include="UnityEngine.UI.csproj" />
   </ItemGroup>
   <Import Project="Sdk.targets" Sdk="Microsoft.NET.Sdk" />
   <ItemGroup>

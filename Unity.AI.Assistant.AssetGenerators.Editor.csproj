@@ -1166,8 +1166,8 @@
     <ProjectReference Include="Unity.AI.Generators.Tools.csproj" />
     <ProjectReference Include="Unity.AI.Generators.Asset.csproj" />
     <ProjectReference Include="Unity.AI.Assistant.UI.Editor.csproj" />
-    <ProjectReference Include="UnityEngine.UI.csproj" />
     <ProjectReference Include="UnityEditor.UI.csproj" />
+    <ProjectReference Include="UnityEngine.UI.csproj" />
     <ProjectReference Include="UnityEngine.TestRunner.csproj" />
     <ProjectReference Include="UnityEditor.TestRunner.csproj" />
   </ItemGroup>

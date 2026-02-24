@@ -16,6 +16,7 @@ public class PromotionManager : MonoBehaviour
     public GameObject promotionWhitePanel; // Panel สำหรับทีมขาว
     public GameObject promotionBlackPanel; // Panel สำหรับทีมดำ
 
+    [System.Obsolete]
     private void Awake()
     {
         if (Instance == null)
@@ -137,8 +138,8 @@ public class PromotionManager : MonoBehaviour
         HidePromotionMenu();
         ChessBoard.Instance.SetPromoting(false);
         ChessBoard.Instance.SetselectedPiece(null);
-        GameManager.Instance.SwitchTurn();
         ChessBoard.Instance.UpdateBoardModel(); // ✅ Sync AI Model หลัง Promotion เสร็จสิ้น
+
 
         Debug.Log($"🔼 อัปเดตประเภทที่เลื่อนขั้นใน HistoryMove: {lastMove.promotedTo}");
 

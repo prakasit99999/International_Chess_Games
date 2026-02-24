@@ -7,13 +7,19 @@ using static ChessPiece;
 
 public class ChessBoard : MonoBehaviour
 {
-    private float tileSize = 1.0f;
-    private const int boardSize = 8;
+    public const int BoardSize = 8;
+    public float tileSize = 1.0f;
+    public Transform pieceWhite;
+    public Transform pieceBlack;
+    public GameObject piecePrefab;
+    public Sprite[] whiteSprites;
+    public Sprite[] blackSprites;
+
     private int _movesWithoutCaptureOrPawn = 0;
     private const int MAX_MOVES_WITHOUT_PROGRESS = 50;
     private GameManager gameManager;
     private HistoryMove historyMove;
-    private ChessPiece[,] board = new ChessPiece[boardSize, boardSize];
+    private ChessPiece[,] board = new ChessPiece[BoardSize, BoardSize];
     private ChessPiece selectedPiece = null; // ตัวแปรเก็บหมากที่ถูกเลือก
     private bool whiteCanCastleKingSide = true;
     private bool whiteCanCastleQueenSide = true;
@@ -22,9 +28,7 @@ public class ChessBoard : MonoBehaviour
     private bool isPromoting = false; // ✅ ตัวแปรเช็คว่ากำลังเลื่อนขั้นหรือไม่
     private Vector2Int? enPassantTarget = null; // ตำแหน่งเบี้ยที่เดินสองช่องในตาแรก
     private Dictionary<Vector2Int, ChessPiece> piecesOnBoard = new Dictionary<Vector2Int, ChessPiece>();
-    private Dictionary<Vector2Int, TileClick> tileClickMap = new Dictionary<Vector2Int, TileClick>();
     private ChessBoardModel boardModel;
-    private bool isBoardGenerated = false;
 
     public IReadOnlyDictionary<Vector2Int, ChessPiece> PiecesOnBoard => piecesOnBoard;
     public int FiftyMoveCounter => _movesWithoutCaptureOrPawn;
@@ -38,15 +42,7 @@ public class ChessBoard : MonoBehaviour
 
     public ChessBoardModel BoardModel { get; set; }
     public static ChessBoard Instance { get; private set; }
-    public Transform pieceWhite;    // Empty GameObject สำหรับทีมขาว
-    public Transform pieceBlack;    // Empty GameObject สำหรับทีมดำ
-    public Transform boardLabels;    //Empty GameObject ส่วนรับตัวอักษรและตัวเลขบนกระดาน
-    public GameObject piecePrefab;  // Prefab ของตัวหมากรุก
-    public GameObject tilePrefab;  // Prefab ของช่องกระดาน
-    public GameObject textPrefab;  // Prefab ของตัวอักษรและตัวเลขบนกระดาน
-
-    public Sprite[] whiteSprites;  // Array เก็บ Sprite ทีมขาว
-    public Sprite[] blackSprites;  // Array เก็บ Sprite ทีมดำ
+ 
     public ChessPiece selectedPawn; // เบี้ยที่รอเลื่อนขั้น
     public PromotionManager promotionManager; // เชื่อมกับ PromotionManager ใน Inspector
     public ChessPiece SelectedPiece => selectedPiece; // เพิ่ม Property เพื่อเข้าถึง selectedPiece
@@ -55,8 +51,6 @@ public class ChessBoard : MonoBehaviour
     public ChessPiece.PieceType promotionFrom;
     public Vector2Int promotionPosition;
     public Vector2Int position;  // ตัวแปรสำหรับเก็บตำแหน่งของหมาก
-    public Color32 whitleColor = new Color32(255, 255, 255, 255);
-    public Color32 blackColor = new Color32(0, 0, 0, 255);
 
     // ✅ Event สำหรับแจ้งว่ามีการเดินหมากเกิดขึ้น (แยก Logic ออกจาก GameManager)
     public event Action<MoveResult> OnMoveCompleted;
@@ -82,140 +76,16 @@ public class ChessBoard : MonoBehaviour
             Instance = null;
     }
 
-    // Start is called before the first frame updateฟ
-    void Start()
-    {
-        InitializeBoard();
-    }
-
     public void InitializeBoard()
     {
-        if (isBoardGenerated)
+        ChessBoardGenerate generator = GetComponent<ChessBoardGenerate>();
+        if (generator == null)
         {
-            Debug.LogWarning("⚠️ Board already generated. Skipping.");
+            Debug.LogWarning("ChessBoardGenerate not found. Board will not be generated.");
             return;
         }
 
-        GenerateBoard();
-        GenerateBoardLabels();
-        SpawnPieces();
-
-        isBoardGenerated = true;
-        Debug.Log("✅ Board initialized");
-    }
-
-  
-    //create a chess board with tiles methon viod GenerateBoard()
-    void GenerateBoard()
-    {
-        for (int x = 0; x < boardSize; x++)
-        {
-            for (int y = 0; y < boardSize; y++)
-            {
-                // สร้างช่องกระดานใหม่ที่ตำแหน่ง (posX, posY)
-                // 🔹 แก้ไข: ใช้ GetTileCenter เพื่อรองรับ Rotation
-                GameObject tile = Instantiate(tilePrefab, new Vector3(x * tileSize, y * tileSize, 0), Quaternion.identity);
-                tile.transform.parent = transform;  // ตั้งค่าให้เป็นลูกของ BoardManager
-
-                SpriteRenderer renderer = tile.GetComponent<SpriteRenderer>();
-                renderer.color = (x + y) % 2 == 0 ? whitleColor : blackColor;
-
-                string column = ((char)('A' + x)).ToString();
-                string row = (y + 1).ToString();
-                tile.name = column + row;
-
-                // เพิ่ม BoxCollider2D เพื่อให้สามารถคลิกได้
-                BoxCollider2D boxCollider2D = tile.GetComponent<BoxCollider2D>();
-                if (boxCollider2D == null)
-                {
-                    boxCollider2D = tile.AddComponent<BoxCollider2D>();
-                }
-                boxCollider2D.enabled = true;
-
-                // เพิ่มคอมโพเนนต์ TileClick และกำหนดค่าตำแหน่ง
-                TileClick tileClick = tile.AddComponent<TileClick>();
-                tileClick.SetTilePosition(new Vector2Int(x, y), this);
-                tileClickMap[new Vector2Int(x, y)] = tileClick;
-
-            }
-        }
-
-    }
-
-    void GenerateBoardLabels()
-    {
-        float centerOffset = tileSize / 2f;
-
-        // 🔤 A–H (แนวนอนล่าง, ซ้ายสุด)
-        for (int x = 0; x < boardSize; x++)
-        {
-            string label = ((char)('A' + x)).ToString();
-            // 🔹 คำนวณ Local Pos แล้วแปลงเป็น World
-            Vector3 localPos = new Vector3(x * tileSize + centerOffset, -centerOffset, 0f);
-            Vector3 pos = transform.TransformPoint(localPos);
-
-            GameObject labelObj = Instantiate(textPrefab, pos, Quaternion.identity, boardLabels);
-            labelObj.name = "Label_" + label; // ตั้งชื่อให้ชัดเจน
-            TMP_Text text = labelObj.GetComponent<TMP_Text>();
-            text.text = label;
-            text.alignment = TextAlignmentOptions.BaselineLeft;  // ✅ ซ้าย-ฐาน
-        }
-
-        // 🔢 1–8 (แนวตั้งซ้าย, ขวาสุด)
-        for (int y = 0; y < boardSize; y++)
-        {
-            string label = (y + 1).ToString();
-            // 🔹 คำนวณ Local Pos แล้วแปลงเป็น World
-            Vector3 localPos = new Vector3(-centerOffset, y * tileSize + centerOffset, 0f);
-            Vector3 pos = transform.TransformPoint(localPos);
-
-            GameObject labelObj = Instantiate(textPrefab, pos, Quaternion.identity, boardLabels);
-            TMP_Text text = labelObj.GetComponent<TMP_Text>();
-            labelObj.name = "Label_" + label;
-            text.text = label;
-            text.alignment = TextAlignmentOptions.CaplineRight;
-        }
-    }
-    // 🏁 สร้างตัวหมากรุกในตำแหน่งเริ่มต้น
-    void SpawnPieces()
-    {
-        if (tilePrefab == null)
-        {
-            Debug.LogError("❌ tilePrefab ยังไม่ได้เซ็ตใน ChessBoard!");
-            return;
-        }
-        // 🏇 วางเบี้ย (Pawn) ที่แถว 1 และ 6
-        for (int i = 0; i < boardSize; i++)
-        {
-            SpawnPiece(ChessPiece.PieceType.Pawn, ChessPiece.Team.White, new Vector2Int(i, 1));
-            SpawnPiece(ChessPiece.PieceType.Pawn, ChessPiece.Team.Black, new Vector2Int(i, 6));
-        }
-
-        // 🏰 วางเรือ (Rook)
-        SpawnPiece(ChessPiece.PieceType.Rook, ChessPiece.Team.White, new Vector2Int(0, 0));
-        SpawnPiece(ChessPiece.PieceType.Rook, ChessPiece.Team.White, new Vector2Int(7, 0));
-        SpawnPiece(ChessPiece.PieceType.Rook, ChessPiece.Team.Black, new Vector2Int(0, 7));
-        SpawnPiece(ChessPiece.PieceType.Rook, ChessPiece.Team.Black, new Vector2Int(7, 7));
-
-        //// 🏇 วางม้า (Knight)
-        SpawnPiece(ChessPiece.PieceType.Knight, ChessPiece.Team.White, new Vector2Int(1, 0));
-        SpawnPiece(ChessPiece.PieceType.Knight, ChessPiece.Team.White, new Vector2Int(6, 0));
-        SpawnPiece(ChessPiece.PieceType.Knight, ChessPiece.Team.Black, new Vector2Int(1, 7));
-        SpawnPiece(ChessPiece.PieceType.Knight, ChessPiece.Team.Black, new Vector2Int(6, 7));
-
-        //// 🏹 วางบิชอป (Bishop)
-        SpawnPiece(ChessPiece.PieceType.Bishop, ChessPiece.Team.White, new Vector2Int(2, 0));
-        SpawnPiece(ChessPiece.PieceType.Bishop, ChessPiece.Team.White, new Vector2Int(5, 0));
-        SpawnPiece(ChessPiece.PieceType.Bishop, ChessPiece.Team.Black, new Vector2Int(2, 7));
-        SpawnPiece(ChessPiece.PieceType.Bishop, ChessPiece.Team.Black, new Vector2Int(5, 7));
-
-        // 👑 วางควีน (Queen)
-        SpawnPiece(ChessPiece.PieceType.Queen, ChessPiece.Team.White, new Vector2Int(3, 0));
-        SpawnPiece(ChessPiece.PieceType.Queen, ChessPiece.Team.Black, new Vector2Int(3, 7));
-
-        // 🤴 วางคิง (King)
-        SpawnPiece(ChessPiece.PieceType.King, ChessPiece.Team.White, new Vector2Int(4, 0));
-        SpawnPiece(ChessPiece.PieceType.King, ChessPiece.Team.Black, new Vector2Int(4, 7));
+        generator.InitializeBoard();
     }
     /* class methone private*/
     private bool ValidatePreMoveConditions(Vector2Int newPosition)
@@ -516,6 +386,8 @@ public class ChessBoard : MonoBehaviour
         return new Vector2Int(x, y);
     }
 
+
+
     // Set method
     public void SetGameManager(GameManager manager)
     {
@@ -538,7 +410,6 @@ public class ChessBoard : MonoBehaviour
     public void SetPromoting(bool value)
     {
         isPromoting = value;
-        //Debug.Log($"🔄 สถานะเลื่อนขั้น: {isPromoting}");
     }
 
     public void SetselectedPiece(ChessPiece piece)
@@ -583,46 +454,6 @@ public class ChessBoard : MonoBehaviour
         return gameManager;
     }
     /* class methone public*/
-    // 🎯 ฟังก์ชันสร้างหมากและวางลงบนกระดาน
-    public ChessPiece SpawnPiece(ChessPiece.PieceType type, ChessPiece.Team team, Vector2Int position)
-    {
-
-        if (piecePrefab == null)
-        {
-            Debug.LogError(" piecePrefab is null! กรุณาเซ็ตใน Inspector หรือระหว่าง Unit Test");
-            return null;
-        }
-        if (piecesOnBoard.TryGetValue(position, out ChessPiece oldPiece))
-        {
-            Debug.Log($" ลบหมากเดิมที่ {position} ก่อนสร้างใหม่");
-            UnityEngine.Object.Destroy(oldPiece.gameObject);
-            piecesOnBoard.Remove(position);
-        }
-
-        GameObject pieceObj = Instantiate(piecePrefab, new Vector3(position.x * tileSize, position.y * tileSize, 0), Quaternion.identity);
-        ChessPiece piece = pieceObj.GetComponent<ChessPiece>();
-        piece.pieceType = type;
-        piece.team = team;
-        piece.boardPosition = position;
-        piece.SetBoardManager(this);
-        pieceObj.name = $"{team}_{type}";
-
-        // กำหนด Sprite ตามประเภทของหมาก
-        SpriteRenderer renderer = pieceObj.GetComponent<SpriteRenderer>();
-        renderer.sprite = team == ChessPiece.Team.White ? whiteSprites[(int)type] : blackSprites[(int)type];
-
-        // เพิ่ม BoxCollider2D ให้กับตัวหมาก
-        BoxCollider2D boxCollider = pieceObj.AddComponent<BoxCollider2D>();
-        boxCollider.isTrigger = true;  // ทำให้ Collider เป็น Trigger 
-
-        // จัดกลุ่มหมากแต่ละทีม
-        pieceObj.transform.SetParent(team == ChessPiece.Team.White ? pieceWhite : pieceBlack);
-
-        boxCollider.isTrigger = true;
-        piecesOnBoard[position] = piece; // เพิ่มลงใน Dictionary
-        return piece; // ✅ คืนค่า ChessPiece
-
-    }
 
     public ChessPiece SimulateMove(Vector2Int newPosition)
     {
@@ -682,7 +513,7 @@ public class ChessBoard : MonoBehaviour
 
     public bool IsPositionOnBoard(Vector2Int position)
     {
-        return position.x >= 0 && position.x < boardSize && position.y >= 0 && position.y < boardSize;
+        return position.x >= 0 && position.x < BoardSize && position.y >= 0 && position.y < BoardSize;
     }
 
     public bool IsPositionUnderAttack(Vector2Int position, ChessPiece.Team team)
@@ -772,6 +603,44 @@ public class ChessBoard : MonoBehaviour
             }
         }
         return true;
+    }
+
+       public ChessPiece SpawnPiece(ChessPiece.PieceType type, ChessPiece.Team team, Vector2Int position)
+    {
+        if (piecePrefab == null)
+        {
+            Debug.LogError(" piecePrefab is null! กรุณาเซ็ตใน Inspector หรือระหว่าง Unit Test");
+            return null;
+        }
+        if (piecesOnBoard.TryGetValue(position, out ChessPiece oldPiece))
+        {
+            Debug.Log($" ลบหมากเดิมที่ {position} ก่อนสร้างใหม่");
+            UnityEngine.Object.Destroy(oldPiece.gameObject);
+            piecesOnBoard.Remove(position);
+        }
+
+        GameObject pieceObj = Instantiate(piecePrefab, new Vector3(position.x * tileSize, position.y * tileSize, 0), Quaternion.identity);
+        ChessPiece piece = pieceObj.GetComponent<ChessPiece>();
+        piece.pieceType = type;
+        piece.team = team;
+        piece.boardPosition = position;
+        piece.SetBoardManager(this);
+        pieceObj.name = $"{team}_{type}";
+
+        // กำหนด Sprite ตามประเภทของหมาก
+        SpriteRenderer renderer = pieceObj.GetComponent<SpriteRenderer>();
+        renderer.sprite = team == ChessPiece.Team.White ? whiteSprites[(int)type] : blackSprites[(int)type];
+
+        // เพิ่ม BoxCollider2D ให้กับตัวหมาก
+        BoxCollider2D boxCollider = pieceObj.AddComponent<BoxCollider2D>();
+        boxCollider.isTrigger = true;  // ทำให้ Collider เป็น Trigger
+
+        // จัดกลุ่มหมากแต่ละทีม
+        pieceObj.transform.SetParent(team == ChessPiece.Team.White ? pieceWhite : pieceBlack);
+
+        boxCollider.isTrigger = true;
+        piecesOnBoard[position] = piece; // เพิ่มลงใน Dictionary
+        return piece; // ✅ คืนค่า ChessPiece
     }
 
     public bool IsStalemate(ChessPiece.Team team)
@@ -1123,8 +992,11 @@ public class ChessBoard : MonoBehaviour
         blackCanCastleKingSide = true;
         blackCanCastleQueenSide = true;
         // สร้างกระดานใหม่และวางหมากใหม่
-        isBoardGenerated = false;
-        InitializeBoard();
+        ChessBoardGenerate generator = GetComponent<ChessBoardGenerate>();
+        if (generator != null)
+        {
+            generator.RebuildBoard();
+        }
     }
 
     // ✅ ฟังก์ชันสำหรับรับค่าจาก Server แล้วสั่งเดินตาม
