@@ -1239,8 +1239,8 @@
     <ProjectReference Include="Unity.2D.IK.Runtime.csproj" />
     <ProjectReference Include="Unity.2D.Animation.Runtime.csproj" />
     <ProjectReference Include="Unity.2D.Animation.Editor.csproj" />
-    <ProjectReference Include="UnityEditor.UI.csproj" />
     <ProjectReference Include="UnityEngine.UI.csproj" />
+    <ProjectReference Include="UnityEditor.UI.csproj" />
     <ProjectReference Include="UnityEngine.TestRunner.csproj" />
     <ProjectReference Include="UnityEditor.TestRunner.csproj" />
   </ItemGroup>

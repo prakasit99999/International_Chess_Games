@@ -1319,8 +1319,8 @@
     <ProjectReference Include="Unity.Burst.csproj" />
     <ProjectReference Include="Unity.Mathematics.csproj" />
     <ProjectReference Include="Unity.2D.Enhancers.Editor.AIBridge.csproj" />
-    <ProjectReference Include="UnityEditor.UI.csproj" />
     <ProjectReference Include="UnityEngine.UI.csproj" />
+    <ProjectReference Include="UnityEditor.UI.csproj" />
     <ProjectReference Include="UnityEngine.TestRunner.csproj" />
     <ProjectReference Include="UnityEditor.TestRunner.csproj" />
   </ItemGroup>

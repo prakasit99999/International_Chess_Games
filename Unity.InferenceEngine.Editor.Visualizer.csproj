@@ -1286,8 +1286,8 @@
     <ProjectReference Include="Unity.InferenceEngine.csproj" />
     <ProjectReference Include="Unity.AppUI.csproj" />
     <ProjectReference Include="Unity.AppUI.Redux.csproj" />
-    <ProjectReference Include="UnityEditor.UI.csproj" />
     <ProjectReference Include="UnityEngine.UI.csproj" />
+    <ProjectReference Include="UnityEditor.UI.csproj" />
     <ProjectReference Include="UnityEngine.TestRunner.csproj" />
     <ProjectReference Include="UnityEditor.TestRunner.csproj" />
   </ItemGroup>

@@ -1,10 +1,6 @@
-using System.Collections;
-using System.ComponentModel;
-using System.Security.Cryptography.X509Certificates;
-using NUnit.Framework;
 using UnityEngine;
-using UnityEngine.TestTools;
-namespace AIEngine.Test
+using NUnit.Framework;
+namespace AIEngine.Evaluation
 {
     public class EvaluationTests
     {
@@ -21,48 +17,88 @@ namespace AIEngine.Test
         }
         //1
         [Test]
-        public void Test_EmptyBoard_ReturnsZero()
+        public void Test_KingVsKing_ReturnsZero()
         {
-            var board = CreateEmptyBoard();
+            var board = CreateSimpleBoard();
+            board.IsWhiteTurn = false; // ปิด tempo
             float score = Evaluation.Evaluate(board);
-            Assert.AreEqual(0f, score, 0.001f);
+            Assert.AreEqual(0, score, 0.01f);
         }
-        //2
+
+        [Test]
+        public void Test_WhiteHasExtraQueen_ReturnsPositiveScore()
+        {
+            var board = CreateSimpleBoard();
+            board.IsWhiteTurn = false;
+            board.Board[6, 3] = 5;
+            float score = Evaluation.Evaluate(board);
+            Assert.Greater(score, 0);
+
+        }
+
+        [Test]
+        public void Test_BlackHasExtraQueen_ReturnsNegativeScore()
+        {
+            var board = CreateSimpleBoard();
+            board.IsWhiteTurn = false;
+            board.Board[1, 3] = -5; // วางควีนดำที่ d7
+            float score = Evaluation.Evaluate(board);
+            Assert.Less(score, 0);
+
+
+        }
+
+        [Test]
+        public void Test_Symmetry_ScoreIsNegatedWhenColorsSwapped()
+        {
+            var board1 = CreateSimpleBoard();
+            board1.IsWhiteTurn = false;
+            board1.Board[6, 3] = 5; // white queen
+            float score1 = Evaluation.Evaluate(board1);
+
+            var board2 = CreateSimpleBoard();
+            board2.IsWhiteTurn = false;
+            board2.Board[6, 3] = -5; // black queen
+            float score2 = Evaluation.Evaluate(board2);
+
+            Assert.AreEqual(score1, -score2, 0.01f);
+        }
+
+        [Test]
+        public void Test_PassedPawn_AddsBonus()
+        {
+            var board = CreateSimpleBoard();
+            board.IsWhiteTurn = false;
+            board.Board[6, 3] = 1;
+            float score = Evaluation.Evaluate(board);
+            Assert.Greater(score, 0);
+        }
+
         [Test]
         public void Test_IsolatedPawn_AppliesPenalty()
         {
+            var b1 = CreateSimpleBoard();
+            b1.IsWhiteTurn = false;
+            b1.Board[6, 3] = 1;
+            b1.Board[6, 4] = 1; // connected pawns
 
-        }
-        //3
-        [Test]
-        public void Test_PassedPawn_AppliesBonus()
-        {
+            var b2 = CreateSimpleBoard();
+            b2.IsWhiteTurn = false;
+            b2.Board[6, 3] = 1;
+            b2.Board[6, 5] = 1; // isolated pawns
 
-        }
-        //4
-        [Test]
-        public void Test_PassedPawn_GivesBonus()
-        {
+            float score1 = Evaluation.Evaluate(b1);
+            float score2 = Evaluation.Evaluate(b2);
 
-        }
-        //5
-        [Test]
-        public void Test_BlackHasExtraQueen_ReturnsNegative()
-        {
-
-        }
-        //6
-        [Test]
-        public void Evaluate_WhiteHasExtraQueen_ReturnsPositiveScore()
-        {
-
+            Assert.Greater(score1, score2);
         }
 
-        //7
         [Test]
-        public void Test_WhiteHasExtraQueen_ReturnsPositive()
+        public void Test_FiftyMoveRule_ReturnsDraw()
         {
-
+            var board = CreateSimpleBoard();
+            board.SetFiftyMoveCounter(100);
+            Assert.AreEqual(0f, Evaluation.Evaluate(board));
         }
     }
 }

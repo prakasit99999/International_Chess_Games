@@ -1,5 +1,6 @@
 # International_Chess_Games
 
+<<<<<<< ours
 > อ้างอิงจากโฟลเดอร์จริง `Assets/Scripts` ในโปรเจกต์
 
 ```
@@ -90,3 +91,6 @@ scripts/
     ├── CameraDebug.cs
     └── MoveMapper.cs
 ```
+=======
+เอกสารเริ่มต้นสำหรับผู้มาใหม่อยู่ที่ `docs/NEWCOMER_GUIDE_TH.md`
+>>>>>>> theirs

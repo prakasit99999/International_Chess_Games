@@ -1546,8 +1546,8 @@
     <ProjectReference Include="Unity.Services.QoS.csproj" />
     <ProjectReference Include="Unity.Networking.Transport.csproj" />
     <ProjectReference Include="Unity.Burst.csproj" />
-    <ProjectReference Include="UnityEditor.UI.csproj" />
     <ProjectReference Include="UnityEngine.UI.csproj" />
+    <ProjectReference Include="UnityEditor.UI.csproj" />
   </ItemGroup>
   <Import Project="Sdk.targets" Sdk="Microsoft.NET.Sdk" />
   <ItemGroup>

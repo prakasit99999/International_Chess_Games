@@ -1371,8 +1371,8 @@
     <ProjectReference Include="Mirror.Components.csproj" />
     <ProjectReference Include="Mirror.Transports.csproj" />
     <ProjectReference Include="Unity.TextMeshPro.csproj" />
-    <ProjectReference Include="UnityEditor.UI.csproj" />
     <ProjectReference Include="UnityEngine.UI.csproj" />
+    <ProjectReference Include="UnityEditor.UI.csproj" />
   </ItemGroup>
   <Import Project="Sdk.targets" Sdk="Microsoft.NET.Sdk" />
   <ItemGroup>
