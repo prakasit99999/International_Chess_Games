@@ -53,6 +53,7 @@
     <Compile Include="Assets\Tests\ChessLogicTests.cs" />
     <Compile Include="Assets\Tests\IntegrationTest_RealServer.cs" />
     <Compile Include="Assets\Tests\TestMoveSender.cs" />
+    <Compile Include="Assets\Tests\AITEST\MinimaxTests.cs" />
     <Compile Include="Assets\Tests\MatchmakingPollingTests.cs" />
     <Compile Include="Assets\Tests\ChessBoardTestHelper.cs" />
     <Compile Include="Assets\Tests\GameManagerTests.cs" />
@@ -61,6 +62,7 @@
     <Compile Include="Assets\Tests\GameOverTests.cs" />
     <Compile Include="Assets\Tests\AITEST\EvaluationTests.cs" />
     <Compile Include="Assets\Tests\FiftyMoveRuleTests.cs" />
+    <Compile Include="Assets\Tests\AITEST\AlphaBetaTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Tests\Tests.asmdef" />
