@@ -20,13 +20,8 @@ public class PerformanceTracker : MonoBehaviour
         {
             Instance = this;
 
-            if (UserId == -1)
-            {
-                if (UserId != -1)
-                {
-                    Debug.Log($"[PerformanceTracker] UserId initialized from SessionManager: {UserId}");
-                }
-            }
+            // UserId should be initialized from a SessionManager or similar in a real app
+            Debug.Log($"[PerformanceTracker] Initialized with UserId: {UserId}");
         }
         else
             Destroy(gameObject);

@@ -1,4 +1,4 @@
-﻿using System.Reflection;
+using System.Reflection;
 using NUnit.Framework;
 using TMPro;
 using UnityEngine;
@@ -42,6 +42,14 @@ public class FiftyMoveRuleTests
         typeof(GameManager).GetProperty("Instance", BindingFlags.Static | BindingFlags.Public)
             ?.SetValue(null, gameManager);
 
+        // ✅ GameUIManager
+        var gameUIManagerGO = new GameObject("GameUIManager");
+        gameUIManager = gameUIManagerGO.AddComponent<GameUIManager>();
+
+        // Link to GameManager
+        var uiManagerField = typeof(GameManager).GetField("gameUIManager", BindingFlags.NonPublic | BindingFlags.Instance);
+        uiManagerField?.SetValue(gameManager, gameUIManager);
+
         // ✅  drawGamePanel
         var drawGamePanel = new GameObject("DrawGamePanel");
         var drawTxt = drawGamePanel.AddComponent<TextMeshProUGUI>();
@@ -59,8 +67,6 @@ public class FiftyMoveRuleTests
         var loseTxt = loseGamePanel.AddComponent<TextMeshProUGUI>();
         gameUIManager.loseGamePanel = loseGamePanel;
         gameUIManager.loseTxt = loseTxt;
-
-
 
         // ✅ Draw Info UI
         infoPanel = new GameObject("DrawInfoPanel");
@@ -89,14 +95,19 @@ public class FiftyMoveRuleTests
         Object.DestroyImmediate(dummyTilePrefab);
         Object.DestroyImmediate(dummyPiecePrefab);
 
-        if (gameUIManager.drawGamePanel != null)
-            Object.DestroyImmediate(gameUIManager.drawGamePanel);
+        if (gameUIManager != null)
+        {
+            if (gameUIManager.drawGamePanel != null)
+                Object.DestroyImmediate(gameUIManager.drawGamePanel);
 
-        if (gameUIManager.winGamePanel != null)
-            Object.DestroyImmediate(gameUIManager.winGamePanel);
+            if (gameUIManager.winGamePanel != null)
+                Object.DestroyImmediate(gameUIManager.winGamePanel);
 
-        if (gameUIManager.loseGamePanel != null)
-            Object.DestroyImmediate(gameUIManager.loseGamePanel);
+            if (gameUIManager.loseGamePanel != null)
+                Object.DestroyImmediate(gameUIManager.loseGamePanel);
+
+            Object.DestroyImmediate(gameUIManager.gameObject);
+        }
     }
 
 

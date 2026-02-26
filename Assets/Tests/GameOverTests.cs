@@ -1,4 +1,4 @@
-﻿using System.Reflection;
+using System.Reflection;
 using NUnit.Framework;
 using TMPro;
 using UnityEngine;
@@ -8,7 +8,6 @@ using static ChessPiece;
 public class GameOverTests
 {
     private GameManager gameManager;
-    private GameModeManager gameModeManager;
     private GameUIManager gameUIManager;
     private ChessBoard chessBoard;
     private HistoryMove historyMove;
@@ -84,6 +83,14 @@ public class GameOverTests
         chessBoard.pieceWhite = new GameObject("WhiteGroup").transform;
         chessBoard.pieceBlack = new GameObject("BlackGroup").transform;
 
+        // ✅ GameUIManager
+        var gameUIManagerGO = new GameObject("GameUIManager");
+        gameUIManager = gameUIManagerGO.AddComponent<GameUIManager>();
+
+        // Link GameUIManager to GameManager using reflection if needed
+        var uiManagerField = typeof(GameManager).GetField("gameUIManager", BindingFlags.NonPublic | BindingFlags.Instance);
+        uiManagerField?.SetValue(gameManager, gameUIManager);
+
         // ✅ Panels
         winPanel = new GameObject("WinGamePanel");
         winText = winPanel.AddComponent<TextMeshProUGUI>();
@@ -127,6 +134,8 @@ public class GameOverTests
         if (losePanel != null) Object.DestroyImmediate(losePanel);
         if (drawPanel != null) Object.DestroyImmediate(drawPanel);
         if (drawInfoPanel != null) Object.DestroyImmediate(drawInfoPanel);
+
+        if (gameUIManager != null) Object.DestroyImmediate(gameUIManager.gameObject);
 
         if (historyMove != null) Object.DestroyImmediate(historyMove.gameObject);
         if (historyMoveUI != null) Object.DestroyImmediate(historyMoveUI.gameObject);

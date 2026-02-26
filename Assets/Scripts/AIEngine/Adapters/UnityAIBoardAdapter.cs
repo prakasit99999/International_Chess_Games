@@ -87,7 +87,7 @@ namespace AIEngine.Adapters
 
         public (Vector2Int from, Vector2Int to)? GetCalculatedMove()
         {
-            if (_calculatedResult.Value.Move != null)
+            if (_calculatedResult.HasValue && _calculatedResult.Value.Move != null)
             {
                 var move = _calculatedResult.Value.Move;
 
