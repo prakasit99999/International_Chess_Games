@@ -19,6 +19,24 @@ namespace AIEngine.Core
 
         public SearchResult FindBestMoveWithMetrics(ChessBoardModel board, Difficulty difficulty)
         {
+            // 🔹 1. Check Opening Book (Only for Hard difficulty in early game)
+            if (difficulty == Difficulty.Hard)
+            {
+                var bookMove = OpeningBook.GetMove(board);
+                if (bookMove != null)
+                {
+                    UnityEngine.Debug.Log("[AICore] Opening book move found: " + bookMove);
+                    return new SearchResult
+                    {
+                        Move = bookMove,
+                        Depth = 0, // No search needed
+                        NodesEvaluated = 0,
+                        TimeMs = 0,
+                        Score = 0
+                    };
+                }
+            }
+
             SearchAlgorithm algorithm;
             int depth;
             switch (difficulty)
