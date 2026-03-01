@@ -15,7 +15,7 @@ namespace AIEngine.Evaluation
             board.Board[0, 4] = -6; // คิงดำ
             return board;
         }
-        //1
+        //1 ทดสอบ การประเมินค่าของกระดานที่มีเพียงคิงทั้งสองฝ่าย โดยคาดว่าคะแนนจะเป็นศูนย์เนื่องจากไม่มีฝ่ายใดได้เปรียบ
         [Test]
         public void Test_KingVsKing_ReturnsZero()
         {
@@ -24,6 +24,7 @@ namespace AIEngine.Evaluation
             float score = Evaluation.Evaluate(board);
             Assert.AreEqual(0, score, 0.01f);
         }
+        //
 
         [Test]
         public void Test_WhiteHasExtraQueen_ReturnsPositiveScore()

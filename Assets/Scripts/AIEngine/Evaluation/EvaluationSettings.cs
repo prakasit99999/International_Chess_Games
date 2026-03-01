@@ -20,5 +20,7 @@ namespace AIEngine.Evaluation
         // --- Pawn Weights ---
         public int PassedPawnBonus { get; set; } = 20;      // โบนัสเบี้ยผ่าน
         public int IsolatedPawnPenalty { get; set; } = -15; // โทษเบี้ยโดดเดี่ยว
+        public int DoubledPawnPenalty { get; set; } = -10;  // โทษเบี้ยซ้อน
+        public bool UseTempo { get; set; } = false;
     }
 }

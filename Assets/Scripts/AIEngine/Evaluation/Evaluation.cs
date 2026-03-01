@@ -46,6 +46,72 @@ namespace AIEngine.Evaluation
               0,   0,   0,   0,   0,   0,   0,   0
         };
 
+        private static readonly int[] MgBishopTable = {
+        -20, -10, -10, -10, -10, -10, -10, -20,
+        -10,   5,   0,   0,   0,   0,   5, -10,
+        -10,  10,  10,  10,  10,  10,  10, -10,
+        -10,   0,  10,  10,  10,  10,   0, -10,
+        -10,   5,   5,  10,  10,   5,   5, -10,
+        -10,   0,   5,  10,  10,   5,   0, -10,
+        -10,   0,   0,   0,   0,   0,   0, -10,
+        -20, -10, -10, -10, -10, -10, -10, -20
+        };
+
+        private static readonly int[] EgBishopTable = {
+        -10,  -5,  -5,  -5,  -5,  -5,  -5, -10,
+        -5,  10,   5,   5,   5,   5,  10,  -5,
+        -5,   5,  15,  15,  15,  15,   5,  -5,
+        -5,   5,  15,  20,  20,  15,   5,  -5,
+        -5,   5,  15,  20,  20,  15,   5,  -5,
+        -5,   5,  10,  15,  15,  10,   5,  -5,
+        -5,   5,   0,   0,   0,   0,   5,  -5,
+        -10,  -5,  -5,  -5,  -5,  -5,  -5, -10
+        };
+
+        private static readonly int[] MgRookTable = {
+        0,   0,   5,  10,  10,   5,   0,   0,
+        -5,   0,   0,   0,   0,   0,   0,  -5,
+        -5,   0,   0,   0,   0,   0,   0,  -5,
+        -5,   0,   0,   0,   0,   0,   0,  -5,
+        -5,   0,   0,   0,   0,   0,   0,  -5,
+        -5,   0,   0,   0,   0,   0,   0,  -5,
+        5,  10,  10,  10,  10,  10,  10,   5,
+        0,   0,   0,   0,   0,   0,   0,   0
+};
+
+        private static readonly int[] EgRookTable = {
+        0,   0,   5,  10,  10,   5,   0,   0,
+        -5,   0,   0,   5,   5,   0,   0,  -5,
+        -5,   0,   0,   5,   5,   0,   0,  -5,
+        -5,   0,   0,   5,   5,   0,   0,  -5,
+        -5,   0,   0,   5,   5,   0,   0,  -5,
+        -5,   0,   0,   5,   5,   0,   0,  -5,
+        5,  10,  10,  15,  15,  10,  10,   5,
+        0,   0,   0,   5,   5,   0,   0,   0
+        };
+
+        private static readonly int[] MgQueenTable = {
+        -20, -10, -10,  -5,  -5, -10, -10, -20,
+        -10,   0,   5,   0,   0,   0,   0, -10,
+        -10,   5,   5,   5,   5,   5,   0, -10,
+        -5,   0,   5,   5,   5,   5,   0,  -5,
+         0,   0,   5,   5,   5,   5,   0,  -5,
+        -10,   5,   5,   5,   5,   5,   0, -10,
+        -10,   0,   5,   0,   0,   0,   0, -10,
+        -20, -10, -10,  -5,  -5, -10, -10, -20
+    };
+
+        private static readonly int[] EgQueenTable = {
+        -10,  -5,  -5,  -5,  -5,  -5,  -5, -10,
+        -5,   5,   5,   5,   5,   5,   5,  -5,
+        -5,   5,  10,  10,  10,  10,   5,  -5,
+        -5,   5,  10,  15,  15,  10,   5,  -5,
+        -5,   5,  10,  15,  15,  10,   5,  -5,
+        -5,   5,  10,  10,  10,  10,   5,  -5,
+        -5,   5,   5,   5,   5,   5,   5,  -5,
+        -10,  -5,  -5,  -5,  -5,  -5,  -5, -10
+        };
+
         private static readonly int[] MgKnightTable = {
             -50, -40, -30, -30, -30, -30, -40, -50,
             -40, -20,   0,   0,   0,   0, -20, -40,
@@ -156,24 +222,32 @@ namespace AIEngine.Evaluation
                         case 1: // Pawn
                             mgPst = MgPawnTable[tableIdx];
                             egPst = EgPawnTable[tableIdx];
-                            // เพิ่ม Pawn Structure Evaluation ตรงนี้
-                            // เพิ่ม Pawn Structure Evaluation ตรงนี้
-                            float structScore = EvaluatePawnStructure(board, x, y, isWhite, passedPawnBonus, isolatedPawnPenalty);
+                            float structScore = EvaluatePawnStructure(board, x, y, isWhite, passedPawnBonus, isolatedPawnPenalty, settings.DoubledPawnPenalty);
                             if (isWhite) { mgScore += structScore; egScore += structScore; }
                             else { mgScore -= structScore; egScore -= structScore; }
                             break;
-
                         case 2: // Knight
                             mgPst = MgKnightTable[tableIdx];
                             egPst = MgKnightTable[tableIdx]; // Knight ไม่ค่อยต่างมาก
+                            break;
+
+                        case 3: // Bishop
+                            mgPst = MgBishopTable[tableIdx];
+                            egPst = EgBishopTable[tableIdx];
+                            break;
+                        case 4: // Rook
+                            mgPst = MgRookTable[tableIdx];
+                            egPst = EgRookTable[tableIdx];
+                            break;
+                        case 5: // Queen
+                            mgPst = MgQueenTable[tableIdx];
+                            egPst = EgQueenTable[tableIdx];
                             break;
 
                         case 6: // King
                             mgPst = MgKingTable[tableIdx];
                             egPst = EgKingTable[tableIdx];
                             break;
-
-                        // TODO: ใส่ตาราง Bishop, Rook, Queen
                         default:
                             break;
                     }
@@ -188,39 +262,33 @@ namespace AIEngine.Evaluation
             // Formula: (MG * phase + EG * (24 - phase)) / 24
             phase = Math.Min(phase, PhaseTotal); // Clamp value
 
-            // Apply Positional Factor (Style) only to Positional part if separated, OR applies to total evaluation difference?
-            // Usually applies to the strategic components, but here simple multiplication for now as requested.
-            // But wait, user said "PositionalFactor" implies scaling the PST/Structure scores. 
-            // Current code mixes Material + PST into mgScore/egScore. 
-            // For now, let's keep it simple as the original code didn't separate them clearly.
-            // Or better, apply to the PST lookup result? 
-            // Re-reading user request: "EvaluationSettings defined parameters like PositionalFactor... but implementation uses internal constants".
-            // Implementation: I will apply PositionalFactor to the PST values looked up.
-
-            // NOTE: I accidentally didn't apply PositionalFactor in the loop above.
-            // Let's modify the PST lookup above in a separate step or just assume the user wants the infrastructure first.
-            // Actually, I can't easily modify the PST lookup block in this chunk without making it huge.
-            // I will leave PositionalFactor unused for this specific chunk and focus on Material/PawnStructure first to minimize risk?
-            // NO, I should do it right. I will edit the PST lookup block.
-
             float finalScore = ((mgScore * phase) + (egScore * (PhaseTotal - phase))) / (float)PhaseTotal;
 
-            // 4. Side to Move Bonus (Tempo)
-            // การได้เดินก่อนมีค่าเล็กน้อย (เช่น 10-20 คะแนน)
-            // 4. Side to Move Bonus (Tempo) + Attack Bonus
+            // 4.Insufficient material
+            if (IsInsufficientMaterial(board))
+            {
+                finalScore = 0f; // เสมอแน่นอน
+            }
+            // 5. temppo (ถ้าเปิดใช้ใน Settings) - การได้เดินก่อนมีค่าเล็กน้อย
+            if (settings.UseTempo)
+            {
+                finalScore += board.IsWhiteTurn ? 10f : -10f;
+            }
+
+            // 6. Side to Move Bonus (Tempo) + Attack Bonus
             // การได้เดินก่อนมีค่าเล็กน้อย (เช่น 10-20 คะแนน) + Settings AttackBonus
-            finalScore += board.IsWhiteTurn ? (10f + settings.AttackBonus) : (-10f - settings.AttackBonus);
+            finalScore += board.IsWhiteTurn
+                ? settings.AttackBonus
+                : -settings.AttackBonus;
 
             // Return relative score (Perspective)
-            return board.IsWhiteTurn ? finalScore : -finalScore;
+            return finalScore;
         }
-
-
 
         // ==========================================
         // PAWN STRUCTURE & PASSED PAWNS
         // ==========================================
-        private static float EvaluatePawnStructure(ChessBoardModel board, int x, int y, bool isWhite, int passedBonus, int isolatedPenalty)
+        private static float EvaluatePawnStructure(ChessBoardModel board, int x, int y, bool isWhite, int passedBonus, int isolatedPenalty, int doubledPenalty)
         {
             float score = 0f;
             int forwardDir = isWhite ? -1 : 1; // สมมติขาวเดินขึ้น (Index ลดลง) หรือลง แล้วแต่ Model
@@ -243,8 +311,28 @@ namespace AIEngine.Evaluation
                 float rankBonus = isWhite ? (7 - x) * 10f : x * 10f;
                 score += (passedBonus + rankBonus);
             }
-
+            // 3. Doubled Pawn (เบี้ยซ้อนกันในไฟล์เดียว)
+            int pawnCountOnFile = CountPawnsOnFile(board, y, isWhite);
+            if (pawnCountOnFile > 1)
+            {
+                score += (pawnCountOnFile - 1) * doubledPenalty; // โทษเบี้ยซ้อน (ปรับได้ใน settings)
+            }
             return score;
+        }
+
+        private static bool IsInsufficientMaterial(ChessBoardModel board)
+        {
+            int nonKingPieces = 0;
+
+            for (int x = 0; x < 8; x++)
+                for (int y = 0; y < 8; y++)
+                {
+                    int p = Math.Abs(board.Board[x, y]);
+                    if (p != 0 && p != 6) // 6 = King
+                        nonKingPieces++;
+                }
+
+            return nonKingPieces == 0;
         }
 
         private static bool HasPawnOnFile(ChessBoardModel board, int fileY, bool isWhite)
@@ -264,11 +352,10 @@ namespace AIEngine.Evaluation
             int enemyPawn = isWhite ? -1 : 1;
 
             // เช็คช่องข้างหน้าทั้งหมดในไฟล์ตัวเอง (c) และไฟล์ข้างๆ (c-1, c+1)
-            int startRow = isWhite ? 0 : r + 1;
-            int endRow = isWhite ? r - 1 : 7;
-
             // ถ้า White เดินจาก 7 -> 0, ศัตรูจะอยู่ row < r
             // ถ้า Black เดินจาก 0 -> 7, ศัตรูจะอยู่ row > r
+            int startRow = isWhite ? 0 : r + 1;
+            int endRow = isWhite ? r - 1 : 7;
 
             // Loop เช็คแถวหน้าเบี้ย
             for (int i = isWhite ? r - 1 : r + 1;
@@ -280,6 +367,17 @@ namespace AIEngine.Evaluation
                 if (c < 7 && board.Board[i, c + 1] == enemyPawn) return false; // Control Right
             }
             return true;
+        }
+
+        private static int CountPawnsOnFile(ChessBoardModel board, int fileY, bool isWhite)
+        {
+            int pawnVal = isWhite ? 1 : -1;
+            int count = 0;
+            for (int r = 0; r < 8; r++)
+            {
+                if (board.Board[r, fileY] == pawnVal) count++;
+            }
+            return count;
         }
     }
 }
