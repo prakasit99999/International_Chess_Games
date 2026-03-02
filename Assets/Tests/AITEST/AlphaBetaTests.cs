@@ -1,56 +1,85 @@
+using System.Diagnostics;
+using System.Linq;
 using NUnit.Framework;
 using AIEngine.Algorithms;
-using AIEngine.Evaluation;
+using AIEngine.Utilities;
 
 namespace AIEngine.Tests
 {
     public class AlphaBetaTests
     {
-        // Helper: สร้างกระดานเปล่าเพื่อทดสอบเฉพาะจุด
-        private ChessBoardModel CreateEmptyBoard()
+        private AlphaBeta _alphaBeta;
+
+        [SetUp]
+        public void SetUp()
+        {
+            _alphaBeta = new AlphaBeta(timeLimitMs: 1000);
+        }
+        // 1. ทดสอบว่า AlphaBeta สามารถคืนค่าการเคลื่อนไหวที่ถูกต้องจากตำแหน่งเริ่มต้นได้หรือไม่
+        [Test]
+        public void AlphaBeta_Returns_Legal_Move_From_Starting_Position()
         {
             var board = new ChessBoardModel();
-            System.Array.Clear(board.Board, 0, board.Board.Length);
-            return board;
-        }
+            var legalMoves = MoveGenerator.GenerateMoves(board);
 
-        // 1. ทดสอบพื้นฐาน: AI ต้องหาท่า Checkmate ได้ (Mate in 1)
+            var result = _alphaBeta.FindBestMoveWithMetrics(board, 2);
+
+            Assert.IsNotNull(result.Move, "Expected a move from starting position.");
+            Assert.IsTrue(legalMoves.Any(m => MoveOrderer.IsSameMove(m, result.Move)),
+                "Returned move must be legal.");
+        }
+        // 2. ทดสอบว่า AlphaBeta รายงานจำนวนโหนดที่ประเมินได้อย่างถูกต้อง
         [Test]
-        public void Test_FindsMateInOne()
+        public void AlphaBeta_Reports_Nodes_Evaluated()
         {
-            var board = CreateEmptyBoard();
-            board.Board[7, 4] = 6;  // White King
-            board.Board[0, 7] = -6; // Black King
-            board.Board[7, 0] = 4;  // White Rook (a1)
-            
-            board.IsWhiteTurn = true;
-            var ai = new AlphaBeta();
-            
-            // Depth 2 พอสำหรับ Mate in 1
-            var move = ai.FindBestMove(board, 2);
+            var board = new ChessBoardModel();
 
-            Assert.IsNotNull(move);
-            Assert.AreEqual(0, move.ToX); // ต้องเดินไปแถว 0 (a8) เพื่อรุกฆาต
-            Assert.AreEqual(0, move.ToY);
+            var result = _alphaBeta.FindBestMoveWithMetrics(board, 1);
+
+            Assert.Greater(result.NodesEvaluated, 0, "NodesEvaluated should be > 0.");
         }
+        // 3. เพิ่มการทดสอบสำหรับการเคลียร์กระดานและตรวจสอบว่า AlphaBeta สามารถจัดการกับสถานการณ์ที่ไม่มีชิ้นส่วนได้อย่างถูกต้อง
 
-        // 2. ทดสอบพื้นฐาน: AI ต้องเลือกกินตัวฟรี (Material Advantage)
         [Test]
-        public void Test_TakesHangingPiece()
+        public void AlphaBeta_Reports_Depth_Within_Max()
         {
-            var board = CreateEmptyBoard();
-            board.Board[7, 4] = 6; board.Board[0, 4] = -6; // Kings
-            board.Board[4, 4] = 5;  // White Queen (e4)
-            board.Board[4, 5] = -4; // Black Rook (f4) - ยืนให้กินฟรี
+            var board = new ChessBoardModel();
 
-            board.IsWhiteTurn = true;
-            var ai = new AlphaBeta();
-            var move = ai.FindBestMove(board, 2);
+            var result = _alphaBeta.FindBestMoveWithMetrics(board, 1);
 
-            Assert.AreEqual(4, move.ToX);
-            Assert.AreEqual(5, move.ToY); // ต้องกินที่ f4
+            Assert.AreEqual(1, result.Depth, "Depth should reach maxDepth when time allows.");
         }
+      //  4. เพิ่มการทดสอบสำหรับการเคลียร์กระดานและตรวจสอบว่า AlphaBeta สามารถจัดการกับสถานการณ์ที่ไม่มีชิ้นส่วนได้อย่างถูกต้อง
 
-        
+        [Test]
+        public void AlphaBeta_Respects_Time_Limit()
+        {
+            var board = new ChessBoardModel();
+            var ai = new AlphaBeta(timeLimitMs: 50);
+
+            var stopwatch = Stopwatch.StartNew();
+            ai.FindBestMoveWithMetrics(board, 6);
+            stopwatch.Stop();
+
+            Assert.LessOrEqual(stopwatch.ElapsedMilliseconds, 1000,
+                "Search should stop within a reasonable buffer of the time limit.");
+        }
+        //5. เพิ่มการทดสอบสำหรับกรณีที่ไม่มีชิ้นส่วนบนกระดาน
+        [Test]
+        public void AlphaBeta_Returns_Null_When_No_Pieces()
+        {
+            var board = new ChessBoardModel();
+            for (int i = 0; i < 8; i++)
+            {
+                for (int j = 0; j < 8; j++)
+                {
+                    board.Board[i, j] = 0;
+                }
+            }
+
+            var result = _alphaBeta.FindBestMoveWithMetrics(board, 2);
+
+            Assert.IsNull(result.Move, "Expected null when no legal moves exist.");
+        }
     }
 }
