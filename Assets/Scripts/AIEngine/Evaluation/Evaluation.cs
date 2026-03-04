@@ -256,6 +256,58 @@ namespace AIEngine.Evaluation
                     else { mgScore -= mgPst * positionalFactor; egScore -= egPst * positionalFactor; }
                 }
             }
+            
+            // 2.5 Advanced Features (สามารถเปิด/ปิดได้ตาม Difficulty)
+            // precompute legal moves per side once เพื่อลดภาระใน evaluation ระหว่าง search
+            List<MoveModel> whiteMoves = null;
+            List<MoveModel> blackMoves = null;
+            bool needWhiteMoves = settings.UseMobility || settings.UseThreats;
+            bool needBlackMoves = settings.UseMobility || settings.UseThreats;
+            if (needWhiteMoves) whiteMoves = GetMovesForSide(board, true);
+            if (needBlackMoves) blackMoves = GetMovesForSide(board, false);
+
+            if (settings.UseMohbility)
+            {
+                mgScore += EvaluateMobility(whiteMoves) * settings.MobilityWeight;
+                mgScore -= EvaluateMobility(blackMoves) * settings.MobilityWeight;
+            }
+
+            if (settings.UseBishopPair)
+            {
+                mgScore += HasBishopPair(board, true) ? settings.BishopPairBonus : 0;
+                mgScore -= HasBishopPair(board, false) ? settings.BishopPairBonus : 0;
+            }
+
+            if (settings.UseRookFiles)
+            {
+                mgScore += EvaluateRookFiles(board, true, settings);
+                mgScore -= EvaluateRookFiles(board, false, settings);
+            }
+
+            if (settings.UseOutpost)
+            {
+                mgScore += EvaluateKnightOutposts(board, true, settings.KnightOutpostBonus);
+                mgScore -= EvaluateKnightOutposts(board, false, settings.KnightOutpostBonus);
+            }
+
+            if (settings.UseSpace)
+            {
+                mgScore += EvaluateSpace(board, true) * settings.SpaceWeight;
+                mgScore -= EvaluateSpace(board, false) * settings.SpaceWeight;
+            }
+
+            if (settings.UseKingSafety)
+            {
+                mgScore += EvaluateKingSafety(board, true, settings);
+                mgScore -= EvaluateKingSafety(board, false, settings);
+            }
+
+            if (settings.UseThreats)
+            {
+                mgScore += EvaluateHangingPieces(board, true, settings.HangingPiecePenalty, whiteMoves, blackMoves);
+                mgScore -= EvaluateHangingPieces(board, false, settings.HangingPiecePenalty, blackMoves, whiteMoves);
+            }
+
 
             // 3. Tapered Evaluation Calculation
             // Phase ยิ่งมาก = ยิ่งใกล้ต้นเกม, Phase น้อย = ท้ายเกม
