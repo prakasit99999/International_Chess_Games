@@ -77,7 +77,7 @@ namespace AIEngine.Test
             board2.Board[3, 3] = -5; board2.IsWhiteTurn = false;
             float score2 = Evaluation.Evaluate(board2);
 
-            Assert.AreEqual(score1, score2, 1.0f, "Evaluation should be symmetric for both colors.");
+            Assert.AreEqual(score1, -score2, 1.0f, "Evaluation should be symmetric for both colors (absolute scores are negated).");
         }
 
         [Test]

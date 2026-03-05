@@ -211,8 +211,8 @@ namespace AIEngine.Evaluation
             // การได้เดินก่อนมีค่าเล็กน้อย (เช่น 10-20 คะแนน) + Settings AttackBonus
             finalScore += board.IsWhiteTurn ? (10f + settings.AttackBonus) : (-10f - settings.AttackBonus);
 
-            // Return relative score (Perspective)
-            return board.IsWhiteTurn ? finalScore : -finalScore;
+            // Return absolute score (White-centric)
+            return finalScore;
         }
 
 

@@ -41,8 +41,12 @@ namespace AIEngine.Adapters
 
             Debug.Log($"[AI INPUT] Team={aiTeam}, Difficulty={aiCoreDifficulty}");
 
-            //  แก้ไขจุดที่ 1: เปลี่ยนชื่อเมธอดให้ตรงกับ AICore
-            SearchResult searchResult = _aiService.FindBestMoveWithMetrics(model, aiCoreDifficulty);
+            // ใช้ Task.Run เพื่อไม่ให้ block main thread (ป้องกัน UI ค้าง)
+            var task = System.Threading.Tasks.Task.Run(() => _aiService.FindBestMoveWithMetrics(model, aiCoreDifficulty));
+
+            yield return new WaitUntil(() => task.IsCompleted);
+
+            SearchResult searchResult = task.Result;
 
             if (searchResult.Move != null)
             {
