@@ -30,10 +30,27 @@ namespace AIEngine.Test
         }
 
         [Test]
-        public void Test_WhiteHasExtraQueen_ReturnsPositiveScore()
+        public void Test_Evaluation_RespectsSettings()
         {
             var board = CreateSimpleBoard();
             board.Board[4, 4] = 5; // White Queen
+
+            // 1. ใช้ค่าเริ่มต้น (Queen = 900)
+            float defaultScore = Evaluation.Evaluate(board, new EvaluationSettings());
+
+            // 2. ใช้ค่าที่ปรับแต่ง (Queen = 500)
+            var customSettings = new EvaluationSettings { QueenValue = 500 };
+            float customScore = Evaluation.Evaluate(board, customSettings);
+
+            Assert.AreNotEqual(defaultScore, customScore, "Score should change based on EvaluationSettings.");
+            Assert.IsTrue(customScore < defaultScore, "Score with 500-value Queen should be lower than 900-value Queen.");
+        }
+
+        [Test]
+        public void Test_WhiteHasExtraQueen_ReturnsPositiveScore()
+        {
+            var board = CreateSimpleBoard();
+            board.Board[4, 4] = 5;
             board.IsWhiteTurn = true;
             float score = Evaluation.Evaluate(board);
             Assert.Greater(score, 800, "White having an extra queen should result in a high positive score.");
@@ -43,7 +60,7 @@ namespace AIEngine.Test
         public void Test_BlackHasExtraQueen_ReturnsNegativeScore()
         {
             var board = CreateSimpleBoard();
-            board.Board[4, 4] = -5; // Black Queen
+            board.Board[4, 4] = -5;
             board.IsWhiteTurn = true;
             float score = Evaluation.Evaluate(board);
             Assert.Less(score, -800, "Black having an extra queen should result in a high negative score for White.");
@@ -52,20 +69,14 @@ namespace AIEngine.Test
         [Test]
         public void Test_Symmetry_ScoreIsNegatedWhenColorsSwapped()
         {
-            // ขาวมี Queen ที่ d4 (4,3)
             var board1 = CreateSimpleBoard();
-            board1.Board[4, 3] = 5;
-            board1.IsWhiteTurn = true;
+            board1.Board[4, 3] = 5; board1.IsWhiteTurn = true;
             float score1 = Evaluation.Evaluate(board1);
 
-            // ดำมี Queen ที่ d5 (3,3) - ตำแหน่งที่ Mirror กัน
             var board2 = CreateSimpleBoard();
-            board2.Board[3, 3] = -5;
-            board2.IsWhiteTurn = false;
+            board2.Board[3, 3] = -5; board2.IsWhiteTurn = false;
             float score2 = Evaluation.Evaluate(board2);
 
-            // เนื่องจาก Evaluate คืนค่า Perspective (relative to side to move)
-            // ทั้งคู่ควรได้คะแนนเป็นบวกในมุมมองของตัวเอง และมีค่าใกล้เคียงกัน
             Assert.AreEqual(score1, score2, 1.0f, "Evaluation should be symmetric for both colors.");
         }
 
@@ -73,21 +84,18 @@ namespace AIEngine.Test
         public void Test_PassedPawn_AddsBonus()
         {
             var board = CreateSimpleBoard();
-            board.Board[2, 0] = 1; // White Passed Pawn at a6
+            board.Board[2, 0] = 1;
             float score = Evaluation.Evaluate(board);
-            // Base Pawn (100) + PST + Passed Bonus
             Assert.Greater(score, 120, "Passed pawn should receive a bonus.");
         }
 
         [Test]
         public void Test_IsolatedPawn_AppliesPenalty()
         {
-            // บอร์ด 1: เบี้ยคู่ (d2, e2) - ไม่โดดเดี่ยว
             var board1 = CreateSimpleBoard();
             board1.Board[6, 3] = 1; board1.Board[6, 4] = 1;
             float score1 = Evaluation.Evaluate(board1);
 
-            // บอร์ด 2: เบี้ยแยก (d2, f2) - โดดเดี่ยวทั้งคู่
             var board2 = CreateSimpleBoard();
             board2.Board[6, 3] = 1; board2.Board[6, 5] = 1;
             float score2 = Evaluation.Evaluate(board2);
@@ -99,9 +107,7 @@ namespace AIEngine.Test
         public void Test_FiftyMoveRule_ReturnsDraw()
         {
             var board = new ChessBoardModel();
-            board.Board[0, 3] = 0; // White is ahead
-            board.SetFiftyMoveCounter(100); // 50-move rule
-
+            board.SetFiftyMoveCounter(100);
             float score = Evaluation.Evaluate(board);
             Assert.AreEqual(0f, score, "Fifty-move rule should result in a draw (0.00 evaluation).");
         }
