@@ -43,5 +43,7 @@ namespace AIEngine.Evaluation
         public bool UseOutpost { get; set; } = true;
         public bool UseSpace { get; set; } = true;
         public bool UseThreats { get; set; } = true;
+        public bool UseTempo { get; set; } = true; // เปิด/ปิดโบนัสคนได้เดินก่อน
+
     }
 }

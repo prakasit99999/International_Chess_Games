@@ -2,6 +2,7 @@ using System;
 using System.Diagnostics;
 using System.Linq;
 using AIEngine.Algorithms;
+using AIEngine.Evaluation;
 using AIEngine.Utilities;
 
 namespace AIEngine.Core
@@ -54,7 +55,8 @@ namespace AIEngine.Core
 
         private EvaluationSettings CreateSettingsForDifficulty(Difficulty difficulty)
         {
-           switch (difficulty)
+            var settings = new EvaluationSettings();
+            switch (difficulty)
             {
                 case Difficulty.Easy:
                     settings.Name = "Easy";
