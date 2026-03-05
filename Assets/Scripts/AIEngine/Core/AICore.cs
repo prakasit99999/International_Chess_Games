@@ -52,6 +52,51 @@ namespace AIEngine.Core
             };
         }
 
+        private EvaluationSettings CreateSettingsForDifficulty(Difficulty difficulty)
+        {
+           switch (difficulty)
+            {
+                case Difficulty.Easy:
+                    settings.Name = "Easy";
+                    settings.PositionalFactor = 0.7f;
+                    settings.PassedPawnBonus = 10;
+                    settings.IsolatedPawnPenalty = -8;
+                    settings.DoubledPawnPenalty = -5;
+                    settings.UseTempo = false;
+                    settings.UseKingSafety = false;
+                    settings.UseThreats = false;
+                    settings.UseSpace = false;
+                    settings.MobilityWeight = 1;
+                    break;
+                case Difficulty.Normal:
+                    settings.Name = "Normal";
+                    settings.PositionalFactor = 1.0f;
+                    settings.UseTempo = false;
+                    settings.MobilityWeight = 2;
+                    break;
+                case Difficulty.Hard:
+                    settings.Name = "Hard";
+                    settings.PositionalFactor = 1.15f;
+                    settings.PassedPawnBonus = 30;
+                    settings.IsolatedPawnPenalty = -18;
+                    settings.DoubledPawnPenalty = -14;
+                    settings.UseTempo = true;
+                    settings.MobilityWeight = 3;
+                    settings.PawnShieldBonus = 15;
+                    settings.TropismWeight = 6;
+                    settings.BishopPairBonus = 35;
+                    settings.RookOpenFileBonus = 24;
+                    settings.RookSemiOpenFileBonus = 14;
+                    settings.KnightOutpostBonus = 24;
+                    settings.SpaceWeight = 2;
+                    settings.HangingPiecePenalty = -28;
+                    break;
+                default:
+                    throw new ArgumentException("Invalid difficulty level");
+            }
+            return settings;
+        }
+
         private MoveModel OptimizeMoveForDraw(ChessBoardModel board, MoveModel bestMove)
         {
             if (board.FiftyMoveCounter > 90)

@@ -147,6 +147,7 @@ namespace AIEngine.Evaluation
             -50, -30, -30, -30, -30, -30, -30, -50
         };
 
+
         // ==========================================
         // MAIN EVALUATION FUNCTION
         // ==========================================
@@ -256,7 +257,7 @@ namespace AIEngine.Evaluation
                     else { mgScore -= mgPst * positionalFactor; egScore -= egPst * positionalFactor; }
                 }
             }
-            
+
             // 2.5 Advanced Features (สามารถเปิด/ปิดได้ตาม Difficulty)
             // precompute legal moves per side once เพื่อลดภาระใน evaluation ระหว่าง search
             List<MoveModel> whiteMoves = null;
@@ -266,7 +267,7 @@ namespace AIEngine.Evaluation
             if (needWhiteMoves) whiteMoves = GetMovesForSide(board, true);
             if (needBlackMoves) blackMoves = GetMovesForSide(board, false);
 
-            if (settings.UseMohbility)
+            if (settings.UseMobility)
             {
                 mgScore += EvaluateMobility(whiteMoves) * settings.MobilityWeight;
                 mgScore -= EvaluateMobility(blackMoves) * settings.MobilityWeight;
@@ -321,17 +322,16 @@ namespace AIEngine.Evaluation
             {
                 finalScore = 0f; // เสมอแน่นอน
             }
-            // 5. temppo (ถ้าเปิดใช้ใน Settings) - การได้เดินก่อนมีค่าเล็กน้อย
+            
+
+            // 5. Side to Move Bonus (Tempo) + Attack Bonus
+            // การได้เดินก่อนมีค่าเล็กน้อย (เช่น 10-20 คะแนน) + Settings TempoBonus
             if (settings.UseTempo)
             {
-                finalScore += board.IsWhiteTurn ? 10f : -10f;
+                finalScore += board.IsWhiteTurn
+                    ? settings.TempoBonus
+                    : -settings.TempoBonus;
             }
-
-            // 6. Side to Move Bonus (Tempo) + Attack Bonus
-            // การได้เดินก่อนมีค่าเล็กน้อย (เช่น 10-20 คะแนน) + Settings AttackBonus
-            finalScore += board.IsWhiteTurn
-                ? settings.AttackBonus
-                : -settings.AttackBonus;
 
             // Return relative score (Perspective)
             return finalScore;
@@ -431,5 +431,199 @@ namespace AIEngine.Evaluation
             }
             return count;
         }
+
+        // Mobility Evaluation: นับจำนวนช่องว่างที่หมากสามารถเดินได้ (ไม่รวมที่ถูกบล็อก)
+        private static int EvaluateMobility(List<MoveModel> moves)
+        {
+            int score = 0; // สามารถปรับแต่งได้ เช่น แยกตามประเภทหมาก หรือให้คะแนนพิเศษสำหรับการควบคุมศูนย์กลาง
+            foreach (var move in moves)
+            {
+                // ตัวอย่างง่ายๆ: ให้คะแนน 1 คะแนนต่อการเดินที่ถูกต้อง
+                score++;
+            }
+            return score;
+        }
+
+        //Has Bishop Pair Bonus (ถ้ามีบิชอปคู่) 
+        private static bool HasBishopPair(ChessBoardModel board, bool forWhite)
+        {
+            int bishop = forWhite ? 3 : -3;
+            int count = 0;
+            for (int x = 0; x < 8; x++)
+                for (int y = 0; y < 8; y++)
+                    if (board.Board[x, y] == bishop) count++;
+            return count >= 2;
+        }
+
+        //Evaluate Knight Outposts (ถ้าอัศวินอยู่ในตำแหน่งที่ดี เช่น มีเบี้ยป้องกันและไม่มีเบี้ยศัตรูคุกคาม จะได้คะแนนพิเศษ)
+        private static int EvaluateKnightOutposts(ChessBoardModel board, bool forWhite, int outpostBonus)
+        {
+            int knight = forWhite ? 2 : -2;
+            int ownPawn = forWhite ? 1 : -1;
+            int enemyPawn = -ownPawn;
+            int dir = forWhite ? -1 : 1;
+            int score = 0;
+
+            for (int x = 0; x < 8; x++)
+            {
+                for (int y = 0; y < 8; y++)
+                {
+                    if (board.Board[x, y] != knight) continue;
+
+                    bool defendedByPawn = false;
+                    int backRow = x - dir;
+                    if (backRow >= 0 && backRow <= 7)
+                    {
+                        if (y > 0 && board.Board[backRow, y - 1] == ownPawn) defendedByPawn = true;
+                        if (y < 7 && board.Board[backRow, y + 1] == ownPawn) defendedByPawn = true;
+                    }
+
+                    bool attackedByEnemyPawn = false;
+                    int enemyPawnRow = x + dir;
+                    if (enemyPawnRow >= 0 && enemyPawnRow <= 7)
+                    {
+                        if (y > 0 && board.Board[enemyPawnRow, y - 1] == enemyPawn) attackedByEnemyPawn = true;
+                        if (y < 7 && board.Board[enemyPawnRow, y + 1] == enemyPawn) attackedByEnemyPawn = true;
+                    }
+
+                    if (defendedByPawn && !attackedByEnemyPawn)
+                        score += outpostBonus;
+                }
+            }
+            return score;
+        }
+
+
+        //Rook Files (ถ้า รุก  อยู่บนไฟล์ที่ไม่มีเบี้ยขวางทาง จะได้คะแนนพิเศษ)
+        private static int EvaluateRookFiles(ChessBoardModel board, bool forWhite, EvaluationSettings settings)
+        {
+            int rook = forWhite ? 4 : -4;
+            int ownPawn = forWhite ? 1 : -1;
+            int enemyPawn = -ownPawn;
+            int bonus = 0;
+            for (int x = 0; x < 8; x++)
+            {
+                for (int y = 0; y < 8; y++)
+                {
+                    if (board.Board[x, y] != rook) continue;
+                    bool ownPawnInFile = false;
+                    bool enemyPawnInFile = false;
+                    for (int r = 0; r < 8; r++)
+                    {
+                        if (board.Board[r, y] == ownPawn) ownPawnInFile = true;
+                        if (board.Board[r, y] == enemyPawn) enemyPawnInFile = true;
+                    }
+                    // Rook on Open File  : ไฟล์ที่ไม่มีเบี้ยของทั้งสองฝ่ายอยู่เลย
+                    if (!ownPawnInFile && !enemyPawnInFile)
+                    {
+                        bonus += settings.RookOpenFileBonus;
+                    }
+                    else if (!ownPawnInFile) // Rook on Semi-Open File : ไฟล์ที่ไม่มีเบี้ยของฝ่ายตัวเอง แต่มีเบี้ยศัตรูอยู่
+                    {
+                        bonus += settings.RookSemiOpenFileBonus;
+                    }
+                }
+            }
+            return bonus;
+        }
+
+        // Evaluate Space (ประเมินพื้นที่ที่ฝ่ายนั้นๆ ควบคุมอยู่ เช่น ถ้าขาวควบคุมแถว 4-5 จะได้คะแนนพิเศษ เพราะมีพื้นที่ให้เดินมากขึ้น)
+        private static int EvaluateSpace(ChessBoardModel board, bool forWhite)
+        {
+            int score = 0;
+            int start = forWhite ? 0 : 4;
+            int end = forWhite ? 3 : 7;
+
+            for (int x = start; x <= end; x++)
+            {
+                for (int y = 2; y <= 5; y++)
+                {
+                    int p = board.Board[x, y];
+                    if (p == 0) continue;
+                    if (forWhite && p > 0) score++;
+                    if (!forWhite && p < 0) score++;
+                }
+            }
+            return score;
+        }
+        //King Safety Evaluation: ประเมินความปลอดภัยของ King โดยดูจากตำแหน่งของ King และการป้องกันรอบๆ (เช่น Pawn Shield, Tropism, Hanging Pieces ใกล้ King)
+        private static int EvaluateKingSafety(ChessBoardModel board, bool forWhite, EvaluationSettings settings)
+        {
+            var king = FindKing(board, forWhite);
+            if (king.X < 0) return 0; // King not found
+            int ownPawn = forWhite ? 1 : -1;
+            int score = 0;
+            int dir = forWhite ? -1 : 1;
+            int shieldRow = king.X + dir;
+            // Pawn Shield Bonus: ถ้ามีเบี้ยอยู่หน้าราชา (เช่น แถว 6 สำหรับขาว, แถว 1 สำหรับดำ) จะได้คะแนนพิเศษ
+            if (shieldRow >= 0 && shieldRow <= 7)
+            {
+                for (int dy = -1; dy <= 1; dy++)
+                {
+                    int y = king.Y + dy;
+                    if (y < 0 || y > 7) continue;
+                    if (board.Board[shieldRow, y] == ownPawn) score += settings.PawnShieldBonus;
+                }
+            }
+            int enemyQueen = forWhite ? -5 : 5;
+            int tropismPenalty = 0;
+            // Tropism: ถ้ามีราชาอยู่ใกล้กับราชินีศัตรู จะถูกลงโทษ (ยิ่งใกล้ ยิ่งโดนโทษมาก)
+            for (int x = 0; x < 8; x++)
+            {
+                for (int y = 0; y < 8; y++)
+                {
+                    if (board.Board[x, y] == enemyQueen)
+                    {
+                        int dist = Math.Abs(king.X - x) + Math.Abs(king.Y - y);
+                        tropismPenalty += Math.Max(0, (14 - dist)) * settings.TropismWeight;
+                    }
+                }
+
+            }
+            return score - tropismPenalty;
+        }
+
+        // Find King (ใช้สำหรับประเมินความปลอดภัยของ King และการคำนวณอื่นๆ ที่เกี่ยวข้องกับตำแหน่งของ King)
+        private static Square FindKing(ChessBoardModel board, bool forWhite)
+        {
+            int king = forWhite ? 6 : -6;
+            for (int x = 0; x < 8; x++)
+                for (int y = 0; y < 8; y++)
+                    if (board.Board[x, y] == king)
+                        return new Square(x, y);
+
+            return new Square(-1, -1);
+        }
+        // Hanging Pieces Evaluation: ประเมินว่ามีหมากตัวไหนที่ถูกโจมตีโดยศัตรูแต่ไม่มีการป้องกัน (เช่น Knight ที่ถูกคุมแต่ไม่มีหมากป้องกันอยู่เลย จะโดนโทษ)
+        private static int EvaluateHangingPieces(ChessBoardModel board, bool forWhite, int hangingPenalty, List<MoveModel> ownMoves, List<MoveModel> enemyMoves)
+        {
+            int score = 0;
+
+            for (int x = 0; x < 8; x++)
+            {
+                for (int y = 0; y < 8; y++)
+                {
+                    int piece = board.Board[x, y];
+                    if (piece == 0 || Math.Abs(piece) == 1 || Math.Abs(piece) == 6) continue;
+                    if (forWhite && piece < 0) continue;
+                    if (!forWhite && piece > 0) continue;
+
+                    bool attacked = enemyMoves.Exists(m => m.ToX == x && m.ToY == y);
+                    bool defended = ownMoves.Exists(m => m.ToX == x && m.ToY == y);
+                    if (attacked && !defended)
+                        score += hangingPenalty;
+                }
+            }
+
+            return score;
+        }
+        // Get Moves For Side (ใช้สำหรับประเมิน Mobility และ Threats โดยการสร้างรายการเดินที่ถูกต้องสำหรับฝ่ายนั้นๆ)
+        private static List<MoveModel> GetMovesForSide(ChessBoardModel board, bool forWhite)
+        {
+            var clone = board.Clone();
+            clone.IsWhiteTurn = forWhite;
+            return MoveGenerator.GenerateMoves(clone);
+        }
+
     }
 }
