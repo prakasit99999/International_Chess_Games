@@ -53,7 +53,7 @@ public class PlayerRowUI : MonoBehaviour
     {
         if (InviteManager.Instance != null && playerData != null)
         {
-            InviteManager.Instance.SendInvite(playerData.UserId, 2, playerData.username); // matchMode 2 = Normal
+            InviteManager.Instance.SendInvite(playerData.userId, 2, playerData.username); // matchMode 2 = Normal
         }
         else
         {

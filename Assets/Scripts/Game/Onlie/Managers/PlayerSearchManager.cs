@@ -97,7 +97,7 @@ public class PlayerSearchManager : MonoBehaviour
         {
             if (!string.IsNullOrEmpty(currentUsername) && player.username == currentUsername)
             {
-                currentUserId = player.UserId;
+                currentUserId = player.userId;
                 Debug.Log($"🆔 Captured Current User ID: {currentUserId}");
                 continue;
             }
@@ -111,7 +111,7 @@ public class PlayerSearchManager : MonoBehaviour
             count++;
         }
 
-        // Debug.Log($"✅ พบผู้เล่น {results.Length} คน (แสดง {count} คน - ซ่อนตัวเอง)");
+        Debug.Log($"✅ พบผู้เล่น {results.Length} คน (แสดง {count} คน - ซ่อนตัวเอง)");
     }
 
     private void OnSearchError(string error)

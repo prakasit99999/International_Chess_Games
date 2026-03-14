@@ -50,39 +50,41 @@
     <Analyzer Include="D:\Project\International_Chess_Games\Library\PackageCache\com.unity.ai.inference@587873fd5e1b\Runtime\Core\SourceGenerator\SourceGenerators.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Tools\AssetTools.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Tools\Utils\AssetSearchUtils.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Tools\Utils\SerializedPropertyUtils.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Tools\SceneTools.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Tools\CameraTools.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Tools\Utils\AssetMatchCategories.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Tools\Utils\AssetMatchQuality.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Tools\Utils\BoundsUtils.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Tools\Utils\RequestExtensions.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Tools\Utils\SceneObjectResultMarkdownExporter.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Tools\ProjectTools.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Tools\ScreenshotTools.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Tools\Utils\CameraUtils.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Tools\Utils\AssetHierarchyUtils.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Tools\UITools.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Tools\PlayModeTools.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Tools\Utils\SerializedObjectJsonAdapter.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Tools\UserGuidelineTools.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Tools\ImageOutput.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Tools\SettingsTools.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Tools\Utils\AssetResultMarkdownExporter.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Tools\Utils\SerializedObjectUtils.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Tools\Utils\TextureUtils.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Tools\Utils\SerializedPropertyJsonAdapter.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Tools\Utils\BinarySearchUtils.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Tools\FileTools.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Tools\Utils\FileUtils.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Tools\PackageTools.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Tools\ObjectTools.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Tools\AssemblyInfo.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@d940ec41569d\Editor\Tools\AssetTools.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@d940ec41569d\Editor\Tools\Utils\AssetSearchUtils.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@d940ec41569d\Editor\Tools\Utils\SerializedPropertyUtils.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@d940ec41569d\Editor\Tools\SceneTools.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@d940ec41569d\Editor\Tools\CameraTools.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@d940ec41569d\Editor\Tools\Utils\AssetMatchCategories.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@d940ec41569d\Editor\Tools\Utils\AssetMatchQuality.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@d940ec41569d\Editor\Tools\Utils\BoundsUtils.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@d940ec41569d\Editor\Tools\Utils\RequestExtensions.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@d940ec41569d\Editor\Tools\Utils\SceneObjectResultMarkdownExporter.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@d940ec41569d\Editor\Tools\ProjectTools.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@d940ec41569d\Editor\Tools\ScreenshotTools.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@d940ec41569d\Editor\Tools\Utils\CameraUtils.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@d940ec41569d\Editor\Tools\Utils\AssetHierarchyUtils.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@d940ec41569d\Editor\Tools\UITools.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@d940ec41569d\Editor\Tools\PlayModeTools.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@d940ec41569d\Editor\Tools\Utils\SerializedObjectJsonAdapter.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@d940ec41569d\Editor\Tools\UserGuidelineTools.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@d940ec41569d\Editor\Tools\ImageOutput.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@d940ec41569d\Editor\Tools\SettingsTools.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@d940ec41569d\Editor\Tools\Utils\AssetResultMarkdownExporter.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@d940ec41569d\Editor\Tools\Utils\SerializedObjectUtils.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@d940ec41569d\Editor\Tools\Utils\TextureUtils.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@d940ec41569d\Editor\Tools\Utils\SerializedPropertyJsonAdapter.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@d940ec41569d\Editor\Tools\MultiAngleSceneViewTool.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@d940ec41569d\Editor\Tools\Utils\BinarySearchUtils.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@d940ec41569d\Editor\Tools\FileTools.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@d940ec41569d\Editor\Tools\SkillsTools.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@d940ec41569d\Editor\Tools\Utils\FileUtils.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@d940ec41569d\Editor\Tools\PackageTools.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@d940ec41569d\Editor\Tools\ObjectTools.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@d940ec41569d\Editor\Tools\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Tools\Unity.AI.Assistant.Tools.Editor.asmdef" />
+    <None Include="Library\PackageCache\com.unity.ai.assistant@d940ec41569d\Editor\Tools\Unity.AI.Assistant.Tools.Editor.asmdef" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
@@ -738,7 +740,7 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="AiEditorToolsSdk">
-      <HintPath>Library\PackageCache\com.unity.ai.toolkit@04b39586d864\Modules\Sdk\Editor\AiEditorToolsSdk.dll</HintPath>
+      <HintPath>Library\PackageCache\com.unity.ai.toolkit@97783faabe3b\Modules\Sdk\Editor\AiEditorToolsSdk.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.VisualScripting.TextureAssets">
@@ -1260,8 +1262,8 @@
     <ProjectReference Include="Unity.Serialization.csproj" />
     <ProjectReference Include="Unity.AI.Toolkit.Compliance.csproj" />
     <ProjectReference Include="Unity.AI.Search.Editor.csproj" />
-    <ProjectReference Include="UnityEngine.UI.csproj" />
     <ProjectReference Include="UnityEditor.UI.csproj" />
+    <ProjectReference Include="UnityEngine.UI.csproj" />
     <ProjectReference Include="UnityEngine.TestRunner.csproj" />
     <ProjectReference Include="UnityEditor.TestRunner.csproj" />
   </ItemGroup>

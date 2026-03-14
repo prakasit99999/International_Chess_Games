@@ -7,7 +7,7 @@ namespace Project.Services
 {
     public class InviteApi : MonoBehaviour
     {
-        private string baseUrl = "http://localhost:8080/api/invites";
+        private string baseUrl = "http://localhost:8080/api/Invites";
 
         // --- 1. Send Invite ---
         public IEnumerator SendInvite(InviteRequest requestData, Action<bool, string, string> callback)
@@ -103,7 +103,9 @@ namespace Project.Services
 
                 if (request.result == UnityWebRequest.Result.Success)
                 {
-                    var response = JsonUtility.FromJson<InviteResponse>(request.downloadHandler.text);
+                    string raw = request.downloadHandler.text;
+                    Debug.Log($"✅ Accept Invite Response: {raw}");
+                    var response = JsonUtility.FromJson<InviteResponse>(raw);
                     callback(true, response);
                 }
                 else
@@ -128,17 +130,17 @@ namespace Project.Services
         }
 
         // --- 5. Get Sent Invites (Sender Polling) ---
-        public IEnumerator GetSentInvites(int userId, Action<bool, InviteResponse[]> callback)
+        public IEnumerator GetSentInvites(Action<bool, InviteResponse[]> callback)
         {
-            string url = $"{baseUrl}/sent/{userId}";
+            string url = $"{baseUrl}/sent";
             yield return GetInvitesRequest(url, callback);
         }
 
         // --- 6. Get Inbox Invites (Receiver Polling) ---
-        public IEnumerator GetInboxInvites(int userId, Action<bool, InviteResponse[]> callback)
+        public IEnumerator GetInboxInvites(Action<bool, InviteResponse[]> callback)
         {
-            string url = $"{baseUrl}/inbox/{userId}";
-            // Or just /api/invites/inbox/{userId} if baseUrl is /api/invites
+            string url = $"{baseUrl}/inbox";
+            // API expects user from token
             yield return GetInvitesRequest(url, callback);
         }
 

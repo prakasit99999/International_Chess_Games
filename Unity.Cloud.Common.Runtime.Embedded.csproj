@@ -36,7 +36,7 @@
   </PropertyGroup>
   <PropertyGroup>
     <UnityProjectGenerator>Package</UnityProjectGenerator>
-    <UnityProjectGeneratorVersion>2.0.26</UnityProjectGeneratorVersion>
+    <UnityProjectGeneratorVersion>2.0.27</UnityProjectGeneratorVersion>
     <UnityProjectGeneratorStyle>SDK</UnityProjectGeneratorStyle>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>WebGL:20</UnityBuildTarget>
@@ -49,26 +49,26 @@
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\Tools\BuildPipeline\Unity.SourceGenerators\Unity.UIToolkit.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@77b886928d77\Embedded\Editor\com.unity.cloud.common\Runtime\Networking\Websockets\PlatformSupport\Native\MainThreadInvoker.cs" />
-    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@77b886928d77\Embedded\Editor\com.unity.cloud.common\Runtime\Utilities\Threading\UnityMainThreadSchedulerGrabber.cs" />
-    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@77b886928d77\Embedded\Editor\com.unity.cloud.common\Runtime\Utilities\Logging\UnityLogOutput.cs" />
-    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@77b886928d77\Embedded\Editor\com.unity.cloud.common\Runtime\Networking\Websockets\PlatformSupport\Native\NativeWebSocketClient.cs" />
-    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@77b886928d77\Embedded\Editor\com.unity.cloud.common\Runtime\Interoperability\Clipboard\ClipboardFactory.cs" />
-    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@77b886928d77\Embedded\Editor\com.unity.cloud.common\Runtime\Interoperability\Clipboard\BrowserClipboard.cs" />
-    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@77b886928d77\Embedded\Editor\com.unity.cloud.common\Runtime\Interoperability\Clipboard\UnityClipboard.cs" />
-    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@77b886928d77\Embedded\Editor\com.unity.cloud.common\Runtime\Networking\Http\NativeDownloadHandler.cs" />
-    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@77b886928d77\Embedded\Editor\com.unity.cloud.common\Runtime\Interoperability\BrowserKeyValueStore.cs" />
-    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@77b886928d77\Embedded\Editor\com.unity.cloud.common\Runtime\Networking\Http\UnityHttpClient.cs" />
-    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@77b886928d77\Embedded\Editor\com.unity.cloud.common\Runtime\Networking\Websockets\WebSocketClientFactory.cs" />
-    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@77b886928d77\Embedded\Editor\com.unity.cloud.common\Runtime\Interoperability\CommonBrowserInterop.cs" />
-    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@77b886928d77\Embedded\Editor\com.unity.cloud.common\Runtime\Utilities\Logging\UnityLoggerProvider.cs" />
-    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@77b886928d77\Embedded\Editor\com.unity.cloud.common\Runtime\Utilities\SingleReaderSingleWriterNativeStream.cs" />
-    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@77b886928d77\Embedded\Editor\com.unity.cloud.common\Runtime\Networking\Http\LegacyRequestHandler.cs" />
-    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@77b886928d77\Embedded\Editor\com.unity.cloud.common\Runtime\Utilities\Service\UnityServiceHostResolverFactory.cs" />
-    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@77b886928d77\Embedded\Editor\com.unity.cloud.common\Runtime\AssemblyInfo.cs" />
+    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@5d438e506474\Embedded\Editor\com.unity.cloud.common\Runtime\Networking\Websockets\PlatformSupport\Native\MainThreadInvoker.cs" />
+    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@5d438e506474\Embedded\Editor\com.unity.cloud.common\Runtime\Utilities\Threading\UnityMainThreadSchedulerGrabber.cs" />
+    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@5d438e506474\Embedded\Editor\com.unity.cloud.common\Runtime\Utilities\Logging\UnityLogOutput.cs" />
+    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@5d438e506474\Embedded\Editor\com.unity.cloud.common\Runtime\Networking\Websockets\PlatformSupport\Native\NativeWebSocketClient.cs" />
+    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@5d438e506474\Embedded\Editor\com.unity.cloud.common\Runtime\Interoperability\Clipboard\ClipboardFactory.cs" />
+    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@5d438e506474\Embedded\Editor\com.unity.cloud.common\Runtime\Interoperability\Clipboard\BrowserClipboard.cs" />
+    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@5d438e506474\Embedded\Editor\com.unity.cloud.common\Runtime\Interoperability\Clipboard\UnityClipboard.cs" />
+    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@5d438e506474\Embedded\Editor\com.unity.cloud.common\Runtime\Networking\Http\NativeDownloadHandler.cs" />
+    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@5d438e506474\Embedded\Editor\com.unity.cloud.common\Runtime\Interoperability\BrowserKeyValueStore.cs" />
+    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@5d438e506474\Embedded\Editor\com.unity.cloud.common\Runtime\Networking\Http\UnityHttpClient.cs" />
+    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@5d438e506474\Embedded\Editor\com.unity.cloud.common\Runtime\Networking\Websockets\WebSocketClientFactory.cs" />
+    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@5d438e506474\Embedded\Editor\com.unity.cloud.common\Runtime\Interoperability\CommonBrowserInterop.cs" />
+    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@5d438e506474\Embedded\Editor\com.unity.cloud.common\Runtime\Utilities\Logging\UnityLoggerProvider.cs" />
+    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@5d438e506474\Embedded\Editor\com.unity.cloud.common\Runtime\Utilities\SingleReaderSingleWriterNativeStream.cs" />
+    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@5d438e506474\Embedded\Editor\com.unity.cloud.common\Runtime\Networking\Http\LegacyRequestHandler.cs" />
+    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@5d438e506474\Embedded\Editor\com.unity.cloud.common\Runtime\Utilities\Service\UnityServiceHostResolverFactory.cs" />
+    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@5d438e506474\Embedded\Editor\com.unity.cloud.common\Runtime\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Library\PackageCache\com.unity.asset-manager-for-unity@77b886928d77\Embedded\Editor\com.unity.cloud.common\Runtime\Unity.Cloud.Common.Runtime.Embedded.asmdef" />
+    <None Include="Library\PackageCache\com.unity.asset-manager-for-unity@5d438e506474\Embedded\Editor\com.unity.cloud.common\Runtime\Unity.Cloud.Common.Runtime.Embedded.asmdef" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
@@ -1142,8 +1142,8 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Unity.Cloud.Common.Embedded.csproj" />
-    <ProjectReference Include="UnityEngine.UI.csproj" />
     <ProjectReference Include="UnityEditor.UI.csproj" />
+    <ProjectReference Include="UnityEngine.UI.csproj" />
     <ProjectReference Include="UnityEngine.TestRunner.csproj" />
     <ProjectReference Include="UnityEditor.TestRunner.csproj" />
   </ItemGroup>

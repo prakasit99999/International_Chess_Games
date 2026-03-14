@@ -87,7 +87,11 @@ namespace AIEngine.Adapters
 
         public (Vector2Int from, Vector2Int to)? GetCalculatedMove()
         {
-            if (_calculatedResult.Value.Move != null)
+            if (!_calculatedResult.HasValue || _calculatedResult.Value.Move == null)
+            {
+                return null;
+            }
+            else
             {
                 var move = _calculatedResult.Value.Move;
 
@@ -104,12 +108,11 @@ namespace AIEngine.Adapters
 
                 return (from, to);
             }
-            return null;
         }
 
         public void ClearCalculatedMove()
         {
-            _calculatedResult = new SearchResult();
+            _calculatedResult = null;
         }
 
         // 🔹 ตัวช่วยแปลง enum

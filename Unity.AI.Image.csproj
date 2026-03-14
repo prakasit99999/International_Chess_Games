@@ -36,7 +36,7 @@
   </PropertyGroup>
   <PropertyGroup>
     <UnityProjectGenerator>Package</UnityProjectGenerator>
-    <UnityProjectGeneratorVersion>2.0.26</UnityProjectGeneratorVersion>
+    <UnityProjectGeneratorVersion>2.0.27</UnityProjectGeneratorVersion>
     <UnityProjectGeneratorStyle>SDK</UnityProjectGeneratorStyle>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>WebGL:20</UnityBuildTarget>
@@ -49,233 +49,206 @@
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\Tools\BuildPipeline\Unity.SourceGenerators\Unity.UIToolkit.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Utilities\VideoResultExtensions.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Windows\TextureGeneratorInspectorButton.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Components\Pixelate\PixelateTargetSizeSlider.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Components\ModelTitleCard\ModelTitleCard.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Components\ImageReference\PromptImageReference.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Components\StateDebugger\TimelineControls.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Services\Stores\Selectors\DoodleWindowSelectors.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Services\Undo\AssetUndoManager.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Components\PreviewSizeSlider\PreviewSizeSlider.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Components\ImageReference\CompositionImageReference.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Utilities\WebUtils.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Utilities\AssetContextExtensions.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Services\Stores\Actions\GenerationResultsActions.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Components\Pixelate\PixelateKeepImageSizeToggle.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Utilities\AssetReferenceExtensions.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Services\Stores\Slices\GenerationResultsSlice.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Components\Pixelate\PixelateOptions.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Components\GenerateButton\GenerateButton.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Components\Prompt\Prompt.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Components\GenerateVariationsSlider\GenerateVariationsSlider.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Components\ImageReference\PaletteImageReference.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Utilities\GenerationSettingExtensions.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Services\Stores\Actions\DebuggerActions.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Services\Stores\States\SpritesheetSettingsState.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\AssemblyInfo.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Services\SessionPersistence\MemoryPersistence.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Services\Stores\Slices\DebuggerSlice.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Utilities\FileUtilities.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Services\SessionPersistence\ObjectPersistence.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Services\SessionPersistence\SharedStore.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Components\ToastArea\ToastArea.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Panels\UpscalePanel\UpscalePanel.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Components\DoodleView\DoodleView.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Windows\DoodleWindow.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Components\SpritesheetSettings\SpritesheetSettings.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Windows\TextureGeneratorObjectPicker.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Panels\GeneratePanel\GeneratePanel.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Components\ImageReference\InpaintMaskImageReference.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Components\ImageReference\LastImageReference.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Services\Stores\Actions\Creators\AssetActionCreator.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Services\Stores\Slices\GenerationSettingsSlice.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Utilities\AssetUtils.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Services\Stores\States\Settings.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Components\ImageReference\DepthImageReference.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Services\SessionPersistence\TextureGeneratorSettings.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Utilities\ImageReferenceExtensions.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Components\ImageReference\PoseImageReference.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Components\AssetTitleCard\SelectedAssetTitleCard.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Services\Stores\Selectors\GenerationSettingsSelectors.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Utilities\GenerationRecovery.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Components\SearchBar\SearchBar.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Services\Undo\DoodleWindowUndoManager.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Services\Stores\Actions\SessionActions.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Panels\InpaintingPanel\InpaintingPanel.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Windows\GenerationMetadataWindow\GenerationMetadataWindow.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Components\UpscaleFactorSlider\UpscaleFactorSlider.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Components\VideoPreview\VideoPreview.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Services\Stores\States\GenerationResult.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Interfaces\Sprite.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Windows\TextureGeneratorWindow.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Services\Stores\States\GenerationResults.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Components\GenerationSelector\GenerationTile.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Components\AddToPromptButton\AddToPromptButton.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Services\Stores\Actions\Backend\Generation.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Components\AddToPromptButton\AddToPromptWindow.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Components\SpritesheetTrim\SpritesheetTrim.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Services\Stores\Actions\GenerationSettingsActions.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Components\DoodlePad\DoodlePainter.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Components\ModelTitleCard\SelectedModelTitleCard.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Services\Contexts\ExternalDoodleEditor.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Components\GenerateDurationSlider\GenerateDurationSlider.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Services\Stores\Actions\Creators\ContextAction.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Utilities\HandledFailureException.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Components\GenerationOptions\GenerationOptions.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Components\GenericInspector\GenericInspector.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Services\Stores\Selectors\SessionSelectors.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Components\Pixelate\PixelateModeSelector.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Components\StateDebugger\StateData.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Panels\SpritesheetPanel\SpritesheetPanel.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Windows\SpritesheetSettingsWindow.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Services\Stores\Actions\DoodleWindowActions.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Services\Stores\Slices\DoodleWindowSlice.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Utilities\TextureUtils.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Services\Stores\States\GenerationSettings.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Components\RefinementModeTabView\RefinementModeTabView.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Components\AssetTitleCard\AssetTitleCard.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Components\Pixelate\PixelatePixelBlockSizeSlider.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Panels\PixelatePanel\PixelatePanel.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Services\Stores\States\GenerationSetting.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Components\AddToPromptButton\AddToPromptView.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Components\ImageReference\FeatureImageReference.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Utilities\TextureSkeletonExtensions.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Services\Stores\AIImageStore.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Panels\AIPanel\AIPanel.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Utilities\TextureResultExtensions.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Panels\RemoveBackgroundPanel\RemoveBackgroundPanel.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Services\Stores\Actions\Backend\Quote.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Components\ImageReference\StyleImageReference.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Services\Stores\States\DoodleWindowState.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Components\DoodlePad\DoodleCursorOverlay.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Components\GenerationSelector\GenerationSelector.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Services\Stores\Actions\Payloads\Payload.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Utilities\SuperProxyExtensions.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Utilities\VideoPreviewPlayer.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Services\Stores\States\TextureResult.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Services\Stores\Selectors\DebuggerSelectors.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Components\ModelSelectorButton\ModelSelectorButton.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Utilities\GridViewExtensions.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Components\StateDebugger\StateWrapper.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Services\Stores\Selectors\GenerationResultsSelectors.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Components\ImageReference\LineArtImageReference.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Utilities\ProgressUtils.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Services\Stores\States\Sessions.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Components\StateDebugger\StateDebugger.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Windows\GenerationMetadataWindow\GenerationMetadataContent.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Services\Stores\Selectors\AppSelectors.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Components\ImageReference\BaseImageReference.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Components\StateDebugger\StateHistory.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Panels\RecolorPanel\RecolorPanel.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Components\Pixelate\PixelateOutlineThicknessSlider.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Services\Stores\Actions\AppActions.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Utilities\SplitterExtensions.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Components\ImageReferenceStack\ImageReferenceStack.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Utilities\VideoResultFrameCache.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Services\SessionPersistence\AppData.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Components\ImageReference\FirstImageReference.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Components\DoodlePad\DoodlePad.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Services\Stores\States\DebuggerState.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Components\TextureGenerator\TextureGenerator.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Services\Stores\Slices\SessionSlice.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Components\DimensionsDropDown\DimensionsDropDown.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Utilities\ImageReferenceTypeExtensions.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Services\Stores\States\PixelateSettings.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Services\Stores\Actions\Creators\AssetContext.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Components\DoodlePad\DoodlePadManipulator.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Image\Windows\TextureGeneratorInspectorButton.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Image\Components\Pixelate\PixelateTargetSizeSlider.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Image\Components\ModelTitleCard\ModelTitleCard.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Image\Components\ImageReference\PromptImageReference.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Image\Components\StateDebugger\TimelineControls.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Image\Services\Stores\Selectors\DoodleWindowSelectors.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Image\Services\Undo\AssetUndoManager.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Image\Components\PreviewSizeSlider\PreviewSizeSlider.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Image\Components\ImageReference\CompositionImageReference.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Image\Utilities\WebUtils.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Image\Utilities\AssetContextExtensions.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Image\Services\Stores\Actions\GenerationResultsActions.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Image\Services\Stores\States\PreviewSettings.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Image\Components\Pixelate\PixelateKeepImageSizeToggle.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Image\Utilities\AssetReferenceExtensions.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Image\Services\Stores\Slices\GenerationResultsSlice.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Image\Components\Pixelate\PixelateOptions.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Image\Components\GenerateButton\GenerateButton.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Image\Components\Prompt\Prompt.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Image\Components\GenerateVariationsSlider\GenerateVariationsSlider.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Image\Components\ImageReference\PaletteImageReference.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Image\Utilities\GenerationSettingExtensions.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Image\Services\Stores\Actions\DebuggerActions.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Image\AssemblyInfo.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Image\Services\SessionPersistence\MemoryPersistence.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Image\Services\Stores\Slices\DebuggerSlice.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Image\Utilities\FileUtilities.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Image\Services\SessionPersistence\ObjectPersistence.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Image\Services\SessionPersistence\SharedStore.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Image\Components\ToastArea\ToastArea.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Image\Panels\UpscalePanel\UpscalePanel.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Image\Components\DoodleView\DoodleView.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Image\Windows\DoodleWindow.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Image\Windows\TextureGeneratorObjectPicker.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Image\Panels\GeneratePanel\GeneratePanel.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Image\Services\Stores\Actions\GenerationResultsSuperProxyValidations.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Image\Components\ImageReference\InpaintMaskImageReference.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Image\Services\Stores\Actions\Creators\AssetActionCreator.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Image\Services\Stores\Slices\GenerationSettingsSlice.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Image\Utilities\AssetUtils.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Image\Services\Stores\States\Settings.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Image\Components\ImageReference\DepthImageReference.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Image\Services\SessionPersistence\TextureGeneratorSettings.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Image\Utilities\ImageReferenceExtensions.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Image\Components\ImageReference\PoseImageReference.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Image\Components\AssetTitleCard\SelectedAssetTitleCard.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Image\Services\Stores\Selectors\GenerationSettingsSelectors.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Image\Components\SearchBar\SearchBar.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Image\Services\Undo\DoodleWindowUndoManager.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Image\Services\Stores\Actions\SessionActions.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Image\Panels\InpaintingPanel\InpaintingPanel.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Image\Windows\GenerationMetadataWindow\GenerationMetadataWindow.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Image\Components\UpscaleFactorSlider\UpscaleFactorSlider.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Image\Services\Stores\States\GenerationResult.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Image\Interfaces\Sprite.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Image\Windows\TextureGeneratorWindow.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Image\Services\Stores\States\GenerationResults.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Image\Components\GenerationSelector\GenerationTile.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Image\Components\AddToPromptButton\AddToPromptButton.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Image\Services\Stores\Actions\GenerationSettingsActions.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Image\Components\DoodlePad\DoodlePainter.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Image\Components\ModelTitleCard\SelectedModelTitleCard.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Image\Services\Contexts\ExternalDoodleEditor.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Image\Services\Stores\Actions\Creators\ContextAction.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Image\Utilities\HandledFailureException.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Image\Components\GenerationOptions\GenerationOptions.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Image\Components\GenericInspector\GenericInspector.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Image\Services\Stores\Selectors\SessionSelectors.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Image\Components\Pixelate\PixelateModeSelector.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Image\Components\StateDebugger\StateData.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Image\Services\Stores\Actions\DoodleWindowActions.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Image\Services\Stores\Slices\DoodleWindowSlice.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Image\Utilities\TextureUtils.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Image\Services\Stores\States\GenerationSettings.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Image\Components\RefinementModeTabView\RefinementModeTabView.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Image\Components\AssetTitleCard\AssetTitleCard.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Image\Components\Pixelate\PixelatePixelBlockSizeSlider.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Image\Panels\PixelatePanel\PixelatePanel.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Image\Services\Stores\States\GenerationSetting.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Image\Utilities\GenerationRecoveryUtils.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Image\Components\ImageReference\FeatureImageReference.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Image\Utilities\TextureSkeletonExtensions.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Image\Services\Stores\AIImageStore.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Image\Panels\AIPanel\AIPanel.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Image\Utilities\TextureResultExtensions.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Image\Panels\RemoveBackgroundPanel\RemoveBackgroundPanel.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Image\Components\ImageReference\StyleImageReference.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Image\Services\Stores\States\DoodleWindowState.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Image\Components\DoodlePad\DoodleCursorOverlay.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Image\Components\GenerationSelector\GenerationSelector.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Image\Services\Stores\Actions\Payloads\Payload.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Image\Services\Stores\Actions\GenerationResultsSuperProxyActions.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Image\Utilities\SuperProxyExtensions.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Image\Services\Stores\States\TextureResult.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Image\Services\Stores\Selectors\DebuggerSelectors.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Image\Components\ModelSelectorButton\ModelSelectorButton.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Image\Utilities\GridViewExtensions.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Image\Components\StateDebugger\StateWrapper.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Image\Services\Stores\Selectors\GenerationResultsSelectors.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Image\Components\ImageReference\LineArtImageReference.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Image\Utilities\ProgressUtils.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Image\Services\Stores\States\Sessions.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Image\Components\StateDebugger\StateDebugger.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Image\Windows\GenerationMetadataWindow\GenerationMetadataContent.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Image\Services\Stores\Selectors\AppSelectors.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Image\Components\ImageReference\BaseImageReference.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Image\Components\StateDebugger\StateHistory.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Image\Panels\RecolorPanel\RecolorPanel.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Image\Components\Pixelate\PixelateOutlineThicknessSlider.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Image\Services\Stores\Actions\AppActions.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Image\Utilities\SplitterExtensions.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Image\Components\ImageReferenceStack\ImageReferenceStack.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Image\Services\SessionPersistence\AppData.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Image\Components\DoodlePad\DoodlePad.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Image\Services\Stores\States\DebuggerState.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Image\Components\TextureGenerator\TextureGenerator.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Image\Services\Stores\Slices\SessionSlice.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Image\Components\DimensionsDropDown\DimensionsDropDown.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Image\Utilities\ImageReferenceTypeExtensions.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Image\Services\Stores\States\PixelateSettings.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Image\Services\Stores\Actions\Creators\AssetContext.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Image\Components\DoodlePad\DoodlePadManipulator.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Components\ImageReference\InpaintMaskImageReference.uxml" />
-    <None Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Components\Pixelate\PixelateModeSelector.uxml" />
-    <None Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Components\ImageReference\LastImageReference.uxml" />
-    <None Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Components\ImageReference\BaseImageReference.uss" />
-    <None Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Components\Prompt\Prompt.uxml" />
-    <None Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Components\DoodlePad\DoodlePad.uxml" />
-    <None Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Components\GenerateDurationSlider\GenerateDurationSlider.uxml" />
-    <None Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Components\AssetTitleCard\AssetTitleCard.uxml" />
-    <None Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Components\ImageReference\LineArtImageReference.uxml" />
-    <None Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Components\StateDebugger\TimelineControls.uxml" />
-    <None Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Components\SearchBar\SearchBar.uxml" />
-    <None Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Components\ModelTitleCard\ModelTitleCard.uxml" />
-    <None Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Components\ImageReference\ImageReferenceDoodle.uxml" />
-    <None Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Components\RefinementModeTabView\RefinementModeTabView.uss" />
-    <None Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Components\RefinementModeTabView\RefinementModeTabView.uxml" />
-    <None Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Components\SpritesheetTrim\SpritesheetTrim.uxml" />
-    <None Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Components\AddToPromptButton\AddToPromptView.uxml" />
-    <None Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Components\AddToPromptButton\AddToPromptButton.uxml" />
-    <None Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Components\ImageReference\BaseImageReference.uxml" />
-    <None Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Panels\GeneratePanel\GeneratePanel.uss" />
-    <None Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Components\ImageReferenceStack\ImageReferenceStack.uxml" />
-    <None Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Components\Pixelate\PixelateOptions.uxml" />
-    <None Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Panels\InpaintingPanel\InpaintingPanel.uss" />
-    <None Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Components\PreviewSizeSlider\PreviewSizeSlider.uxml" />
-    <None Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Components\GenerationSelector\GenerationSelector.uss" />
-    <None Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Components\ImageReference\PaletteImageReference.uxml" />
-    <None Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Components\VideoPreview\VideoPreview.uxml" />
-    <None Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Components\GenerationSelector\GenerationSelector.uxml" />
-    <None Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Panels\RecolorPanel\RecolorPanel.uss" />
-    <None Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Components\DoodlePad\DoodlePaint.shader" />
-    <None Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Components\SpritesheetSettings\SpritesheetSettings.uxml" />
-    <None Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Components\DimensionsDropDown\DimensionsDropDown.uxml" />
-    <None Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Panels\RemoveBackgroundPanel\RemoveBackgroundPanel.uxml" />
-    <None Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Panels\PixelatePanel\PixelatePanel.uxml" />
-    <None Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Panels\AIPanel\AIPanel.uss" />
-    <None Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Unity.AI.Image.asmdef" />
-    <None Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Components\ModelSelectorButton\ModelSelectorButton.uxml" />
-    <None Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Components\ModelTitleCard\ModelTitleCard.uss" />
-    <None Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Components\ImageReference\FeatureImageReference.uxml" />
-    <None Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Components\UpscaleFactorSlider\UpscaleFactorSlider.uxml" />
-    <None Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Components\GenerationSelector\GenerationTile.uxml" />
-    <None Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Components\GenerateButton\GenerateButton.uss" />
-    <None Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Windows\GenerationMetadataWindow\GenerationMetadataWindow.uxml" />
-    <None Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Components\ImageReference\FirstImageReference.uxml" />
-    <None Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Components\ImageReference\ImageReference.uss" />
-    <None Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Panels\InpaintingPanel\InpaintingPanel.uxml" />
-    <None Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Components\DoodleView\DoodleView.uxml" />
-    <None Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Components\ImageReference\CompositionImageReference.uxml" />
-    <None Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Components\Pixelate\PixelateOutlineThicknessSlider.uxml" />
-    <None Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Components\AddToPromptButton\OperatorTemplate.uxml" />
-    <None Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Panels\AIPanel\AIPanel.uxml" />
-    <None Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Panels\UpscalePanel\UpscalePanel.uss" />
-    <None Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Components\ImageReferenceStack\ImageReferenceStack.uss" />
-    <None Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Components\Pixelate\PixelateKeepImageSizeToggle.uxml" />
-    <None Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Components\Pixelate\PixelateTargetSizeSlider.uxml" />
-    <None Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Components\StateDebugger\StateDebugger.uxml" />
-    <None Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Components\GenerateVariationsSlider\GenerateVariationsSlider.uxml" />
-    <None Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Components\ImageReference\StyleImageReference.uxml" />
-    <None Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Components\GenerateButton\GenerateButton.uxml" />
-    <None Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Panels\RemoveBackgroundPanel\RemoveBackgroundPanel.uss" />
-    <None Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Components\ImageReference\PromptImageReference.uxml" />
-    <None Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Panels\GeneratePanel\GeneratePanel.uxml" />
-    <None Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Components\ImageReference\PaletteImageReference.uss" />
-    <None Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Panels\PixelatePanel\PixelatePanel.uss" />
-    <None Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Components\DoodleView\DoodleView.uss" />
-    <None Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Windows\GenerationMetadataWindow\GenerationMetadataWindow.uss" />
-    <None Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Panels\RecolorPanel\RecolorPanel.uxml" />
-    <None Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Components\AddToPromptButton\AddToPromptView.uss" />
-    <None Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Components\ImageReference\ImageReferenceObjectField.uss" />
-    <None Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Components\TextureGenerator\TextureGenerator.uss" />
-    <None Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Windows\GenerationMetadataWindow\GenerationMetadataDoodleTemplate.uxml" />
-    <None Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Components\DoodlePad\DoodleTransform.shader" />
-    <None Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Components\GenerationSelector\GenerationTile.uss" />
-    <None Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Panels\SpritesheetPanel\SpritesheetPanel.uxml" />
-    <None Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Components\ImageReference\ImageReferenceStrength.uxml" />
-    <None Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Components\ImageReference\ImageReferenceObjectField.uxml" />
-    <None Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Components\ImageReference\PoseImageReference.uxml" />
-    <None Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Components\VideoPreview\VideoPreview.uss" />
-    <None Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Components\DoodlePad\DoodlePad.uss" />
-    <None Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Components\SearchBar\SearchBar.uss" />
-    <None Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Panels\SpritesheetPanel\SpritesheetPanel.uss" />
-    <None Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Components\ImageReference\ImageReferenceHeader.uss" />
-    <None Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Components\GenerationOptions\GenerationOptions.uxml" />
-    <None Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Components\Prompt\Prompt.uss" />
-    <None Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Components\ImageReference\ImageReferenceHeader.uxml" />
-    <None Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Components\ImageReference\DepthImageReference.uxml" />
-    <None Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Components\Pixelate\PixelatePixelBlockSizeSlider.uxml" />
-    <None Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Components\ModelTitleCard\SelectedModelTitleCard.uxml" />
-    <None Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Panels\UpscalePanel\UpscalePanel.uxml" />
-    <None Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Image\Components\TextureGenerator\TextureGenerator.uxml" />
+    <None Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Image\Components\ImageReference\InpaintMaskImageReference.uxml" />
+    <None Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Image\Components\Pixelate\PixelateModeSelector.uxml" />
+    <None Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Image\Components\ImageReference\BaseImageReference.uss" />
+    <None Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Image\Components\Prompt\Prompt.uxml" />
+    <None Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Image\Components\DoodlePad\DoodlePad.uxml" />
+    <None Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Image\Components\AssetTitleCard\AssetTitleCard.uxml" />
+    <None Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Image\Components\ImageReference\LineArtImageReference.uxml" />
+    <None Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Image\Components\StateDebugger\TimelineControls.uxml" />
+    <None Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Image\Components\SearchBar\SearchBar.uxml" />
+    <None Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Image\Components\ModelTitleCard\ModelTitleCard.uxml" />
+    <None Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Image\Components\ImageReference\ImageReferenceDoodle.uxml" />
+    <None Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Image\Components\RefinementModeTabView\RefinementModeTabView.uss" />
+    <None Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Image\Components\RefinementModeTabView\RefinementModeTabView.uxml" />
+    <None Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Image\Components\AddToPromptButton\AddToPromptButton.uxml" />
+    <None Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Image\Components\ImageReference\BaseImageReference.uxml" />
+    <None Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Image\Panels\GeneratePanel\GeneratePanel.uss" />
+    <None Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Image\Components\ImageReferenceStack\ImageReferenceStack.uxml" />
+    <None Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Image\Components\Pixelate\PixelateOptions.uxml" />
+    <None Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Image\Panels\InpaintingPanel\InpaintingPanel.uss" />
+    <None Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Image\Components\PreviewSizeSlider\PreviewSizeSlider.uxml" />
+    <None Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Image\Components\ImageReference\PaletteImageReference.uxml" />
+    <None Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Image\Components\GenerationSelector\GenerationSelector.uxml" />
+    <None Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Image\Panels\RecolorPanel\RecolorPanel.uss" />
+    <None Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Image\Components\DoodlePad\DoodlePaint.shader" />
+    <None Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Image\Components\DimensionsDropDown\DimensionsDropDown.uxml" />
+    <None Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Image\Panels\RemoveBackgroundPanel\RemoveBackgroundPanel.uxml" />
+    <None Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Image\Panels\PixelatePanel\PixelatePanel.uxml" />
+    <None Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Image\Panels\AIPanel\AIPanel.uss" />
+    <None Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Image\Unity.AI.Image.asmdef" />
+    <None Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Image\Components\ModelSelectorButton\ModelSelectorButton.uxml" />
+    <None Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Image\Components\ModelTitleCard\ModelTitleCard.uss" />
+    <None Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Image\Components\ImageReference\FeatureImageReference.uxml" />
+    <None Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Image\Components\UpscaleFactorSlider\UpscaleFactorSlider.uxml" />
+    <None Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Image\Components\GenerationSelector\GenerationTile.uxml" />
+    <None Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Image\Components\GenerateButton\GenerateButton.uss" />
+    <None Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Image\Windows\GenerationMetadataWindow\GenerationMetadataWindow.uxml" />
+    <None Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Image\Components\ImageReference\ImageReference.uss" />
+    <None Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Image\Panels\InpaintingPanel\InpaintingPanel.uxml" />
+    <None Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Image\Components\DoodleView\DoodleView.uxml" />
+    <None Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Image\Components\ImageReference\CompositionImageReference.uxml" />
+    <None Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Image\Components\Pixelate\PixelateOutlineThicknessSlider.uxml" />
+    <None Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Image\Panels\AIPanel\AIPanel.uxml" />
+    <None Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Image\Panels\UpscalePanel\UpscalePanel.uss" />
+    <None Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Image\Components\ImageReferenceStack\ImageReferenceStack.uss" />
+    <None Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Image\Components\Pixelate\PixelateKeepImageSizeToggle.uxml" />
+    <None Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Image\Components\Pixelate\PixelateTargetSizeSlider.uxml" />
+    <None Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Image\Components\StateDebugger\StateDebugger.uxml" />
+    <None Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Image\Components\GenerateVariationsSlider\GenerateVariationsSlider.uxml" />
+    <None Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Image\Components\ImageReference\StyleImageReference.uxml" />
+    <None Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Image\Components\GenerateButton\GenerateButton.uxml" />
+    <None Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Image\Panels\RemoveBackgroundPanel\RemoveBackgroundPanel.uss" />
+    <None Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Image\Components\ImageReference\PromptImageReference.uxml" />
+    <None Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Image\Panels\GeneratePanel\GeneratePanel.uxml" />
+    <None Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Image\Components\ImageReference\PaletteImageReference.uss" />
+    <None Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Image\Panels\PixelatePanel\PixelatePanel.uss" />
+    <None Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Image\Components\DoodleView\DoodleView.uss" />
+    <None Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Image\Windows\GenerationMetadataWindow\GenerationMetadataWindow.uss" />
+    <None Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Image\Panels\RecolorPanel\RecolorPanel.uxml" />
+    <None Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Image\Components\ImageReference\ImageReferenceObjectField.uss" />
+    <None Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Image\Components\TextureGenerator\TextureGenerator.uss" />
+    <None Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Image\Windows\GenerationMetadataWindow\GenerationMetadataDoodleTemplate.uxml" />
+    <None Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Image\Components\DoodlePad\DoodleTransform.shader" />
+    <None Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Image\Components\GenerationSelector\GenerationTile.uss" />
+    <None Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Image\Components\ImageReference\ImageReferenceStrength.uxml" />
+    <None Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Image\Components\ImageReference\ImageReferenceObjectField.uxml" />
+    <None Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Image\Components\ImageReference\PoseImageReference.uxml" />
+    <None Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Image\Components\DoodlePad\DoodlePad.uss" />
+    <None Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Image\Components\SearchBar\SearchBar.uss" />
+    <None Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Image\Components\ImageReference\ImageReferenceHeader.uss" />
+    <None Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Image\Components\GenerationOptions\GenerationOptions.uxml" />
+    <None Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Image\Components\ImageReference\ImageReferenceHeader.uxml" />
+    <None Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Image\Components\ImageReference\DepthImageReference.uxml" />
+    <None Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Image\Components\Pixelate\PixelatePixelBlockSizeSlider.uxml" />
+    <None Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Image\Components\ModelTitleCard\SelectedModelTitleCard.uxml" />
+    <None Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Image\Panels\UpscalePanel\UpscalePanel.uxml" />
+    <None Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Image\Components\TextureGenerator\TextureGenerator.uxml" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
@@ -855,7 +828,7 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.VisualScripting.YamlDotNet">
-      <HintPath>Library\PackageCache\com.unity.visualscripting@191c0d7e3b69\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll</HintPath>
+      <HintPath>Library\PackageCache\com.unity.visualscripting@eb6004dcc707\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.Collections.LowLevel.ILSupport">
@@ -903,7 +876,7 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.VisualScripting.IonicZip">
-      <HintPath>Library\PackageCache\com.unity.visualscripting@191c0d7e3b69\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll</HintPath>
+      <HintPath>Library\PackageCache\com.unity.visualscripting@eb6004dcc707\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="unityplastic">
@@ -919,7 +892,7 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.VisualScripting.Antlr3.Runtime">
-      <HintPath>Library\PackageCache\com.unity.visualscripting@191c0d7e3b69\Runtime\VisualScripting.Flow\Dependencies\NCalc\Unity.VisualScripting.Antlr3.Runtime.dll</HintPath>
+      <HintPath>Library\PackageCache\com.unity.visualscripting@eb6004dcc707\Runtime\VisualScripting.Flow\Dependencies\NCalc\Unity.VisualScripting.Antlr3.Runtime.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Google.VersionHandler">
@@ -931,15 +904,19 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="AiEditorToolsSdk">
-      <HintPath>Library\PackageCache\com.unity.ai.toolkit@04b39586d864\Modules\Sdk\Editor\AiEditorToolsSdk.dll</HintPath>
+      <HintPath>Library\PackageCache\com.unity.ai.toolkit@97783faabe3b\Modules\Sdk\Editor\AiEditorToolsSdk.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.VisualScripting.TextureAssets">
-      <HintPath>Library\PackageCache\com.unity.visualscripting@191c0d7e3b69\Editor\VisualScripting.Core\EditorAssetResources\Unity.VisualScripting.TextureAssets.dll</HintPath>
+      <HintPath>Library\PackageCache\com.unity.visualscripting@eb6004dcc707\Editor\VisualScripting.Core\EditorAssetResources\Unity.VisualScripting.TextureAssets.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Mono.Cecil">
       <HintPath>Library\PackageCache\com.unity.nuget.mono-cecil@ecb9724e46ff\Mono.Cecil.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe">
+      <HintPath>Library\PackageCache\com.unity.collections@aea9d3bd5e19\Unity.Collections.Tests\System.Runtime.CompilerServices.Unsafe\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.Analytics.StandardEvents">
@@ -1454,7 +1431,6 @@
     <ProjectReference Include="Unity.AI.Generators.Asset.csproj" />
     <ProjectReference Include="Unity.AI.Toolkit.GenerationObjectPicker.csproj" />
     <ProjectReference Include="Unity.AI.Generators.UI.csproj" />
-    <ProjectReference Include="Unity.AI.Generators.IO.csproj" />
     <ProjectReference Include="Unity.AI.ModelSelector.csproj" />
     <ProjectReference Include="Unity.AI.Toolkit.Accounts.csproj" />
     <ProjectReference Include="Unity.AI.Generators.Sdk.csproj" />
@@ -1462,10 +1438,8 @@
     <ProjectReference Include="Unity.AI.Generators.UI.AIDropdownIntegrations.csproj" />
     <ProjectReference Include="Unity.AI.Toolkit.Asset.csproj" />
     <ProjectReference Include="Unity.AI.Toolkit.Async.csproj" />
-    <ProjectReference Include="Unity.AI.Toolkit.Utility.csproj" />
-    <ProjectReference Include="Unity.2D.Sprite.Editor.csproj" />
-    <ProjectReference Include="UnityEngine.UI.csproj" />
     <ProjectReference Include="UnityEditor.UI.csproj" />
+    <ProjectReference Include="UnityEngine.UI.csproj" />
     <ProjectReference Include="UnityEngine.TestRunner.csproj" />
     <ProjectReference Include="UnityEditor.TestRunner.csproj" />
   </ItemGroup>

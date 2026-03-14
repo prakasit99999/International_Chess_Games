@@ -22,6 +22,7 @@ namespace AIEngine.Core
         {
             SearchAlgorithm algorithm;
             int depth;
+            var settings = CreateSettingsForDifficulty(difficulty);
             switch (difficulty)
             {
                 case Difficulty.Easy:
@@ -40,7 +41,7 @@ namespace AIEngine.Core
                     throw new ArgumentException("Invalid difficulty level");
             }
 
-            var result = algorithm.FindBestMoveWithMetrics(board, depth);
+            var result = algorithm.FindBestMoveWithMetrics(board, depth, settings);
             var optimizedMove = OptimizeMoveForDraw(board, result.Move);
 
             return new SearchResult

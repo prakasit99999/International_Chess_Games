@@ -36,7 +36,7 @@
   </PropertyGroup>
   <PropertyGroup>
     <UnityProjectGenerator>Package</UnityProjectGenerator>
-    <UnityProjectGeneratorVersion>2.0.26</UnityProjectGeneratorVersion>
+    <UnityProjectGeneratorVersion>2.0.27</UnityProjectGeneratorVersion>
     <UnityProjectGeneratorStyle>SDK</UnityProjectGeneratorStyle>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>WebGL:20</UnityBuildTarget>
@@ -49,134 +49,132 @@
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\Tools\BuildPipeline\Unity.SourceGenerators\Unity.UIToolkit.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Sound\Windows\SoundGeneratorInspectorButton.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Sound\Components\SearchBar\SearchBar.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Sound\Components\StateDebugger\StateDebugger.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Sound\Utilities\AudioClipOscillogramUtils.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Sound\Components\SoundGenerator\SoundGenerator.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Sound\Utilities\InputReferenceExtensions.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Sound\Services\Stores\Selectors\SessionSelectors.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Sound\Utilities\AudioClipOscillogramRenderingUtils.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Sound\Services\Stores\Actions\Creators\AssetActionCreator.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Sound\Components\InputReference\SoundReference.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Sound\Services\Stores\Actions\SessionActions.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Sound\Services\SessionPersistence\SharedStore.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Sound\Components\StateDebugger\StateData.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Sound\Components\GenerateDurationSlider\GenerateDurationSlider.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Sound\Services\Stores\Slices\GenerationSettingsSlice.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Sound\Services\SessionPersistence\SoundGeneratorSettings.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Sound\Components\ModelTitleCard\SelectedModelTitleCard.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Sound\Utilities\GenerationRecovery.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Sound\Utilities\AssetReferenceExtensions.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Sound\Services\Stores\States\GenerationResult.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Sound\Services\SessionPersistence\AppData.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Sound\Components\SoundEnvelope\SoundEnvelope.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Sound\Utilities\AssetUtils.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Sound\Utilities\SplitterExtensions.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Sound\Services\Stores\Selectors\DebuggerSelectors.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Sound\Services\Stores\Actions\GenerationResultsActions.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Sound\Services\Stores\Slices\GenerationResultsSlice.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Sound\Services\Stores\States\SoundEnvelopeSettings.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Sound\Services\Stores\Actions\Creators\AssetContext.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Sound\Services\Stores\States\DebuggerState.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Sound\Services\Stores\States\Settings.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Sound\Components\SoundEnvelope\SoundEnvelopeZoomButton.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Sound\Components\GenerateButton\GenerateButton.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Sound\Components\GenericInspector\GenericInspector.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Sound\Utilities\WebUtils.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Sound\Utilities\FileUtilities.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Sound\Services\Stores\Actions\Creators\ContextAction.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Sound\Utilities\AudioClipMarkerRenderingUtils.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Sound\Services\Stores\Actions\AppActions.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Sound\Services\SessionPersistence\ObjectPersistence.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Sound\Utilities\AssetContextExtensions.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Sound\Services\Stores\Slices\DebuggerSlice.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Sound\Components\GenerationSelector\GenerationSelector.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Sound\Services\Undo\SoundEnvelopeUndoManager.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Sound\Services\Stores\Selectors\AppSelectors.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Sound\Components\ModelSelectorButton\ModelSelectorButton.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Sound\Components\AssetTitleCard\SelectedAssetTitleCard.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Sound\Services\Stores\States\GenerationSetting.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Sound\Services\Stores\States\MicrophoneSettings.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Sound\Services\Stores\Actions\Backend\Quote.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Sound\Components\GenerationOptions\GenerationOptions.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Sound\Windows\GenerationMetadataWindow\GenerationMetadataWindow.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Sound\Utilities\ProgressUtils.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Sound\Services\Stores\Actions\Backend\Generation.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Sound\Services\Stores\Selectors\GenerationSettingsSelectors.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Sound\Utilities\AudioClipExtensions.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Sound\Services\SessionPersistence\MemoryPersistence.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Sound\Services\Undo\AssetUndoManager.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Sound\Components\StateDebugger\TimelineControls.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Sound\Services\Stores\States\Sessions.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Sound\Services\Stores\Actions\Payloads\Payload.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Sound\Components\Prompt\Prompt.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Sound\Services\Stores\States\AudioClipResult.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Sound\Services\Stores\Selectors\GenerationResultsSelectors.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Sound\Components\StateDebugger\StateWrapper.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Sound\Services\Stores\States\GenerationResults.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Sound\Components\PreviewSizeSlider\PreviewSizeSlider.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Sound\Utilities\AudioFileUtilities.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Sound\Utilities\AudioClipResultExtensions.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Sound\Components\ModelTitleCard\ModelTitleCard.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Sound\Services\Stores\Slices\SessionSlice.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Sound\Utilities\PlayManipulator.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Sound\Components\GenerationSelector\GenerationTile.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Sound\Components\StateDebugger\StateHistory.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Sound\Windows\SoundGeneratorObjectPicker.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Sound\Utilities\GridViewExtensions.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Sound\Components\AssetTitleCard\AssetTitleCard.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Sound\Services\Stores\States\GenerationSettings.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Sound\Windows\SoundGeneratorWindow.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Sound\Utilities\AudioClipSkeletonExtensions.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Sound\Services\Stores\AISoundStore.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Sound\Components\GenerateVariationsSlider\GenerateVariationsSlider.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Sound\Services\Stores\Actions\GenerationSettingsActions.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Sound\Services\Stores\Actions\DebuggerActions.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Sound\AssemblyInfo.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Sound\Components\SoundEnvelope\SoundEnvelopeManipulator.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Sound\Windows\SoundEnvelopeWindow.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Sound\Windows\GenerationMetadataWindow\GenerationMetadataContent.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Sound\Windows\SoundGeneratorInspectorButton.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Sound\Components\SearchBar\SearchBar.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Sound\Components\StateDebugger\StateDebugger.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Sound\Utilities\AudioClipOscillogramUtils.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Sound\Components\SoundGenerator\SoundGenerator.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Sound\Services\Stores\Actions\GenerationResultsSuperProxyActions.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Sound\Utilities\InputReferenceExtensions.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Sound\Services\Stores\Selectors\SessionSelectors.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Sound\Utilities\AudioClipOscillogramRenderingUtils.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Sound\Services\Stores\Actions\Creators\AssetActionCreator.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Sound\Components\InputReference\SoundReference.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Sound\Services\Stores\Actions\SessionActions.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Sound\Services\SessionPersistence\SharedStore.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Sound\Components\StateDebugger\StateData.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Sound\Components\GenerateDurationSlider\GenerateDurationSlider.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Sound\Services\Stores\Slices\GenerationSettingsSlice.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Sound\Services\SessionPersistence\SoundGeneratorSettings.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Sound\Services\Stores\States\PreviewSettings.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Sound\Components\ModelTitleCard\SelectedModelTitleCard.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Sound\Utilities\AssetReferenceExtensions.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Sound\Services\Stores\States\GenerationResult.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Sound\Services\SessionPersistence\AppData.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Sound\Components\SoundEnvelope\SoundEnvelope.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Sound\Utilities\AssetUtils.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Sound\Utilities\SplitterExtensions.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Sound\Services\Stores\Selectors\DebuggerSelectors.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Sound\Services\Stores\Actions\GenerationResultsActions.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Sound\Services\Stores\Slices\GenerationResultsSlice.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Sound\Services\Stores\States\SoundEnvelopeSettings.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Sound\Utilities\TextureSkeletonExtensions.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Sound\Services\Stores\Actions\Creators\AssetContext.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Sound\Services\Stores\States\DebuggerState.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Sound\Services\Stores\States\Settings.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Sound\Components\SoundEnvelope\SoundEnvelopeZoomButton.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Sound\Components\GenerateButton\GenerateButton.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Sound\Components\GenericInspector\GenericInspector.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Sound\Utilities\WebUtils.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Sound\Utilities\FileUtilities.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Sound\Services\Stores\Actions\Creators\ContextAction.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Sound\Utilities\AudioClipMarkerRenderingUtils.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Sound\Services\Stores\Actions\AppActions.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Sound\Services\SessionPersistence\ObjectPersistence.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Sound\Utilities\AssetContextExtensions.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Sound\Services\Stores\Slices\DebuggerSlice.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Sound\Components\GenerationSelector\GenerationSelector.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Sound\Services\Undo\SoundEnvelopeUndoManager.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Sound\Services\Stores\Selectors\AppSelectors.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Sound\Components\ModelSelectorButton\ModelSelectorButton.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Sound\Components\AssetTitleCard\SelectedAssetTitleCard.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Sound\Services\Stores\States\GenerationSetting.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Sound\Services\Stores\States\MicrophoneSettings.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Sound\Components\GenerationOptions\GenerationOptions.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Sound\Windows\GenerationMetadataWindow\GenerationMetadataWindow.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Sound\Utilities\AudioUtils.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Sound\Utilities\ProgressUtils.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Sound\Services\Stores\Selectors\GenerationSettingsSelectors.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Sound\Utilities\AudioClipExtensions.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Sound\Services\SessionPersistence\MemoryPersistence.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Sound\Services\Undo\AssetUndoManager.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Sound\Components\StateDebugger\TimelineControls.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Sound\Services\Stores\States\Sessions.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Sound\Services\Stores\Actions\Payloads\Payload.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Sound\Components\Prompt\Prompt.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Sound\Services\Stores\States\AudioClipResult.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Sound\Services\Stores\Selectors\GenerationResultsSelectors.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Sound\Components\StateDebugger\StateWrapper.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Sound\Services\Stores\States\GenerationResults.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Sound\Components\PreviewSizeSlider\PreviewSizeSlider.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Sound\Utilities\GenerationRecoveryUtils.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Sound\Utilities\AudioClipResultExtensions.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Sound\Components\ModelTitleCard\ModelTitleCard.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Sound\Services\Stores\Slices\SessionSlice.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Sound\Utilities\PlayManipulator.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Sound\Components\GenerationSelector\GenerationTile.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Sound\Components\StateDebugger\StateHistory.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Sound\Windows\SoundGeneratorObjectPicker.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Sound\Utilities\GridViewExtensions.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Sound\Components\AssetTitleCard\AssetTitleCard.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Sound\Services\Stores\States\GenerationSettings.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Sound\Windows\SoundGeneratorWindow.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Sound\Services\Stores\AISoundStore.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Sound\Components\GenerateVariationsSlider\GenerateVariationsSlider.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Sound\Services\Stores\Actions\GenerationSettingsActions.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Sound\Services\Stores\Actions\DebuggerActions.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Sound\AssemblyInfo.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Sound\Components\SoundEnvelope\SoundEnvelopeManipulator.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Sound\Windows\SoundEnvelopeWindow.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Sound\Windows\GenerationMetadataWindow\GenerationMetadataContent.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Sound\Components\GenerateButton\GenerateButton.uxml" />
-    <None Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Sound\Components\SoundGenerator\SoundGenerator.uss" />
-    <None Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Sound\Components\ModelSelectorButton\ModelSelectorButton.uxml" />
-    <None Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Sound\Components\StateDebugger\TimelineControls.uxml" />
-    <None Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Sound\Components\GenerationSelector\GenerationSelector.uxml" />
-    <None Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Sound\Components\StateDebugger\StateDebugger.uxml" />
-    <None Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Sound\Components\AssetTitleCard\AssetTitleCard.uxml" />
-    <None Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Sound\Components\SoundEnvelope\SoundEnvelopeZoomButton.uxml" />
-    <None Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Sound\Components\SearchBar\SearchBar.uxml" />
-    <None Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Sound\Components\Prompt\Prompt.uxml" />
-    <None Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Sound\Components\InputReference\SoundReference.uxml" />
-    <None Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Sound\Unity.AI.Sound.asmdef" />
-    <None Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Sound\Components\SoundEnvelope\SoundEnvelope.uss" />
-    <None Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Sound\Components\InputReference\InputReferenceHeader.uxml" />
-    <None Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Sound\Components\PreviewSizeSlider\PreviewSizeSlider.uxml" />
-    <None Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Sound\Components\GenerateDurationSlider\GenerateDurationSlider.uxml" />
-    <None Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Sound\Components\GenerationOptions\GenerationOptions.uxml" />
-    <None Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Sound\Components\SoundGenerator\SoundGenerator.uxml" />
-    <None Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Sound\Components\InputReference\InputReferenceObjectField.uss" />
-    <None Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Sound\Components\ModelTitleCard\SelectedModelTitleCard.uxml" />
-    <None Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Sound\Windows\GenerationMetadataWindow\GenerationMetadataWindow.uxml" />
-    <None Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Sound\Components\InputReference\SoundReferenceRecord.uxml" />
-    <None Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Sound\Components\SoundEnvelope\SoundEnvelope.uxml" />
-    <None Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Sound\Shaders\Markers.shader" />
-    <None Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Sound\Components\InputReference\SoundReference.uss" />
-    <None Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Sound\Components\GenerationSelector\GenerationTile.uxml" />
-    <None Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Sound\Components\InputReference\InputReferenceObjectField.uxml" />
-    <None Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Sound\Components\GenerationSelector\GenerationSelector.uss" />
-    <None Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Sound\Shaders\Oscillogram.shader" />
-    <None Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Sound\Components\ModelTitleCard\ModelTitleCard.uxml" />
-    <None Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Sound\Components\InputReference\InputReferenceHeader.uss" />
-    <None Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Sound\Components\SearchBar\SearchBar.uss" />
-    <None Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Sound\Components\GenerateVariationsSlider\GenerateVariationsSlider.uxml" />
-    <None Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Sound\Components\Prompt\Prompt.uss" />
-    <None Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Sound\Components\ModelTitleCard\ModelTitleCard.uss" />
-    <None Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Sound\Components\GenerationSelector\GenerationTile.uss" />
-    <None Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Sound\Components\InputReference\InputReferenceStrength.uxml" />
-    <None Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Sound\Components\GenerateButton\GenerateButton.uss" />
+    <None Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Sound\Components\GenerateButton\GenerateButton.uxml" />
+    <None Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Sound\Components\SoundGenerator\SoundGenerator.uss" />
+    <None Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Sound\Components\ModelSelectorButton\ModelSelectorButton.uxml" />
+    <None Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Sound\Components\StateDebugger\TimelineControls.uxml" />
+    <None Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Sound\Components\GenerationSelector\GenerationSelector.uxml" />
+    <None Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Sound\Components\StateDebugger\StateDebugger.uxml" />
+    <None Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Sound\Components\AssetTitleCard\AssetTitleCard.uxml" />
+    <None Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Sound\Components\SoundEnvelope\SoundEnvelopeZoomButton.uxml" />
+    <None Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Sound\Components\SearchBar\SearchBar.uxml" />
+    <None Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Sound\Components\Prompt\Prompt.uxml" />
+    <None Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Sound\Components\InputReference\SoundReference.uxml" />
+    <None Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Sound\Unity.AI.Sound.asmdef" />
+    <None Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Sound\Components\SoundEnvelope\SoundEnvelope.uss" />
+    <None Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Sound\Components\InputReference\InputReferenceHeader.uxml" />
+    <None Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Sound\Components\PreviewSizeSlider\PreviewSizeSlider.uxml" />
+    <None Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Sound\Components\GenerateDurationSlider\GenerateDurationSlider.uxml" />
+    <None Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Sound\Components\GenerationOptions\GenerationOptions.uxml" />
+    <None Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Sound\Components\SoundGenerator\SoundGenerator.uxml" />
+    <None Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Sound\Components\InputReference\InputReferenceObjectField.uss" />
+    <None Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Sound\Components\ModelTitleCard\SelectedModelTitleCard.uxml" />
+    <None Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Sound\Windows\GenerationMetadataWindow\GenerationMetadataWindow.uxml" />
+    <None Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Sound\Components\InputReference\SoundReferenceRecord.uxml" />
+    <None Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Sound\Components\SoundEnvelope\SoundEnvelope.uxml" />
+    <None Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Sound\Shaders\Markers.shader" />
+    <None Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Sound\Components\InputReference\SoundReference.uss" />
+    <None Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Sound\Components\GenerationSelector\GenerationTile.uxml" />
+    <None Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Sound\Components\InputReference\InputReferenceObjectField.uxml" />
+    <None Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Sound\Shaders\Oscillogram.shader" />
+    <None Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Sound\Components\ModelTitleCard\ModelTitleCard.uxml" />
+    <None Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Sound\Components\InputReference\InputReferenceHeader.uss" />
+    <None Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Sound\Components\SearchBar\SearchBar.uss" />
+    <None Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Sound\Components\GenerateVariationsSlider\GenerateVariationsSlider.uxml" />
+    <None Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Sound\Components\ModelTitleCard\ModelTitleCard.uss" />
+    <None Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Sound\Components\GenerationSelector\GenerationTile.uss" />
+    <None Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Sound\Components\InputReference\InputReferenceStrength.uxml" />
+    <None Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Sound\Components\GenerateButton\GenerateButton.uss" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
@@ -756,7 +754,7 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.VisualScripting.YamlDotNet">
-      <HintPath>Library\PackageCache\com.unity.visualscripting@191c0d7e3b69\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll</HintPath>
+      <HintPath>Library\PackageCache\com.unity.visualscripting@eb6004dcc707\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.Collections.LowLevel.ILSupport">
@@ -804,7 +802,7 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.VisualScripting.IonicZip">
-      <HintPath>Library\PackageCache\com.unity.visualscripting@191c0d7e3b69\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll</HintPath>
+      <HintPath>Library\PackageCache\com.unity.visualscripting@eb6004dcc707\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="unityplastic">
@@ -820,7 +818,7 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.VisualScripting.Antlr3.Runtime">
-      <HintPath>Library\PackageCache\com.unity.visualscripting@191c0d7e3b69\Runtime\VisualScripting.Flow\Dependencies\NCalc\Unity.VisualScripting.Antlr3.Runtime.dll</HintPath>
+      <HintPath>Library\PackageCache\com.unity.visualscripting@eb6004dcc707\Runtime\VisualScripting.Flow\Dependencies\NCalc\Unity.VisualScripting.Antlr3.Runtime.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Google.VersionHandler">
@@ -832,15 +830,19 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="AiEditorToolsSdk">
-      <HintPath>Library\PackageCache\com.unity.ai.toolkit@04b39586d864\Modules\Sdk\Editor\AiEditorToolsSdk.dll</HintPath>
+      <HintPath>Library\PackageCache\com.unity.ai.toolkit@97783faabe3b\Modules\Sdk\Editor\AiEditorToolsSdk.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.VisualScripting.TextureAssets">
-      <HintPath>Library\PackageCache\com.unity.visualscripting@191c0d7e3b69\Editor\VisualScripting.Core\EditorAssetResources\Unity.VisualScripting.TextureAssets.dll</HintPath>
+      <HintPath>Library\PackageCache\com.unity.visualscripting@eb6004dcc707\Editor\VisualScripting.Core\EditorAssetResources\Unity.VisualScripting.TextureAssets.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Mono.Cecil">
       <HintPath>Library\PackageCache\com.unity.nuget.mono-cecil@ecb9724e46ff\Mono.Cecil.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe">
+      <HintPath>Library\PackageCache\com.unity.collections@aea9d3bd5e19\Unity.Collections.Tests\System.Runtime.CompilerServices.Unsafe\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.Analytics.StandardEvents">
@@ -1355,7 +1357,6 @@
     <ProjectReference Include="Unity.AI.Generators.Asset.csproj" />
     <ProjectReference Include="Unity.AI.Toolkit.GenerationObjectPicker.csproj" />
     <ProjectReference Include="Unity.AI.Generators.UI.csproj" />
-    <ProjectReference Include="Unity.AI.Generators.IO.csproj" />
     <ProjectReference Include="Unity.AI.ModelSelector.csproj" />
     <ProjectReference Include="Unity.Mathematics.csproj" />
     <ProjectReference Include="Unity.AI.Toolkit.Accounts.csproj" />
@@ -1363,9 +1364,8 @@
     <ProjectReference Include="Unity.AI.Generators.UI.AIDropdownIntegrations.csproj" />
     <ProjectReference Include="Unity.AI.Toolkit.Asset.csproj" />
     <ProjectReference Include="Unity.AI.Toolkit.Async.csproj" />
-    <ProjectReference Include="Unity.AI.Toolkit.Utility.csproj" />
-    <ProjectReference Include="UnityEngine.UI.csproj" />
     <ProjectReference Include="UnityEditor.UI.csproj" />
+    <ProjectReference Include="UnityEngine.UI.csproj" />
     <ProjectReference Include="UnityEngine.TestRunner.csproj" />
     <ProjectReference Include="UnityEditor.TestRunner.csproj" />
   </ItemGroup>

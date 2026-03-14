@@ -36,7 +36,7 @@
   </PropertyGroup>
   <PropertyGroup>
     <UnityProjectGenerator>Package</UnityProjectGenerator>
-    <UnityProjectGeneratorVersion>2.0.26</UnityProjectGeneratorVersion>
+    <UnityProjectGeneratorVersion>2.0.27</UnityProjectGeneratorVersion>
     <UnityProjectGeneratorStyle>SDK</UnityProjectGeneratorStyle>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>WebGL:20</UnityBuildTarget>
@@ -49,98 +49,98 @@
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\Tools\BuildPipeline\Unity.SourceGenerators\Unity.UIToolkit.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@77b886928d77\Embedded\Editor\com.unity.cloud.identity\Core\TokenExchange\JwtDecoder.cs" />
-    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@77b886928d77\Embedded\Editor\com.unity.cloud.identity\Core\TokenExchange\Tokens.cs" />
-    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@77b886928d77\Embedded\Editor\com.unity.cloud.identity\Core\Utils\RangeExtensions.cs" />
-    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@77b886928d77\Embedded\Editor\com.unity.cloud.identity\Core\Services\ServiceConnectorFactory.cs" />
-    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@77b886928d77\Embedded\Editor\com.unity.cloud.identity\Core\BrowserAuthentication\BrowserAuthenticatedAccessTokenProvider.cs" />
-    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@77b886928d77\Embedded\Editor\com.unity.cloud.identity\Core\UserInformation\Models\UnityUserInfoJson.cs" />
-    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@77b886928d77\Embedded\Editor\com.unity.cloud.identity\Core\PKCE\PkceConfigurationProviderFactory.cs" />
-    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@77b886928d77\Embedded\Editor\com.unity.cloud.identity\Core\UserInformation\IOrganizationProjectsJsonProvider.cs" />
-    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@77b886928d77\Embedded\Editor\com.unity.cloud.identity\Core\UserInformation\Models\EntitlementsJson.cs" />
-    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@77b886928d77\Embedded\Editor\com.unity.cloud.identity\Core\PKCE\HttpPkceRequestHandler.cs" />
-    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@77b886928d77\Embedded\Editor\com.unity.cloud.identity\Core\UserInformation\Models\Organization.cs" />
-    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@77b886928d77\Embedded\Editor\com.unity.cloud.identity\Core\PKCE\ChannelPkcePlatformSupport.cs" />
-    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@77b886928d77\Embedded\Editor\com.unity.cloud.identity\Core\UserInformation\Models\CloudStorageEntitlementsJson.cs" />
-    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@77b886928d77\Embedded\Editor\com.unity.cloud.identity\Core\UserInformation\Models\UserInfo.cs" />
-    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@77b886928d77\Embedded\Editor\com.unity.cloud.identity\Core\UserInformation\Models\OrganizationJson.cs" />
-    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@77b886928d77\Embedded\Editor\com.unity.cloud.identity\Core\Services\ChannelRequest.cs" />
-    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@77b886928d77\Embedded\Editor\com.unity.cloud.identity\Core\UserInformation\Models\IOrganizationRepository.cs" />
-    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@77b886928d77\Embedded\Editor\com.unity.cloud.identity\Core\ServiceAccount\ServiceAccountAuthenticator.cs" />
-    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@77b886928d77\Embedded\Editor\com.unity.cloud.identity\Core\PKCE\BasePkcePlatformSupport.cs" />
-    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@77b886928d77\Embedded\Editor\com.unity.cloud.identity\Core\TokenExchange\TargetClientIdTokenToUnityServicesTokenExchanger.cs" />
-    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@77b886928d77\Embedded\Editor\com.unity.cloud.identity\Core\TokenExchange\ServiceAccountCredentialsToUnityServicesTokenExchanger.cs" />
-    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@77b886928d77\Embedded\Editor\com.unity.cloud.identity\Core\UserInformation\Models\CloudStorageUsage.cs" />
-    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@77b886928d77\Embedded\Editor\com.unity.cloud.identity\Core\UserInformation\IMemberInfoProvider.cs" />
-    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@77b886928d77\Embedded\Editor\com.unity.cloud.identity\Core\Utils\RangeRequest.cs" />
-    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@77b886928d77\Embedded\Editor\com.unity.cloud.identity\Core\Utils\GetRequestResponseCache.cs" />
-    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@77b886928d77\Embedded\Editor\com.unity.cloud.identity\Core\CompositeAuthenticator\ICompositeAuthenticator.cs" />
-    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@77b886928d77\Embedded\Editor\com.unity.cloud.identity\Core\UserInformation\ICloudStorageJsonProvider.cs" />
-    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@77b886928d77\Embedded\Editor\com.unity.cloud.identity\Core\UserInformation\IAssetProjectsJsonProvider.cs" />
-    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@77b886928d77\Embedded\Editor\com.unity.cloud.identity\Core\UserInformation\Models\IOrganization.cs" />
-    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@77b886928d77\Embedded\Editor\com.unity.cloud.identity\Core\Services\ChannelProvider.cs" />
-    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@77b886928d77\Embedded\Editor\com.unity.cloud.identity\Core\UserInformation\AuthenticatorRoleProvider.cs" />
-    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@77b886928d77\Embedded\Editor\com.unity.cloud.identity\Core\CompositeAuthenticator\CompositeAuthenticatorSettingsBuilder.cs" />
-    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@77b886928d77\Embedded\Editor\com.unity.cloud.identity\Core\PKCE\IPkceConfigurationProvider.cs" />
-    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@77b886928d77\Embedded\Editor\com.unity.cloud.identity\Core\ServiceAccount\ServiceAccountAuthenticatorSettingsBuilder.cs" />
-    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@77b886928d77\Embedded\Editor\com.unity.cloud.identity\Core\UserInformation\Models\IEntitlements.cs" />
-    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@77b886928d77\Embedded\Editor\com.unity.cloud.identity\Core\CompositeAuthenticator\CompositeAuthenticator.cs" />
-    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@77b886928d77\Embedded\Editor\com.unity.cloud.identity\Core\PKCE\PkceAuthenticator.cs" />
-    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@77b886928d77\Embedded\Editor\com.unity.cloud.identity\Core\Services\UnityServicesDomainResolver.cs" />
-    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@77b886928d77\Embedded\Editor\com.unity.cloud.identity\Core\UserInformation\Models\Entitlements.cs" />
-    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@77b886928d77\Embedded\Editor\com.unity.cloud.identity\Core\TokenExchange\IAccessTokenExchanger.cs" />
-    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@77b886928d77\Embedded\Editor\com.unity.cloud.identity\Core\UserInformation\OrganizationProjectsJsonProvider.cs" />
-    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@77b886928d77\Embedded\Editor\com.unity.cloud.identity\Core\Utils\PermissionExtensions.cs" />
-    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@77b886928d77\Embedded\Editor\com.unity.cloud.identity\Core\PKCE\IOpenIdUserInfoProvider.cs" />
-    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@77b886928d77\Embedded\Editor\com.unity.cloud.identity\Core\PKCE\ClientId.cs" />
-    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@77b886928d77\Embedded\Editor\com.unity.cloud.identity\Core\ServiceAccount\ServiceAccountAuthenticatorSettings.cs" />
-    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@77b886928d77\Embedded\Editor\com.unity.cloud.identity\Core\AuthenticationModels\IAuthenticator.cs" />
-    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@77b886928d77\Embedded\Editor\com.unity.cloud.identity\Core\UserInformation\Models\CloudStorageEntitlements.cs" />
-    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@77b886928d77\Embedded\Editor\com.unity.cloud.identity\Core\PKCE\PkceConfiguration.cs" />
-    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@77b886928d77\Embedded\Editor\com.unity.cloud.identity\Core\Utils\PageRequest.cs" />
-    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@77b886928d77\Embedded\Editor\com.unity.cloud.identity\Core\ServiceAccount\ServiceAccountAuthorizer.cs" />
-    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@77b886928d77\Embedded\Editor\com.unity.cloud.identity\Core\PKCE\PkceAuthenticatorSettings.cs" />
-    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@77b886928d77\Embedded\Editor\com.unity.cloud.identity\Core\TokenExchange\NoOpAccessTokenExchanger.cs" />
-    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@77b886928d77\Embedded\Editor\com.unity.cloud.identity\Core\UserInformation\IOrganizationJsonProvider.cs" />
-    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@77b886928d77\Embedded\Editor\com.unity.cloud.identity\Core\PKCE\OpenIdConfigurationJson.cs" />
-    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@77b886928d77\Embedded\Editor\com.unity.cloud.identity\Core\AuthenticationModels\IAuthenticationPlatformSupport.cs" />
-    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@77b886928d77\Embedded\Editor\com.unity.cloud.identity\Core\CompositeAuthenticator\CompositeAuthenticatorSettings.cs" />
-    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@77b886928d77\Embedded\Editor\com.unity.cloud.identity\Core\Services\ServiceConnector.cs" />
-    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@77b886928d77\Embedded\Editor\com.unity.cloud.identity\Core\PKCE\PkceConfigurationProvider.cs" />
-    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@77b886928d77\Embedded\Editor\com.unity.cloud.identity\Core\Services\IChannelProvider.cs" />
-    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@77b886928d77\Embedded\Editor\com.unity.cloud.identity\Core\UserInformation\Models\ICloudStorageEntitlements.cs" />
-    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@77b886928d77\Embedded\Editor\com.unity.cloud.identity\Core\UserInformation\Models\IProject.cs" />
-    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@77b886928d77\Embedded\Editor\com.unity.cloud.identity\Core\UserInformation\IProjectsJsonProvider.cs" />
-    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@77b886928d77\Embedded\Editor\com.unity.cloud.identity\Core\UserInformation\Models\ICloudStorageUsage.cs" />
-    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@77b886928d77\Embedded\Editor\com.unity.cloud.identity\Core\PKCE\PkceAuthenticatorSettingsBuilder.cs" />
-    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@77b886928d77\Embedded\Editor\com.unity.cloud.identity\Core\UserInformation\IEntityJsonProvider.cs" />
-    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@77b886928d77\Embedded\Editor\com.unity.cloud.identity\Core\TokenExchange\DeviceTokenToUnityServicesTokenExchanger.cs" />
-    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@77b886928d77\Embedded\Editor\com.unity.cloud.identity\Core\UserInformation\IMemberInfoJsonProvider.cs" />
-    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@77b886928d77\Embedded\Editor\com.unity.cloud.identity\Core\Utils\RoleExtensions.cs" />
-    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@77b886928d77\Embedded\Editor\com.unity.cloud.identity\Core\UserInformation\IEntitlementsProvider.cs" />
-    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@77b886928d77\Embedded\Editor\com.unity.cloud.identity\Core\PKCE\PkceHelper.cs" />
-    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@77b886928d77\Embedded\Editor\com.unity.cloud.identity\Core\UserInformation\IUserInfoProvider.cs" />
-    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@77b886928d77\Embedded\Editor\com.unity.cloud.identity\Core\UserInformation\Models\IMemberInfo.cs" />
-    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@77b886928d77\Embedded\Editor\com.unity.cloud.identity\Core\AssemblyInfo.cs" />
-    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@77b886928d77\Embedded\Editor\com.unity.cloud.identity\Core\AuthenticationModels\IAuthenticationStateProvider.cs" />
-    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@77b886928d77\Embedded\Editor\com.unity.cloud.identity\Core\UserInformation\ICloudStorageInfoProvider.cs" />
-    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@77b886928d77\Embedded\Editor\com.unity.cloud.identity\Core\AuthenticationModels\AuthenticationState.cs" />
-    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@77b886928d77\Embedded\Editor\com.unity.cloud.identity\Core\UserInformation\Models\Project.cs" />
-    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@77b886928d77\Embedded\Editor\com.unity.cloud.identity\Core\UserInformation\Models\ProjectJson.cs" />
-    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@77b886928d77\Embedded\Editor\com.unity.cloud.identity\Core\PKCE\OpenIdPkceConfigurationProvider.cs" />
-    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@77b886928d77\Embedded\Editor\com.unity.cloud.identity\Core\UserInformation\Models\IUserInfo.cs" />
-    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@77b886928d77\Embedded\Editor\com.unity.cloud.identity\Core\UserInformation\AuthenticatedUserSession.cs" />
-    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@77b886928d77\Embedded\Editor\com.unity.cloud.identity\Core\UserInformation\UnityUserInfoJsonProvider.cs" />
-    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@77b886928d77\Embedded\Editor\com.unity.cloud.identity\Core\TokenExchange\JwtToken.cs" />
-    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@77b886928d77\Embedded\Editor\com.unity.cloud.identity\Core\UserInformation\Models\CloudStorageUsageJson.cs" />
-    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@77b886928d77\Embedded\Editor\com.unity.cloud.identity\Core\UserInformation\IEntitlementsJsonProvider.cs" />
-    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@77b886928d77\Embedded\Editor\com.unity.cloud.identity\Core\ServiceAccount\ServiceAccountCredentials.cs" />
-    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@77b886928d77\Embedded\Editor\com.unity.cloud.identity\Core\UserInformation\GuestProjectJsonProvider.cs" />
-    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@77b886928d77\Embedded\Editor\com.unity.cloud.identity\Core\PKCE\IPkceRequestHandler.cs" />
-    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@77b886928d77\Embedded\Editor\com.unity.cloud.identity\Core\AuthenticationModels\IUrlRedirectionAuthenticator.cs" />
+    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@5d438e506474\Embedded\Editor\com.unity.cloud.identity\Core\TokenExchange\JwtDecoder.cs" />
+    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@5d438e506474\Embedded\Editor\com.unity.cloud.identity\Core\TokenExchange\Tokens.cs" />
+    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@5d438e506474\Embedded\Editor\com.unity.cloud.identity\Core\Utils\RangeExtensions.cs" />
+    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@5d438e506474\Embedded\Editor\com.unity.cloud.identity\Core\Services\ServiceConnectorFactory.cs" />
+    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@5d438e506474\Embedded\Editor\com.unity.cloud.identity\Core\BrowserAuthentication\BrowserAuthenticatedAccessTokenProvider.cs" />
+    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@5d438e506474\Embedded\Editor\com.unity.cloud.identity\Core\UserInformation\Models\UnityUserInfoJson.cs" />
+    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@5d438e506474\Embedded\Editor\com.unity.cloud.identity\Core\PKCE\PkceConfigurationProviderFactory.cs" />
+    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@5d438e506474\Embedded\Editor\com.unity.cloud.identity\Core\UserInformation\IOrganizationProjectsJsonProvider.cs" />
+    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@5d438e506474\Embedded\Editor\com.unity.cloud.identity\Core\UserInformation\Models\EntitlementsJson.cs" />
+    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@5d438e506474\Embedded\Editor\com.unity.cloud.identity\Core\PKCE\HttpPkceRequestHandler.cs" />
+    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@5d438e506474\Embedded\Editor\com.unity.cloud.identity\Core\UserInformation\Models\Organization.cs" />
+    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@5d438e506474\Embedded\Editor\com.unity.cloud.identity\Core\PKCE\ChannelPkcePlatformSupport.cs" />
+    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@5d438e506474\Embedded\Editor\com.unity.cloud.identity\Core\UserInformation\Models\CloudStorageEntitlementsJson.cs" />
+    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@5d438e506474\Embedded\Editor\com.unity.cloud.identity\Core\UserInformation\Models\UserInfo.cs" />
+    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@5d438e506474\Embedded\Editor\com.unity.cloud.identity\Core\UserInformation\Models\OrganizationJson.cs" />
+    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@5d438e506474\Embedded\Editor\com.unity.cloud.identity\Core\Services\ChannelRequest.cs" />
+    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@5d438e506474\Embedded\Editor\com.unity.cloud.identity\Core\UserInformation\Models\IOrganizationRepository.cs" />
+    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@5d438e506474\Embedded\Editor\com.unity.cloud.identity\Core\ServiceAccount\ServiceAccountAuthenticator.cs" />
+    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@5d438e506474\Embedded\Editor\com.unity.cloud.identity\Core\PKCE\BasePkcePlatformSupport.cs" />
+    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@5d438e506474\Embedded\Editor\com.unity.cloud.identity\Core\TokenExchange\TargetClientIdTokenToUnityServicesTokenExchanger.cs" />
+    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@5d438e506474\Embedded\Editor\com.unity.cloud.identity\Core\TokenExchange\ServiceAccountCredentialsToUnityServicesTokenExchanger.cs" />
+    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@5d438e506474\Embedded\Editor\com.unity.cloud.identity\Core\UserInformation\Models\CloudStorageUsage.cs" />
+    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@5d438e506474\Embedded\Editor\com.unity.cloud.identity\Core\UserInformation\IMemberInfoProvider.cs" />
+    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@5d438e506474\Embedded\Editor\com.unity.cloud.identity\Core\Utils\RangeRequest.cs" />
+    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@5d438e506474\Embedded\Editor\com.unity.cloud.identity\Core\Utils\GetRequestResponseCache.cs" />
+    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@5d438e506474\Embedded\Editor\com.unity.cloud.identity\Core\CompositeAuthenticator\ICompositeAuthenticator.cs" />
+    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@5d438e506474\Embedded\Editor\com.unity.cloud.identity\Core\UserInformation\ICloudStorageJsonProvider.cs" />
+    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@5d438e506474\Embedded\Editor\com.unity.cloud.identity\Core\UserInformation\IAssetProjectsJsonProvider.cs" />
+    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@5d438e506474\Embedded\Editor\com.unity.cloud.identity\Core\UserInformation\Models\IOrganization.cs" />
+    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@5d438e506474\Embedded\Editor\com.unity.cloud.identity\Core\Services\ChannelProvider.cs" />
+    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@5d438e506474\Embedded\Editor\com.unity.cloud.identity\Core\UserInformation\AuthenticatorRoleProvider.cs" />
+    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@5d438e506474\Embedded\Editor\com.unity.cloud.identity\Core\CompositeAuthenticator\CompositeAuthenticatorSettingsBuilder.cs" />
+    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@5d438e506474\Embedded\Editor\com.unity.cloud.identity\Core\PKCE\IPkceConfigurationProvider.cs" />
+    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@5d438e506474\Embedded\Editor\com.unity.cloud.identity\Core\ServiceAccount\ServiceAccountAuthenticatorSettingsBuilder.cs" />
+    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@5d438e506474\Embedded\Editor\com.unity.cloud.identity\Core\UserInformation\Models\IEntitlements.cs" />
+    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@5d438e506474\Embedded\Editor\com.unity.cloud.identity\Core\CompositeAuthenticator\CompositeAuthenticator.cs" />
+    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@5d438e506474\Embedded\Editor\com.unity.cloud.identity\Core\PKCE\PkceAuthenticator.cs" />
+    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@5d438e506474\Embedded\Editor\com.unity.cloud.identity\Core\Services\UnityServicesDomainResolver.cs" />
+    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@5d438e506474\Embedded\Editor\com.unity.cloud.identity\Core\UserInformation\Models\Entitlements.cs" />
+    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@5d438e506474\Embedded\Editor\com.unity.cloud.identity\Core\TokenExchange\IAccessTokenExchanger.cs" />
+    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@5d438e506474\Embedded\Editor\com.unity.cloud.identity\Core\UserInformation\OrganizationProjectsJsonProvider.cs" />
+    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@5d438e506474\Embedded\Editor\com.unity.cloud.identity\Core\Utils\PermissionExtensions.cs" />
+    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@5d438e506474\Embedded\Editor\com.unity.cloud.identity\Core\PKCE\IOpenIdUserInfoProvider.cs" />
+    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@5d438e506474\Embedded\Editor\com.unity.cloud.identity\Core\PKCE\ClientId.cs" />
+    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@5d438e506474\Embedded\Editor\com.unity.cloud.identity\Core\ServiceAccount\ServiceAccountAuthenticatorSettings.cs" />
+    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@5d438e506474\Embedded\Editor\com.unity.cloud.identity\Core\AuthenticationModels\IAuthenticator.cs" />
+    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@5d438e506474\Embedded\Editor\com.unity.cloud.identity\Core\UserInformation\Models\CloudStorageEntitlements.cs" />
+    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@5d438e506474\Embedded\Editor\com.unity.cloud.identity\Core\PKCE\PkceConfiguration.cs" />
+    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@5d438e506474\Embedded\Editor\com.unity.cloud.identity\Core\Utils\PageRequest.cs" />
+    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@5d438e506474\Embedded\Editor\com.unity.cloud.identity\Core\ServiceAccount\ServiceAccountAuthorizer.cs" />
+    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@5d438e506474\Embedded\Editor\com.unity.cloud.identity\Core\PKCE\PkceAuthenticatorSettings.cs" />
+    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@5d438e506474\Embedded\Editor\com.unity.cloud.identity\Core\TokenExchange\NoOpAccessTokenExchanger.cs" />
+    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@5d438e506474\Embedded\Editor\com.unity.cloud.identity\Core\UserInformation\IOrganizationJsonProvider.cs" />
+    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@5d438e506474\Embedded\Editor\com.unity.cloud.identity\Core\PKCE\OpenIdConfigurationJson.cs" />
+    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@5d438e506474\Embedded\Editor\com.unity.cloud.identity\Core\AuthenticationModels\IAuthenticationPlatformSupport.cs" />
+    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@5d438e506474\Embedded\Editor\com.unity.cloud.identity\Core\CompositeAuthenticator\CompositeAuthenticatorSettings.cs" />
+    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@5d438e506474\Embedded\Editor\com.unity.cloud.identity\Core\Services\ServiceConnector.cs" />
+    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@5d438e506474\Embedded\Editor\com.unity.cloud.identity\Core\PKCE\PkceConfigurationProvider.cs" />
+    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@5d438e506474\Embedded\Editor\com.unity.cloud.identity\Core\Services\IChannelProvider.cs" />
+    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@5d438e506474\Embedded\Editor\com.unity.cloud.identity\Core\UserInformation\Models\ICloudStorageEntitlements.cs" />
+    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@5d438e506474\Embedded\Editor\com.unity.cloud.identity\Core\UserInformation\Models\IProject.cs" />
+    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@5d438e506474\Embedded\Editor\com.unity.cloud.identity\Core\UserInformation\IProjectsJsonProvider.cs" />
+    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@5d438e506474\Embedded\Editor\com.unity.cloud.identity\Core\UserInformation\Models\ICloudStorageUsage.cs" />
+    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@5d438e506474\Embedded\Editor\com.unity.cloud.identity\Core\PKCE\PkceAuthenticatorSettingsBuilder.cs" />
+    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@5d438e506474\Embedded\Editor\com.unity.cloud.identity\Core\UserInformation\IEntityJsonProvider.cs" />
+    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@5d438e506474\Embedded\Editor\com.unity.cloud.identity\Core\TokenExchange\DeviceTokenToUnityServicesTokenExchanger.cs" />
+    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@5d438e506474\Embedded\Editor\com.unity.cloud.identity\Core\UserInformation\IMemberInfoJsonProvider.cs" />
+    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@5d438e506474\Embedded\Editor\com.unity.cloud.identity\Core\Utils\RoleExtensions.cs" />
+    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@5d438e506474\Embedded\Editor\com.unity.cloud.identity\Core\UserInformation\IEntitlementsProvider.cs" />
+    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@5d438e506474\Embedded\Editor\com.unity.cloud.identity\Core\PKCE\PkceHelper.cs" />
+    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@5d438e506474\Embedded\Editor\com.unity.cloud.identity\Core\UserInformation\IUserInfoProvider.cs" />
+    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@5d438e506474\Embedded\Editor\com.unity.cloud.identity\Core\UserInformation\Models\IMemberInfo.cs" />
+    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@5d438e506474\Embedded\Editor\com.unity.cloud.identity\Core\AssemblyInfo.cs" />
+    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@5d438e506474\Embedded\Editor\com.unity.cloud.identity\Core\AuthenticationModels\IAuthenticationStateProvider.cs" />
+    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@5d438e506474\Embedded\Editor\com.unity.cloud.identity\Core\UserInformation\ICloudStorageInfoProvider.cs" />
+    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@5d438e506474\Embedded\Editor\com.unity.cloud.identity\Core\AuthenticationModels\AuthenticationState.cs" />
+    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@5d438e506474\Embedded\Editor\com.unity.cloud.identity\Core\UserInformation\Models\Project.cs" />
+    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@5d438e506474\Embedded\Editor\com.unity.cloud.identity\Core\UserInformation\Models\ProjectJson.cs" />
+    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@5d438e506474\Embedded\Editor\com.unity.cloud.identity\Core\PKCE\OpenIdPkceConfigurationProvider.cs" />
+    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@5d438e506474\Embedded\Editor\com.unity.cloud.identity\Core\UserInformation\Models\IUserInfo.cs" />
+    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@5d438e506474\Embedded\Editor\com.unity.cloud.identity\Core\UserInformation\AuthenticatedUserSession.cs" />
+    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@5d438e506474\Embedded\Editor\com.unity.cloud.identity\Core\UserInformation\UnityUserInfoJsonProvider.cs" />
+    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@5d438e506474\Embedded\Editor\com.unity.cloud.identity\Core\TokenExchange\JwtToken.cs" />
+    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@5d438e506474\Embedded\Editor\com.unity.cloud.identity\Core\UserInformation\Models\CloudStorageUsageJson.cs" />
+    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@5d438e506474\Embedded\Editor\com.unity.cloud.identity\Core\UserInformation\IEntitlementsJsonProvider.cs" />
+    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@5d438e506474\Embedded\Editor\com.unity.cloud.identity\Core\ServiceAccount\ServiceAccountCredentials.cs" />
+    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@5d438e506474\Embedded\Editor\com.unity.cloud.identity\Core\UserInformation\GuestProjectJsonProvider.cs" />
+    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@5d438e506474\Embedded\Editor\com.unity.cloud.identity\Core\PKCE\IPkceRequestHandler.cs" />
+    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@5d438e506474\Embedded\Editor\com.unity.cloud.identity\Core\AuthenticationModels\IUrlRedirectionAuthenticator.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Library\PackageCache\com.unity.asset-manager-for-unity@77b886928d77\Embedded\Editor\com.unity.cloud.identity\Core\Unity.Cloud.Identity.Embedded.asmdef" />
+    <None Include="Library\PackageCache\com.unity.asset-manager-for-unity@5d438e506474\Embedded\Editor\com.unity.cloud.identity\Core\Unity.Cloud.Identity.Embedded.asmdef" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="websocket-sharp">
@@ -156,7 +156,7 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.VisualScripting.YamlDotNet">
-      <HintPath>Library\PackageCache\com.unity.visualscripting@191c0d7e3b69\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll</HintPath>
+      <HintPath>Library\PackageCache\com.unity.visualscripting@eb6004dcc707\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.Collections.LowLevel.ILSupport">
@@ -204,7 +204,7 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.VisualScripting.IonicZip">
-      <HintPath>Library\PackageCache\com.unity.visualscripting@191c0d7e3b69\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll</HintPath>
+      <HintPath>Library\PackageCache\com.unity.visualscripting@eb6004dcc707\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="unityplastic">
@@ -220,7 +220,7 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.VisualScripting.Antlr3.Runtime">
-      <HintPath>Library\PackageCache\com.unity.visualscripting@191c0d7e3b69\Runtime\VisualScripting.Flow\Dependencies\NCalc\Unity.VisualScripting.Antlr3.Runtime.dll</HintPath>
+      <HintPath>Library\PackageCache\com.unity.visualscripting@eb6004dcc707\Runtime\VisualScripting.Flow\Dependencies\NCalc\Unity.VisualScripting.Antlr3.Runtime.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Google.VersionHandler">
@@ -232,15 +232,19 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="AiEditorToolsSdk">
-      <HintPath>Library\PackageCache\com.unity.ai.toolkit@04b39586d864\Modules\Sdk\Editor\AiEditorToolsSdk.dll</HintPath>
+      <HintPath>Library\PackageCache\com.unity.ai.toolkit@97783faabe3b\Modules\Sdk\Editor\AiEditorToolsSdk.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.VisualScripting.TextureAssets">
-      <HintPath>Library\PackageCache\com.unity.visualscripting@191c0d7e3b69\Editor\VisualScripting.Core\EditorAssetResources\Unity.VisualScripting.TextureAssets.dll</HintPath>
+      <HintPath>Library\PackageCache\com.unity.visualscripting@eb6004dcc707\Editor\VisualScripting.Core\EditorAssetResources\Unity.VisualScripting.TextureAssets.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Mono.Cecil">
       <HintPath>Library\PackageCache\com.unity.nuget.mono-cecil@ecb9724e46ff\Mono.Cecil.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe">
+      <HintPath>Library\PackageCache\com.unity.collections@aea9d3bd5e19\Unity.Collections.Tests\System.Runtime.CompilerServices.Unsafe\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.Analytics.StandardEvents">

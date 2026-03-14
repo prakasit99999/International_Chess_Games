@@ -49,23 +49,23 @@
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\Tools\BuildPipeline\Unity.SourceGenerators\Unity.UIToolkit.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\InternalBridge\WindowUtils.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\InternalBridge\UndoHistory.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\InternalBridge\AssemblyInfo.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\InternalBridge\LogDataType.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\InternalBridge\Backport\ConsoleUtils.Backport.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\InternalBridge\LogData.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\InternalBridge\Backport\WindowUtils.Backport.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\InternalBridge\Backport\UssValidator.Backport.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\InternalBridge\CodeEditorProjectUtils.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\InternalBridge\ProfilerAssistantBridge.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\InternalBridge\Backport\UndoHistory.Backport.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\InternalBridge\ConsoleUtils.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\InternalBridge\AgentUtils.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\InternalBridge\Backport\CodeEditorProjectUtils.Backport.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@d940ec41569d\Editor\InternalBridge\WindowUtils.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@d940ec41569d\Editor\InternalBridge\UndoHistory.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@d940ec41569d\Editor\InternalBridge\AssemblyInfo.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@d940ec41569d\Editor\InternalBridge\LogDataType.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@d940ec41569d\Editor\InternalBridge\Backport\ConsoleUtils.Backport.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@d940ec41569d\Editor\InternalBridge\LogData.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@d940ec41569d\Editor\InternalBridge\Backport\WindowUtils.Backport.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@d940ec41569d\Editor\InternalBridge\Backport\UssValidator.Backport.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@d940ec41569d\Editor\InternalBridge\CodeEditorProjectUtils.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@d940ec41569d\Editor\InternalBridge\ProfilerAssistantBridge.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@d940ec41569d\Editor\InternalBridge\Backport\UndoHistory.Backport.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@d940ec41569d\Editor\InternalBridge\ConsoleUtils.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@d940ec41569d\Editor\InternalBridge\AgentUtils.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@d940ec41569d\Editor\InternalBridge\Backport\CodeEditorProjectUtils.Backport.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\InternalBridge\Unity.AI.Assistant.Bridge.Editor.asmdef" />
+    <None Include="Library\PackageCache\com.unity.ai.assistant@d940ec41569d\Editor\InternalBridge\Unity.AI.Assistant.Bridge.Editor.asmdef" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
@@ -721,7 +721,7 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="AiEditorToolsSdk">
-      <HintPath>Library\PackageCache\com.unity.ai.toolkit@04b39586d864\Modules\Sdk\Editor\AiEditorToolsSdk.dll</HintPath>
+      <HintPath>Library\PackageCache\com.unity.ai.toolkit@97783faabe3b\Modules\Sdk\Editor\AiEditorToolsSdk.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.VisualScripting.TextureAssets">
@@ -1238,8 +1238,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="UnityEngine.UI.csproj" />
     <ProjectReference Include="UnityEditor.UI.csproj" />
+    <ProjectReference Include="UnityEngine.UI.csproj" />
     <ProjectReference Include="UnityEngine.TestRunner.csproj" />
     <ProjectReference Include="UnityEditor.TestRunner.csproj" />
   </ItemGroup>

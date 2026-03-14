@@ -36,7 +36,7 @@
   </PropertyGroup>
   <PropertyGroup>
     <UnityProjectGenerator>Package</UnityProjectGenerator>
-    <UnityProjectGeneratorVersion>2.0.26</UnityProjectGeneratorVersion>
+    <UnityProjectGeneratorVersion>2.0.27</UnityProjectGeneratorVersion>
     <UnityProjectGeneratorStyle>SDK</UnityProjectGeneratorStyle>
     <UnityProjectType>Editor:5</UnityProjectType>
     <UnityBuildTarget>WebGL:20</UnityBuildTarget>
@@ -276,8 +276,8 @@
     <Compile Include="Library\PackageCache\com.unity.collab-proxy@3351acaba9c9\Editor\Views\CreateWorkspace\PerformInitialCheckin.cs" />
     <Compile Include="Library\PackageCache\com.unity.collab-proxy@3351acaba9c9\Editor\UVCSToolbar\Headless\HeadlessWorkspaceWindow.cs" />
     <Compile Include="Library\PackageCache\com.unity.collab-proxy@3351acaba9c9\Editor\UI\DelayedActionByFramesRunner.cs" />
-    <Compile Include="Library\PackageCache\com.unity.collab-proxy@3351acaba9c9\Editor\Views\Labels\LabelsViewMenu.cs" />
     <Compile Include="Library\PackageCache\com.unity.collab-proxy@3351acaba9c9\Editor\Configuration\ClientConfiguration.cs" />
+    <Compile Include="Library\PackageCache\com.unity.collab-proxy@3351acaba9c9\Editor\Views\Labels\LabelsViewMenu.cs" />
     <Compile Include="Library\PackageCache\com.unity.collab-proxy@3351acaba9c9\Editor\CloudDrive\Workspaces\DirectoryContent\DirectoryContentPanel.cs" />
     <Compile Include="Library\PackageCache\com.unity.collab-proxy@3351acaba9c9\Editor\Developer\ProgressOperationHandler.cs" />
     <Compile Include="Library\PackageCache\com.unity.collab-proxy@3351acaba9c9\Editor\Developer\GenericProgress.cs" />
@@ -1606,8 +1606,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="UnityEngine.UI.csproj" />
     <ProjectReference Include="UnityEditor.UI.csproj" />
+    <ProjectReference Include="UnityEngine.UI.csproj" />
     <ProjectReference Include="UnityEngine.TestRunner.csproj" />
     <ProjectReference Include="UnityEditor.TestRunner.csproj" />
   </ItemGroup>

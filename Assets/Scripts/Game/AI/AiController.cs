@@ -1,5 +1,8 @@
 using System.Collections;
+using System.Diagnostics;
+using static UnityEngine.Debug;
 using Game.Interfaces;
+using AIEngine.Adapters;
 using UnityEngine;
 using static ChessPiece;
 
@@ -8,6 +11,7 @@ public class AiController : MonoBehaviour
     [Header("Game Objects")]
     private GameManager gameManager;
     private ChessBoard chessBoard;
+    private HistoryMove historyMove;
     private IChessAI chessAI;
     private Coroutine aiLoop;
     private Team? pendingTeam;
@@ -30,6 +34,8 @@ public class AiController : MonoBehaviour
             gameManager = GameManager.Instance ?? FindFirstObjectByType<GameManager>();
         if (chessBoard == null)
             chessBoard = FindFirstObjectByType<ChessBoard>();
+        if (historyMove == null)
+            historyMove = FindFirstObjectByType<HistoryMove>();
         if (chessAI == null)
             chessAI = GetComponent<IChessAI>();
     }
@@ -61,9 +67,16 @@ public class AiController : MonoBehaviour
             {
                 if (!warnedMissingAI)
                 {
-                    Debug.LogWarning("⚠️ AI components missing. Cannot calculate AI move.");
+                    // Debug.LogWarning("⚠️ AI components missing. Cannot calculate AI move.");
                     warnedMissingAI = true;
                 }
+                yield return null;
+                continue;
+            }
+
+            if (chessBoard.PiecesOnBoard == null || chessBoard.PiecesOnBoard.Count == 0)
+            {
+                pendingTeam = null;
                 yield return null;
                 continue;
             }
@@ -73,14 +86,25 @@ public class AiController : MonoBehaviour
             {
                 pendingTeam = team;
                 chessAI.ClearCalculatedMove();
-                chessAI.StartCalculateMove(chessBoard, team, gameManager.CurrentTurn, GetDifficultyForTeam(team));
+                var difficulty = GetDifficultyForTeam(team);
+                chessAI.StartCalculateMove(chessBoard, team, gameManager.CurrentTurn, difficulty);
             }
 
             var move = chessAI.GetCalculatedMove();
 
             if (move.HasValue)
             {
-                ExecuteAIMove(move.Value.from, move.Value.to);
+                var difficulty = GetDifficultyForTeam(team);
+                var aiStats = CreateAiStats(difficulty);
+                var chosenMove = move.Value;
+                if (difficulty == AIDifficulty.Easy &&
+                    IsBacktrackMove(team, chosenMove.from, chosenMove.to) &&
+                    TryGetAlternativeMove(team, chosenMove.from, chosenMove.to, out var alt))
+                {
+                    chosenMove = alt;
+                }
+
+                ExecuteAIMove(chosenMove.from, chosenMove.to, aiStats);
                 chessAI.ClearCalculatedMove();
                 pendingTeam = null;
                 yield return new WaitForSeconds(0.3f);
@@ -104,7 +128,7 @@ public class AiController : MonoBehaviour
                 gameManager.BlackPlayer == GameManager.PlayerType.AI);
     }
 
-    private void ExecuteAIMove(Vector2Int from, Vector2Int to)
+    private void ExecuteAIMove(Vector2Int from, Vector2Int to, AiPerformanceData aiStats = null)
     {
         if (gameManager == null || chessBoard == null)
             return;
@@ -115,8 +139,19 @@ public class AiController : MonoBehaviour
         if (piece.team != gameManager.CurrentTurn)
             return;
 
+        var turnBeforeMove = gameManager.CurrentTurn;
+
         chessBoard.SelectPiece(piece);
-        chessBoard.MoveSelectedPiece(to, null);
+        chessBoard.MoveSelectedPiece(to, aiStats);
+
+        // Fallback: if turn didn't switch (offline), switch manually
+        if (gameManager.CurrentTurn == turnBeforeMove)
+        {
+            if (chessBoard.PiecesOnBoard.TryGetValue(to, out ChessPiece moved) && moved == piece)
+            {
+                gameManager.SwitchTurn();
+            }
+        }
     }
 
     private AIDifficulty GetDifficultyForTeam(Team team)
@@ -152,5 +187,82 @@ public class AiController : MonoBehaviour
             "easy" => AIDifficulty.Easy,
             _ => AIDifficulty.Easy
         };
+    }
+
+    private AiPerformanceData CreateAiStats(AIDifficulty difficulty)
+    {
+        if (chessAI is not UnityAIBoardAdapter adapter)
+            return null;
+
+        string level = difficulty switch
+        {
+            AIDifficulty.Hard => "hard",
+            AIDifficulty.Normal => "medium",
+            _ => "easy"
+        };
+
+        string algorithmType = (level == "easy") ? "minimax" : "alpha_beta";
+
+        var data = new AiPerformanceData
+        {
+            AiLevel = level,
+            AlgorithmType = algorithmType,
+            Depth = adapter.LastDepth,
+            Nodes = adapter.NodesEvaluated,
+            MoveTimeMs = Mathf.RoundToInt(adapter.LastMoveTimeMs),
+            Score = adapter.LastEvalScore
+        };
+
+        PerformanceTracker.Instance?.AddMove(data.Depth, data.Nodes, data.MoveTimeMs, data.Score);
+        return data;
+    }
+
+    private bool IsBacktrackMove(Team team, Vector2Int from, Vector2Int to)
+    {
+        if (historyMove == null)
+            return false;
+
+        var history = historyMove.GetMoveHistory();
+        if (history == null || history.Count == 0)
+            return false;
+
+        foreach (var move in history)
+        {
+            if (move.team != team)
+                continue;
+
+            return move.startPosition == to && move.endPosition == from;
+        }
+
+        return false;
+    }
+
+    private bool TryGetAlternativeMove(Team team, Vector2Int avoidFrom, Vector2Int avoidTo, out (Vector2Int from, Vector2Int to) alt)
+    {
+        alt = default;
+
+        if (chessBoard == null || chessBoard.PiecesOnBoard == null)
+            return false;
+
+        foreach (var entry in chessBoard.PiecesOnBoard)
+        {
+            var piece = entry.Value;
+            if (piece == null || piece.team != team)
+                continue;
+
+            var moves = piece.GetValidMoves();
+            for (int i = 0; i < moves.Count; i++)
+            {
+                var to = moves[i];
+                var from = piece.boardPosition;
+                if (from == avoidFrom && to == avoidTo)
+                    continue;
+
+                alt = (from, to);
+                return true;
+            }
+        }
+
+        return false;
     }
 }

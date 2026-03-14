@@ -2,7 +2,7 @@ using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;   
+using UnityEngine.UI;
 using static ChessPiece;
 
 public class GameUIManager : MonoBehaviour
@@ -299,6 +299,49 @@ public class GameUIManager : MonoBehaviour
 
         gameManager.OnExitGameClicked();
     }
+
+    // Local Reset Only
+    public void OnResetGameClicked()
+    {
+        if (gameManager == null)
+            return;
+
+        var mode = gameManager.gameModeManager != null
+            ? gameManager.gameModeManager.CurrentMode
+            : GameModeManager.GameModes.SinglePlayer;
+
+        if (mode == GameModeManager.GameModes.Online)
+        {
+            Debug.LogWarning("❌ Reset is offline-only.");
+            return;
+        }
+
+        if (PauseManager.isPaused)
+            PauseManager.Resume();
+
+        gameManager.RequestReplay();
+    }
+
+    public void OnExitOnlineClicked()
+    {
+        if (gameManager == null)
+            return;
+
+        var mode = gameManager.gameModeManager != null
+            ? gameManager.gameModeManager.CurrentMode
+            : GameModeManager.GameModes.SinglePlayer;
+
+        if (mode != GameModeManager.GameModes.Online)
+            return;
+
+        // ถ้าต้องการแจ้ง resign/exit ให้เซิร์ฟเวอร์ก่อน
+        var onlineSession = FindFirstObjectByType<OnlineSessionManager>();
+        if (onlineSession != null)
+            onlineSession.ExitOnline();
+
+        UnityEngine.SceneManagement.SceneManager.LoadScene("OnlineLobby");
+    }
+
 
     // Force leave (after sync done)
     public void DoResetAndLeave()

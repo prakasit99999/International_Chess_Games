@@ -302,6 +302,19 @@ public class GameResultSyncService : MonoBehaviour
         UnityEngine.SceneManagement.SceneManager.LoadScene("MainMenu");
     }
 
+    public IEnumerator ExitOnlineSequence()
+    {
+        if (gameManager == null)
+            yield break;
+
+        if (PauseManager.isPaused)
+            PauseManager.Resume();
+
+        Debug.Log("🟢 Online Exit → Finalizing Game");
+        
+    }
+
+
     public IEnumerator ReplayOfflineGame()
     {
         if (gameManager == null)

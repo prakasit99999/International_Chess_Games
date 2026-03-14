@@ -36,7 +36,7 @@
   </PropertyGroup>
   <PropertyGroup>
     <UnityProjectGenerator>Package</UnityProjectGenerator>
-    <UnityProjectGeneratorVersion>2.0.26</UnityProjectGeneratorVersion>
+    <UnityProjectGeneratorVersion>2.0.27</UnityProjectGeneratorVersion>
     <UnityProjectGeneratorStyle>SDK</UnityProjectGeneratorStyle>
     <UnityProjectType>Editor:5</UnityProjectType>
     <UnityBuildTarget>WebGL:20</UnityBuildTarget>
@@ -59,7 +59,6 @@
     <None Include="Library\PackageCache\com.unity.collab-proxy@3351acaba9c9\Lib\Editor\Localization\workspaceserver.zh-Hant.txt" />
     <None Include="Library\PackageCache\com.unity.collab-proxy@3351acaba9c9\Lib\Editor\Localization\cm-help.en.txt" />
     <None Include="Library\PackageCache\com.unity.collab-proxy@3351acaba9c9\Lib\Editor\Localization\differences.ja.txt" />
-    <None Include="Library\PackageCache\com.unity.cloud.gltfast@0847aee0f6da\Editor\UI\ReportItem-style.uss" />
     <None Include="Library\PackageCache\com.unity.collab-proxy@3351acaba9c9\Lib\Editor\Localization\common.es.txt" />
     <None Include="Library\PackageCache\com.unity.collab-proxy@3351acaba9c9\Lib\Editor\Localization\configurehelper.ja.txt" />
     <None Include="Library\PackageCache\com.unity.collab-proxy@3351acaba9c9\Lib\Editor\Localization\basecommands.es.txt" />
@@ -74,7 +73,6 @@
     <None Include="Library\PackageCache\com.unity.collab-proxy@3351acaba9c9\Lib\Editor\Localization\basecommands.en.txt" />
     <None Include="Library\PackageCache\com.unity.collab-proxy@3351acaba9c9\Lib\Editor\Localization\guihelp.ko.txt" />
     <None Include="Library\PackageCache\com.unity.collab-proxy@3351acaba9c9\Lib\Editor\Localization\mergetool.en.txt" />
-    <None Include="Library\PackageCache\com.unity.cloud.gltfast@0847aee0f6da\Editor\UI\ReportItem.uxml" />
     <None Include="Library\PackageCache\com.unity.collab-proxy@3351acaba9c9\Lib\Editor\Localization\clientcommon.ja.txt" />
     <None Include="Library\PackageCache\com.unity.collab-proxy@3351acaba9c9\Lib\Editor\Localization\images.ja.txt" />
     <None Include="Library\PackageCache\com.unity.collab-proxy@3351acaba9c9\Lib\Editor\Localization\differences.es.txt" />
@@ -101,7 +99,6 @@
     <None Include="Library\PackageCache\com.unity.collab-proxy@3351acaba9c9\Lib\Editor\Localization\workspaceserver.zh-Hans.txt" />
     <None Include="Assets\MobileDependencyResolver\Editor\Google.VersionHandlerImpl.dll" />
     <None Include="Library\PackageCache\com.unity.collab-proxy@3351acaba9c9\Lib\Editor\Localization\cm.en.txt" />
-    <None Include="Library\PackageCache\com.unity.cloud.gltfast@0847aee0f6da\Editor\UI\MaterialsVariantsComponentInspector.uxml" />
     <None Include="Library\PackageCache\com.unity.collab-proxy@3351acaba9c9\Lib\Editor\Localization\mergetool.zh-Hans.txt" />
     <None Include="Library\PackageCache\com.unity.collab-proxy@3351acaba9c9\Lib\Editor\log4netPlastic.dll" />
     <None Include="Library\PackageCache\com.unity.collab-proxy@3351acaba9c9\Lib\Editor\Localization\xdiff.ko.txt" />
@@ -113,7 +110,6 @@
     <None Include="Library\PackageCache\com.unity.collab-proxy@3351acaba9c9\Lib\Editor\Localization\plastic-gui.zh-Hans.txt" />
     <None Include="Library\PackageCache\com.unity.collab-proxy@3351acaba9c9\Lib\Editor\unityplastic.dll" />
     <None Include="Assets\MobileDependencyResolver\Editor\Google.JarResolver.dll" />
-    <None Include="Library\PackageCache\com.unity.cloud.gltfast@0847aee0f6da\Editor\UI\GltfImporter.uxml" />
     <None Include="Library\PackageCache\com.unity.collab-proxy@3351acaba9c9\Lib\Editor\Localization\guihelp.zh-Hans.txt" />
     <None Include="Library\PackageCache\com.unity.collab-proxy@3351acaba9c9\Lib\Editor\Localization\cm.ja.txt" />
     <None Include="Library\PackageCache\com.unity.collab-proxy@3351acaba9c9\Lib\Editor\Localization\configurehelper.es.txt" />
@@ -139,7 +135,6 @@
     <None Include="Library\PackageCache\com.unity.collab-proxy@3351acaba9c9\Lib\Editor\Localization\common.en.txt" />
     <None Include="Library\PackageCache\com.unity.collab-proxy@3351acaba9c9\Lib\Editor\Localization\semantic.zh-Hans.txt" />
     <None Include="Library\PackageCache\com.unity.collab-proxy@3351acaba9c9\Lib\Editor\Localization\differences.zh-Hant.txt" />
-    <None Include="Library\PackageCache\com.unity.cloud.gltfast@0847aee0f6da\Editor\UI\Dependency-style.uss" />
     <None Include="Library\PackageCache\com.unity.collab-proxy@3351acaba9c9\Lib\Editor\Localization\basecommands.zh-Hant.txt" />
     <None Include="Assets\MobileDependencyResolver\Editor\Google.VersionHandler.dll" />
     <None Include="Library\PackageCache\com.unity.collab-proxy@3351acaba9c9\Lib\Editor\Localization\differences.ko.txt" />
@@ -149,14 +144,13 @@
     <None Include="Library\PackageCache\com.unity.collab-proxy@3351acaba9c9\Lib\Editor\Localization\i3.es.txt" />
     <None Include="Library\PackageCache\com.unity.collab-proxy@3351acaba9c9\Lib\Editor\Localization\images.ko.txt" />
     <None Include="Library\PackageCache\com.unity.collab-proxy@3351acaba9c9\Lib\Editor\Localization\cm-help.zh-Hant.txt" />
-    <None Include="Library\PackageCache\com.unity.ai.toolkit@04b39586d864\Modules\Sdk\Editor\AiEditorToolsSdk.dll" />
+    <None Include="Library\PackageCache\com.unity.ai.toolkit@97783faabe3b\Modules\Sdk\Editor\AiEditorToolsSdk.dll" />
     <None Include="Library\PackageCache\com.unity.collab-proxy@3351acaba9c9\Lib\Editor\Localization\commontypes.zh-Hant.txt" />
     <None Include="Library\PackageCache\com.unity.collab-proxy@3351acaba9c9\Lib\Editor\Localization\plastic-gui.ja.txt" />
     <None Include="Library\PackageCache\com.unity.collab-proxy@3351acaba9c9\Lib\Editor\Localization\guihelp.en.txt" />
     <None Include="Library\PackageCache\com.unity.collab-proxy@3351acaba9c9\Lib\Editor\Localization\clientcommon.zh-Hant.txt" />
     <None Include="Library\PackageCache\com.unity.collab-proxy@3351acaba9c9\Lib\Editor\Localization\workspaceserver.ja.txt" />
     <None Include="Library\PackageCache\com.unity.collab-proxy@3351acaba9c9\Lib\Editor\Localization\cm-help.ko.txt" />
-    <None Include="Library\PackageCache\com.unity.cloud.gltfast@0847aee0f6da\Editor\UI\Dependency.uxml" />
     <None Include="Library\PackageCache\com.unity.collab-proxy@3351acaba9c9\Lib\Editor\Localization\basecommands.zh-Hans.txt" />
     <None Include="Library\PackageCache\com.unity.collab-proxy@3351acaba9c9\Lib\Editor\Localization\images.es.txt" />
     <None Include="Library\PackageCache\com.unity.collab-proxy@3351acaba9c9\Lib\Editor\Localization\i3.ko.txt" />
@@ -166,7 +160,6 @@
     <None Include="Library\PackageCache\com.unity.collab-proxy@3351acaba9c9\Lib\Editor\Localization\clientcommon.en.txt" />
     <None Include="Library\PackageCache\com.unity.collab-proxy@3351acaba9c9\Lib\Editor\zlib64Plastic.dll" />
     <None Include="Library\PackageCache\com.unity.collab-proxy@3351acaba9c9\Lib\Editor\Localization\workspaceserver.es.txt" />
-    <None Include="Library\PackageCache\com.unity.cloud.gltfast@0847aee0f6da\Editor\UI\GltfImporter-style.uss" />
     <None Include="Library\PackageCache\com.unity.collab-proxy@3351acaba9c9\Lib\Editor\Localization\xdiff.zh-Hans.txt" />
   </ItemGroup>
   <ItemGroup>
@@ -747,7 +740,7 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.VisualScripting.YamlDotNet">
-      <HintPath>Library\PackageCache\com.unity.visualscripting@191c0d7e3b69\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll</HintPath>
+      <HintPath>Library\PackageCache\com.unity.visualscripting@eb6004dcc707\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.Collections.LowLevel.ILSupport">
@@ -795,7 +788,7 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.VisualScripting.IonicZip">
-      <HintPath>Library\PackageCache\com.unity.visualscripting@191c0d7e3b69\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll</HintPath>
+      <HintPath>Library\PackageCache\com.unity.visualscripting@eb6004dcc707\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="unityplastic">
@@ -811,7 +804,7 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.VisualScripting.Antlr3.Runtime">
-      <HintPath>Library\PackageCache\com.unity.visualscripting@191c0d7e3b69\Runtime\VisualScripting.Flow\Dependencies\NCalc\Unity.VisualScripting.Antlr3.Runtime.dll</HintPath>
+      <HintPath>Library\PackageCache\com.unity.visualscripting@eb6004dcc707\Runtime\VisualScripting.Flow\Dependencies\NCalc\Unity.VisualScripting.Antlr3.Runtime.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Google.VersionHandler">
@@ -823,15 +816,19 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="AiEditorToolsSdk">
-      <HintPath>Library\PackageCache\com.unity.ai.toolkit@04b39586d864\Modules\Sdk\Editor\AiEditorToolsSdk.dll</HintPath>
+      <HintPath>Library\PackageCache\com.unity.ai.toolkit@97783faabe3b\Modules\Sdk\Editor\AiEditorToolsSdk.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.VisualScripting.TextureAssets">
-      <HintPath>Library\PackageCache\com.unity.visualscripting@191c0d7e3b69\Editor\VisualScripting.Core\EditorAssetResources\Unity.VisualScripting.TextureAssets.dll</HintPath>
+      <HintPath>Library\PackageCache\com.unity.visualscripting@eb6004dcc707\Editor\VisualScripting.Core\EditorAssetResources\Unity.VisualScripting.TextureAssets.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Mono.Cecil">
       <HintPath>Library\PackageCache\com.unity.nuget.mono-cecil@ecb9724e46ff\Mono.Cecil.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe">
+      <HintPath>Library\PackageCache\com.unity.collections@aea9d3bd5e19\Unity.Collections.Tests\System.Runtime.CompilerServices.Unsafe\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.Analytics.StandardEvents">
@@ -1351,25 +1348,22 @@
     <ProjectReference Include="Unity.TextMeshPro.csproj" />
     <ProjectReference Include="Mirror.Components.csproj" />
     <ProjectReference Include="Unity.Cloud.AppLinking.Editor.Embedded.csproj" />
-    <ProjectReference Include="Unity.Services.Multiplayer.Editor.Shared.csproj" />
     <ProjectReference Include="PsdPlugin.csproj" />
     <ProjectReference Include="Unity.Services.QoS.csproj" />
     <ProjectReference Include="UnityEngine.SpatialTracking.csproj" />
+    <ProjectReference Include="Unity.Services.Multiplayer.Editor.Shared.csproj" />
     <ProjectReference Include="Unity.Cloud.AppLinking.Embedded.csproj" />
     <ProjectReference Include="Unity.Services.Core.csproj" />
     <ProjectReference Include="Unity.VisualScripting.SettingsProvider.Editor.csproj" />
     <ProjectReference Include="kcp2k.csproj" />
-    <ProjectReference Include="Unity.AI.Assistant.API.Editor.csproj" />
     <ProjectReference Include="Unity.Networking.Editor.csproj" />
     <ProjectReference Include="Unity.2D.Enhancers.Editor.AIBridge.csproj" />
     <ProjectReference Include="Unity.InternalAPIEditorBridge.001.csproj" />
     <ProjectReference Include="Unity.AI.Navigation.Updater.csproj" />
     <ProjectReference Include="Unity.2D.Common.Editor.csproj" />
     <ProjectReference Include="Unity.AI.Navigation.Editor.csproj" />
-    <ProjectReference Include="Unity.AI.Assistant.Integrations.Profiler.Editor.csproj" />
     <ProjectReference Include="Unity.2D.Animation.Runtime.csproj" />
     <ProjectReference Include="Edgegap.csproj" />
-    <ProjectReference Include="Unity.AI.MCP.Runtime.csproj" />
     <ProjectReference Include="Unity.Purchasing.Stores.csproj" />
     <ProjectReference Include="Unity.AppUI.Undo.csproj" />
     <ProjectReference Include="Unity.Services.Core.Components.csproj" />
@@ -1385,22 +1379,19 @@
     <ProjectReference Include="Unity.InferenceEngine.Editor.csproj" />
     <ProjectReference Include="Unity.Services.Authentication.Editor.Shared.csproj" />
     <ProjectReference Include="Unity.Services.Multiplayer.Editor.Matchmaker.Authoring.csproj" />
-    <ProjectReference Include="Unity.AI.Assistant.Bridge.Editor.csproj" />
-    <ProjectReference Include="Unity.VisualScripting.Flow.csproj" />
-    <ProjectReference Include="Unity.AI.Assistant.Tools.Editor.csproj" />
-    <ProjectReference Include="SimpleWebTransport.csproj" />
     <ProjectReference Include="Unity.Analytics.DataPrivacy.csproj" />
+    <ProjectReference Include="Unity.VisualScripting.Flow.csproj" />
+    <ProjectReference Include="SimpleWebTransport.csproj" />
     <ProjectReference Include="Unity.TextMeshPro.Editor.csproj" />
-    <ProjectReference Include="Unity.2D.Tilemap.Extras.Editor.csproj" />
     <ProjectReference Include="Mirror.Transports.csproj" />
-    <ProjectReference Include="Unity.Cloud.AppLinking.Runtime.Embedded.csproj" />
+    <ProjectReference Include="Unity.2D.Tilemap.Extras.Editor.csproj" />
     <ProjectReference Include="Unity.Services.Authentication.PlayerAccounts.csproj" />
+    <ProjectReference Include="Unity.Cloud.AppLinking.Runtime.Embedded.csproj" />
     <ProjectReference Include="UnityEngine.XR.LegacyInputHelpers.csproj" />
-    <ProjectReference Include="glTFast.dots.csproj" />
     <ProjectReference Include="Unity.AssetManager.Upload.Editor.csproj" />
     <ProjectReference Include="Unity.VisualStudio.Editor.csproj" />
-    <ProjectReference Include="UnityEditor.XR.LegacyInputHelpers.csproj" />
     <ProjectReference Include="Unity.2D.Tilemap.Editor.csproj" />
+    <ProjectReference Include="UnityEditor.XR.LegacyInputHelpers.csproj" />
     <ProjectReference Include="Unity.VisualScripting.State.Editor.csproj" />
     <ProjectReference Include="UnityEngine.UI.csproj" />
     <ProjectReference Include="Unity.Services.Core.Environments.csproj" />
@@ -1408,7 +1399,6 @@
     <ProjectReference Include="Unity.Cloud.Assets.Runtime.Embedded.csproj" />
     <ProjectReference Include="Unity.AdaptivePerformance.csproj" />
     <ProjectReference Include="GameAssembly.csproj" />
-    <ProjectReference Include="HFDownloader.csproj" />
     <ProjectReference Include="UnityEngine.Advertisements.Editor.csproj" />
     <ProjectReference Include="Unity.AppUI.csproj" />
     <ProjectReference Include="Unity.2D.Sprite.AIIntegration.Editor.csproj" />
@@ -1417,15 +1407,12 @@
     <ProjectReference Include="Unity.Cloud.Common.Embedded.csproj" />
     <ProjectReference Include="Unity.Purchasing.Codeless.csproj" />
     <ProjectReference Include="Unity.AppUI.Redux.csproj" />
-    <ProjectReference Include="Unity.AI.MCP.Editor.csproj" />
     <ProjectReference Include="Unity.InferenceEngine.ONNX.Editor.csproj" />
     <ProjectReference Include="Unity.AppUI.Navigation.csproj" />
     <ProjectReference Include="Unity.Cloud.Identity.Runtime.Embedded.csproj" />
-    <ProjectReference Include="glTFast.Editor.csproj" />
     <ProjectReference Include="Unity.AI.Navigation.csproj" />
     <ProjectReference Include="Unity.2D.IK.Runtime.csproj" />
     <ProjectReference Include="UnityEditor.Purchasing.csproj" />
-    <ProjectReference Include="Unity.AI.Assistant.Agent.Dynamic.Extension.Editor.csproj" />
     <ProjectReference Include="Unity.AssetManager.Core.Editor.csproj" />
     <ProjectReference Include="Unity.2D.Animation.Editor.csproj" />
     <ProjectReference Include="Unity.Purchasing.csproj" />
@@ -1445,7 +1432,6 @@
     <ProjectReference Include="Analytics.csproj" />
     <ProjectReference Include="Unity.Cloud.Common.Runtime.Embedded.csproj" />
     <ProjectReference Include="Unity.AppUI.MVVM.csproj" />
-    <ProjectReference Include="Unity.AI.Assistant.Runtime.csproj" />
     <ProjectReference Include="Unity.2D.Tilemap.Extras.csproj" />
     <ProjectReference Include="Unity.VisualScripting.Flow.Editor.csproj" />
     <ProjectReference Include="Unity.2D.IK.Editor.csproj" />
@@ -1459,7 +1445,6 @@
     <ProjectReference Include="Unity.Purchasing.SecurityCore.csproj" />
     <ProjectReference Include="Unity.Mathematics.csproj" />
     <ProjectReference Include="Mirror.Editor.csproj" />
-    <ProjectReference Include="Unity.Serialization.csproj" />
     <ProjectReference Include="Unity.Multiplayer.Center.Common.csproj" />
     <ProjectReference Include="Unity.Burst.csproj" />
     <ProjectReference Include="Unity.VisualScripting.Core.Editor.csproj" />
@@ -1474,9 +1459,7 @@
     <ProjectReference Include="Unity.Collections.Editor.csproj" />
     <ProjectReference Include="Unity.Cloud.Identity.Editor.Embedded.csproj" />
     <ProjectReference Include="Mirror.csproj" />
-    <ProjectReference Include="Unity.Serialization.Editor.csproj" />
     <ProjectReference Include="Unity.InferenceEngine.iOSBLAS.csproj" />
-    <ProjectReference Include="glTFast.csproj" />
     <ProjectReference Include="Unity.Settings.Editor.csproj" />
     <ProjectReference Include="Telepathy.csproj" />
     <ProjectReference Include="Unity.Cloud.Identity.Embedded.csproj" />

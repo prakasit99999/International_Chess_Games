@@ -135,45 +135,42 @@ public class ChessBoardGenerate : MonoBehaviour
 
     private void SpawnPieces()
     {
-        // if (tilePrefab == null)
-        // {
-        //     Debug.LogError("❌ tilePrefab ยังไม่ได้เซ็ตใน ChessBoard!");
-        //     return;
-        // }
-        // // 🏇 วางเบี้ย (Pawn) ที่แถว 1 และ 6
-        // for (int i = 0; i < ChessBoard.BoardSize; i++)
-        // {
-        //     board.SpawnPiece(ChessPiece.PieceType.Pawn, ChessPiece.Team.White, new Vector2Int(i, 1));
-        //     board.SpawnPiece(ChessPiece.PieceType.Pawn, ChessPiece.Team.Black, new Vector2Int(i, 6));
-        // }
+        if (tilePrefab == null)
+        {
+            Debug.LogError("❌ tilePrefab ยังไม่ได้เซ็ตใน ChessBoard!");
+            return;
+        }
+        // 🏇 วางเบี้ย (Pawn) ที่แถว 1 และ 6
+        for (int i = 0; i < 8; i++)
+        {
+            board.SpawnPiece(ChessPiece.PieceType.Pawn, ChessPiece.Team.White, new Vector2Int(i, 1));
+            board.SpawnPiece(ChessPiece.PieceType.Pawn, ChessPiece.Team.Black, new Vector2Int(i, 6));
+        }
 
-        // // 🏰 วางเรือ (Rook)
-        // board.SpawnPiece(ChessPiece.PieceType.Rook, ChessPiece.Team.White, new Vector2Int(0, 0));
-        // board.SpawnPiece(ChessPiece.PieceType.Rook, ChessPiece.Team.White, new Vector2Int(7, 0));
-        // board.SpawnPiece(ChessPiece.PieceType.Rook, ChessPiece.Team.Black, new Vector2Int(0, 7));
-        // board.SpawnPiece(ChessPiece.PieceType.Rook, ChessPiece.Team.Black, new Vector2Int(7, 7));
+        // วางเรือ (Rook)
+        board.SpawnPiece(ChessPiece.PieceType.Rook, ChessPiece.Team.White, new Vector2Int(0, 0));
+        board.SpawnPiece(ChessPiece.PieceType.Rook, ChessPiece.Team.White, new Vector2Int(7, 0));
+        board.SpawnPiece(ChessPiece.PieceType.Rook, ChessPiece.Team.Black, new Vector2Int(0, 7));
+        board.SpawnPiece(ChessPiece.PieceType.Rook, ChessPiece.Team.Black, new Vector2Int(7, 7));
 
-        // //// 🏇 วางม้า (Knight)
-        // board.SpawnPiece(ChessPiece.PieceType.Knight, ChessPiece.Team.White, new Vector2Int(1, 0));
-        // board.SpawnPiece(ChessPiece.PieceType.Knight, ChessPiece.Team.White, new Vector2Int(6, 0));
-        // board.SpawnPiece(ChessPiece.PieceType.Knight, ChessPiece.Team.Black, new Vector2Int(1, 7));
-        // board.SpawnPiece(ChessPiece.PieceType.Knight, ChessPiece.Team.Black, new Vector2Int(6, 7));
+        //  วางม้า (Knight)
+        board.SpawnPiece(ChessPiece.PieceType.Knight, ChessPiece.Team.White, new Vector2Int(1, 0));
+        board.SpawnPiece(ChessPiece.PieceType.Knight, ChessPiece.Team.White, new Vector2Int(6, 0));
+        board.SpawnPiece(ChessPiece.PieceType.Knight, ChessPiece.Team.Black, new Vector2Int(1, 7));
+        board.SpawnPiece(ChessPiece.PieceType.Knight, ChessPiece.Team.Black, new Vector2Int(6, 7));
 
-        // //// 🏹 วางบิชอป (Bishop)
-        // board.SpawnPiece(ChessPiece.PieceType.Bishop, ChessPiece.Team.White, new Vector2Int(2, 0));
-        // board.SpawnPiece(ChessPiece.PieceType.Bishop, ChessPiece.Team.White, new Vector2Int(5, 0));
-        // board.SpawnPiece(ChessPiece.PieceType.Bishop, ChessPiece.Team.Black, new Vector2Int(2, 7));
-        // board.SpawnPiece(ChessPiece.PieceType.Bishop, ChessPiece.Team.Black, new Vector2Int(5, 7));
+        //  วางบิชอป (Bishop)
+        board.SpawnPiece(ChessPiece.PieceType.Bishop, ChessPiece.Team.White, new Vector2Int(2, 0));
+        board.SpawnPiece(ChessPiece.PieceType.Bishop, ChessPiece.Team.White, new Vector2Int(5, 0));
+        board.SpawnPiece(ChessPiece.PieceType.Bishop, ChessPiece.Team.Black, new Vector2Int(2, 7));
+        board.SpawnPiece(ChessPiece.PieceType.Bishop, ChessPiece.Team.Black, new Vector2Int(5, 7));
 
-        // // 👑 วางควีน (Queen)
-        // board.SpawnPiece(ChessPiece.PieceType.Queen, ChessPiece.Team.White, new Vector2Int(3, 0));
-        // board.SpawnPiece(ChessPiece.PieceType.Queen, ChessPiece.Team.Black, new Vector2Int(3, 7));
+        // //  วางควีน (Queen)
+        board.SpawnPiece(ChessPiece.PieceType.Queen, ChessPiece.Team.White, new Vector2Int(3, 0));
+        board.SpawnPiece(ChessPiece.PieceType.Queen, ChessPiece.Team.Black, new Vector2Int(3, 7));
 
-        // // 🤴 วางคิง (King)
+        // //  วางคิง (King)
         board.SpawnPiece(ChessPiece.PieceType.King, ChessPiece.Team.White, new Vector2Int(4, 0));
         board.SpawnPiece(ChessPiece.PieceType.King, ChessPiece.Team.Black, new Vector2Int(4, 7));
-
-        board.SpawnPiece(ChessPiece.PieceType.Pawn, ChessPiece.Team.White, new Vector2Int(1, 6));
-        board.SpawnPiece(ChessPiece.PieceType.Pawn, ChessPiece.Team.Black, new Vector2Int(1, 1));
     }
 }

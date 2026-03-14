@@ -36,7 +36,7 @@
   </PropertyGroup>
   <PropertyGroup>
     <UnityProjectGenerator>Package</UnityProjectGenerator>
-    <UnityProjectGeneratorVersion>2.0.26</UnityProjectGeneratorVersion>
+    <UnityProjectGeneratorVersion>2.0.27</UnityProjectGeneratorVersion>
     <UnityProjectGeneratorStyle>SDK</UnityProjectGeneratorStyle>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>WebGL:20</UnityBuildTarget>
@@ -49,151 +49,151 @@
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\Tools\BuildPipeline\Unity.SourceGenerators\Unity.UIToolkit.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Library\PackageCache\com.unity.services.deployment@d026c9b5c5ae\Editor\JsonUtils\IJsonConverter.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.deployment@d026c9b5c5ae\Editor\Interface\UI\Views\NoConnectionView.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.deployment@d026c9b5c5ae\Editor\Environments\InvalidEnvironmentException.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.deployment@d026c9b5c5ae\Editor\Interface\UI\Components\TreeViewElement.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.deployment@d026c9b5c5ae\Editor\Commands\DeploymentCommandManager.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.deployment@d026c9b5c5ae\Editor\State\IDeploymentWindowStateProvider.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.deployment@d026c9b5c5ae\Editor\Interface\UI\Inspector\DeploymentItemsLookup.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.deployment@d026c9b5c5ae\Editor\Interface\UI\AuthoringWindow.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.deployment@d026c9b5c5ae\Editor\Interface\UI\Events\RebuildTreeEvent.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.deployment@d026c9b5c5ae\Editor\DeploymentDefinitions\IEditorDeploymentDefinition.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.deployment@d026c9b5c5ae\Editor\DeploymentDefinitions\EditorDeploymentDefinitionService.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.deployment@d026c9b5c5ae\Editor\State\DeploymentWindowStateProvider.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.deployment@d026c9b5c5ae\Editor\Logging\Logger.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.deployment@d026c9b5c5ae\Editor\Commands\ICommandManager.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.deployment@d026c9b5c5ae\Editor\Configuration\IDeploymentSettings.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.deployment@d026c9b5c5ae\Editor\Interface\DeploymentDefinitionViewModel.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.deployment@d026c9b5c5ae\Editor\SyncWithRemote\DeploymentItemSync.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.deployment@d026c9b5c5ae\Editor\Interface\SelectInProjectWindowCommand.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.deployment@d026c9b5c5ae\Editor\Interface\IDeploymentDefinitionViewModel.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.deployment@d026c9b5c5ae\Editor\Interface\UI\Components\IKeyboardShortcuts.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.deployment@d026c9b5c5ae\Editor\Model\DeploymentDefinitionDeploymentItem.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.deployment@d026c9b5c5ae\Editor\Interface\UI\Views\DeploymentItemStateView.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.deployment@d026c9b5c5ae\Editor\Configuration\ProjectPreferences.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.deployment@d026c9b5c5ae\Editor\Interface\UI\Components\CheckmarkToggle.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.deployment@d026c9b5c5ae\Editor\Analytics\IDeployOnPlayAnalytics.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.deployment@d026c9b5c5ae\Editor\Interface\UI\StatusPanel.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.deployment@d026c9b5c5ae\Editor\Interface\UI\DeploymentWindow.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.deployment@d026c9b5c5ae\Editor\Interface\UI\Events\RightClickedEvent.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.deployment@d026c9b5c5ae\Editor\PlayMode\IPlayModeInterrupt.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.deployment@d026c9b5c5ae\Editor\Tracking\IDeploymentItemTracker.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.deployment@d026c9b5c5ae\Editor\IO\FileTracker.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.deployment@d026c9b5c5ae\Editor\Commands\Command.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.deployment@d026c9b5c5ae\Editor\AssemblyInfo.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.deployment@d026c9b5c5ae\Editor\DeploymentDefinitions\DeploymentDefinitionCollection.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.deployment@d026c9b5c5ae\Editor\Interface\UI\Views\DeploymentItemView.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.deployment@d026c9b5c5ae\Editor\Interface\IDeploymentItemViewModel.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.deployment@d026c9b5c5ae\Editor\Interface\UI\Inspector\DeploymentItemInspectorHeader.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.deployment@d026c9b5c5ae\Editor\Interface\UI\Components\KeyboardShortcuts.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.deployment@d026c9b5c5ae\Editor\Interface\DeploymentViewModel.ApiImpl.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.deployment@d026c9b5c5ae\Editor\Analytics\Events\StaticAnalyticEvent.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.deployment@d026c9b5c5ae\Editor\Analytics\AnalyticProvider.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.deployment@d026c9b5c5ae\Editor\Interface\UI\Components\IKeyboardSelectionLogic.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.deployment@d026c9b5c5ae\Editor\DeploymentDefinitions\UI\CreateDeploymentDefinitionMenu.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.deployment@d026c9b5c5ae\Editor\DeploymentServices.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.deployment@d026c9b5c5ae\Editor\PlayMode\IEditorEvents.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.deployment@d026c9b5c5ae\Editor\Analytics\Events\AnalyticBase.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.deployment@d026c9b5c5ae\Editor\Interface\UI\Views\NoPackagesInstalledView.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.deployment@d026c9b5c5ae\Editor\Environments\EnvironmentProxyService.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.deployment@d026c9b5c5ae\Editor\Interface\UI\Components\KeyboardShortcutsContainer.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.deployment@d026c9b5c5ae\Editor\PlayMode\PlayModeInterrupt.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.deployment@d026c9b5c5ae\Editor\DeploymentDefinitions\UI\DeploymentDefinitionEditor.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.deployment@d026c9b5c5ae\Editor\Interface\UI\Inspector\DeploymentItemEditorLookup.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.deployment@d026c9b5c5ae\Editor\Interface\UI\Serialization\ISerializableComponentFetcher.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.deployment@d026c9b5c5ae\Editor\Interface\UI\Components\CheckmarkToggleGroup.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.deployment@d026c9b5c5ae\Editor\Interface\DeploymentItemViewModel.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.deployment@d026c9b5c5ae\Editor\Interface\UI\Views\ViewBase.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.deployment@d026c9b5c5ae\Editor\Interface\UI\Views\EnvironmentNotSetView.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.deployment@d026c9b5c5ae\Editor\Analytics\Events\DeploymentAnalyticEvent.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.deployment@d026c9b5c5ae\Editor\Interface\UI\Serialization\ISerializationManager.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.deployment@d026c9b5c5ae\Editor\Interface\UI\Events\DeploySelectedClicked.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.deployment@d026c9b5c5ae\Editor\Analytics\AnalyticsUtils.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.deployment@d026c9b5c5ae\Editor\DeploymentDefinitions\DeploymentDefinition.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.deployment@d026c9b5c5ae\Editor\Interface\DeploymentViewModel.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.deployment@d026c9b5c5ae\Editor\Interface\UI\Serialization\SerializationManager.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.deployment@d026c9b5c5ae\Editor\Commands\CommandUtils.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.deployment@d026c9b5c5ae\Editor\DeploymentDefinitions\DeploymentDefinitionResources.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.deployment@d026c9b5c5ae\Editor\Analytics\StaticAnalytics.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.deployment@d026c9b5c5ae\Editor\JsonUtils\NewtonsoftJsonConverter.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.deployment@d026c9b5c5ae\Editor\Interface\UI\Components\Selectable.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.deployment@d026c9b5c5ae\Editor\Interface\UI\Components\KeyboardSelectionLogic.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.deployment@d026c9b5c5ae\Editor\DefaultDeploymentWindowImpl.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.deployment@d026c9b5c5ae\Editor\Interface\UI\Views\DeploymentView.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.deployment@d026c9b5c5ae\Editor\DeploymentDefinitions\IEditorDeploymentDefinitionService.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.deployment@d026c9b5c5ae\Editor\Interface\UI\Views\DeploymentToolbar.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.deployment@d026c9b5c5ae\Editor\Commands\CommandManager.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.deployment@d026c9b5c5ae\Editor\Analytics\IDeploymentAnalytics.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.deployment@d026c9b5c5ae\Editor\Interface\UI\Components\MultiSelect.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.deployment@d026c9b5c5ae\Editor\Interface\UI\Events\DeployAllClicked.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.deployment@d026c9b5c5ae\Editor\Commands\AggregateCommand.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.deployment@d026c9b5c5ae\Editor\Interface\UI\Serialization\UiTreeSerializableComponentFetcher.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.deployment@d026c9b5c5ae\Editor\Analytics\DeploymentWindowAnalytics.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.deployment@d026c9b5c5ae\Editor\Interface\UI\Components\Collapsible.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.deployment@d026c9b5c5ae\Editor\Interface\UI\Views\NotSignedInView.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.deployment@d026c9b5c5ae\Editor\Interface\UI\Serialization\ISerializableComponent.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.deployment@d026c9b5c5ae\Editor\Analytics\IAnalyticProvider.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.deployment@d026c9b5c5ae\Editor\Commands\InteropCommandProvider.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.deployment@d026c9b5c5ae\Editor\PlayMode\DeployOnPlay.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.deployment@d026c9b5c5ae\Editor\Interface\UI\DeploymentWindow.ShimImpl.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.deployment@d026c9b5c5ae\Editor\Commands\ICommandProvider.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.deployment@d026c9b5c5ae\Editor\Analytics\AnalyticsConstants.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.deployment@d026c9b5c5ae\Editor\Configuration\DeploymentSettings.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.deployment@d026c9b5c5ae\Editor\Analytics\DeployOnPlayAnalytics.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.deployment@d026c9b5c5ae\Editor\Validation\DeploymentItemValidator.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.deployment@d026c9b5c5ae\Editor\Interface\UI\Views\DeploymentDefinitionView.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.deployment@d026c9b5c5ae\Editor\Interface\UI\Views\MultipleDefinitionsView.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.deployment@d026c9b5c5ae\Editor\Environments\ProjectIdProvider.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.deployment@d026c9b5c5ae\Editor\ItemStatusTracker.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.deployment@d026c9b5c5ae\Editor\Interface\UI\Views\UnlinkedProjectView.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.deployment@d026c9b5c5ae\Editor\Analytics\Events\DeployOnPlayAnalyticEvent.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.deployment@d026c9b5c5ae\Editor\Analytics\Events\DeploymentWindowAnalyticEvent.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.deployment@d026c9b5c5ae\Editor\Configuration\IProjectPreferences.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.deployment@d026c9b5c5ae\Editor\Commands\ICommand.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.deployment@d026c9b5c5ae\Editor\PlayMode\EditorEvents.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.deployment@d026c9b5c5ae\Editor\Interface\UI\Views\DeploymentElementViewBase.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.deployment@d026c9b5c5ae\Editor\IO\IFileTracker.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.deployment@d026c9b5c5ae\Editor\DocumentationHelper.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.deployment@d026c9b5c5ae\Editor\Interface\UI\DeploymentWindow.ApiImpl.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.deployment@d026c9b5c5ae\Editor\DeploymentDefinitions\DeploymentDefinitionImporter.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.deployment@d026c9b5c5ae\Editor\Constants.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.deployment@d026c9b5c5ae\Editor\PlayMode\DeployOnPlayItemRetriever.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.deployment@d026c9b5c5ae\Editor\Interface\UI\Components\CollapseToggle.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.deployment@d026c9b5c5ae\Editor\Interface\IDeploymentViewModel.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.deployment@d026c9b5c5ae\Editor\PlayMode\IDeployOnPlayItemRetriever.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.deployment@d026c9b5c5ae\Editor\Analytics\DeploymentAnalytics.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.deployment@d026c9b5c5ae\Editor\Analytics\IDeploymentWindowAnalytics.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.deployment@d026c9b5c5ae\Editor\Tracking\DeploymentItemTracker.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.deployment@c07c64f9804b\Editor\JsonUtils\IJsonConverter.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.deployment@c07c64f9804b\Editor\Interface\UI\Views\NoConnectionView.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.deployment@c07c64f9804b\Editor\Environments\InvalidEnvironmentException.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.deployment@c07c64f9804b\Editor\Interface\UI\Components\TreeViewElement.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.deployment@c07c64f9804b\Editor\Commands\DeploymentCommandManager.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.deployment@c07c64f9804b\Editor\State\IDeploymentWindowStateProvider.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.deployment@c07c64f9804b\Editor\Interface\UI\Inspector\DeploymentItemsLookup.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.deployment@c07c64f9804b\Editor\Interface\UI\AuthoringWindow.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.deployment@c07c64f9804b\Editor\Interface\UI\Events\RebuildTreeEvent.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.deployment@c07c64f9804b\Editor\DeploymentDefinitions\IEditorDeploymentDefinition.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.deployment@c07c64f9804b\Editor\DeploymentDefinitions\EditorDeploymentDefinitionService.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.deployment@c07c64f9804b\Editor\State\DeploymentWindowStateProvider.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.deployment@c07c64f9804b\Editor\Logging\Logger.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.deployment@c07c64f9804b\Editor\Commands\ICommandManager.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.deployment@c07c64f9804b\Editor\Configuration\IDeploymentSettings.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.deployment@c07c64f9804b\Editor\Interface\DeploymentDefinitionViewModel.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.deployment@c07c64f9804b\Editor\SyncWithRemote\DeploymentItemSync.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.deployment@c07c64f9804b\Editor\Interface\SelectInProjectWindowCommand.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.deployment@c07c64f9804b\Editor\Interface\IDeploymentDefinitionViewModel.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.deployment@c07c64f9804b\Editor\Interface\UI\Components\IKeyboardShortcuts.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.deployment@c07c64f9804b\Editor\Model\DeploymentDefinitionDeploymentItem.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.deployment@c07c64f9804b\Editor\Interface\UI\Views\DeploymentItemStateView.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.deployment@c07c64f9804b\Editor\Configuration\ProjectPreferences.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.deployment@c07c64f9804b\Editor\Interface\UI\Components\CheckmarkToggle.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.deployment@c07c64f9804b\Editor\Analytics\IDeployOnPlayAnalytics.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.deployment@c07c64f9804b\Editor\Interface\UI\StatusPanel.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.deployment@c07c64f9804b\Editor\Interface\UI\DeploymentWindow.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.deployment@c07c64f9804b\Editor\Interface\UI\Events\RightClickedEvent.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.deployment@c07c64f9804b\Editor\PlayMode\IPlayModeInterrupt.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.deployment@c07c64f9804b\Editor\Tracking\IDeploymentItemTracker.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.deployment@c07c64f9804b\Editor\IO\FileTracker.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.deployment@c07c64f9804b\Editor\Commands\Command.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.deployment@c07c64f9804b\Editor\AssemblyInfo.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.deployment@c07c64f9804b\Editor\DeploymentDefinitions\DeploymentDefinitionCollection.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.deployment@c07c64f9804b\Editor\Interface\UI\Views\DeploymentItemView.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.deployment@c07c64f9804b\Editor\Interface\IDeploymentItemViewModel.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.deployment@c07c64f9804b\Editor\Interface\UI\Inspector\DeploymentItemInspectorHeader.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.deployment@c07c64f9804b\Editor\Interface\UI\Components\KeyboardShortcuts.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.deployment@c07c64f9804b\Editor\Interface\DeploymentViewModel.ApiImpl.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.deployment@c07c64f9804b\Editor\Analytics\Events\StaticAnalyticEvent.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.deployment@c07c64f9804b\Editor\Analytics\AnalyticProvider.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.deployment@c07c64f9804b\Editor\Interface\UI\Components\IKeyboardSelectionLogic.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.deployment@c07c64f9804b\Editor\DeploymentDefinitions\UI\CreateDeploymentDefinitionMenu.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.deployment@c07c64f9804b\Editor\DeploymentServices.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.deployment@c07c64f9804b\Editor\PlayMode\IEditorEvents.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.deployment@c07c64f9804b\Editor\Analytics\Events\AnalyticBase.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.deployment@c07c64f9804b\Editor\Interface\UI\Views\NoPackagesInstalledView.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.deployment@c07c64f9804b\Editor\Environments\EnvironmentProxyService.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.deployment@c07c64f9804b\Editor\Interface\UI\Components\KeyboardShortcutsContainer.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.deployment@c07c64f9804b\Editor\PlayMode\PlayModeInterrupt.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.deployment@c07c64f9804b\Editor\DeploymentDefinitions\UI\DeploymentDefinitionEditor.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.deployment@c07c64f9804b\Editor\Interface\UI\Inspector\DeploymentItemEditorLookup.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.deployment@c07c64f9804b\Editor\Interface\UI\Serialization\ISerializableComponentFetcher.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.deployment@c07c64f9804b\Editor\Interface\UI\Components\CheckmarkToggleGroup.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.deployment@c07c64f9804b\Editor\Interface\DeploymentItemViewModel.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.deployment@c07c64f9804b\Editor\Interface\UI\Views\ViewBase.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.deployment@c07c64f9804b\Editor\Interface\UI\Views\EnvironmentNotSetView.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.deployment@c07c64f9804b\Editor\Analytics\Events\DeploymentAnalyticEvent.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.deployment@c07c64f9804b\Editor\Interface\UI\Serialization\ISerializationManager.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.deployment@c07c64f9804b\Editor\Interface\UI\Events\DeploySelectedClicked.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.deployment@c07c64f9804b\Editor\Analytics\AnalyticsUtils.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.deployment@c07c64f9804b\Editor\DeploymentDefinitions\DeploymentDefinition.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.deployment@c07c64f9804b\Editor\Interface\DeploymentViewModel.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.deployment@c07c64f9804b\Editor\Interface\UI\Serialization\SerializationManager.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.deployment@c07c64f9804b\Editor\Commands\CommandUtils.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.deployment@c07c64f9804b\Editor\DeploymentDefinitions\DeploymentDefinitionResources.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.deployment@c07c64f9804b\Editor\Analytics\StaticAnalytics.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.deployment@c07c64f9804b\Editor\JsonUtils\NewtonsoftJsonConverter.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.deployment@c07c64f9804b\Editor\Interface\UI\Components\Selectable.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.deployment@c07c64f9804b\Editor\Interface\UI\Components\KeyboardSelectionLogic.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.deployment@c07c64f9804b\Editor\DefaultDeploymentWindowImpl.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.deployment@c07c64f9804b\Editor\Interface\UI\Views\DeploymentView.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.deployment@c07c64f9804b\Editor\DeploymentDefinitions\IEditorDeploymentDefinitionService.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.deployment@c07c64f9804b\Editor\Interface\UI\Views\DeploymentToolbar.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.deployment@c07c64f9804b\Editor\Commands\CommandManager.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.deployment@c07c64f9804b\Editor\Analytics\IDeploymentAnalytics.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.deployment@c07c64f9804b\Editor\Interface\UI\Components\MultiSelect.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.deployment@c07c64f9804b\Editor\Interface\UI\Events\DeployAllClicked.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.deployment@c07c64f9804b\Editor\Commands\AggregateCommand.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.deployment@c07c64f9804b\Editor\Interface\UI\Serialization\UiTreeSerializableComponentFetcher.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.deployment@c07c64f9804b\Editor\Analytics\DeploymentWindowAnalytics.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.deployment@c07c64f9804b\Editor\Interface\UI\Components\Collapsible.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.deployment@c07c64f9804b\Editor\Interface\UI\Views\NotSignedInView.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.deployment@c07c64f9804b\Editor\Interface\UI\Serialization\ISerializableComponent.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.deployment@c07c64f9804b\Editor\Analytics\IAnalyticProvider.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.deployment@c07c64f9804b\Editor\Commands\InteropCommandProvider.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.deployment@c07c64f9804b\Editor\PlayMode\DeployOnPlay.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.deployment@c07c64f9804b\Editor\Interface\UI\DeploymentWindow.ShimImpl.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.deployment@c07c64f9804b\Editor\Commands\ICommandProvider.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.deployment@c07c64f9804b\Editor\Analytics\AnalyticsConstants.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.deployment@c07c64f9804b\Editor\Configuration\DeploymentSettings.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.deployment@c07c64f9804b\Editor\Analytics\DeployOnPlayAnalytics.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.deployment@c07c64f9804b\Editor\Validation\DeploymentItemValidator.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.deployment@c07c64f9804b\Editor\Interface\UI\Views\DeploymentDefinitionView.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.deployment@c07c64f9804b\Editor\Interface\UI\Views\MultipleDefinitionsView.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.deployment@c07c64f9804b\Editor\Environments\ProjectIdProvider.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.deployment@c07c64f9804b\Editor\ItemStatusTracker.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.deployment@c07c64f9804b\Editor\Interface\UI\Views\UnlinkedProjectView.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.deployment@c07c64f9804b\Editor\Analytics\Events\DeployOnPlayAnalyticEvent.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.deployment@c07c64f9804b\Editor\Analytics\Events\DeploymentWindowAnalyticEvent.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.deployment@c07c64f9804b\Editor\Configuration\IProjectPreferences.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.deployment@c07c64f9804b\Editor\Commands\ICommand.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.deployment@c07c64f9804b\Editor\PlayMode\EditorEvents.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.deployment@c07c64f9804b\Editor\Interface\UI\Views\DeploymentElementViewBase.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.deployment@c07c64f9804b\Editor\IO\IFileTracker.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.deployment@c07c64f9804b\Editor\DocumentationHelper.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.deployment@c07c64f9804b\Editor\Interface\UI\DeploymentWindow.ApiImpl.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.deployment@c07c64f9804b\Editor\DeploymentDefinitions\DeploymentDefinitionImporter.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.deployment@c07c64f9804b\Editor\Constants.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.deployment@c07c64f9804b\Editor\PlayMode\DeployOnPlayItemRetriever.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.deployment@c07c64f9804b\Editor\Interface\UI\Components\CollapseToggle.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.deployment@c07c64f9804b\Editor\Interface\IDeploymentViewModel.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.deployment@c07c64f9804b\Editor\PlayMode\IDeployOnPlayItemRetriever.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.deployment@c07c64f9804b\Editor\Analytics\DeploymentAnalytics.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.deployment@c07c64f9804b\Editor\Analytics\IDeploymentWindowAnalytics.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.deployment@c07c64f9804b\Editor\Tracking\DeploymentItemTracker.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Library\PackageCache\com.unity.services.deployment@d026c9b5c5ae\Editor\Interface\UI\Assets\Templates\DeploymentDefinitionTemplate_style.uss" />
-    <None Include="Library\PackageCache\com.unity.services.deployment@d026c9b5c5ae\Editor\DeploymentDefinitions\UI\Assets\DeploymentDefinitionEditorUi.uxml" />
-    <None Include="Library\PackageCache\com.unity.services.deployment@d026c9b5c5ae\Editor\Interface\UI\Assets\Templates\TreeViewTemplate.uxml" />
-    <None Include="Library\PackageCache\com.unity.services.deployment@d026c9b5c5ae\Editor\Interface\UI\Assets\DeploymentWindow_Light.uss" />
-    <None Include="Library\PackageCache\com.unity.services.deployment@d026c9b5c5ae\Editor\DeploymentDefinitions\UI\Assets\DeploymentDefinitionEditorUi.uss" />
-    <None Include="Library\PackageCache\com.unity.services.deployment@d026c9b5c5ae\Editor\Interface\UI\Assets\CollapseToggle.uss" />
-    <None Include="Library\PackageCache\com.unity.services.deployment@d026c9b5c5ae\Editor\Interface\UI\Assets\DeploymentWindow_Dark.uss" />
-    <None Include="Library\PackageCache\com.unity.services.deployment@d026c9b5c5ae\Editor\Interface\UI\Assets\DeploymentToolbar.uxml" />
-    <None Include="Library\PackageCache\com.unity.services.deployment@d026c9b5c5ae\Editor\Interface\UI\Assets\DeploymentWindowStateTemplates\DeploymentWindow_Deployment.uxml" />
-    <None Include="Library\PackageCache\com.unity.services.deployment@d026c9b5c5ae\Editor\Interface\UI\Assets\DeploymentWindowStateTemplates\DeploymentWindow_NotSignedIn.uxml" />
-    <None Include="Library\PackageCache\com.unity.services.deployment@d026c9b5c5ae\Editor\Interface\UI\Assets\DeploymentToolbar.uss" />
-    <None Include="Library\PackageCache\com.unity.services.deployment@d026c9b5c5ae\Editor\Interface\UI\Assets\Templates\DeploymentItemTemplate_style.uss" />
-    <None Include="Library\PackageCache\com.unity.services.deployment@d026c9b5c5ae\Editor\Interface\UI\Assets\DeploymentWindow_uxml.uxml" />
-    <None Include="Library\PackageCache\com.unity.services.deployment@d026c9b5c5ae\Editor\Interface\UI\Assets\DeploymentWindow_Style.uss" />
-    <None Include="Library\PackageCache\com.unity.services.deployment@d026c9b5c5ae\Editor\Interface\UI\Assets\DeploymentWindowStateTemplates\DeploymentWindow_NoConnection.uxml" />
-    <None Include="Library\PackageCache\com.unity.services.deployment@d026c9b5c5ae\Editor\Interface\UI\Assets\Selectable.uss" />
-    <None Include="Library\PackageCache\com.unity.services.deployment@d026c9b5c5ae\Editor\Unity.Services.Deployment.asmdef" />
-    <None Include="Library\PackageCache\com.unity.services.deployment@d026c9b5c5ae\Editor\Interface\UI\Assets\DeploymentWindowStateTemplates\DeploymentWindow_EnvironmentNotSet.uxml" />
-    <None Include="Library\PackageCache\com.unity.services.deployment@d026c9b5c5ae\Editor\Interface\UI\Assets\CheckmarkToggle.uss" />
-    <None Include="Library\PackageCache\com.unity.services.deployment@d026c9b5c5ae\Editor\Interface\UI\Assets\Templates\DeploymentItemStateTemplate.uxml" />
-    <None Include="Library\PackageCache\com.unity.services.deployment@d026c9b5c5ae\Editor\Interface\UI\Assets\DeploymentWindowStateTemplates\DeploymentWindow_MultipleDefinitions.uxml" />
-    <None Include="Library\PackageCache\com.unity.services.deployment@d026c9b5c5ae\Editor\Interface\UI\Assets\DeploymentShared_style.uss" />
-    <None Include="Library\PackageCache\com.unity.services.deployment@d026c9b5c5ae\Editor\Interface\UI\Assets\DeploymentWindowStateTemplates\DeploymentWindow_UnlinkedProject.uxml" />
-    <None Include="Library\PackageCache\com.unity.services.deployment@d026c9b5c5ae\Editor\Interface\UI\Assets\DeploymentWindowStateTemplates\DeploymentWindow_NoPackagesInstalled.uxml" />
-    <None Include="Library\PackageCache\com.unity.services.deployment@d026c9b5c5ae\Editor\Interface\UI\Assets\Collapsible.uss" />
-    <None Include="Library\PackageCache\com.unity.services.deployment@d026c9b5c5ae\Editor\Interface\UI\Assets\Templates\DeploymentItemTemplate.uxml" />
-    <None Include="Library\PackageCache\com.unity.services.deployment@d026c9b5c5ae\Editor\Interface\UI\Assets\Templates\DeploymentDefinitionTemplate.uxml" />
+    <None Include="Library\PackageCache\com.unity.services.deployment@c07c64f9804b\Editor\Interface\UI\Assets\Templates\DeploymentDefinitionTemplate_style.uss" />
+    <None Include="Library\PackageCache\com.unity.services.deployment@c07c64f9804b\Editor\DeploymentDefinitions\UI\Assets\DeploymentDefinitionEditorUi.uxml" />
+    <None Include="Library\PackageCache\com.unity.services.deployment@c07c64f9804b\Editor\Interface\UI\Assets\Templates\TreeViewTemplate.uxml" />
+    <None Include="Library\PackageCache\com.unity.services.deployment@c07c64f9804b\Editor\Interface\UI\Assets\DeploymentWindow_Light.uss" />
+    <None Include="Library\PackageCache\com.unity.services.deployment@c07c64f9804b\Editor\DeploymentDefinitions\UI\Assets\DeploymentDefinitionEditorUi.uss" />
+    <None Include="Library\PackageCache\com.unity.services.deployment@c07c64f9804b\Editor\Interface\UI\Assets\CollapseToggle.uss" />
+    <None Include="Library\PackageCache\com.unity.services.deployment@c07c64f9804b\Editor\Interface\UI\Assets\DeploymentWindow_Dark.uss" />
+    <None Include="Library\PackageCache\com.unity.services.deployment@c07c64f9804b\Editor\Interface\UI\Assets\DeploymentToolbar.uxml" />
+    <None Include="Library\PackageCache\com.unity.services.deployment@c07c64f9804b\Editor\Interface\UI\Assets\DeploymentWindowStateTemplates\DeploymentWindow_Deployment.uxml" />
+    <None Include="Library\PackageCache\com.unity.services.deployment@c07c64f9804b\Editor\Interface\UI\Assets\DeploymentWindowStateTemplates\DeploymentWindow_NotSignedIn.uxml" />
+    <None Include="Library\PackageCache\com.unity.services.deployment@c07c64f9804b\Editor\Interface\UI\Assets\DeploymentToolbar.uss" />
+    <None Include="Library\PackageCache\com.unity.services.deployment@c07c64f9804b\Editor\Interface\UI\Assets\Templates\DeploymentItemTemplate_style.uss" />
+    <None Include="Library\PackageCache\com.unity.services.deployment@c07c64f9804b\Editor\Interface\UI\Assets\DeploymentWindow_uxml.uxml" />
+    <None Include="Library\PackageCache\com.unity.services.deployment@c07c64f9804b\Editor\Interface\UI\Assets\DeploymentWindow_Style.uss" />
+    <None Include="Library\PackageCache\com.unity.services.deployment@c07c64f9804b\Editor\Interface\UI\Assets\DeploymentWindowStateTemplates\DeploymentWindow_NoConnection.uxml" />
+    <None Include="Library\PackageCache\com.unity.services.deployment@c07c64f9804b\Editor\Interface\UI\Assets\Selectable.uss" />
+    <None Include="Library\PackageCache\com.unity.services.deployment@c07c64f9804b\Editor\Unity.Services.Deployment.asmdef" />
+    <None Include="Library\PackageCache\com.unity.services.deployment@c07c64f9804b\Editor\Interface\UI\Assets\DeploymentWindowStateTemplates\DeploymentWindow_EnvironmentNotSet.uxml" />
+    <None Include="Library\PackageCache\com.unity.services.deployment@c07c64f9804b\Editor\Interface\UI\Assets\CheckmarkToggle.uss" />
+    <None Include="Library\PackageCache\com.unity.services.deployment@c07c64f9804b\Editor\Interface\UI\Assets\Templates\DeploymentItemStateTemplate.uxml" />
+    <None Include="Library\PackageCache\com.unity.services.deployment@c07c64f9804b\Editor\Interface\UI\Assets\DeploymentWindowStateTemplates\DeploymentWindow_MultipleDefinitions.uxml" />
+    <None Include="Library\PackageCache\com.unity.services.deployment@c07c64f9804b\Editor\Interface\UI\Assets\DeploymentShared_style.uss" />
+    <None Include="Library\PackageCache\com.unity.services.deployment@c07c64f9804b\Editor\Interface\UI\Assets\DeploymentWindowStateTemplates\DeploymentWindow_UnlinkedProject.uxml" />
+    <None Include="Library\PackageCache\com.unity.services.deployment@c07c64f9804b\Editor\Interface\UI\Assets\DeploymentWindowStateTemplates\DeploymentWindow_NoPackagesInstalled.uxml" />
+    <None Include="Library\PackageCache\com.unity.services.deployment@c07c64f9804b\Editor\Interface\UI\Assets\Collapsible.uss" />
+    <None Include="Library\PackageCache\com.unity.services.deployment@c07c64f9804b\Editor\Interface\UI\Assets\Templates\DeploymentItemTemplate.uxml" />
+    <None Include="Library\PackageCache\com.unity.services.deployment@c07c64f9804b\Editor\Interface\UI\Assets\Templates\DeploymentDefinitionTemplate.uxml" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
@@ -773,7 +773,7 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.VisualScripting.YamlDotNet">
-      <HintPath>Library\PackageCache\com.unity.visualscripting@191c0d7e3b69\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll</HintPath>
+      <HintPath>Library\PackageCache\com.unity.visualscripting@eb6004dcc707\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.Collections.LowLevel.ILSupport">
@@ -821,7 +821,7 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.VisualScripting.IonicZip">
-      <HintPath>Library\PackageCache\com.unity.visualscripting@191c0d7e3b69\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll</HintPath>
+      <HintPath>Library\PackageCache\com.unity.visualscripting@eb6004dcc707\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="unityplastic">
@@ -837,7 +837,7 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.VisualScripting.Antlr3.Runtime">
-      <HintPath>Library\PackageCache\com.unity.visualscripting@191c0d7e3b69\Runtime\VisualScripting.Flow\Dependencies\NCalc\Unity.VisualScripting.Antlr3.Runtime.dll</HintPath>
+      <HintPath>Library\PackageCache\com.unity.visualscripting@eb6004dcc707\Runtime\VisualScripting.Flow\Dependencies\NCalc\Unity.VisualScripting.Antlr3.Runtime.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Google.VersionHandler">
@@ -849,15 +849,19 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="AiEditorToolsSdk">
-      <HintPath>Library\PackageCache\com.unity.ai.toolkit@04b39586d864\Modules\Sdk\Editor\AiEditorToolsSdk.dll</HintPath>
+      <HintPath>Library\PackageCache\com.unity.ai.toolkit@97783faabe3b\Modules\Sdk\Editor\AiEditorToolsSdk.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.VisualScripting.TextureAssets">
-      <HintPath>Library\PackageCache\com.unity.visualscripting@191c0d7e3b69\Editor\VisualScripting.Core\EditorAssetResources\Unity.VisualScripting.TextureAssets.dll</HintPath>
+      <HintPath>Library\PackageCache\com.unity.visualscripting@eb6004dcc707\Editor\VisualScripting.Core\EditorAssetResources\Unity.VisualScripting.TextureAssets.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Mono.Cecil">
       <HintPath>Library\PackageCache\com.unity.nuget.mono-cecil@ecb9724e46ff\Mono.Cecil.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe">
+      <HintPath>Library\PackageCache\com.unity.collections@aea9d3bd5e19\Unity.Collections.Tests\System.Runtime.CompilerServices.Unsafe\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.Analytics.StandardEvents">
@@ -1371,8 +1375,8 @@
     <ProjectReference Include="Unity.Services.Core.Environments.Editor.csproj" />
     <ProjectReference Include="Unity.Services.Deployment.Core.csproj" />
     <ProjectReference Include="Unity.Services.Deployment.Editor.Shared.csproj" />
-    <ProjectReference Include="UnityEngine.UI.csproj" />
     <ProjectReference Include="UnityEditor.UI.csproj" />
+    <ProjectReference Include="UnityEngine.UI.csproj" />
     <ProjectReference Include="UnityEngine.TestRunner.csproj" />
     <ProjectReference Include="UnityEditor.TestRunner.csproj" />
   </ItemGroup>

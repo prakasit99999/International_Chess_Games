@@ -36,7 +36,7 @@
   </PropertyGroup>
   <PropertyGroup>
     <UnityProjectGenerator>Package</UnityProjectGenerator>
-    <UnityProjectGeneratorVersion>2.0.26</UnityProjectGeneratorVersion>
+    <UnityProjectGeneratorVersion>2.0.27</UnityProjectGeneratorVersion>
     <UnityProjectGeneratorStyle>SDK</UnityProjectGeneratorStyle>
     <UnityProjectType>Editor:5</UnityProjectType>
     <UnityBuildTarget>WebGL:20</UnityBuildTarget>
@@ -49,26 +49,26 @@
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\Tools\BuildPipeline\Unity.SourceGenerators\Unity.UIToolkit.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@77b886928d77\Editor\Upload\Editor\Utils\AssetPreviewer.cs" />
-    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@77b886928d77\Editor\Upload\Editor\Staging\UploadStaging.cs" />
-    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@77b886928d77\Editor\Upload\Editor\Models\UploadAssetDataFile.cs" />
-    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@77b886928d77\Editor\Upload\Editor\Utils\TagExtractor.cs" />
-    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@77b886928d77\Editor\Upload\Editor\Models\Attributes\UploadAttribute.cs" />
-    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@77b886928d77\Editor\Upload\Editor\Staging\UploadAssetStrategy.cs" />
-    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@77b886928d77\Editor\Upload\Editor\Operations\UploadOperation.cs" />
-    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@77b886928d77\Editor\Upload\Editor\Staging\IUploadStagingStatus.cs" />
-    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@77b886928d77\Editor\Upload\Editor\Models\Attributes\LinkedDependencyAttribute.cs" />
-    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@77b886928d77\Editor\Upload\Editor\Staging\UploadSettings.cs" />
-    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@77b886928d77\Editor\Upload\Editor\Models\UploadAsset.cs" />
-    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@77b886928d77\Editor\Upload\Editor\AssemblyInfo.cs" />
-    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@77b886928d77\Editor\Upload\Editor\Staging\UploadEdits.cs" />
-    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@77b886928d77\Editor\Upload\Editor\Models\UploadAssetData.cs" />
-    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@77b886928d77\Editor\Upload\Editor\Models\Analytics\UploadEndEvent.cs" />
-    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@77b886928d77\Editor\Upload\Editor\Services\UploadManager.cs" />
-    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@77b886928d77\Editor\Upload\Editor\Models\Analytics\UploadEvent.cs" />
+    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@5d438e506474\Editor\Upload\Editor\Utils\AssetPreviewer.cs" />
+    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@5d438e506474\Editor\Upload\Editor\Staging\UploadStaging.cs" />
+    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@5d438e506474\Editor\Upload\Editor\Models\UploadAssetDataFile.cs" />
+    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@5d438e506474\Editor\Upload\Editor\Utils\TagExtractor.cs" />
+    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@5d438e506474\Editor\Upload\Editor\Models\Attributes\UploadAttribute.cs" />
+    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@5d438e506474\Editor\Upload\Editor\Staging\UploadAssetStrategy.cs" />
+    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@5d438e506474\Editor\Upload\Editor\Operations\UploadOperation.cs" />
+    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@5d438e506474\Editor\Upload\Editor\Staging\IUploadStagingStatus.cs" />
+    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@5d438e506474\Editor\Upload\Editor\Models\Attributes\LinkedDependencyAttribute.cs" />
+    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@5d438e506474\Editor\Upload\Editor\Staging\UploadSettings.cs" />
+    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@5d438e506474\Editor\Upload\Editor\Models\UploadAsset.cs" />
+    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@5d438e506474\Editor\Upload\Editor\AssemblyInfo.cs" />
+    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@5d438e506474\Editor\Upload\Editor\Staging\UploadEdits.cs" />
+    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@5d438e506474\Editor\Upload\Editor\Models\UploadAssetData.cs" />
+    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@5d438e506474\Editor\Upload\Editor\Models\Analytics\UploadEndEvent.cs" />
+    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@5d438e506474\Editor\Upload\Editor\Services\UploadManager.cs" />
+    <Compile Include="Library\PackageCache\com.unity.asset-manager-for-unity@5d438e506474\Editor\Upload\Editor\Models\Analytics\UploadEvent.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Library\PackageCache\com.unity.asset-manager-for-unity@77b886928d77\Editor\Upload\Editor\Unity.AssetManager.Upload.Editor.asmdef" />
+    <None Include="Library\PackageCache\com.unity.asset-manager-for-unity@5d438e506474\Editor\Upload\Editor\Unity.AssetManager.Upload.Editor.asmdef" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
@@ -1143,8 +1143,8 @@
   <ItemGroup>
     <ProjectReference Include="Unity.AssetManager.Core.Editor.csproj" />
     <ProjectReference Include="Unity.Cloud.Common.Embedded.csproj" />
-    <ProjectReference Include="UnityEngine.UI.csproj" />
     <ProjectReference Include="UnityEditor.UI.csproj" />
+    <ProjectReference Include="UnityEngine.UI.csproj" />
     <ProjectReference Include="UnityEngine.TestRunner.csproj" />
     <ProjectReference Include="UnityEditor.TestRunner.csproj" />
   </ItemGroup>

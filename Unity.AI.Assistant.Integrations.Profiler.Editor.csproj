@@ -50,37 +50,37 @@
     <Analyzer Include="D:\Project\International_Chess_Games\Library\PackageCache\com.unity.ai.inference@587873fd5e1b\Runtime\Core\SourceGenerator\SourceGenerators.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\Integrations\Profiler\UI\Interactions\RecordSessionInteraction.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\Integrations\Profiler\LazyFileConfiguration.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\Integrations\Profiler\ProfilingSummaryTools.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\Integrations\Profiler\FrameDataViewUtils.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\Integrations\Profiler\ProfilerAssistant.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\Integrations\Profiler\ProfilerLinkHandler.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\Integrations\Profiler\ToolProviders\FrameRangeTimeSummaryProvider.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\Integrations\Profiler\ToolProviders\FrameGcAllocationSummaryProvider.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\Integrations\Profiler\Utils\PathUtils.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\Integrations\Profiler\ToolProviders\SessionProvider.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\Integrations\Profiler\ToolProviders\FrameRangeGcAllocationSummaryProvider.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\Integrations\Profiler\ToolProviders\SampleTimeSummaryProvider.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\Integrations\Profiler\Utils\ProfilerUtils.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\Integrations\Profiler\ConversationCache.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\Integrations\Profiler\FrameDataCache.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\Integrations\Profiler\UI\Interactions\PickSessionInteraction.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\Integrations\Profiler\FileProfilingTools.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\Integrations\Profiler\ConversationCacheExtension.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\Integrations\Profiler\ToolProviders\MostExpensiveSamplesInFrameSummaryProvider.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\Integrations\Profiler\UI\ProfilerUIConstants.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\Integrations\Profiler\ProfilingSessionTools.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\Integrations\Profiler\ToolProviders\SampleGcAllocationSummaryProvider.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\Integrations\Profiler\AssemblyInfo.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\Integrations\Profiler\ToolProviders\FrameTimeSummaryProvider.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\Integrations\Profiler\ProjectAuditorAssistant.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\Integrations\Profiler\UI\ProfilerFunctionCallElement.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@d940ec41569d\Editor\Assistant\Integrations\Profiler\UI\Interactions\RecordSessionInteraction.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@d940ec41569d\Editor\Assistant\Integrations\Profiler\LazyFileConfiguration.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@d940ec41569d\Editor\Assistant\Integrations\Profiler\ProfilingSummaryTools.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@d940ec41569d\Editor\Assistant\Integrations\Profiler\FrameDataViewUtils.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@d940ec41569d\Editor\Assistant\Integrations\Profiler\ProfilerAssistant.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@d940ec41569d\Editor\Assistant\Integrations\Profiler\ProfilerLinkHandler.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@d940ec41569d\Editor\Assistant\Integrations\Profiler\ToolProviders\FrameRangeTimeSummaryProvider.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@d940ec41569d\Editor\Assistant\Integrations\Profiler\ToolProviders\FrameGcAllocationSummaryProvider.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@d940ec41569d\Editor\Assistant\Integrations\Profiler\Utils\PathUtils.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@d940ec41569d\Editor\Assistant\Integrations\Profiler\ToolProviders\SessionProvider.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@d940ec41569d\Editor\Assistant\Integrations\Profiler\ToolProviders\FrameRangeGcAllocationSummaryProvider.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@d940ec41569d\Editor\Assistant\Integrations\Profiler\ToolProviders\SampleTimeSummaryProvider.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@d940ec41569d\Editor\Assistant\Integrations\Profiler\Utils\ProfilerUtils.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@d940ec41569d\Editor\Assistant\Integrations\Profiler\ConversationCache.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@d940ec41569d\Editor\Assistant\Integrations\Profiler\FrameDataCache.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@d940ec41569d\Editor\Assistant\Integrations\Profiler\UI\Interactions\PickSessionInteraction.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@d940ec41569d\Editor\Assistant\Integrations\Profiler\FileProfilingTools.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@d940ec41569d\Editor\Assistant\Integrations\Profiler\ConversationCacheExtension.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@d940ec41569d\Editor\Assistant\Integrations\Profiler\ToolProviders\MostExpensiveSamplesInFrameSummaryProvider.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@d940ec41569d\Editor\Assistant\Integrations\Profiler\UI\ProfilerUIConstants.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@d940ec41569d\Editor\Assistant\Integrations\Profiler\ProfilingSessionTools.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@d940ec41569d\Editor\Assistant\Integrations\Profiler\ToolProviders\SampleGcAllocationSummaryProvider.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@d940ec41569d\Editor\Assistant\Integrations\Profiler\AssemblyInfo.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@d940ec41569d\Editor\Assistant\Integrations\Profiler\ToolProviders\FrameTimeSummaryProvider.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@d940ec41569d\Editor\Assistant\Integrations\Profiler\ProjectAuditorAssistant.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@d940ec41569d\Editor\Assistant\Integrations\Profiler\UI\ProfilerFunctionCallElement.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\Integrations\Profiler\UI\Interactions\PickSessionInteraction.uss" />
-    <None Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\Integrations\Profiler\UI\Interactions\RecordSessionInteraction.uss" />
-    <None Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\Integrations\Profiler\Unity.AI.Assistant.Integrations.Profiler.Editor.asmdef" />
+    <None Include="Library\PackageCache\com.unity.ai.assistant@d940ec41569d\Editor\Assistant\Integrations\Profiler\UI\Interactions\PickSessionInteraction.uss" />
+    <None Include="Library\PackageCache\com.unity.ai.assistant@d940ec41569d\Editor\Assistant\Integrations\Profiler\UI\Interactions\RecordSessionInteraction.uss" />
+    <None Include="Library\PackageCache\com.unity.ai.assistant@d940ec41569d\Editor\Assistant\Integrations\Profiler\Unity.AI.Assistant.Integrations.Profiler.Editor.asmdef" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
@@ -736,7 +736,7 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="AiEditorToolsSdk">
-      <HintPath>Library\PackageCache\com.unity.ai.toolkit@04b39586d864\Modules\Sdk\Editor\AiEditorToolsSdk.dll</HintPath>
+      <HintPath>Library\PackageCache\com.unity.ai.toolkit@97783faabe3b\Modules\Sdk\Editor\AiEditorToolsSdk.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.VisualScripting.TextureAssets">
@@ -1258,8 +1258,8 @@
     <ProjectReference Include="Unity.AI.Assistant.Runtime.csproj" />
     <ProjectReference Include="Unity.AI.Assistant.Bridge.Editor.csproj" />
     <ProjectReference Include="Unity.AI.Assistant.Tools.Editor.csproj" />
-    <ProjectReference Include="UnityEngine.UI.csproj" />
     <ProjectReference Include="UnityEditor.UI.csproj" />
+    <ProjectReference Include="UnityEngine.UI.csproj" />
     <ProjectReference Include="UnityEngine.TestRunner.csproj" />
     <ProjectReference Include="UnityEditor.TestRunner.csproj" />
   </ItemGroup>

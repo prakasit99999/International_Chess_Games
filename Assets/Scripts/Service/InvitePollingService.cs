@@ -61,24 +61,42 @@ public class InvitePollingService : MonoBehaviour
 
     private IEnumerator CheckPendingInvites()
     {
-        int myUserId = SessionManager.Instance.UserId;
-        if (myUserId <= 0) yield break;
+        string token = SessionManager.Instance.Token;
+        if (string.IsNullOrEmpty(token))
+        {
+            Debug.LogWarning("InvitePolling: Token missing, skip polling.");
+            yield break;
+        }
+
+        if (InviteManager.Instance == null || InviteManager.Instance.inviteApi == null)
+        {
+            Debug.LogWarning("InvitePolling: InviteManager or InviteApi missing.");
+            yield break;
+        }
 
         bool done = false;
 
-        yield return InviteManager.Instance.inviteApi.GetInboxInvites(myUserId,
+        yield return InviteManager.Instance.inviteApi.GetInboxInvites(
             (success, invites) =>
             {
                 done = true;
-                if (!success || invites == null) return;
+                if (!success || invites == null)
+                {
+                    Debug.LogWarning("InvitePolling: GetInboxInvites failed or null.");
+                    return;
+                }
+
+                Debug.Log($"InvitePolling: Inbox invites = {invites.Length}");
 
                 foreach (var invite in invites)
                 {
+                    Debug.Log($"InvitePolling: {invite.inviteId} status={invite.status} processed={processedInviteIds.Contains(invite.inviteId)}");
                     if (invite.status == "pending" &&
                         !processedInviteIds.Contains(invite.inviteId))
                     {
                         processedInviteIds.Add(invite.inviteId);
 
+                        Debug.Log($"InvitePolling: New pending invite {invite.inviteId} from {invite.fromUserId}");
                         InviteManager.Instance.HandleInviteReceivedFromPolling(
                             new InviteReceivedEvent
                             {

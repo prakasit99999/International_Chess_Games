@@ -4,7 +4,6 @@ using System;
 using AIEngine.Adapters;
 using AIEngine.Utilities;
 using Game.Interfaces;
-using TMPro;
 using UnityEngine;
 using static ChessPiece;
 
@@ -421,6 +420,10 @@ public class GameManager : MonoBehaviour
     private void HandleMoveCompleted(MoveResult result)
     {
         OnMoveCompleted?.Invoke(result);
+        if (gameModeManager == null || gameModeManager.CurrentMode != GameModeManager.GameModes.Online)
+        {
+            SwitchTurn();
+        }
     }
 
     public bool IsGameOver() => gameIsOver;

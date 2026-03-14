@@ -50,69 +50,69 @@
     <Analyzer Include="D:\Project\International_Chess_Games\Library\PackageCache\com.unity.ai.inference@587873fd5e1b\Runtime\Core\SourceGenerator\SourceGenerators.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Unity.AI.Search.Editor\Services\Embeddings\EmbeddingModels.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Unity.AI.Search.Editor\Services\Data\AssetQueueChanges.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Unity.AI.Search.Editor\Services\Models\SigLip2\SigLip2Text.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Unity.AI.Search.Editor\Utilities\PreviewRenderUtility.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Unity.AI.Search.Editor\Services\Knowledge\KnowledgeProcessor.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Unity.AI.Search.Editor\Services\Embeddings\EmbeddingIndex.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Unity.AI.Search.Editor\Services\Data\AssetChange.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Unity.AI.Search.Editor\Services\Descriptors\Core\AssetDescriptorBase.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Unity.AI.Search.Editor\Utilities\AssetQueueProcessor.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Unity.AI.Search.Editor\Services\AssetInspectors\AssetInspectors.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Unity.AI.Search.Editor\Services\Knowledge\AssetChangeDetector.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Unity.AI.Search.Editor\Utilities\SerializedHashSet.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Unity.AI.Search.Editor\Services\Descriptors\Core\AssetDescriptor.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Unity.AI.Search.Editor\Services\ModelFetching\DownloadProgress.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Unity.AI.Search.Editor\Services\Models\ModelDataStructures.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Unity.AI.Search.Editor\AssemblyInfo.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Unity.AI.Search.Editor\Services\ModelFetching\HubService.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Unity.AI.Search.Editor\Utilities\GameObjectPreviewOptions.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Unity.AI.Search.Editor\Services\Knowledge\KnowledgeQueue.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Unity.AI.Search.Editor\Services\ModelFetching\Paths.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Unity.AI.Search.Editor\Services\Data\ScoringType.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Unity.AI.Search.Editor\Utilities\SentisInstallHelper.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Unity.AI.Search.Editor\Services\UnitySearch\KnowledgeSearchProvider.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Unity.AI.Search.Editor\Utilities\PriorityQueue.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Unity.AI.Search.Editor\Services\Data\AssetEmbedding.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Unity.AI.Search.Editor\Utilities\Result.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Unity.AI.Search.Editor\Utilities\PeriodicSaveManager.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Unity.AI.Search.Editor\Services\Embeddings\IEmbeddings.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Unity.AI.Search.Editor\Services\AssetInspectors\AssetInspectorUtils.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Unity.AI.Search.Editor\Services\Descriptors\Types\GameObjectDescriptor.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Unity.AI.Search.Editor\Services\Models\SigLip2\SigLip2ModelService.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Unity.AI.Search.Editor\Services\Models\SigLip2\SigLip2Image.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Unity.AI.Search.Editor\Services\Data\EmbeddingInput.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Unity.AI.Search.Editor\Services\Models\SigLip2\TextModelHandlers.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Unity.AI.Search.Editor\Services\Data\EmbeddingOutput.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Unity.AI.Search.Editor\Services\Models\SigLip2\ModelInfo.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Unity.AI.Search.Editor\Services\AssetKnowledgeProvider.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Unity.AI.Search.Editor\Services\Models\SigLip2\SigLip2TagMatcher.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Unity.AI.Search.Editor\Utilities\TensorUtils.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Unity.AI.Search.Editor\Services\Embeddings\SigLip2Embeddings.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Unity.AI.Search.Editor\Services\BatchingExtensions.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Unity.AI.Search.Editor\Services\Embeddings\EmbeddingExtensions.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Unity.AI.Search.Editor\Services\Models\ModelService.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Unity.AI.Search.Editor\Utilities\AssetProcessingQueue.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Unity.AI.Search.Editor\Services\Descriptors\AssetDescriptorResolver.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Unity.AI.Search.Editor\Services\Embeddings\EmbeddingProviders.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Unity.AI.Search.Editor\Services\Embeddings\EmbeddingBatchScheduler.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Unity.AI.Search.Editor\Utilities\AssetKnowledgeSettings.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Unity.AI.Search.Editor\Services\Knowledge\KnowledgeBackfill.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Unity.AI.Search.Editor\Services\Models\SigLip2\ImageModelHandlers.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Unity.AI.Search.Editor\Utilities\EmbeddingUtils.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Unity.AI.Search.Editor\Services\Embeddings\PassthroughEmbeddings.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Unity.AI.Search.Editor\Utilities\PipelineReadiness.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Unity.AI.Search.Editor\Services\Data\AssetObservation.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Unity.AI.Search.Editor\Services\Models\SigLip2\SigLip2.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Unity.AI.Search.Editor\Services\Data\SearchResult.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Unity.AI.Search.Editor\Services\Descriptors\Types\TextureDescriptor.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Unity.AI.Search.Editor\Services\Models\IModelService.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Unity.AI.Search.Editor\Services\Descriptors\Types\MaterialDescriptor.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@d940ec41569d\Editor\Unity.AI.Search.Editor\Services\Embeddings\EmbeddingModels.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@d940ec41569d\Editor\Unity.AI.Search.Editor\Services\Data\AssetQueueChanges.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@d940ec41569d\Editor\Unity.AI.Search.Editor\Services\Models\SigLip2\SigLip2Text.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@d940ec41569d\Editor\Unity.AI.Search.Editor\Utilities\PreviewRenderUtility.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@d940ec41569d\Editor\Unity.AI.Search.Editor\Services\Knowledge\KnowledgeProcessor.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@d940ec41569d\Editor\Unity.AI.Search.Editor\Services\Embeddings\EmbeddingIndex.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@d940ec41569d\Editor\Unity.AI.Search.Editor\Services\Data\AssetChange.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@d940ec41569d\Editor\Unity.AI.Search.Editor\Services\Descriptors\Core\AssetDescriptorBase.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@d940ec41569d\Editor\Unity.AI.Search.Editor\Utilities\AssetQueueProcessor.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@d940ec41569d\Editor\Unity.AI.Search.Editor\Services\AssetInspectors\AssetInspectors.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@d940ec41569d\Editor\Unity.AI.Search.Editor\Services\Knowledge\AssetChangeDetector.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@d940ec41569d\Editor\Unity.AI.Search.Editor\Utilities\SerializedHashSet.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@d940ec41569d\Editor\Unity.AI.Search.Editor\Services\Descriptors\Core\AssetDescriptor.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@d940ec41569d\Editor\Unity.AI.Search.Editor\Services\ModelFetching\DownloadProgress.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@d940ec41569d\Editor\Unity.AI.Search.Editor\Services\Models\ModelDataStructures.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@d940ec41569d\Editor\Unity.AI.Search.Editor\AssemblyInfo.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@d940ec41569d\Editor\Unity.AI.Search.Editor\Services\ModelFetching\HubService.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@d940ec41569d\Editor\Unity.AI.Search.Editor\Utilities\GameObjectPreviewOptions.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@d940ec41569d\Editor\Unity.AI.Search.Editor\Services\Knowledge\KnowledgeQueue.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@d940ec41569d\Editor\Unity.AI.Search.Editor\Services\ModelFetching\Paths.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@d940ec41569d\Editor\Unity.AI.Search.Editor\Services\Data\ScoringType.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@d940ec41569d\Editor\Unity.AI.Search.Editor\Utilities\SentisInstallHelper.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@d940ec41569d\Editor\Unity.AI.Search.Editor\Services\UnitySearch\KnowledgeSearchProvider.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@d940ec41569d\Editor\Unity.AI.Search.Editor\Utilities\PriorityQueue.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@d940ec41569d\Editor\Unity.AI.Search.Editor\Services\Data\AssetEmbedding.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@d940ec41569d\Editor\Unity.AI.Search.Editor\Utilities\Result.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@d940ec41569d\Editor\Unity.AI.Search.Editor\Utilities\PeriodicSaveManager.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@d940ec41569d\Editor\Unity.AI.Search.Editor\Services\Embeddings\IEmbeddings.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@d940ec41569d\Editor\Unity.AI.Search.Editor\Services\AssetInspectors\AssetInspectorUtils.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@d940ec41569d\Editor\Unity.AI.Search.Editor\Services\Descriptors\Types\GameObjectDescriptor.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@d940ec41569d\Editor\Unity.AI.Search.Editor\Services\Models\SigLip2\SigLip2ModelService.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@d940ec41569d\Editor\Unity.AI.Search.Editor\Services\Models\SigLip2\SigLip2Image.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@d940ec41569d\Editor\Unity.AI.Search.Editor\Services\Data\EmbeddingInput.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@d940ec41569d\Editor\Unity.AI.Search.Editor\Services\Models\SigLip2\TextModelHandlers.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@d940ec41569d\Editor\Unity.AI.Search.Editor\Services\Data\EmbeddingOutput.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@d940ec41569d\Editor\Unity.AI.Search.Editor\Services\Models\SigLip2\ModelInfo.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@d940ec41569d\Editor\Unity.AI.Search.Editor\Services\AssetKnowledgeProvider.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@d940ec41569d\Editor\Unity.AI.Search.Editor\Services\Models\SigLip2\SigLip2TagMatcher.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@d940ec41569d\Editor\Unity.AI.Search.Editor\Utilities\TensorUtils.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@d940ec41569d\Editor\Unity.AI.Search.Editor\Services\Embeddings\SigLip2Embeddings.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@d940ec41569d\Editor\Unity.AI.Search.Editor\Services\BatchingExtensions.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@d940ec41569d\Editor\Unity.AI.Search.Editor\Services\Embeddings\EmbeddingExtensions.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@d940ec41569d\Editor\Unity.AI.Search.Editor\Services\Models\ModelService.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@d940ec41569d\Editor\Unity.AI.Search.Editor\Utilities\AssetProcessingQueue.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@d940ec41569d\Editor\Unity.AI.Search.Editor\Services\Descriptors\AssetDescriptorResolver.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@d940ec41569d\Editor\Unity.AI.Search.Editor\Services\Embeddings\EmbeddingProviders.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@d940ec41569d\Editor\Unity.AI.Search.Editor\Services\Embeddings\EmbeddingBatchScheduler.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@d940ec41569d\Editor\Unity.AI.Search.Editor\Utilities\AssetKnowledgeSettings.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@d940ec41569d\Editor\Unity.AI.Search.Editor\Services\Knowledge\KnowledgeBackfill.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@d940ec41569d\Editor\Unity.AI.Search.Editor\Services\Models\SigLip2\ImageModelHandlers.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@d940ec41569d\Editor\Unity.AI.Search.Editor\Utilities\EmbeddingUtils.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@d940ec41569d\Editor\Unity.AI.Search.Editor\Services\Embeddings\PassthroughEmbeddings.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@d940ec41569d\Editor\Unity.AI.Search.Editor\Utilities\PipelineReadiness.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@d940ec41569d\Editor\Unity.AI.Search.Editor\Services\Data\AssetObservation.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@d940ec41569d\Editor\Unity.AI.Search.Editor\Services\Models\SigLip2\SigLip2.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@d940ec41569d\Editor\Unity.AI.Search.Editor\Services\Data\SearchResult.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@d940ec41569d\Editor\Unity.AI.Search.Editor\Services\Descriptors\Types\TextureDescriptor.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@d940ec41569d\Editor\Unity.AI.Search.Editor\Services\Models\IModelService.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@d940ec41569d\Editor\Unity.AI.Search.Editor\Services\Descriptors\Types\MaterialDescriptor.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Unity.AI.Search.Editor\Services\unity_tag_list.txt" />
-    <None Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Unity.AI.Search.Editor\Unity.AI.Search.Editor.asmdef" />
+    <None Include="Library\PackageCache\com.unity.ai.assistant@d940ec41569d\Editor\Unity.AI.Search.Editor\Services\unity_tag_list.txt" />
+    <None Include="Library\PackageCache\com.unity.ai.assistant@d940ec41569d\Editor\Unity.AI.Search.Editor\Unity.AI.Search.Editor.asmdef" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
@@ -688,7 +688,7 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="Microsoft.ML.Tokenizers">
-      <HintPath>Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Plugins\Tokenizer\Microsoft.ML.Tokenizers.dll</HintPath>
+      <HintPath>Library\PackageCache\com.unity.ai.assistant@d940ec41569d\Plugins\Tokenizer\Microsoft.ML.Tokenizers.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="mscorlib">
@@ -1200,8 +1200,8 @@
     <ProjectReference Include="Unity.AI.Assistant.Runtime.csproj" />
     <ProjectReference Include="Unity.AI.Assistant.Editor.csproj" />
     <ProjectReference Include="Unity.AI.Toolkit.Utility.csproj" />
-    <ProjectReference Include="UnityEngine.UI.csproj" />
     <ProjectReference Include="UnityEditor.UI.csproj" />
+    <ProjectReference Include="UnityEngine.UI.csproj" />
     <ProjectReference Include="UnityEngine.TestRunner.csproj" />
     <ProjectReference Include="UnityEditor.TestRunner.csproj" />
   </ItemGroup>

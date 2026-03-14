@@ -50,15 +50,15 @@
     <Analyzer Include="D:\Project\International_Chess_Games\Library\PackageCache\com.unity.ai.inference@587873fd5e1b\Runtime\Core\SourceGenerator\SourceGenerators.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\Api\AssemblyInfo.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\Api\AssistantApi.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\Api\Utils\ContextUtils.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\Api\AssistantApi.UX.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\Api\AssistantApi.Agents.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\Api\AssistantApi.Context.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@d940ec41569d\Editor\Assistant\Api\AssemblyInfo.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@d940ec41569d\Editor\Assistant\Api\AssistantApi.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@d940ec41569d\Editor\Assistant\Api\Utils\ContextUtils.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@d940ec41569d\Editor\Assistant\Api\AssistantApi.UX.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@d940ec41569d\Editor\Assistant\Api\AssistantApi.Agents.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@d940ec41569d\Editor\Assistant\Api\AssistantApi.Context.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Assistant\Api\Unity.AI.Assistant.API.Editor.asmdef" />
+    <None Include="Library\PackageCache\com.unity.ai.assistant@d940ec41569d\Editor\Assistant\Api\Unity.AI.Assistant.API.Editor.asmdef" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
@@ -714,7 +714,7 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="AiEditorToolsSdk">
-      <HintPath>Library\PackageCache\com.unity.ai.toolkit@04b39586d864\Modules\Sdk\Editor\AiEditorToolsSdk.dll</HintPath>
+      <HintPath>Library\PackageCache\com.unity.ai.toolkit@97783faabe3b\Modules\Sdk\Editor\AiEditorToolsSdk.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.VisualScripting.TextureAssets">
@@ -1235,8 +1235,8 @@
     <ProjectReference Include="Unity.AI.Assistant.UI.Editor.csproj" />
     <ProjectReference Include="Unity.AI.Assistant.Bridge.Editor.csproj" />
     <ProjectReference Include="Unity.AI.Assistant.Runtime.csproj" />
-    <ProjectReference Include="UnityEngine.UI.csproj" />
     <ProjectReference Include="UnityEditor.UI.csproj" />
+    <ProjectReference Include="UnityEngine.UI.csproj" />
     <ProjectReference Include="UnityEngine.TestRunner.csproj" />
     <ProjectReference Include="UnityEditor.TestRunner.csproj" />
   </ItemGroup>

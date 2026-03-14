@@ -49,23 +49,23 @@
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\Tools\BuildPipeline\Unity.SourceGenerators\Unity.UIToolkit.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Unity.AI.Search.Editor\ThirdParty\HuggingfaceHub\HFDownloader.GetInfo.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Unity.AI.Search.Editor\ThirdParty\HuggingfaceHub\HFDownloader.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Unity.AI.Search.Editor\ThirdParty\HuggingfaceHub\Common\ModelInfo.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Unity.AI.Search.Editor\ThirdParty\HuggingfaceHub\IGroupedProgress.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Unity.AI.Search.Editor\ThirdParty\HuggingfaceHub\HFGlobalConfig.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Unity.AI.Search.Editor\ThirdParty\HuggingfaceHub\Modified\HttpUtility.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Unity.AI.Search.Editor\ThirdParty\HuggingfaceHub\AssemblyInfo.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Unity.AI.Search.Editor\ThirdParty\HuggingfaceHub\Common\HfFileMetadata.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Unity.AI.Search.Editor\ThirdParty\HuggingfaceHub\HFDownloader.DownloadFile.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Unity.AI.Search.Editor\ThirdParty\HuggingfaceHub\Modified\Logging.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Unity.AI.Search.Editor\ThirdParty\HuggingfaceHub\Common\RepoSibling.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Unity.AI.Search.Editor\ThirdParty\HuggingfaceHub\HFDownloader.DownloadSnapshot.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Unity.AI.Search.Editor\ThirdParty\HuggingfaceHub\Modified\HttpEncoder.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Unity.AI.Search.Editor\ThirdParty\HuggingfaceHub\Utils.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@d940ec41569d\Editor\Unity.AI.Search.Editor\ThirdParty\HuggingfaceHub\HFDownloader.GetInfo.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@d940ec41569d\Editor\Unity.AI.Search.Editor\ThirdParty\HuggingfaceHub\HFDownloader.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@d940ec41569d\Editor\Unity.AI.Search.Editor\ThirdParty\HuggingfaceHub\Common\ModelInfo.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@d940ec41569d\Editor\Unity.AI.Search.Editor\ThirdParty\HuggingfaceHub\IGroupedProgress.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@d940ec41569d\Editor\Unity.AI.Search.Editor\ThirdParty\HuggingfaceHub\HFGlobalConfig.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@d940ec41569d\Editor\Unity.AI.Search.Editor\ThirdParty\HuggingfaceHub\Modified\HttpUtility.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@d940ec41569d\Editor\Unity.AI.Search.Editor\ThirdParty\HuggingfaceHub\AssemblyInfo.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@d940ec41569d\Editor\Unity.AI.Search.Editor\ThirdParty\HuggingfaceHub\Common\HfFileMetadata.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@d940ec41569d\Editor\Unity.AI.Search.Editor\ThirdParty\HuggingfaceHub\HFDownloader.DownloadFile.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@d940ec41569d\Editor\Unity.AI.Search.Editor\ThirdParty\HuggingfaceHub\Modified\Logging.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@d940ec41569d\Editor\Unity.AI.Search.Editor\ThirdParty\HuggingfaceHub\Common\RepoSibling.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@d940ec41569d\Editor\Unity.AI.Search.Editor\ThirdParty\HuggingfaceHub\HFDownloader.DownloadSnapshot.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@d940ec41569d\Editor\Unity.AI.Search.Editor\ThirdParty\HuggingfaceHub\Modified\HttpEncoder.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.assistant@d940ec41569d\Editor\Unity.AI.Search.Editor\ThirdParty\HuggingfaceHub\Utils.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Library\PackageCache\com.unity.ai.assistant@e4f122b2665a\Editor\Unity.AI.Search.Editor\ThirdParty\HuggingfaceHub\HFDownloader.asmdef" />
+    <None Include="Library\PackageCache\com.unity.ai.assistant@d940ec41569d\Editor\Unity.AI.Search.Editor\ThirdParty\HuggingfaceHub\HFDownloader.asmdef" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
@@ -1142,8 +1142,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="UnityEngine.UI.csproj" />
     <ProjectReference Include="UnityEditor.UI.csproj" />
+    <ProjectReference Include="UnityEngine.UI.csproj" />
     <ProjectReference Include="UnityEngine.TestRunner.csproj" />
     <ProjectReference Include="UnityEditor.TestRunner.csproj" />
   </ItemGroup>

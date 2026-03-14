@@ -36,7 +36,7 @@
   </PropertyGroup>
   <PropertyGroup>
     <UnityProjectGenerator>Package</UnityProjectGenerator>
-    <UnityProjectGeneratorVersion>2.0.26</UnityProjectGeneratorVersion>
+    <UnityProjectGeneratorVersion>2.0.27</UnityProjectGeneratorVersion>
     <UnityProjectGeneratorStyle>SDK</UnityProjectGeneratorStyle>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>WebGL:20</UnityBuildTarget>
@@ -49,78 +49,66 @@
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\Tools\BuildPipeline\Unity.SourceGenerators\Unity.UIToolkit.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Generators.UI\AssemblyInfo.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Generators.UI\Actions\GenerationActions.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Generators.UI\Manipulators\Draggable.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Generators.UI\Utilities\BackendServiceConstants.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Generators.UI\Manipulators\PingManipulator.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Generators.UI\Actions\Settings.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Generators.UI\Utilities\VisualElementExtensions.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Generators.UI\Components\CarouselView\CarouselViewItem.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Generators.UI\Utilities\GenerationRecoveryUtils.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Generators.UI\Utilities\TextureCache.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Generators.UI\Utilities\RenderTextureExtensions.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Generators.UI\Actions\Payloads\AssetPayloads.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Generators.UI\Utilities\SpriteSheetExtensions.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Generators.UI\Components\Splitter\Splitter.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Generators.UI\Manipulators\GenerateButtonInsufficientPointsManipulator.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Generators.UI\Utilities\ExternalFileDragDrop.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Generators.UI\Contexts\WindowSettingsContext.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Generators.UI\Utilities\FrameCacheBase.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Generators.UI\Contexts\PreviewScaleFactor.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Generators.UI\Utilities\ObjectFieldExtensions.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Generators.UI\Components\GridView\GridViewItem.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Generators.UI\Utilities\ProgressUtility.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Generators.UI\Utilities\UriExtensions.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Generators.UI\Utilities\AssetRenameWatcher.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Generators.UI\Utilities\SkeletonExtensions.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Generators.UI\Utilities\BindingListExtensions.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Generators.UI\Utilities\DragAndDropCache.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Generators.UI\Manipulators\GenerationFileSystemWatcher.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Generators.UI\Utilities\GeneratedAssetSearchProvider.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Generators.UI\Utilities\WebUtilities.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Generators.UI\Utilities\PromptUtilities.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Generators.UI\Components\GridView\GridView.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Generators.UI\Utilities\AssetUndoManager.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Generators.UI\Utilities\FrameCacheUtils.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Generators.UI\Manipulators\ScaleToFitObjectFieldImage.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Generators.UI\Utilities\SpriteSheetJob.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Generators.UI\Components\Toast\Toast.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Generators.UI\Utilities\ImmutableArray.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Generators.UI\Utilities\PatternsSearchProvider.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Generators.UI\Utilities\Timestamp.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Generators.UI\Utilities\GeneratedAssetMetadata.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Generators.UI\Utilities\TempUtilities.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Generators.UI\Utilities\DoCreateBlankAsset.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Generators.UI\Components\MultiSlider\MultiSlider.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Generators.UI\Utilities\ImmutableStringList.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Generators.UI\Utilities\IInterruptedDownloadData.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Generators.UI\Manipulators\SpinnerManipulator.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Generators.UI\Utilities\GeneratorSettingsUtility.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Generators.UI\Manipulators\DelayedCleanupManipulator.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Generators.UI\Manipulators\ScaleToFitImage.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Generators.UI\Utilities\StringExtensions.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Generators.UI\Utilities\GridViewExtensions.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Generators.UI\Utilities\DomainReloadUtilities.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Generators.UI\Components\CarouselView\CarouselView.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Generators.UI\Manipulators\DragExternalFileManipulator.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Generators.UI\Contexts\ScreenScaleFactor.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Generators.UI\Utilities\DialogUtilities.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Generators.UI\Utilities\DropdownMenuExtensions.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Generators.UI\AssemblyInfo.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Generators.UI\Actions\GenerationActions.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Generators.UI\Manipulators\Draggable.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Generators.UI\Manipulators\PingManipulator.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Generators.UI\Utilities\VisualElementExtensions.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Generators.UI\Utilities\ImageFileUtilities.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Generators.UI\Utilities\EditorFocusScope.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Generators.UI\Components\CarouselView\CarouselViewItem.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Generators.UI\Utilities\TextureCache.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Generators.UI\Actions\Payloads\AssetPayloads.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Generators.UI\Components\Splitter\Splitter.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Generators.UI\Utilities\TemporaryAsset.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Generators.UI\Utilities\ExternalFileDragDrop.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Generators.UI\Utilities\ObjectFieldExtensions.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Generators.UI\Utilities\AudioFileUtilities.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Generators.UI\Components\GridView\GridViewItem.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Generators.UI\Utilities\UriExtensions.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Generators.UI\Utilities\AssetRenameWatcher.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Generators.UI\Utilities\SkeletonExtensions.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Generators.UI\Utilities\TemporaryAssetUtilities.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Generators.UI\Utilities\BindingListExtensions.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Generators.UI\Utilities\DragAndDropCache.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Generators.UI\Manipulators\GenerationFileSystemWatcher.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Generators.UI\Utilities\GeneratedAssetSearchProvider.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Generators.UI\Utilities\WebUtilities.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Generators.UI\Utilities\PromptUtilities.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Generators.UI\Utilities\FileIO.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Generators.UI\Components\GridView\GridView.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Generators.UI\Utilities\AssetUndoManager.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Generators.UI\Manipulators\ScaleToFitObjectFieldImage.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Generators.UI\Components\Toast\Toast.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Generators.UI\Utilities\ImmutableArray.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Generators.UI\Utilities\UnityObjectExtensions.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Generators.UI\Utilities\Timestamp.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Generators.UI\Utilities\GeneratedAssetMetadata.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Generators.UI\Utilities\DoCreateBlankAsset.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Generators.UI\Utilities\ImmutableStringList.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Generators.UI\Utilities\UndoUtilities.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Generators.UI\Manipulators\SpinnerManipulator.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Generators.UI\Utilities\Debouncer.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Generators.UI\Manipulators\ScaleToFitImage.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Generators.UI\Utilities\StringExtensions.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Generators.UI\Utilities\GridViewExtensions.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Generators.UI\Utilities\DomainReloadUtilities.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Generators.UI\Components\CarouselView\CarouselView.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Generators.UI\Manipulators\DragExternalFileManipulator.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Generators.UI\Contexts\ScreenScaleFactor.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Generators.UI\Utilities\DialogUtilities.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Generators.UI\Utilities\StreamExtensions.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Generators.UI\Utilities\DropdownMenuExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Generators.UI\StyleSheets\GenerationMetadataWindow.uss" />
-    <None Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Generators.UI\Components\MultiSlider\MultiSlider.uss" />
-    <None Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Generators.UI\Components\CarouselView\CarouselViewItem.uxml" />
-    <None Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Generators.UI\Components\MultiSlider\MultiSlider.uxml" />
-    <None Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Generators.UI\Unity.AI.Generators.UI.asmdef" />
-    <None Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Generators.UI\Components\Splitter\Splitter.uss" />
-    <None Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Generators.UI\Shaders\ProgressDisk.shader" />
-    <None Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Generators.UI\StyleSheets\SessionStatusBannerClasses.uss" />
-    <None Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Generators.UI\StyleSheets\ColorsUtilitiesDark.uss" />
-    <None Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Generators.UI\StyleSheets\ColorsUtilitiesLight.uss" />
-    <None Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Generators.UI\StyleSheets\FlexUtilities.uss" />
-    <None Include="Library\PackageCache\com.unity.ai.generators@551caa45a477\Modules\Unity.AI.Generators.UI\Components\Splitter\Splitter.uxml" />
+    <None Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Generators.UI\StyleSheets\GenerationMetadataWindow.uss" />
+    <None Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Generators.UI\Components\CarouselView\CarouselViewItem.uxml" />
+    <None Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Generators.UI\Unity.AI.Generators.UI.asmdef" />
+    <None Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Generators.UI\Components\Splitter\Splitter.uss" />
+    <None Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Generators.UI\Shaders\ProgressDisk.shader" />
+    <None Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Generators.UI\StyleSheets\SessionStatusBannerClasses.uss" />
+    <None Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Generators.UI\StyleSheets\FlexUtilities.uss" />
+    <None Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Generators.UI\Components\Splitter\Splitter.uxml" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
@@ -700,7 +688,7 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.VisualScripting.YamlDotNet">
-      <HintPath>Library\PackageCache\com.unity.visualscripting@191c0d7e3b69\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll</HintPath>
+      <HintPath>Library\PackageCache\com.unity.visualscripting@eb6004dcc707\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.Collections.LowLevel.ILSupport">
@@ -748,7 +736,7 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.VisualScripting.IonicZip">
-      <HintPath>Library\PackageCache\com.unity.visualscripting@191c0d7e3b69\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll</HintPath>
+      <HintPath>Library\PackageCache\com.unity.visualscripting@eb6004dcc707\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="unityplastic">
@@ -764,7 +752,7 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.VisualScripting.Antlr3.Runtime">
-      <HintPath>Library\PackageCache\com.unity.visualscripting@191c0d7e3b69\Runtime\VisualScripting.Flow\Dependencies\NCalc\Unity.VisualScripting.Antlr3.Runtime.dll</HintPath>
+      <HintPath>Library\PackageCache\com.unity.visualscripting@eb6004dcc707\Runtime\VisualScripting.Flow\Dependencies\NCalc\Unity.VisualScripting.Antlr3.Runtime.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Google.VersionHandler">
@@ -776,15 +764,19 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="AiEditorToolsSdk">
-      <HintPath>Library\PackageCache\com.unity.ai.toolkit@04b39586d864\Modules\Sdk\Editor\AiEditorToolsSdk.dll</HintPath>
+      <HintPath>Library\PackageCache\com.unity.ai.toolkit@97783faabe3b\Modules\Sdk\Editor\AiEditorToolsSdk.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.VisualScripting.TextureAssets">
-      <HintPath>Library\PackageCache\com.unity.visualscripting@191c0d7e3b69\Editor\VisualScripting.Core\EditorAssetResources\Unity.VisualScripting.TextureAssets.dll</HintPath>
+      <HintPath>Library\PackageCache\com.unity.visualscripting@eb6004dcc707\Editor\VisualScripting.Core\EditorAssetResources\Unity.VisualScripting.TextureAssets.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Mono.Cecil">
       <HintPath>Library\PackageCache\com.unity.nuget.mono-cecil@ecb9724e46ff\Mono.Cecil.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe">
+      <HintPath>Library\PackageCache\com.unity.collections@aea9d3bd5e19\Unity.Collections.Tests\System.Runtime.CompilerServices.Unsafe\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.Analytics.StandardEvents">
@@ -1293,19 +1285,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="Unity.AI.Toolkit.Asset.csproj" />
     <ProjectReference Include="Unity.AI.Generators.Asset.csproj" />
     <ProjectReference Include="Unity.AI.Toolkit.Accounts.csproj" />
     <ProjectReference Include="Unity.AI.Generators.Redux.csproj" />
     <ProjectReference Include="Unity.AI.Toolkit.Compliance.csproj" />
     <ProjectReference Include="Unity.AI.Toolkit.Async.csproj" />
-    <ProjectReference Include="Unity.AI.Generators.Contexts.csproj" />
-    <ProjectReference Include="Unity.Mathematics.csproj" />
-    <ProjectReference Include="Unity.AI.Toolkit.Utility.csproj" />
-    <ProjectReference Include="Unity.AI.Generators.IO.csproj" />
-    <ProjectReference Include="Unity.2D.Sprite.Editor.csproj" />
-    <ProjectReference Include="UnityEngine.UI.csproj" />
+    <ProjectReference Include="Unity.AI.Generators.Sdk.csproj" />
     <ProjectReference Include="UnityEditor.UI.csproj" />
+    <ProjectReference Include="UnityEngine.UI.csproj" />
     <ProjectReference Include="UnityEngine.TestRunner.csproj" />
     <ProjectReference Include="UnityEditor.TestRunner.csproj" />
   </ItemGroup>

@@ -27,7 +27,7 @@ public class UpdateStatusResponse
 [System.Serializable]
 public class UserListDto
 {
-    public int UserId;
+    public int userId;
     public string username;
     public string status;
 }

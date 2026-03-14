@@ -15,11 +15,13 @@ public class InviteResponse
 {
     public string inviteId;
     public int fromUserId;
+    public string fromUsername;
     public int toUserId;
+    public string toUsername;
     public string status; // "pending", "accepted", "declined", etc.
     public string createdAt;
     public string expiresAt;
-    public int? gameId; // nullable
+    public int gameId; // 0 means no game yet
 }
 
 // --- SignalR Event DTOs ---

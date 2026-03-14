@@ -1,9 +1,7 @@
 using System.Collections;
 using Project.Services;
-using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
 public class InviteManager : MonoBehaviour
 {
@@ -11,14 +9,24 @@ public class InviteManager : MonoBehaviour
 
     [Header("Services")]
     public InviteApi inviteApi;
+    public InvitePollingService invitePollingServiceObject;
 
     [Header("UI")]
     public InvitePopupUi invitePopupUi;
-    public GameObject waitingPanel;
-    public Button waitingCancelButton;
+    public InviteWaitingUi inviteWaitingUi;
+
+    [Header("Quick Test (Inspector)")]
+    [Tooltip("Used by SendInviteFromInspector()")]
+    public int testToUserId;
+    [Tooltip("1 = Ranked, 2 = Normal")]
+    public int testMatchMode = 2;
+    [Tooltip("Display name for waiting UI")]
+    public string testUsername = "Unknown";
 
     private string currentInviteId;
     private string sentInviteId;
+    private bool isSendingInvite = false;
+    private bool cancelPendingSend = false;
 
     private Coroutine pollingCoroutine;
     private bool isLoadingGame = false;
@@ -40,13 +48,18 @@ public class InviteManager : MonoBehaviour
         invitePopupUi?.Setup(OnAcceptClicked, OnDeclineClicked);
         invitePopupUi?.HideInvitePopup();
 
-        waitingPanel?.SetActive(false);
+        inviteWaitingUi?.Setup(OnCancelInviteClicked);
+        inviteWaitingUi?.HideWaiting();
 
-        if (waitingCancelButton != null)
-        {
-            waitingCancelButton.onClick.RemoveAllListeners();
-            waitingCancelButton.onClick.AddListener(OnCancelInviteClicked);
-        }
+        // Simple, centralized control of polling
+        if (InvitePollingService.Instance != null)
+            InvitePollingService.Instance.StartPolling();
+    }
+
+    private void OnDestroy()
+    {
+        if (InvitePollingService.Instance != null)
+            InvitePollingService.Instance.StopPolling();
     }
 
     // SEND INVITE (รองรับ matchMode)
@@ -59,11 +72,9 @@ public class InviteManager : MonoBehaviour
             return;
         }
 
-        waitingPanel?.SetActive(true);
-
-        var txt = waitingPanel?.GetComponentInChildren<TMP_Text>();
-        if (txt != null)
-            txt.text = $"Inviting {username}...";
+        inviteWaitingUi?.ShowWaiting($"Inviting {username}...");
+        isSendingInvite = true;
+        cancelPendingSend = false;
 
         InviteRequest req = new InviteRequest
         {
@@ -76,16 +87,42 @@ public class InviteManager : MonoBehaviour
 
         StartCoroutine(inviteApi.SendInvite(req, (success, msg, inviteId) =>
         {
+            isSendingInvite = false;
+
             if (!success)
             {
                 Debug.LogError("Send invite failed: " + msg);
-                waitingPanel?.SetActive(false);
+                inviteWaitingUi?.HideWaiting();
+                return;
+            }
+
+            if (cancelPendingSend)
+            {
+                if (!string.IsNullOrEmpty(inviteId))
+                {
+                    StartCoroutine(inviteApi.CancelInvite(inviteId, (s, m) => { }));
+                }
+
+                inviteWaitingUi?.HideWaiting();
+                sentInviteId = null;
                 return;
             }
 
             sentInviteId = inviteId;
             StartPollingSentInvite(inviteId);
         }));
+    }
+
+    // SIMPLE SEND (Inspector-friendly)
+    public void SendInviteFromInspector()
+    {
+        if (testToUserId <= 0)
+        {
+            Debug.LogWarning("Set testToUserId first.");
+            return;
+        }
+
+        SendInvite(testToUserId, testMatchMode, testUsername);
     }
 
     // POLLING SENT INVITE
@@ -110,7 +147,7 @@ public class InviteManager : MonoBehaviour
             if (elapsed >= POLL_TIMEOUT)
             {
                 Debug.LogWarning("Invite polling timeout.");
-                waitingPanel?.SetActive(false);
+                inviteWaitingUi?.HideWaiting();
                 sentInviteId = null;
                 yield break;
             }
@@ -118,31 +155,42 @@ public class InviteManager : MonoBehaviour
             bool done = false;
 
             inviteApi.StartCoroutine(
-                inviteApi.GetSentInvites(SessionManager.Instance.UserId,
-                (success, invites) =>
+                inviteApi.GetSentInvites((success, invites) =>
                 {
                     done = true;
 
                     if (!success || invites == null)
+                    {
+                        Debug.LogWarning("Invite polling (sent) failed or null.");
                         return;
+                    }
 
+                    bool found = false;
                     foreach (var inv in invites)
                     {
                         if (inv.inviteId != inviteId)
                             continue;
 
-                        if (inv.status == "accepted" && inv.gameId.HasValue)
+                        found = true;
+                        if (inv.status == "accepted" && inv.gameId > 0)
                         {
+                            Debug.Log($"InviteManager: Sender accepted. gameId={inv.gameId} -> LoadOnlineGame");
                             sentInviteId = null;
-                            LoadOnlineGame(inv.gameId.Value, inv.fromUserId, inv.toUserId);
+                            SetOpponentNameFromInvite(inv);
+                            LoadOnlineGame(inv.gameId, inv.fromUserId, inv.toUserId);
                         }
                         else if (inv.status == "declined" ||
                                  inv.status == "canceled" ||
                                  inv.status == "expired")
                         {
                             sentInviteId = null;
-                            waitingPanel?.SetActive(false);
+                            inviteWaitingUi?.HideWaiting();
                         }
+                    }
+
+                    if (!found)
+                    {
+                        Debug.LogWarning("Invite polling (sent): invite not found.");
                     }
                 }));
 
@@ -154,6 +202,7 @@ public class InviteManager : MonoBehaviour
 
     public void HandleInviteReceivedFromPolling(InviteReceivedEvent evt)
     {
+        Debug.Log($"InviteManager: Received invite {evt.inviteId} from {evt.fromUserId} to {evt.toUserId}");
         currentInviteId = evt.inviteId;
 
         invitePopupUi?.SetStatusText(
@@ -170,15 +219,25 @@ public class InviteManager : MonoBehaviour
         if (string.IsNullOrEmpty(currentInviteId))
             return;
 
-        StartCoroutine(inviteApi.AcceptInvite(currentInviteId, (success, msg) =>
+        StartCoroutine(inviteApi.AcceptInvite(currentInviteId, (success, response) =>
         {
             if (!success)
             {
-                Debug.LogError("Accept failed: " + msg);
+                Debug.LogError("Accept failed.");
                 return;
             }
 
             invitePopupUi?.HideInvitePopup();
+            currentInviteId = null;
+
+            if (response != null && response.gameId > 0)
+            {
+                Debug.Log($"InviteManager: Receiver accepted. gameId={response.gameId} -> LoadOnlineGame");
+                SetOpponentNameFromInvite(response);
+                LoadOnlineGame(response.gameId, response.fromUserId, response.toUserId);
+                return;
+            }
+
             StartCoroutine(PollAcceptedInviteGame());
         }));
     }
@@ -195,8 +254,7 @@ public class InviteManager : MonoBehaviour
             bool done = false;
 
             inviteApi.StartCoroutine(
-                inviteApi.GetInboxInvites(SessionManager.Instance.UserId,
-                (success, invites) =>
+                inviteApi.GetInboxInvites((success, invites) =>
                 {
                     done = true;
 
@@ -205,9 +263,11 @@ public class InviteManager : MonoBehaviour
 
                     foreach (var inv in invites)
                     {
-                        if (inv.status == "accepted" && inv.gameId.HasValue)
+                        if (inv.status == "accepted" && inv.gameId > 0)
                         {
-                            LoadOnlineGame(inv.gameId.Value, inv.fromUserId, inv.toUserId);
+                            Debug.Log($"InviteManager: Sender accepted. gameId={inv.gameId} -> LoadOnlineGame");
+                            SetOpponentNameFromInvite(inv);
+                            LoadOnlineGame(inv.gameId, inv.fromUserId, inv.toUserId);
                             return;
                         }
                     }
@@ -237,14 +297,37 @@ public class InviteManager : MonoBehaviour
 
     private void OnCancelInviteClicked()
     {
+        if (isSendingInvite && string.IsNullOrEmpty(sentInviteId))
+        {
+            cancelPendingSend = true;
+            inviteWaitingUi?.HideWaiting();
+            return;
+        }
+
         if (string.IsNullOrEmpty(sentInviteId))
             return;
 
         StartCoroutine(inviteApi.CancelInvite(sentInviteId, (success, msg) =>
         {
-            waitingPanel?.SetActive(false);
+            inviteWaitingUi?.HideWaiting();
             sentInviteId = null;
         }));
+    }
+
+    private void SetOpponentNameFromInvite(InviteResponse invite)
+    {
+        if (invite == null || SessionManager.Instance == null)
+            return;
+
+        int myId = SessionManager.Instance.UserId;
+        string opponentName = myId == invite.fromUserId
+            ? invite.toUsername
+            : invite.fromUsername;
+
+        if (string.IsNullOrEmpty(opponentName))
+            opponentName = "Opponent";
+
+        PlayerPrefs.SetString("OpponentName", opponentName);
     }
 
     // LOAD GAME
@@ -254,7 +337,7 @@ public class InviteManager : MonoBehaviour
         if (isLoadingGame) return;
         isLoadingGame = true;
 
-        waitingPanel?.SetActive(false);
+        inviteWaitingUi?.HideWaiting();
 
         PlayerPrefs.SetInt("CurrentGameId", gameId);
         PlayerPrefs.SetString("Mode", "OnlineMultiplayer");

@@ -1,21 +1,25 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+﻿<Project>
   <!-- Generated file, do not modify, your changes will be overwritten (use AssetPostprocessor.OnGeneratedCSProject) -->
   <PropertyGroup>
-    <LangVersion>9.0</LangVersion>
+    <BaseIntermediateOutputPath>Temp\obj\$(MSBuildProjectName)</BaseIntermediateOutputPath>
+    <IntermediateOutputPath>$(BaseIntermediateOutputPath)</IntermediateOutputPath>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <UseCommonOutputDirectory>true</UseCommonOutputDirectory>
+    <OutputPath>Temp\bin\Debug\</OutputPath>
   </PropertyGroup>
+  <Import Project="Sdk.props" Sdk="Microsoft.NET.Sdk" />
+  <ItemGroup>
+    <ProjectCapability Include="Unity" />
+    <ProjectCapability Include="EnableOnDemandExcludedFolderLoading" />
+  </ItemGroup>
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>10.0.20506</ProductVersion>
-    <SchemaVersion>2.0</SchemaVersion>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <EnableDefaultItems>false</EnableDefaultItems>
+    <LangVersion>9.0</LangVersion>
     <RootNamespace>Unity.AI.Material</RootNamespace>
-    <ProjectGuid>{1AE1B06B-535B-5D4E-9632-78A22EF3934D}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Unity.AI.Material</AssemblyName>
-    <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
+    <TargetFramework>netstandard2.1</TargetFramework>
     <BaseDirectory>.</BaseDirectory>
   </PropertyGroup>
   <PropertyGroup>
@@ -23,175 +27,157 @@
     <DefineConstants>UNITY_6000_3_1;UNITY_6000_3;UNITY_6000;UNITY_5_3_OR_NEWER;UNITY_5_4_OR_NEWER;UNITY_5_5_OR_NEWER;UNITY_5_6_OR_NEWER;UNITY_2017_1_OR_NEWER;UNITY_2017_2_OR_NEWER;UNITY_2017_3_OR_NEWER;UNITY_2017_4_OR_NEWER;UNITY_2018_1_OR_NEWER;UNITY_2018_2_OR_NEWER;UNITY_2018_3_OR_NEWER;UNITY_2018_4_OR_NEWER;UNITY_2019_1_OR_NEWER;UNITY_2019_2_OR_NEWER;UNITY_2019_3_OR_NEWER;UNITY_2019_4_OR_NEWER;UNITY_2020_1_OR_NEWER;UNITY_2020_2_OR_NEWER;UNITY_2020_3_OR_NEWER;UNITY_2021_1_OR_NEWER;UNITY_2021_2_OR_NEWER;UNITY_2021_3_OR_NEWER;UNITY_2022_1_OR_NEWER;UNITY_2022_2_OR_NEWER;UNITY_2022_3_OR_NEWER;UNITY_2023_1_OR_NEWER;UNITY_2023_2_OR_NEWER;UNITY_2023_3_OR_NEWER;UNITY_6000_0_OR_NEWER;UNITY_6000_1_OR_NEWER;UNITY_6000_2_OR_NEWER;UNITY_6000_3_OR_NEWER;UNITY_INCLUDE_TESTS;ENABLE_AUDIO;ENABLE_CLOTH;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_TEXTURE_STREAMING;ENABLE_UNITYEVENTS;ENABLE_VR;ENABLE_WEBCAM;ENABLE_UNITYWEBREQUEST;ENABLE_WWW;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_ADS;ENABLE_CLOUD_SERVICES_USE_WEBREQUEST;ENABLE_UNITY_CONSENT;ENABLE_UNITY_CLOUD_IDENTIFIERS;ENABLE_CLOUD_SERVICES_CRASH_REPORTING;ENABLE_CLOUD_SERVICES_PURCHASING;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_CLOUD_SERVICES_BUILD;ENABLE_EDITOR_GAME_SERVICES;ENABLE_UNITY_GAME_SERVICES_ANALYTICS_SUPPORT;ENABLE_CLOUD_LICENSE;ENABLE_EDITOR_HUB_LICENSE;ENABLE_WEBSOCKET_CLIENT;ENABLE_GENERATE_NATIVE_PLUGINS_FOR_ASSEMBLIES_API;ENABLE_DIRECTOR_AUDIO;ENABLE_DIRECTOR_TEXTURE;ENABLE_MANAGED_JOBS;ENABLE_MANAGED_TRANSFORM_JOBS;ENABLE_MANAGED_ANIMATION_JOBS;ENABLE_MANAGED_AUDIO_JOBS;ENABLE_ENGINE_CODE_STRIPPING;ENABLE_ONSCREEN_KEYBOARD;ENABLE_MANAGED_UNITYTLS;RENDER_SOFTWARE_CURSOR;ENABLE_MARSHALLING_TESTS;ENABLE_VIDEO;ENABLE_NAVIGATION_OFFMESHLINK_TO_NAVMESHLINK;ENABLE_ACCELERATOR_CLIENT_DEBUGGING;TEXTCORE_1_0_OR_NEWER;EDITOR_ONLY_NAVMESH_BUILDER_DEPRECATED;PLATFORM_WEBGL;UNITY_WEBGL;UNITY_WEBGL_API;UNITY_DISABLE_WEB_VERIFICATION;UNITY_GFX_USE_PLATFORM_VSYNC;ENABLE_CRUNCH_TEXTURE_COMPRESSION;ENABLE_SPATIALTRACKING;ENABLE_MONO;NET_4_6;NET_UNITY_4_8;ENABLE_PROFILER;DEBUG;TRACE;UNITY_ASSERTIONS;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_WIN;ENABLE_UNITY_COLLECTIONS_CHECKS;ENABLE_BURST_AOT;UNITY_TEAM_LICENSE;ENABLE_CUSTOM_RENDER_TEXTURE;ENABLE_DIRECTOR;ENABLE_LOCALIZATION;ENABLE_SPRITES;ENABLE_TERRAIN;ENABLE_TILEMAP;ENABLE_TIMELINE;ENABLE_LEGACY_INPUT_MANAGER;TEXTCORE_FONT_ENGINE_1_5_OR_NEWER;TEXTCORE_TEXT_ENGINE_1_5_OR_NEWER;TEXTCORE_FONT_ENGINE_1_6_OR_NEWER;MIRROR;MIRROR_89_OR_NEWER;MIRROR_90_OR_NEWER;MIRROR_93_OR_NEWER;MIRROR_96_OR_NEWER;EDGEGAP_PLUGIN_SERVERS;APP_UI_EDITOR_ONLY;CSHARP_7_OR_LATER;CSHARP_7_3_OR_NEWER;UNITY_EDITOR_ONLY_COMPILATION</DefineConstants>
     <AllowUnsafeBlocks>False</AllowUnsafeBlocks>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>Temp\bin\Debug\</OutputPath>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>Temp\bin\Release\</OutputPath>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
   <PropertyGroup>
-    <NoConfig>true</NoConfig>
+    <NoStandardLibraries>true</NoStandardLibraries>
     <NoStdLib>true</NoStdLib>
-    <AddAdditionalExplicitAssemblyReferences>false</AddAdditionalExplicitAssemblyReferences>
-    <ImplicitlyExpandNETStandardFacades>false</ImplicitlyExpandNETStandardFacades>
-    <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
+    <NoConfig>true</NoConfig>
+    <DisableImplicitFrameworkReferences>true</DisableImplicitFrameworkReferences>
+    <MSBuildWarningsAsMessages>MSB3277</MSBuildWarningsAsMessages>
   </PropertyGroup>
   <PropertyGroup>
-    <ProjectTypeGuids>{E097FAD1-6243-4DAD-9C02-E9B9EFC3FFC1};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <UnityProjectGenerator>Package</UnityProjectGenerator>
-    <UnityProjectGeneratorVersion>2.0.25</UnityProjectGeneratorVersion>
-    <UnityProjectGeneratorStyle>Legacy</UnityProjectGeneratorStyle>
+    <UnityProjectGeneratorVersion>2.0.27</UnityProjectGeneratorVersion>
+    <UnityProjectGeneratorStyle>SDK</UnityProjectGeneratorStyle>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>WebGL:20</UnityBuildTarget>
     <UnityVersion>6000.3.1f1</UnityVersion>
   </PropertyGroup>
   <ItemGroup>
-    <Analyzer Include="C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
+    <Analyzer Include="C:\Users\praka\.vscode\extensions\visualstudiotoolsforunity.vstuc-1.2.1\Analyzers\Microsoft.Unity.Analyzers.dll" />
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\Tools\BuildPipeline\Unity.SourceGenerators\Unity.SourceGenerators.dll" />
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\Tools\BuildPipeline\Unity.SourceGenerators\Unity.Properties.SourceGenerator.dll" />
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\Tools\BuildPipeline\Unity.SourceGenerators\Unity.UIToolkit.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Material\Services\Stores\States\GenerationSettings.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Material\Services\Stores\States\GenerationSetting.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Material\Components\TexturePropertyField\MappingAutoButton.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Material\Components\MaterialGenerator\MaterialGenerator.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Material\Services\Stores\Selectors\DebuggerSelectors.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Material\Components\PreviewSizeSlider\PreviewSizeSlider.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Material\Services\Stores\States\GenerationResult.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Material\Services\Stores\Slices\GenerationResultsSlice.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Material\Services\Stores\States\PreviewSettings.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Material\Services\Stores\Slices\DebuggerSlice.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Material\Utilities\MaterialAdapterFactory.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Material\Utilities\MaterialMapsFolderSync.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Material\Utilities\MaskMapUtils.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Material\Windows\GenerationMetadataWindow\GenerationMetadataContent.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Material\Utilities\MapTypeUtils.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Material\Utilities\TextureSkeletonExtensions.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Material\Services\Stores\States\Settings.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Material\Utilities\MaterialSkeletonExtensions.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Material\Utilities\AmbientOcclusionUtils.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Material\Services\Stores\Actions\GenerationResultsActions.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Material\Services\SessionPersistence\AppData.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Material\Components\ImageReference\BaseImageReference.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Material\Services\Stores\Selectors\GenerationResultsSelectors.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Material\Utilities\MaterialPreviewRenderingUtils.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Material\Components\TexturePropertyField\TexturePropertyField.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Material\Services\Stores\States\MaterialResult.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Material\Components\AssetTitleCard\SelectedAssetTitleCard.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Material\Services\SessionPersistence\MemoryPersistence.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Material\Windows\GenerationMetadataWindow\GenerationMetadataWindow.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Material\Utilities\ImageResizeUtilities.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Material\Components\ImageReference\PromptImageReference.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Material\Services\Stores\Actions\Backend\Quote.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Material\Services\Stores\States\DebuggerState.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Material\AssemblyInfo.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Material\Services\Stores\Selectors\GenerationSettingsSelectors.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Material\Services\Stores\Actions\Creators\AssetActionCreator.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Material\Services\Stores\Slices\SessionSlice.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Material\Utilities\MaterialResultExtensions.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Material\Services\Stores\Selectors\SessionSelectors.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Material\Utilities\ProgressUtils.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Material\Services\Stores\AIMaterialStore.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Material\Windows\TerrainLayerGeneratorInspectorButton.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Material\Utilities\AssetContextExtensions.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Material\Components\ModelSelectorButton\ModelSelectorButton.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Material\Utilities\MaterialCacheHelper.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Material\Components\RefinementModeTabView\RefinementModeTabView.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Material\Services\Stores\Selectors\AppSelectors.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Material\Services\Stores\Actions\Payloads\Payload.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Material\Services\SessionPersistence\ObjectPersistence.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Material\Services\Stores\States\TextureResult.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Material\Utilities\FileUtilities.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Material\Components\GenerationSelector\GenerationSelector.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Material\Utilities\MaterialUtilities.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Material\Utilities\GridViewExtensions.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Material\Services\SessionPersistence\SharedStore.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Material\Services\Stores\Actions\Creators\ContextAction.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Material\Components\AssetTitleCard\AssetTitleCard.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Material\Utilities\AssetUtils.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Material\Services\Stores\Actions\DebuggerActions.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Material\Services\Stores\Actions\Backend\Generation.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Material\Windows\MaterialGeneratorObjectPicker.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Material\Components\GenerationOptions\GenerationOptions.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Material\Services\Stores\Slices\GenerationSettingsSlice.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Material\Services\SessionPersistence\MaterialGeneratorSettings.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Material\Windows\MaterialGeneratorWindow.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Material\Utilities\GenerationRecovery.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Material\Services\Stores\States\GenerationResults.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Material\Services\Stores\Actions\SessionActions.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Material\Utilities\WebUtils.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Material\Components\GenerateVariationsSlider\GenerateVariationsSlider.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Material\Components\GenerateButton\GenerateButton.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Material\Components\ImageReference\PatternImageReference.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Material\Components\DimensionsDropDown\DimensionsDropDown.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Material\Utilities\SmoothnessUtils.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Material\Services\Stores\States\Sessions.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Material\Services\Stores\Actions\AppActions.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Material\Components\GenerationSelector\GenerationTile.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Material\Components\Prompt\Prompt.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Material\Utilities\MetallicSmoothnessUtils.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Material\Utilities\SplitterExtensions.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Material\Components\ModelTitleCard\ModelTitleCard.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Material\Utilities\TextureResultExtensions.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Material\Utilities\ImageReferenceExtensions.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Material\Windows\MaterialGeneratorInspectorButton.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Material\Utilities\AssetReferenceExtensions.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Material\Services\Stores\Actions\GenerationSettingsActions.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Material\Services\Undo\AssetUndoManager.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Material\Components\ModelTitleCard\SelectedModelTitleCard.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Material\Services\Stores\States\GenerationSettings.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Material\Services\Stores\States\GenerationSetting.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Material\Components\TexturePropertyField\MappingAutoButton.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Material\Components\MaterialGenerator\MaterialGenerator.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Material\Services\Stores\Selectors\DebuggerSelectors.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Material\Components\PreviewSizeSlider\PreviewSizeSlider.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Material\Services\Stores\States\GenerationResult.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Material\Services\Stores\Slices\GenerationResultsSlice.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Material\Services\Stores\States\PreviewSettings.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Material\Services\Stores\Slices\DebuggerSlice.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Material\Utilities\MaterialAdapterFactory.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Material\Utilities\MaterialMapsFolderSync.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Material\Utilities\MaskMapUtils.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Material\Windows\GenerationMetadataWindow\GenerationMetadataContent.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Material\Utilities\MapTypeUtils.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Material\Utilities\TextureSkeletonExtensions.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Material\Services\Stores\States\Settings.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Material\Utilities\MaterialSkeletonExtensions.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Material\Utilities\AmbientOcclusionUtils.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Material\Services\Stores\Actions\GenerationResultsActions.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Material\Services\SessionPersistence\AppData.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Material\Components\ImageReference\BaseImageReference.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Material\Services\Stores\Selectors\GenerationResultsSelectors.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Material\Utilities\MaterialPreviewRenderingUtils.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Material\Components\TexturePropertyField\TexturePropertyField.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Material\Services\Stores\States\MaterialResult.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Material\Components\AssetTitleCard\SelectedAssetTitleCard.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Material\Services\SessionPersistence\MemoryPersistence.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Material\Windows\GenerationMetadataWindow\GenerationMetadataWindow.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Material\Utilities\ImageResizeUtilities.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Material\Components\ImageReference\PromptImageReference.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Material\Services\Stores\States\DebuggerState.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Material\AssemblyInfo.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Material\Services\Stores\Selectors\GenerationSettingsSelectors.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Material\Services\Stores\Actions\Creators\AssetActionCreator.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Material\Services\Stores\Slices\SessionSlice.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Material\Utilities\MaterialResultExtensions.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Material\Services\Stores\Selectors\SessionSelectors.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Material\Utilities\ProgressUtils.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Material\Services\Stores\AIMaterialStore.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Material\Services\Stores\Actions\GenerationResultsSuperProxyActions.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Material\Windows\TerrainLayerGeneratorInspectorButton.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Material\Utilities\AssetContextExtensions.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Material\Components\ModelSelectorButton\ModelSelectorButton.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Material\Utilities\MaterialCacheHelper.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Material\Utilities\GenerationRecoveryUtils.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Material\Components\RefinementModeTabView\RefinementModeTabView.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Material\Services\Stores\Selectors\AppSelectors.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Material\Services\Stores\Actions\Payloads\Payload.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Material\Services\SessionPersistence\ObjectPersistence.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Material\Services\Stores\States\TextureResult.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Material\Utilities\FileUtilities.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Material\Components\GenerationSelector\GenerationSelector.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Material\Utilities\MaterialUtilities.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Material\Utilities\GridViewExtensions.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Material\Services\SessionPersistence\SharedStore.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Material\Services\Stores\Actions\Creators\ContextAction.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Material\Components\AssetTitleCard\AssetTitleCard.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Material\Utilities\AssetUtils.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Material\Services\Stores\Actions\DebuggerActions.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Material\Windows\MaterialGeneratorObjectPicker.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Material\Components\GenerationOptions\GenerationOptions.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Material\Services\Stores\Slices\GenerationSettingsSlice.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Material\Services\SessionPersistence\MaterialGeneratorSettings.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Material\Windows\MaterialGeneratorWindow.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Material\Services\Stores\States\GenerationResults.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Material\Services\Stores\Actions\SessionActions.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Material\Utilities\WebUtils.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Material\Components\GenerateVariationsSlider\GenerateVariationsSlider.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Material\Components\GenerateButton\GenerateButton.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Material\Components\ImageReference\PatternImageReference.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Material\Components\DimensionsDropDown\DimensionsDropDown.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Material\Utilities\SmoothnessUtils.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Material\Services\Stores\States\Sessions.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Material\Services\Stores\Actions\AppActions.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Material\Components\GenerationSelector\GenerationTile.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Material\Components\Prompt\Prompt.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Material\Utilities\MetallicSmoothnessUtils.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Material\Utilities\SplitterExtensions.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Material\Components\ModelTitleCard\ModelTitleCard.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Material\Utilities\TextureResultExtensions.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Material\Utilities\ImageReferenceExtensions.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Material\Windows\MaterialGeneratorInspectorButton.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Material\Utilities\AssetReferenceExtensions.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Material\Services\Stores\Actions\GenerationSettingsActions.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Material\Services\Undo\AssetUndoManager.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Material\Components\ModelTitleCard\SelectedModelTitleCard.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Material\Components\ImageReference\PatternImageReference.uxml" />
-    <None Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Material\Components\GenerateVariationsSlider\GenerateVariationsSlider.uxml" />
-    <None Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Material\Shaders\MetallicSmoothness.shader" />
-    <None Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Material\Components\ImageReference\ImageReferenceHeader.uxml" />
-    <None Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Material\Components\ImageReference\BaseImageReference.uxml" />
-    <None Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Material\Components\GenerationSelector\GenerationSelector.uxml" />
-    <None Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Material\Components\ImageReference\ImageReference.uss" />
-    <None Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Material\Components\ImageReference\BaseImageReference.uss" />
-    <None Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Material\Components\TexturePropertyField\MappingAutoButton.uxml" />
-    <None Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Material\Components\TexturePropertyField\TexturePropertyField.uss" />
-    <None Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Material\Components\GenerationSelector\GenerationTile.uss" />
-    <None Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Material\Components\RefinementModeTabView\RefinementModeTabView.uss" />
-    <None Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Material\Components\ModelTitleCard\ModelTitleCard.uxml" />
-    <None Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Material\Windows\GenerationMetadataWindow\GenerationMetadataWindow.uxml" />
-    <None Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Material\Components\GenerationOptions\GenerationOptions.uxml" />
-    <None Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Material\Components\ModelTitleCard\SelectedModelTitleCard.uxml" />
-    <None Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Material\Shaders\AmbientOcclusion.shader" />
-    <None Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Material\Components\GenerateButton\GenerateButton.uxml" />
-    <None Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Material\Components\ImageReference\ImageReferenceHeader.uss" />
-    <None Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Material\Shaders\Smoothness.shader" />
-    <None Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Material\Components\ImageReference\PatternImageReference.uss" />
-    <None Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Material\Shaders\AmbientOcclusionScale.compute" />
-    <None Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Material\Components\ImageReference\ImageReferenceStrength.uxml" />
-    <None Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Material\Components\MaterialGenerator\MaterialGenerator.uss" />
-    <None Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Material\Components\ImageReference\ImageReferenceObjectField.uss" />
-    <None Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Material\Components\Prompt\Prompt.uss" />
-    <None Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Material\Components\AssetTitleCard\AssetTitleCard.uxml" />
-    <None Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Material\Components\RefinementModeTabView\RefinementModeTabView.uxml" />
-    <None Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Material\Components\DimensionsDropDown\DimensionsDropDown.uxml" />
-    <None Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Material\Components\Prompt\Prompt.uxml" />
-    <None Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Material\Components\GenerateButton\GenerateButton.uss" />
-    <None Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Material\Components\MaterialGenerator\MaterialGenerator.uxml" />
-    <None Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Material\Components\ModelTitleCard\ModelTitleCard.uss" />
-    <None Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Material\Components\GenerationSelector\GenerationTile.uxml" />
-    <None Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Material\Components\TexturePropertyField\TexturePropertyField.uxml" />
-    <None Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Material\Components\ImageReference\ImageReferenceObjectField.uxml" />
-    <None Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Material\Components\PreviewSizeSlider\PreviewSizeSlider.uxml" />
-    <None Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Material\Components\ImageReference\PromptImageReference.uxml" />
-    <None Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Material\Unity.AI.Material.asmdef" />
-    <None Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Material\Shaders\MaskMap.shader" />
-    <None Include="Library\PackageCache\com.unity.ai.generators@f55909672e13\Modules\Unity.AI.Material\Components\ModelSelectorButton\ModelSelectorButton.uxml" />
+    <None Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Material\Components\ImageReference\PatternImageReference.uxml" />
+    <None Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Material\Components\GenerateVariationsSlider\GenerateVariationsSlider.uxml" />
+    <None Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Material\Shaders\MetallicSmoothness.shader" />
+    <None Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Material\Components\ImageReference\ImageReferenceHeader.uxml" />
+    <None Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Material\Components\ImageReference\BaseImageReference.uxml" />
+    <None Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Material\Components\GenerationSelector\GenerationSelector.uxml" />
+    <None Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Material\Components\ImageReference\ImageReference.uss" />
+    <None Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Material\Components\ImageReference\BaseImageReference.uss" />
+    <None Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Material\Components\TexturePropertyField\MappingAutoButton.uxml" />
+    <None Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Material\Components\TexturePropertyField\TexturePropertyField.uss" />
+    <None Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Material\Components\GenerationSelector\GenerationTile.uss" />
+    <None Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Material\Components\RefinementModeTabView\RefinementModeTabView.uss" />
+    <None Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Material\Components\ModelTitleCard\ModelTitleCard.uxml" />
+    <None Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Material\Windows\GenerationMetadataWindow\GenerationMetadataWindow.uxml" />
+    <None Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Material\Components\GenerationOptions\GenerationOptions.uxml" />
+    <None Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Material\Components\ModelTitleCard\SelectedModelTitleCard.uxml" />
+    <None Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Material\Shaders\AmbientOcclusion.shader" />
+    <None Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Material\Components\GenerateButton\GenerateButton.uxml" />
+    <None Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Material\Components\ImageReference\ImageReferenceHeader.uss" />
+    <None Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Material\Shaders\Smoothness.shader" />
+    <None Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Material\Components\ImageReference\PatternImageReference.uss" />
+    <None Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Material\Shaders\AmbientOcclusionScale.compute" />
+    <None Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Material\Components\ImageReference\ImageReferenceStrength.uxml" />
+    <None Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Material\Components\MaterialGenerator\MaterialGenerator.uss" />
+    <None Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Material\Components\ImageReference\ImageReferenceObjectField.uss" />
+    <None Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Material\Components\AssetTitleCard\AssetTitleCard.uxml" />
+    <None Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Material\Components\RefinementModeTabView\RefinementModeTabView.uxml" />
+    <None Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Material\Components\DimensionsDropDown\DimensionsDropDown.uxml" />
+    <None Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Material\Components\Prompt\Prompt.uxml" />
+    <None Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Material\Components\GenerateButton\GenerateButton.uss" />
+    <None Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Material\Components\MaterialGenerator\MaterialGenerator.uxml" />
+    <None Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Material\Components\ModelTitleCard\ModelTitleCard.uss" />
+    <None Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Material\Components\GenerationSelector\GenerationTile.uxml" />
+    <None Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Material\Components\TexturePropertyField\TexturePropertyField.uxml" />
+    <None Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Material\Components\ImageReference\ImageReferenceObjectField.uxml" />
+    <None Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Material\Components\PreviewSizeSlider\PreviewSizeSlider.uxml" />
+    <None Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Material\Components\ImageReference\PromptImageReference.uxml" />
+    <None Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Material\Unity.AI.Material.asmdef" />
+    <None Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Material\Shaders\MaskMap.shader" />
+    <None Include="Library\PackageCache\com.unity.ai.generators@bf6bfb1a644e\Modules\Unity.AI.Material\Components\ModelSelectorButton\ModelSelectorButton.uxml" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
@@ -771,7 +757,7 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.VisualScripting.YamlDotNet">
-      <HintPath>Library\PackageCache\com.unity.visualscripting@191c0d7e3b69\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll</HintPath>
+      <HintPath>Library\PackageCache\com.unity.visualscripting@eb6004dcc707\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.Collections.LowLevel.ILSupport">
@@ -819,7 +805,7 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.VisualScripting.IonicZip">
-      <HintPath>Library\PackageCache\com.unity.visualscripting@191c0d7e3b69\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll</HintPath>
+      <HintPath>Library\PackageCache\com.unity.visualscripting@eb6004dcc707\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="unityplastic">
@@ -835,11 +821,7 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.VisualScripting.Antlr3.Runtime">
-      <HintPath>Library\PackageCache\com.unity.visualscripting@191c0d7e3b69\Runtime\VisualScripting.Flow\Dependencies\NCalc\Unity.VisualScripting.Antlr3.Runtime.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.Runtime.CompilerServices.Unsafe">
-      <HintPath>Library\PackageCache\com.unity.collections@aea9d3bd5e19\Unity.Collections.Tests\System.Runtime.CompilerServices.Unsafe\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+      <HintPath>Library\PackageCache\com.unity.visualscripting@eb6004dcc707\Runtime\VisualScripting.Flow\Dependencies\NCalc\Unity.VisualScripting.Antlr3.Runtime.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Google.VersionHandler">
@@ -851,15 +833,19 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="AiEditorToolsSdk">
-      <HintPath>Library\PackageCache\com.unity.ai.toolkit@48a271771d1a\Modules\Sdk\Editor\AiEditorToolsSdk.dll</HintPath>
+      <HintPath>Library\PackageCache\com.unity.ai.toolkit@97783faabe3b\Modules\Sdk\Editor\AiEditorToolsSdk.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.VisualScripting.TextureAssets">
-      <HintPath>Library\PackageCache\com.unity.visualscripting@191c0d7e3b69\Editor\VisualScripting.Core\EditorAssetResources\Unity.VisualScripting.TextureAssets.dll</HintPath>
+      <HintPath>Library\PackageCache\com.unity.visualscripting@eb6004dcc707\Editor\VisualScripting.Core\EditorAssetResources\Unity.VisualScripting.TextureAssets.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Mono.Cecil">
       <HintPath>Library\PackageCache\com.unity.nuget.mono-cecil@ecb9724e46ff\Mono.Cecil.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe">
+      <HintPath>Library\PackageCache\com.unity.collections@aea9d3bd5e19\Unity.Collections.Tests\System.Runtime.CompilerServices.Unsafe\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.Analytics.StandardEvents">
@@ -1368,82 +1354,33 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="Unity.AI.Generators.Redux.csproj">
-      <Project>{E8FD32A6-DA04-148F-B078-127A7BB7416B}</Project>
-      <Name>Unity.AI.Generators.Redux</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.AI.Generators.Contexts.csproj">
-      <Project>{2ABC9B46-D496-715A-88DC-ECCEDAF90C8D}</Project>
-      <Name>Unity.AI.Generators.Contexts</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.AI.Toolkit.GenerationContextMenu.csproj">
-      <Project>{90B0F288-1D79-E598-7BFF-E0A6B1FB4204}</Project>
-      <Name>Unity.AI.Toolkit.GenerationContextMenu</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.AI.Generators.Asset.csproj">
-      <Project>{156FA626-5B9F-AF81-3A0B-D7BFA89011C2}</Project>
-      <Name>Unity.AI.Generators.Asset</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.AI.Generators.UI.csproj">
-      <Project>{F7C36FC2-4D9E-549F-E681-C25161CC7A29}</Project>
-      <Name>Unity.AI.Generators.UI</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.AI.Toolkit.GenerationObjectPicker.csproj">
-      <Project>{174440A2-0D6D-8D65-00BA-CB4270E47559}</Project>
-      <Name>Unity.AI.Toolkit.GenerationObjectPicker</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.AI.ModelSelector.csproj">
-      <Project>{A1334DF5-046B-8003-7758-7CEE9A580542}</Project>
-      <Name>Unity.AI.ModelSelector</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.AI.Toolkit.Accounts.csproj">
-      <Project>{4BDC25F4-E335-4255-654E-429EE6E2AA54}</Project>
-      <Name>Unity.AI.Toolkit.Accounts</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.AI.Material.Srp.csproj">
-      <Project>{6D68027C-BDB2-C2CF-E300-0F0C1AFAAE5B}</Project>
-      <Name>Unity.AI.Material.Srp</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.AI.Generators.Sdk.csproj">
-      <Project>{96A80B80-8619-1B4C-2B74-16123411CE28}</Project>
-      <Name>Unity.AI.Generators.Sdk</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.AI.Generators.UI.AIDropdownIntegrations.csproj">
-      <Project>{2799CAEA-65CC-83E5-2174-1312D85FFD26}</Project>
-      <Name>Unity.AI.Generators.UI.AIDropdownIntegrations</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.AI.Toolkit.Asset.csproj">
-      <Project>{41ACA0B5-11ED-121A-ED04-F30F5245A235}</Project>
-      <Name>Unity.AI.Toolkit.Asset</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.AI.Toolkit.Async.csproj">
-      <Project>{BACAA345-90AC-0DF9-26D4-6D94A9B5B72B}</Project>
-      <Name>Unity.AI.Toolkit.Async</Name>
-    </ProjectReference>
-    <ProjectReference Include="UnityEditor.UI.csproj">
-      <Project>{698D6ACB-27E6-6733-2BA7-B76006C8ED47}</Project>
-      <Name>UnityEditor.UI</Name>
-    </ProjectReference>
-    <ProjectReference Include="UnityEngine.UI.csproj">
-      <Project>{3A16FD29-B329-E206-65D7-03A7329215E0}</Project>
-      <Name>UnityEngine.UI</Name>
-    </ProjectReference>
-    <ProjectReference Include="UnityEngine.TestRunner.csproj">
-      <Project>{AC49909C-F0A5-47F6-D162-809E022150A7}</Project>
-      <Name>UnityEngine.TestRunner</Name>
-    </ProjectReference>
-    <ProjectReference Include="UnityEditor.TestRunner.csproj">
-      <Project>{8C368B2E-6D06-EC04-73BD-6C7A78C6C402}</Project>
-      <Name>UnityEditor.TestRunner</Name>
-    </ProjectReference>
+    <ProjectReference Include="Unity.AI.Generators.Redux.csproj" />
+    <ProjectReference Include="Unity.AI.Generators.Contexts.csproj" />
+    <ProjectReference Include="Unity.AI.Toolkit.GenerationContextMenu.csproj" />
+    <ProjectReference Include="Unity.AI.Generators.Asset.csproj" />
+    <ProjectReference Include="Unity.AI.Generators.UI.csproj" />
+    <ProjectReference Include="Unity.AI.Toolkit.GenerationObjectPicker.csproj" />
+    <ProjectReference Include="Unity.AI.ModelSelector.csproj" />
+    <ProjectReference Include="Unity.AI.Toolkit.Accounts.csproj" />
+    <ProjectReference Include="Unity.AI.Material.Srp.csproj" />
+    <ProjectReference Include="Unity.AI.Generators.Sdk.csproj" />
+    <ProjectReference Include="Unity.AI.Generators.UI.AIDropdownIntegrations.csproj" />
+    <ProjectReference Include="Unity.AI.Toolkit.Asset.csproj" />
+    <ProjectReference Include="Unity.AI.Toolkit.Async.csproj" />
+    <ProjectReference Include="UnityEditor.UI.csproj" />
+    <ProjectReference Include="UnityEngine.UI.csproj" />
+    <ProjectReference Include="UnityEngine.TestRunner.csproj" />
+    <ProjectReference Include="UnityEditor.TestRunner.csproj" />
   </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <Target Name="GenerateTargetFrameworkMonikerAttribute" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
+  <Import Project="Sdk.targets" Sdk="Microsoft.NET.Sdk" />
+  <ItemGroup>
+    <ProjectCapability Remove="LaunchProfiles" />
+    <ProjectCapability Remove="SharedProjectReferences" />
+    <ProjectCapability Remove="ReferenceManagerSharedProjects" />
+    <ProjectCapability Remove="ReferenceManagerProjects" />
+    <ProjectCapability Remove="COMReferences" />
+    <ProjectCapability Remove="ReferenceManagerCOM" />
+    <ProjectCapability Remove="AssemblyReferences" />
+    <ProjectCapability Remove="ReferenceManagerAssemblies" />
+  </ItemGroup>
 </Project>
