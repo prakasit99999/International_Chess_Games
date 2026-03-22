@@ -42,7 +42,7 @@ public class ChessBoard : MonoBehaviour
 
     public ChessBoardModel BoardModel { get; set; }
     public static ChessBoard Instance { get; private set; }
- 
+
     public ChessPiece selectedPawn; // เบี้ยที่รอเลื่อนขั้น
     public PromotionManager promotionManager; // เชื่อมกับ PromotionManager ใน Inspector
     public ChessPiece SelectedPiece => selectedPiece; // เพิ่ม Property เพื่อเข้าถึง selectedPiece
@@ -51,8 +51,7 @@ public class ChessBoard : MonoBehaviour
     public ChessPiece.PieceType promotionFrom;
     public Vector2Int promotionPosition;
     public Vector2Int position;  // ตัวแปรสำหรับเก็บตำแหน่งของหมาก
-
-    // ✅ Event สำหรับแจ้งว่ามีการเดินหมากเกิดขึ้น (แยก Logic ออกจาก GameManager)
+    //  Event สำหรับแจ้งว่ามีการเดินหมากเกิดขึ้น (แยก Logic ออกจาก GameManager)
     public event Action<MoveResult> OnMoveCompleted;
 
     private void Awake()
@@ -66,7 +65,7 @@ public class ChessBoard : MonoBehaviour
         }
         else
         {
-            Destroy(gameObject); 
+            Destroy(gameObject);
         }
     }
 
@@ -260,17 +259,16 @@ public class ChessBoard : MonoBehaviour
 
     private void HandleCheckState()
     {
-        var opponent = (gameManager.GetCurrentTurn() == ChessPiece.Team.White) ? ChessPiece.Team.Black : ChessPiece.Team.White;
-        if (IsKingInCheckmate(opponent))
-        {
-            Debug.Log($"♟️ Checkmate! {gameManager.GetCurrentTurn()} ชนะเกม!");
-            gameManager.GameOver(gameManager.GetCurrentTurn(), "checkmate");
-        }
-        else if (IsKingInCheck(opponent))
+        var opponent = (gameManager.GetCurrentTurn() == ChessPiece.Team.White)
+            ? ChessPiece.Team.Black
+            : ChessPiece.Team.White;
+
+        if (IsKingInCheck(opponent))
         {
             Debug.Log($"⚠️ Check! {opponent} กำลังถูกโจมตี!");
         }
     }
+
 
     private void SaveMoveToHistory(ChessPiece movingPiece, Vector2Int from, Vector2Int to, ChessPiece captured, ChessPiece.PieceType? promotedPieceType = null, AiPerformanceData aiStats = null)
     {
@@ -385,8 +383,6 @@ public class ChessBoard : MonoBehaviour
         int y = int.Parse(pos[1].ToString()) - 1;
         return new Vector2Int(x, y);
     }
-
-
 
     // Set method
     public void SetGameManager(GameManager manager)
@@ -605,7 +601,7 @@ public class ChessBoard : MonoBehaviour
         return true;
     }
 
-       public ChessPiece SpawnPiece(ChessPiece.PieceType type, ChessPiece.Team team, Vector2Int position)
+    public ChessPiece SpawnPiece(ChessPiece.PieceType type, ChessPiece.Team team, Vector2Int position)
     {
         if (piecePrefab == null)
         {
@@ -880,7 +876,7 @@ public class ChessBoard : MonoBehaviour
         SaveMoveToHistory(selectedPiece, originalPosition, newPosition, capturedPiece, null, aiStats);
 
         // ❌ Remove old push
-        // boardModel.PushCurrentPosition(); 
+        boardModel.PushCurrentPosition();
 
         // ✅ Only update board model if NOT promoting (Promotion will trigger update later)
         if (!isPromoting)
@@ -894,8 +890,21 @@ public class ChessBoard : MonoBehaviour
             result.CapturedType = capturedPiece.pieceType;
             result.CapturedTeam = capturedPiece.team;
         }
-
         OnMoveCompleted?.Invoke(result);
+
+        if (OnMoveCompleted == null && gameManager != null)
+        {
+            var mode = gameManager.gameModeManager != null
+                ? gameManager.gameModeManager.CurrentMode
+                : GameModeManager.GameModes.SinglePlayer;
+
+            if (mode != GameModeManager.GameModes.Online)
+            {
+                gameManager.SwitchTurn();
+                gameManager.CheckGameState();
+            }
+        }
+
 
         selectedPiece = null;
     }

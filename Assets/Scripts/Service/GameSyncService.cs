@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+
 using static ChessPiece;
 
 public class GameSyncService : MonoBehaviour

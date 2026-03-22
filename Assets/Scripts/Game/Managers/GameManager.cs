@@ -275,19 +275,22 @@ public class GameManager : MonoBehaviour
     // ฟังก์ชันตรวจสอบ Checkmate หรือ Stalemate
     public void CheckGameState()
     {
-
-        ChessPiece.Team opponentTeam = (currentTurn == ChessPiece.Team.White) ? ChessPiece.Team.Black : ChessPiece.Team.White;
         if (ChessBoard.Instance.IsKingInCheckmate(currentTurn))
         {
             ChessPiece.Team winningTeam = GetOpponentTeam(currentTurn);
             Debug.Log($"♟️ Checkmate! {winningTeam} win!");
-
+            GameOver(winningTeam, "checkmate");
             return;
         }
         else if (ChessBoard.Instance.IsStalemate(currentTurn))
         {
             Debug.Log("⚖️ Stalemate! draw!");
+            GameOver(Team.None, "stalemate");
             return;
+        }
+        else if (ChessBoard.Instance.IsKingInCheck(currentTurn))
+        {
+            Debug.Log($"⚠️ Check! {currentTurn} กำลังถูกโจมตี!");
         }
     }
 
@@ -423,6 +426,7 @@ public class GameManager : MonoBehaviour
         if (gameModeManager == null || gameModeManager.CurrentMode != GameModeManager.GameModes.Online)
         {
             SwitchTurn();
+            CheckGameState();
         }
     }
 

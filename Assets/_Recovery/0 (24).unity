@@ -964,10 +964,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: caca496fea614da468fca1fc5905ebfc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: GameAssembly::GameUIManager
-  drawGamePanel: {fileID: 791716520}
+  drawGamePanel: {fileID: 907175431}
   winGamePanel: {fileID: 245640650}
   loseGamePanel: {fileID: 199352475}
-  drawInfoPanel: {fileID: 791716520}
+  drawInfoPanel: {fileID: 907175431}
   winTxt: {fileID: 942205299}
   loseTxt: {fileID: 1567474422}
   drawTxt: {fileID: 498938388}
@@ -998,7 +998,7 @@ MonoBehaviour:
     rgba: 4294967295
   debugSpawnPieces: 1
   debugOnlineOnly: 1
-  debugSpawnSetup: 1
+  debugSpawnSetup: 0
 --- !u!1 &279841997
 GameObject:
   m_ObjectHideFlags: 0

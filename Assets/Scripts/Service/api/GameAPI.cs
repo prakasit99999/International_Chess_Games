@@ -129,7 +129,6 @@ public class GameAPI : MonoBehaviour
         {
             GameId = gameId,
             Reason = reason
-            // PlayerId จะมาจาก Token ใน API
         };
 
         string json = JsonUtility.ToJson(dto);
@@ -312,7 +311,7 @@ public class GameAPI : MonoBehaviour
         }
 
         string errorMsg = $"❌ Request Failed: {req.error} | Response: {req.downloadHandler.text}";
-        Debug.LogError(errorMsg);
+            Debug.LogError(errorMsg);
         onError?.Invoke(errorMsg);
     }
 }

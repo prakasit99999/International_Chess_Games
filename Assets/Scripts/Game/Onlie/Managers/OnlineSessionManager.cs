@@ -1,5 +1,6 @@
-using System.Collections;
+﻿using System.Collections;
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 using static ChessPiece;
 
@@ -15,10 +16,12 @@ public class OnlineSessionManager : MonoBehaviour
     private GameAPI gameAPI;
     private MovesAPI movesAPI;
     private Coroutine pollingCoroutine;
+    private bool isFinalizingGame = false;
 
     [Header("Online Multiplayer Settings")]
     private bool isPolling;
     public bool isApplyingNetworkMove;
+    public bool IsSendingMove { get; private set; }
     private int lastAppliedMoveNumber = 0;
     private bool isInitializedFromPrefs = false;
 
@@ -219,32 +222,73 @@ public class OnlineSessionManager : MonoBehaviour
             yield break;
 
         bool done = false;
+        GameStatusDto statusDto = null;
+        string errorMsg = null;
 
         yield return gameAPI.GetGameStatus(
             gameManager.currentGameId,
-            (statusDto) =>
+            (status) =>
             {
-                if (statusDto == null)
-                {
-                    done = true;
-                    return;
-                }
-
-                if (statusDto.Status != "in_progress")
-                {
-                    StopPolling();
-                    Debug.Log($"⚠ Game Status Changed: {statusDto.Status}");
-                }
-
+                statusDto = status;
                 done = true;
             },
             (error) =>
             {
-                Debug.LogWarning($"⚠ Status Check Error: {error}");
+                errorMsg = error;
                 done = true;
             });
 
         yield return new WaitUntil(() => done);
+
+        if (statusDto == null)
+        {
+            if (!string.IsNullOrEmpty(errorMsg))
+                Debug.LogWarning($"âš  Status Check Error: {errorMsg}");
+            yield break;
+        }
+
+        if (statusDto.Status != "in_progress")
+        {
+            if (isFinalizingGame)
+                yield break;
+
+            isFinalizingGame = true;
+
+            Debug.Log($"âš  Game Status Changed: {statusDto.Status}");
+
+            // Fetch latest move before finishing the game to sync board state
+            yield return CheckLatestMove();
+
+            ApplyGameOverFromStatus(statusDto.Status);
+            StopPolling();
+        }
+    }
+
+    private void ApplyGameOverFromStatus(string status)
+    {
+        if (gameManager == null || gameManager.IsGameOver())
+            return;
+
+        string s = string.IsNullOrEmpty(status) ? string.Empty : status.Trim().ToLowerInvariant();
+
+        switch (s)
+        {
+            case "white_wins":
+                gameManager.GameOver(Team.White, s);
+                break;
+            case "black_wins":
+                gameManager.GameOver(Team.Black, s);
+                break;
+            case "draw":
+            case "stalemate":
+            case "fifty_move_rule":
+                gameManager.GameOver(Team.None, s);
+                break;
+            default:
+                Debug.LogWarning($"âš  Unknown game status: {status}");
+                gameManager.GameOver(Team.None, s);
+                break;
+        }
     }
 
 
@@ -306,7 +350,7 @@ public class OnlineSessionManager : MonoBehaviour
 
         if (!gameManager.IsMyTurn())
         {
-            Debug.LogWarning("⚠ Not your turn.");
+            Debug.LogWarning("âš  Not your turn.");
             return;
         }
 
@@ -336,6 +380,7 @@ public class OnlineSessionManager : MonoBehaviour
     private IEnumerator SendMove(MoveCreateDto dto)
     {
         bool done = false;
+        IsSendingMove = true;
 
         yield return movesAPI.SendMove(dto, (success) =>
         {
@@ -348,9 +393,10 @@ public class OnlineSessionManager : MonoBehaviour
             }
             else
             {
-                Debug.LogError("❌ Send Move Failed");
+                Debug.LogError("âŒ Send Move Failed");
             }
 
+            IsSendingMove = false;
             done = true;
         });
 

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Diagnostics;
 using static UnityEngine.Debug;
+using System.Collections.Generic;
 using Game.Interfaces;
 using AIEngine.Adapters;
 using UnityEngine;
@@ -244,9 +245,11 @@ public class AiController : MonoBehaviour
         if (chessBoard == null || chessBoard.PiecesOnBoard == null)
             return false;
 
-        foreach (var entry in chessBoard.PiecesOnBoard)
+        // Snapshot the pieces to avoid enumerating while the board is temporarily modified
+        // inside GetValidMoves -> DoesMoveExposeKing.
+        var piecesSnapshot = new List<ChessPiece>(chessBoard.PiecesOnBoard.Values);
+        foreach (var piece in piecesSnapshot)
         {
-            var piece = entry.Value;
             if (piece == null || piece.team != team)
                 continue;
 

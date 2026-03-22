@@ -49,21 +49,21 @@
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\Tools\BuildPipeline\Unity.SourceGenerators\Unity.UIToolkit.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Library\PackageCache\com.unity.2d.common@51e9484895c4\Runtime\UTess2D\ArraySlice.cs" />
-    <Compile Include="Library\PackageCache\com.unity.2d.common@51e9484895c4\Runtime\UTess2D\Tessellator.cs" />
-    <Compile Include="Library\PackageCache\com.unity.2d.common@51e9484895c4\Runtime\UTess2D\UTess.cs" />
-    <Compile Include="Library\PackageCache\com.unity.2d.common@51e9484895c4\Runtime\UTess2D\Array.cs" />
-    <Compile Include="Library\PackageCache\com.unity.2d.common@51e9484895c4\Runtime\UTess2D\Refinery.cs" />
-    <Compile Include="Library\PackageCache\com.unity.2d.common@51e9484895c4\Runtime\UAi2D\KMeans.cs" />
-    <Compile Include="Library\PackageCache\com.unity.2d.common@51e9484895c4\Runtime\URaster2D\URaster.cs" />
-    <Compile Include="Library\PackageCache\com.unity.2d.common@51e9484895c4\Runtime\UTess2D\Smoothen.cs" />
-    <Compile Include="Library\PackageCache\com.unity.2d.common@51e9484895c4\Runtime\UTess2D\UHull.cs" />
-    <Compile Include="Library\PackageCache\com.unity.2d.common@51e9484895c4\Runtime\AssemblyInfo.cs" />
-    <Compile Include="Library\PackageCache\com.unity.2d.common@51e9484895c4\Runtime\UAi2D\MatrixMxN.cs" />
-    <Compile Include="Library\PackageCache\com.unity.2d.common@51e9484895c4\Runtime\UTess2D\PlanarGraph.cs" />
+    <Compile Include="Library\PackageCache\com.unity.2d.common@800085e896ad\Runtime\UTess2D\ArraySlice.cs" />
+    <Compile Include="Library\PackageCache\com.unity.2d.common@800085e896ad\Runtime\UTess2D\Tessellator.cs" />
+    <Compile Include="Library\PackageCache\com.unity.2d.common@800085e896ad\Runtime\UTess2D\UTess.cs" />
+    <Compile Include="Library\PackageCache\com.unity.2d.common@800085e896ad\Runtime\UTess2D\Array.cs" />
+    <Compile Include="Library\PackageCache\com.unity.2d.common@800085e896ad\Runtime\UTess2D\Refinery.cs" />
+    <Compile Include="Library\PackageCache\com.unity.2d.common@800085e896ad\Runtime\UAi2D\KMeans.cs" />
+    <Compile Include="Library\PackageCache\com.unity.2d.common@800085e896ad\Runtime\URaster2D\URaster.cs" />
+    <Compile Include="Library\PackageCache\com.unity.2d.common@800085e896ad\Runtime\UTess2D\Smoothen.cs" />
+    <Compile Include="Library\PackageCache\com.unity.2d.common@800085e896ad\Runtime\UTess2D\UHull.cs" />
+    <Compile Include="Library\PackageCache\com.unity.2d.common@800085e896ad\Runtime\AssemblyInfo.cs" />
+    <Compile Include="Library\PackageCache\com.unity.2d.common@800085e896ad\Runtime\UAi2D\MatrixMxN.cs" />
+    <Compile Include="Library\PackageCache\com.unity.2d.common@800085e896ad\Runtime\UTess2D\PlanarGraph.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Library\PackageCache\com.unity.2d.common@51e9484895c4\Runtime\Unity.2D.Common.Runtime.asmdef" />
+    <None Include="Library\PackageCache\com.unity.2d.common@800085e896ad\Runtime\Unity.2D.Common.Runtime.asmdef" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

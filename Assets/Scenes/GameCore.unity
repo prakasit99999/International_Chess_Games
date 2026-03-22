@@ -1214,6 +1214,9 @@ MonoBehaviour:
   blackColor:
     serializedVersion: 2
     rgba: 4294967295
+  debugSpawnPieces: 1
+  debugOnlineOnly: 0
+  debugSpawnSetup: 0
 --- !u!1 &279815849
 GameObject:
   m_ObjectHideFlags: 0

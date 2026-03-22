@@ -1,3 +1,4 @@
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -19,7 +20,7 @@ public class GameResultSyncService : MonoBehaviour
 
         if (gameManager == null)
         {
-            Debug.LogError("❌ GameManager not found in scene.");
+            Debug.LogError("âŒ GameManager not found in scene.");
             return;
         }
 
@@ -53,7 +54,7 @@ public class GameResultSyncService : MonoBehaviour
 
         if (gameAPI == null)
         {
-            Debug.LogWarning("⚠️ GameAPI missing. Cannot create offline game.");
+            Debug.LogWarning("âš ï¸ GameAPI missing. Cannot create offline game.");
             yield break;
         }
 
@@ -79,7 +80,7 @@ public class GameResultSyncService : MonoBehaviour
 
         if (response == null || response.gameId <= 0)
         {
-            Debug.LogError($"❌ CreateOfflineGame failed: {errorMsg}");
+            Debug.LogError($"âŒ CreateOfflineGame failed: {errorMsg}");
             yield break;
         }
 
@@ -92,7 +93,7 @@ public class GameResultSyncService : MonoBehaviour
             PerformanceTracker.Instance.GameId = response.gameId;
         }
 
-        Debug.Log($"✅ Offline Game Started. GameId: {response.gameId}");
+        Debug.Log($"âœ… Offline Game Started. GameId: {response.gameId}");
     }
 
     private List<MoveCreateDto> PrepareMoveDtos()
@@ -104,7 +105,7 @@ public class GameResultSyncService : MonoBehaviour
 
         if (history == null)
         {
-            Debug.LogWarning("⚠ History component missing.");
+            Debug.LogWarning("âš  History component missing.");
             return result;
         }
 
@@ -148,7 +149,7 @@ public class GameResultSyncService : MonoBehaviour
     {
         if (movesAPI == null)
         {
-            Debug.LogWarning("⚠ MovesAPI missing.");
+            Debug.LogWarning("âš  MovesAPI missing.");
             yield break;
         }
 
@@ -157,8 +158,8 @@ public class GameResultSyncService : MonoBehaviour
             (success) =>
             {
                 Debug.Log(success
-                    ? "📤 Moves Uploaded"
-                    : "❌ Move Upload Failed");
+                    ? "ðŸ“¤ Moves Uploaded"
+                    : "âŒ Move Upload Failed");
             });
     }
 
@@ -166,13 +167,13 @@ public class GameResultSyncService : MonoBehaviour
     {
         if (aiPerformanceAPI == null)
         {
-            Debug.LogWarning("⚠ AiPerformanceAPI missing.");
+            Debug.LogWarning("âš  AiPerformanceAPI missing.");
             yield break;
         }
 
         if (PerformanceTracker.Instance == null)
         {
-            Debug.LogWarning("⚠ PerformanceTracker missing.");
+            Debug.LogWarning("âš  PerformanceTracker missing.");
             yield break;
         }
 
@@ -180,7 +181,7 @@ public class GameResultSyncService : MonoBehaviour
 
         if (perfData == null || !perfData.HasAnyData())
         {
-            Debug.LogWarning("⚠ AI Performance empty.");
+            Debug.LogWarning("âš  AI Performance empty.");
             yield break;
         }
 
@@ -189,11 +190,12 @@ public class GameResultSyncService : MonoBehaviour
         yield return aiPerformanceAPI.SendPerformance(perfData);
     }
 
+
     private IEnumerator FinalizeGame(Team winner, string endReason, int totalMoves)
     {
         if (gameAPI == null)
         {
-            Debug.LogWarning("⚠ GameAPI missing.");
+            Debug.LogWarning("GameAPI missing.");
             yield break;
         }
 
@@ -214,22 +216,22 @@ public class GameResultSyncService : MonoBehaviour
         {
             yield return gameAPI.FinalizeOnlineGame(dto, (response) =>
             {
-                Debug.Log($"🏁 Online Game Finalized Successfully. WhiteRating: {response.whiteRating}, BlackRating: {response.blackRating}");
+                Debug.Log($"Online Game Finalized Successfully. WhiteRating: {response.whiteRating}, BlackRating: {response.blackRating}");
             },
             (error) =>
             {
-                Debug.LogError($"❌ Failed to Finalize Online Game: {error}");
+                Debug.LogError($"Failed to Finalize Online Game: {error}");
             });
         }
         else
         {
             yield return gameAPI.FinalizeOfflineGame(dto, (response) =>
             {
-                Debug.Log("🏁 Offline Game Finalized Successfully");
+                Debug.Log("Offline Game Finalized Successfully");
             },
             (error) =>
             {
-                Debug.LogError($"❌ Failed to Finalize Offline Game: {error}");
+                Debug.LogError($"Failed to Finalize Offline Game: {error}");
             });
         }
     }
@@ -239,20 +241,66 @@ public class GameResultSyncService : MonoBehaviour
         if (gameManager == null)
             yield break;
 
+        bool isOnline = gameManager.gameModeManager != null &&
+                        gameManager.gameModeManager.CurrentMode == GameModeManager.GameModes.Online;
+
+        if (isOnline)
+        {
+            Team localTeam = gameManager.myLocalTeam;
+            if (localTeam == Team.None)
+            {
+                Debug.LogWarning("Online result sync skipped: local team unknown.");
+                yield break;
+            }
+
+            if (winner == Team.None)
+            {
+                if (localTeam != Team.White)
+                {
+                    Debug.Log("Online result sync skipped: draw handled by White.");
+                    yield break;
+                }
+            }
+            else if (localTeam != winner)
+            {
+                Debug.Log("Online result sync skipped: only winner sends result.");
+                yield break;
+            }
+
+            // Wait a frame so the last move send can start (GameOver fires before OnMoveCompleted)
+            yield return null;
+
+            // Ensure the final local move is sent BEFORE finalizing the online game
+            var onlineSession = FindFirstObjectByType<OnlineSessionManager>();
+            if (onlineSession != null)
+            {
+                const float timeoutSeconds = 3f;
+                float elapsed = 0f;
+
+                while (onlineSession.IsSendingMove && elapsed < timeoutSeconds)
+                {
+                    elapsed += Time.deltaTime;
+                    yield return null;
+                }
+
+                if (onlineSession.IsSendingMove)
+                    Debug.LogWarning("Timeout waiting for last move send before finalize.");
+            }
+        }
+
         if (gameManager.gameModeManager != null &&
             gameManager.gameModeManager.CurrentMode == GameModeManager.GameModes.LocalMultiplayer)
         {
-            Debug.Log("⚠ LocalMultiplayer: skip sync.");
+            Debug.Log("LocalMultiplayer: skip sync.");
             yield break;
         }
 
         Debug.Log($"🔄 SyncFullGameResult Started → Winner: {winner}, Reason: {endReason}");
 
         int gameId = gameManager.currentGameId;
-
         if (gameId <= 0)
         {
-            Debug.LogWarning("⚠ No GameId → Skip Sync");
+            Debug.LogWarning("No GameId → Skip Sync");
             yield break;
         }
 
@@ -264,10 +312,50 @@ public class GameResultSyncService : MonoBehaviour
         if (PerformanceTracker.Instance != null && PerformanceTracker.Instance.Export().HasAnyData())
             yield return UploadPerformance();
 
-        yield return FinalizeGame(winner, endReason, moves.Count);
+        bool shouldFinalize = true;
+        if (gameAPI != null)
+        {
+            bool done = false;
+            GameStatusDto statusDto = null;
+            string errorMsg = null;
+
+            yield return gameAPI.GetGameStatus(
+                gameId,
+                (status) =>
+                {
+                    statusDto = status;
+                    done = true;
+                },
+                (error) =>
+                {
+                    errorMsg = error;
+                    done = true;
+                });
+
+            yield return new WaitUntil(() => done);
+
+            if (statusDto == null)
+            {
+                if (!string.IsNullOrEmpty(errorMsg))
+                    Debug.LogWarning($"Skip finalize: status check error: {errorMsg}");
+                else
+                    Debug.LogWarning("Skip finalize: status check returned null.");
+
+                shouldFinalize = false;
+            }
+            else if (!string.Equals(statusDto.Status, "in_progress", StringComparison.OrdinalIgnoreCase))
+            {
+                Debug.Log($"Skip finalize: game already '{statusDto.Status}'.");
+                shouldFinalize = false;
+            }
+        }
+
+        if (shouldFinalize)
+            yield return FinalizeGame(winner, endReason, moves.Count);
 
         Debug.Log("✅ Full Game Sync Completed");
     }
+
 
     public IEnumerator ExitLocalSequence()
     {
@@ -277,24 +365,65 @@ public class GameResultSyncService : MonoBehaviour
         if (PauseManager.isPaused)
             PauseManager.Resume();
 
-        Debug.Log("🟢 Local Exit → Finalizing Game");
+        bool isGameOver = gameManager.IsGameOver();
+        Debug.Log(isGameOver
+            ? "🟢 Local Exit → Game already over, skipping abandon finalize"
+            : "🟢 Local Exit → Finalizing Game");
 
         int gameId = gameManager.currentGameId;
 
         bool isLocalMultiplayer = gameManager.gameModeManager != null &&
                                   gameManager.gameModeManager.CurrentMode == GameModeManager.GameModes.LocalMultiplayer;
 
-        if (!isLocalMultiplayer && gameId > 0 && gameAPI != null)
+        if (!isGameOver && !isLocalMultiplayer && gameId > 0 && gameAPI != null)
         {
-            GameResultDto dto = new GameResultDto
-            {
-                GameId = gameId,
-                Result = "draw",
-                ResultReason = "abandoned",
-                MoveCount = gameManager.moveCount
-            };
+            bool shouldFinalize = true;
+            bool done = false;
+            GameStatusDto statusDto = null;
+            string errorMsg = null;
 
-            yield return gameAPI.FinalizeOfflineGame(dto, null, null);
+            yield return gameAPI.GetGameStatus(
+                gameId,
+                (status) =>
+                {
+                    statusDto = status;
+                    done = true;
+                },
+                (error) =>
+                {
+                    errorMsg = error;
+                    done = true;
+                });
+
+            yield return new WaitUntil(() => done);
+
+            if (statusDto == null)
+            {
+                if (!string.IsNullOrEmpty(errorMsg))
+                    Debug.LogWarning($"Skip exit-finalize: status check error: {errorMsg}");
+                else
+                    Debug.LogWarning("Skip exit-finalize: status check returned null.");
+
+                shouldFinalize = false;
+            }
+            else if (!string.Equals(statusDto.Status, "in_progress", StringComparison.OrdinalIgnoreCase))
+            {
+                Debug.Log($"Skip exit-finalize: game already '{statusDto.Status}'.");
+                shouldFinalize = false;
+            }
+
+            if (shouldFinalize)
+            {
+                GameResultDto dto = new GameResultDto
+                {
+                    GameId = gameId,
+                    Result = "draw",
+                    ResultReason = "abandoned",
+                    MoveCount = gameManager.moveCount
+                };
+
+                yield return gameAPI.FinalizeOfflineGame(dto, null, null);
+            }
         }
 
         gameManager.ResetGame();
@@ -310,8 +439,8 @@ public class GameResultSyncService : MonoBehaviour
         if (PauseManager.isPaused)
             PauseManager.Resume();
 
-        Debug.Log("🟢 Online Exit → Finalizing Game");
-        
+        Debug.Log("ðŸŸ¢ Online Exit â†’ Finalizing Game");
+
     }
 
 
@@ -323,7 +452,7 @@ public class GameResultSyncService : MonoBehaviour
         if (gameManager.gameModeManager != null &&
             gameManager.gameModeManager.CurrentMode == GameModeManager.GameModes.Online)
         {
-            Debug.LogWarning("❌ Replay is offline-only.");
+            Debug.LogWarning("âŒ Replay is offline-only.");
             yield break;
         }
 
@@ -335,13 +464,13 @@ public class GameResultSyncService : MonoBehaviour
             gameManager.SetMoveCount(0);
             gameManager.SetGameStarted(true);
             gameManager.SetCurrentTurn(Team.White);
-            Debug.Log("✅ Replay started (LocalMultiplayer, no API).");
+            Debug.Log("âœ… Replay started (LocalMultiplayer, no API).");
             yield break;
         }
 
         if (gameAPI == null)
         {
-            Debug.LogWarning("⚠ GameAPI missing.");
+            Debug.LogWarning("âš  GameAPI missing.");
             yield break;
         }
 
@@ -367,7 +496,7 @@ public class GameResultSyncService : MonoBehaviour
 
         if (response == null || response.gameId <= 0)
         {
-            Debug.LogError($"❌ CreateOfflineGame failed: {errorMsg}");
+            Debug.LogError($"âŒ CreateOfflineGame failed: {errorMsg}");
             yield break;
         }
 
@@ -383,7 +512,7 @@ public class GameResultSyncService : MonoBehaviour
             PerformanceTracker.Instance.GameId = response.gameId;
         }
 
-        Debug.Log($"✅ Replay started. New GameId: {response.gameId}");
+        Debug.Log($"âœ… Replay started. New GameId: {response.gameId}");
     }
 
     private GameCreateDto BuildOfflineCreateDto()

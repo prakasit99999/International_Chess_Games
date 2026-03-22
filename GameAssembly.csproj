@@ -104,6 +104,7 @@
     <Compile Include="Assets\Scripts\AIEngine\Utilities\MoveGenerator.cs" />
     <Compile Include="Assets\Scripts\DTO\MatchDTOs.cs" />
     <Compile Include="Assets\Scripts\Game\AI\AiController.cs" />
+    <Compile Include="Assets\Scripts\Game\Debug\DebugGameOverSimulator.cs" />
     <Compile Include="Assets\Scripts\Game\Onlie\Managers\SessionManager.cs" />
     <Compile Include="Assets\Scripts\Game\Managers\PauseManager.cs" />
     <Compile Include="Assets\Scripts\AIEngine\Evaluation\Evaluation.cs" />

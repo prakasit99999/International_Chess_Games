@@ -174,6 +174,12 @@ public class GameUIManager : MonoBehaviour
     {
         bool localWon = IsLocalWinner(winningTeam);
         string winnerName = gameManager.GetPlayerName(winningTeam);
+        Team losingTeam = winningTeam == Team.White ? Team.Black : Team.White;
+        string loserName = gameManager.GetPlayerName(losingTeam);
+        var mode = gameManager.gameModeManager != null
+            ? gameManager.gameModeManager.CurrentMode
+            : GameModeManager.GameModes.SinglePlayer;
+        bool isOnline = mode == GameModeManager.GameModes.Online;
 
         if (localWon)
         {
@@ -190,7 +196,7 @@ public class GameUIManager : MonoBehaviour
             {
                 loseGamePanel.SetActive(true);
                 if (loseTxt)
-                    loseTxt.text = $"{winnerName} Win!";
+                    loseTxt.text = isOnline ? $"{loserName} Lose!" : $"{winnerName} Win!";
             }
         }
     }
@@ -254,7 +260,7 @@ public class GameUIManager : MonoBehaviour
         if (fiftyMoveCoroutine != null)
             StopCoroutine(fiftyMoveCoroutine);
 
-        fiftyMoveCoroutine = StartCoroutine(AutoHideFiftyMovePanel(0.5f));
+        fiftyMoveCoroutine = StartCoroutine(AutoHideFiftyMovePanel(0.3f));
     }
 
     private IEnumerator AutoHideFiftyMovePanel(float delay)
@@ -272,6 +278,12 @@ public class GameUIManager : MonoBehaviour
     {
         if (isProcessingExit || gameManager == null)
             return;
+
+        if (gameManager.IsGameOver())
+        {
+            Debug.LogWarning("Resign skipped: game already over.");
+            return;
+        }
 
         isProcessingExit = true;
 

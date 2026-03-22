@@ -34,13 +34,19 @@ public class OnlineSyncService : MonoBehaviour
             return;
         }
 
-        gameManager.SwitchTurn();
+        // Offline/Local modes: turn is handled by GameManager.HandleMoveCompleted
     }
 
     public IEnumerator HandleOnlineResign()
     {
         if (gameManager == null || gameManager.gameModeManager == null)
             yield break;
+
+        if (gameManager.IsGameOver())
+        {
+            Debug.Log("Resign skipped: game already over.");
+            yield break;
+        }
 
         if (gameManager.gameModeManager.CurrentMode != GameModeManager.GameModes.Online)
         {
