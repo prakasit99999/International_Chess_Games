@@ -9,11 +9,6 @@ namespace AIEngine.Evaluation
         // ==========================================
         // CONSTANTS & CONFIGURATION (PeSTO / Kaufman)
         // ==========================================
-
-        // คะแนนพื้นฐานของตัวหมาก (Material) - ใช้จาก Settings แทน
-        // private const int PawnValue = 100;
-        // private const int KnightValue = 320;
-        // 
         private const int KingValue = 20000;
 
         // Phase Calculation: ใช้สำหรับ Tapered Evaluation
