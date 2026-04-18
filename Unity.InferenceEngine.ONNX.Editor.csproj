@@ -47,13 +47,13 @@
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\Tools\BuildPipeline\Unity.SourceGenerators\Unity.SourceGenerators.dll" />
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\Tools\BuildPipeline\Unity.SourceGenerators\Unity.Properties.SourceGenerator.dll" />
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\Tools\BuildPipeline\Unity.SourceGenerators\Unity.UIToolkit.SourceGenerator.dll" />
-    <Analyzer Include="D:\Project\International_Chess_Games\Library\PackageCache\com.unity.ai.inference@587873fd5e1b\Runtime\Core\SourceGenerator\SourceGenerators.dll" />
+    <Analyzer Include="D:\Project\International_Chess_Games\Library\PackageCache\com.unity.ai.inference@e760aa121ec7\Runtime\Core\SourceGenerator\SourceGenerators.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\Editor\ONNX\Metadata\IONNXMetadataImportCallbackReceiver.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@e760aa121ec7\Editor\ONNX\Metadata\IONNXMetadataImportCallbackReceiver.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\Editor\ONNX\Metadata\Unity.InferenceEngine.ONNX.Editor.asmdef" />
+    <None Include="Library\PackageCache\com.unity.ai.inference@e760aa121ec7\Editor\ONNX\Metadata\Unity.InferenceEngine.ONNX.Editor.asmdef" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

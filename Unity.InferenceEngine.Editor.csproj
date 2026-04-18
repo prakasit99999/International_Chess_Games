@@ -47,36 +47,77 @@
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\Tools\BuildPipeline\Unity.SourceGenerators\Unity.SourceGenerators.dll" />
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\Tools\BuildPipeline\Unity.SourceGenerators\Unity.Properties.SourceGenerator.dll" />
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\Tools\BuildPipeline\Unity.SourceGenerators\Unity.UIToolkit.SourceGenerator.dll" />
-    <Analyzer Include="D:\Project\International_Chess_Games\Library\PackageCache\com.unity.ai.inference@587873fd5e1b\Runtime\Core\SourceGenerator\SourceGenerators.dll" />
+    <Analyzer Include="D:\Project\International_Chess_Games\Library\PackageCache\com.unity.ai.inference@e760aa121ec7\Runtime\Core\SourceGenerator\SourceGenerators.dll" />
     <Analyzer Include="D:\Project\International_Chess_Games\Library\PackageCache\com.unity.dt.app-ui@8ac7e730dd5d\Runtime\SourceGenerators\netstandard2.0\EnumToLowerCase.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\Editor\ModelImporterBase.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\Editor\LiteRT\LiteRTModelImporter.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\Editor\Sentis\SentisModelImporter.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\Editor\LiteRT\LiteRTModelConverter.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\Editor\ModelAssetEditor.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\Editor\LiteRT\PermutedFunctionalTensor.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\Editor\LiteRT\LiteRTFlatBuffer.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\Editor\LiteRT\Permutation.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\Editor\ONNX\ONNXNodeWrapper.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\Editor\LiteRT\SignatureEditor.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\Editor\ONNX\ONNXInferenceEngineAnalytics.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\Editor\ONNX\ONNXConstantsLoader.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\Editor\ONNX\ONNXModelUtility.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\Editor\LiteRT\LiteRTTensorExtensions.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\Editor\ONNX\ONNXModelImporterEditor.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\Editor\ONNX\ONNXModelConverter.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\Editor\Sentis\SentisModelImporterEditor.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\Editor\ONNX\ONNXModelImporter.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\Editor\ModelConverterBase.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\Editor\ONNX\Onnx.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\Editor\ONNX\DynamicDimConfigsEditor.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\Editor\LiteRT\LiteRTModelImporterEditor.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@e760aa121ec7\Editor\Torch\TorchModelNodeWrapper.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@e760aa121ec7\Editor\ModelImporterBase.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@e760aa121ec7\Editor\Torch\Pickle\Internals\StreamReader.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@e760aa121ec7\Editor\DynamicDims\IDynamicDimImporter.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@e760aa121ec7\Editor\Torch\Pickle\Internals\PicklerImplementation.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@e760aa121ec7\Editor\Torch\JSON\TorchJsonUtilities.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@e760aa121ec7\Editor\Torch\Pickle\Objects\DecimalConstructor.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@e760aa121ec7\Editor\Torch\TorchModelConstants.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@e760aa121ec7\Editor\LiteRT\LiteRTModelImporter.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@e760aa121ec7\Editor\Torch\Pickle\Objects\ComplexNumber.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@e760aa121ec7\Editor\Sentis\SentisModelImporter.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@e760aa121ec7\Editor\LiteRT\LiteRTModelConverter.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@e760aa121ec7\Editor\Torch\Pickle\Objects\DateTimeConstructor.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@e760aa121ec7\Editor\ModelAssetEditor.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@e760aa121ec7\Editor\Torch\Pickle\Objects\ArrayConstructor.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@e760aa121ec7\Editor\Torch\TorchModelImporterEditor.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@e760aa121ec7\Editor\Torch\Pickle\Unpickler.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@e760aa121ec7\Editor\Torch\Pickle\Internals\IOutputWriter.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@e760aa121ec7\Editor\LiteRT\PermutedFunctionalTensor.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@e760aa121ec7\Editor\LiteRT\LiteRTFlatBuffer.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@e760aa121ec7\Editor\LiteRT\Permutation.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@e760aa121ec7\Editor\Torch\Pickle\Objects\StringConstructor.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@e760aa121ec7\Editor\Torch\Pickle\PythonException.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@e760aa121ec7\Editor\Torch\Pickle\IObjectPickler.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@e760aa121ec7\Editor\Torch\Pickle\IObjectConstructor.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@e760aa121ec7\Editor\ONNX\ONNXNodeWrapper.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@e760aa121ec7\Editor\Torch\Pickle\UnpickleStack.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@e760aa121ec7\Editor\Torch\Pickle\PickleUtils.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@e760aa121ec7\Editor\Torch\Pickle\IObjectDeconstructor.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@e760aa121ec7\Editor\LiteRT\SignatureEditor.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@e760aa121ec7\Editor\Torch\Pickle\Internals\ArrayWriter.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@e760aa121ec7\Editor\Torch\Pickle\Objects\ClassDictConstructor.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@e760aa121ec7\Editor\ONNX\ONNXInferenceEngineAnalytics.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@e760aa121ec7\Editor\ONNX\ONNXConstantsLoader.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@e760aa121ec7\Editor\Torch\TorchModelConverter.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@e760aa121ec7\Editor\Torch\Pickle\Internals\StreamWriter.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@e760aa121ec7\Editor\ONNX\ONNXModelUtility.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@e760aa121ec7\Editor\Torch\Pickle\Objects\SetConstructor.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@e760aa121ec7\Editor\LiteRT\LiteRTTensorExtensions.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@e760aa121ec7\Editor\Torch\Pickle\Objects\AnyClassConstructor.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@e760aa121ec7\Editor\Torch\Pickle\Objects\ByteArrayConstructor.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@e760aa121ec7\Editor\Torch\Pickle\Internals\ArrayReader.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@e760aa121ec7\Editor\ONNX\ONNXModelImporterEditor.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@e760aa121ec7\Editor\Torch\Pickle\Internals\IPicklerImplementation.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@e760aa121ec7\Editor\DynamicDims\DynamicDimUtils.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@e760aa121ec7\Editor\Torch\JSON\schema.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@e760aa121ec7\Editor\ONNX\ONNXModelConverter.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@e760aa121ec7\Editor\Torch\TorchModelImporter.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@e760aa121ec7\Editor\Torch\Pickle\Internals\UnpicklerImplementation.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@e760aa121ec7\Editor\Sentis\SentisModelImporterEditor.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@e760aa121ec7\Editor\Torch\Pickle\Internals\ReadOnlyMemoryReader.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@e760aa121ec7\Editor\Torch\Pickle\Internals\IInputReader.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@e760aa121ec7\Editor\Torch\Pickle\Pickler.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@e760aa121ec7\Editor\Torch\Pickle\InvalidOpcodeException.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@e760aa121ec7\Editor\Torch\Pickle\PickleException.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@e760aa121ec7\Editor\ONNX\ONNXModelImporter.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@e760aa121ec7\Editor\ModelConverterBase.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@e760aa121ec7\Editor\ONNX\Onnx.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@e760aa121ec7\Editor\LiteRT\LiteRTModelImporterEditor.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@e760aa121ec7\Editor\Torch\Pickle\Opcodes.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@e760aa121ec7\Editor\Torch\Pickle\Objects\ExceptionConstructor.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@e760aa121ec7\Editor\DynamicDims\DynamicDimConfigsEditor.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@e760aa121ec7\Editor\DynamicDims\DynamicDimConfig.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\Editor\ONNX\Google.Protobuf_Packed.dll" />
-    <None Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\Editor\Unity.InferenceEngine.Editor.asmdef" />
+    <None Include="Library\PackageCache\com.unity.ai.inference@e760aa121ec7\Editor\ONNX\Google.Protobuf_Packed.dll" />
+    <None Include="Library\PackageCache\com.unity.ai.inference@e760aa121ec7\Editor\Unity.InferenceEngine.Editor.asmdef" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
@@ -648,7 +689,11 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="Google.Protobuf_Packed">
-      <HintPath>Library\PackageCache\com.unity.ai.inference@587873fd5e1b\Editor\ONNX\Google.Protobuf_Packed.dll</HintPath>
+      <HintPath>Library\PackageCache\com.unity.ai.inference@e760aa121ec7\Editor\ONNX\Google.Protobuf_Packed.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>Library\PackageCache\com.unity.nuget.newtonsoft-json@4dfd81071c64\Runtime\Newtonsoft.Json.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="mscorlib">

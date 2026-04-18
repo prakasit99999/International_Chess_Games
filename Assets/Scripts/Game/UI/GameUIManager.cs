@@ -21,6 +21,10 @@ public class GameUIManager : MonoBehaviour
     public TMP_Text txtNameWhite;
     public TMP_Text txtNameBlack;
 
+    [Header("References")]
+    public GameTimerManager timerManager;
+    public TimerUI timerUI;
+
     private GameManager gameManager;
     private Coroutine fiftyMoveCoroutine;
     private bool isProcessingExit = false;
@@ -111,8 +115,14 @@ public class GameUIManager : MonoBehaviour
                 break;
 
             case GameModeManager.GameModes.SinglePlayer:
-                whiteDisplayName = "Human (White)";
-                blackDisplayName = string.IsNullOrEmpty(blackDiff) ? "AI (Black)" : $"AI ({blackDiff}) (Black)";
+                if(gameManager.WhitePlayer == GameManager.PlayerType.Human)
+                    whiteDisplayName = localName + " (White)";
+                else if (gameManager.WhitePlayer == GameManager.PlayerType.AI)
+                    whiteDisplayName = string.IsNullOrEmpty(whiteDiff) ? "AI (White)" : $"AI ({whiteDiff}) (White)";
+                if (gameManager.BlackPlayer == GameManager.PlayerType.Human)
+                    blackDisplayName = localName + " (Black)";
+                else if (gameManager.BlackPlayer == GameManager.PlayerType.AI)
+                    blackDisplayName = string.IsNullOrEmpty(blackDiff) ? "AI (Black)" : $"AI ({blackDiff}) (Black)";
                 break;
 
             case GameModeManager.GameModes.LocalMultiplayer:
@@ -146,7 +156,6 @@ public class GameUIManager : MonoBehaviour
             _ => value
         };
     }
-
 
     public void ShowGameOver(Team winningTeam, string endReason)
     {
@@ -369,12 +378,22 @@ public class GameUIManager : MonoBehaviour
 
     private void HandleGameOver(Team winningTeam, string endReason)
     {
+        if (timerManager != null)
+            timerManager.StopTimer();
+
+        HideTimerOnGameOver();
         ShowGameOver(winningTeam, endReason);
     }
 
     private void HandlePlayerNamesChanged(string whiteName, string blackName)
     {
         SetPlayerNames();
+    }
+
+    private void HideTimerOnGameOver()
+    {
+        if (timerUI != null)
+            timerUI.HideAllTimerUI();
     }
 
 }

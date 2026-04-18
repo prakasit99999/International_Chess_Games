@@ -155,8 +155,6 @@ public class GameManager : MonoBehaviour
 
         if (PerformanceTracker.Instance != null)
         {
-            PerformanceTracker.Instance.AiLevel = level;
-            PerformanceTracker.Instance.AlgorithmType = algorithmType;
             PerformanceTracker.Instance.GameId = currentGameId;
         }
     }
@@ -335,6 +333,15 @@ public class GameManager : MonoBehaviour
         gameIsOver = true;
         Debug.Log($"🏁 Game Over → Winner: {winningTeam} | Reason: {endReason}");
         OnGameOver?.Invoke(winningTeam, endReason);
+    }
+
+    public void EndGameByTimeout(Team loserTeam)
+    {
+        if (gameIsOver)
+            return;
+
+        Team winnerTeam = loserTeam == Team.White ? Team.Black : Team.White;
+        GameOver(winnerTeam, "timeout");
     }
 
     public void RequestResign()

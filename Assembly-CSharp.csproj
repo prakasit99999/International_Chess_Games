@@ -47,7 +47,7 @@
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\Tools\BuildPipeline\Unity.SourceGenerators\Unity.SourceGenerators.dll" />
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\Tools\BuildPipeline\Unity.SourceGenerators\Unity.Properties.SourceGenerator.dll" />
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\Tools\BuildPipeline\Unity.SourceGenerators\Unity.UIToolkit.SourceGenerator.dll" />
-    <Analyzer Include="D:\Project\International_Chess_Games\Library\PackageCache\com.unity.ai.inference@587873fd5e1b\Runtime\Core\SourceGenerator\SourceGenerators.dll" />
+    <Analyzer Include="D:\Project\International_Chess_Games\Library\PackageCache\com.unity.ai.inference@e760aa121ec7\Runtime\Core\SourceGenerator\SourceGenerators.dll" />
     <Analyzer Include="D:\Project\International_Chess_Games\Library\PackageCache\com.unity.dt.app-ui@8ac7e730dd5d\Runtime\SourceGenerators\netstandard2.0\EnumToLowerCase.dll" />
     <Analyzer Include="D:\Project\International_Chess_Games\Library\PackageCache\com.unity.dt.app-ui@8ac7e730dd5d\Runtime\MVVM\SourceGenerators\netstandard2.0\MVVMSourceGenerators.dll" />
   </ItemGroup>
@@ -660,7 +660,7 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="websocket-sharp">
-      <HintPath>Library\PackageCache\com.unity.services.wire@9a73acde80cc\Plugins\websocket-sharp.dll</HintPath>
+      <HintPath>Library\PackageCache\com.unity.services.wire@d50817c0adab\Plugins\websocket-sharp.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Mono.CecilX">
@@ -704,7 +704,7 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.VisualScripting.Antlr3.Runtime">
-      <HintPath>Library\PackageCache\com.unity.visualscripting@eb6004dcc707\Runtime\VisualScripting.Flow\Dependencies\NCalc\Unity.VisualScripting.Antlr3.Runtime.dll</HintPath>
+      <HintPath>Library\PackageCache\com.unity.visualscripting@8bed5ad90189\Runtime\VisualScripting.Flow\Dependencies\NCalc\Unity.VisualScripting.Antlr3.Runtime.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Newtonsoft.Json">
@@ -1232,9 +1232,7 @@
     <ProjectReference Include="Unity.Networking.Editor.csproj" />
     <ProjectReference Include="Unity.2D.Enhancers.Editor.AIBridge.csproj" />
     <ProjectReference Include="Unity.InternalAPIEditorBridge.001.csproj" />
-    <ProjectReference Include="Unity.AI.Navigation.Updater.csproj" />
     <ProjectReference Include="Unity.2D.Common.Editor.csproj" />
-    <ProjectReference Include="Unity.AI.Navigation.Editor.csproj" />
     <ProjectReference Include="Unity.2D.Animation.Runtime.csproj" />
     <ProjectReference Include="Edgegap.csproj" />
     <ProjectReference Include="Unity.Purchasing.Stores.csproj" />
@@ -1246,14 +1244,14 @@
     <ProjectReference Include="UnityEngine.Advertisements.csproj" />
     <ProjectReference Include="Unity.InferenceEngine.MacBLAS.csproj" />
     <ProjectReference Include="Unity.Services.Authentication.csproj" />
-    <ProjectReference Include="Unity.AI.Navigation.Editor.ConversionSystem.csproj" />
-    <ProjectReference Include="Unity.2D.Aseprite.Editor.csproj" />
     <ProjectReference Include="Unity.Rider.Editor.csproj" />
-    <ProjectReference Include="Unity.InferenceEngine.Editor.csproj" />
+    <ProjectReference Include="Unity.2D.Aseprite.Editor.csproj" />
+    <ProjectReference Include="Unity.Analytics.DataPrivacy.csproj" />
+    <ProjectReference Include="Unity.TerrainTools.csproj" />
     <ProjectReference Include="Unity.Services.Authentication.Editor.Shared.csproj" />
     <ProjectReference Include="Unity.Services.Multiplayer.Editor.Matchmaker.Authoring.csproj" />
-    <ProjectReference Include="Unity.Analytics.DataPrivacy.csproj" />
     <ProjectReference Include="Unity.VisualScripting.Flow.csproj" />
+    <ProjectReference Include="Unity.InferenceEngine.Editor.csproj" />
     <ProjectReference Include="SimpleWebTransport.csproj" />
     <ProjectReference Include="Unity.TextMeshPro.Editor.csproj" />
     <ProjectReference Include="Mirror.Transports.csproj" />
@@ -1283,7 +1281,6 @@
     <ProjectReference Include="Unity.InferenceEngine.ONNX.Editor.csproj" />
     <ProjectReference Include="Unity.AppUI.Navigation.csproj" />
     <ProjectReference Include="Unity.Cloud.Identity.Runtime.Embedded.csproj" />
-    <ProjectReference Include="Unity.AI.Navigation.csproj" />
     <ProjectReference Include="Unity.2D.IK.Runtime.csproj" />
     <ProjectReference Include="UnityEditor.Purchasing.csproj" />
     <ProjectReference Include="Unity.AssetManager.Core.Editor.csproj" />
@@ -1325,6 +1322,7 @@
     <ProjectReference Include="Mirror.Authenticators.csproj" />
     <ProjectReference Include="Mirror.CompilerSymbols.csproj" />
     <ProjectReference Include="Unity.Multiplayer.Center.Editor.csproj" />
+    <ProjectReference Include="Unity.TerrainTools.Editor.csproj" />
     <ProjectReference Include="Unity.InferenceEngine.Tokenization.csproj" />
     <ProjectReference Include="Unity.VisualScripting.State.csproj" />
     <ProjectReference Include="Unity.AppUI.Navigation.Editor.csproj" />

@@ -19,6 +19,7 @@ public class ChessBoard : MonoBehaviour
     private const int MAX_MOVES_WITHOUT_PROGRESS = 50;
     private GameManager gameManager;
     private HistoryMove historyMove;
+    private GameSyncService gameSyncService;
     private ChessPiece[,] board = new ChessPiece[BoardSize, BoardSize];
     private ChessPiece selectedPiece = null; // ตัวแปรเก็บหมากที่ถูกเลือก
     private bool whiteCanCastleKingSide = true;
@@ -60,6 +61,7 @@ public class ChessBoard : MonoBehaviour
         {
             Instance = this;
             historyMove = FindObjectOfType<HistoryMove>();
+            gameSyncService = FindFirstObjectByType<GameSyncService>();
             boardModel = new ChessBoardModel();
             BoardModel = boardModel;
         }
@@ -270,23 +272,28 @@ public class ChessBoard : MonoBehaviour
     }
 
 
-    private void SaveMoveToHistory(ChessPiece movingPiece, Vector2Int from, Vector2Int to, ChessPiece captured, ChessPiece.PieceType? promotedPieceType = null, AiPerformanceData aiStats = null)
+    private void SaveMoveToHistory(ChessPiece movingPiece, Vector2Int from, Vector2Int to, ChessPiece captured, ChessPiece.PieceType? promotedPieceType = null, AiPerformanceData aiStats = null, ChessPiece.PieceType? originalPieceType = null)
     {
         if (historyMove == null) return;
+        if (gameSyncService == null)
+            gameSyncService = FindFirstObjectByType<GameSyncService>();
+
         int score = (aiStats != null) ? (int)aiStats.Score : 0;
         int depth = (aiStats != null) ? aiStats.Depth : 0;
         int nodes = (aiStats != null) ? aiStats.Nodes : 0;
         int moveTimeMs = (aiStats != null) ? aiStats.MoveTimeMs : 0;
+        string algorithmType = (aiStats != null) ? aiStats.AlgorithmType : null;
+        ChessPiece.PieceType historyPieceType = originalPieceType ?? movingPiece.pieceType;
 
         // ใช้ movingPiece แทน selectedPiece
-        bool isCastling = movingPiece.pieceType == ChessPiece.PieceType.King && Mathf.Abs(to.x - from.x) == 2;
-        bool isEnPassant = movingPiece.pieceType == ChessPiece.PieceType.Pawn && IsEnPassantTarget(to);
-        bool isPawnTwoStep = movingPiece.pieceType == ChessPiece.PieceType.Pawn && Mathf.Abs(to.y - from.y) == 2;
+        bool isCastling = historyPieceType == ChessPiece.PieceType.King && Mathf.Abs(to.x - from.x) == 2;
+        bool isEnPassant = historyPieceType == ChessPiece.PieceType.Pawn && IsEnPassantTarget(to);
+        bool isPawnTwoStep = historyPieceType == ChessPiece.PieceType.Pawn && Mathf.Abs(to.y - from.y) == 2;
         bool pieceHasMovedBefore = movingPiece.HasMoved;
         bool isCheck = IsKingInCheck(movingPiece.team == ChessPiece.Team.White ? ChessPiece.Team.Black : ChessPiece.Team.White);
 
         // Promotion logic
-        bool isPromotion = movingPiece.pieceType == ChessPiece.PieceType.Pawn && (to.y == 0 || to.y == 7);
+        bool isPromotion = historyPieceType == ChessPiece.PieceType.Pawn && (to.y == 0 || to.y == 7);
         ChessPiece.PieceType promotedTo = ChessPiece.PieceType.None;
         ChessPiece.PieceType promotedFrom = ChessPiece.PieceType.None;
         Vector2Int promotionPosition = Vector2Int.zero;
@@ -295,7 +302,8 @@ public class ChessBoard : MonoBehaviour
         {
             // ถ้าส่ง promotedPieceType มา (Network/AI) ให้ใช้เลย
             // ถ้าไม่ส่งมา (Local Human) ให้ดึงจาก PromotionManager
-            promotedTo = promotedPieceType ?? PromotionManager.Instance.GetSelectedPromotionType();
+            promotedTo = promotedPieceType
+                ?? (movingPiece.pieceType != ChessPiece.PieceType.Pawn ? movingPiece.pieceType : PromotionManager.Instance.GetSelectedPromotionType());
             promotedFrom = ChessPiece.PieceType.Pawn;
             promotionPosition = to;
         }
@@ -325,7 +333,7 @@ public class ChessBoard : MonoBehaviour
         historyMove.AddMove(
             from,
             to,
-            movingPiece.pieceType,
+            historyPieceType,
             capturedType,
             capturedTeam,
             isCastling,
@@ -344,8 +352,33 @@ public class ChessBoard : MonoBehaviour
             score,
             depth,
             nodes,
-            moveTimeMs
+            moveTimeMs,
+            algorithmType
         );
+
+        if (gameSyncService != null)
+        {
+            var historyStack = historyMove.GetMoveHistory();
+            if (historyStack != null && historyStack.Count > 0)
+            {
+                var latestMove = historyStack.Peek();
+                Debug.Log(
+                    $"[ChessBoard] Forwarding move to GameSyncService -> Team: {latestMove.team}, " +
+                    $"Move: {latestMove.startPosition} -> {latestMove.endPosition}, " +
+                    $"HasAIStats: {aiStats != null}, Algo: {(aiStats != null ? aiStats.AlgorithmType : "none")}, " +
+                    $"Color: {(aiStats != null ? aiStats.AiColor : "none")}"
+                );
+                gameSyncService.RecordMove(latestMove, aiStats);
+            }
+            else
+            {
+                Debug.LogWarning("[ChessBoard] SaveMoveToHistory could not forward move because history stack is empty.");
+            }
+        }
+        else
+        {
+            Debug.LogWarning("[ChessBoard] SaveMoveToHistory could not find GameSyncService.");
+        }
 
         HistoryMoveUI.Instance?.UpdateMoveHistoryList();
     }
@@ -856,6 +889,7 @@ public class ChessBoard : MonoBehaviour
 
         // ✅ ตรวจสอบว่าเดินไปแล้วคิงจะถูก Check หรือไม่
         Vector2Int originalPosition = selectedPiece.boardPosition;
+        ChessPiece.PieceType originalPieceType = selectedPiece.pieceType;
         ChessPiece capturedPiece = SimulateMove(newPosition);
 
         if (IsKingInCheck(selectedPiece.team))
@@ -869,11 +903,15 @@ public class ChessBoard : MonoBehaviour
 
         if (selectedPiece == null) return;
         selectedPiece.PromotePawn();
+        ChessPiece.PieceType? promotedPieceType =
+            originalPieceType == ChessPiece.PieceType.Pawn && selectedPiece.pieceType != ChessPiece.PieceType.Pawn
+                ? selectedPiece.pieceType
+                : null;
         HandleCheckState();
 
         bool wasCapture = capturedPiece != null;
         UpdateFiftyMoveRuleCounter(wasCapture);
-        SaveMoveToHistory(selectedPiece, originalPosition, newPosition, capturedPiece, null, aiStats);
+        SaveMoveToHistory(selectedPiece, originalPosition, newPosition, capturedPiece, promotedPieceType, aiStats, originalPieceType);
 
         // ❌ Remove old push
         boardModel.PushCurrentPosition();
@@ -1064,7 +1102,15 @@ public class ChessBoard : MonoBehaviour
             }
 
             // 5. บันทึก History (สำคัญ! ส่ง promotedType ไปด้วย)
-            SaveMoveToHistory(piece, from, to, captured, promotedType);
+            SaveMoveToHistory(
+                piece,
+                from,
+                to,
+                captured,
+                promotedType,
+                null,
+                promotedType.HasValue ? ChessPiece.PieceType.Pawn : null
+            );
 
             // 6. แจ้งเตือนว่าเดินเสร็จแล้ว
             boardModel.PushCurrentPosition();

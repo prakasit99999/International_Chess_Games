@@ -96,7 +96,7 @@ public class AiController : MonoBehaviour
             if (move.HasValue)
             {
                 var difficulty = GetDifficultyForTeam(team);
-                var aiStats = CreateAiStats(difficulty);
+                var aiStats = CreateAiStats(team, difficulty);
                 var chosenMove = move.Value;
                 if (difficulty == AIDifficulty.Easy &&
                     IsBacktrackMove(team, chosenMove.from, chosenMove.to) &&
@@ -190,7 +190,7 @@ public class AiController : MonoBehaviour
         };
     }
 
-    private AiPerformanceData CreateAiStats(AIDifficulty difficulty)
+    private AiPerformanceData CreateAiStats(Team team, AIDifficulty difficulty)
     {
         if (chessAI is not UnityAIBoardAdapter adapter)
             return null;
@@ -206,6 +206,7 @@ public class AiController : MonoBehaviour
 
         var data = new AiPerformanceData
         {
+            AiColor = team == Team.White ? "white" : "black",
             AiLevel = level,
             AlgorithmType = algorithmType,
             Depth = adapter.LastDepth,
@@ -214,7 +215,6 @@ public class AiController : MonoBehaviour
             Score = adapter.LastEvalScore
         };
 
-        PerformanceTracker.Instance?.AddMove(data.Depth, data.Nodes, data.MoveTimeMs, data.Score);
         return data;
     }
 

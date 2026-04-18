@@ -49,24 +49,24 @@
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\Tools\BuildPipeline\Unity.SourceGenerators\Unity.UIToolkit.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Library\PackageCache\com.unity.ads@e89225828059\Editor\Source\SkAdNetworkRemoteSource.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ads@e89225828059\Editor\Source\MobileDependencyResolverUnity.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ads@e89225828059\Editor\AssemblyInfo.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ads@e89225828059\Editor\Parser\SkAdNetworkUrlParser.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ads@e89225828059\Editor\Source\SkAdNetworkLocalSourceProvider.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ads@e89225828059\Editor\Parser\SkAdNetworkXmlParser.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ads@e89225828059\Editor\Source\SkAdNetworkLocalSource.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ads@e89225828059\Editor\XCodeSwiftSupportPostProcess.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ads@e89225828059\Editor\Parser\SkAdNetworkParser.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ads@e89225828059\Editor\Parser\ISkAdNetworkParser.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ads@e89225828059\Editor\PostProcessBuildPlist.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ads@e89225828059\Editor\Parser\SkAdNetworkJsonParser.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ads@e89225828059\Editor\Parser\SkAdNetworkFileExtension.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ads@e89225828059\Editor\Source\ISkAdNetworkSource.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ads@c6e6f61ed7d9\Editor\Source\SkAdNetworkRemoteSource.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ads@c6e6f61ed7d9\Editor\Source\MobileDependencyResolverUnity.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ads@c6e6f61ed7d9\Editor\AssemblyInfo.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ads@c6e6f61ed7d9\Editor\Parser\SkAdNetworkUrlParser.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ads@c6e6f61ed7d9\Editor\Source\SkAdNetworkLocalSourceProvider.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ads@c6e6f61ed7d9\Editor\Parser\SkAdNetworkXmlParser.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ads@c6e6f61ed7d9\Editor\Source\SkAdNetworkLocalSource.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ads@c6e6f61ed7d9\Editor\XCodeSwiftSupportPostProcess.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ads@c6e6f61ed7d9\Editor\Parser\SkAdNetworkParser.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ads@c6e6f61ed7d9\Editor\Parser\ISkAdNetworkParser.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ads@c6e6f61ed7d9\Editor\PostProcessBuildPlist.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ads@c6e6f61ed7d9\Editor\Parser\SkAdNetworkJsonParser.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ads@c6e6f61ed7d9\Editor\Parser\SkAdNetworkFileExtension.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ads@c6e6f61ed7d9\Editor\Source\ISkAdNetworkSource.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Library\PackageCache\com.unity.ads@e89225828059\Editor\Source\Dependencies.xml" />
-    <None Include="Library\PackageCache\com.unity.ads@e89225828059\Editor\UnityEngine.Advertisements.Editor.asmdef" />
+    <None Include="Library\PackageCache\com.unity.ads@c6e6f61ed7d9\Editor\Source\Dependencies.xml" />
+    <None Include="Library\PackageCache\com.unity.ads@c6e6f61ed7d9\Editor\UnityEngine.Advertisements.Editor.asmdef" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
@@ -634,7 +634,7 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="websocket-sharp">
-      <HintPath>Library\PackageCache\com.unity.services.wire@9a73acde80cc\Plugins\websocket-sharp.dll</HintPath>
+      <HintPath>Library\PackageCache\com.unity.services.wire@d50817c0adab\Plugins\websocket-sharp.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Mono.CecilX">
@@ -646,7 +646,7 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.VisualScripting.YamlDotNet">
-      <HintPath>Library\PackageCache\com.unity.visualscripting@eb6004dcc707\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll</HintPath>
+      <HintPath>Library\PackageCache\com.unity.visualscripting@8bed5ad90189\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.Collections.LowLevel.ILSupport">
@@ -674,7 +674,7 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.Plastic.Antlr3.Runtime">
-      <HintPath>Library\PackageCache\com.unity.collab-proxy@3351acaba9c9\Lib\Editor\Unity.Plastic.Antlr3.Runtime.dll</HintPath>
+      <HintPath>Library\PackageCache\com.unity.collab-proxy@a5329f833fa8\Lib\Editor\Unity.Plastic.Antlr3.Runtime.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Mono.CecilX.Rocks">
@@ -682,7 +682,7 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.Plastic.Newtonsoft.Json">
-      <HintPath>Library\PackageCache\com.unity.collab-proxy@3351acaba9c9\Lib\Editor\Unity.Plastic.Newtonsoft.Json.dll</HintPath>
+      <HintPath>Library\PackageCache\com.unity.collab-proxy@a5329f833fa8\Lib\Editor\Unity.Plastic.Newtonsoft.Json.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Google.VersionHandlerImpl">
@@ -690,15 +690,11 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="log4netPlastic">
-      <HintPath>Library\PackageCache\com.unity.collab-proxy@3351acaba9c9\Lib\Editor\log4netPlastic.dll</HintPath>
+      <HintPath>Library\PackageCache\com.unity.collab-proxy@a5329f833fa8\Lib\Editor\log4netPlastic.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.VisualScripting.IonicZip">
-      <HintPath>Library\PackageCache\com.unity.visualscripting@eb6004dcc707\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="unityplastic">
-      <HintPath>Library\PackageCache\com.unity.collab-proxy@3351acaba9c9\Lib\Editor\unityplastic.dll</HintPath>
+      <HintPath>Library\PackageCache\com.unity.visualscripting@8bed5ad90189\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Google.JarResolver">
@@ -709,8 +705,12 @@
       <HintPath>Library\PackageCache\com.unity.collections@aea9d3bd5e19\Unity.Collections.Tests\System.IO.Hashing\System.IO.Hashing.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="unityplastic">
+      <HintPath>Library\PackageCache\com.unity.collab-proxy@a5329f833fa8\Lib\Editor\unityplastic.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="Unity.VisualScripting.Antlr3.Runtime">
-      <HintPath>Library\PackageCache\com.unity.visualscripting@eb6004dcc707\Runtime\VisualScripting.Flow\Dependencies\NCalc\Unity.VisualScripting.Antlr3.Runtime.dll</HintPath>
+      <HintPath>Library\PackageCache\com.unity.visualscripting@8bed5ad90189\Runtime\VisualScripting.Flow\Dependencies\NCalc\Unity.VisualScripting.Antlr3.Runtime.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Google.VersionHandler">
@@ -726,7 +726,7 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.VisualScripting.TextureAssets">
-      <HintPath>Library\PackageCache\com.unity.visualscripting@eb6004dcc707\Editor\VisualScripting.Core\EditorAssetResources\Unity.VisualScripting.TextureAssets.dll</HintPath>
+      <HintPath>Library\PackageCache\com.unity.visualscripting@8bed5ad90189\Editor\VisualScripting.Core\EditorAssetResources\Unity.VisualScripting.TextureAssets.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Mono.Cecil">

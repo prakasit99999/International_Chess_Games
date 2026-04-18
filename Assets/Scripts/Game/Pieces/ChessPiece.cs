@@ -240,10 +240,6 @@ public class ChessPiece : MonoBehaviour
         boardPosition = newPosition;
         transform.position = new Vector3(newPosition.x, newPosition.y, 0);
         HasMoved = true; // ตั้งค่าให้รู้ว่าหมากถูกเคลื่อนแล้ว
-        if (pieceType == PieceType.Pawn)
-        {
-            PromotePawn(); // ตรวจสอบการเลื่อนขั้นเบี้ย
-        }
     }
 
     public void Promote(PieceType newType)
@@ -280,6 +276,17 @@ public class ChessPiece : MonoBehaviour
 
         if (pieceType == PieceType.Pawn && (boardPosition.y == 0 || boardPosition.y == 7))
         {
+            bool isAI =
+                (team == Team.White && GameManager.Instance.WhitePlayer == GameManager.PlayerType.AI) ||
+                (team == Team.Black && GameManager.Instance.BlackPlayer == GameManager.PlayerType.AI);
+
+            if (isAI)
+            {
+                Debug.Log($"🤖 AI ({team}) Direct Auto-Promote -> Queen");
+                Promote(PieceType.Queen);
+                return;
+            }
+
             Debug.Log("เบี้ยเดินถึงแถวสุดท้าย เริ่มกระบวนการเลื่อนขั้น");
             ChessBoard.Instance.SetPromoting(true);
             // ✅ บันทึกประเภทเดิมก่อนเลื่อนขั้น

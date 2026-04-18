@@ -80,8 +80,21 @@ public class GameSyncService : MonoBehaviour
 
     public void RecordMove(HistoryMove.HistoryMoveData moveData, AiPerformanceData aiStats = null)
     {
+        Debug.Log(
+            $"[GameSyncService] RecordMove received -> Team: {moveData.team}, " +
+            $"Move: {moveData.startPosition} -> {moveData.endPosition}, " +
+            $"HasAIStats: {aiStats != null}, Depth: {(aiStats != null ? aiStats.Depth : 0)}, " +
+            $"Algo: {(aiStats != null ? aiStats.AlgorithmType : "none")}, " +
+            $"Color: {(aiStats != null ? aiStats.AiColor : "none")}"
+        );
+
         if (resultSync != null)
+        {
             resultSync.RecordMove(moveData, aiStats);
+            return;
+        }
+
+        Debug.LogWarning("[GameSyncService] RecordMove skipped because resultSync is missing.");
     }
 
     private void HandleMoveCompleted(MoveResult result)

@@ -20,6 +20,14 @@ namespace AIEngine.Adapters
         public float LastMoveTimeMs { get; private set; }
         public int LastEvalScore { get; private set; }
 
+        private static bool IsInvalidSearchScore(float score)
+        {
+            return float.IsNaN(score) ||
+                   float.IsInfinity(score) ||
+                   score <= int.MinValue ||
+                   score >= int.MaxValue;
+        }
+
         public void StartCalculateMove(ChessBoard board, Team aiTeam, Team currentTurn, AIDifficulty difficulty)
         {
             if (!_isCalculating)
@@ -70,7 +78,14 @@ namespace AIEngine.Adapters
                 LastDepth = searchResult.Depth;
                 NodesEvaluated = searchResult.NodesEvaluated;
                 LastMoveTimeMs = searchResult.TimeMs;
-                LastEvalScore = (int)searchResult.Score; // สมมติว่าใน SearchResult มี Score
+                LastEvalScore = IsInvalidSearchScore(searchResult.Score)
+                    ? 0
+                    : Mathf.RoundToInt(searchResult.Score);
+
+                if (IsInvalidSearchScore(searchResult.Score))
+                {
+                    Debug.LogWarning($"[AI OUTPUT] Invalid score from search detected: {searchResult.Score}. Fallback to 0.");
+                }
                 // Debug.Log($"[AI UnityAIBoardAdapter] _calculatedResult {searchResult} | Depth: {LastDepth} | Nodes: {NodesEvaluated} | Time: {LastMoveTimeMs} | Score: {LastEvalScore}");
 
                 Debug.Log($"[AI OUTPUT] Move: {from} -> {to} | Depth: {LastDepth} | Nodes: {NodesEvaluated}");

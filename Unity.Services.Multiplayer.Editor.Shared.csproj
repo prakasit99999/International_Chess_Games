@@ -49,65 +49,65 @@
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\Tools\BuildPipeline\Unity.SourceGenerators\Unity.UIToolkit.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Library\PackageCache\com.unity.services.multiplayer@8d17beeef99f\Editor\Shared\DependencyInversion\MethodNotFoundException.Gen.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.multiplayer@8d17beeef99f\Editor\Shared\DependencyInversion\IScopedServiceProvider.Gen.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.multiplayer@8d17beeef99f\Editor\Shared\Clients\AdminApiHeaders.Gen.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.multiplayer@8d17beeef99f\Editor\Shared\Clients\JsonWebToken.Gen.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.multiplayer@8d17beeef99f\Editor\Shared\Analytics\ICommonAnalytics.Gen.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.multiplayer@8d17beeef99f\Editor\Shared\DependencyInversion\Singleton.Gen.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.multiplayer@8d17beeef99f\Editor\Shared\Analytics\CommonAnalyticProvider.Gen.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.multiplayer@8d17beeef99f\Editor\Shared\DependencyInversion\TypeAlreadyRegisteredException.Gen.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.multiplayer@8d17beeef99f\Editor\Shared\Infrastructure\Collections\ReadOnlyObservableCollection.Gen.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.multiplayer@8d17beeef99f\Editor\Shared\Assets\ObservableAssets.Gen.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.multiplayer@8d17beeef99f\Editor\Shared\Collections\IReadOnlyObservable.Gen.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.multiplayer@8d17beeef99f\Editor\Shared\Collections\ReadOnlyObservableCollection.Gen.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.multiplayer@8d17beeef99f\Editor\Shared\Clients\AssemblyInfo.Gen.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.multiplayer@8d17beeef99f\Editor\Shared\Infrastructure\Threading\Sync.Gen.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.multiplayer@8d17beeef99f\Editor\Shared\Clients\IAccessTokens.Gen.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.multiplayer@8d17beeef99f\Editor\Shared\Assets\IPath.Gen.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.multiplayer@8d17beeef99f\Editor\Shared\Assets\PostProcessEventArgs.Gen.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.multiplayer@8d17beeef99f\Editor\Shared\Analytics\AnalyticsTimer.Gen.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.multiplayer@8d17beeef99f\Editor\Shared\Infrastructure\Collections\MergedObservableCollection.Gen.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.multiplayer@8d17beeef99f\Editor\Shared\DependencyInversion\AbstractRuntimeServices.Gen.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.multiplayer@8d17beeef99f\Editor\Shared\DependencyInversion\IServiceFactory.Gen.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.multiplayer@8d17beeef99f\Editor\Shared\Clients\IGatewayTokenProvider.Gen.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.multiplayer@8d17beeef99f\Editor\Shared\Infrastructure\AssemblyInfo.Gen.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.multiplayer@8d17beeef99f\Editor\Shared\Clients\InvalidJwtException.Gen.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.multiplayer@8d17beeef99f\Editor\Shared\AssemblyInfo.Gen.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.multiplayer@8d17beeef99f\Editor\Shared\DependencyInversion\DependencyNotFoundException.Gen.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.multiplayer@8d17beeef99f\Editor\Shared\Collections\MappedObservableCollection.Gen.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.multiplayer@8d17beeef99f\Editor\Shared\DependencyInversion\Factories.Gen.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.multiplayer@8d17beeef99f\Editor\Shared\DependencyInversion\ServiceProvider.Gen.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.multiplayer@8d17beeef99f\Editor\Shared\Assets\AssetPostprocessorProxy.Gen.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.multiplayer@8d17beeef99f\Editor\Shared\DependencyInversion\Scope.Gen.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.multiplayer@8d17beeef99f\Editor\Shared\DependencyInversion\ServiceCollection.Gen.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.multiplayer@8d17beeef99f\Editor\Shared\Chrono\CurrentTime.Gen.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.multiplayer@8d17beeef99f\Editor\Shared\Analytics\ICommonAnalyticProvider.Gen.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.multiplayer@8d17beeef99f\Editor\Shared\Assets\AssemblyInfo.Gen.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.multiplayer@8d17beeef99f\Editor\Shared\Collections\MergedObservableCollection.Gen.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.multiplayer@8d17beeef99f\Editor\Shared\Infrastructure\Collections\CollectionExtensions.Gen.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.multiplayer@8d17beeef99f\Editor\Shared\Threading\Sync.Gen.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.multiplayer@8d17beeef99f\Editor\Shared\Infrastructure\SystemEnvironment\SystemEnvironmentPathUtils.Gen.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.multiplayer@8d17beeef99f\Editor\Shared\DependencyInversion\AssemblyInfo.Gen.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.multiplayer@8d17beeef99f\Editor\Shared\Analytics\CommonAnalyticEvent.Gen.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.multiplayer@8d17beeef99f\Editor\Shared\Logging\Logger.Gen.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.multiplayer@8d17beeef99f\Editor\Shared\DependencyInversion\Transient.Gen.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.multiplayer@8d17beeef99f\Editor\Shared\Analytics\CommonAnalytics.Gen.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.multiplayer@8d17beeef99f\Editor\Shared\UI\DeploymentConfigInspectorFooter\DeploymentConfigInspectorFooter.Gen.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.multiplayer@8d17beeef99f\Editor\Shared\Infrastructure\Collections\IReadOnlyObservable.Gen.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.multiplayer@8d17beeef99f\Editor\Shared\Clients\GatewayTokenProvider.Gen.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.multiplayer@8d17beeef99f\Editor\Shared\Collections\CollectionExtensions.Gen.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.multiplayer@8d17beeef99f\Editor\Shared\DependencyInversion\ConstructorNotFoundException.Gen.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.multiplayer@8d17beeef99f\Editor\Shared\Infrastructure\IO\PathUtils.Gen.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.multiplayer@8d17beeef99f\Editor\Shared\Infrastructure\Collections\MappedObservableCollection.Gen.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.multiplayer@8d17beeef99f\Editor\Shared\Clients\CloudEnvironmentConfigProvider.Gen.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.multiplayer@260b2984cde5\Editor\Shared\DependencyInversion\MethodNotFoundException.Gen.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.multiplayer@260b2984cde5\Editor\Shared\DependencyInversion\IScopedServiceProvider.Gen.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.multiplayer@260b2984cde5\Editor\Shared\Clients\AdminApiHeaders.Gen.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.multiplayer@260b2984cde5\Editor\Shared\Clients\JsonWebToken.Gen.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.multiplayer@260b2984cde5\Editor\Shared\Analytics\ICommonAnalytics.Gen.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.multiplayer@260b2984cde5\Editor\Shared\DependencyInversion\Singleton.Gen.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.multiplayer@260b2984cde5\Editor\Shared\Analytics\CommonAnalyticProvider.Gen.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.multiplayer@260b2984cde5\Editor\Shared\DependencyInversion\TypeAlreadyRegisteredException.Gen.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.multiplayer@260b2984cde5\Editor\Shared\Infrastructure\Collections\ReadOnlyObservableCollection.Gen.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.multiplayer@260b2984cde5\Editor\Shared\Assets\ObservableAssets.Gen.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.multiplayer@260b2984cde5\Editor\Shared\Collections\IReadOnlyObservable.Gen.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.multiplayer@260b2984cde5\Editor\Shared\Collections\ReadOnlyObservableCollection.Gen.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.multiplayer@260b2984cde5\Editor\Shared\Clients\AssemblyInfo.Gen.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.multiplayer@260b2984cde5\Editor\Shared\Infrastructure\Threading\Sync.Gen.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.multiplayer@260b2984cde5\Editor\Shared\Clients\IAccessTokens.Gen.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.multiplayer@260b2984cde5\Editor\Shared\Assets\IPath.Gen.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.multiplayer@260b2984cde5\Editor\Shared\Assets\PostProcessEventArgs.Gen.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.multiplayer@260b2984cde5\Editor\Shared\Analytics\AnalyticsTimer.Gen.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.multiplayer@260b2984cde5\Editor\Shared\Infrastructure\Collections\MergedObservableCollection.Gen.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.multiplayer@260b2984cde5\Editor\Shared\DependencyInversion\AbstractRuntimeServices.Gen.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.multiplayer@260b2984cde5\Editor\Shared\DependencyInversion\IServiceFactory.Gen.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.multiplayer@260b2984cde5\Editor\Shared\Clients\IGatewayTokenProvider.Gen.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.multiplayer@260b2984cde5\Editor\Shared\Infrastructure\AssemblyInfo.Gen.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.multiplayer@260b2984cde5\Editor\Shared\Clients\InvalidJwtException.Gen.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.multiplayer@260b2984cde5\Editor\Shared\AssemblyInfo.Gen.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.multiplayer@260b2984cde5\Editor\Shared\DependencyInversion\DependencyNotFoundException.Gen.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.multiplayer@260b2984cde5\Editor\Shared\Collections\MappedObservableCollection.Gen.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.multiplayer@260b2984cde5\Editor\Shared\DependencyInversion\Factories.Gen.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.multiplayer@260b2984cde5\Editor\Shared\DependencyInversion\ServiceProvider.Gen.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.multiplayer@260b2984cde5\Editor\Shared\Assets\AssetPostprocessorProxy.Gen.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.multiplayer@260b2984cde5\Editor\Shared\DependencyInversion\Scope.Gen.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.multiplayer@260b2984cde5\Editor\Shared\DependencyInversion\ServiceCollection.Gen.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.multiplayer@260b2984cde5\Editor\Shared\Chrono\CurrentTime.Gen.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.multiplayer@260b2984cde5\Editor\Shared\Analytics\ICommonAnalyticProvider.Gen.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.multiplayer@260b2984cde5\Editor\Shared\Assets\AssemblyInfo.Gen.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.multiplayer@260b2984cde5\Editor\Shared\Collections\MergedObservableCollection.Gen.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.multiplayer@260b2984cde5\Editor\Shared\Infrastructure\Collections\CollectionExtensions.Gen.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.multiplayer@260b2984cde5\Editor\Shared\Threading\Sync.Gen.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.multiplayer@260b2984cde5\Editor\Shared\Infrastructure\SystemEnvironment\SystemEnvironmentPathUtils.Gen.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.multiplayer@260b2984cde5\Editor\Shared\DependencyInversion\AssemblyInfo.Gen.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.multiplayer@260b2984cde5\Editor\Shared\Analytics\CommonAnalyticEvent.Gen.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.multiplayer@260b2984cde5\Editor\Shared\Logging\Logger.Gen.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.multiplayer@260b2984cde5\Editor\Shared\DependencyInversion\Transient.Gen.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.multiplayer@260b2984cde5\Editor\Shared\Analytics\CommonAnalytics.Gen.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.multiplayer@260b2984cde5\Editor\Shared\UI\DeploymentConfigInspectorFooter\DeploymentConfigInspectorFooter.Gen.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.multiplayer@260b2984cde5\Editor\Shared\Infrastructure\Collections\IReadOnlyObservable.Gen.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.multiplayer@260b2984cde5\Editor\Shared\Clients\GatewayTokenProvider.Gen.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.multiplayer@260b2984cde5\Editor\Shared\Collections\CollectionExtensions.Gen.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.multiplayer@260b2984cde5\Editor\Shared\DependencyInversion\ConstructorNotFoundException.Gen.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.multiplayer@260b2984cde5\Editor\Shared\Infrastructure\IO\PathUtils.Gen.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.multiplayer@260b2984cde5\Editor\Shared\Infrastructure\Collections\MappedObservableCollection.Gen.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.multiplayer@260b2984cde5\Editor\Shared\Clients\CloudEnvironmentConfigProvider.Gen.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Library\PackageCache\com.unity.services.multiplayer@8d17beeef99f\Editor\Shared\UI\DeploymentConfigInspectorFooter\Assets\DeploymentConfigInspectorFooterLight.uss" />
-    <None Include="Library\PackageCache\com.unity.services.multiplayer@8d17beeef99f\Editor\Shared\UI\DeploymentConfigInspectorFooter\Assets\DeploymentConfigInspectorFooterDark.uss" />
-    <None Include="Library\PackageCache\com.unity.services.multiplayer@8d17beeef99f\Editor\Shared\UI\DeploymentConfigInspectorFooter\Assets\DeploymentConfigInspectorFooter.uss" />
-    <None Include="Library\PackageCache\com.unity.services.multiplayer@8d17beeef99f\Editor\Shared\UI\DeploymentConfigInspectorFooter\Assets\DeploymentConfigInspectorFooter.uxml" />
-    <None Include="Library\PackageCache\com.unity.services.multiplayer@8d17beeef99f\Editor\Shared\Unity.Services.Multiplayer.Editor.Shared.asmdef" />
+    <None Include="Library\PackageCache\com.unity.services.multiplayer@260b2984cde5\Editor\Shared\UI\DeploymentConfigInspectorFooter\Assets\DeploymentConfigInspectorFooterLight.uss" />
+    <None Include="Library\PackageCache\com.unity.services.multiplayer@260b2984cde5\Editor\Shared\UI\DeploymentConfigInspectorFooter\Assets\DeploymentConfigInspectorFooterDark.uss" />
+    <None Include="Library\PackageCache\com.unity.services.multiplayer@260b2984cde5\Editor\Shared\UI\DeploymentConfigInspectorFooter\Assets\DeploymentConfigInspectorFooter.uss" />
+    <None Include="Library\PackageCache\com.unity.services.multiplayer@260b2984cde5\Editor\Shared\UI\DeploymentConfigInspectorFooter\Assets\DeploymentConfigInspectorFooter.uxml" />
+    <None Include="Library\PackageCache\com.unity.services.multiplayer@260b2984cde5\Editor\Shared\Unity.Services.Multiplayer.Editor.Shared.asmdef" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
@@ -675,7 +675,7 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="websocket-sharp">
-      <HintPath>Library\PackageCache\com.unity.services.wire@9a73acde80cc\Plugins\websocket-sharp.dll</HintPath>
+      <HintPath>Library\PackageCache\com.unity.services.wire@d50817c0adab\Plugins\websocket-sharp.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Mono.CecilX">
@@ -687,7 +687,7 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.VisualScripting.YamlDotNet">
-      <HintPath>Library\PackageCache\com.unity.visualscripting@eb6004dcc707\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll</HintPath>
+      <HintPath>Library\PackageCache\com.unity.visualscripting@8bed5ad90189\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.Collections.LowLevel.ILSupport">
@@ -715,7 +715,7 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.Plastic.Antlr3.Runtime">
-      <HintPath>Library\PackageCache\com.unity.collab-proxy@3351acaba9c9\Lib\Editor\Unity.Plastic.Antlr3.Runtime.dll</HintPath>
+      <HintPath>Library\PackageCache\com.unity.collab-proxy@a5329f833fa8\Lib\Editor\Unity.Plastic.Antlr3.Runtime.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Mono.CecilX.Rocks">
@@ -723,7 +723,7 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.Plastic.Newtonsoft.Json">
-      <HintPath>Library\PackageCache\com.unity.collab-proxy@3351acaba9c9\Lib\Editor\Unity.Plastic.Newtonsoft.Json.dll</HintPath>
+      <HintPath>Library\PackageCache\com.unity.collab-proxy@a5329f833fa8\Lib\Editor\Unity.Plastic.Newtonsoft.Json.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Google.VersionHandlerImpl">
@@ -731,15 +731,11 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="log4netPlastic">
-      <HintPath>Library\PackageCache\com.unity.collab-proxy@3351acaba9c9\Lib\Editor\log4netPlastic.dll</HintPath>
+      <HintPath>Library\PackageCache\com.unity.collab-proxy@a5329f833fa8\Lib\Editor\log4netPlastic.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.VisualScripting.IonicZip">
-      <HintPath>Library\PackageCache\com.unity.visualscripting@eb6004dcc707\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="unityplastic">
-      <HintPath>Library\PackageCache\com.unity.collab-proxy@3351acaba9c9\Lib\Editor\unityplastic.dll</HintPath>
+      <HintPath>Library\PackageCache\com.unity.visualscripting@8bed5ad90189\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Google.JarResolver">
@@ -750,8 +746,12 @@
       <HintPath>Library\PackageCache\com.unity.collections@aea9d3bd5e19\Unity.Collections.Tests\System.IO.Hashing\System.IO.Hashing.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="unityplastic">
+      <HintPath>Library\PackageCache\com.unity.collab-proxy@a5329f833fa8\Lib\Editor\unityplastic.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="Unity.VisualScripting.Antlr3.Runtime">
-      <HintPath>Library\PackageCache\com.unity.visualscripting@eb6004dcc707\Runtime\VisualScripting.Flow\Dependencies\NCalc\Unity.VisualScripting.Antlr3.Runtime.dll</HintPath>
+      <HintPath>Library\PackageCache\com.unity.visualscripting@8bed5ad90189\Runtime\VisualScripting.Flow\Dependencies\NCalc\Unity.VisualScripting.Antlr3.Runtime.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Google.VersionHandler">
@@ -767,7 +767,7 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.VisualScripting.TextureAssets">
-      <HintPath>Library\PackageCache\com.unity.visualscripting@eb6004dcc707\Editor\VisualScripting.Core\EditorAssetResources\Unity.VisualScripting.TextureAssets.dll</HintPath>
+      <HintPath>Library\PackageCache\com.unity.visualscripting@8bed5ad90189\Editor\VisualScripting.Core\EditorAssetResources\Unity.VisualScripting.TextureAssets.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Mono.Cecil">

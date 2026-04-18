@@ -43,7 +43,9 @@ namespace AIEngine.Algorithms
             }
 
             List<MoveModel> bestMoves = new List<MoveModel>();
-            float bestScore = float.MinValue;
+            bool isWhiteRoot = board.IsWhiteTurn;
+            float bestScore = isWhiteRoot ? float.MinValue : float.MaxValue;
+
 
             foreach (MoveModel move in moves)
             {
@@ -52,8 +54,13 @@ namespace AIEngine.Algorithms
                 var newBoard = board.Clone();
                 newBoard.MakeMove(move);
 
-                float score = MinimaxRecursive(newBoard, depth - 1, false, settings, stopwatch);
-                if (score > bestScore)
+                float score = MinimaxRecursive(newBoard, depth - 1, !isWhiteRoot, settings, stopwatch);
+
+                bool isBetter = isWhiteRoot
+                    ? score > bestScore
+                    : score < bestScore;
+
+                if (isBetter)
                 {
                     bestScore = score;
                     bestMoves.Clear();
@@ -83,7 +90,8 @@ namespace AIEngine.Algorithms
         {
             _nodesEvaluated++; // นับ node ที่ evaluate
 
-            if (stopwatch.Elapsed.TotalMilliseconds > _timeLimitMs) return isMaximizing ? float.MinValue : float.MaxValue;
+            if (stopwatch.Elapsed.TotalMilliseconds > _timeLimitMs)
+                return AIEngine.Evaluation.Evaluation.Evaluate(board, settings);
 
             if (depth == 0 || board.IsGameOver())
                 return AIEngine.Evaluation.Evaluation.Evaluate(board, settings);

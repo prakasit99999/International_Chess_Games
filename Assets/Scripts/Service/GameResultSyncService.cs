@@ -121,13 +121,17 @@ public class GameResultSyncService : MonoBehaviour
 
             if (moveData.depth > 0)
             {
+                string algorithmType = string.IsNullOrEmpty(moveData.algorithmType)
+                    ? GetAlgorithmTypeForTeam(moveData.team)
+                    : moveData.algorithmType;
+
                 aiData = new AiPerformanceData
                 {
                     Depth = moveData.depth,
                     Nodes = moveData.nodes,
                     MoveTimeMs = moveData.moveTimeMs,
                     Score = moveData.score,
-                    AlgorithmType = "minimax"
+                    AlgorithmType = algorithmType
                 };
             }
 
@@ -167,27 +171,43 @@ public class GameResultSyncService : MonoBehaviour
     {
         if (aiPerformanceAPI == null)
         {
-            Debug.LogWarning("âš  AiPerformanceAPI missing.");
+            Debug.LogWarning(" AiPerformanceAPI missing.");
             yield break;
         }
 
         if (PerformanceTracker.Instance == null)
         {
-            Debug.LogWarning("âš  PerformanceTracker missing.");
+            Debug.LogWarning(" PerformanceTracker missing.");
             yield break;
         }
 
-        var perfData = PerformanceTracker.Instance.Export();
+        var perfDataList = PerformanceTracker.Instance.ExportAll();
 
-        if (perfData == null || !perfData.HasAnyData())
+        Debug.Log($"[GameResultSyncService] UploadPerformance -> ExportAll count: {(perfDataList != null ? perfDataList.Count : 0)}");
+
+        if (perfDataList == null || perfDataList.Count == 0)
         {
-            Debug.LogWarning("âš  AI Performance empty.");
+            Debug.LogWarning(" AI Performance empty.");
             yield break;
         }
 
-        perfData.GameId = gameManager.currentGameId;
+        foreach (var perfData in perfDataList)
+        {
+            if (perfData == null || !perfData.HasAnyData())
+            {
+                Debug.LogWarning("[GameResultSyncService] UploadPerformance skipped an empty perfData entry.");
+                continue;
+            }
 
-        yield return aiPerformanceAPI.SendPerformance(perfData);
+            perfData.GameId = gameManager.currentGameId;
+            Debug.Log(
+                $"[GameResultSyncService] UploadPerformance sending -> " +
+                $"Color: {perfData.AiColor}, Level: {perfData.AiLevel}, Algo: {perfData.AlgorithmType}, " +
+                $"Moves: {perfData.TotalMoves}, AvgDepth: {perfData.AverageDepth}, " +
+                $"AvgNodes: {perfData.AverageNodesEvaluated}, AvgTime: {perfData.AverageMoveTimeMs}"
+            );
+            yield return aiPerformanceAPI.SendPerformance(perfData);
+        }
     }
 
 
@@ -309,7 +329,7 @@ public class GameResultSyncService : MonoBehaviour
         if (moves.Count > 0)
             yield return UploadMoves(moves);
 
-        if (PerformanceTracker.Instance != null && PerformanceTracker.Instance.Export().HasAnyData())
+        if (PerformanceTracker.Instance != null && PerformanceTracker.Instance.ExportAll().Count > 0)
             yield return UploadPerformance();
 
         bool shouldFinalize = true;
@@ -496,7 +516,7 @@ public class GameResultSyncService : MonoBehaviour
 
         if (response == null || response.gameId <= 0)
         {
-            Debug.LogError($"âŒ CreateOfflineGame failed: {errorMsg}");
+            Debug.LogError($"Failed to CreateOfflineGame: {errorMsg}");
             yield break;
         }
 
@@ -580,6 +600,12 @@ public class GameResultSyncService : MonoBehaviour
         return v;
     }
 
+    private string GetAlgorithmTypeForTeam(Team team)
+    {
+        string difficulty = NormalizeDifficulty(GetDifficultyForTeam(team));
+        return difficulty == "easy" ? "minimax" : "alpha_beta";
+    }
+
     private string ConvertResultString(Team winner)
     {
         switch (winner)
@@ -596,7 +622,16 @@ public class GameResultSyncService : MonoBehaviour
     public void RecordMove(HistoryMove.HistoryMoveData moveData, AiPerformanceData aiStats = null)
     {
         if (gameManager == null)
+        {
+            Debug.LogWarning("[GameResultSyncService] RecordMove skipped because gameManager is missing.");
             return;
+        }
+
+        Debug.Log(
+            $"[GameResultSyncService] RecordMove start -> Team: {moveData.team}, " +
+            $"Move: {moveData.startPosition} -> {moveData.endPosition}, " +
+            $"HasAIStats: {aiStats != null}, GameId: {gameManager.currentGameId}, CurrentMoveCount: {gameManager.moveCount}"
+        );
 
         gameManager.moveCount++;
 
@@ -610,15 +645,37 @@ public class GameResultSyncService : MonoBehaviour
             );
 
             recordedMoves.Add(dto);
+            Debug.Log($"[GameResultSyncService] RecordMove stored dto -> MoveNumber: {gameManager.moveCount}, RecordedMoves: {recordedMoves.Count}");
+        }
+        else
+        {
+            Debug.LogWarning("[GameResultSyncService] RecordMove did not create dto because currentGameId <= 0.");
         }
 
         if (aiStats != null && PerformanceTracker.Instance != null)
         {
+            Debug.Log(
+                $"[GameResultSyncService] RecordMove forwarding AI stats -> " +
+                $"Color: {aiStats.AiColor}, Level: {aiStats.AiLevel}, Algo: {aiStats.AlgorithmType}, " +
+                $"Depth: {aiStats.Depth}, Nodes: {aiStats.Nodes}, Time: {aiStats.MoveTimeMs}, Score: {aiStats.Score}"
+            );
             PerformanceTracker.Instance.AddMove(
+                aiStats.AiColor,
+                aiStats.AiLevel,
+                aiStats.AlgorithmType,
                 aiStats.Depth,
                 aiStats.Nodes,
                 aiStats.MoveTimeMs,
                 aiStats.Score
+            );
+
+            Debug.Log("[GameResultSyncService] RecordMove forwarded AI stats to PerformanceTracker.");
+        }
+        else
+        {
+            Debug.Log(
+                $"[GameResultSyncService] RecordMove no AI stats forwarded -> " +
+                $"HasAIStats: {aiStats != null}, HasTracker: {PerformanceTracker.Instance != null}"
             );
         }
     }

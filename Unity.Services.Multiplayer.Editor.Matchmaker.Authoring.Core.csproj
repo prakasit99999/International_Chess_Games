@@ -49,45 +49,46 @@
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\Tools\BuildPipeline\Unity.SourceGenerators\Unity.UIToolkit.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Library\PackageCache\com.unity.services.multiplayer@8d17beeef99f\Editor\Matchmaker\Authoring\Core\Fetch\IDeepEqualityComparer.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.multiplayer@8d17beeef99f\Editor\Matchmaker\Authoring\Core\IO\FileSystemException.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.multiplayer@8d17beeef99f\Editor\Matchmaker\Authoring\Core\AssemblyInfo.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.multiplayer@8d17beeef99f\Editor\Matchmaker\Authoring\Core\Model\QueueConfig.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.multiplayer@8d17beeef99f\Editor\Matchmaker\Authoring\Core\Model\MultiplayResources.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.multiplayer@8d17beeef99f\Editor\Matchmaker\Authoring\Core\Model\IResourceName.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.multiplayer@8d17beeef99f\Editor\Matchmaker\Authoring\Core\Model\JsonObject.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.multiplayer@8d17beeef99f\Editor\Matchmaker\Authoring\Core\Deploy\MatchmakerDeployHandler.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.multiplayer@8d17beeef99f\Editor\Matchmaker\Authoring\Core\ConfigApi\DeploymentStatus.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.multiplayer@8d17beeef99f\Editor\Matchmaker\Authoring\Core\Deploy\DeployResult.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.multiplayer@8d17beeef99f\Editor\Matchmaker\Authoring\Core\Fetch\MatchmakerFetchHandler.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.multiplayer@8d17beeef99f\Editor\Matchmaker\Authoring\Core\ConfigApi\MatchmakerClientException.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.multiplayer@8d17beeef99f\Editor\Matchmaker\Authoring\Core\Fetch\IMatchmakerFetchHandler.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.multiplayer@8d17beeef99f\Editor\Matchmaker\Authoring\Core\Model\PoolId.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.multiplayer@8d17beeef99f\Editor\Matchmaker\Authoring\Core\Model\RuleBasedMatchDefinition.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.multiplayer@8d17beeef99f\Editor\Matchmaker\Authoring\Core\ConfigApi\IConfigApiClient.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.multiplayer@8d17beeef99f\Editor\Matchmaker\Authoring\Core\Model\QueueId.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.multiplayer@8d17beeef99f\Editor\Matchmaker\Authoring\Core\Deploy\IMatchmakerDeployHandler.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.multiplayer@8d17beeef99f\Editor\Matchmaker\Authoring\Core\IO\FileSystem.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.multiplayer@8d17beeef99f\Editor\Matchmaker\Authoring\Core\Fetch\FetchResult.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.multiplayer@8d17beeef99f\Editor\Matchmaker\Authoring\Core\Model\QueueName.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.multiplayer@8d17beeef99f\Editor\Matchmaker\Authoring\Core\SyncWithRemote\SyncResult.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.multiplayer@8d17beeef99f\Editor\Matchmaker\Authoring\Core\Model\PoolName.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.multiplayer@8d17beeef99f\Editor\Matchmaker\Authoring\Core\SyncWithRemote\MatchmakerSyncWithRemoteHandler.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.multiplayer@8d17beeef99f\Editor\Matchmaker\Authoring\Core\Model\EnvironmentConfig.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.multiplayer@8d17beeef99f\Editor\Matchmaker\Authoring\Core\Model\IMatchmakerConfig.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.multiplayer@8d17beeef99f\Editor\Matchmaker\Authoring\Core\Model\ErrorResponse.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.multiplayer@8d17beeef99f\Editor\Matchmaker\Authoring\Core\Parser\IMatchmakerConfigParser.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.multiplayer@8d17beeef99f\Editor\Matchmaker\Authoring\Core\Model\MatchmakerConfigResource.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.multiplayer@8d17beeef99f\Editor\Matchmaker\Authoring\Core\IO\IFileSystem.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.multiplayer@8d17beeef99f\Editor\Matchmaker\Authoring\Core\SyncWithRemote\IMatchmakerSyncWithRemoteHandler.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.multiplayer@8d17beeef99f\Editor\Matchmaker\Authoring\Core\Model\PoolUpdateResult.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.multiplayer@260b2984cde5\Editor\Matchmaker\Authoring\Core\Fetch\IDeepEqualityComparer.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.multiplayer@260b2984cde5\Editor\Matchmaker\Authoring\Core\IO\FileSystemException.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.multiplayer@260b2984cde5\Editor\Matchmaker\Authoring\Core\AssemblyInfo.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.multiplayer@260b2984cde5\Editor\Matchmaker\Authoring\Core\Model\QueueConfig.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.multiplayer@260b2984cde5\Editor\Matchmaker\Authoring\Core\Model\MultiplayResources.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.multiplayer@260b2984cde5\Editor\Matchmaker\Authoring\Core\Model\IResourceName.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.multiplayer@260b2984cde5\Editor\Matchmaker\Authoring\Core\Validation\MatchmakerConfigValidator.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.multiplayer@260b2984cde5\Editor\Matchmaker\Authoring\Core\Model\JsonObject.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.multiplayer@260b2984cde5\Editor\Matchmaker\Authoring\Core\Deploy\MatchmakerDeployHandler.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.multiplayer@260b2984cde5\Editor\Matchmaker\Authoring\Core\ConfigApi\DeploymentStatus.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.multiplayer@260b2984cde5\Editor\Matchmaker\Authoring\Core\Deploy\DeployResult.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.multiplayer@260b2984cde5\Editor\Matchmaker\Authoring\Core\Fetch\MatchmakerFetchHandler.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.multiplayer@260b2984cde5\Editor\Matchmaker\Authoring\Core\ConfigApi\MatchmakerClientException.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.multiplayer@260b2984cde5\Editor\Matchmaker\Authoring\Core\Fetch\IMatchmakerFetchHandler.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.multiplayer@260b2984cde5\Editor\Matchmaker\Authoring\Core\Model\PoolId.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.multiplayer@260b2984cde5\Editor\Matchmaker\Authoring\Core\Model\RuleBasedMatchDefinition.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.multiplayer@260b2984cde5\Editor\Matchmaker\Authoring\Core\ConfigApi\IConfigApiClient.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.multiplayer@260b2984cde5\Editor\Matchmaker\Authoring\Core\Model\QueueId.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.multiplayer@260b2984cde5\Editor\Matchmaker\Authoring\Core\Deploy\IMatchmakerDeployHandler.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.multiplayer@260b2984cde5\Editor\Matchmaker\Authoring\Core\IO\FileSystem.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.multiplayer@260b2984cde5\Editor\Matchmaker\Authoring\Core\Fetch\FetchResult.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.multiplayer@260b2984cde5\Editor\Matchmaker\Authoring\Core\Model\QueueName.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.multiplayer@260b2984cde5\Editor\Matchmaker\Authoring\Core\SyncWithRemote\SyncResult.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.multiplayer@260b2984cde5\Editor\Matchmaker\Authoring\Core\Model\PoolName.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.multiplayer@260b2984cde5\Editor\Matchmaker\Authoring\Core\SyncWithRemote\MatchmakerSyncWithRemoteHandler.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.multiplayer@260b2984cde5\Editor\Matchmaker\Authoring\Core\Model\EnvironmentConfig.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.multiplayer@260b2984cde5\Editor\Matchmaker\Authoring\Core\Model\IMatchmakerConfig.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.multiplayer@260b2984cde5\Editor\Matchmaker\Authoring\Core\Model\ErrorResponse.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.multiplayer@260b2984cde5\Editor\Matchmaker\Authoring\Core\Parser\IMatchmakerConfigParser.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.multiplayer@260b2984cde5\Editor\Matchmaker\Authoring\Core\Model\MatchmakerConfigResource.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.multiplayer@260b2984cde5\Editor\Matchmaker\Authoring\Core\IO\IFileSystem.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.multiplayer@260b2984cde5\Editor\Matchmaker\Authoring\Core\SyncWithRemote\IMatchmakerSyncWithRemoteHandler.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.multiplayer@260b2984cde5\Editor\Matchmaker\Authoring\Core\Model\PoolUpdateResult.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Library\PackageCache\com.unity.services.multiplayer@8d17beeef99f\Editor\Matchmaker\Authoring\Core\Unity.Services.Multiplayer.Editor.Matchmaker.Authoring.Core.asmdef" />
+    <None Include="Library\PackageCache\com.unity.services.multiplayer@260b2984cde5\Editor\Matchmaker\Authoring\Core\Unity.Services.Multiplayer.Editor.Matchmaker.Authoring.Core.asmdef" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="websocket-sharp">
-      <HintPath>Library\PackageCache\com.unity.services.wire@9a73acde80cc\Plugins\websocket-sharp.dll</HintPath>
+      <HintPath>Library\PackageCache\com.unity.services.wire@d50817c0adab\Plugins\websocket-sharp.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Mono.CecilX">
@@ -99,7 +100,7 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.VisualScripting.YamlDotNet">
-      <HintPath>Library\PackageCache\com.unity.visualscripting@eb6004dcc707\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll</HintPath>
+      <HintPath>Library\PackageCache\com.unity.visualscripting@8bed5ad90189\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.Collections.LowLevel.ILSupport">
@@ -127,7 +128,7 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.Plastic.Antlr3.Runtime">
-      <HintPath>Library\PackageCache\com.unity.collab-proxy@3351acaba9c9\Lib\Editor\Unity.Plastic.Antlr3.Runtime.dll</HintPath>
+      <HintPath>Library\PackageCache\com.unity.collab-proxy@a5329f833fa8\Lib\Editor\Unity.Plastic.Antlr3.Runtime.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Mono.CecilX.Rocks">
@@ -135,7 +136,7 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.Plastic.Newtonsoft.Json">
-      <HintPath>Library\PackageCache\com.unity.collab-proxy@3351acaba9c9\Lib\Editor\Unity.Plastic.Newtonsoft.Json.dll</HintPath>
+      <HintPath>Library\PackageCache\com.unity.collab-proxy@a5329f833fa8\Lib\Editor\Unity.Plastic.Newtonsoft.Json.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Google.VersionHandlerImpl">
@@ -143,15 +144,11 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="log4netPlastic">
-      <HintPath>Library\PackageCache\com.unity.collab-proxy@3351acaba9c9\Lib\Editor\log4netPlastic.dll</HintPath>
+      <HintPath>Library\PackageCache\com.unity.collab-proxy@a5329f833fa8\Lib\Editor\log4netPlastic.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.VisualScripting.IonicZip">
-      <HintPath>Library\PackageCache\com.unity.visualscripting@eb6004dcc707\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="unityplastic">
-      <HintPath>Library\PackageCache\com.unity.collab-proxy@3351acaba9c9\Lib\Editor\unityplastic.dll</HintPath>
+      <HintPath>Library\PackageCache\com.unity.visualscripting@8bed5ad90189\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Google.JarResolver">
@@ -162,8 +159,12 @@
       <HintPath>Library\PackageCache\com.unity.collections@aea9d3bd5e19\Unity.Collections.Tests\System.IO.Hashing\System.IO.Hashing.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="unityplastic">
+      <HintPath>Library\PackageCache\com.unity.collab-proxy@a5329f833fa8\Lib\Editor\unityplastic.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="Unity.VisualScripting.Antlr3.Runtime">
-      <HintPath>Library\PackageCache\com.unity.visualscripting@eb6004dcc707\Runtime\VisualScripting.Flow\Dependencies\NCalc\Unity.VisualScripting.Antlr3.Runtime.dll</HintPath>
+      <HintPath>Library\PackageCache\com.unity.visualscripting@8bed5ad90189\Runtime\VisualScripting.Flow\Dependencies\NCalc\Unity.VisualScripting.Antlr3.Runtime.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Google.VersionHandler">
@@ -179,7 +180,7 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.VisualScripting.TextureAssets">
-      <HintPath>Library\PackageCache\com.unity.visualscripting@eb6004dcc707\Editor\VisualScripting.Core\EditorAssetResources\Unity.VisualScripting.TextureAssets.dll</HintPath>
+      <HintPath>Library\PackageCache\com.unity.visualscripting@8bed5ad90189\Editor\VisualScripting.Core\EditorAssetResources\Unity.VisualScripting.TextureAssets.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Mono.Cecil">

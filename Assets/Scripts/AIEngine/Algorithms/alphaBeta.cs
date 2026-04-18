@@ -91,7 +91,8 @@ namespace AIEngine.Algorithms
             // สังเกตว่าผมส่ง null แทน ttMove ในพารามิเตอร์ที่ 3 เพราะเราใช้ previousBest เป็นตัวนำทางใน Root แล้ว
             var moves = MoveGenerator.GenerateMoves(board);
             MoveOrderer.OrderMoves(moves, board, previousBest, GetKillers(0), _historyMoves);
-            int bestScore = int.MinValue;
+            bool isWhiteRoot = board.IsWhiteTurn;
+            int bestScore = isWhiteRoot ? int.MinValue : int.MaxValue;
             List<MoveModel> bestMoves = new List<MoveModel>();
 
             int alpha = int.MinValue;
@@ -111,7 +112,11 @@ namespace AIEngine.Algorithms
                     // เพิ่มพารามิเตอร์ ply = 1 และ settings
                     score = AlphaBetaRecursive(newBoard, depth - 1, alpha, beta, !board.IsWhiteTurn, 1, stopwatch, settings);
 
-                if (score > bestScore)
+                bool isBetter = isWhiteRoot
+                    ? score > bestScore
+                    : score < bestScore;
+
+                if (isBetter)
                 {
                     bestScore = score;
                     bestMoves.Clear();
@@ -122,7 +127,10 @@ namespace AIEngine.Algorithms
                     bestMoves.Add(move);
                 }
 
-                alpha = Math.Max(alpha, bestScore);
+                if (isWhiteRoot)
+                    alpha = Math.Max(alpha, bestScore);
+                else
+                    beta = Math.Min(beta, bestScore);
 
                 if (alpha >= beta)
                     break;
@@ -144,7 +152,8 @@ namespace AIEngine.Algorithms
             _nodesEvaluated++; // นับ node ที่ evaluate
 
             // ✅ timeout -> return alpha (ไม่ใช่ 0)
-            if (stopwatch.Elapsed.TotalMilliseconds > _timeLimitMs) return alpha;
+            if (stopwatch.Elapsed.TotalMilliseconds > _timeLimitMs)
+                return (int)AIEngine.Evaluation.Evaluation.Evaluate(board, settings);
 
             if (board.IsGameOver())
             {
@@ -286,7 +295,8 @@ namespace AIEngine.Algorithms
 
             foreach (var move in captures)
             {
-                if (stopwatch.Elapsed.TotalMilliseconds > _timeLimitMs) return alpha;
+                if (stopwatch.Elapsed.TotalMilliseconds > _timeLimitMs)
+                    return (int)AIEngine.Evaluation.Evaluation.Evaluate(board, settings);
 
                 var newBoard = board.Clone();
                 newBoard.MakeMove(move);

@@ -5,6 +5,7 @@ public class AiPerformanceData
 {
     // --- ส่วนสรุปผลรวม (ตรงกับตาราง ai_performance) ---
     public int GameId;
+    public string AiColor;
     public string AiLevel;
     public string AlgorithmType;
     public float AverageDepth;
@@ -22,6 +23,9 @@ public class AiPerformanceData
     {
         // ไม่มีเกม → ไม่ส่ง
         if (GameId <= 0)
+            return false;
+
+        if (string.IsNullOrEmpty(AiColor))
             return false;
 
         // ไม่ใช่ AI → ไม่ส่ง

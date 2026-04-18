@@ -8,6 +8,7 @@
   <Project Path="Unity.Mathematics.csproj" />
   <Project Path="Unity.Multiplayer.Center.Editor.csproj" />
   <Project Path="Unity.2D.Psdimporter.Editor.csproj" />
+  <Project Path="Unity.TerrainTools.Editor.csproj" />
   <Project Path="Unity.InferenceEngine.Microsoft.Msagl.csproj" />
   <Project Path="Unity.VisualScripting.Core.Editor.csproj" />
   <Project Path="Unity.PerformanceTesting.Editor.csproj" />
@@ -27,7 +28,6 @@
   <Project Path="Mirror.Editor.csproj" />
   <Project Path="Unity.Services.QoS.csproj" />
   <Project Path="Unity.InferenceEngine.csproj" />
-  <Project Path="Unity.InferenceEngine.Editor.Visualizer.csproj" />
   <Project Path="Unity.2D.SpriteShape.Editor.csproj" />
   <Project Path="UnityEngine.UI.csproj" />
   <Project Path="Unity.Services.Authentication.Editor.csproj" />
@@ -37,10 +37,12 @@
   <Project Path="Unity.AssetManager.UI.Editor.csproj" />
   <Project Path="Unity.Services.Wire.Internal.csproj" />
   <Project Path="Unity.2D.SpriteShape.Runtime.csproj" />
+  <Project Path="Unity.InferenceEngine.Tokenization.csproj" />
   <Project Path="Unity.VisualScripting.Core.csproj" />
   <Project Path="Unity.Services.Core.Environments.Editor.csproj" />
-  <Project Path="Mirror.Examples.csproj" />
+  <Project Path="Unity.InferenceEngine.Editor.csproj" />
   <Project Path="UnityEditor.TestRunner.csproj" />
+  <Project Path="Mirror.Examples.csproj" />
   <Project Path="Unity.AssetManager.Core.Editor.csproj" />
   <Project Path="Unity.Services.Deployment.Core.csproj" />
   <Project Path="unity-websocket-sharp.csproj" />
@@ -55,11 +57,9 @@
   <Project Path="Unity.PerformanceTesting.csproj" />
   <Project Path="Unity.Purchasing.Stores.csproj" />
   <Project Path="Unity.AI.Image.csproj" />
-  <Project Path="Unity.InferenceEngine.Editor.csproj" />
   <Project Path="Unity.TextMeshPro.csproj" />
   <Project Path="UnityEditor.Purchasing.csproj" />
   <Project Path="Unity.AppUI.Navigation.Editor.csproj" />
-  <Project Path="Unity.InferenceEngine.Tokenization.csproj" />
   <Project Path="PsdPlugin.csproj" />
   <Project Path="Unity.2D.IK.Editor.csproj" />
   <Project Path="Unity.2D.Common.Editor.csproj" />
@@ -70,7 +70,6 @@
   <Project Path="Unity.Mirror.CodeGen.csproj" />
   <Project Path="Unity.InternalAPIEditorBridge.001.csproj" />
   <Project Path="SimpleWebTransport.csproj" />
-  <Project Path="Unity.AI.Navigation.Updater.csproj" />
   <Project Path="Unity.VisualScripting.State.Editor.csproj" />
   <Project Path="Unity.2D.Tooling.Editor.csproj" />
   <Project Path="Unity.AppUI.Redux.csproj" />
@@ -87,7 +86,6 @@
   <Project Path="Unity.Cloud.Common.Embedded.csproj" />
   <Project Path="kcp2k.csproj" />
   <Project Path="Mirror.Transports.csproj" />
-  <Project Path="Unity.AI.Navigation.Editor.csproj" />
   <Project Path="Unity.AdaptivePerformance.csproj" />
   <Project Path="Unity.Services.Core.Editor.csproj" />
   <Project Path="Unity.Timeline.csproj" />
@@ -123,10 +121,8 @@
   <Project Path="Unity.Purchasing.Utilities.csproj" />
   <Project Path="Unity.Services.Core.Telemetry.csproj" />
   <Project Path="Unity.Settings.Editor.csproj" />
-  <Project Path="Unity.CollabProxy.Editor.csproj" />
   <Project Path="Unity.Services.Deployment.Editor.Shared.csproj" />
   <Project Path="Unity.VisualScripting.Shared.Editor.csproj" />
-  <Project Path="Unity.AI.Navigation.Editor.ConversionSystem.csproj" />
   <Project Path="Unity.AppUI.Redux.Editor.csproj" />
   <Project Path="Unity.AI.Toolkit.Compliance.csproj" />
   <Project Path="Unity.2D.Aseprite.Common.csproj" />
@@ -134,7 +130,7 @@
   <Project Path="Unity.AppUI.Undo.csproj" />
   <Project Path="Unity.Services.Core.Analytics.csproj" />
   <Project Path="Unity.AI.Generators.Contexts.csproj" />
-  <Project Path="Unity.AI.Navigation.csproj" />
+  <Project Path="Unity.InferenceEngine.Editor.Visualizer.csproj" />
   <Project Path="Unity.AI.Generators.Asset.csproj" />
   <Project Path="Unity.Purchasing.SecurityStub.csproj" />
   <Project Path="Unity.AI.Generators.Chat.csproj" />
@@ -142,8 +138,11 @@
   <Project Path="Unity.AI.Toolkit.Async.csproj" />
   <Project Path="Unity.Services.Core.csproj" />
   <Project Path="UnityEditor.XR.LegacyInputHelpers.csproj" />
+  <Project Path="Unity.CollabProxy.Editor.csproj" />
+  <Project Path="Unity.TerrainTools.csproj" />
   <Project Path="IAPResolver.csproj" />
   <Project Path="Unity.AssetManager.Upload.Editor.csproj" />
+  <Project Path="Unity.Services.Multiplayer.Editor.csproj" />
   <Project Path="Unity.Services.DeploymentApi.csproj" />
   <Project Path="Unity.Cloud.Identity.Editor.Embedded.csproj" />
   <Project Path="Unity.Cloud.AppLinking.Embedded.csproj" />
@@ -178,7 +177,6 @@
   <Project Path="Unity.Services.Core.Networking.csproj" />
   <Project Path="Unity.Collections.Editor.csproj" />
   <Project Path="Unity.VisualScripting.DocCodeExamples.csproj" />
-  <Project Path="Unity.Services.Multiplayer.Editor.csproj" />
   <Project Path="Unity.Services.Core.Environments.csproj" />
   <Project Path="Unity.InternalAPIEngineBridge.001.csproj" />
   <Project Path="Unity.Purchasing.AppleMacosStub.csproj" />

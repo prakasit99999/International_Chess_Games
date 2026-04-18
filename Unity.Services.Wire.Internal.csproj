@@ -49,43 +49,44 @@
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\Tools\BuildPipeline\Unity.SourceGenerators\Unity.UIToolkit.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Library\PackageCache\com.unity.services.wire@9a73acde80cc\Runtime\Centrifuge\ProtocolSchema\ConnectRequest.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.wire@9a73acde80cc\Runtime\Centrifuge\BatchMessagesUtil.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.wire@9a73acde80cc\Runtime\Centrifuge\ProtocolSchema\Error.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.wire@9a73acde80cc\Runtime\Centrifuge\Client.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.wire@9a73acde80cc\Runtime\Centrifuge\ProtocolSchema\Push.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.wire@9a73acde80cc\Runtime\Centrifuge\ProtocolSchema\CentrifugeErrorCode.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.wire@9a73acde80cc\Runtime\Centrifuge\ProtocolSchema\Unsubscribe.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.wire@9a73acde80cc\Runtime\Centrifuge\ProtocolSchema\Command.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.wire@9a73acde80cc\Runtime\Centrifuge\ProtocolSchema\PingRequest.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.wire@9a73acde80cc\Runtime\Centrifuge\ProtocolSchema\Reply.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.wire@9a73acde80cc\Runtime\Centrifuge\ProtocolSchema\PingResult.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.wire@9a73acde80cc\Runtime\Centrifuge\CommandManager.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.wire@9a73acde80cc\Runtime\Centrifuge\ConcurrentDictSubscriptionRepository.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.wire@9a73acde80cc\Runtime\Utils\NetworkUtility.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.wire@9a73acde80cc\Runtime\IWebsocketFactory.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.wire@9a73acde80cc\Runtime\Centrifuge\ProtocolSchema\CommandID.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.wire@9a73acde80cc\Runtime\Centrifuge\ProtocolSchema\SubscribeResult.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.wire@9a73acde80cc\Runtime\Utils\BackoffStrategy.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.wire@9a73acde80cc\Runtime\Utils\Logger.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.wire@9a73acde80cc\Runtime\AssemblyInfo.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.wire@9a73acde80cc\Runtime\Exceptions\WireExceptions.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.wire@9a73acde80cc\Runtime\Centrifuge\WireMessage.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.wire@9a73acde80cc\Runtime\Centrifuge\ProtocolSchema\Publication.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.wire@9a73acde80cc\Runtime\Centrifuge\Subscription.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.wire@9a73acde80cc\Runtime\Centrifuge\ProtocolSchema\ConnectResult.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.wire@9a73acde80cc\Runtime\Centrifuge\ProtocolSchema\ClientInfo.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.wire@9a73acde80cc\Runtime\WebSocket.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.wire@9a73acde80cc\Runtime\WireServiceProvider.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.wire@9a73acde80cc\Runtime\Configuration.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.wire@9a73acde80cc\Runtime\Centrifuge\ProtocolSchema\UnsubscribeResult.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.wire@9a73acde80cc\Runtime\Centrifuge\ProtocolSchema\UnsubscribeRequest.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.wire@9a73acde80cc\Runtime\WireErrorCode.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.wire@9a73acde80cc\Runtime\Centrifuge\ProtocolSchema\SubscribeRequest.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.wire@9a73acde80cc\Runtime\Centrifuge\CentrifugeCloseCode.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.wire@d50817c0adab\Runtime\Centrifuge\ProtocolSchema\ConnectRequest.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.wire@d50817c0adab\Runtime\Centrifuge\BatchMessagesUtil.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.wire@d50817c0adab\Runtime\Centrifuge\ProtocolSchema\Error.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.wire@d50817c0adab\Runtime\Centrifuge\Client.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.wire@d50817c0adab\Runtime\Centrifuge\ProtocolSchema\Push.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.wire@d50817c0adab\Runtime\Centrifuge\ProtocolSchema\CentrifugeErrorCode.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.wire@d50817c0adab\Runtime\Centrifuge\ProtocolSchema\Unsubscribe.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.wire@d50817c0adab\Runtime\Centrifuge\ProtocolSchema\Command.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.wire@d50817c0adab\Runtime\Centrifuge\ProtocolSchema\PingRequest.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.wire@d50817c0adab\Runtime\Centrifuge\ProtocolSchema\Reply.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.wire@d50817c0adab\Runtime\Centrifuge\ProtocolSchema\PingResult.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.wire@d50817c0adab\Runtime\Centrifuge\CommandManager.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.wire@d50817c0adab\Runtime\Centrifuge\ConcurrentDictSubscriptionRepository.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.wire@d50817c0adab\Runtime\Utils\NetworkUtility.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.wire@d50817c0adab\Runtime\IWebsocketFactory.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.wire@d50817c0adab\Runtime\Centrifuge\ProtocolSchema\CommandID.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.wire@d50817c0adab\Runtime\Centrifuge\ProtocolSchema\SubscribeResult.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.wire@d50817c0adab\Runtime\Utils\BackoffStrategy.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.wire@d50817c0adab\Runtime\Utils\Logger.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.wire@d50817c0adab\Runtime\AssemblyInfo.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.wire@d50817c0adab\Runtime\Exceptions\WireExceptions.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.wire@d50817c0adab\Runtime\Centrifuge\WireMessage.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.wire@d50817c0adab\Runtime\Centrifuge\ProtocolSchema\Publication.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.wire@d50817c0adab\Runtime\Centrifuge\Subscription.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.wire@d50817c0adab\Runtime\Centrifuge\ProtocolSchema\ConnectResult.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.wire@d50817c0adab\Runtime\Centrifuge\ProtocolSchema\ClientInfo.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.wire@d50817c0adab\Runtime\WebSocket.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.wire@d50817c0adab\Runtime\WireServiceProvider.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.wire@d50817c0adab\Runtime\Configuration.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.wire@d50817c0adab\Runtime\Utils\MaskedTokenConverter.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.wire@d50817c0adab\Runtime\Centrifuge\ProtocolSchema\UnsubscribeResult.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.wire@d50817c0adab\Runtime\Centrifuge\ProtocolSchema\UnsubscribeRequest.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.wire@d50817c0adab\Runtime\WireErrorCode.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.wire@d50817c0adab\Runtime\Centrifuge\ProtocolSchema\SubscribeRequest.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.wire@d50817c0adab\Runtime\Centrifuge\CentrifugeCloseCode.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Library\PackageCache\com.unity.services.wire@9a73acde80cc\Runtime\Unity.Services.Wire.Internal.asmdef" />
+    <None Include="Library\PackageCache\com.unity.services.wire@d50817c0adab\Runtime\Unity.Services.Wire.Internal.asmdef" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
@@ -621,7 +622,7 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="websocket-sharp">
-      <HintPath>Library\PackageCache\com.unity.services.wire@9a73acde80cc\Plugins\websocket-sharp.dll</HintPath>
+      <HintPath>Library\PackageCache\com.unity.services.wire@d50817c0adab\Plugins\websocket-sharp.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Mono.CecilX">
@@ -633,7 +634,7 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.VisualScripting.YamlDotNet">
-      <HintPath>Library\PackageCache\com.unity.visualscripting@eb6004dcc707\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll</HintPath>
+      <HintPath>Library\PackageCache\com.unity.visualscripting@8bed5ad90189\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.Collections.LowLevel.ILSupport">
@@ -661,7 +662,7 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.Plastic.Antlr3.Runtime">
-      <HintPath>Library\PackageCache\com.unity.collab-proxy@3351acaba9c9\Lib\Editor\Unity.Plastic.Antlr3.Runtime.dll</HintPath>
+      <HintPath>Library\PackageCache\com.unity.collab-proxy@a5329f833fa8\Lib\Editor\Unity.Plastic.Antlr3.Runtime.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Mono.CecilX.Rocks">
@@ -669,7 +670,7 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.Plastic.Newtonsoft.Json">
-      <HintPath>Library\PackageCache\com.unity.collab-proxy@3351acaba9c9\Lib\Editor\Unity.Plastic.Newtonsoft.Json.dll</HintPath>
+      <HintPath>Library\PackageCache\com.unity.collab-proxy@a5329f833fa8\Lib\Editor\Unity.Plastic.Newtonsoft.Json.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Google.VersionHandlerImpl">
@@ -677,15 +678,11 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="log4netPlastic">
-      <HintPath>Library\PackageCache\com.unity.collab-proxy@3351acaba9c9\Lib\Editor\log4netPlastic.dll</HintPath>
+      <HintPath>Library\PackageCache\com.unity.collab-proxy@a5329f833fa8\Lib\Editor\log4netPlastic.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.VisualScripting.IonicZip">
-      <HintPath>Library\PackageCache\com.unity.visualscripting@eb6004dcc707\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="unityplastic">
-      <HintPath>Library\PackageCache\com.unity.collab-proxy@3351acaba9c9\Lib\Editor\unityplastic.dll</HintPath>
+      <HintPath>Library\PackageCache\com.unity.visualscripting@8bed5ad90189\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Google.JarResolver">
@@ -696,8 +693,12 @@
       <HintPath>Library\PackageCache\com.unity.collections@aea9d3bd5e19\Unity.Collections.Tests\System.IO.Hashing\System.IO.Hashing.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="unityplastic">
+      <HintPath>Library\PackageCache\com.unity.collab-proxy@a5329f833fa8\Lib\Editor\unityplastic.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="Unity.VisualScripting.Antlr3.Runtime">
-      <HintPath>Library\PackageCache\com.unity.visualscripting@eb6004dcc707\Runtime\VisualScripting.Flow\Dependencies\NCalc\Unity.VisualScripting.Antlr3.Runtime.dll</HintPath>
+      <HintPath>Library\PackageCache\com.unity.visualscripting@8bed5ad90189\Runtime\VisualScripting.Flow\Dependencies\NCalc\Unity.VisualScripting.Antlr3.Runtime.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Google.VersionHandler">
@@ -713,7 +714,7 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.VisualScripting.TextureAssets">
-      <HintPath>Library\PackageCache\com.unity.visualscripting@eb6004dcc707\Editor\VisualScripting.Core\EditorAssetResources\Unity.VisualScripting.TextureAssets.dll</HintPath>
+      <HintPath>Library\PackageCache\com.unity.visualscripting@8bed5ad90189\Editor\VisualScripting.Core\EditorAssetResources\Unity.VisualScripting.TextureAssets.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Mono.Cecil">

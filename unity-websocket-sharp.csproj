@@ -49,86 +49,86 @@
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\Tools\BuildPipeline\Unity.SourceGenerators\Unity.UIToolkit.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Library\PackageCache\com.unity.services.wire@9a73acde80cc\Runtime\websocket-sharp\Server\WebSocketServer.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.wire@9a73acde80cc\Runtime\websocket-sharp\Net\HttpConnection.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.wire@9a73acde80cc\Runtime\websocket-sharp\Server\HttpServer.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.wire@9a73acde80cc\Runtime\websocket-sharp\Net\HttpListenerPrefixCollection.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.wire@9a73acde80cc\Runtime\websocket-sharp\Net\InputState.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.wire@9a73acde80cc\Runtime\websocket-sharp\Net\ChunkedRequestStream.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.wire@9a73acde80cc\Runtime\websocket-sharp\Net\HttpListenerRequest.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.wire@9a73acde80cc\Runtime\websocket-sharp\Net\ResponseStream.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.wire@9a73acde80cc\Runtime\websocket-sharp\Net\HttpListenerPrefix.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.wire@9a73acde80cc\Runtime\websocket-sharp\MessageEventArgs.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.wire@9a73acde80cc\Runtime\websocket-sharp\Server\WebSocketBehavior.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.wire@9a73acde80cc\Runtime\websocket-sharp\Server\ServerState.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.wire@9a73acde80cc\Runtime\websocket-sharp\HttpResponse.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.wire@9a73acde80cc\Runtime\websocket-sharp\Ext.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.wire@9a73acde80cc\Runtime\websocket-sharp\Net\CookieException.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.wire@9a73acde80cc\Runtime\websocket-sharp\Net\RequestStream.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.wire@9a73acde80cc\Runtime\websocket-sharp\ByteOrder.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.wire@9a73acde80cc\Runtime\websocket-sharp\Net\HttpStreamAsyncResult.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.wire@9a73acde80cc\Runtime\websocket-sharp\HttpBase.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.wire@9a73acde80cc\Runtime\websocket-sharp\Net\Chunk.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.wire@9a73acde80cc\Runtime\websocket-sharp\Net\Cookie.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.wire@9a73acde80cc\Runtime\websocket-sharp\Net\EndPointManager.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.wire@9a73acde80cc\Runtime\websocket-sharp\Rsv.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.wire@9a73acde80cc\Runtime\websocket-sharp\Net\CookieCollection.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.wire@9a73acde80cc\Runtime\websocket-sharp\Net\HttpBasicIdentity.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.wire@9a73acde80cc\Runtime\websocket-sharp\Opcode.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.wire@9a73acde80cc\Runtime\websocket-sharp\Net\HttpStatusCode.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.wire@9a73acde80cc\Runtime\websocket-sharp\Server\HttpRequestEventArgs.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.wire@9a73acde80cc\Runtime\websocket-sharp\Net\HttpListenerAsyncResult.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.wire@9a73acde80cc\Runtime\websocket-sharp\HttpRequest.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.wire@9a73acde80cc\Runtime\websocket-sharp\Net\AuthenticationChallenge.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.wire@9a73acde80cc\Runtime\websocket-sharp\Mask.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.wire@9a73acde80cc\Runtime\websocket-sharp\Net\AuthenticationSchemes.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.wire@9a73acde80cc\Runtime\websocket-sharp\CompressionMethod.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.wire@9a73acde80cc\Runtime\websocket-sharp\Net\WebSockets\TcpListenerWebSocketContext.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.wire@9a73acde80cc\Runtime\websocket-sharp\WebSocket.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.wire@9a73acde80cc\Runtime\websocket-sharp\Net\HttpRequestHeader.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.wire@9a73acde80cc\Runtime\websocket-sharp\WebSocketFrame.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.wire@9a73acde80cc\Runtime\websocket-sharp\Net\HttpListener.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.wire@9a73acde80cc\Runtime\websocket-sharp\ErrorEventArgs.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.wire@9a73acde80cc\Runtime\websocket-sharp\Net\WebSockets\WebSocketContext.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.wire@9a73acde80cc\Runtime\websocket-sharp\Net\ReadBufferState.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.wire@9a73acde80cc\Runtime\websocket-sharp\Server\IWebSocketSession.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.wire@9a73acde80cc\Runtime\websocket-sharp\Net\NetworkCredential.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.wire@9a73acde80cc\Runtime\websocket-sharp\WebSocketState.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.wire@9a73acde80cc\Runtime\websocket-sharp\Net\HttpListenerResponse.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.wire@9a73acde80cc\Runtime\websocket-sharp\CloseEventArgs.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.wire@9a73acde80cc\Runtime\websocket-sharp\WebSocketException.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.wire@9a73acde80cc\Runtime\websocket-sharp\Logger.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.wire@9a73acde80cc\Runtime\websocket-sharp\Net\HttpHeaderInfo.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.wire@9a73acde80cc\Runtime\websocket-sharp\Net\ServerSslConfiguration.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.wire@9a73acde80cc\Runtime\websocket-sharp\Net\HttpResponseHeader.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.wire@9a73acde80cc\Runtime\websocket-sharp\Net\QueryStringCollection.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.wire@9a73acde80cc\Runtime\websocket-sharp\LogData.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.wire@9a73acde80cc\Runtime\websocket-sharp\Net\HttpHeaderType.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.wire@9a73acde80cc\Runtime\websocket-sharp\Net\HttpListenerContext.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.wire@9a73acde80cc\Runtime\websocket-sharp\CloseStatusCode.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.wire@9a73acde80cc\Runtime\websocket-sharp\Net\EndPointListener.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.wire@9a73acde80cc\Runtime\websocket-sharp\PayloadData.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.wire@9a73acde80cc\Runtime\websocket-sharp\Server\WebSocketSessionManager.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.wire@9a73acde80cc\Runtime\websocket-sharp\Net\HttpDigestIdentity.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.wire@9a73acde80cc\Runtime\websocket-sharp\AssemblyInfo.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.wire@9a73acde80cc\Runtime\websocket-sharp\Net\HttpListenerException.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.wire@9a73acde80cc\Runtime\websocket-sharp\Net\WebHeaderCollection.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.wire@9a73acde80cc\Runtime\websocket-sharp\Net\AuthenticationResponse.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.wire@9a73acde80cc\Runtime\websocket-sharp\Server\WebSocketServiceManager.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.wire@9a73acde80cc\Runtime\websocket-sharp\Fin.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.wire@9a73acde80cc\Runtime\websocket-sharp\Net\ChunkStream.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.wire@9a73acde80cc\Runtime\websocket-sharp\Net\HttpUtility.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.wire@9a73acde80cc\Runtime\websocket-sharp\LogLevel.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.wire@9a73acde80cc\Runtime\websocket-sharp\Server\WebSocketServiceHost`1.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.wire@9a73acde80cc\Runtime\websocket-sharp\Net\InputChunkState.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.wire@9a73acde80cc\Runtime\websocket-sharp\Server\WebSocketServiceHost.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.wire@9a73acde80cc\Runtime\websocket-sharp\Net\ClientSslConfiguration.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.wire@9a73acde80cc\Runtime\websocket-sharp\Net\WebSockets\HttpListenerWebSocketContext.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.wire@9a73acde80cc\Runtime\websocket-sharp\Net\LineState.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.wire@9a73acde80cc\Runtime\websocket-sharp\Net\HttpVersion.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.wire@d50817c0adab\Runtime\websocket-sharp\Server\WebSocketServer.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.wire@d50817c0adab\Runtime\websocket-sharp\Net\HttpConnection.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.wire@d50817c0adab\Runtime\websocket-sharp\Server\HttpServer.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.wire@d50817c0adab\Runtime\websocket-sharp\Net\HttpListenerPrefixCollection.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.wire@d50817c0adab\Runtime\websocket-sharp\Net\InputState.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.wire@d50817c0adab\Runtime\websocket-sharp\Net\ChunkedRequestStream.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.wire@d50817c0adab\Runtime\websocket-sharp\Net\HttpListenerRequest.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.wire@d50817c0adab\Runtime\websocket-sharp\Net\ResponseStream.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.wire@d50817c0adab\Runtime\websocket-sharp\Net\HttpListenerPrefix.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.wire@d50817c0adab\Runtime\websocket-sharp\MessageEventArgs.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.wire@d50817c0adab\Runtime\websocket-sharp\Server\WebSocketBehavior.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.wire@d50817c0adab\Runtime\websocket-sharp\Server\ServerState.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.wire@d50817c0adab\Runtime\websocket-sharp\HttpResponse.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.wire@d50817c0adab\Runtime\websocket-sharp\Ext.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.wire@d50817c0adab\Runtime\websocket-sharp\Net\CookieException.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.wire@d50817c0adab\Runtime\websocket-sharp\Net\RequestStream.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.wire@d50817c0adab\Runtime\websocket-sharp\ByteOrder.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.wire@d50817c0adab\Runtime\websocket-sharp\Net\HttpStreamAsyncResult.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.wire@d50817c0adab\Runtime\websocket-sharp\HttpBase.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.wire@d50817c0adab\Runtime\websocket-sharp\Net\Chunk.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.wire@d50817c0adab\Runtime\websocket-sharp\Net\Cookie.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.wire@d50817c0adab\Runtime\websocket-sharp\Net\EndPointManager.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.wire@d50817c0adab\Runtime\websocket-sharp\Rsv.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.wire@d50817c0adab\Runtime\websocket-sharp\Net\CookieCollection.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.wire@d50817c0adab\Runtime\websocket-sharp\Net\HttpBasicIdentity.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.wire@d50817c0adab\Runtime\websocket-sharp\Opcode.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.wire@d50817c0adab\Runtime\websocket-sharp\Net\HttpStatusCode.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.wire@d50817c0adab\Runtime\websocket-sharp\Server\HttpRequestEventArgs.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.wire@d50817c0adab\Runtime\websocket-sharp\Net\HttpListenerAsyncResult.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.wire@d50817c0adab\Runtime\websocket-sharp\HttpRequest.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.wire@d50817c0adab\Runtime\websocket-sharp\Net\AuthenticationChallenge.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.wire@d50817c0adab\Runtime\websocket-sharp\Mask.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.wire@d50817c0adab\Runtime\websocket-sharp\Net\AuthenticationSchemes.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.wire@d50817c0adab\Runtime\websocket-sharp\CompressionMethod.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.wire@d50817c0adab\Runtime\websocket-sharp\Net\WebSockets\TcpListenerWebSocketContext.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.wire@d50817c0adab\Runtime\websocket-sharp\WebSocket.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.wire@d50817c0adab\Runtime\websocket-sharp\Net\HttpRequestHeader.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.wire@d50817c0adab\Runtime\websocket-sharp\WebSocketFrame.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.wire@d50817c0adab\Runtime\websocket-sharp\Net\HttpListener.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.wire@d50817c0adab\Runtime\websocket-sharp\ErrorEventArgs.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.wire@d50817c0adab\Runtime\websocket-sharp\Net\WebSockets\WebSocketContext.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.wire@d50817c0adab\Runtime\websocket-sharp\Net\ReadBufferState.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.wire@d50817c0adab\Runtime\websocket-sharp\Server\IWebSocketSession.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.wire@d50817c0adab\Runtime\websocket-sharp\Net\NetworkCredential.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.wire@d50817c0adab\Runtime\websocket-sharp\WebSocketState.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.wire@d50817c0adab\Runtime\websocket-sharp\Net\HttpListenerResponse.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.wire@d50817c0adab\Runtime\websocket-sharp\CloseEventArgs.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.wire@d50817c0adab\Runtime\websocket-sharp\WebSocketException.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.wire@d50817c0adab\Runtime\websocket-sharp\Logger.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.wire@d50817c0adab\Runtime\websocket-sharp\Net\HttpHeaderInfo.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.wire@d50817c0adab\Runtime\websocket-sharp\Net\ServerSslConfiguration.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.wire@d50817c0adab\Runtime\websocket-sharp\Net\HttpResponseHeader.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.wire@d50817c0adab\Runtime\websocket-sharp\Net\QueryStringCollection.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.wire@d50817c0adab\Runtime\websocket-sharp\LogData.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.wire@d50817c0adab\Runtime\websocket-sharp\Net\HttpHeaderType.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.wire@d50817c0adab\Runtime\websocket-sharp\Net\HttpListenerContext.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.wire@d50817c0adab\Runtime\websocket-sharp\CloseStatusCode.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.wire@d50817c0adab\Runtime\websocket-sharp\Net\EndPointListener.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.wire@d50817c0adab\Runtime\websocket-sharp\PayloadData.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.wire@d50817c0adab\Runtime\websocket-sharp\Server\WebSocketSessionManager.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.wire@d50817c0adab\Runtime\websocket-sharp\Net\HttpDigestIdentity.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.wire@d50817c0adab\Runtime\websocket-sharp\AssemblyInfo.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.wire@d50817c0adab\Runtime\websocket-sharp\Net\HttpListenerException.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.wire@d50817c0adab\Runtime\websocket-sharp\Net\WebHeaderCollection.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.wire@d50817c0adab\Runtime\websocket-sharp\Net\AuthenticationResponse.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.wire@d50817c0adab\Runtime\websocket-sharp\Server\WebSocketServiceManager.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.wire@d50817c0adab\Runtime\websocket-sharp\Fin.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.wire@d50817c0adab\Runtime\websocket-sharp\Net\ChunkStream.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.wire@d50817c0adab\Runtime\websocket-sharp\Net\HttpUtility.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.wire@d50817c0adab\Runtime\websocket-sharp\LogLevel.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.wire@d50817c0adab\Runtime\websocket-sharp\Server\WebSocketServiceHost`1.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.wire@d50817c0adab\Runtime\websocket-sharp\Net\InputChunkState.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.wire@d50817c0adab\Runtime\websocket-sharp\Server\WebSocketServiceHost.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.wire@d50817c0adab\Runtime\websocket-sharp\Net\ClientSslConfiguration.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.wire@d50817c0adab\Runtime\websocket-sharp\Net\WebSockets\HttpListenerWebSocketContext.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.wire@d50817c0adab\Runtime\websocket-sharp\Net\LineState.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.wire@d50817c0adab\Runtime\websocket-sharp\Net\HttpVersion.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Library\PackageCache\com.unity.services.wire@9a73acde80cc\Runtime\websocket-sharp\unity-websocket-sharp.asmdef" />
+    <None Include="Library\PackageCache\com.unity.services.wire@d50817c0adab\Runtime\websocket-sharp\unity-websocket-sharp.asmdef" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
@@ -664,7 +664,7 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="websocket-sharp">
-      <HintPath>Library\PackageCache\com.unity.services.wire@9a73acde80cc\Plugins\websocket-sharp.dll</HintPath>
+      <HintPath>Library\PackageCache\com.unity.services.wire@d50817c0adab\Plugins\websocket-sharp.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Mono.CecilX">
@@ -676,7 +676,7 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.VisualScripting.YamlDotNet">
-      <HintPath>Library\PackageCache\com.unity.visualscripting@eb6004dcc707\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll</HintPath>
+      <HintPath>Library\PackageCache\com.unity.visualscripting@8bed5ad90189\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.Collections.LowLevel.ILSupport">
@@ -704,7 +704,7 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.Plastic.Antlr3.Runtime">
-      <HintPath>Library\PackageCache\com.unity.collab-proxy@3351acaba9c9\Lib\Editor\Unity.Plastic.Antlr3.Runtime.dll</HintPath>
+      <HintPath>Library\PackageCache\com.unity.collab-proxy@a5329f833fa8\Lib\Editor\Unity.Plastic.Antlr3.Runtime.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Mono.CecilX.Rocks">
@@ -712,7 +712,7 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.Plastic.Newtonsoft.Json">
-      <HintPath>Library\PackageCache\com.unity.collab-proxy@3351acaba9c9\Lib\Editor\Unity.Plastic.Newtonsoft.Json.dll</HintPath>
+      <HintPath>Library\PackageCache\com.unity.collab-proxy@a5329f833fa8\Lib\Editor\Unity.Plastic.Newtonsoft.Json.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Google.VersionHandlerImpl">
@@ -720,15 +720,11 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="log4netPlastic">
-      <HintPath>Library\PackageCache\com.unity.collab-proxy@3351acaba9c9\Lib\Editor\log4netPlastic.dll</HintPath>
+      <HintPath>Library\PackageCache\com.unity.collab-proxy@a5329f833fa8\Lib\Editor\log4netPlastic.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.VisualScripting.IonicZip">
-      <HintPath>Library\PackageCache\com.unity.visualscripting@eb6004dcc707\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="unityplastic">
-      <HintPath>Library\PackageCache\com.unity.collab-proxy@3351acaba9c9\Lib\Editor\unityplastic.dll</HintPath>
+      <HintPath>Library\PackageCache\com.unity.visualscripting@8bed5ad90189\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Google.JarResolver">
@@ -739,8 +735,12 @@
       <HintPath>Library\PackageCache\com.unity.collections@aea9d3bd5e19\Unity.Collections.Tests\System.IO.Hashing\System.IO.Hashing.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="unityplastic">
+      <HintPath>Library\PackageCache\com.unity.collab-proxy@a5329f833fa8\Lib\Editor\unityplastic.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="Unity.VisualScripting.Antlr3.Runtime">
-      <HintPath>Library\PackageCache\com.unity.visualscripting@eb6004dcc707\Runtime\VisualScripting.Flow\Dependencies\NCalc\Unity.VisualScripting.Antlr3.Runtime.dll</HintPath>
+      <HintPath>Library\PackageCache\com.unity.visualscripting@8bed5ad90189\Runtime\VisualScripting.Flow\Dependencies\NCalc\Unity.VisualScripting.Antlr3.Runtime.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Google.VersionHandler">
@@ -756,7 +756,7 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.VisualScripting.TextureAssets">
-      <HintPath>Library\PackageCache\com.unity.visualscripting@eb6004dcc707\Editor\VisualScripting.Core\EditorAssetResources\Unity.VisualScripting.TextureAssets.dll</HintPath>
+      <HintPath>Library\PackageCache\com.unity.visualscripting@8bed5ad90189\Editor\VisualScripting.Core\EditorAssetResources\Unity.VisualScripting.TextureAssets.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Mono.Cecil">

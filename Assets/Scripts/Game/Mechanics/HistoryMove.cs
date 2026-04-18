@@ -35,6 +35,7 @@ public class HistoryMove : MonoBehaviour
         public int depth;
         public int nodes;
         public int moveTimeMs;
+        public string algorithmType;
 
         public HistoryMoveData(Vector2Int start, Vector2Int end, ChessPiece.PieceType piece,
                                ChessPiece.PieceType captured, ChessPiece.Team capturedTeam,
@@ -42,7 +43,7 @@ public class HistoryMove : MonoBehaviour
                                bool check, bool isPawnTwoStep, bool pieceHasMovedBefore,
                                Vector2Int capturedPiecePosition, ChessPiece.PieceType promotedFrom,
                                Vector2Int promotedPosition, Vector2Int? previousEnPassantTarget, bool isCapture,
-                               ChessPiece.Team team, int fiftyMoveCounter, int aiScore = 0, int aiDepth = 0, int aiNodes = 0, int aiTime = 0
+                               ChessPiece.Team team, int fiftyMoveCounter, int aiScore = 0, int aiDepth = 0, int aiNodes = 0, int aiTime = 0, string aiAlgorithmType = null
         )
         {
             startPosition = start;
@@ -68,6 +69,7 @@ public class HistoryMove : MonoBehaviour
             this.depth = aiDepth;
             this.nodes = aiNodes;
             this.moveTimeMs = aiTime;
+            this.algorithmType = aiAlgorithmType;
         }
 
     }
@@ -87,7 +89,7 @@ public class HistoryMove : MonoBehaviour
       Vector2Int promotedPosition,
       Vector2Int? previousEnPassantTarget,
       ChessPiece.Team team, int fiftyMoveCounter,
-      int aiScore, int aiDepth, int aiNodes, int aiTime
+      int aiScore, int aiDepth, int aiNodes, int aiTime, string aiAlgorithmType = null
   )
     {
         HistoryMoveData move = new HistoryMoveData(
@@ -96,7 +98,7 @@ public class HistoryMove : MonoBehaviour
             isPawnTwoStep, pieceHasMovedBefore, capturedPiecePosition,
             promotedFrom, promotedPosition, previousEnPassantTarget,
             isCapture, team, fiftyMoveCounter,
-            aiScore, aiDepth, aiNodes, aiTime
+            aiScore, aiDepth, aiNodes, aiTime, aiAlgorithmType
         );
 
         moveHistory.Push(move);
@@ -106,7 +108,7 @@ public class HistoryMove : MonoBehaviour
                    $"isEnPassant={move.isEnPassant}, promotedTo={move.promotedTo}, isCheck={move.isCheck}, isPawnTwoStep={move.isPawnTwoStep}, " +
                    $" pieceHasMovedBefore={move.pieceHasMovedBefore},capturedPiecePosition={move.capturedPiecePosition}, promotedFrom={move.promotedFrom}," +
                     $"promotedPosition={move.promotedPosition}, isCapture={move.isCapture},team={move.team},fiftyMoveCounter={fiftyMoveCounter} "
-                    + $"score={move.score}, depth={move.depth}, nodes={move.nodes}, moveTimeMs={move.moveTimeMs}");
+                     + $"score={move.score}, depth={move.depth}, nodes={move.nodes}, moveTimeMs={move.moveTimeMs}, algorithmType={move.algorithmType}");
     }
 
 
@@ -132,7 +134,7 @@ public class HistoryMove : MonoBehaviour
                 $"กิน {lastMove.capturedPieceType}, Castling: " +
                 $"{lastMove.isCastling}, En Passant: {lastMove.isEnPassant}, " +
                 $"Promote: {lastMove.promotedTo}, Check: {lastMove.isCheck}" +
-                $"score={lastMove.score}, depth={lastMove.depth}, nodes={lastMove.nodes}, moveTimeMs={lastMove.moveTimeMs}" +
+                $"score={lastMove.score}, depth={lastMove.depth}, nodes={lastMove.nodes}, moveTimeMs={lastMove.moveTimeMs}, algorithmType={lastMove.algorithmType}" +
                 $"\n"
                 );
 

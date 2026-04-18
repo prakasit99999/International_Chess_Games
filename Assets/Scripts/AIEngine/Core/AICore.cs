@@ -27,11 +27,11 @@ namespace AIEngine.Core
             {
                 case Difficulty.Easy:
                     algorithm = new Minimax(1000); // 1 sec limit
-                    depth = 2;
+                    depth = 6;
                     break;
                 case Difficulty.Normal:
                     algorithm = new AlphaBeta(3000); // 3 sec limit
-                    depth = 4;
+                    depth = 6;
                     break;
                 case Difficulty.Hard:
                     algorithm = new AlphaBeta(10000); // 10 sec limit

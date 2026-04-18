@@ -47,66 +47,69 @@
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\Tools\BuildPipeline\Unity.SourceGenerators\Unity.SourceGenerators.dll" />
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\Tools\BuildPipeline\Unity.SourceGenerators\Unity.Properties.SourceGenerator.dll" />
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\Tools\BuildPipeline\Unity.SourceGenerators\Unity.UIToolkit.SourceGenerator.dll" />
-    <Analyzer Include="D:\Project\International_Chess_Games\Library\PackageCache\com.unity.ai.inference@587873fd5e1b\Runtime\Core\SourceGenerator\SourceGenerators.dll" />
+    <Analyzer Include="D:\Project\International_Chess_Games\Library\PackageCache\com.unity.ai.inference@e760aa121ec7\Runtime\Core\SourceGenerator\SourceGenerators.dll" />
     <Analyzer Include="D:\Project\International_Chess_Games\Library\PackageCache\com.unity.dt.app-ui@8ac7e730dd5d\Runtime\SourceGenerators\netstandard2.0\EnumToLowerCase.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\Editor\Visualizer\ModelVisualizerWindow.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\Editor\Visualizer\Views\NodeView.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\Editor\Visualizer\Editor\ModelVisualizerSettingsProvider.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\Editor\Visualizer\GraphData\OutputNodeData.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\Editor\Visualizer\StateManagement\GraphSlice.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\Editor\Visualizer\Views\Inspectors\InspectorProperty.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\Editor\Visualizer\Views\GraphFinder.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\Editor\Visualizer\Graph.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\Editor\Visualizer\Views\Edges\EdgeEventsUtils.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\Editor\Visualizer\Views\Inspectors\InspectorUtils.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\Editor\Visualizer\Extensions\VisualElementExtensions.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\Editor\Visualizer\Views\GraphInspector.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\Editor\Visualizer\Extensions\GraphViewExtensions.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\Editor\Visualizer\GraphData\EdgeData.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\Editor\Visualizer\StateManagement\GraphReducers.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\Editor\Visualizer\StateManagement\GraphState.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\Editor\Visualizer\Views\Edges\EdgeDrawManipulator.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\Editor\Visualizer\Views\Inspectors\TensorInspector.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\Editor\Visualizer\Editor\ModelAssetProcessor.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\Editor\Visualizer\Views\Manipulators\HoverManipulator.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\Editor\Visualizer\GraphData\InputNodeData.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\Editor\Visualizer\Views\Inspectors\IInspector.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\Editor\Visualizer\Views\Inspectors\InspectorFactory.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\Editor\Visualizer\Views\Finder\FinderElement.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\Editor\Visualizer\GraphData\NodeData.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\Editor\Visualizer\Views\GraphView.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\Editor\Visualizer\Editor\ModelAssetOpenHandler.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\Editor\Visualizer\Editor\ModelVisualizerSettings.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\Editor\Visualizer\Views\Edges\EdgeUtil.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\Editor\Visualizer\Views\VisualsStateHandler.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\Editor\Visualizer\StateManagement\GraphStoreManager.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\Editor\Visualizer\Views\Inspectors\InspectorNavigationStack.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\Editor\Visualizer\Views\EdgeView.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\Editor\Visualizer\LayerAnalysis\LayerCategorizer.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\Editor\Visualizer\Extensions\ModelExtensions.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\Editor\Visualizer\Views\Inspectors\TensorElement.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\Editor\Visualizer\Views\Graph\FramingManipulator.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\Editor\Visualizer\Views\Inspectors\NodeElement.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\Editor\Visualizer\LayerAnalysis\LayerConnectionsHandler.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\Editor\Visualizer\Views\Edges\EdgeEventsManipulator.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\Editor\Visualizer\Views\Inspectors\NodeInspector.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\Editor\Visualizer\Views\Graph\ScrollOffsetManipulator.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\Editor\Visualizer\AssemblyInfo.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\Editor\Visualizer\GraphData\LayerNodeData.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@e760aa121ec7\Editor\Visualizer\Views\NodeView.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@e760aa121ec7\Editor\Visualizer\Editor\ModelVisualizerSettingsProvider.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@e760aa121ec7\Editor\Visualizer\GraphData\OutputNodeData.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@e760aa121ec7\Editor\Visualizer\StateManagement\GraphSlice.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@e760aa121ec7\Editor\Visualizer\Views\Inspectors\InspectorProperty.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@e760aa121ec7\Editor\Visualizer\Views\GraphFinder.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@e760aa121ec7\Editor\Visualizer\Views\Edges\EdgeEventsUtils.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@e760aa121ec7\Editor\Visualizer\Views\Inspectors\InspectorUtils.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@e760aa121ec7\Editor\Visualizer\Extensions\VisualElementExtensions.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@e760aa121ec7\Editor\Visualizer\Views\GraphInspector.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@e760aa121ec7\Editor\Visualizer\Extensions\GraphViewExtensions.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@e760aa121ec7\Editor\Visualizer\GraphData\EdgeData.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@e760aa121ec7\Editor\Visualizer\StateManagement\GraphReducers.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@e760aa121ec7\Editor\Visualizer\StateManagement\GraphState.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@e760aa121ec7\Editor\Visualizer\Views\Edges\EdgeDrawManipulator.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@e760aa121ec7\Editor\Visualizer\Views\Inspectors\TensorInspector.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@e760aa121ec7\Editor\Visualizer\Editor\ModelAssetProcessor.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@e760aa121ec7\Editor\Visualizer\Views\Manipulators\HoverManipulator.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@e760aa121ec7\Editor\Visualizer\GraphData\InputNodeData.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@e760aa121ec7\Editor\Visualizer\Views\Inspectors\IInspector.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@e760aa121ec7\Editor\Visualizer\Views\Inspectors\InspectorFactory.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@e760aa121ec7\Editor\Visualizer\Views\Finder\FinderElement.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@e760aa121ec7\Editor\Visualizer\GraphData\NodeData.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@e760aa121ec7\Editor\Visualizer\Views\GraphView.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@e760aa121ec7\Editor\Visualizer\Editor\ModelAssetOpenHandler.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@e760aa121ec7\Editor\Visualizer\GraphData\GraphLayoutHandler.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@e760aa121ec7\Editor\Visualizer\Views\LoadingView.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@e760aa121ec7\Editor\Visualizer\Editor\ModelVisualizerSettings.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@e760aa121ec7\Editor\Visualizer\Views\Edges\EdgeUtil.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@e760aa121ec7\Editor\Visualizer\Views\VisualsStateHandler.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@e760aa121ec7\Editor\Visualizer\StateManagement\GraphStoreManager.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@e760aa121ec7\Editor\Visualizer\Views\Inspectors\InspectorNavigationStack.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@e760aa121ec7\Editor\Visualizer\Views\EdgeView.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@e760aa121ec7\Editor\Visualizer\LayerAnalysis\LayerCategorizer.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@e760aa121ec7\Editor\Visualizer\Editor\ModelVisualizerWindow.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@e760aa121ec7\Editor\Visualizer\Extensions\ModelExtensions.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@e760aa121ec7\Editor\Visualizer\Views\Inspectors\TensorElement.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@e760aa121ec7\Editor\Visualizer\Views\Graph\FramingManipulator.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@e760aa121ec7\Editor\Visualizer\Views\Inspectors\NodeElement.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@e760aa121ec7\Editor\Visualizer\StateManagement\GraphAsyncThunks.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@e760aa121ec7\Editor\Visualizer\LayerAnalysis\LayerConnectionsHandler.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@e760aa121ec7\Editor\Visualizer\Views\Edges\EdgeEventsManipulator.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@e760aa121ec7\Editor\Visualizer\Views\Inspectors\NodeInspector.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@e760aa121ec7\Editor\Visualizer\Views\Graph\ScrollOffsetManipulator.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@e760aa121ec7\Editor\Visualizer\AssemblyInfo.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ai.inference@e760aa121ec7\Editor\Visualizer\GraphData\LayerNodeData.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\Editor\Visualizer\Unity.InferenceEngine.Editor.Visualizer.asmdef" />
-    <None Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\Editor\Visualizer\Styles\GraphInspector.uss" />
-    <None Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\Editor\Visualizer\Styles\View.uss" />
-    <None Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\Editor\Visualizer\VisualTrees\Inspector.uxml" />
-    <None Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\Editor\Visualizer\Styles\GraphView.uss" />
-    <None Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\Editor\Visualizer\Styles\Inspector.uss" />
-    <None Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\Editor\Visualizer\Styles\View_light.uss" />
-    <None Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\Editor\Visualizer\Styles\Node.uss" />
-    <None Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\Editor\Visualizer\Styles\View_dark.uss" />
-    <None Include="Library\PackageCache\com.unity.ai.inference@587873fd5e1b\Editor\Visualizer\Styles\GraphFinder.uss" />
+    <None Include="Library\PackageCache\com.unity.ai.inference@e760aa121ec7\Editor\Visualizer\Unity.InferenceEngine.Editor.Visualizer.asmdef" />
+    <None Include="Library\PackageCache\com.unity.ai.inference@e760aa121ec7\Editor\Visualizer\Styles\GraphInspector.uss" />
+    <None Include="Library\PackageCache\com.unity.ai.inference@e760aa121ec7\Editor\Visualizer\Styles\View.uss" />
+    <None Include="Library\PackageCache\com.unity.ai.inference@e760aa121ec7\Editor\Visualizer\VisualTrees\Inspector.uxml" />
+    <None Include="Library\PackageCache\com.unity.ai.inference@e760aa121ec7\Editor\Visualizer\Styles\GraphView.uss" />
+    <None Include="Library\PackageCache\com.unity.ai.inference@e760aa121ec7\Editor\Visualizer\Styles\Inspector.uss" />
+    <None Include="Library\PackageCache\com.unity.ai.inference@e760aa121ec7\Editor\Visualizer\Styles\LoadingView.uss" />
+    <None Include="Library\PackageCache\com.unity.ai.inference@e760aa121ec7\Editor\Visualizer\Styles\View_light.uss" />
+    <None Include="Library\PackageCache\com.unity.ai.inference@e760aa121ec7\Editor\Visualizer\Styles\Node.uss" />
+    <None Include="Library\PackageCache\com.unity.ai.inference@e760aa121ec7\Editor\Visualizer\Styles\View_dark.uss" />
+    <None Include="Library\PackageCache\com.unity.ai.inference@e760aa121ec7\Editor\Visualizer\Styles\GraphFinder.uss" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
@@ -674,7 +677,7 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="websocket-sharp">
-      <HintPath>Library\PackageCache\com.unity.services.wire@9a73acde80cc\Plugins\websocket-sharp.dll</HintPath>
+      <HintPath>Library\PackageCache\com.unity.services.wire@d50817c0adab\Plugins\websocket-sharp.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Mono.CecilX">
@@ -686,7 +689,7 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.VisualScripting.YamlDotNet">
-      <HintPath>Library\PackageCache\com.unity.visualscripting@eb6004dcc707\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll</HintPath>
+      <HintPath>Library\PackageCache\com.unity.visualscripting@8bed5ad90189\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.Collections.LowLevel.ILSupport">
@@ -714,7 +717,7 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.Plastic.Antlr3.Runtime">
-      <HintPath>Library\PackageCache\com.unity.collab-proxy@3351acaba9c9\Lib\Editor\Unity.Plastic.Antlr3.Runtime.dll</HintPath>
+      <HintPath>Library\PackageCache\com.unity.collab-proxy@a5329f833fa8\Lib\Editor\Unity.Plastic.Antlr3.Runtime.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Mono.CecilX.Rocks">
@@ -722,7 +725,7 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.Plastic.Newtonsoft.Json">
-      <HintPath>Library\PackageCache\com.unity.collab-proxy@3351acaba9c9\Lib\Editor\Unity.Plastic.Newtonsoft.Json.dll</HintPath>
+      <HintPath>Library\PackageCache\com.unity.collab-proxy@a5329f833fa8\Lib\Editor\Unity.Plastic.Newtonsoft.Json.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Google.VersionHandlerImpl">
@@ -730,15 +733,11 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="log4netPlastic">
-      <HintPath>Library\PackageCache\com.unity.collab-proxy@3351acaba9c9\Lib\Editor\log4netPlastic.dll</HintPath>
+      <HintPath>Library\PackageCache\com.unity.collab-proxy@a5329f833fa8\Lib\Editor\log4netPlastic.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.VisualScripting.IonicZip">
-      <HintPath>Library\PackageCache\com.unity.visualscripting@eb6004dcc707\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="unityplastic">
-      <HintPath>Library\PackageCache\com.unity.collab-proxy@3351acaba9c9\Lib\Editor\unityplastic.dll</HintPath>
+      <HintPath>Library\PackageCache\com.unity.visualscripting@8bed5ad90189\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Google.JarResolver">
@@ -749,8 +748,12 @@
       <HintPath>Library\PackageCache\com.unity.collections@aea9d3bd5e19\Unity.Collections.Tests\System.IO.Hashing\System.IO.Hashing.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="unityplastic">
+      <HintPath>Library\PackageCache\com.unity.collab-proxy@a5329f833fa8\Lib\Editor\unityplastic.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="Unity.VisualScripting.Antlr3.Runtime">
-      <HintPath>Library\PackageCache\com.unity.visualscripting@eb6004dcc707\Runtime\VisualScripting.Flow\Dependencies\NCalc\Unity.VisualScripting.Antlr3.Runtime.dll</HintPath>
+      <HintPath>Library\PackageCache\com.unity.visualscripting@8bed5ad90189\Runtime\VisualScripting.Flow\Dependencies\NCalc\Unity.VisualScripting.Antlr3.Runtime.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Google.VersionHandler">
@@ -766,7 +769,7 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.VisualScripting.TextureAssets">
-      <HintPath>Library\PackageCache\com.unity.visualscripting@eb6004dcc707\Editor\VisualScripting.Core\EditorAssetResources\Unity.VisualScripting.TextureAssets.dll</HintPath>
+      <HintPath>Library\PackageCache\com.unity.visualscripting@8bed5ad90189\Editor\VisualScripting.Core\EditorAssetResources\Unity.VisualScripting.TextureAssets.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Mono.Cecil">

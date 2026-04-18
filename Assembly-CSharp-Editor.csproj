@@ -47,7 +47,7 @@
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\Tools\BuildPipeline\Unity.SourceGenerators\Unity.SourceGenerators.dll" />
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\Tools\BuildPipeline\Unity.SourceGenerators\Unity.Properties.SourceGenerator.dll" />
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\Tools\BuildPipeline\Unity.SourceGenerators\Unity.UIToolkit.SourceGenerator.dll" />
-    <Analyzer Include="D:\Project\International_Chess_Games\Library\PackageCache\com.unity.ai.inference@587873fd5e1b\Runtime\Core\SourceGenerator\SourceGenerators.dll" />
+    <Analyzer Include="D:\Project\International_Chess_Games\Library\PackageCache\com.unity.ai.inference@e760aa121ec7\Runtime\Core\SourceGenerator\SourceGenerators.dll" />
     <Analyzer Include="D:\Project\International_Chess_Games\Library\PackageCache\com.unity.dt.app-ui@8ac7e730dd5d\Runtime\SourceGenerators\netstandard2.0\EnumToLowerCase.dll" />
     <Analyzer Include="D:\Project\International_Chess_Games\Library\PackageCache\com.unity.dt.app-ui@8ac7e730dd5d\Runtime\MVVM\SourceGenerators\netstandard2.0\MVVMSourceGenerators.dll" />
   </ItemGroup>
@@ -55,112 +55,112 @@
     <Compile Include="Assets\ScriptTemplates\Editor\MoveToAssetsFolder.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Library\PackageCache\com.unity.collab-proxy@3351acaba9c9\Lib\Editor\Localization\commontypes.ko.txt" />
-    <None Include="Library\PackageCache\com.unity.collab-proxy@3351acaba9c9\Lib\Editor\Localization\workspaceserver.zh-Hant.txt" />
-    <None Include="Library\PackageCache\com.unity.collab-proxy@3351acaba9c9\Lib\Editor\Localization\cm-help.en.txt" />
-    <None Include="Library\PackageCache\com.unity.collab-proxy@3351acaba9c9\Lib\Editor\Localization\differences.ja.txt" />
-    <None Include="Library\PackageCache\com.unity.collab-proxy@3351acaba9c9\Lib\Editor\Localization\common.es.txt" />
-    <None Include="Library\PackageCache\com.unity.collab-proxy@3351acaba9c9\Lib\Editor\Localization\configurehelper.ja.txt" />
-    <None Include="Library\PackageCache\com.unity.collab-proxy@3351acaba9c9\Lib\Editor\Localization\basecommands.es.txt" />
-    <None Include="Library\PackageCache\com.unity.collab-proxy@3351acaba9c9\Lib\Editor\Localization\plastic-gui.es.txt" />
-    <None Include="Library\PackageCache\com.unity.collab-proxy@3351acaba9c9\Lib\Editor\Localization\guihelp.es.txt" />
-    <None Include="Library\PackageCache\com.unity.collab-proxy@3351acaba9c9\Lib\Editor\Localization\clientcommon.ko.txt" />
+    <None Include="Library\PackageCache\com.unity.collab-proxy@a5329f833fa8\Lib\Editor\Localization\cm-help.zh-Hans.txt" />
+    <None Include="Library\PackageCache\com.unity.collab-proxy@a5329f833fa8\Lib\Editor\Localization\images.ja.txt" />
+    <None Include="Library\PackageCache\com.unity.collab-proxy@a5329f833fa8\Lib\Editor\Localization\i3.es.txt" />
+    <None Include="Library\PackageCache\com.unity.collab-proxy@a5329f833fa8\Lib\Editor\Localization\guihelp.ja.txt" />
+    <None Include="Library\PackageCache\com.unity.collab-proxy@a5329f833fa8\Lib\Editor\Localization\workspaceserver.zh-Hant.txt" />
+    <None Include="Library\PackageCache\com.unity.collab-proxy@a5329f833fa8\Lib\Editor\Localization\commontypes.es.txt" />
+    <None Include="Library\PackageCache\com.unity.collab-proxy@a5329f833fa8\Lib\Editor\Localization\semantic.es.txt" />
+    <None Include="Library\PackageCache\com.unity.collab-proxy@a5329f833fa8\Lib\Editor\Localization\plastic-gui.zh-Hans.txt" />
+    <None Include="Library\PackageCache\com.unity.collab-proxy@a5329f833fa8\Lib\Editor\Localization\differences.en.txt" />
+    <None Include="Library\PackageCache\com.unity.collab-proxy@a5329f833fa8\Lib\Editor\Localization\semantic.ja.txt" />
+    <None Include="Library\PackageCache\com.unity.collab-proxy@a5329f833fa8\Lib\Editor\Localization\semantic.zh-Hans.txt" />
+    <None Include="Library\PackageCache\com.unity.collab-proxy@a5329f833fa8\Lib\Editor\Localization\clientcommon.ja.txt" />
+    <None Include="Library\PackageCache\com.unity.collab-proxy@a5329f833fa8\Lib\Editor\Localization\configurehelper.zh-Hans.txt" />
+    <None Include="Library\PackageCache\com.unity.collab-proxy@a5329f833fa8\Lib\Editor\Localization\xdiff.en.txt" />
+    <None Include="Library\PackageCache\com.unity.collab-proxy@a5329f833fa8\Lib\Editor\Localization\workspaceserver.ja.txt" />
+    <None Include="Library\PackageCache\com.unity.collab-proxy@a5329f833fa8\Lib\Editor\Localization\cm.es.txt" />
     <None Include="Assets\MobileDependencyResolver\Editor\Google.IOSResolver.dll" />
-    <None Include="Library\PackageCache\com.unity.collab-proxy@3351acaba9c9\Lib\Editor\Localization\clientcommon.es.txt" />
-    <None Include="Library\PackageCache\com.unity.collab-proxy@3351acaba9c9\Lib\Editor\Localization\guihelp.zh-Hant.txt" />
-    <None Include="Library\PackageCache\com.unity.collab-proxy@3351acaba9c9\Lib\Editor\Localization\workspaceserver.ko.txt" />
-    <None Include="Library\PackageCache\com.unity.collab-proxy@3351acaba9c9\Lib\Editor\Localization\i3.ja.txt" />
-    <None Include="Library\PackageCache\com.unity.collab-proxy@3351acaba9c9\Lib\Editor\Localization\basecommands.en.txt" />
-    <None Include="Library\PackageCache\com.unity.collab-proxy@3351acaba9c9\Lib\Editor\Localization\guihelp.ko.txt" />
-    <None Include="Library\PackageCache\com.unity.collab-proxy@3351acaba9c9\Lib\Editor\Localization\mergetool.en.txt" />
-    <None Include="Library\PackageCache\com.unity.collab-proxy@3351acaba9c9\Lib\Editor\Localization\clientcommon.ja.txt" />
-    <None Include="Library\PackageCache\com.unity.collab-proxy@3351acaba9c9\Lib\Editor\Localization\images.ja.txt" />
-    <None Include="Library\PackageCache\com.unity.collab-proxy@3351acaba9c9\Lib\Editor\Localization\differences.es.txt" />
-    <None Include="Library\PackageCache\com.unity.collab-proxy@3351acaba9c9\Lib\Editor\Localization\cm.zh-Hans.txt" />
-    <None Include="Library\PackageCache\com.unity.collab-proxy@3351acaba9c9\Lib\Editor\Localization\images.zh-Hans.txt" />
-    <None Include="Library\PackageCache\com.unity.collab-proxy@3351acaba9c9\Lib\Editor\Localization\cm.zh-Hant.txt" />
-    <None Include="Library\PackageCache\com.unity.collab-proxy@3351acaba9c9\Lib\Editor\Localization\mergetool.ko.txt" />
-    <None Include="Library\PackageCache\com.unity.collab-proxy@3351acaba9c9\Lib\Editor\Localization\mergetool.ja.txt" />
-    <None Include="Library\PackageCache\com.unity.collab-proxy@3351acaba9c9\Lib\Editor\Localization\cm-help.ja.txt" />
-    <None Include="Library\PackageCache\com.unity.collab-proxy@3351acaba9c9\Lib\Editor\Localization\plastic-gui.en.txt" />
-    <None Include="Library\PackageCache\com.unity.collab-proxy@3351acaba9c9\Lib\Editor\Unity.Plastic.Antlr3.Runtime.dll" />
-    <None Include="Library\PackageCache\com.unity.collab-proxy@3351acaba9c9\Lib\Editor\Localization\configurehelper.zh-Hans.txt" />
-    <None Include="Library\PackageCache\com.unity.collab-proxy@3351acaba9c9\Lib\Editor\Localization\mergetool.es.txt" />
-    <None Include="Library\PackageCache\com.unity.collab-proxy@3351acaba9c9\Lib\Editor\Localization\basecommands.ko.txt" />
-    <None Include="Library\PackageCache\com.unity.collab-proxy@3351acaba9c9\Lib\Editor\Localization\i3.en.txt" />
-    <None Include="Library\PackageCache\com.unity.collab-proxy@3351acaba9c9\Lib\Editor\Localization\commontypes.ja.txt" />
-    <None Include="Library\PackageCache\com.unity.collab-proxy@3351acaba9c9\Lib\Editor\Localization\cm.ko.txt" />
-    <None Include="Library\PackageCache\com.unity.collab-proxy@3351acaba9c9\Lib\Editor\Localization\i3.zh-Hant.txt" />
-    <None Include="Library\PackageCache\com.unity.collab-proxy@3351acaba9c9\Lib\Editor\Localization\cm-help.zh-Hans.txt" />
-    <None Include="Library\PackageCache\com.unity.collab-proxy@3351acaba9c9\Lib\Editor\Localization\semantic.es.txt" />
-    <None Include="Library\PackageCache\com.unity.collab-proxy@3351acaba9c9\Lib\Editor\Localization\commontypes.es.txt" />
-    <None Include="Library\PackageCache\com.unity.collab-proxy@3351acaba9c9\Lib\Editor\Unity.Plastic.Newtonsoft.Json.dll" />
-    <None Include="Library\PackageCache\com.unity.collab-proxy@3351acaba9c9\Lib\Editor\Localization\workspaceserver.en.txt" />
-    <None Include="Library\PackageCache\com.unity.collab-proxy@3351acaba9c9\Lib\Editor\Localization\workspaceserver.zh-Hans.txt" />
+    <None Include="Library\PackageCache\com.unity.collab-proxy@a5329f833fa8\Lib\Editor\Localization\commontypes.zh-Hant.txt" />
+    <None Include="Library\PackageCache\com.unity.collab-proxy@a5329f833fa8\Lib\Editor\Localization\semantic.zh-Hant.txt" />
+    <None Include="Library\PackageCache\com.unity.collab-proxy@a5329f833fa8\Lib\Editor\Localization\xdiff.zh-Hant.txt" />
+    <None Include="Library\PackageCache\com.unity.collab-proxy@a5329f833fa8\Lib\Editor\Localization\basecommands.en.txt" />
+    <None Include="Library\PackageCache\com.unity.collab-proxy@a5329f833fa8\Lib\Editor\Localization\workspaceserver.zh-Hans.txt" />
+    <None Include="Library\PackageCache\com.unity.collab-proxy@a5329f833fa8\Lib\Editor\Localization\xdiff.ja.txt" />
+    <None Include="Library\PackageCache\com.unity.collab-proxy@a5329f833fa8\Lib\Editor\Localization\clientcommon.zh-Hant.txt" />
+    <None Include="Library\PackageCache\com.unity.collab-proxy@a5329f833fa8\Lib\Editor\Localization\cm-help.en.txt" />
+    <None Include="Library\PackageCache\com.unity.collab-proxy@a5329f833fa8\Lib\Editor\Localization\guihelp.es.txt" />
+    <None Include="Library\PackageCache\com.unity.collab-proxy@a5329f833fa8\Lib\Editor\Unity.Plastic.Antlr3.Runtime.dll" />
+    <None Include="Library\PackageCache\com.unity.collab-proxy@a5329f833fa8\Lib\Editor\Localization\configurehelper.ko.txt" />
+    <None Include="Library\PackageCache\com.unity.collab-proxy@a5329f833fa8\Lib\Editor\Localization\clientcommon.en.txt" />
+    <None Include="Library\PackageCache\com.unity.collab-proxy@a5329f833fa8\Lib\Editor\Localization\plastic-gui.zh-Hant.txt" />
+    <None Include="Library\PackageCache\com.unity.collab-proxy@a5329f833fa8\Lib\Editor\Localization\commontypes.ja.txt" />
+    <None Include="Library\PackageCache\com.unity.collab-proxy@a5329f833fa8\Lib\Editor\Localization\differences.ko.txt" />
+    <None Include="Library\PackageCache\com.unity.collab-proxy@a5329f833fa8\Lib\Editor\Localization\cm-help.ko.txt" />
+    <None Include="Library\PackageCache\com.unity.collab-proxy@a5329f833fa8\Lib\Editor\Localization\commontypes.zh-Hans.txt" />
+    <None Include="Library\PackageCache\com.unity.collab-proxy@a5329f833fa8\Lib\Editor\Localization\images.zh-Hant.txt" />
+    <None Include="Library\PackageCache\com.unity.collab-proxy@a5329f833fa8\Lib\Editor\Localization\mergetool.zh-Hant.txt" />
+    <None Include="Library\PackageCache\com.unity.collab-proxy@a5329f833fa8\Lib\Editor\Localization\mergetool.zh-Hans.txt" />
+    <None Include="Library\PackageCache\com.unity.collab-proxy@a5329f833fa8\Lib\Editor\Localization\commontypes.en.txt" />
+    <None Include="Library\PackageCache\com.unity.collab-proxy@a5329f833fa8\Lib\Editor\Localization\plastic-gui.en.txt" />
+    <None Include="Library\PackageCache\com.unity.collab-proxy@a5329f833fa8\Lib\Editor\Localization\basecommands.zh-Hant.txt" />
+    <None Include="Library\PackageCache\com.unity.collab-proxy@a5329f833fa8\Lib\Editor\Unity.Plastic.Newtonsoft.Json.dll" />
     <None Include="Assets\MobileDependencyResolver\Editor\Google.VersionHandlerImpl.dll" />
-    <None Include="Library\PackageCache\com.unity.collab-proxy@3351acaba9c9\Lib\Editor\Localization\cm.en.txt" />
-    <None Include="Library\PackageCache\com.unity.collab-proxy@3351acaba9c9\Lib\Editor\Localization\mergetool.zh-Hans.txt" />
-    <None Include="Library\PackageCache\com.unity.collab-proxy@3351acaba9c9\Lib\Editor\log4netPlastic.dll" />
-    <None Include="Library\PackageCache\com.unity.collab-proxy@3351acaba9c9\Lib\Editor\Localization\xdiff.ko.txt" />
-    <None Include="Library\PackageCache\com.unity.collab-proxy@3351acaba9c9\Lib\Editor\lz4x64Plastic.dll" />
-    <None Include="Library\PackageCache\com.unity.collab-proxy@3351acaba9c9\Lib\Editor\Localization\semantic.zh-Hant.txt" />
-    <None Include="Library\PackageCache\com.unity.collab-proxy@3351acaba9c9\Lib\Editor\Localization\commontypes.zh-Hans.txt" />
-    <None Include="Library\PackageCache\com.unity.collab-proxy@3351acaba9c9\Lib\Editor\Localization\xdiff.zh-Hant.txt" />
-    <None Include="Library\PackageCache\com.unity.collab-proxy@3351acaba9c9\Lib\Editor\Localization\commontypes.en.txt" />
-    <None Include="Library\PackageCache\com.unity.collab-proxy@3351acaba9c9\Lib\Editor\Localization\plastic-gui.zh-Hans.txt" />
-    <None Include="Library\PackageCache\com.unity.collab-proxy@3351acaba9c9\Lib\Editor\unityplastic.dll" />
+    <None Include="Library\PackageCache\com.unity.collab-proxy@a5329f833fa8\Lib\Editor\Localization\images.zh-Hans.txt" />
+    <None Include="Library\PackageCache\com.unity.collab-proxy@a5329f833fa8\Lib\Editor\Localization\images.en.txt" />
+    <None Include="Library\PackageCache\com.unity.collab-proxy@a5329f833fa8\Lib\Editor\Localization\differences.es.txt" />
+    <None Include="Library\PackageCache\com.unity.collab-proxy@a5329f833fa8\Lib\Editor\Localization\differences.zh-Hans.txt" />
+    <None Include="Library\PackageCache\com.unity.collab-proxy@a5329f833fa8\Lib\Editor\Localization\plastic-gui.ja.txt" />
+    <None Include="Library\PackageCache\com.unity.collab-proxy@a5329f833fa8\Lib\Editor\log4netPlastic.dll" />
+    <None Include="Library\PackageCache\com.unity.collab-proxy@a5329f833fa8\Lib\Editor\lz4x64Plastic.dll" />
+    <None Include="Library\PackageCache\com.unity.collab-proxy@a5329f833fa8\Lib\Editor\Localization\guihelp.ko.txt" />
+    <None Include="Library\PackageCache\com.unity.collab-proxy@a5329f833fa8\Lib\Editor\Localization\clientcommon.es.txt" />
+    <None Include="Library\PackageCache\com.unity.collab-proxy@a5329f833fa8\Lib\Editor\Localization\plastic-gui.ko.txt" />
+    <None Include="Library\PackageCache\com.unity.collab-proxy@a5329f833fa8\Lib\Editor\Localization\configurehelper.ja.txt" />
+    <None Include="Library\PackageCache\com.unity.collab-proxy@a5329f833fa8\Lib\Editor\Localization\plastic-gui.es.txt" />
+    <None Include="Library\PackageCache\com.unity.collab-proxy@a5329f833fa8\Lib\Editor\Localization\xdiff.zh-Hans.txt" />
+    <None Include="Library\PackageCache\com.unity.collab-proxy@a5329f833fa8\Lib\Editor\Localization\cm-help.ja.txt" />
     <None Include="Assets\MobileDependencyResolver\Editor\Google.JarResolver.dll" />
-    <None Include="Library\PackageCache\com.unity.collab-proxy@3351acaba9c9\Lib\Editor\Localization\guihelp.zh-Hans.txt" />
-    <None Include="Library\PackageCache\com.unity.collab-proxy@3351acaba9c9\Lib\Editor\Localization\cm.ja.txt" />
-    <None Include="Library\PackageCache\com.unity.collab-proxy@3351acaba9c9\Lib\Editor\Localization\configurehelper.es.txt" />
-    <None Include="Library\PackageCache\com.unity.collab-proxy@3351acaba9c9\Lib\Editor\Localization\differences.zh-Hans.txt" />
-    <None Include="Library\PackageCache\com.unity.collab-proxy@3351acaba9c9\Lib\Editor\Localization\differences.en.txt" />
-    <None Include="Library\PackageCache\com.unity.collab-proxy@3351acaba9c9\Lib\Editor\Localization\images.zh-Hant.txt" />
-    <None Include="Library\PackageCache\com.unity.collab-proxy@3351acaba9c9\Lib\Editor\Localization\semantic.ko.txt" />
-    <None Include="Library\PackageCache\com.unity.collab-proxy@3351acaba9c9\Lib\Editor\Localization\images.en.txt" />
-    <None Include="Library\PackageCache\com.unity.collab-proxy@3351acaba9c9\Lib\Editor\Localization\xdiff.ja.txt" />
-    <None Include="Library\PackageCache\com.unity.collab-proxy@3351acaba9c9\Lib\Editor\Localization\configurehelper.en.txt" />
-    <None Include="Library\PackageCache\com.unity.collab-proxy@3351acaba9c9\Lib\Editor\Localization\i3.zh-Hans.txt" />
-    <None Include="Library\PackageCache\com.unity.collab-proxy@3351acaba9c9\Lib\Editor\Localization\cm.es.txt" />
+    <None Include="Library\PackageCache\com.unity.collab-proxy@a5329f833fa8\Lib\Editor\Localization\workspaceserver.ko.txt" />
+    <None Include="Library\PackageCache\com.unity.collab-proxy@a5329f833fa8\Lib\Editor\Localization\semantic.ko.txt" />
+    <None Include="Library\PackageCache\com.unity.collab-proxy@a5329f833fa8\Lib\Editor\Localization\cm.zh-Hant.txt" />
+    <None Include="Library\PackageCache\com.unity.collab-proxy@a5329f833fa8\Lib\Editor\Localization\cm.ja.txt" />
+    <None Include="Library\PackageCache\com.unity.collab-proxy@a5329f833fa8\Lib\Editor\unityplastic.dll" />
+    <None Include="Library\PackageCache\com.unity.collab-proxy@a5329f833fa8\Lib\Editor\Localization\i3.ja.txt" />
+    <None Include="Library\PackageCache\com.unity.collab-proxy@a5329f833fa8\Lib\Editor\Localization\images.ko.txt" />
+    <None Include="Library\PackageCache\com.unity.collab-proxy@a5329f833fa8\Lib\Editor\Localization\guihelp.zh-Hant.txt" />
+    <None Include="Library\PackageCache\com.unity.collab-proxy@a5329f833fa8\Lib\Editor\Localization\mergetool.es.txt" />
+    <None Include="Library\PackageCache\com.unity.collab-proxy@a5329f833fa8\Lib\Editor\Localization\configurehelper.en.txt" />
+    <None Include="Library\PackageCache\com.unity.collab-proxy@a5329f833fa8\Lib\Editor\Localization\common.en.txt" />
+    <None Include="Library\PackageCache\com.unity.collab-proxy@a5329f833fa8\Lib\Editor\Localization\clientcommon.ko.txt" />
     <None Include="Library\PackageCache\com.unity.dt.app-ui@8ac7e730dd5d\PackageResources\Editor\ProjectSettings.uxml" />
-    <None Include="Library\PackageCache\com.unity.collab-proxy@3351acaba9c9\Lib\Editor\FileSystemWatcherLicense.txt" />
-    <None Include="Library\PackageCache\com.unity.collab-proxy@3351acaba9c9\Lib\Editor\Localization\configurehelper.zh-Hant.txt" />
-    <None Include="Library\PackageCache\com.unity.collab-proxy@3351acaba9c9\Lib\Editor\Localization\xdiff.es.txt" />
-    <None Include="Library\PackageCache\com.unity.collab-proxy@3351acaba9c9\Lib\Editor\Localization\plastic-gui.ko.txt" />
-    <None Include="Library\PackageCache\com.unity.collab-proxy@3351acaba9c9\Lib\Editor\Localization\basecommands.ja.txt" />
-    <None Include="Library\PackageCache\com.unity.collab-proxy@3351acaba9c9\Lib\Editor\Localization\mergetool.zh-Hant.txt" />
-    <None Include="Library\PackageCache\com.unity.collab-proxy@3351acaba9c9\Lib\Editor\Localization\semantic.en.txt" />
+    <None Include="Library\PackageCache\com.unity.collab-proxy@a5329f833fa8\Lib\Editor\Localization\mergetool.ja.txt" />
+    <None Include="Library\PackageCache\com.unity.collab-proxy@a5329f833fa8\Lib\Editor\FileSystemWatcherLicense.txt" />
+    <None Include="Library\PackageCache\com.unity.collab-proxy@a5329f833fa8\Lib\Editor\Localization\images.es.txt" />
+    <None Include="Library\PackageCache\com.unity.collab-proxy@a5329f833fa8\Lib\Editor\Localization\mergetool.ko.txt" />
+    <None Include="Library\PackageCache\com.unity.collab-proxy@a5329f833fa8\Lib\Editor\Localization\basecommands.zh-Hans.txt" />
+    <None Include="Library\PackageCache\com.unity.collab-proxy@a5329f833fa8\Lib\Editor\Localization\guihelp.en.txt" />
+    <None Include="Library\PackageCache\com.unity.collab-proxy@a5329f833fa8\Lib\Editor\Localization\guihelp.zh-Hans.txt" />
+    <None Include="Library\PackageCache\com.unity.collab-proxy@a5329f833fa8\Lib\Editor\Localization\workspaceserver.en.txt" />
     <None Include="Assets\MobileDependencyResolver\Editor\mobile-dependency-resolver.txt" />
-    <None Include="Library\PackageCache\com.unity.collab-proxy@3351acaba9c9\Lib\Editor\Localization\xdiff.en.txt" />
-    <None Include="Library\PackageCache\com.unity.collab-proxy@3351acaba9c9\Lib\Editor\Localization\common.en.txt" />
-    <None Include="Library\PackageCache\com.unity.collab-proxy@3351acaba9c9\Lib\Editor\Localization\semantic.zh-Hans.txt" />
-    <None Include="Library\PackageCache\com.unity.collab-proxy@3351acaba9c9\Lib\Editor\Localization\differences.zh-Hant.txt" />
-    <None Include="Library\PackageCache\com.unity.collab-proxy@3351acaba9c9\Lib\Editor\Localization\basecommands.zh-Hant.txt" />
+    <None Include="Library\PackageCache\com.unity.collab-proxy@a5329f833fa8\Lib\Editor\Localization\workspaceserver.es.txt" />
+    <None Include="Library\PackageCache\com.unity.collab-proxy@a5329f833fa8\Lib\Editor\Localization\basecommands.es.txt" />
+    <None Include="Library\PackageCache\com.unity.collab-proxy@a5329f833fa8\Lib\Editor\Localization\i3.en.txt" />
+    <None Include="Library\PackageCache\com.unity.collab-proxy@a5329f833fa8\Lib\Editor\Localization\i3.ko.txt" />
+    <None Include="Library\PackageCache\com.unity.collab-proxy@a5329f833fa8\Lib\Editor\Localization\cm.en.txt" />
+    <None Include="Library\PackageCache\com.unity.collab-proxy@a5329f833fa8\Lib\Editor\Localization\mergetool.en.txt" />
     <None Include="Assets\MobileDependencyResolver\Editor\Google.VersionHandler.dll" />
-    <None Include="Library\PackageCache\com.unity.collab-proxy@3351acaba9c9\Lib\Editor\Localization\differences.ko.txt" />
-    <None Include="Library\PackageCache\com.unity.collab-proxy@3351acaba9c9\Lib\Editor\Localization\guihelp.ja.txt" />
-    <None Include="Library\PackageCache\com.unity.collab-proxy@3351acaba9c9\Lib\Editor\Localization\plastic-gui.zh-Hant.txt" />
-    <None Include="Library\PackageCache\com.unity.collab-proxy@3351acaba9c9\Lib\Editor\Localization\clientcommon.zh-Hans.txt" />
-    <None Include="Library\PackageCache\com.unity.collab-proxy@3351acaba9c9\Lib\Editor\Localization\i3.es.txt" />
-    <None Include="Library\PackageCache\com.unity.collab-proxy@3351acaba9c9\Lib\Editor\Localization\images.ko.txt" />
-    <None Include="Library\PackageCache\com.unity.collab-proxy@3351acaba9c9\Lib\Editor\Localization\cm-help.zh-Hant.txt" />
+    <None Include="Library\PackageCache\com.unity.collab-proxy@a5329f833fa8\Lib\Editor\Localization\basecommands.ko.txt" />
+    <None Include="Library\PackageCache\com.unity.collab-proxy@a5329f833fa8\Lib\Editor\Localization\cm.ko.txt" />
+    <None Include="Library\PackageCache\com.unity.collab-proxy@a5329f833fa8\Lib\Editor\Localization\cm.zh-Hans.txt" />
+    <None Include="Library\PackageCache\com.unity.collab-proxy@a5329f833fa8\Lib\Editor\Localization\configurehelper.es.txt" />
+    <None Include="Library\PackageCache\com.unity.collab-proxy@a5329f833fa8\Lib\Editor\Localization\xdiff.ko.txt" />
     <None Include="Library\PackageCache\com.unity.ai.toolkit@97783faabe3b\Modules\Sdk\Editor\AiEditorToolsSdk.dll" />
-    <None Include="Library\PackageCache\com.unity.collab-proxy@3351acaba9c9\Lib\Editor\Localization\commontypes.zh-Hant.txt" />
-    <None Include="Library\PackageCache\com.unity.collab-proxy@3351acaba9c9\Lib\Editor\Localization\plastic-gui.ja.txt" />
-    <None Include="Library\PackageCache\com.unity.collab-proxy@3351acaba9c9\Lib\Editor\Localization\guihelp.en.txt" />
-    <None Include="Library\PackageCache\com.unity.collab-proxy@3351acaba9c9\Lib\Editor\Localization\clientcommon.zh-Hant.txt" />
-    <None Include="Library\PackageCache\com.unity.collab-proxy@3351acaba9c9\Lib\Editor\Localization\workspaceserver.ja.txt" />
-    <None Include="Library\PackageCache\com.unity.collab-proxy@3351acaba9c9\Lib\Editor\Localization\cm-help.ko.txt" />
-    <None Include="Library\PackageCache\com.unity.collab-proxy@3351acaba9c9\Lib\Editor\Localization\basecommands.zh-Hans.txt" />
-    <None Include="Library\PackageCache\com.unity.collab-proxy@3351acaba9c9\Lib\Editor\Localization\images.es.txt" />
-    <None Include="Library\PackageCache\com.unity.collab-proxy@3351acaba9c9\Lib\Editor\Localization\i3.ko.txt" />
-    <None Include="Library\PackageCache\com.unity.collab-proxy@3351acaba9c9\Lib\Editor\Localization\cm-help.es.txt" />
-    <None Include="Library\PackageCache\com.unity.collab-proxy@3351acaba9c9\Lib\Editor\Localization\semantic.ja.txt" />
-    <None Include="Library\PackageCache\com.unity.collab-proxy@3351acaba9c9\Lib\Editor\Localization\configurehelper.ko.txt" />
-    <None Include="Library\PackageCache\com.unity.collab-proxy@3351acaba9c9\Lib\Editor\Localization\clientcommon.en.txt" />
-    <None Include="Library\PackageCache\com.unity.collab-proxy@3351acaba9c9\Lib\Editor\zlib64Plastic.dll" />
-    <None Include="Library\PackageCache\com.unity.collab-proxy@3351acaba9c9\Lib\Editor\Localization\workspaceserver.es.txt" />
-    <None Include="Library\PackageCache\com.unity.collab-proxy@3351acaba9c9\Lib\Editor\Localization\xdiff.zh-Hans.txt" />
+    <None Include="Library\PackageCache\com.unity.collab-proxy@a5329f833fa8\Lib\Editor\Localization\i3.zh-Hans.txt" />
+    <None Include="Library\PackageCache\com.unity.collab-proxy@a5329f833fa8\Lib\Editor\Localization\clientcommon.zh-Hans.txt" />
+    <None Include="Library\PackageCache\com.unity.collab-proxy@a5329f833fa8\Lib\Editor\Localization\configurehelper.zh-Hant.txt" />
+    <None Include="Library\PackageCache\com.unity.collab-proxy@a5329f833fa8\Lib\Editor\Localization\xdiff.es.txt" />
+    <None Include="Library\PackageCache\com.unity.collab-proxy@a5329f833fa8\Lib\Editor\Localization\common.es.txt" />
+    <None Include="Library\PackageCache\com.unity.collab-proxy@a5329f833fa8\Lib\Editor\Localization\i3.zh-Hant.txt" />
+    <None Include="Library\PackageCache\com.unity.collab-proxy@a5329f833fa8\Lib\Editor\Localization\semantic.en.txt" />
+    <None Include="Library\PackageCache\com.unity.collab-proxy@a5329f833fa8\Lib\Editor\Localization\cm-help.zh-Hant.txt" />
+    <None Include="Library\PackageCache\com.unity.collab-proxy@a5329f833fa8\Lib\Editor\Localization\differences.zh-Hant.txt" />
+    <None Include="Library\PackageCache\com.unity.collab-proxy@a5329f833fa8\Lib\Editor\Localization\commontypes.ko.txt" />
+    <None Include="Library\PackageCache\com.unity.collab-proxy@a5329f833fa8\Lib\Editor\Localization\basecommands.ja.txt" />
+    <None Include="Library\PackageCache\com.unity.collab-proxy@a5329f833fa8\Lib\Editor\zlib64Plastic.dll" />
+    <None Include="Library\PackageCache\com.unity.collab-proxy@a5329f833fa8\Lib\Editor\Localization\cm-help.es.txt" />
+    <None Include="Library\PackageCache\com.unity.collab-proxy@a5329f833fa8\Lib\Editor\Localization\differences.ja.txt" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
@@ -728,7 +728,7 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="websocket-sharp">
-      <HintPath>Library\PackageCache\com.unity.services.wire@9a73acde80cc\Plugins\websocket-sharp.dll</HintPath>
+      <HintPath>Library\PackageCache\com.unity.services.wire@d50817c0adab\Plugins\websocket-sharp.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Mono.CecilX">
@@ -740,7 +740,7 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.VisualScripting.YamlDotNet">
-      <HintPath>Library\PackageCache\com.unity.visualscripting@eb6004dcc707\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll</HintPath>
+      <HintPath>Library\PackageCache\com.unity.visualscripting@8bed5ad90189\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.Collections.LowLevel.ILSupport">
@@ -768,7 +768,7 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.Plastic.Antlr3.Runtime">
-      <HintPath>Library\PackageCache\com.unity.collab-proxy@3351acaba9c9\Lib\Editor\Unity.Plastic.Antlr3.Runtime.dll</HintPath>
+      <HintPath>Library\PackageCache\com.unity.collab-proxy@a5329f833fa8\Lib\Editor\Unity.Plastic.Antlr3.Runtime.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Mono.CecilX.Rocks">
@@ -776,7 +776,7 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.Plastic.Newtonsoft.Json">
-      <HintPath>Library\PackageCache\com.unity.collab-proxy@3351acaba9c9\Lib\Editor\Unity.Plastic.Newtonsoft.Json.dll</HintPath>
+      <HintPath>Library\PackageCache\com.unity.collab-proxy@a5329f833fa8\Lib\Editor\Unity.Plastic.Newtonsoft.Json.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Google.VersionHandlerImpl">
@@ -784,15 +784,11 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="log4netPlastic">
-      <HintPath>Library\PackageCache\com.unity.collab-proxy@3351acaba9c9\Lib\Editor\log4netPlastic.dll</HintPath>
+      <HintPath>Library\PackageCache\com.unity.collab-proxy@a5329f833fa8\Lib\Editor\log4netPlastic.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.VisualScripting.IonicZip">
-      <HintPath>Library\PackageCache\com.unity.visualscripting@eb6004dcc707\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="unityplastic">
-      <HintPath>Library\PackageCache\com.unity.collab-proxy@3351acaba9c9\Lib\Editor\unityplastic.dll</HintPath>
+      <HintPath>Library\PackageCache\com.unity.visualscripting@8bed5ad90189\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Google.JarResolver">
@@ -803,8 +799,12 @@
       <HintPath>Library\PackageCache\com.unity.collections@aea9d3bd5e19\Unity.Collections.Tests\System.IO.Hashing\System.IO.Hashing.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="unityplastic">
+      <HintPath>Library\PackageCache\com.unity.collab-proxy@a5329f833fa8\Lib\Editor\unityplastic.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="Unity.VisualScripting.Antlr3.Runtime">
-      <HintPath>Library\PackageCache\com.unity.visualscripting@eb6004dcc707\Runtime\VisualScripting.Flow\Dependencies\NCalc\Unity.VisualScripting.Antlr3.Runtime.dll</HintPath>
+      <HintPath>Library\PackageCache\com.unity.visualscripting@8bed5ad90189\Runtime\VisualScripting.Flow\Dependencies\NCalc\Unity.VisualScripting.Antlr3.Runtime.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Google.VersionHandler">
@@ -820,7 +820,7 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.VisualScripting.TextureAssets">
-      <HintPath>Library\PackageCache\com.unity.visualscripting@eb6004dcc707\Editor\VisualScripting.Core\EditorAssetResources\Unity.VisualScripting.TextureAssets.dll</HintPath>
+      <HintPath>Library\PackageCache\com.unity.visualscripting@8bed5ad90189\Editor\VisualScripting.Core\EditorAssetResources\Unity.VisualScripting.TextureAssets.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Mono.Cecil">
@@ -1359,9 +1359,7 @@
     <ProjectReference Include="Unity.Networking.Editor.csproj" />
     <ProjectReference Include="Unity.2D.Enhancers.Editor.AIBridge.csproj" />
     <ProjectReference Include="Unity.InternalAPIEditorBridge.001.csproj" />
-    <ProjectReference Include="Unity.AI.Navigation.Updater.csproj" />
     <ProjectReference Include="Unity.2D.Common.Editor.csproj" />
-    <ProjectReference Include="Unity.AI.Navigation.Editor.csproj" />
     <ProjectReference Include="Unity.2D.Animation.Runtime.csproj" />
     <ProjectReference Include="Edgegap.csproj" />
     <ProjectReference Include="Unity.Purchasing.Stores.csproj" />
@@ -1373,14 +1371,14 @@
     <ProjectReference Include="UnityEngine.Advertisements.csproj" />
     <ProjectReference Include="Unity.InferenceEngine.MacBLAS.csproj" />
     <ProjectReference Include="Unity.Services.Authentication.csproj" />
-    <ProjectReference Include="Unity.AI.Navigation.Editor.ConversionSystem.csproj" />
-    <ProjectReference Include="Unity.2D.Aseprite.Editor.csproj" />
     <ProjectReference Include="Unity.Rider.Editor.csproj" />
-    <ProjectReference Include="Unity.InferenceEngine.Editor.csproj" />
+    <ProjectReference Include="Unity.2D.Aseprite.Editor.csproj" />
+    <ProjectReference Include="Unity.Analytics.DataPrivacy.csproj" />
+    <ProjectReference Include="Unity.TerrainTools.csproj" />
     <ProjectReference Include="Unity.Services.Authentication.Editor.Shared.csproj" />
     <ProjectReference Include="Unity.Services.Multiplayer.Editor.Matchmaker.Authoring.csproj" />
-    <ProjectReference Include="Unity.Analytics.DataPrivacy.csproj" />
     <ProjectReference Include="Unity.VisualScripting.Flow.csproj" />
+    <ProjectReference Include="Unity.InferenceEngine.Editor.csproj" />
     <ProjectReference Include="SimpleWebTransport.csproj" />
     <ProjectReference Include="Unity.TextMeshPro.Editor.csproj" />
     <ProjectReference Include="Mirror.Transports.csproj" />
@@ -1410,7 +1408,6 @@
     <ProjectReference Include="Unity.InferenceEngine.ONNX.Editor.csproj" />
     <ProjectReference Include="Unity.AppUI.Navigation.csproj" />
     <ProjectReference Include="Unity.Cloud.Identity.Runtime.Embedded.csproj" />
-    <ProjectReference Include="Unity.AI.Navigation.csproj" />
     <ProjectReference Include="Unity.2D.IK.Runtime.csproj" />
     <ProjectReference Include="UnityEditor.Purchasing.csproj" />
     <ProjectReference Include="Unity.AssetManager.Core.Editor.csproj" />
@@ -1452,6 +1449,7 @@
     <ProjectReference Include="Mirror.Authenticators.csproj" />
     <ProjectReference Include="Mirror.CompilerSymbols.csproj" />
     <ProjectReference Include="Unity.Multiplayer.Center.Editor.csproj" />
+    <ProjectReference Include="Unity.TerrainTools.Editor.csproj" />
     <ProjectReference Include="Unity.InferenceEngine.Tokenization.csproj" />
     <ProjectReference Include="Unity.VisualScripting.State.csproj" />
     <ProjectReference Include="Unity.AppUI.Navigation.Editor.csproj" />

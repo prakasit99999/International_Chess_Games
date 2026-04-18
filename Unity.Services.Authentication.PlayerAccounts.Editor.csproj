@@ -49,20 +49,20 @@
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\Tools\BuildPipeline\Unity.SourceGenerators\Unity.UIToolkit.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Library\PackageCache\com.unity.services.authentication@fe59e82b6d55\Player Accounts\Editor\PlayerAccountSettingsEditor.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.authentication@fe59e82b6d55\Player Accounts\Editor\Settings\PlayerAccountIdentifier.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.authentication@fe59e82b6d55\Player Accounts\Editor\Settings\PlayerAccountEditorService.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.authentication@fe59e82b6d55\Player Accounts\Editor\AssemblyInfo.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.authentication@fe59e82b6d55\Player Accounts\Editor\Settings\PlayerAccountSettingsProvider.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.authentication@fe59e82b6d55\Player Accounts\Editor\Settings\PlayerAccountSettingsElement.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.authentication@fe59e82b6d55\Player Accounts\Editor\SettingsUtils.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.authentication@fe59e82b6d55\Player Accounts\Editor\PackageVerification.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.authentication@fe59e82b6d55\Player Accounts\Editor\AndroidBuildPostProcess.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.authentication@fe59e82b6d55\Player Accounts\Editor\IOSBuildPostProcess.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.authentication@862f5b816622\Player Accounts\Editor\PlayerAccountSettingsEditor.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.authentication@862f5b816622\Player Accounts\Editor\Settings\PlayerAccountIdentifier.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.authentication@862f5b816622\Player Accounts\Editor\Settings\PlayerAccountEditorService.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.authentication@862f5b816622\Player Accounts\Editor\AssemblyInfo.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.authentication@862f5b816622\Player Accounts\Editor\Settings\PlayerAccountSettingsProvider.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.authentication@862f5b816622\Player Accounts\Editor\Settings\PlayerAccountSettingsElement.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.authentication@862f5b816622\Player Accounts\Editor\SettingsUtils.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.authentication@862f5b816622\Player Accounts\Editor\PackageVerification.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.authentication@862f5b816622\Player Accounts\Editor\AndroidBuildPostProcess.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.authentication@862f5b816622\Player Accounts\Editor\IOSBuildPostProcess.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Library\PackageCache\com.unity.services.authentication@fe59e82b6d55\Player Accounts\Editor\Unity.Services.Authentication.PlayerAccounts.Editor.asmdef" />
-    <None Include="Library\PackageCache\com.unity.services.authentication@fe59e82b6d55\Player Accounts\Editor\Settings\PlayerAccountStyle.uss" />
+    <None Include="Library\PackageCache\com.unity.services.authentication@862f5b816622\Player Accounts\Editor\Unity.Services.Authentication.PlayerAccounts.Editor.asmdef" />
+    <None Include="Library\PackageCache\com.unity.services.authentication@862f5b816622\Player Accounts\Editor\Settings\PlayerAccountStyle.uss" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
@@ -630,7 +630,7 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="websocket-sharp">
-      <HintPath>Library\PackageCache\com.unity.services.wire@9a73acde80cc\Plugins\websocket-sharp.dll</HintPath>
+      <HintPath>Library\PackageCache\com.unity.services.wire@d50817c0adab\Plugins\websocket-sharp.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Mono.CecilX">
@@ -642,7 +642,7 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.VisualScripting.YamlDotNet">
-      <HintPath>Library\PackageCache\com.unity.visualscripting@eb6004dcc707\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll</HintPath>
+      <HintPath>Library\PackageCache\com.unity.visualscripting@8bed5ad90189\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.Collections.LowLevel.ILSupport">
@@ -670,7 +670,7 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.Plastic.Antlr3.Runtime">
-      <HintPath>Library\PackageCache\com.unity.collab-proxy@3351acaba9c9\Lib\Editor\Unity.Plastic.Antlr3.Runtime.dll</HintPath>
+      <HintPath>Library\PackageCache\com.unity.collab-proxy@a5329f833fa8\Lib\Editor\Unity.Plastic.Antlr3.Runtime.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Mono.CecilX.Rocks">
@@ -678,7 +678,7 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.Plastic.Newtonsoft.Json">
-      <HintPath>Library\PackageCache\com.unity.collab-proxy@3351acaba9c9\Lib\Editor\Unity.Plastic.Newtonsoft.Json.dll</HintPath>
+      <HintPath>Library\PackageCache\com.unity.collab-proxy@a5329f833fa8\Lib\Editor\Unity.Plastic.Newtonsoft.Json.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Google.VersionHandlerImpl">
@@ -686,15 +686,11 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="log4netPlastic">
-      <HintPath>Library\PackageCache\com.unity.collab-proxy@3351acaba9c9\Lib\Editor\log4netPlastic.dll</HintPath>
+      <HintPath>Library\PackageCache\com.unity.collab-proxy@a5329f833fa8\Lib\Editor\log4netPlastic.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.VisualScripting.IonicZip">
-      <HintPath>Library\PackageCache\com.unity.visualscripting@eb6004dcc707\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="unityplastic">
-      <HintPath>Library\PackageCache\com.unity.collab-proxy@3351acaba9c9\Lib\Editor\unityplastic.dll</HintPath>
+      <HintPath>Library\PackageCache\com.unity.visualscripting@8bed5ad90189\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Google.JarResolver">
@@ -705,8 +701,12 @@
       <HintPath>Library\PackageCache\com.unity.collections@aea9d3bd5e19\Unity.Collections.Tests\System.IO.Hashing\System.IO.Hashing.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="unityplastic">
+      <HintPath>Library\PackageCache\com.unity.collab-proxy@a5329f833fa8\Lib\Editor\unityplastic.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="Unity.VisualScripting.Antlr3.Runtime">
-      <HintPath>Library\PackageCache\com.unity.visualscripting@eb6004dcc707\Runtime\VisualScripting.Flow\Dependencies\NCalc\Unity.VisualScripting.Antlr3.Runtime.dll</HintPath>
+      <HintPath>Library\PackageCache\com.unity.visualscripting@8bed5ad90189\Runtime\VisualScripting.Flow\Dependencies\NCalc\Unity.VisualScripting.Antlr3.Runtime.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Google.VersionHandler">
@@ -722,7 +722,7 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.VisualScripting.TextureAssets">
-      <HintPath>Library\PackageCache\com.unity.visualscripting@eb6004dcc707\Editor\VisualScripting.Core\EditorAssetResources\Unity.VisualScripting.TextureAssets.dll</HintPath>
+      <HintPath>Library\PackageCache\com.unity.visualscripting@8bed5ad90189\Editor\VisualScripting.Core\EditorAssetResources\Unity.VisualScripting.TextureAssets.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Mono.Cecil">
