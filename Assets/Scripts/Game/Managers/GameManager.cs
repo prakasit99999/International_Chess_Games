@@ -169,12 +169,27 @@ public class GameManager : MonoBehaviour
         if (gameModeManager != null)
             gameModeManager.LoadFromPlayerPrefs();
 
+        ApplyOfflineModeSettings(true);
+    }
+
+    public void ApplyOfflineModeSettings(bool resetPerformanceTracker = false)
+    {
+        if (gameModeManager == null)
+            gameModeManager = GameModeManager.Instance ?? FindFirstObjectByType<GameModeManager>();
+
+        if (gameModeManager != null)
+            gameModeManager.LoadFromPlayerPrefs();
+
         var mode = GetCurrentMode();
 
         if (mode == GameModeManager.GameModes.Online)
             return;
 
-        PerformanceTracker.Instance?.ResetData();
+        if (aiController != null)
+            aiController.StopAI();
+
+        if (resetPerformanceTracker)
+            PerformanceTracker.Instance?.ResetData();
 
         if (mode == GameModeManager.GameModes.SinglePlayer)
         {
@@ -294,6 +309,9 @@ public class GameManager : MonoBehaviour
 
     public void ResetGame()
     {
+        if (aiController != null)
+            aiController.StopAI();
+
         gameIsOver = false;
         isGameStarted = false;
         currentTurn = Team.White;

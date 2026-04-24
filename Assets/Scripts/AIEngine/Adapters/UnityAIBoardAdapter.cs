@@ -14,6 +14,8 @@ namespace AIEngine.Adapters
         private SearchResult? _calculatedResult;
         private bool _isCalculating = false;
         private AICore _aiService = new AICore();
+        private Coroutine _calculateCoroutine;
+        private int _calculationVersion;
 
         public int LastDepth { get; private set; }
         public int NodesEvaluated { get; private set; }
@@ -32,11 +34,12 @@ namespace AIEngine.Adapters
         {
             if (!_isCalculating)
             {
-                StartCoroutine(CalculateMoveCoroutine(board, aiTeam, currentTurn, difficulty));
+                int version = _calculationVersion;
+                _calculateCoroutine = StartCoroutine(CalculateMoveCoroutine(board, aiTeam, currentTurn, difficulty, version));
             }
         }
 
-        private IEnumerator CalculateMoveCoroutine(ChessBoard board, Team aiTeam, Team currentTurn, AIDifficulty difficulty)
+        private IEnumerator CalculateMoveCoroutine(ChessBoard board, Team aiTeam, Team currentTurn, AIDifficulty difficulty, int version)
         {
             Debug.Log($"[AI] Start Calculate Move for {aiTeam}");
             _isCalculating = true;
@@ -51,6 +54,13 @@ namespace AIEngine.Adapters
 
             //  แก้ไขจุดที่ 1: เปลี่ยนชื่อเมธอดให้ตรงกับ AICore
             SearchResult searchResult = _aiService.FindBestMoveWithMetrics(model, aiCoreDifficulty);
+
+            if (version != _calculationVersion)
+            {
+                _isCalculating = false;
+                _calculateCoroutine = null;
+                yield break;
+            }
 
             if (searchResult.Move != null)
             {
@@ -97,6 +107,7 @@ namespace AIEngine.Adapters
             }
 
             _isCalculating = false;
+            _calculateCoroutine = null;
             yield break;
         }
 
@@ -128,6 +139,19 @@ namespace AIEngine.Adapters
         public void ClearCalculatedMove()
         {
             _calculatedResult = null;
+        }
+
+        public void CancelCalculation()
+        {
+            _calculationVersion++;
+            _calculatedResult = null;
+            _isCalculating = false;
+
+            if (_calculateCoroutine != null)
+            {
+                StopCoroutine(_calculateCoroutine);
+                _calculateCoroutine = null;
+            }
         }
 
         // 🔹 ตัวช่วยแปลง enum

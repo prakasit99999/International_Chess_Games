@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
 namespace AIEngine.Utilities
 {
     public static class MoveGenerator
@@ -43,23 +42,44 @@ namespace AIEngine.Utilities
                     }
                 }
             }
-            return FilterLegalMoves(board, moves)
-                  .Where(m => Math.Abs(board.Board[m.ToX, m.ToY]) != 6)
-                  .ToList();
+            var legalMoves = FilterLegalMoves(board, moves);
+            // Prevent illegal "king capture" outputs without LINQ allocation.
+            for (int i = legalMoves.Count - 1; i >= 0; i--)
+            {
+                var move = legalMoves[i];
+                if (Math.Abs(board.Board[move.ToX, move.ToY]) == 6)
+                {
+                    legalMoves.RemoveAt(i);
+                }
+            }
+
+            return legalMoves;
         }
         // ตรวจสอบการเดินที่ถูกต้องตามกฎ
         private static List<MoveModel> FilterLegalMoves(ChessBoardModel board, List<MoveModel> pseudoMoves)
         {
-            List<MoveModel> legalMoves = new List<MoveModel>();
+            List<MoveModel> legalMoves = new List<MoveModel>(pseudoMoves.Count);
             bool isWhite = board.IsWhiteTurn;
 
             foreach (MoveModel move in pseudoMoves)
             {
-                ChessBoardModel tempBoard = board.Clone();
-                tempBoard.MakeMoveUnsafe(move);
-                if (!tempBoard.IsInCheck(isWhite))
+                bool moved = false;
+                try
                 {
-                    legalMoves.Add(move);
+                    board.MakeMoveUnsafe(move);
+                    moved = true;
+
+                    if (!board.IsInCheck(isWhite))
+                    {
+                        legalMoves.Add(move);
+                    }
+                }
+                finally
+                {
+                    if (moved)
+                    {
+                        board.UndoMoveUnsafe();
+                    }
                 }
             }
             return legalMoves;
@@ -105,10 +125,16 @@ namespace AIEngine.Utilities
                 int enPassantX = enPassantSquare.X;
                 int enPassantY = enPassantSquare.Y;
 
+                if (enPassantX < 0 || enPassantX >= 8 || enPassantY < 0 || enPassantY >= 8)
+                {
+                    return;
+                }
+
                 bool isCorrectRank = (board.IsWhiteTurn && x == 3) || (!board.IsWhiteTurn && x == 4);
                 bool isAdjacentFile = Math.Abs(y - enPassantY) == 1;
+                bool isOneStepForward = enPassantX == x + direction;
 
-                if (isCorrectRank && isAdjacentFile)
+                if (isCorrectRank && isAdjacentFile && isOneStepForward)
                 {
                     // ✅ จุดปลายทางของ En Passant คือ EnPassantTarget
                     moves.Add(new MoveModel(x, y, enPassantX, enPassantY));
@@ -136,37 +162,24 @@ namespace AIEngine.Utilities
 
         private static void GenerateKnightMoves(ChessBoardModel board, int x, int y, List<MoveModel> moves)
         {
-            try
-            {
-                int[,] knightMoves = {
+            int[,] knightMoves = {
             {2, 1}, {2, -1}, {-2, 1}, {-2, -1},
             {1, 2}, {1, -2}, {-1, 2}, {-1, -2}
         };
 
-                for (int i = 0; i < knightMoves.GetLength(0); i++)
-                {
-                    int newX = x + knightMoves[i, 0];
-                    int newY = y + knightMoves[i, 1];
+            for (int i = 0; i < knightMoves.GetLength(0); i++)
+            {
+                int newX = x + knightMoves[i, 0];
+                int newY = y + knightMoves[i, 1];
 
-                    if (newX >= 0 && newX < 8 && newY >= 0 && newY < 8)
+                if (newX >= 0 && newX < 8 && newY >= 0 && newY < 8)
+                {
+                    int targetPiece = board.Board[newX, newY];
+                    if (targetPiece == 0 || (board.IsWhiteTurn ? targetPiece < 0 : targetPiece > 0))
                     {
-                        int targetPiece = board.Board[newX, newY];
-                        if (targetPiece == 0 || (board.IsWhiteTurn ? targetPiece < 0 : targetPiece > 0))
-                        {
-                            MoveModel move = new MoveModel(x, y, newX, newY);
-                            ChessBoardModel tempBoard = board.Clone();
-                            tempBoard.MakeMoveUnsafe(move);
-                            if (!tempBoard.IsInCheck(board.IsWhiteTurn))
-                            {
-                                moves.Add(move);
-                            }
-                        }
+                        moves.Add(new MoveModel(x, y, newX, newY));
                     }
                 }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
             }
         }
 
@@ -263,7 +276,6 @@ namespace AIEngine.Utilities
         // ========== ตรวจสอบความปลอดภัย ==========
         private static bool IsSquareUnderAttack(ChessBoardModel board, Square square)
         {
-            ChessBoardModel tempBoard = board.CloneWithTurn(!board.IsWhiteTurn);
             return board.IsSquareUnderAttack(square, !board.IsWhiteTurn);
         }
 

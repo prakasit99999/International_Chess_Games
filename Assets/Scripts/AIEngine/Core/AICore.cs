@@ -22,19 +22,20 @@ namespace AIEngine.Core
         {
             SearchAlgorithm algorithm;
             int depth;
-            var settings = CreateSettingsForDifficulty(difficulty);
+            // 0 = no time limit, so Minimax and AlphaBeta search until the target depth is completed.
+            var settings =  CreateSettingsForDifficulty(difficulty);
             switch (difficulty)
             {
                 case Difficulty.Easy:
-                    algorithm = new Minimax(1000); // 1 sec limit
+                    algorithm = new Minimax(10000); // No time limit for Minimax test.
                     depth = 6;
                     break;
                 case Difficulty.Normal:
-                    algorithm = new AlphaBeta(3000); // 3 sec limit
+                    algorithm = new AlphaBeta(10000); // No time limit for AlphaBeta test.
                     depth = 6;
                     break;
                 case Difficulty.Hard:
-                    algorithm = new AlphaBeta(10000); // 10 sec limit
+                    algorithm = new AlphaBeta(10000); // No time limit for AlphaBeta test.
                     depth = 6;
                     break;
                 default:
@@ -65,6 +66,11 @@ namespace AIEngine.Core
                     settings.PassedPawnBonus = 10;
                     settings.IsolatedPawnPenalty = -8;
                     settings.DoubledPawnPenalty = -5;
+                    settings.UseMobility = false;
+                    settings.UseBishopPair = false;
+                    settings.UseRookFiles = false;
+                    settings.UseOutpost = false;
+                    settings.UseKingDistanceEndgame = false;
                     settings.UseTempo = false;
                     settings.UseKingSafety = false;
                     settings.UseThreats = false;

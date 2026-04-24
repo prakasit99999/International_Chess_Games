@@ -230,8 +230,14 @@ public class ChessBoardModel
         {
             int direction = (piece > 0) ? -1 : 1;
             int capturedPawnX = move.ToX - direction;
+            if (capturedPawnX < 0 || capturedPawnX >= 8 || move.ToY < 0 || move.ToY >= 8)
+            {
+                return;
+            }
+
             int capturedPawn = Board[capturedPawnX, move.ToY];
-            if (capturedPawn != 0)
+            int expectedCapturedPawn = piece > 0 ? -1 : 1;
+            if (capturedPawn == expectedCapturedPawn)
             {
                 int idx = Zobrist.PieceToIndex(capturedPawn);
                 ZobristKey ^= Zobrist.PieceSquare[capturedPawnX, move.ToY, idx];
@@ -322,7 +328,10 @@ public class ChessBoardModel
             // en-passant capture: captured pawn sits behind the to-square
             int direction = (st.MovingPiece > 0) ? -1 : 1;
             int capX = move.ToX - direction;
-            captured = Board[capX, move.ToY];
+            if (capX >= 0 && capX < 8 && move.ToY >= 0 && move.ToY < 8)
+            {
+                captured = Board[capX, move.ToY];
+            }
         }
         st.CapturedPiece = captured;
 
@@ -397,12 +406,24 @@ public class ChessBoardModel
     // ======== Clone Board ========
     public ChessBoardModel Clone()
     {
+        ChessBoardModel newBoard = CreateCoreClone();
+        newBoard._positionHistory = new List<ulong>(this._positionHistory);
+        newBoard._positionCounts = new Dictionary<ulong, int>(this._positionCounts);
+        return newBoard;
+    }
+
+    // Lightweight clone for search: avoid copying repetition/history collections.
+    public ChessBoardModel CloneForSearch()
+    {
+        return CreateCoreClone();
+    }
+
+    private ChessBoardModel CreateCoreClone()
+    {
         ChessBoardModel newBoard = new ChessBoardModel(true);
         newBoard.Board = (int[,])this.Board.Clone();
         newBoard.IsWhiteTurn = this.IsWhiteTurn;
         newBoard.ZobristKey = this.ZobristKey;
-        newBoard._positionHistory = new List<ulong>(this._positionHistory);
-        newBoard._positionCounts = new Dictionary<ulong, int>(this._positionCounts);
         newBoard.WhiteKingMoved = this.WhiteKingMoved;
         newBoard.WhiteRookKingSideMoved = this.WhiteRookKingSideMoved;
         newBoard.WhiteRookQueenSideMoved = this.WhiteRookQueenSideMoved;
@@ -412,6 +433,7 @@ public class ChessBoardModel
         newBoard.FiftyMoveCounter = this.FiftyMoveCounter;
         newBoard.CurrentTurn = this.CurrentTurn;
         newBoard.EnPassantTarget = this.EnPassantTarget;
+        newBoard._moveHistory = new Stack<MoveState>(256);
 
         if (newBoard.Board.Cast<int>().All(p => Math.Abs(p) != 6))
             throw new InvalidOperationException("Invalid board state: King is missing!");
@@ -840,11 +862,20 @@ public class ChessBoardModel
             int direction = (piece > 0) ? -1 : 1;
             int capX = tx - direction;
             int capY = ty; // En Passant capture uses same Y (file/column)
-            captured = Board[capX, capY];
-            record.CapturedPiece = captured;
-            record.EnPassantCapture = true;
-            record.EnPassantCapturedX = capX;
-            record.EnPassantCapturedY = capY;
+            if (capX >= 0 && capX < 8 && capY >= 0 && capY < 8)
+            {
+                captured = Board[capX, capY];
+                record.CapturedPiece = captured;
+                record.EnPassantCapture = true;
+                record.EnPassantCapturedX = capX;
+                record.EnPassantCapturedY = capY;
+            }
+            else
+            {
+                captured = 0;
+                record.CapturedPiece = 0;
+                record.EnPassantCapture = false;
+            }
         }
         else
         {

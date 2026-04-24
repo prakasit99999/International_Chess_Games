@@ -87,9 +87,16 @@ public class SettingManager : MonoBehaviour
             return;
         }
         PauseManager.Resume();
-        if (GameManager.Instance != null)
+
+        var sync = FindFirstObjectByType<GameSyncService>();
+        if (GameManager.Instance != null && sync != null)
         {
             GameManager.Instance.OnRestartClick();
+        }
+        else if (GameManager.Instance != null)
+        {
+            GameManager.Instance.ResetGame();
+            GameManager.Instance.ApplyOfflineModeSettings();
         }
 
         settingPanel.SetActive(false);

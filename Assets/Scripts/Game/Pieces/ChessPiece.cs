@@ -304,12 +304,26 @@ public class ChessPiece : MonoBehaviour
             for (int y = 0; y < 8; y++)
             {
                 Vector2Int targetPosition = new Vector2Int(x, y);
-                if (IsValidMove(targetPosition) && !boardManager.DoesMoveExposeKing(this, targetPosition))
+                if (IsValidMove(targetPosition))
                 {
                     validMoves.Add(targetPosition);
                 }
 
             }
+        }
+
+        // Include castling as legal king moves for game-state checks (stalemate/checkmate).
+        if (pieceType == PieceType.King && boardManager != null)
+        {
+            int row = (team == Team.White) ? 0 : 7;
+            Vector2Int kingSide = new Vector2Int(6, row);
+            Vector2Int queenSide = new Vector2Int(2, row);
+
+            if (boardManager.CanCastle(true, team) && !validMoves.Contains(kingSide))
+                validMoves.Add(kingSide);
+
+            if (boardManager.CanCastle(false, team) && !validMoves.Contains(queenSide))
+                validMoves.Add(queenSide);
         }
 
         return validMoves;

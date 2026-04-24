@@ -49,6 +49,22 @@ public class AiController : MonoBehaviour
         aiLoop = StartCoroutine(AIPlayLoop());
     }
 
+    public void StopAI()
+    {
+        if (aiLoop != null)
+        {
+            StopCoroutine(aiLoop);
+            aiLoop = null;
+        }
+
+        pendingTeam = null;
+
+        if (chessAI is UnityAIBoardAdapter adapter)
+            adapter.CancelCalculation();
+        else if (chessAI != null)
+            chessAI.ClearCalculatedMove();
+    }
+
 
     private IEnumerator AIPlayLoop()
     {

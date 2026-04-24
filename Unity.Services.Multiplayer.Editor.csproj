@@ -43,31 +43,31 @@
     <UnityVersion>6000.3.1f1</UnityVersion>
   </PropertyGroup>
   <ItemGroup>
-    <Analyzer Include="C:\Users\praka\.vscode\extensions\visualstudiotoolsforunity.vstuc-1.2.1\Analyzers\Microsoft.Unity.Analyzers.dll" />
+    <Analyzer Include="C:\Users\praka\.vscode\extensions\visualstudiotoolsforunity.vstuc-1.2.2\Analyzers\Microsoft.Unity.Analyzers.dll" />
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\Tools\BuildPipeline\Unity.SourceGenerators\Unity.SourceGenerators.dll" />
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\Tools\BuildPipeline\Unity.SourceGenerators\Unity.Properties.SourceGenerator.dll" />
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\6000.3.1f1\Editor\Data\Tools\BuildPipeline\Unity.SourceGenerators\Unity.UIToolkit.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Library\PackageCache\com.unity.services.multiplayer@260b2984cde5\Editor\Multiplayer\Components\SessionConnectorBehaviorEditor.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.multiplayer@260b2984cde5\Editor\Multiplayer\Components\JoinSessionOptionsDrawer.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.multiplayer@260b2984cde5\Editor\Multiplayer\Settings\MultiplayerSettingsProvider.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.multiplayer@260b2984cde5\Editor\Multiplayer\Components\SessionNetworkSettingsDrawer.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.multiplayer@260b2984cde5\Editor\Multiplayer\SessionsController.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.multiplayer@260b2984cde5\Editor\Multiplayer\Components\CreateSessionOptionsDrawer.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.multiplayer@260b2984cde5\Editor\Multiplayer\Components\MultiplayerSessionEditor.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.multiplayer@260b2984cde5\Editor\Multiplayer\SessionsWindow.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.multiplayer@260b2984cde5\Editor\Multiplayer\AssemblyInfo.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.multiplayer@260b2984cde5\Editor\Multiplayer\UIController.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.multiplayer@260b2984cde5\Editor\Multiplayer\MigrationPath\Validator.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.multiplayer@260b2984cde5\Editor\Multiplayer\Components\SessionConnectorEditor.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.multiplayer@260b2984cde5\Editor\Multiplayer\SessionsViewer.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.multiplayer@260b2984cde5\Editor\Multiplayer\Components\SessionConnectorCreateMenu.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.multiplayer@260b2984cde5\Editor\Multiplayer\SessionsCleaner.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.multiplayer@7c91ae1e57ac\Editor\Multiplayer\Components\SessionConnectorBehaviorEditor.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.multiplayer@7c91ae1e57ac\Editor\Multiplayer\Components\JoinSessionOptionsDrawer.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.multiplayer@7c91ae1e57ac\Editor\Multiplayer\Settings\MultiplayerSettingsProvider.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.multiplayer@7c91ae1e57ac\Editor\Multiplayer\Components\SessionNetworkSettingsDrawer.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.multiplayer@7c91ae1e57ac\Editor\Multiplayer\SessionsController.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.multiplayer@7c91ae1e57ac\Editor\Multiplayer\Components\CreateSessionOptionsDrawer.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.multiplayer@7c91ae1e57ac\Editor\Multiplayer\Components\MultiplayerSessionEditor.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.multiplayer@7c91ae1e57ac\Editor\Multiplayer\SessionsWindow.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.multiplayer@7c91ae1e57ac\Editor\Multiplayer\AssemblyInfo.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.multiplayer@7c91ae1e57ac\Editor\Multiplayer\UIController.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.multiplayer@7c91ae1e57ac\Editor\Multiplayer\MigrationPath\Validator.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.multiplayer@7c91ae1e57ac\Editor\Multiplayer\Components\SessionConnectorEditor.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.multiplayer@7c91ae1e57ac\Editor\Multiplayer\SessionsViewer.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.multiplayer@7c91ae1e57ac\Editor\Multiplayer\Components\SessionConnectorCreateMenu.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.multiplayer@7c91ae1e57ac\Editor\Multiplayer\SessionsCleaner.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Library\PackageCache\com.unity.services.multiplayer@260b2984cde5\Editor\Multiplayer\Unity.Services.Multiplayer.Editor.asmdef" />
-    <None Include="Library\PackageCache\com.unity.services.multiplayer@260b2984cde5\Editor\Multiplayer\Components\MultiplayerComponents.uss" />
+    <None Include="Library\PackageCache\com.unity.services.multiplayer@7c91ae1e57ac\Editor\Multiplayer\Unity.Services.Multiplayer.Editor.asmdef" />
+    <None Include="Library\PackageCache\com.unity.services.multiplayer@7c91ae1e57ac\Editor\Multiplayer\Components\MultiplayerComponents.uss" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

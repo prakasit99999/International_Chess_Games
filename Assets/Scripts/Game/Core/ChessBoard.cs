@@ -600,36 +600,8 @@ public class ChessBoard : MonoBehaviour
             ChessPiece piece = entry.Value;
             if (piece == null || piece.team != team) continue;
 
-            foreach (var move in piece.GetValidMoves())
-            {
-                ChessPiece capturedPiece = null;
-                Vector2Int originalPos = piece.boardPosition;
-
-                try
-                {
-                    // จำลองเดิน
-                    if (piecesOnBoard.TryGetValue(move, out capturedPiece))
-                        piecesOnBoard.Remove(move);
-
-                    piecesOnBoard.Remove(originalPos);
-                    piecesOnBoard[move] = piece;
-                    piece.boardPosition = move;
-
-                    bool stillInCheck = IsKingInCheck(team);
-
-                    if (!stillInCheck)
-                        return false; // เจอ move ที่ช่วยได้
-                }
-                finally
-                {
-                    // Rollback
-                    piecesOnBoard.Remove(move);
-                    piece.boardPosition = originalPos;
-                    piecesOnBoard[originalPos] = piece;
-                    if (capturedPiece != null)
-                        piecesOnBoard[move] = capturedPiece;
-                }
-            }
+            if (piece.GetValidMoves().Count > 0)
+                return false; // มี legal move อย่างน้อยหนึ่งตา
         }
         return true;
     }
@@ -669,7 +641,7 @@ public class ChessBoard : MonoBehaviour
 
         boxCollider.isTrigger = true;
         piecesOnBoard[position] = piece; // เพิ่มลงใน Dictionary
-        return piece; // ✅ คืนค่า ChessPiece
+        return piece; //  คืนค่า ChessPiece
     }
 
     public bool IsStalemate(ChessPiece.Team team)
@@ -682,31 +654,8 @@ public class ChessBoard : MonoBehaviour
             ChessPiece piece = entry.Value;
             if (piece == null || piece.team != team) continue;
 
-            foreach (var move in piece.GetValidMoves())
-            {
-                ChessPiece capturedPiece = null;
-                Vector2Int originalPos = piece.boardPosition;
-
-                // จำลองเดิน
-                if (piecesOnBoard.TryGetValue(move, out capturedPiece))
-                    piecesOnBoard.Remove(move);
-
-                piecesOnBoard.Remove(originalPos);
-                piecesOnBoard[move] = piece;
-                piece.boardPosition = move;
-
-                bool stillInCheck = IsKingInCheck(team);
-
-                // Rollback
-                piecesOnBoard.Remove(move);
-                piece.boardPosition = originalPos;
-                piecesOnBoard[originalPos] = piece;
-                if (capturedPiece != null)
-                    piecesOnBoard[move] = capturedPiece;
-
-                if (!stillInCheck)
-                    return false; // มี move ถูกกฎหมาย
-            }
+            if (piece.GetValidMoves().Count > 0)
+                return false; // มี legal move อย่างน้อยหนึ่งตา
         }
         return true;
     }
@@ -720,7 +669,7 @@ public class ChessBoard : MonoBehaviour
 
         try
         {
-            // ✅ จำลอง move
+            //  จำลอง move
             piecesOnBoard.Remove(originalPosition);
             if (piecesOnBoard.TryGetValue(target, out capturedPiece))
             {
@@ -730,12 +679,12 @@ public class ChessBoard : MonoBehaviour
             piecesOnBoard[target] = piece;
             piece.boardPosition = target;
 
-            // ✅ ตรวจ check
+            //  ตรวจ check
             return IsKingInCheck(piece.team);
         }
         finally
         {
-            // 🔄 rollback state กลับคืน (ไม่ให้ King หาย)
+            //  rollback state กลับคืน (ไม่ให้ King หาย)
             piecesOnBoard.Clear();
             foreach (var kv in backup)
             {

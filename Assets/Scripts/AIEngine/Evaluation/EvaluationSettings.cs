@@ -30,10 +30,22 @@ namespace AIEngine.Evaluation
         public int KnightOutpostBonus { get; set; } = 18;
         public int SpaceWeight { get; set; } = 1;
         public int HangingPiecePenalty { get; set; } = -20;
+        public int KingDistanceEndgameWeight { get; set; } = 6;
+        public int SafeMobilityBonus { get; set; } = 1;
+        public int BishopMobilityBonus { get; set; } = 1;
+        public int RookOnSeventhBonus { get; set; } = 20;
+        public int QueenEarlyPenalty { get; set; } = -18;
+        public int ThreatExchangeWeight { get; set; } = 12;
+        public int BackwardPawnPenalty { get; set; } = -12;
+        public int PawnChainBonus { get; set; } = 8;
+        public int PawnStormBonus { get; set; } = 10;
 
         // --- King Safety ---
         public int PawnShieldBonus { get; set; } = 12;
         public int TropismWeight { get; set; } = 4;
+        public int KingAttackPenalty { get; set; } = 8;
+        public int OpenFileNearKingPenalty { get; set; } = 18;
+        public int BrokenPawnShieldPenalty { get; set; } = 10;
 
         // --- Feature Toggles by Difficulty ---
         public bool UseMobility { get; set; } = true;
@@ -43,6 +55,12 @@ namespace AIEngine.Evaluation
         public bool UseOutpost { get; set; } = true;
         public bool UseSpace { get; set; } = true;
         public bool UseThreats { get; set; } = true;
+        public bool UseKingDistanceEndgame { get; set; } = true;
+        public bool UseBackwardPawn { get; set; } = true;
+        public bool UsePawnChain { get; set; } = true;
+        public bool UsePawnStorm { get; set; } = true;
+        public bool UseRookOnSeventh { get; set; } = true;
+        public bool UseQueenEarlyPenalty { get; set; } = true;
         public bool UseTempo { get; set; } = true; // เปิด/ปิดโบนัสคนได้เดินก่อน
 
     }

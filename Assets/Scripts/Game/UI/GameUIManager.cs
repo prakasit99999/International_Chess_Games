@@ -262,14 +262,14 @@ public class GameUIManager : MonoBehaviour
         if (count >= 48)
             fiftyMoveText.color = Color.red;
         else if (count >= 45)
-            fiftyMoveText.color = new Color(1f, 0.5f, 0f);
+            fiftyMoveText.color = new Color(0.5f, 0.5f, 0f);
         else
             fiftyMoveText.color = Color.white;
 
         if (fiftyMoveCoroutine != null)
             StopCoroutine(fiftyMoveCoroutine);
 
-        fiftyMoveCoroutine = StartCoroutine(AutoHideFiftyMovePanel(0.3f));
+        fiftyMoveCoroutine = StartCoroutine(AutoHideFiftyMovePanel(0.2f));
     }
 
     private IEnumerator AutoHideFiftyMovePanel(float delay)
@@ -340,6 +340,8 @@ public class GameUIManager : MonoBehaviour
         if (PauseManager.isPaused)
             PauseManager.Resume();
 
+        HideAllPanels();
+        
         gameManager.RequestReplay();
     }
 

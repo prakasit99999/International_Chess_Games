@@ -20,7 +20,7 @@ public class GameResultSyncService : MonoBehaviour
 
         if (gameManager == null)
         {
-            Debug.LogError("âŒ GameManager not found in scene.");
+            Debug.LogError(" GameManager not found in scene.");
             return;
         }
 
@@ -181,7 +181,30 @@ public class GameResultSyncService : MonoBehaviour
             yield break;
         }
 
-        var perfDataList = PerformanceTracker.Instance.ExportAll();
+        var perfDataList = PerformanceTracker.Instance.ExportAll() ?? new List<AiPerformanceData>();
+
+        // Safety net: in AI-vs-AI, guarantee both white/black summaries at end-game.
+        if (IsAIVsAIMode())
+        {
+            bool hasWhite = perfDataList.Exists(p =>
+                p != null && string.Equals(p.AiColor, "white", StringComparison.OrdinalIgnoreCase));
+            bool hasBlack = perfDataList.Exists(p =>
+                p != null && string.Equals(p.AiColor, "black", StringComparison.OrdinalIgnoreCase));
+
+            if (!hasWhite)
+            {
+                var whiteFallback = BuildPerformanceFromHistoryForTeam(Team.White);
+                if (whiteFallback != null)
+                    perfDataList.Add(whiteFallback);
+            }
+
+            if (!hasBlack)
+            {
+                var blackFallback = BuildPerformanceFromHistoryForTeam(Team.Black);
+                if (blackFallback != null)
+                    perfDataList.Add(blackFallback);
+            }
+        }
 
         Debug.Log($"[GameResultSyncService] UploadPerformance -> ExportAll count: {(perfDataList != null ? perfDataList.Count : 0)}");
 
@@ -208,6 +231,72 @@ public class GameResultSyncService : MonoBehaviour
             );
             yield return aiPerformanceAPI.SendPerformance(perfData);
         }
+    }
+
+    private bool IsAIVsAIMode()
+    {
+        if (gameManager == null)
+            return false;
+
+        var modeManager = gameManager.gameModeManager ?? GameModeManager.Instance;
+        return modeManager != null &&
+               modeManager.CurrentMode == GameModeManager.GameModes.AIVsAI;
+    }
+
+    private AiPerformanceData BuildPerformanceFromHistoryForTeam(Team team)
+    {
+        if (history == null)
+            history = FindFirstObjectByType<HistoryMove>();
+
+        if (history == null)
+            return null;
+
+        bool teamIsAI =
+            (team == Team.White && gameManager.WhitePlayer == GameManager.PlayerType.AI) ||
+            (team == Team.Black && gameManager.BlackPlayer == GameManager.PlayerType.AI);
+        if (!teamIsAI)
+            return null;
+
+        var historyStack = history.GetMoveHistory();
+        if (historyStack == null || historyStack.Count == 0)
+            return null;
+
+        int totalMoves = 0;
+        int sumDepth = 0;
+        int sumNodes = 0;
+        int sumTimeMs = 0;
+        string algorithmType = null;
+
+        foreach (var move in historyStack)
+        {
+            if (move.team != team)
+                continue;
+
+            totalMoves++;
+            sumDepth += move.depth;
+            sumNodes += move.nodes;
+            sumTimeMs += move.moveTimeMs;
+
+            if (string.IsNullOrEmpty(algorithmType) && !string.IsNullOrEmpty(move.algorithmType))
+                algorithmType = move.algorithmType;
+        }
+
+        if (totalMoves <= 0)
+            return null;
+
+        if (string.IsNullOrEmpty(algorithmType))
+            algorithmType = GetAlgorithmTypeForTeam(team);
+
+        return new AiPerformanceData
+        {
+            AiColor = team == Team.White ? "white" : "black",
+            AiLevel = NormalizeDifficulty(GetDifficultyForTeam(team)),
+            AlgorithmType = algorithmType,
+            AverageDepth = (float)Math.Round((float)sumDepth / totalMoves, 2),
+            AverageNodesEvaluated = Mathf.RoundToInt((float)sumNodes / totalMoves),
+            AverageMoveTimeMs = Mathf.RoundToInt((float)sumTimeMs / totalMoves),
+            TotalMoves = totalMoves
+        };
     }
 
 
@@ -389,62 +478,7 @@ public class GameResultSyncService : MonoBehaviour
         Debug.Log(isGameOver
             ? "🟢 Local Exit → Game already over, skipping abandon finalize"
             : "🟢 Local Exit → Finalizing Game");
-
-        int gameId = gameManager.currentGameId;
-
-        bool isLocalMultiplayer = gameManager.gameModeManager != null &&
-                                  gameManager.gameModeManager.CurrentMode == GameModeManager.GameModes.LocalMultiplayer;
-
-        if (!isGameOver && !isLocalMultiplayer && gameId > 0 && gameAPI != null)
-        {
-            bool shouldFinalize = true;
-            bool done = false;
-            GameStatusDto statusDto = null;
-            string errorMsg = null;
-
-            yield return gameAPI.GetGameStatus(
-                gameId,
-                (status) =>
-                {
-                    statusDto = status;
-                    done = true;
-                },
-                (error) =>
-                {
-                    errorMsg = error;
-                    done = true;
-                });
-
-            yield return new WaitUntil(() => done);
-
-            if (statusDto == null)
-            {
-                if (!string.IsNullOrEmpty(errorMsg))
-                    Debug.LogWarning($"Skip exit-finalize: status check error: {errorMsg}");
-                else
-                    Debug.LogWarning("Skip exit-finalize: status check returned null.");
-
-                shouldFinalize = false;
-            }
-            else if (!string.Equals(statusDto.Status, "in_progress", StringComparison.OrdinalIgnoreCase))
-            {
-                Debug.Log($"Skip exit-finalize: game already '{statusDto.Status}'.");
-                shouldFinalize = false;
-            }
-
-            if (shouldFinalize)
-            {
-                GameResultDto dto = new GameResultDto
-                {
-                    GameId = gameId,
-                    Result = "draw",
-                    ResultReason = "abandoned",
-                    MoveCount = gameManager.moveCount
-                };
-
-                yield return gameAPI.FinalizeOfflineGame(dto, null, null);
-            }
-        }
+        yield return FinalizeAbandonedIfNeeded("exit");
 
         gameManager.ResetGame();
 
@@ -459,7 +493,7 @@ public class GameResultSyncService : MonoBehaviour
         if (PauseManager.isPaused)
             PauseManager.Resume();
 
-        Debug.Log("ðŸŸ¢ Online Exit â†’ Finalizing Game");
+        Debug.Log(" Online Exit â†’ Finalizing Game");
 
     }
 
@@ -472,7 +506,7 @@ public class GameResultSyncService : MonoBehaviour
         if (gameManager.gameModeManager != null &&
             gameManager.gameModeManager.CurrentMode == GameModeManager.GameModes.Online)
         {
-            Debug.LogWarning("âŒ Replay is offline-only.");
+            Debug.LogWarning(" Replay is offline-only.");
             yield break;
         }
 
@@ -482,15 +516,16 @@ public class GameResultSyncService : MonoBehaviour
             gameManager.ResetGame();
             gameManager.SetGameId(-1);
             gameManager.SetMoveCount(0);
-            gameManager.SetGameStarted(true);
-            gameManager.SetCurrentTurn(Team.White);
-            Debug.Log("âœ… Replay started (LocalMultiplayer, no API).");
+            gameManager.ApplyOfflineModeSettings();
+            Debug.Log(" Replay started (LocalMultiplayer, no API).");
             yield break;
         }
 
+        yield return FinalizeAbandonedIfNeeded("replay");
+
         if (gameAPI == null)
         {
-            Debug.LogWarning("âš  GameAPI missing.");
+            Debug.LogWarning(" GameAPI missing.");
             yield break;
         }
 
@@ -523,8 +558,7 @@ public class GameResultSyncService : MonoBehaviour
         gameManager.ResetGame();
         gameManager.SetGameId(response.gameId);
         gameManager.SetMoveCount(0);
-        gameManager.SetGameStarted(true);
-        gameManager.SetCurrentTurn(Team.White);
+        gameManager.ApplyOfflineModeSettings();
 
         if (PerformanceTracker.Instance != null)
         {
@@ -532,7 +566,70 @@ public class GameResultSyncService : MonoBehaviour
             PerformanceTracker.Instance.GameId = response.gameId;
         }
 
-        Debug.Log($"âœ… Replay started. New GameId: {response.gameId}");
+        Debug.Log($" Replay started. New GameId: {response.gameId}");
+    }
+
+    private IEnumerator FinalizeAbandonedIfNeeded(string source)
+    {
+        if (gameManager == null)
+            yield break;
+
+        bool isGameOver = gameManager.IsGameOver();
+        int gameId = gameManager.currentGameId;
+
+        bool isLocalMultiplayer = gameManager.gameModeManager != null &&
+                                  gameManager.gameModeManager.CurrentMode == GameModeManager.GameModes.LocalMultiplayer;
+
+        if (isGameOver || isLocalMultiplayer || gameId <= 0 || gameAPI == null)
+            yield break;
+
+        bool shouldFinalize = true;
+        bool done = false;
+        GameStatusDto statusDto = null;
+        string errorMsg = null;
+
+        yield return gameAPI.GetGameStatus(
+            gameId,
+            (status) =>
+            {
+                statusDto = status;
+                done = true;
+            },
+            (error) =>
+            {
+                errorMsg = error;
+                done = true;
+            });
+
+        yield return new WaitUntil(() => done);
+
+        if (statusDto == null)
+        {
+            if (!string.IsNullOrEmpty(errorMsg))
+                Debug.LogWarning($"Skip {source}-finalize: status check error: {errorMsg}");
+            else
+                Debug.LogWarning($"Skip {source}-finalize: status check returned null.");
+
+            shouldFinalize = false;
+        }
+        else if (!string.Equals(statusDto.Status, "in_progress", StringComparison.OrdinalIgnoreCase))
+        {
+            Debug.Log($"Skip {source}-finalize: game already '{statusDto.Status}'.");
+            shouldFinalize = false;
+        }
+
+        if (!shouldFinalize)
+            yield break;
+
+        GameResultDto dto = new GameResultDto
+        {
+            GameId = gameId,
+            Result = "draw",
+            ResultReason = "abandoned",
+            MoveCount = gameManager.moveCount
+        };
+
+        yield return gameAPI.FinalizeOfflineGame(dto, null, null);
     }
 
     private GameCreateDto BuildOfflineCreateDto()
@@ -652,31 +749,80 @@ public class GameResultSyncService : MonoBehaviour
             Debug.LogWarning("[GameResultSyncService] RecordMove did not create dto because currentGameId <= 0.");
         }
 
-        if (aiStats != null && PerformanceTracker.Instance != null)
+        if (PerformanceTracker.Instance != null)
         {
-            Debug.Log(
-                $"[GameResultSyncService] RecordMove forwarding AI stats -> " +
-                $"Color: {aiStats.AiColor}, Level: {aiStats.AiLevel}, Algo: {aiStats.AlgorithmType}, " +
-                $"Depth: {aiStats.Depth}, Nodes: {aiStats.Nodes}, Time: {aiStats.MoveTimeMs}, Score: {aiStats.Score}"
-            );
-            PerformanceTracker.Instance.AddMove(
-                aiStats.AiColor,
-                aiStats.AiLevel,
-                aiStats.AlgorithmType,
-                aiStats.Depth,
-                aiStats.Nodes,
-                aiStats.MoveTimeMs,
-                aiStats.Score
-            );
+            bool isWhiteAI = gameManager.WhitePlayer == GameManager.PlayerType.AI;
+            bool isBlackAI = gameManager.BlackPlayer == GameManager.PlayerType.AI;
+            bool isMoveByAI =
+                (moveData.team == Team.White && isWhiteAI) ||
+                (moveData.team == Team.Black && isBlackAI);
 
-            Debug.Log("[GameResultSyncService] RecordMove forwarded AI stats to PerformanceTracker.");
-        }
-        else
-        {
+            AiPerformanceData statsToTrack = aiStats;
+            if (statsToTrack == null && isMoveByAI)
+            {
+                string normalizedDifficulty = NormalizeDifficulty(GetDifficultyForTeam(moveData.team));
+                statsToTrack = new AiPerformanceData
+                {
+                    AiColor = moveData.team == Team.White ? "white" : "black",
+                    AiLevel = normalizedDifficulty,
+                    AlgorithmType = GetAlgorithmTypeForTeam(moveData.team),
+                    Depth = moveData.depth,
+                    Nodes = moveData.nodes,
+                    MoveTimeMs = moveData.moveTimeMs,
+                    Score = moveData.score
+                };
+
+                Debug.Log(
+                    $"[GameResultSyncService] RecordMove created fallback AI stats -> Team: {moveData.team}, " +
+                    $"Color: {statsToTrack.AiColor}, Level: {statsToTrack.AiLevel}, Algo: {statsToTrack.AlgorithmType}, " +
+                    $"Depth: {statsToTrack.Depth}, Nodes: {statsToTrack.Nodes}, Time: {statsToTrack.MoveTimeMs}, Score: {statsToTrack.Score}"
+                );
+            }
+
+            if (statsToTrack != null)
+            {
+                if (string.IsNullOrEmpty(statsToTrack.AiColor))
+                    statsToTrack.AiColor = moveData.team == Team.White ? "white" : "black";
+
+                if (string.IsNullOrEmpty(statsToTrack.AiLevel))
+                    statsToTrack.AiLevel = NormalizeDifficulty(GetDifficultyForTeam(moveData.team));
+
+                if (string.IsNullOrEmpty(statsToTrack.AlgorithmType))
+                    statsToTrack.AlgorithmType = GetAlgorithmTypeForTeam(moveData.team);
+            }
+
+            if (statsToTrack != null)
+            {
+                Debug.Log(
+                    $"[GameResultSyncService] RecordMove forwarding AI stats -> " +
+                    $"Color: {statsToTrack.AiColor}, Level: {statsToTrack.AiLevel}, Algo: {statsToTrack.AlgorithmType}, " +
+                    $"Depth: {statsToTrack.Depth}, Nodes: {statsToTrack.Nodes}, Time: {statsToTrack.MoveTimeMs}, Score: {statsToTrack.Score}"
+                );
+
+                PerformanceTracker.Instance.AddMove(
+                    statsToTrack.AiColor,
+                    statsToTrack.AiLevel,
+                    statsToTrack.AlgorithmType,
+                    statsToTrack.Depth,
+                    statsToTrack.Nodes,
+                    statsToTrack.MoveTimeMs,
+                    statsToTrack.Score
+                );
+
+                Debug.Log("[GameResultSyncService] RecordMove forwarded AI stats to PerformanceTracker.");
+                return;
+            }
+
             Debug.Log(
                 $"[GameResultSyncService] RecordMove no AI stats forwarded -> " +
-                $"HasAIStats: {aiStats != null}, HasTracker: {PerformanceTracker.Instance != null}"
+                $"HasAIStats: {aiStats != null}, IsMoveByAI: {isMoveByAI}"
             );
+            return;
         }
+
+        Debug.Log(
+            $"[GameResultSyncService] RecordMove no AI stats forwarded -> " +
+            $"HasAIStats: {aiStats != null}, HasTracker: {PerformanceTracker.Instance != null}"
+        );
     }
 }
