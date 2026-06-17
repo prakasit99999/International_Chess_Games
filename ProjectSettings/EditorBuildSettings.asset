@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1045 &1
+EditorBuildSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/MainMenu.unity
+    guid: c729e3794368e8f4e8bf58d0ac54328f
+  - enabled: 1
+    path: Assets/Scenes/Onlinelogin.unity
+    guid: bcff347d7c236a944940ecc12fe39346
+  - enabled: 1
+    path: Assets/Scenes/OnlineLobby.unity
+    guid: aa7d6826e3c52c242990029a0987ab1d
+  - enabled: 1
+    path: Assets/Scenes/GameCore.unity
+    guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Scenes/GameCoreOnline.unity
+    guid: b4a50a7665fec03458d6f3004edc39aa
+  m_configObjects:
+    com.unity.adaptiveperformance.simulator.provider_settings: {fileID: 11400000, guid: e462ac13240d41e44860ebb84b4a1663, type: 2}
+    com.unity.dt.app-ui: {fileID: 11400000, guid: 1b1c20d82303e4b5781c3ef50ac1449f, type: 2}
+  m_UseUCBPForAssetBundles: 0
